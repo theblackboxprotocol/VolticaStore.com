@@ -4562,3 +4562,646 @@ body {
     }
 
 }
+/* =========================================
+   VOLTICA — GENTLE EMBRACE
+   ========================================= */
+
+.comfort-feature {
+
+    position: relative;
+
+    width: 100%;
+
+    margin: 70px 0;
+
+    padding: 75px 45px;
+
+    overflow: hidden;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(255,255,255,0.08),
+            transparent 34%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.065),
+            rgba(255,255,255,0.015)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,0.58),
+        inset 0 1px 0 rgba(255,255,255,0.10);
+
+}
+
+
+/* =========================================
+   COMFORT VISUAL
+   ========================================= */
+
+.comfort-visual {
+
+    position: relative;
+
+    width: 360px;
+    height: 360px;
+
+    margin: 0 auto 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    perspective: 1000px;
+
+    transform-style: preserve-3d;
+
+}
+
+
+/* =========================================
+   SOFT HALOS
+   ========================================= */
+
+.comfort-halo {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    transform-style: preserve-3d;
+
+    border:
+        1px solid rgba(255,255,255,0.13);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.025),
+            transparent 65%
+        );
+
+}
+
+
+.halo-outer {
+
+    width: 330px;
+    height: 245px;
+
+    transform:
+        rotateX(68deg)
+        translateZ(-35px);
+
+    animation:
+        comfortOuter 7s ease-in-out infinite;
+
+}
+
+
+.halo-middle {
+
+    width: 280px;
+    height: 205px;
+
+    transform:
+        rotateX(68deg)
+        translateZ(5px);
+
+    border-color:
+        rgba(170,185,255,0.17);
+
+    animation:
+        comfortMiddle 6s ease-in-out infinite
+        .4s;
+
+}
+
+
+.halo-inner {
+
+    width: 225px;
+    height: 170px;
+
+    transform:
+        rotateX(68deg)
+        translateZ(40px);
+
+    border-color:
+        rgba(255,255,255,0.20);
+
+    animation:
+        comfortInner 5s ease-in-out infinite
+        .8s;
+
+}
+
+
+/* =========================================
+   HALO ANIMATION
+   ========================================= */
+
+@keyframes comfortOuter {
+
+    0%,
+    100% {
+
+        transform:
+            rotateX(68deg)
+            translateZ(-35px)
+            scale(.92);
+
+        opacity: .35;
+
+    }
+
+    50% {
+
+        transform:
+            rotateX(68deg)
+            translateZ(-35px)
+            scale(1.04);
+
+        opacity: .75;
+
+    }
+
+}
+
+
+@keyframes comfortMiddle {
+
+    0%,
+    100% {
+
+        transform:
+            rotateX(68deg)
+            translateZ(5px)
+            scale(.90);
+
+        opacity: .30;
+
+    }
+
+    50% {
+
+        transform:
+            rotateX(68deg)
+            translateZ(5px)
+            scale(1.06);
+
+        opacity: .70;
+
+    }
+
+}
+
+
+@keyframes comfortInner {
+
+    0%,
+    100% {
+
+        transform:
+            rotateX(68deg)
+            translateZ(40px)
+            scale(.88);
+
+        opacity: .25;
+
+    }
+
+    50% {
+
+        transform:
+            rotateX(68deg)
+            translateZ(40px)
+            scale(1.08);
+
+        opacity: .80;
+
+    }
+
+}
+
+
+/* =========================================
+   CENTRAL GLASS CORE
+   ========================================= */
+
+.comfort-core {
+
+    position: relative;
+
+    width: 190px;
+    height: 190px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 32% 20%,
+            rgba(255,255,255,0.22),
+            rgba(255,255,255,0.055) 43%,
+            rgba(5,5,10,0.80) 78%
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.25);
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    box-shadow:
+        inset 8px 8px 30px
+            rgba(255,255,255,0.08),
+
+        inset -15px -20px 40px
+            rgba(0,0,0,0.58),
+
+        0 25px 60px
+            rgba(0,0,0,0.65),
+
+        0 0 70px
+            rgba(150,170,255,0.12);
+
+    transform:
+        translateZ(80px)
+        rotateX(10deg)
+        rotateY(-10deg);
+
+    transform-style: preserve-3d;
+
+    z-index: 10;
+
+    animation:
+        comfortFloat 5s ease-in-out infinite;
+
+}
+
+
+@keyframes comfortFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateZ(80px)
+            rotateX(10deg)
+            rotateY(-10deg)
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateZ(95px)
+            rotateX(14deg)
+            rotateY(-14deg)
+            translateY(-8px);
+
+    }
+
+}
+
+
+/* Glow */
+
+.comfort-glow {
+
+    position: absolute;
+
+    inset: -25px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(170,185,255,0.15),
+            transparent 65%
+        );
+
+    filter: blur(12px);
+
+    z-index: -1;
+
+}
+
+
+/* Typography */
+
+.comfort-core > span {
+
+    font-size: 7px;
+
+    letter-spacing: 2.5px;
+
+    color:
+        rgba(255,255,255,0.42);
+
+}
+
+
+.comfort-core > strong {
+
+    margin-top: 5px;
+
+    font-size: 70px;
+
+    line-height: .85;
+
+    font-weight: 300;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 25px
+        rgba(180,195,255,0.25);
+
+}
+
+
+.comfort-core > small {
+
+    margin-top: 8px;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,255,255,0.48);
+
+}
+
+
+/* =========================================
+   CONTENT
+   ========================================= */
+
+.comfort-content {
+
+    max-width: 780px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+}
+
+
+.comfort-label {
+
+    margin-bottom: 20px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,255,255,0.42);
+
+}
+
+
+.comfort-content h2 {
+
+    font-size:
+        clamp(38px, 6vw, 65px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    font-weight: 800;
+
+}
+
+
+.comfort-content h2 span {
+
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #aebcff,
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+
+.comfort-content > p {
+
+    max-width: 650px;
+
+    margin: 25px auto 0;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    color:
+        rgba(255,255,255,0.55);
+
+}
+
+
+/* =========================================
+   SPEC CARDS
+   ========================================= */
+
+.comfort-specs {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    max-width: 780px;
+
+    margin: 40px auto 0;
+
+}
+
+
+.comfort-specs > div {
+
+    padding: 22px;
+
+    text-align: left;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease;
+
+}
+
+
+.comfort-specs > div:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,0.20);
+
+}
+
+
+.comfort-specs span {
+
+    display: block;
+
+    margin-bottom: 16px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(170,185,255,0.75);
+
+}
+
+
+.comfort-specs strong {
+
+    display: block;
+
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.comfort-specs p {
+
+    margin-top: 8px;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    color:
+        rgba(255,255,255,0.42);
+
+}
+
+
+/* =========================================
+   BUTTON
+   ========================================= */
+
+.comfort-button {
+
+    margin-top: 42px !important;
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .comfort-feature {
+
+        margin: 50px 0;
+
+        padding:
+            55px 18px;
+
+        border-radius: 24px;
+
+    }
+
+    .comfort-visual {
+
+        width: 290px;
+        height: 290px;
+
+    }
+
+    .comfort-core {
+
+        width: 155px;
+        height: 155px;
+
+    }
+
+    .comfort-core > strong {
+
+        font-size: 55px;
+
+    }
+
+    .halo-outer {
+
+        width: 260px;
+        height: 190px;
+
+    }
+
+    .halo-middle {
+
+        width: 220px;
+        height: 165px;
+
+    }
+
+    .halo-inner {
+
+        width: 185px;
+        height: 140px;
+
+    }
+
+    .comfort-specs {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

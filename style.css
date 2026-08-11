@@ -2097,3 +2097,668 @@ body {
   }
 
 }
+/* =========================================
+   VOLTICA — 360° SPATIAL AUDIO
+   ========================================= */
+
+.spatial-feature {
+  position: relative;
+
+  width: 100%;
+
+  margin: 70px 0;
+
+  padding: 75px 45px;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(120,145,255,0.12),
+      transparent 32%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.065),
+      rgba(255,255,255,0.015)
+    );
+
+  border:
+    1px solid rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,0.58),
+    inset 0 1px 0 rgba(255,255,255,0.10);
+}
+
+
+/* =========================================
+   SPATIAL VISUAL
+   ========================================= */
+
+.spatial-visual {
+
+  position: relative;
+
+  width: 360px;
+  height: 360px;
+
+  margin: 0 auto 55px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  perspective: 1000px;
+
+}
+
+
+/* Core */
+
+.spatial-core {
+
+  position: relative;
+
+  width: 190px;
+  height: 190px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      rgba(255,255,255,0.18),
+      rgba(255,255,255,0.045) 45%,
+      rgba(0,0,0,0.5)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,0.22);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow:
+    inset 0 8px 25px
+      rgba(255,255,255,0.09),
+
+    inset 0 -25px 45px
+      rgba(0,0,0,0.45),
+
+    0 0 70px
+      rgba(130,150,255,0.14),
+
+    0 25px 60px
+      rgba(0,0,0,0.65);
+
+  transform:
+    rotateX(12deg)
+    rotateY(-12deg);
+
+  z-index: 5;
+
+  animation:
+    spatialFloat 5s ease-in-out infinite;
+}
+
+
+@keyframes spatialFloat {
+
+  0%,
+  100% {
+    transform:
+      rotateX(12deg)
+      rotateY(-12deg)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      rotateX(17deg)
+      rotateY(-17deg)
+      translateY(-9px);
+  }
+
+}
+
+
+.spatial-core span {
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+  color:
+    rgba(255,255,255,0.42);
+
+}
+
+
+.spatial-core strong {
+
+  margin-top: 5px;
+
+  font-size: 64px;
+
+  line-height: 0.9;
+
+  letter-spacing: -5px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #aebcff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+}
+
+
+.spatial-core small {
+
+  margin-top: 9px;
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+  color:
+    rgba(255,255,255,0.48);
+
+}
+
+
+/* =========================================
+   ORBIT RINGS
+   ========================================= */
+
+.spatial-ring {
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(255,255,255,0.12);
+
+  transform-style: preserve-3d;
+
+  pointer-events: none;
+
+}
+
+
+.spatial-ring-1 {
+
+  width: 315px;
+  height: 120px;
+
+  transform:
+    rotateX(68deg)
+    rotateZ(20deg);
+
+  animation:
+    spatialOrbit1 9s linear infinite;
+}
+
+
+.spatial-ring-2 {
+
+  width: 330px;
+  height: 145px;
+
+  transform:
+    rotateX(65deg)
+    rotateY(55deg);
+
+  border-color:
+    rgba(150,170,255,0.18);
+
+  animation:
+    spatialOrbit2 12s linear infinite reverse;
+}
+
+
+.spatial-ring-3 {
+
+  width: 270px;
+  height: 270px;
+
+  transform:
+    rotateY(65deg);
+
+  border-color:
+    rgba(255,255,255,0.08);
+
+  animation:
+    spatialOrbit3 16s linear infinite;
+}
+
+
+@keyframes spatialOrbit1 {
+
+  from {
+    transform:
+      rotateX(68deg)
+      rotateZ(0deg);
+  }
+
+  to {
+    transform:
+      rotateX(68deg)
+      rotateZ(360deg);
+  }
+
+}
+
+
+@keyframes spatialOrbit2 {
+
+  from {
+    transform:
+      rotateX(65deg)
+      rotateY(55deg)
+      rotateZ(0deg);
+  }
+
+  to {
+    transform:
+      rotateX(65deg)
+      rotateY(55deg)
+      rotateZ(360deg);
+  }
+
+}
+
+
+@keyframes spatialOrbit3 {
+
+  from {
+    transform:
+      rotateY(65deg)
+      rotateZ(0deg);
+  }
+
+  to {
+    transform:
+      rotateY(65deg)
+      rotateZ(360deg);
+  }
+
+}
+
+
+/* =========================================
+   SOUND NODES
+   ========================================= */
+
+.spatial-node {
+
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 15px
+      rgba(180,195,255,0.95);
+
+  z-index: 8;
+
+}
+
+
+.node-1 {
+  top: 55px;
+  left: 115px;
+
+  animation:
+    nodeFloat1 4s ease-in-out infinite;
+}
+
+
+.node-2 {
+  top: 115px;
+  right: 45px;
+
+  animation:
+    nodeFloat2 5s ease-in-out infinite;
+}
+
+
+.node-3 {
+  bottom: 60px;
+  left: 80px;
+
+  animation:
+    nodeFloat3 4.5s ease-in-out infinite;
+}
+
+
+.node-4 {
+  bottom: 105px;
+  right: 85px;
+
+  animation:
+    nodeFloat4 6s ease-in-out infinite;
+}
+
+
+@keyframes nodeFloat1 {
+
+  50% {
+    transform:
+      translate(20px, -10px);
+  }
+
+}
+
+
+@keyframes nodeFloat2 {
+
+  50% {
+    transform:
+      translate(12px, 18px);
+  }
+
+}
+
+
+@keyframes nodeFloat3 {
+
+  50% {
+    transform:
+      translate(-15px, 8px);
+  }
+
+}
+
+
+@keyframes nodeFloat4 {
+
+  50% {
+    transform:
+      translate(15px, -15px);
+  }
+
+}
+
+
+/* =========================================
+   CONTENT
+   ========================================= */
+
+.spatial-content {
+
+  position: relative;
+
+  max-width: 780px;
+
+  margin: 0 auto;
+
+  text-align: center;
+
+}
+
+
+.spatial-label {
+
+  margin-bottom: 20px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 4px;
+
+  color:
+    rgba(255,255,255,0.42);
+
+}
+
+
+.spatial-content h2 {
+
+  font-size:
+    clamp(38px, 6vw, 65px);
+
+  line-height: 1;
+
+  letter-spacing: -2px;
+
+  font-weight: 800;
+
+}
+
+
+.spatial-content h2 span {
+
+  display: block;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #aebcff,
+      #ffffff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+}
+
+
+.spatial-content > p {
+
+  max-width: 650px;
+
+  margin:
+    25px auto 0;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+
+  color:
+    rgba(255,255,255,0.55);
+
+}
+
+
+/* =========================================
+   FEATURE CARDS
+   ========================================= */
+
+.spatial-features {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 12px;
+
+  margin-top: 40px;
+
+}
+
+
+.spatial-features > div {
+
+  padding: 22px;
+
+  text-align: left;
+
+  border-radius: 18px;
+
+  background:
+    rgba(255,255,255,0.035);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.08);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+
+}
+
+
+.spatial-features > div:hover {
+
+  transform:
+    translateY(-4px);
+
+  border-color:
+    rgba(255,255,255,0.20);
+
+}
+
+
+.spatial-features span {
+
+  display: block;
+
+  margin-bottom: 16px;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  color:
+    rgba(170,185,255,0.75);
+
+}
+
+
+.spatial-features strong {
+
+  display: block;
+
+  font-size: 11px;
+
+  letter-spacing: 1.5px;
+
+}
+
+
+.spatial-features p {
+
+  margin-top: 8px;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+
+  color:
+    rgba(255,255,255,0.42);
+
+}
+
+
+/* =========================================
+   BUTTON
+   ========================================= */
+
+.spatial-button {
+
+  margin-top: 40px;
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+  .spatial-feature {
+
+    margin: 50px 0;
+
+    padding:
+      55px 18px;
+
+    border-radius: 24px;
+
+  }
+
+  .spatial-visual {
+
+    width: 290px;
+    height: 290px;
+
+  }
+
+  .spatial-core {
+
+    width: 160px;
+    height: 160px;
+
+  }
+
+  .spatial-core strong {
+
+    font-size: 54px;
+
+  }
+
+  .spatial-ring-1 {
+
+    width: 255px;
+    height: 100px;
+
+  }
+
+  .spatial-ring-2 {
+
+    width: 270px;
+    height: 115px;
+
+  }
+
+  .spatial-ring-3 {
+
+    width: 225px;
+    height: 225px;
+
+  }
+
+  .spatial-features {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}

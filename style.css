@@ -1381,3 +1381,250 @@ body {
   }
 
 }
+/* =========================================
+   VOLTICA — 40MM AUDIO FEATURE
+   ========================================= */
+
+.tech-feature {
+  position: relative;
+
+  width: 100%;
+
+  margin: 70px 0;
+
+  padding: 80px 50px;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(120,145,255,0.13),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(255,255,255,0.06),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.075),
+      rgba(255,255,255,0.018)
+    );
+
+  border: 1px solid rgba(255,255,255,0.14);
+
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,0.58),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+
+/* Ambient glow */
+
+.tech-feature::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -180px;
+  top: -180px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(145,165,255,0.13),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* Content */
+
+.tech-feature-content {
+  position: relative;
+
+  max-width: 760px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+
+/* Label */
+
+.tech-label {
+  margin-bottom: 20px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 4px;
+
+  color: rgba(255,255,255,0.42);
+}
+
+
+/* 40MM */
+
+.tech-number {
+  font-size: clamp(80px, 14vw, 150px);
+
+  line-height: 0.8;
+
+  font-weight: 800;
+
+  letter-spacing: -8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 10%,
+      #aebcff 55%,
+      rgba(255,255,255,0.45)
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 50px rgba(150,170,255,0.08);
+}
+
+
+.tech-number span {
+  margin-left: 8px;
+
+  font-size: 0.28em;
+
+  letter-spacing: 2px;
+}
+
+
+/* Heading */
+
+.tech-feature h2 {
+  margin-top: 35px;
+
+  font-size: clamp(38px, 6vw, 65px);
+
+  line-height: 1;
+
+  letter-spacing: -2px;
+
+  font-weight: 800;
+}
+
+
+.tech-feature h2 span {
+  display: block;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #aebcff,
+      #ffffff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Description */
+
+.tech-feature p {
+  max-width: 650px;
+
+  margin:
+    25px auto 0;
+
+  color: rgba(255,255,255,0.58);
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+.tech-feature p + p {
+  margin-top: 12px;
+}
+
+
+/* Technology tags */
+
+.tech-tags {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 35px;
+}
+
+
+.tech-tags span {
+  padding: 9px 14px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255,255,255,0.045);
+
+  border: 1px solid
+    rgba(255,255,255,0.10);
+
+  color: rgba(255,255,255,0.48);
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .tech-feature {
+    margin: 50px 0;
+
+    padding:
+      55px 20px;
+
+    border-radius: 24px;
+  }
+
+  .tech-number {
+    letter-spacing: -5px;
+  }
+
+  .tech-feature h2 {
+    letter-spacing: -1px;
+  }
+
+}

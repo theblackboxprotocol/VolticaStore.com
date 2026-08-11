@@ -877,3 +877,46 @@ body {
   }
 
 }
+/* =========================================
+   FIX — HERO SPECS / OFFER LAYOUT
+   ========================================= */
+
+.hero-specs {
+  width: 100%;
+  max-width: 850px;
+  margin: 40px auto 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.hero-spec {
+  width: 100%;
+  min-width: 0;
+  display: block;
+}
+
+
+/* Keep the price card below the hero specs */
+
+.offer-card {
+  clear: both;
+  width: 100%;
+  max-width: 620px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .hero-specs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}

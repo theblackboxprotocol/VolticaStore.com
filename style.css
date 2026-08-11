@@ -2762,3 +2762,171 @@ body {
   }
 
 }
+/* =========================================
+   VOLTICA — TECHNOLOGY BUTTONS
+   ========================================= */
+
+.feature-button {
+  position: relative;
+
+  display: flex !important;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100% !important;
+  max-width: 520px !important;
+
+  min-height: 58px;
+
+  margin: 40px auto 0 !important;
+
+  padding: 16px 24px;
+
+  box-sizing: border-box;
+
+  text-decoration: none !important;
+
+  color: #ffffff !important;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.11),
+      rgba(255,255,255,0.035)
+    );
+
+  border: 1px solid
+    rgba(255,255,255,0.20);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255,255,255,0.14),
+
+    0 15px 45px
+      rgba(0,0,0,0.45);
+
+  z-index: 20;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.feature-button span {
+  display: block !important;
+
+  color: #ffffff !important;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+}
+
+
+.feature-button strong {
+  display: block !important;
+
+  margin-left: 10px;
+
+  color: #ffffff !important;
+
+  font-size: 21px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.feature-button:hover {
+
+  transform:
+    translateY(-4px);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.16),
+      rgba(255,255,255,0.055)
+    );
+
+  border-color:
+    rgba(255,255,255,0.38);
+
+  box-shadow:
+    0 20px 55px
+      rgba(0,0,0,0.55),
+
+    0 0 35px
+      rgba(150,170,255,0.12);
+}
+
+
+.feature-button:hover strong {
+
+  transform:
+    translateX(7px);
+}
+
+
+/* 360° button */
+
+.spatial-button {
+  display: flex !important;
+
+  visibility: visible !important;
+
+  opacity: 1 !important;
+}
+
+
+/* 120H button */
+
+.battery-feature .feature-button {
+  display: flex !important;
+
+  visibility: visible !important;
+
+  opacity: 1 !important;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .feature-button {
+
+    max-width: 100% !important;
+
+    min-height: 54px;
+
+  }
+
+  .feature-button span {
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+  }
+
+}

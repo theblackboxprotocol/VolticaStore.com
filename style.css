@@ -3577,3 +3577,561 @@ body {
   }
 
 }
+/* =========================================
+   VOLTICA — TRUE 3D ANC SYSTEM
+   ========================================= */
+
+.anc-3d-stage {
+
+  position: relative;
+
+  width: 380px;
+  height: 380px;
+
+  margin: 0 auto 55px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  perspective: 1200px;
+
+  transform-style: preserve-3d;
+
+}
+
+
+/* 3D discs */
+
+.anc-disc {
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  border-radius: 50%;
+
+  transform-style: preserve-3d;
+
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      rgba(255,255,255,0.10),
+      rgba(255,255,255,0.025) 45%,
+      rgba(0,0,0,0.45)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,0.14);
+
+  box-shadow:
+    inset 0 8px 25px
+      rgba(255,255,255,0.06),
+
+    inset 0 -20px 35px
+      rgba(0,0,0,0.45),
+
+    0 25px 60px
+      rgba(0,0,0,0.55);
+
+}
+
+
+.disc-back {
+
+  transform:
+    translateZ(-55px)
+    rotateX(62deg)
+    rotateZ(20deg);
+
+  opacity: 0.35;
+
+  animation:
+    ancBack 9s linear infinite;
+
+}
+
+
+.disc-mid {
+
+  width: 270px;
+  height: 270px;
+
+  transform:
+    translateZ(-20px)
+    rotateX(67deg)
+    rotateZ(-15deg);
+
+  opacity: 0.55;
+
+  border-color:
+    rgba(160,180,255,0.18);
+
+  animation:
+    ancMid 7s linear infinite reverse;
+
+}
+
+
+.disc-front {
+
+  width: 235px;
+  height: 235px;
+
+  transform:
+    translateZ(20px)
+    rotateX(72deg)
+    rotateZ(30deg);
+
+  opacity: 0.75;
+
+  border-color:
+    rgba(255,255,255,0.20);
+
+  animation:
+    ancFront 6s linear infinite;
+
+}
+
+
+/* =========================================
+   3D ROTATION
+   ========================================= */
+
+@keyframes ancBack {
+
+  from {
+    transform:
+      translateZ(-55px)
+      rotateX(62deg)
+      rotateZ(0deg);
+  }
+
+  to {
+    transform:
+      translateZ(-55px)
+      rotateX(62deg)
+      rotateZ(360deg);
+  }
+
+}
+
+
+@keyframes ancMid {
+
+  from {
+    transform:
+      translateZ(-20px)
+      rotateX(67deg)
+      rotateZ(0deg);
+  }
+
+  to {
+    transform:
+      translateZ(-20px)
+      rotateX(67deg)
+      rotateZ(-360deg);
+  }
+
+}
+
+
+@keyframes ancFront {
+
+  from {
+    transform:
+      translateZ(20px)
+      rotateX(72deg)
+      rotateZ(0deg);
+  }
+
+  to {
+    transform:
+      translateZ(20px)
+      rotateX(72deg)
+      rotateZ(360deg);
+  }
+
+}
+
+
+/* =========================================
+   ENERGY WAVES
+   ========================================= */
+
+.anc-energy {
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(255,255,255,0.12);
+
+  transform-style: preserve-3d;
+
+  pointer-events: none;
+
+}
+
+
+.energy-1 {
+
+  width: 345px;
+  height: 115px;
+
+  transform:
+    rotateX(68deg)
+    translateZ(45px);
+
+  animation:
+    energyMove1 3s ease-in-out infinite;
+
+}
+
+
+.energy-2 {
+
+  width: 320px;
+  height: 105px;
+
+  transform:
+    rotateX(68deg)
+    translateZ(5px);
+
+  border-color:
+    rgba(170,185,255,0.18);
+
+  animation:
+    energyMove2 3.5s ease-in-out infinite
+    0.4s;
+
+}
+
+
+.energy-3 {
+
+  width: 285px;
+  height: 95px;
+
+  transform:
+    rotateX(68deg)
+    translateZ(-35px);
+
+  animation:
+    energyMove3 4s ease-in-out infinite
+    0.8s;
+
+}
+
+
+@keyframes energyMove1 {
+
+  0%,
+  100% {
+    opacity: 0.15;
+    transform:
+      rotateX(68deg)
+      translateZ(20px)
+      scale(0.85);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform:
+      rotateX(68deg)
+      translateZ(55px)
+      scale(1.08);
+  }
+
+}
+
+
+@keyframes energyMove2 {
+
+  0%,
+  100% {
+    opacity: 0.15;
+    transform:
+      rotateX(68deg)
+      translateZ(-5px)
+      scale(0.85);
+  }
+
+  50% {
+    opacity: 0.65;
+    transform:
+      rotateX(68deg)
+      translateZ(25px)
+      scale(1.06);
+  }
+
+}
+
+
+@keyframes energyMove3 {
+
+  0%,
+  100% {
+    opacity: 0.10;
+    transform:
+      rotateX(68deg)
+      translateZ(-45px)
+      scale(0.85);
+  }
+
+  50% {
+    opacity: 0.50;
+    transform:
+      rotateX(68deg)
+      translateZ(-15px)
+      scale(1.05);
+  }
+
+}
+
+
+/* =========================================
+   CENTRAL 3D CORE
+   ========================================= */
+
+.anc-core {
+
+  position: relative;
+
+  width: 190px;
+  height: 190px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(255,255,255,0.22),
+      rgba(255,255,255,0.055) 42%,
+      rgba(5,5,10,0.82) 78%
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,0.28);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+
+    inset 8px 8px 30px
+      rgba(255,255,255,0.08),
+
+    inset -15px -20px 40px
+      rgba(0,0,0,0.60),
+
+    0 15px 30px
+      rgba(0,0,0,0.65),
+
+    0 0 80px
+      rgba(140,160,255,0.14);
+
+  transform:
+    translateZ(80px)
+    rotateX(10deg)
+    rotateY(-12deg);
+
+  transform-style: preserve-3d;
+
+  z-index: 20;
+
+  animation:
+    ancCoreFloat 5s ease-in-out infinite;
+
+}
+
+
+@keyframes ancCoreFloat {
+
+  0%,
+  100% {
+    transform:
+      translateZ(80px)
+      rotateX(10deg)
+      rotateY(-12deg)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateZ(95px)
+      rotateX(14deg)
+      rotateY(-16deg)
+      translateY(-8px);
+  }
+
+}
+
+
+/* Core glow */
+
+.anc-core-glow {
+
+  position: absolute;
+
+  inset: -20px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(160,180,255,0.16),
+      transparent 65%
+    );
+
+  filter: blur(10px);
+
+  z-index: -1;
+
+}
+
+
+/* Core typography */
+
+.anc-core > span {
+
+  font-size: 7px;
+
+  letter-spacing: 2.5px;
+
+  color:
+    rgba(255,255,255,0.42);
+
+  text-align: center;
+
+}
+
+
+.anc-core > strong {
+
+  margin-top: 5px;
+
+  font-size: 67px;
+
+  line-height: 0.85;
+
+  letter-spacing: -6px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #b5c2ff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+}
+
+
+.anc-core > small {
+
+  margin-top: 8px;
+
+  font-size: 10px;
+
+  letter-spacing: 4px;
+
+  color:
+    rgba(255,255,255,0.48);
+
+}
+
+
+/* =========================================
+   BUTTON — ALWAYS VISIBLE
+   ========================================= */
+
+.anc-button {
+
+  position: relative !important;
+
+  display: flex !important;
+
+  visibility: visible !important;
+
+  opacity: 1 !important;
+
+  width: 100% !important;
+
+  max-width: 520px !important;
+
+  min-height: 60px;
+
+  margin: 45px auto 0 !important;
+
+  z-index: 100 !important;
+
+  cursor: pointer;
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .anc-3d-stage {
+
+    width: 290px;
+    height: 290px;
+
+  }
+
+  .anc-core {
+
+    width: 155px;
+    height: 155px;
+
+  }
+
+  .anc-core > strong {
+
+    font-size: 54px;
+
+  }
+
+  .anc-disc {
+
+    width: 240px;
+    height: 240px;
+
+  }
+
+  .disc-mid {
+
+    width: 215px;
+    height: 215px;
+
+  }
+
+  .disc-front {
+
+    width: 190px;
+    height: 190px;
+
+  }
+
+}

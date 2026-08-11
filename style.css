@@ -1182,3 +1182,202 @@ body {
   }
 
 }
+/* =========================================
+   VOLTICA — FINAL OFFER LAYOUT
+   ========================================= */
+
+.offer-card {
+  position: relative;
+
+  width: 100%;
+
+  max-width: none;
+
+  margin: 45px 0 0;
+
+  padding: 35px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.09),
+      rgba(255,255,255,0.025)
+    );
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+
+/* Badge */
+
+.offer-badge {
+  display: inline-block;
+
+  margin-bottom: 15px;
+}
+
+
+/* PRICE — centered */
+
+.offer-price {
+  width: auto;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  margin: 5px auto 0;
+
+  line-height: 1;
+}
+
+
+.offer-price .currency {
+  margin-top: 10px;
+
+  font-size: 22px;
+}
+
+
+.offer-price .price {
+  font-size: clamp(60px, 10vw, 90px);
+
+  line-height: 0.9;
+
+  letter-spacing: -5px;
+}
+
+
+.offer-price .cents {
+  margin-top: 7px;
+
+  font-size: 27px;
+}
+
+
+.offer-price .usd {
+  align-self: flex-end;
+
+  margin:
+    0 0 8px 8px;
+
+  font-size: 10px;
+}
+
+
+/* Description */
+
+.offer-description {
+  max-width: 500px;
+
+  margin:
+    20px auto 0;
+
+  line-height: 1.6;
+}
+
+
+/* Divider */
+
+.offer-divider {
+  width: 100%;
+
+  max-width: 800px;
+
+  margin:
+    28px auto;
+}
+
+
+/* Included items */
+
+.offer-items {
+  width: 100%;
+
+  max-width: 800px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 12px;
+}
+
+
+.offer-items div {
+  min-width: 0;
+}
+
+
+/* FULL WIDTH PRE-ORDER */
+
+.offer-card .preorder-btn {
+
+  display: flex;
+
+  width: 100%;
+
+  max-width: 800px;
+
+  min-width: 0;
+
+  margin:
+    30px auto 0;
+
+  justify-content: center;
+
+  border-radius: 18px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .offer-card {
+    padding: 25px 16px;
+  }
+
+  .offer-items {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .offer-card .preorder-btn {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .offer-items {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-price .price {
+    font-size: 58px;
+  }
+
+}

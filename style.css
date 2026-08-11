@@ -4135,3 +4135,75 @@ body {
   }
 
 }
+/* =========================================
+   ANC 3D — GRAPHIC FIX
+   ========================================= */
+
+.anc-3d-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.anc-disc,
+.anc-energy,
+.anc-core {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.anc-disc {
+  pointer-events: none;
+}
+
+.disc-back {
+  z-index: 1;
+}
+
+.disc-mid {
+  z-index: 2;
+}
+
+.disc-front {
+  z-index: 3;
+}
+
+.energy-1 {
+  z-index: 4;
+}
+
+.energy-2 {
+  z-index: 5;
+}
+
+.energy-3 {
+  z-index: 6;
+}
+
+.anc-core {
+  z-index: 20 !important;
+}
+
+/* Prevent animated layers from visually clipping */
+.anc-3d-stage,
+.anc-disc,
+.anc-energy {
+  transform-style: preserve-3d;
+}
+
+/* Keep the graphic centered */
+.anc-3d-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile stability */
+@media (max-width: 600px) {
+  .anc-3d-stage {
+    overflow: visible;
+    transform: scale(0.88);
+    transform-origin: center center;
+    margin-bottom: 20px;
+  }
+}

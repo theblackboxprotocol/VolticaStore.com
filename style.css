@@ -198,3 +198,234 @@ body {
   }
 
 }
+/* =========================================
+   VOLTICA ELITE — HERO
+   ========================================= */
+
+.product-hero {
+  position: relative;
+
+  text-align: center;
+
+  padding: 35px 20px 45px;
+
+  overflow: hidden;
+}
+
+
+/* Small label */
+
+.hero-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  padding: 8px 16px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.12),
+      rgba(255,255,255,0.035)
+    );
+
+  border: 1px solid rgba(255,255,255,0.14);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  color: rgba(255,255,255,0.72);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 4px;
+}
+
+
+/* Main title */
+
+.product-hero h1 {
+  margin: 0 auto;
+
+  max-width: 900px;
+
+  font-size: clamp(38px, 6vw, 76px);
+
+  line-height: 0.98;
+
+  letter-spacing: -2px;
+
+  font-weight: 800;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 0 30px rgba(255,255,255,0.08);
+}
+
+
+/* Gradient second line */
+
+.product-hero h1 span {
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #aebcff 45%,
+      #ffffff 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Description */
+
+.hero-description {
+  max-width: 650px;
+
+  margin: 25px auto 0;
+
+  color: rgba(255,255,255,0.62);
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+/* Specs */
+
+.hero-specs {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  max-width: 850px;
+
+  margin: 40px auto 0;
+
+  gap: 12px;
+}
+
+
+/* Individual spec */
+
+.hero-spec {
+  position: relative;
+
+  padding: 20px 12px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.085),
+      rgba(255,255,255,0.025)
+    );
+
+  border: 1px solid rgba(255,255,255,0.11);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.09),
+    0 15px 35px rgba(0,0,0,0.3);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+.hero-spec:hover {
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(255,255,255,0.25);
+}
+
+
+/* Number */
+
+.hero-spec strong {
+  display: block;
+
+  font-size: 25px;
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #aebcff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Label */
+
+.hero-spec span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: rgba(255,255,255,0.48);
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .product-hero {
+    padding:
+      20px 10px 30px;
+  }
+
+  .product-hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .hero-specs {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-top: 28px;
+  }
+
+  .hero-spec {
+    padding: 17px 10px;
+  }
+
+}

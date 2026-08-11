@@ -429,3 +429,229 @@ body {
   }
 
 }
+/* =========================================
+   VOLTICA — PRE-ORDER CTA
+   ========================================= */
+
+.preorder-btn {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 18px;
+
+  min-width: 260px;
+
+  margin-top: 38px;
+
+  padding: 17px 24px;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.16),
+      rgba(255,255,255,0.055)
+    );
+
+  border: 1px solid rgba(255,255,255,0.28);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,0.45),
+    0 0 30px rgba(140,160,255,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.18);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+/* Animated light sweep */
+
+.preorder-btn::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 80%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      100deg,
+      transparent,
+      rgba(255,255,255,0.18),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  animation:
+    preorderSweep 3.5s infinite;
+}
+
+
+@keyframes preorderSweep {
+
+  0% {
+    left: -120%;
+  }
+
+  45% {
+    left: 140%;
+  }
+
+  100% {
+    left: 140%;
+  }
+
+}
+
+
+/* Pulsing light */
+
+.preorder-pulse {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 8px #ffffff,
+    0 0 18px rgba(160,180,255,0.8);
+
+  animation:
+    preorderPulse 1.8s infinite;
+}
+
+
+@keyframes preorderPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.45);
+
+    opacity: 1;
+  }
+
+}
+
+
+/* Text */
+
+.preorder-content {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  z-index: 2;
+}
+
+
+.preorder-content strong {
+  font-size: 15px;
+
+  letter-spacing: 2px;
+
+  font-weight: 800;
+}
+
+
+.preorder-content small {
+  margin-top: 3px;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  color: rgba(255,255,255,0.55);
+}
+
+
+/* Arrow */
+
+.preorder-arrow {
+  position: relative;
+
+  z-index: 2;
+
+  font-size: 22px;
+
+  color: rgba(255,255,255,0.75);
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+/* Hover */
+
+.preorder-btn:hover {
+
+  transform:
+    translateY(-4px)
+    scale(1.015);
+
+  border-color:
+    rgba(255,255,255,0.45);
+
+  box-shadow:
+    0 20px 55px rgba(0,0,0,0.55),
+    0 0 45px rgba(140,160,255,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.22);
+}
+
+
+.preorder-btn:hover .preorder-arrow {
+  transform: translateX(6px);
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .preorder-btn {
+
+    width: 100%;
+
+    min-width: 0;
+
+    margin-top: 30px;
+
+    padding: 16px 20px;
+
+  }
+
+}

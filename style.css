@@ -1,11 +1,25 @@
-/* =========================================
-   VOLTICA STORE — PRODUCT PAGE
-   ========================================= */
+/* =========================================================
+   VOLTICA STORE — COMPLETE PRODUCT SYSTEM
+   ========================================================= */
+
+:root {
+  --bg: #050609;
+  --panel: rgba(255,255,255,0.045);
+  --panel-strong: rgba(255,255,255,0.075);
+  --border: rgba(255,255,255,0.13);
+  --border-bright: rgba(255,255,255,0.25);
+  --text: #f5f7fa;
+  --muted: rgba(245,247,250,0.55);
+  --soft: rgba(245,247,250,0.35);
+  --glow: rgba(150,175,255,0.22);
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
@@ -13,1834 +27,629 @@ html {
 }
 
 body {
-  min-height: 100vh;
-
+  margin: 0;
   background:
-    radial-gradient(
-      circle at 20% 10%,
-      rgba(255, 255, 255, 0.08),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 80% 90%,
-      rgba(120, 120, 120, 0.08),
-      transparent 35%
-    ),
-    #050505;
-
-  color: #ffffff;
-
+    radial-gradient(circle at 50% 0%, rgba(120,145,255,0.09), transparent 30%),
+    radial-gradient(circle at 10% 50%, rgba(255,255,255,0.025), transparent 30%),
+    #050609;
+  color: var(--text);
   font-family:
-    Arial,
-    Helvetica,
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
-
   overflow-x: hidden;
 }
 
+a {
+  color: inherit;
+}
 
-/* =========================================
-   PRODUCT PAGE
-   ========================================= */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================================================
+   PAGE
+   ========================================================= */
 
 .product-page {
   width: 100%;
   min-height: 100vh;
-
-  padding: 40px 20px;
 }
-
-
-/* =========================================
-   GLASS CONTAINER
-   ========================================= */
 
 .product-container {
-  width: 100%;
-  max-width: 1200px;
-
+  width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 30px;
-
-  background: rgba(255, 255, 255, 0.055);
-
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
-  border-radius: 28px;
-
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.65),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-
-/* =========================================
-   PRODUCT VIDEOS
-   ========================================= */
-
-.product-video {
-  width: 100%;
-
-  display: grid;
-
-  gap: 20px;
-}
-
-
-/* Individual video */
-
-.product-video video {
-  display: block;
-
-  width: 100%;
-
-  max-height: 680px;
-
-  object-fit: cover;
-
-  border-radius: 22px;
-
-  background: #000;
-
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 768px) {
-
-  .product-page {
-    padding: 20px 12px;
-  }
-
-  .product-container {
-    padding: 15px;
-
-    border-radius: 22px;
-  }
-
-  .product-video {
-    gap: 15px;
-  }
-
-  .product-video video {
-    border-radius: 17px;
-
-    max-height: 500px;
-  }
-}
-.product-gallery {
-  margin-top: 30px;
-
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 16px;
-}
-
-.product-gallery img {
-  width: 100%;
-  height: 260px;
-
-  object-fit: cover;
-
-  display: block;
-
-  border-radius: 18px;
-
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
-  background: rgba(255, 255, 255, 0.04);
-
-  box-shadow:
-    0 15px 40px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-
-  transition:
-    transform 0.35s ease,
-    border-color 0.35s ease;
-}
-
-.product-gallery img:hover {
-  transform: scale(1.025);
-
-  border-color: rgba(255, 255, 255, 0.28);
-}
-
-
-/* Mobile */
-
-@media (max-width: 768px) {
-
-  .product-gallery {
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 10px;
-
-    margin-top: 20px;
-  }
-
-  .product-gallery img {
-    height: 180px;
-
-    border-radius: 14px;
-  }
-
-}
-/* =========================================
-   VOLTICA ELITE — HERO
-   ========================================= */
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .product-hero {
   position: relative;
-
   text-align: center;
-
-  padding: 35px 20px 45px;
-
-  overflow: hidden;
+  padding: 100px 20px 70px;
 }
-
-
-/* Small label */
 
 .hero-eyebrow {
-  display: inline-block;
+  margin-bottom: 24px;
 
-  margin-bottom: 18px;
-
-  padding: 8px 16px;
-
-  border-radius: 999px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.12),
-      rgba(255,255,255,0.035)
-    );
-
-  border: 1px solid rgba(255,255,255,0.14);
-
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-
-  color: rgba(255,255,255,0.72);
-
-  font-size: 11px;
-
+  font-size: 10px;
   font-weight: 700;
+  letter-spacing: 5px;
 
-  letter-spacing: 4px;
+  color: rgba(255,255,255,0.42);
 }
-
-
-/* Main title */
 
 .product-hero h1 {
-  margin: 0 auto;
+  margin: 0;
 
-  max-width: 900px;
-
-  font-size: clamp(38px, 6vw, 76px);
-
+  font-size: clamp(42px, 7vw, 82px);
   line-height: 0.98;
-
-  letter-spacing: -2px;
-
+  letter-spacing: -4px;
   font-weight: 800;
-
-  color: #ffffff;
-
-  text-shadow:
-    0 0 30px rgba(255,255,255,0.08);
 }
-
-
-/* Gradient second line */
 
 .product-hero h1 span {
   background:
     linear-gradient(
       90deg,
-      #ffffff 0%,
-      #aebcff 45%,
-      #ffffff 100%
+      #ffffff,
+      #aebcff,
+      #ffffff
     );
 
   -webkit-background-clip: text;
   background-clip: text;
-
   -webkit-text-fill-color: transparent;
 }
 
-
-/* Description */
-
 .hero-description {
   max-width: 650px;
-
-  margin: 25px auto 0;
-
-  color: rgba(255,255,255,0.62);
+  margin: 28px auto 45px;
 
   font-size: 16px;
+  line-height: 1.8;
 
-  line-height: 1.7;
+  color: var(--muted);
 }
 
-
-/* Specs */
+/* =========================================================
+   HERO SPECS
+   ========================================================= */
 
 .hero-specs {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
 
-  grid-template-columns:
-    repeat(4, 1fr);
+  gap: 10px;
 
-  max-width: 850px;
-
-  margin: 40px auto 0;
-
-  gap: 12px;
+  max-width: 760px;
+  margin: 0 auto 55px;
 }
-
-
-/* Individual spec */
 
 .hero-spec {
-  position: relative;
+  padding: 20px 10px;
 
-  padding: 20px 12px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
 
-  border-radius: 18px;
+  background: rgba(255,255,255,0.035);
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.085),
-      rgba(255,255,255,0.025)
-    );
-
-  border: 1px solid rgba(255,255,255,0.11);
-
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.09),
-    0 15px 35px rgba(0,0,0,0.3);
-
-  transition:
-    transform 0.35s ease,
-    border-color 0.35s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
-
-
-.hero-spec:hover {
-  transform: translateY(-4px);
-
-  border-color:
-    rgba(255,255,255,0.25);
-}
-
-
-/* Number */
 
 .hero-spec strong {
   display: block;
 
-  font-size: 25px;
-
-  font-weight: 800;
-
-  letter-spacing: -1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #ffffff,
-      #aebcff
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  letter-spacing: -0.5px;
 }
-
-
-/* Label */
 
 .hero-spec span {
   display: block;
 
-  margin-top: 6px;
-
-  color: rgba(255,255,255,0.48);
-
-  font-size: 11px;
-
-  text-transform: uppercase;
-
-  letter-spacing: 1.5px;
-}
-
-
-/* Mobile */
-
-@media (max-width: 700px) {
-
-  .product-hero {
-    padding:
-      20px 10px 30px;
-  }
-
-  .product-hero h1 {
-    letter-spacing: -1px;
-  }
-
-  .hero-description {
-    font-size: 14px;
-  }
-
-  .hero-specs {
-    grid-template-columns:
-      repeat(2, 1fr);
-
-    gap: 10px;
-
-    margin-top: 28px;
-  }
-
-  .hero-spec {
-    padding: 17px 10px;
-  }
-
-}
-/* =========================================
-   VOLTICA — PRE-ORDER CTA
-   ========================================= */
-
-.preorder-btn {
-  position: relative;
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 18px;
-
-  min-width: 260px;
-
-  margin-top: 38px;
-
-  padding: 17px 24px;
-
-  color: #ffffff;
-
-  text-decoration: none;
-
-  border-radius: 18px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.16),
-      rgba(255,255,255,0.055)
-    );
-
-  border: 1px solid rgba(255,255,255,0.28);
-
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-
-  box-shadow:
-    0 15px 45px rgba(0,0,0,0.45),
-    0 0 30px rgba(140,160,255,0.10),
-    inset 0 1px 0 rgba(255,255,255,0.18);
-
-  overflow: hidden;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
-}
-
-
-/* Animated light sweep */
-
-.preorder-btn::before {
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: -120%;
-
-  width: 80%;
-  height: 100%;
-
-  background:
-    linear-gradient(
-      100deg,
-      transparent,
-      rgba(255,255,255,0.18),
-      transparent
-    );
-
-  transform: skewX(-20deg);
-
-  animation:
-    preorderSweep 3.5s infinite;
-}
-
-
-@keyframes preorderSweep {
-
-  0% {
-    left: -120%;
-  }
-
-  45% {
-    left: 140%;
-  }
-
-  100% {
-    left: 140%;
-  }
-
-}
-
-
-/* Pulsing light */
-
-.preorder-pulse {
-  width: 8px;
-  height: 8px;
-
-  border-radius: 50%;
-
-  background: #ffffff;
-
-  box-shadow:
-    0 0 8px #ffffff,
-    0 0 18px rgba(160,180,255,0.8);
-
-  animation:
-    preorderPulse 1.8s infinite;
-}
-
-
-@keyframes preorderPulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-
-    opacity: 0.7;
-  }
-
-  50% {
-    transform: scale(1.45);
-
-    opacity: 1;
-  }
-
-}
-
-
-/* Text */
-
-.preorder-content {
-  position: relative;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: flex-start;
-
-  z-index: 2;
-}
-
-
-.preorder-content strong {
-  font-size: 15px;
-
-  letter-spacing: 2px;
-
-  font-weight: 800;
-}
-
-
-.preorder-content small {
-  margin-top: 3px;
+  margin-top: 7px;
 
   font-size: 9px;
+  letter-spacing: 1.5px;
 
-  letter-spacing: 2px;
-
-  color: rgba(255,255,255,0.55);
+  color: var(--soft);
 }
 
-
-/* Arrow */
-
-.preorder-arrow {
-  position: relative;
-
-  z-index: 2;
-
-  font-size: 22px;
-
-  color: rgba(255,255,255,0.75);
-
-  transition:
-    transform 0.3s ease;
-}
-
-
-/* Hover */
-
-.preorder-btn:hover {
-
-  transform:
-    translateY(-4px)
-    scale(1.015);
-
-  border-color:
-    rgba(255,255,255,0.45);
-
-  box-shadow:
-    0 20px 55px rgba(0,0,0,0.55),
-    0 0 45px rgba(140,160,255,0.18),
-    inset 0 1px 0 rgba(255,255,255,0.22);
-}
-
-
-.preorder-btn:hover .preorder-arrow {
-  transform: translateX(6px);
-}
-
-
-/* Mobile */
-
-@media (max-width: 600px) {
-
-  .preorder-btn {
-
-    width: 100%;
-
-    min-width: 0;
-
-    margin-top: 30px;
-
-    padding: 16px 20px;
-
-  }
-
-}
-/* =========================================
-   VOLTICA — PRE-ORDER OFFER
-   ========================================= */
+/* =========================================================
+   OFFER CARD
+   ========================================================= */
 
 .offer-card {
   position: relative;
 
-  max-width: 620px;
+  width: min(560px, 100%);
+  margin: 0 auto;
 
-  margin: 35px auto 0;
+  padding: 35px;
 
-  padding: 30px;
-
-  text-align: center;
-
-  border-radius: 24px;
+  border-radius: 28px;
 
   background:
     linear-gradient(
-      135deg,
+      145deg,
       rgba(255,255,255,0.09),
-      rgba(255,255,255,0.025) 50%,
-      rgba(100,120,255,0.055)
+      rgba(255,255,255,0.025)
     );
 
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid var(--border);
 
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
 
   box-shadow:
-    0 25px 70px rgba(0,0,0,0.55),
-    inset 0 1px 0 rgba(255,255,255,0.12);
+    inset 0 1px 0 rgba(255,255,255,0.10),
+    0 35px 90px rgba(0,0,0,0.55);
 }
-
-
-/* Badge */
 
 .offer-badge {
   display: inline-block;
 
-  padding: 7px 13px;
+  padding: 8px 14px;
 
-  border-radius: 999px;
+  border-radius: 100px;
 
-  background:
-    rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid var(--border);
 
-  border: 1px solid rgba(255,255,255,0.14);
-
-  font-size: 9px;
-
+  font-size: 8px;
   font-weight: 700;
-
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
 
   color: rgba(255,255,255,0.65);
 }
 
-
-/* Price */
-
 .offer-price {
-  margin-top: 20px;
-
   display: flex;
-
   justify-content: center;
+  align-items: baseline;
 
-  align-items: flex-start;
-
-  line-height: 1;
+  margin: 24px 0 8px;
 }
-
 
 .currency {
-  margin-top: 8px;
-
-  font-size: 22px;
-
-  color: rgba(255,255,255,0.6);
+  font-size: 25px;
 }
-
 
 .price {
-  font-size: clamp(58px, 10vw, 82px);
-
+  font-size: clamp(62px, 10vw, 90px);
   font-weight: 800;
-
   letter-spacing: -5px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffffff,
-      #aebcff
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  -webkit-text-fill-color: transparent;
 }
-
 
 .cents {
-  margin-top: 8px;
-
-  font-size: 25px;
-
+  font-size: 30px;
   font-weight: 700;
-
-  color: rgba(255,255,255,0.75);
 }
-
 
 .usd {
-  align-self: flex-end;
-
-  margin:
-    0 0 10px 8px;
+  margin-left: 10px;
 
   font-size: 10px;
-
   letter-spacing: 2px;
 
-  color: rgba(255,255,255,0.42);
+  color: var(--muted);
 }
-
-
-/* Description */
 
 .offer-description {
-  max-width: 430px;
+  max-width: 400px;
+  margin: 0 auto;
 
-  margin: 16px auto 0;
+  font-size: 12px;
+  line-height: 1.7;
 
-  font-size: 13px;
-
-  line-height: 1.6;
-
-  color: rgba(255,255,255,0.55);
+  color: var(--muted);
 }
-
-
-/* Divider */
 
 .offer-divider {
   height: 1px;
 
-  margin: 25px 0;
+  margin: 28px 0;
 
   background:
     linear-gradient(
       90deg,
       transparent,
-      rgba(255,255,255,0.14),
+      rgba(255,255,255,0.15),
       transparent
     );
 }
 
-
-/* Included items */
-
 .offer-items {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, 1fr);
-
   gap: 12px;
 
   text-align: left;
 }
 
-
 .offer-items div {
   display: flex;
-
   align-items: center;
-
-  gap: 9px;
-
-  padding: 11px;
-
-  border-radius: 12px;
-
-  background:
-    rgba(255,255,255,0.035);
-
-  border: 1px solid
-    rgba(255,255,255,0.07);
-}
-
-
-.offer-items span {
-  color: rgba(180,195,255,0.9);
-
-  font-size: 13px;
-}
-
-
-.offer-items p {
-  font-size: 11px;
-
-  color: rgba(255,255,255,0.62);
-}
-
-
-/* Mobile */
-
-@media (max-width: 600px) {
-
-  .offer-card {
-    padding: 23px 16px;
-  }
-
-  .offer-items {
-    grid-template-columns: 1fr;
-  }
-
-}
-/* =========================================
-   FIX — HERO SPECS / OFFER LAYOUT
-   ========================================= */
-
-.hero-specs {
-  width: 100%;
-  max-width: 850px;
-  margin: 40px auto 0;
-
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-
   gap: 12px;
 }
 
-.hero-spec {
-  width: 100%;
-  min-width: 0;
-  display: block;
-}
-
-
-/* Keep the price card below the hero specs */
-
-.offer-card {
-  clear: both;
-  width: 100%;
-  max-width: 620px;
-
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-/* Mobile */
-
-@media (max-width: 700px) {
-
-  .hero-specs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-}
-/* =========================================
-   FINAL OFFER / PRE-ORDER LAYOUT
-   ========================================= */
-
-.offer-card {
-  width: 100%;
-  max-width: none;
-
-  margin:
-    40px 0 0;
-
-  padding: 35px;
-
-}
-
-
-/* Full-width price */
-
-.offer-price {
-  width: 100%;
-
-  justify-content: center;
-}
-
-
-/* PRE-ORDER BELOW THE OFFER CONTENT */
-
-.offer-card .preorder-btn {
-  width: 100%;
-
-  min-width: 0;
-
-  margin:
-    30px 0 0;
-
-  border-radius: 18px;
-}
-
-
-/* Make the button feel like the final CTA */
-
-.offer-card .preorder-btn strong {
-  font-size: 16px;
-}
-
-.offer-card .preorder-btn small {
-  font-size: 9px;
-}
-
-
-/* Mobile */
-
-@media (max-width: 600px) {
-
-  .offer-card {
-    padding: 25px 16px;
-  }
-
-  .offer-card .preorder-btn {
-    width: 100%;
-  }
-
-}
-/* =========================================
-   VOLTICA — FINAL OFFER LAYOUT
-   ========================================= */
-
-.offer-card {
-  position: relative;
-
-  width: 100%;
-
-  max-width: none;
-
-  margin: 45px 0 0;
-
-  padding: 35px;
-
+.offer-items div > span {
   display: flex;
-
-  flex-direction: column;
-
   align-items: center;
-
-  text-align: center;
-
-  border-radius: 26px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.09),
-      rgba(255,255,255,0.025)
-    );
-
-  border: 1px solid rgba(255,255,255,0.15);
-
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-
-  box-shadow:
-    0 25px 70px rgba(0,0,0,0.55),
-    inset 0 1px 0 rgba(255,255,255,0.12);
-}
-
-
-/* Badge */
-
-.offer-badge {
-  display: inline-block;
-
-  margin-bottom: 15px;
-}
-
-
-/* PRICE — centered */
-
-.offer-price {
-  width: auto;
-
-  display: flex;
-
-  align-items: flex-start;
-
   justify-content: center;
 
-  margin: 5px auto 0;
-
-  line-height: 1;
-}
-
-
-.offer-price .currency {
-  margin-top: 10px;
-
-  font-size: 22px;
-}
-
-
-.offer-price .price {
-  font-size: clamp(60px, 10vw, 90px);
-
-  line-height: 0.9;
-
-  letter-spacing: -5px;
-}
-
-
-.offer-price .cents {
-  margin-top: 7px;
-
-  font-size: 27px;
-}
-
-
-.offer-price .usd {
-  align-self: flex-end;
-
-  margin:
-    0 0 8px 8px;
-
-  font-size: 10px;
-}
-
-
-/* Description */
-
-.offer-description {
-  max-width: 500px;
-
-  margin:
-    20px auto 0;
-
-  line-height: 1.6;
-}
-
-
-/* Divider */
-
-.offer-divider {
-  width: 100%;
-
-  max-width: 800px;
-
-  margin:
-    28px auto;
-}
-
-
-/* Included items */
-
-.offer-items {
-  width: 100%;
-
-  max-width: 800px;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
-  gap: 12px;
-}
-
-
-.offer-items div {
-  min-width: 0;
-}
-
-
-/* FULL WIDTH PRE-ORDER */
-
-.offer-card .preorder-btn {
-
-  display: flex;
-
-  width: 100%;
-
-  max-width: 800px;
-
-  min-width: 0;
-
-  margin:
-    30px auto 0;
-
-  justify-content: center;
-
-  border-radius: 18px;
-}
-
-
-/* Mobile */
-
-@media (max-width: 700px) {
-
-  .offer-card {
-    padding: 25px 16px;
-  }
-
-  .offer-items {
-    grid-template-columns:
-      repeat(2, 1fr);
-  }
-
-  .offer-card .preorder-btn {
-    width: 100%;
-  }
-
-}
-
-
-@media (max-width: 480px) {
-
-  .offer-items {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-price .price {
-    font-size: 58px;
-  }
-
-}
-/* =========================================
-   VOLTICA — FINAL OFFER LAYOUT
-   ========================================= */
-
-.offer-card {
-  position: relative;
-
-  width: 100%;
-
-  max-width: none;
-
-  margin: 45px 0 0;
-
-  padding: 35px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  text-align: center;
-
-  border-radius: 26px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.09),
-      rgba(255,255,255,0.025)
-    );
-
-  border: 1px solid rgba(255,255,255,0.15);
-
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-
-  box-shadow:
-    0 25px 70px rgba(0,0,0,0.55),
-    inset 0 1px 0 rgba(255,255,255,0.12);
-}
-
-
-/* Badge */
-
-.offer-badge {
-  display: inline-block;
-
-  margin-bottom: 15px;
-}
-
-
-/* PRICE — centered */
-
-.offer-price {
-  width: auto;
-
-  display: flex;
-
-  align-items: flex-start;
-
-  justify-content: center;
-
-  margin: 5px auto 0;
-
-  line-height: 1;
-}
-
-
-.offer-price .currency {
-  margin-top: 10px;
-
-  font-size: 22px;
-}
-
-
-.offer-price .price {
-  font-size: clamp(60px, 10vw, 90px);
-
-  line-height: 0.9;
-
-  letter-spacing: -5px;
-}
-
-
-.offer-price .cents {
-  margin-top: 7px;
-
-  font-size: 27px;
-}
-
-
-.offer-price .usd {
-  align-self: flex-end;
-
-  margin:
-    0 0 8px 8px;
-
-  font-size: 10px;
-}
-
-
-/* Description */
-
-.offer-description {
-  max-width: 500px;
-
-  margin:
-    20px auto 0;
-
-  line-height: 1.6;
-}
-
-
-/* Divider */
-
-.offer-divider {
-  width: 100%;
-
-  max-width: 800px;
-
-  margin:
-    28px auto;
-}
-
-
-/* Included items */
-
-.offer-items {
-  width: 100%;
-
-  max-width: 800px;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
-  gap: 12px;
-}
-
-
-.offer-items div {
-  min-width: 0;
-}
-
-
-/* FULL WIDTH PRE-ORDER */
-
-.offer-card .preorder-btn {
-
-  display: flex;
-
-  width: 100%;
-
-  max-width: 800px;
-
-  min-width: 0;
-
-  margin:
-    30px auto 0;
-
-  justify-content: center;
-
-  border-radius: 18px;
-}
-
-
-/* Mobile */
-
-@media (max-width: 700px) {
-
-  .offer-card {
-    padding: 25px 16px;
-  }
-
-  .offer-items {
-    grid-template-columns:
-      repeat(2, 1fr);
-  }
-
-  .offer-card .preorder-btn {
-    width: 100%;
-  }
-
-}
-
-
-@media (max-width: 480px) {
-
-  .offer-items {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-price .price {
-    font-size: 58px;
-  }
-
-}
-/* =========================================
-   VOLTICA — 40MM AUDIO FEATURE
-   ========================================= */
-
-.tech-feature {
-  position: relative;
-
-  width: 100%;
-
-  margin: 70px 0;
-
-  padding: 80px 50px;
-
-  overflow: hidden;
-
-  border-radius: 30px;
-
-  background:
-    radial-gradient(
-      circle at 75% 35%,
-      rgba(120,145,255,0.13),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 15% 85%,
-      rgba(255,255,255,0.06),
-      transparent 30%
-    ),
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.075),
-      rgba(255,255,255,0.018)
-    );
-
-  border: 1px solid rgba(255,255,255,0.14);
-
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-
-  box-shadow:
-    0 30px 90px rgba(0,0,0,0.58),
-    inset 0 1px 0 rgba(255,255,255,0.12);
-}
-
-
-/* Ambient glow */
-
-.tech-feature::before {
-  content: "";
-
-  position: absolute;
-
-  width: 420px;
-  height: 420px;
-
-  right: -180px;
-  top: -180px;
+  width: 20px;
+  height: 20px;
 
   border-radius: 50%;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(145,165,255,0.13),
-      transparent 70%
-    );
-
-  pointer-events: none;
-}
-
-
-/* Content */
-
-.tech-feature-content {
-  position: relative;
-
-  max-width: 760px;
-
-  margin: 0 auto;
-
-  text-align: center;
-}
-
-
-/* Label */
-
-.tech-label {
-  margin-bottom: 20px;
+  background: rgba(255,255,255,0.08);
 
   font-size: 10px;
-
-  font-weight: 700;
-
-  letter-spacing: 4px;
-
-  color: rgba(255,255,255,0.42);
 }
 
+.offer-items p {
+  margin: 0;
 
-/* 40MM */
+  font-size: 11px;
 
-.tech-number {
-  font-size: clamp(80px, 14vw, 150px);
+  color: rgba(255,255,255,0.65);
+}
 
-  line-height: 0.8;
+/* =========================================================
+   PREORDER BUTTON
+   ========================================================= */
 
-  font-weight: 800;
+.preorder-btn {
+  position: relative;
 
-  letter-spacing: -8px;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 72px;
+
+  margin-top: 32px;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  text-decoration: none;
 
   background:
     linear-gradient(
       135deg,
-      #ffffff 10%,
-      #aebcff 55%,
-      rgba(255,255,255,0.45)
+      rgba(255,255,255,0.16),
+      rgba(255,255,255,0.045)
     );
 
-  -webkit-background-clip: text;
-  background-clip: text;
+  border: 1px solid rgba(255,255,255,0.25);
 
-  -webkit-text-fill-color: transparent;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    0 20px 55px rgba(0,0,0,0.45);
 
-  text-shadow:
-    0 0 50px rgba(150,170,255,0.08);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
 }
 
+.preorder-btn:hover {
+  transform: translateY(-4px);
 
-.tech-number span {
-  margin-left: 8px;
+  border-color: rgba(255,255,255,0.45);
 
-  font-size: 0.28em;
-
-  letter-spacing: 2px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    0 28px 70px rgba(0,0,0,0.6),
+    0 0 35px rgba(150,175,255,0.12);
 }
 
+.preorder-content {
+  display: flex;
+  flex-direction: column;
 
-/* Heading */
-
-.tech-feature h2 {
-  margin-top: 35px;
-
-  font-size: clamp(38px, 6vw, 65px);
+  align-items: center;
 
   line-height: 1;
-
-  letter-spacing: -2px;
-
-  font-weight: 800;
 }
 
+.preorder-content strong {
+  font-size: 14px;
+  letter-spacing: 3px;
+}
 
-.tech-feature h2 span {
+.preorder-content small {
+  margin-top: 7px;
+
+  font-size: 8px;
+  letter-spacing: 2px;
+
+  color: var(--muted);
+}
+
+.preorder-arrow {
+  position: absolute;
+
+  right: 22px;
+
+  font-size: 24px;
+
+  transition: transform .3s ease;
+}
+
+.preorder-btn:hover .preorder-arrow {
+  transform: translateX(7px);
+}
+
+.preorder-pulse {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  left: 22px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  box-shadow:
+    0 0 10px rgba(255,255,255,0.8);
+
+  animation: pulse 1.7s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% {
+    opacity: .35;
+    transform: scale(.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+/* =========================================================
+   GENERIC FEATURE BUTTON
+   IMPORTANT:
+   TEXT IS ABSOLUTELY CENTERED
+   ARROW IS INDEPENDENT
+   ========================================================= */
+
+.feature-button {
+  position: relative;
+
   display: block;
+
+  width: min(520px, 100%);
+  height: 60px;
+
+  margin: 42px auto 0;
+
+  padding: 0;
+
+  border-radius: 16px;
+
+  text-decoration: none;
 
   background:
     linear-gradient(
-      90deg,
-      #ffffff,
-      #aebcff,
-      #ffffff
+      135deg,
+      rgba(255,255,255,0.11),
+      rgba(255,255,255,0.035)
     );
 
-  -webkit-background-clip: text;
-  background-clip: text;
+  border: 1px solid var(--border);
 
-  -webkit-text-fill-color: transparent;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.12),
+    0 18px 45px rgba(0,0,0,0.38);
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
 }
 
+.feature-button:hover {
+  transform: translateY(-4px);
 
-/* Description */
+  border-color: var(--border-bright);
 
-.tech-feature p {
-  max-width: 650px;
-
-  margin:
-    25px auto 0;
-
-  color: rgba(255,255,255,0.58);
-
-  font-size: 15px;
-
-  line-height: 1.8;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    0 25px 60px rgba(0,0,0,0.55);
 }
 
+.feature-button > span:first-child {
+  position: absolute;
 
-.tech-feature p + p {
-  margin-top: 12px;
-}
+  left: 50%;
+  top: 50%;
 
+  transform: translate(-50%, -50%);
 
-/* Technology tags */
+  width: max-content;
+  max-width: calc(100% - 90px);
 
-.tech-tags {
-  display: flex;
+  margin: 0;
+  padding: 0;
 
-  justify-content: center;
-
-  flex-wrap: wrap;
-
-  gap: 10px;
-
-  margin-top: 35px;
-}
-
-
-.tech-tags span {
-  padding: 9px 14px;
-
-  border-radius: 999px;
-
-  background:
-    rgba(255,255,255,0.045);
-
-  border: 1px solid
-    rgba(255,255,255,0.10);
-
-  color: rgba(255,255,255,0.48);
+  text-align: center;
 
   font-size: 9px;
+  font-weight: 700;
 
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+
+  color: #fff;
 }
 
+.feature-button > strong {
+  position: absolute;
 
-/* Mobile */
+  right: 22px;
+  top: 50%;
 
-@media (max-width: 700px) {
+  transform: translateY(-50%);
 
-  .tech-feature {
-    margin: 50px 0;
+  margin: 0;
+  padding: 0;
 
-    padding:
-      55px 20px;
+  font-size: 22px;
+  font-weight: 400;
 
-    border-radius: 24px;
-  }
+  line-height: 1;
 
-  .tech-number {
-    letter-spacing: -5px;
-  }
+  color: #fff;
 
-  .tech-feature h2 {
-    letter-spacing: -1px;
-  }
-
+  transition: transform .3s ease;
 }
-/* =========================================
-   VOLTICA — 120H BATTERY FEATURE
-   ========================================= */
+
+.feature-button:hover > strong {
+  transform: translate(6px, -50%);
+}
+
+/* =========================================================
+   120H BATTERY
+   ========================================================= */
 
 .battery-feature {
   position: relative;
 
-  width: 100%;
+  padding: 100px 45px;
 
-  margin: 70px 0;
+  margin-top: 30px;
 
-  padding: 70px 45px;
-
-  overflow: hidden;
+  text-align: center;
 
   border-radius: 30px;
 
   background:
     radial-gradient(
-      circle at 50% 0%,
-      rgba(255,255,255,0.075),
+      circle at 50% 20%,
+      rgba(150,175,255,0.09),
       transparent 35%
     ),
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.055),
-      rgba(255,255,255,0.018)
-    );
+    rgba(255,255,255,0.025);
 
-  border: 1px solid
-    rgba(255,255,255,0.12);
-
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-
-  box-shadow:
-    0 30px 90px rgba(0,0,0,0.58),
-    inset 0 1px 0
-      rgba(255,255,255,0.10);
+  border: 1px solid var(--border);
 }
-
-
-/* Decorative grid */
-
-.battery-feature::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background-image:
-    linear-gradient(
-      rgba(255,255,255,0.025) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,0.025) 1px,
-      transparent 1px
-    );
-
-  background-size:
-    50px 50px;
-
-  mask-image:
-    linear-gradient(
-      to bottom,
-      black,
-      transparent 80%
-    );
-
-  pointer-events: none;
-}
-
-
-/* Header */
-
-.battery-top {
-  position: relative;
-
-  max-width: 780px;
-
-  margin: 0 auto;
-
-  text-align: center;
-}
-
-
-/* Label */
 
 .battery-label {
-  margin-bottom: 20px;
-
-  font-size: 10px;
+  font-size: 9px;
+  font-weight: 700;
 
   letter-spacing: 4px;
 
-  font-weight: 700;
-
-  color:
-    rgba(255,255,255,0.42);
+  color: var(--soft);
 }
 
-
-/* 120H */
-
 .battery-number {
-  font-size:
-    clamp(100px, 17vw, 180px);
+  margin-top: 18px;
 
-  line-height: 0.8;
+  font-size: clamp(100px, 18vw, 190px);
+  line-height: .8;
 
   font-weight: 800;
-
   letter-spacing: -10px;
 
   background:
     linear-gradient(
       180deg,
-      #ffffff,
-      #aebcff
+      #fff,
+      rgba(255,255,255,0.35)
     );
 
   -webkit-background-clip: text;
   background-clip: text;
-
   -webkit-text-fill-color: transparent;
 }
 
-
 .battery-number span {
-  margin-left: 8px;
-
-  font-size: 0.28em;
-
-  letter-spacing: 3px;
+  font-size: .35em;
+  letter-spacing: -2px;
 }
 
+.battery-top h2,
+.spatial-content h2,
+.anc-content h2,
+.tech-feature h2,
+.final-offer h2 {
+  margin: 40px 0 0;
 
-/* Heading */
-
-.battery-top h2 {
-  margin-top: 35px;
-
-  font-size:
-    clamp(36px, 5vw, 58px);
+  font-size: clamp(38px, 6vw, 65px);
 
   line-height: 1;
 
-  letter-spacing: -2px;
-
-  font-weight: 800;
+  letter-spacing: -3px;
 }
 
-
-.battery-top h2 span {
+.battery-top h2 span,
+.spatial-content h2 span,
+.anc-content h2 span,
+.tech-feature h2 span,
+.final-offer h2 span {
   display: block;
 
   background:
     linear-gradient(
       90deg,
-      #ffffff,
+      #fff,
       #aebcff,
-      #ffffff
+      #fff
     );
 
   -webkit-background-clip: text;
   background-clip: text;
-
   -webkit-text-fill-color: transparent;
 }
 
-
-/* Description */
-
-.battery-top > p {
+.battery-top p {
   max-width: 620px;
 
-  margin: 25px auto 0;
+  margin: 25px auto 45px;
 
-  color:
-    rgba(255,255,255,0.55);
-
-  font-size: 15px;
-
+  font-size: 14px;
   line-height: 1.8;
+
+  color: var(--muted);
 }
 
-
-/* =========================================
-   BATTERY SYSTEM
-   ========================================= */
-
 .battery-system {
-  position: relative;
+  max-width: 700px;
 
-  max-width: 800px;
-
-  margin: 55px auto 0;
+  margin: 0 auto;
 
   padding: 25px;
 
   border-radius: 20px;
 
-  background:
-    rgba(0,0,0,0.22);
+  background: rgba(0,0,0,0.25);
 
-  border:
-    1px solid
-    rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
 }
-
 
 .battery-status {
   display: flex;
@@ -1850,25 +659,16 @@ body {
   gap: 10px;
 
   font-size: 9px;
-
   letter-spacing: 2px;
 
-  color:
-    rgba(255,255,255,0.42);
+  color: var(--soft);
 }
-
 
 .battery-status strong {
   margin-left: auto;
 
-  color:
-    rgba(255,255,255,0.72);
-
-  font-size: 12px;
-
-  letter-spacing: 1px;
+  color: #fff;
 }
-
 
 .status-dot {
   width: 7px;
@@ -1876,52 +676,25 @@ body {
 
   border-radius: 50%;
 
-  background: #ffffff;
+  background: #fff;
 
-  box-shadow:
-    0 0 10px
-    rgba(180,195,255,0.9);
-
-  animation:
-    batteryPulse 1.8s infinite;
+  box-shadow: 0 0 12px rgba(255,255,255,0.7);
 }
-
-
-@keyframes batteryPulse {
-
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-}
-
-
-/* Progress */
 
 .battery-track {
-  width: 100%;
-
   height: 5px;
 
   margin-top: 20px;
 
   overflow: hidden;
 
-  border-radius: 999px;
+  border-radius: 10px;
 
-  background:
-    rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.07);
 }
 
-
 .battery-progress {
-  width: 82%;
-
+  width: 86%;
   height: 100%;
 
   border-radius: inherit;
@@ -1929,249 +702,198 @@ body {
   background:
     linear-gradient(
       90deg,
-      rgba(255,255,255,0.45),
-      #ffffff,
-      #aebcff
+      rgba(255,255,255,0.25),
+      #fff
     );
 
-  box-shadow:
-    0 0 18px
-    rgba(160,180,255,0.25);
-
-  animation:
-    batteryProgress 4s ease-in-out infinite alternate;
+  animation: batteryMove 4s ease-in-out infinite alternate;
 }
 
-
-@keyframes batteryProgress {
-
+@keyframes batteryMove {
   from {
-    width: 68%;
+    width: 76%;
   }
 
   to {
-    width: 94%;
+    width: 92%;
   }
-
 }
 
-
-/* =========================================
-   FAST CHARGE
-   ========================================= */
-
 .battery-fast {
-  position: relative;
-
   display: flex;
 
   align-items: center;
 
-  gap: 18px;
+  gap: 20px;
 
-  max-width: 800px;
+  max-width: 600px;
 
-  margin: 18px auto 0;
+  margin: 30px auto 0;
 
-  padding: 20px 24px;
+  padding: 22px;
+
+  text-align: left;
 
   border-radius: 18px;
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.065),
-      rgba(255,255,255,0.025)
-    );
+  background: rgba(255,255,255,0.035);
 
-  border:
-    1px solid
-    rgba(255,255,255,0.09);
+  border: 1px solid var(--border);
 }
-
 
 .fast-icon {
-  font-size: 25px;
-
-  filter:
-    drop-shadow(
-      0 0 10px
-      rgba(180,195,255,0.5)
-    );
+  font-size: 30px;
 }
-
 
 .battery-fast strong {
-  font-size: 11px;
-
+  font-size: 10px;
   letter-spacing: 2px;
 }
 
+.battery-fast p,
+.battery-aux p {
+  margin: 7px 0 0;
 
-.battery-fast p {
-  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1.6;
 
-  color:
-    rgba(255,255,255,0.45);
-
-  font-size: 12px;
-
-  line-height: 1.5;
+  color: var(--muted);
 }
-
-
-/* AUX */
 
 .battery-aux {
-  position: relative;
-
-  max-width: 800px;
-
-  margin: 15px auto 0;
-
-  text-align: center;
+  margin-top: 25px;
 }
 
-
-.battery-aux span {
+.battery-aux > span {
   font-size: 9px;
-
-  letter-spacing: 2px;
-
-  color:
-    rgba(255,255,255,0.5);
+  letter-spacing: 3px;
+  font-weight: 700;
 }
 
-
-.battery-aux p {
-  display: inline;
-
-  margin-left: 8px;
-
-  font-size: 11px;
-
-  color:
-    rgba(255,255,255,0.35);
-}
-
-
-/* Mobile */
-
-@media (max-width: 700px) {
-
-  .battery-feature {
-    margin: 50px 0;
-
-    padding:
-      50px 18px;
-
-    border-radius: 24px;
-  }
-
-  .battery-number {
-    letter-spacing: -6px;
-  }
-
-  .battery-status {
-    flex-wrap: wrap;
-  }
-
-  .battery-status strong {
-    margin-left: 0;
-
-    width: 100%;
-
-    margin-top: 8px;
-  }
-
-  .battery-fast {
-    align-items: flex-start;
-
-    padding: 18px;
-  }
-
-  .battery-aux p {
-    display: block;
-
-    margin: 6px 0 0;
-  }
-
-}
-/* =========================================
-   VOLTICA — 360° SPATIAL AUDIO
-   ========================================= */
+/* =========================================================
+   SPATIAL
+   ========================================================= */
 
 .spatial-feature {
   position: relative;
 
-  width: 100%;
-
-  margin: 70px 0;
-
-  padding: 75px 45px;
-
-  overflow: hidden;
+  margin-top: 35px;
+  padding: 90px 45px;
 
   border-radius: 30px;
 
   background:
     radial-gradient(
-      circle at 50% 30%,
-      rgba(120,145,255,0.12),
-      transparent 32%
+      circle at 50% 25%,
+      rgba(150,175,255,0.10),
+      transparent 35%
     ),
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.065),
-      rgba(255,255,255,0.015)
-    );
+    rgba(255,255,255,0.025);
 
-  border:
-    1px solid rgba(255,255,255,0.12);
+  border: 1px solid var(--border);
 
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-
-  box-shadow:
-    0 30px 90px rgba(0,0,0,0.58),
-    inset 0 1px 0 rgba(255,255,255,0.10);
+  text-align: center;
 }
 
-
-/* =========================================
-   SPATIAL VISUAL
-   ========================================= */
-
 .spatial-visual {
-
   position: relative;
 
-  width: 360px;
-  height: 360px;
+  width: 350px;
+  height: 350px;
 
-  margin: 0 auto 55px;
+  margin: 0 auto 60px;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  perspective: 1000px;
-
+  perspective: 900px;
 }
 
+.spatial-ring {
+  position: absolute;
 
-/* Core */
+  border: 1px solid rgba(255,255,255,0.18);
+
+  border-radius: 50%;
+
+  transform-style: preserve-3d;
+
+  animation: spatialRotate 12s linear infinite;
+}
+
+.spatial-ring-1 {
+  width: 320px;
+  height: 150px;
+
+  transform: rotateX(68deg);
+}
+
+.spatial-ring-2 {
+  width: 250px;
+  height: 120px;
+
+  transform: rotateX(68deg) rotateZ(35deg);
+
+  animation-duration: 9s;
+}
+
+.spatial-ring-3 {
+  width: 190px;
+  height: 95px;
+
+  transform: rotateX(68deg) rotateZ(-35deg);
+
+  animation-duration: 7s;
+}
+
+@keyframes spatialRotate {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.spatial-node {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  box-shadow: 0 0 18px rgba(180,195,255,0.8);
+}
+
+.node-1 {
+  top: 30px;
+  left: 70px;
+}
+
+.node-2 {
+  top: 75px;
+  right: 45px;
+}
+
+.node-3 {
+  bottom: 50px;
+  left: 60px;
+}
+
+.node-4 {
+  bottom: 85px;
+  right: 70px;
+}
 
 .spatial-core {
-
   position: relative;
 
-  width: 190px;
-  height: 190px;
+  width: 170px;
+  height: 170px;
 
   display: flex;
-
   flex-direction: column;
 
   align-items: center;
@@ -2181,1730 +903,342 @@ body {
 
   background:
     radial-gradient(
-      circle at 35% 25%,
+      circle at 30% 20%,
       rgba(255,255,255,0.18),
-      rgba(255,255,255,0.045) 45%,
-      rgba(0,0,0,0.5)
+      rgba(255,255,255,0.035) 60%,
+      rgba(0,0,0,0.7)
     );
 
-  border:
-    1px solid
-    rgba(255,255,255,0.22);
+  border: 1px solid var(--border-bright);
 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 
   box-shadow:
-    inset 0 8px 25px
-      rgba(255,255,255,0.09),
-
-    inset 0 -25px 45px
-      rgba(0,0,0,0.45),
-
-    0 0 70px
-      rgba(130,150,255,0.14),
-
-    0 25px 60px
-      rgba(0,0,0,0.65);
-
-  transform:
-    rotateX(12deg)
-    rotateY(-12deg);
-
-  z-index: 5;
-
-  animation:
-    spatialFloat 5s ease-in-out infinite;
+    inset 0 0 35px rgba(255,255,255,0.06),
+    0 25px 60px rgba(0,0,0,0.55);
 }
-
-
-@keyframes spatialFloat {
-
-  0%,
-  100% {
-    transform:
-      rotateX(12deg)
-      rotateY(-12deg)
-      translateY(0);
-  }
-
-  50% {
-    transform:
-      rotateX(17deg)
-      rotateY(-17deg)
-      translateY(-9px);
-  }
-
-}
-
 
 .spatial-core span {
-
-  font-size: 8px;
-
+  font-size: 7px;
   letter-spacing: 3px;
 
-  color:
-    rgba(255,255,255,0.42);
-
+  color: var(--muted);
 }
-
 
 .spatial-core strong {
+  margin: 8px 0;
 
-  margin-top: 5px;
-
-  font-size: 64px;
-
-  line-height: 0.9;
-
-  letter-spacing: -5px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffffff,
-      #aebcff
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-
+  font-size: 58px;
+  line-height: .8;
 }
-
 
 .spatial-core small {
-
-  margin-top: 9px;
-
   font-size: 8px;
+  letter-spacing: 2px;
 
-  letter-spacing: 3px;
+  color: var(--soft);
+}
 
-  color:
-    rgba(255,255,255,0.48);
+.spatial-content {
+  max-width: 800px;
 
+  margin: 0 auto;
+}
+
+.spatial-label,
+.anc-label,
+.tech-label {
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 4px;
+
+  color: var(--soft);
+}
+
+.spatial-content > p,
+.anc-content > p,
+.tech-feature-content > p {
+  max-width: 650px;
+
+  margin: 25px auto;
+
+  font-size: 14px;
+  line-height: 1.8;
+
+  color: var(--muted);
+}
+
+.spatial-features {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+
+  gap: 12px;
+
+  margin-top: 40px;
+}
+
+.spatial-features > div {
+  padding: 22px;
+
+  text-align: left;
+
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.035);
+
+  border: 1px solid var(--border);
+}
+
+.spatial-features span,
+.anc-specs span {
+  display: block;
+
+  margin-bottom: 14px;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  color: var(--soft);
+}
+
+.spatial-features strong,
+.anc-specs strong {
+  font-size: 10px;
+
+  letter-spacing: 1.5px;
+}
+
+.spatial-features p,
+.anc-specs p {
+  margin: 9px 0 0;
+
+  font-size: 11px;
+  line-height: 1.6;
+
+  color: var(--muted);
+}
+
+/* =========================================================
+   ANC — CLEAN 3D
+   ========================================================= */
+
+.anc-feature {
+  position: relative;
+
+  margin-top: 35px;
+
+  padding: 95px 45px;
+
+  text-align: center;
+
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(150,175,255,0.11),
+      transparent 35%
+    ),
+    rgba(255,255,255,0.025);
+
+  border: 1px solid var(--border);
+
+  overflow: hidden;
 }
 
 
-/* =========================================
-   ORBIT RINGS
-   ========================================= */
+/* 3D STAGE */
 
-.spatial-ring {
+.anc-3d-stage {
+  position: relative;
 
+  width: 360px;
+  height: 300px;
+
+  margin: 0 auto 60px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  perspective: 1000px;
+
+  transform-style: preserve-3d;
+
+  isolation: isolate;
+}
+
+
+/* DISCS */
+
+.anc-disc {
   position: absolute;
 
   border-radius: 50%;
-
-  border:
-    1px solid
-    rgba(255,255,255,0.12);
 
   transform-style: preserve-3d;
 
   pointer-events: none;
 
+  border: 1px solid rgba(255,255,255,0.15);
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,0.055),
+      transparent 70%
+    );
 }
 
-
-.spatial-ring-1 {
-
-  width: 315px;
+.disc-back {
+  width: 330px;
   height: 120px;
 
   transform:
-    rotateX(68deg)
-    rotateZ(20deg);
-
-  animation:
-    spatialOrbit1 9s linear infinite;
-}
-
-
-.spatial-ring-2 {
-
-  width: 330px;
-  height: 145px;
-
-  transform:
     rotateX(65deg)
-    rotateY(55deg);
+    translateZ(-55px);
 
-  border-color:
-    rgba(150,170,255,0.18);
+  opacity: .35;
 
-  animation:
-    spatialOrbit2 12s linear infinite reverse;
+  animation: ancBack 6s ease-in-out infinite;
 }
-
-
-.spatial-ring-3 {
-
-  width: 270px;
-  height: 270px;
-
-  transform:
-    rotateY(65deg);
-
-  border-color:
-    rgba(255,255,255,0.08);
-
-  animation:
-    spatialOrbit3 16s linear infinite;
-}
-
-
-@keyframes spatialOrbit1 {
-
-  from {
-    transform:
-      rotateX(68deg)
-      rotateZ(0deg);
-  }
-
-  to {
-    transform:
-      rotateX(68deg)
-      rotateZ(360deg);
-  }
-
-}
-
-
-@keyframes spatialOrbit2 {
-
-  from {
-    transform:
-      rotateX(65deg)
-      rotateY(55deg)
-      rotateZ(0deg);
-  }
-
-  to {
-    transform:
-      rotateX(65deg)
-      rotateY(55deg)
-      rotateZ(360deg);
-  }
-
-}
-
-
-@keyframes spatialOrbit3 {
-
-  from {
-    transform:
-      rotateY(65deg)
-      rotateZ(0deg);
-  }
-
-  to {
-    transform:
-      rotateY(65deg)
-      rotateZ(360deg);
-  }
-
-}
-
-
-/* =========================================
-   SOUND NODES
-   ========================================= */
-
-.spatial-node {
-
-  position: absolute;
-
-  width: 8px;
-  height: 8px;
-
-  border-radius: 50%;
-
-  background: #ffffff;
-
-  box-shadow:
-    0 0 15px
-      rgba(180,195,255,0.95);
-
-  z-index: 8;
-
-}
-
-
-.node-1 {
-  top: 55px;
-  left: 115px;
-
-  animation:
-    nodeFloat1 4s ease-in-out infinite;
-}
-
-
-.node-2 {
-  top: 115px;
-  right: 45px;
-
-  animation:
-    nodeFloat2 5s ease-in-out infinite;
-}
-
-
-.node-3 {
-  bottom: 60px;
-  left: 80px;
-
-  animation:
-    nodeFloat3 4.5s ease-in-out infinite;
-}
-
-
-.node-4 {
-  bottom: 105px;
-  right: 85px;
-
-  animation:
-    nodeFloat4 6s ease-in-out infinite;
-}
-
-
-@keyframes nodeFloat1 {
-
-  50% {
-    transform:
-      translate(20px, -10px);
-  }
-
-}
-
-
-@keyframes nodeFloat2 {
-
-  50% {
-    transform:
-      translate(12px, 18px);
-  }
-
-}
-
-
-@keyframes nodeFloat3 {
-
-  50% {
-    transform:
-      translate(-15px, 8px);
-  }
-
-}
-
-
-@keyframes nodeFloat4 {
-
-  50% {
-    transform:
-      translate(15px, -15px);
-  }
-
-}
-
-
-/* =========================================
-   CONTENT
-   ========================================= */
-
-.spatial-content {
-
-  position: relative;
-
-  max-width: 780px;
-
-  margin: 0 auto;
-
-  text-align: center;
-
-}
-
-
-.spatial-label {
-
-  margin-bottom: 20px;
-
-  font-size: 10px;
-
-  font-weight: 700;
-
-  letter-spacing: 4px;
-
-  color:
-    rgba(255,255,255,0.42);
-
-}
-
-
-.spatial-content h2 {
-
-  font-size:
-    clamp(38px, 6vw, 65px);
-
-  line-height: 1;
-
-  letter-spacing: -2px;
-
-  font-weight: 800;
-
-}
-
-
-.spatial-content h2 span {
-
-  display: block;
-
-  background:
-    linear-gradient(
-      90deg,
-      #ffffff,
-      #aebcff,
-      #ffffff
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-
-}
-
-
-.spatial-content > p {
-
-  max-width: 650px;
-
-  margin:
-    25px auto 0;
-
-  font-size: 15px;
-
-  line-height: 1.8;
-
-  color:
-    rgba(255,255,255,0.55);
-
-}
-
-
-/* =========================================
-   FEATURE CARDS
-   ========================================= */
-
-.spatial-features {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 12px;
-
-  margin-top: 40px;
-
-}
-
-
-.spatial-features > div {
-
-  padding: 22px;
-
-  text-align: left;
-
-  border-radius: 18px;
-
-  background:
-    rgba(255,255,255,0.035);
-
-  border:
-    1px solid
-    rgba(255,255,255,0.08);
-
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
-
-}
-
-
-.spatial-features > div:hover {
-
-  transform:
-    translateY(-4px);
-
-  border-color:
-    rgba(255,255,255,0.20);
-
-}
-
-
-.spatial-features span {
-
-  display: block;
-
-  margin-bottom: 16px;
-
-  font-size: 9px;
-
-  letter-spacing: 2px;
-
-  color:
-    rgba(170,185,255,0.75);
-
-}
-
-
-.spatial-features strong {
-
-  display: block;
-
-  font-size: 11px;
-
-  letter-spacing: 1.5px;
-
-}
-
-
-.spatial-features p {
-
-  margin-top: 8px;
-
-  font-size: 11px;
-
-  line-height: 1.6;
-
-  color:
-    rgba(255,255,255,0.42);
-
-}
-
-
-/* =========================================
-   BUTTON
-   ========================================= */
-
-.spatial-button {
-
-  margin-top: 40px;
-
-}
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 700px) {
-
-  .spatial-feature {
-
-    margin: 50px 0;
-
-    padding:
-      55px 18px;
-
-    border-radius: 24px;
-
-  }
-
-  .spatial-visual {
-
-    width: 290px;
-    height: 290px;
-
-  }
-
-  .spatial-core {
-
-    width: 160px;
-    height: 160px;
-
-  }
-
-  .spatial-core strong {
-
-    font-size: 54px;
-
-  }
-
-  .spatial-ring-1 {
-
-    width: 255px;
-    height: 100px;
-
-  }
-
-  .spatial-ring-2 {
-
-    width: 270px;
-    height: 115px;
-
-  }
-
-  .spatial-ring-3 {
-
-    width: 225px;
-    height: 225px;
-
-  }
-
-  .spatial-features {
-
-    grid-template-columns: 1fr;
-
-  }
-
-}
-/* =========================================
-   VOLTICA — TECHNOLOGY BUTTONS
-   ========================================= */
-
-.feature-button {
-  position: relative;
-
-  display: flex !important;
-
-  align-items: center;
-  justify-content: center;
-
-  width: 100% !important;
-  max-width: 520px !important;
-
-  min-height: 58px;
-
-  margin: 40px auto 0 !important;
-
-  padding: 16px 24px;
-
-  box-sizing: border-box;
-
-  text-decoration: none !important;
-
-  color: #ffffff !important;
-
-  border-radius: 18px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.11),
-      rgba(255,255,255,0.035)
-    );
-
-  border: 1px solid
-    rgba(255,255,255,0.20);
-
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-
-  box-shadow:
-    inset 0 1px 0
-      rgba(255,255,255,0.14),
-
-    0 15px 45px
-      rgba(0,0,0,0.45);
-
-  z-index: 20;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    background 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-
-.feature-button span {
-  display: block !important;
-
-  color: #ffffff !important;
-
-  font-size: 11px;
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
-
-  white-space: nowrap;
-}
-
-
-.feature-button strong {
-  display: block !important;
-
-  margin-left: 10px;
-
-  color: #ffffff !important;
-
-  font-size: 21px;
-
-  font-weight: 400;
-
-  line-height: 1;
-
-  transition:
-    transform 0.3s ease;
-}
-
-
-.feature-button:hover {
-
-  transform:
-    translateY(-4px);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.16),
-      rgba(255,255,255,0.055)
-    );
-
-  border-color:
-    rgba(255,255,255,0.38);
-
-  box-shadow:
-    0 20px 55px
-      rgba(0,0,0,0.55),
-
-    0 0 35px
-      rgba(150,170,255,0.12);
-}
-
-
-.feature-button:hover strong {
-
-  transform:
-    translateX(7px);
-}
-
-
-/* 360° button */
-
-.spatial-button {
-  display: flex !important;
-
-  visibility: visible !important;
-
-  opacity: 1 !important;
-}
-
-
-/* 120H button */
-
-.battery-feature .feature-button {
-  display: flex !important;
-
-  visibility: visible !important;
-
-  opacity: 1 !important;
-}
-
-
-/* Mobile */
-
-@media (max-width: 600px) {
-
-  .feature-button {
-
-    max-width: 100% !important;
-
-    min-height: 54px;
-
-  }
-
-  .feature-button span {
-
-    font-size: 9px;
-
-    letter-spacing: 1.5px;
-
-  }
-
-}
-/* =========================================
-   VOLTICA — −45dB ANC
-   ========================================= */
-
-.anc-feature {
-
-  position: relative;
-
-  width: 100%;
-
-  margin: 70px 0;
-
-  padding: 75px 45px;
-
-  overflow: hidden;
-
-  border-radius: 30px;
-
-  background:
-    radial-gradient(
-      circle at 50% 35%,
-      rgba(255,255,255,0.07),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 85% 80%,
-      rgba(100,120,255,0.08),
-      transparent 35%
-    ),
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.065),
-      rgba(255,255,255,0.015)
-    );
-
-  border:
-    1px solid
-    rgba(255,255,255,0.12);
-
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-
-  box-shadow:
-    0 30px 90px
-      rgba(0,0,0,0.58),
-
-    inset 0 1px 0
-      rgba(255,255,255,0.10);
-
-}
-
-
-/* =========================================
-   ANC VISUAL
-   ========================================= */
-
-.anc-visual {
-
-  position: relative;
-
-  width: 360px;
-  height: 360px;
-
-  margin: 0 auto 55px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  perspective: 1000px;
-
-}
-
-
-/* Central glass core */
-
-.anc-core {
-
-  position: relative;
-
-  width: 185px;
-  height: 185px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle at 35% 25%,
-      rgba(255,255,255,0.18),
-      rgba(255,255,255,0.045) 45%,
-      rgba(0,0,0,0.52)
-    );
-
-  border:
-    1px solid
-    rgba(255,255,255,0.24);
-
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-
-  box-shadow:
-    inset 0 8px 25px
-      rgba(255,255,255,0.09),
-
-    inset 0 -25px 45px
-      rgba(0,0,0,0.48),
-
-    0 0 70px
-      rgba(150,170,255,0.10),
-
-    0 25px 60px
-      rgba(0,0,0,0.65);
-
-  transform:
-    rotateX(12deg)
-    rotateY(-12deg);
-
-  z-index: 5;
-
-  animation:
-    ancFloat 5s ease-in-out infinite;
-
-}
-
-
-@keyframes ancFloat {
-
-  0%,
-  100% {
-
-    transform:
-      rotateX(12deg)
-      rotateY(-12deg)
-      translateY(0);
-
-  }
-
-  50% {
-
-    transform:
-      rotateX(17deg)
-      rotateY(-17deg)
-      translateY(-8px);
-
-  }
-
-}
-
-
-/* Core text */
-
-.anc-core span {
-
-  font-size: 8px;
-
-  letter-spacing: 3px;
-
-  color:
-    rgba(255,255,255,0.40);
-
-}
-
-
-.anc-core strong {
-
-  margin-top: 5px;
-
-  font-size: 68px;
-
-  line-height: 0.9;
-
-  letter-spacing: -5px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffffff,
-      #aebcff
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-
-}
-
-
-.anc-core small {
-
-  margin-top: 8px;
-
-  font-size: 11px;
-
-  letter-spacing: 4px;
-
-  color:
-    rgba(255,255,255,0.48);
-
-}
-
-
-/* =========================================
-   SOUND WAVE RINGS
-   ========================================= */
-
-.anc-wave {
-
-  position: absolute;
-
-  border-radius: 50%;
-
-  border:
-    1px solid
-    rgba(255,255,255,0.12);
-
-  pointer-events: none;
-
-}
-
-
-/* Large wave */
-
-.wave-1 {
-
-  width: 315px;
-  height: 315px;
-
-  animation:
-    ancWave1 5s ease-in-out infinite;
-
-}
-
-
-/* Medium */
-
-.wave-2 {
-
-  width: 260px;
-  height: 260px;
-
-  border-color:
-    rgba(170,185,255,0.16);
-
-  animation:
-    ancWave2 4s ease-in-out infinite
-    0.4s;
-
-}
-
-
-/* Small */
-
-.wave-3 {
-
-  width: 215px;
-  height: 215px;
-
-  border-color:
-    rgba(255,255,255,0.18);
-
-  animation:
-    ancWave3 3s ease-in-out infinite
-    0.7s;
-
-}
-
-
-/* Inner */
-
-.wave-4 {
-
-  width: 390px;
-  height: 390px;
-
-  border-color:
-    rgba(255,255,255,0.055);
-
-  animation:
-    ancWave4 7s ease-in-out infinite;
-
-}
-
-
-@keyframes ancWave1 {
-
-  0%,
-  100% {
-
-    transform:
-      scale(0.88);
-
-    opacity: 0.35;
-
-  }
-
-  50% {
-
-    transform:
-      scale(1.04);
-
-    opacity: 0.85;
-
-  }
-
-}
-
-
-@keyframes ancWave2 {
-
-  0%,
-  100% {
-
-    transform:
-      scale(0.82);
-
-    opacity: 0.25;
-
-  }
-
-  50% {
-
-    transform:
-      scale(1.08);
-
-    opacity: 0.75;
-
-  }
-
-}
-
-
-@keyframes ancWave3 {
-
-  0%,
-  100% {
-
-    transform:
-      scale(0.75);
-
-    opacity: 0.20;
-
-  }
-
-  50% {
-
-    transform:
-      scale(1.12);
-
-    opacity: 0.65;
-
-  }
-
-}
-
-
-@keyframes ancWave4 {
-
-  0%,
-  100% {
-
-    transform:
-      scale(0.92);
-
-    opacity: 0.15;
-
-  }
-
-  50% {
-
-    transform:
-      scale(1.08);
-
-    opacity: 0.45;
-
-  }
-
-}
-
-
-/* =========================================
-   ANC CONTENT
-   ========================================= */
-
-.anc-content {
-
-  position: relative;
-
-  max-width: 780px;
-
-  margin: 0 auto;
-
-  text-align: center;
-
-}
-
-
-.anc-label {
-
-  margin-bottom: 20px;
-
-  font-size: 10px;
-
-  font-weight: 700;
-
-  letter-spacing: 4px;
-
-  color:
-    rgba(255,255,255,0.42);
-
-}
-
-
-.anc-content h2 {
-
-  font-size:
-    clamp(38px, 6vw, 65px);
-
-  line-height: 1;
-
-  letter-spacing: -2px;
-
-  font-weight: 800;
-
-}
-
-
-.anc-content h2 span {
-
-  display: block;
-
-  background:
-    linear-gradient(
-      90deg,
-      #ffffff,
-      #aebcff,
-      #ffffff
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-
-}
-
-
-.anc-content > p {
-
-  max-width: 650px;
-
-  margin:
-    25px auto 0;
-
-  color:
-    rgba(255,255,255,0.55);
-
-  font-size: 15px;
-
-  line-height: 1.8;
-
-}
-
-
-/* =========================================
-   ANC SPEC CARDS
-   ========================================= */
-
-.anc-specs {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 12px;
-
-  margin-top: 40px;
-
-}
-
-
-.anc-specs > div {
-
-  padding: 22px;
-
-  text-align: left;
-
-  border-radius: 18px;
-
-  background:
-    rgba(255,255,255,0.035);
-
-  border:
-    1px solid
-    rgba(255,255,255,0.08);
-
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
-
-}
-
-
-.anc-specs > div:hover {
-
-  transform:
-    translateY(-4px);
-
-  border-color:
-    rgba(255,255,255,0.20);
-
-}
-
-
-.anc-specs span {
-
-  display: block;
-
-  margin-bottom: 16px;
-
-  font-size: 9px;
-
-  letter-spacing: 2px;
-
-  color:
-    rgba(170,185,255,0.75);
-
-}
-
-
-.anc-specs strong {
-
-  display: block;
-
-  font-size: 11px;
-
-  letter-spacing: 1.5px;
-
-}
-
-
-.anc-specs p {
-
-  margin-top: 8px;
-
-  font-size: 11px;
-
-  line-height: 1.6;
-
-  color:
-    rgba(255,255,255,0.42);
-
-}
-
-
-/* =========================================
-   ANC BUTTON
-   ========================================= */
-
-.anc-button {
-
-  margin-top: 40px !important;
-
-}
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 700px) {
-
-  .anc-feature {
-
-    margin: 50px 0;
-
-    padding:
-      55px 18px;
-
-    border-radius: 24px;
-
-  }
-
-  .anc-visual {
-
-    width: 290px;
-    height: 290px;
-
-  }
-
-  .anc-core {
-
-    width: 160px;
-    height: 160px;
-
-  }
-
-  .anc-core strong {
-
-    font-size: 55px;
-
-  }
-
-  .wave-1 {
-
-    width: 255px;
-    height: 255px;
-
-  }
-
-  .wave-2 {
-
-    width: 220px;
-    height: 220px;
-
-  }
-
-  .wave-3 {
-
-    width: 180px;
-    height: 180px;
-
-  }
-
-  .wave-4 {
-
-    width: 310px;
-    height: 310px;
-
-  }
-
-  .anc-specs {
-
-    grid-template-columns: 1fr;
-
-  }
-
-}
-/* =========================================
-   VOLTICA — TRUE 3D ANC SYSTEM
-   ========================================= */
-
-.anc-3d-stage {
-
-  position: relative;
-
-  width: 380px;
-  height: 380px;
-
-  margin: 0 auto 55px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  perspective: 1200px;
-
-  transform-style: preserve-3d;
-
-}
-
-
-/* 3D discs */
-
-.anc-disc {
-
-  position: absolute;
-
-  width: 300px;
-  height: 300px;
-
-  border-radius: 50%;
-
-  transform-style: preserve-3d;
-
-  background:
-    radial-gradient(
-      circle at 35% 25%,
-      rgba(255,255,255,0.10),
-      rgba(255,255,255,0.025) 45%,
-      rgba(0,0,0,0.45)
-    );
-
-  border:
-    1px solid
-    rgba(255,255,255,0.14);
-
-  box-shadow:
-    inset 0 8px 25px
-      rgba(255,255,255,0.06),
-
-    inset 0 -20px 35px
-      rgba(0,0,0,0.45),
-
-    0 25px 60px
-      rgba(0,0,0,0.55);
-
-}
-
-
-.disc-back {
-
-  transform:
-    translateZ(-55px)
-    rotateX(62deg)
-    rotateZ(20deg);
-
-  opacity: 0.35;
-
-  animation:
-    ancBack 9s linear infinite;
-
-}
-
 
 .disc-mid {
-
-  width: 270px;
-  height: 270px;
-
-  transform:
-    translateZ(-20px)
-    rotateX(67deg)
-    rotateZ(-15deg);
-
-  opacity: 0.55;
-
-  border-color:
-    rgba(160,180,255,0.18);
-
-  animation:
-    ancMid 7s linear infinite reverse;
-
-}
-
-
-.disc-front {
-
-  width: 235px;
-  height: 235px;
-
-  transform:
-    translateZ(20px)
-    rotateX(72deg)
-    rotateZ(30deg);
-
-  opacity: 0.75;
-
-  border-color:
-    rgba(255,255,255,0.20);
-
-  animation:
-    ancFront 6s linear infinite;
-
-}
-
-
-/* =========================================
-   3D ROTATION
-   ========================================= */
-
-@keyframes ancBack {
-
-  from {
-    transform:
-      translateZ(-55px)
-      rotateX(62deg)
-      rotateZ(0deg);
-  }
-
-  to {
-    transform:
-      translateZ(-55px)
-      rotateX(62deg)
-      rotateZ(360deg);
-  }
-
-}
-
-
-@keyframes ancMid {
-
-  from {
-    transform:
-      translateZ(-20px)
-      rotateX(67deg)
-      rotateZ(0deg);
-  }
-
-  to {
-    transform:
-      translateZ(-20px)
-      rotateX(67deg)
-      rotateZ(-360deg);
-  }
-
-}
-
-
-@keyframes ancFront {
-
-  from {
-    transform:
-      translateZ(20px)
-      rotateX(72deg)
-      rotateZ(0deg);
-  }
-
-  to {
-    transform:
-      translateZ(20px)
-      rotateX(72deg)
-      rotateZ(360deg);
-  }
-
-}
-
-
-/* =========================================
-   ENERGY WAVES
-   ========================================= */
-
-.anc-energy {
-
-  position: absolute;
-
-  border-radius: 50%;
-
-  border:
-    1px solid
-    rgba(255,255,255,0.12);
-
-  transform-style: preserve-3d;
-
-  pointer-events: none;
-
-}
-
-
-.energy-1 {
-
-  width: 345px;
-  height: 115px;
-
-  transform:
-    rotateX(68deg)
-    translateZ(45px);
-
-  animation:
-    energyMove1 3s ease-in-out infinite;
-
-}
-
-
-.energy-2 {
-
-  width: 320px;
+  width: 275px;
   height: 105px;
 
   transform:
-    rotateX(68deg)
-    translateZ(5px);
+    rotateX(65deg)
+    translateZ(-10px);
 
-  border-color:
-    rgba(170,185,255,0.18);
+  opacity: .5;
 
-  animation:
-    energyMove2 3.5s ease-in-out infinite
-    0.4s;
-
+  animation: ancMid 5s ease-in-out infinite;
 }
 
-
-.energy-3 {
-
-  width: 285px;
-  height: 95px;
+.disc-front {
+  width: 220px;
+  height: 90px;
 
   transform:
-    rotateX(68deg)
-    translateZ(-35px);
+    rotateX(65deg)
+    translateZ(35px);
 
-  animation:
-    energyMove3 4s ease-in-out infinite
-    0.8s;
+  opacity: .7;
 
+  animation: ancFront 4s ease-in-out infinite;
 }
 
-
-@keyframes energyMove1 {
-
-  0%,
-  100% {
-    opacity: 0.15;
+@keyframes ancBack {
+  0%,100% {
     transform:
-      rotateX(68deg)
-      translateZ(20px)
-      scale(0.85);
+      rotateX(65deg)
+      translateZ(-55px)
+      scale(.92);
   }
 
   50% {
-    opacity: 0.75;
     transform:
-      rotateX(68deg)
-      translateZ(55px)
-      scale(1.08);
-  }
-
-}
-
-
-@keyframes energyMove2 {
-
-  0%,
-  100% {
-    opacity: 0.15;
-    transform:
-      rotateX(68deg)
-      translateZ(-5px)
-      scale(0.85);
-  }
-
-  50% {
-    opacity: 0.65;
-    transform:
-      rotateX(68deg)
-      translateZ(25px)
+      rotateX(65deg)
+      translateZ(-55px)
       scale(1.06);
   }
-
 }
 
-
-@keyframes energyMove3 {
-
-  0%,
-  100% {
-    opacity: 0.10;
+@keyframes ancMid {
+  0%,100% {
     transform:
-      rotateX(68deg)
-      translateZ(-45px)
-      scale(0.85);
+      rotateX(65deg)
+      translateZ(-10px)
+      scale(.9);
   }
 
   50% {
-    opacity: 0.50;
     transform:
-      rotateX(68deg)
-      translateZ(-15px)
-      scale(1.05);
+      rotateX(65deg)
+      translateZ(-10px)
+      scale(1.07);
+  }
+}
+
+@keyframes ancFront {
+  0%,100% {
+    transform:
+      rotateX(65deg)
+      translateZ(35px)
+      scale(.9);
   }
 
+  50% {
+    transform:
+      rotateX(65deg)
+      translateZ(35px)
+      scale(1.08);
+  }
 }
 
 
-/* =========================================
-   CENTRAL 3D CORE
-   ========================================= */
+/* ENERGY RINGS */
+
+.anc-energy {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(180,195,255,0.22);
+
+  transform-style: preserve-3d;
+
+  pointer-events: none;
+}
+
+.energy-1 {
+  width: 255px;
+  height: 255px;
+
+  transform: rotateX(72deg) rotateZ(20deg);
+
+  animation: energyRotate 10s linear infinite;
+}
+
+.energy-2 {
+  width: 205px;
+  height: 205px;
+
+  transform: rotateX(72deg) rotateZ(-30deg);
+
+  animation: energyRotate 7s linear infinite reverse;
+}
+
+.energy-3 {
+  width: 155px;
+  height: 155px;
+
+  transform: rotateX(72deg);
+
+  animation: energyRotate 5s linear infinite;
+}
+
+@keyframes energyRotate {
+  to {
+    rotate: 360deg;
+  }
+}
+
+
+/* ANC CORE */
 
 .anc-core {
-
   position: relative;
 
-  width: 190px;
-  height: 190px;
+  z-index: 20;
+
+  width: 170px;
+  height: 170px;
 
   display: flex;
 
@@ -3918,1933 +1252,524 @@ body {
   background:
     radial-gradient(
       circle at 30% 20%,
-      rgba(255,255,255,0.22),
-      rgba(255,255,255,0.055) 42%,
-      rgba(5,5,10,0.82) 78%
+      rgba(255,255,255,0.20),
+      rgba(255,255,255,0.045) 52%,
+      rgba(0,0,0,0.82)
     );
 
-  border:
-    1px solid
-    rgba(255,255,255,0.28);
+  border: 1px solid rgba(255,255,255,0.27);
 
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 
   box-shadow:
-
-    inset 8px 8px 30px
-      rgba(255,255,255,0.08),
-
-    inset -15px -20px 40px
-      rgba(0,0,0,0.60),
-
-    0 15px 30px
-      rgba(0,0,0,0.65),
-
-    0 0 80px
-      rgba(140,160,255,0.14);
+    inset 8px 8px 25px rgba(255,255,255,0.06),
+    inset -15px -20px 30px rgba(0,0,0,0.6),
+    0 25px 70px rgba(0,0,0,0.65),
+    0 0 60px rgba(150,175,255,0.13);
 
   transform:
-    translateZ(80px)
-    rotateX(10deg)
-    rotateY(-12deg);
+    translateZ(90px);
 
-  transform-style: preserve-3d;
-
-  z-index: 20;
-
-  animation:
-    ancCoreFloat 5s ease-in-out infinite;
-
+  animation: ancCoreFloat 4s ease-in-out infinite;
 }
 
-
 @keyframes ancCoreFloat {
-
-  0%,
-  100% {
+  0%,100% {
     transform:
-      translateZ(80px)
-      rotateX(10deg)
-      rotateY(-12deg)
+      translateZ(90px)
       translateY(0);
   }
 
   50% {
     transform:
-      translateZ(95px)
-      rotateX(14deg)
-      rotateY(-16deg)
-      translateY(-8px);
+      translateZ(105px)
+      translateY(-7px);
   }
-
 }
 
-
-/* Core glow */
-
 .anc-core-glow {
-
   position: absolute;
 
-  inset: -20px;
+  inset: -25px;
 
   border-radius: 50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(160,180,255,0.16),
+      rgba(150,175,255,0.15),
       transparent 65%
     );
 
-  filter: blur(10px);
+  filter: blur(15px);
 
   z-index: -1;
+}
 
+.anc-core > span {
+  max-width: 120px;
+
+  font-size: 6px;
+  line-height: 1.5;
+
+  letter-spacing: 2px;
+
+  color: var(--soft);
+
+  text-align: center;
+}
+
+.anc-core > strong {
+  margin-top: 8px;
+
+  font-size: 62px;
+  line-height: .75;
+
+  font-weight: 800;
+
+  letter-spacing: -4px;
+
+  color: #fff;
+
+  text-shadow:
+    0 0 25px rgba(180,195,255,0.2);
+}
+
+.anc-core > small {
+  margin-top: 9px;
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  color: var(--muted);
 }
 
 
-/* Core typography */
+/* ANC CONTENT */
 
-.anc-core > span {
+.anc-content {
+  max-width: 800px;
 
-  font-size: 7px;
+  margin: 0 auto;
+}
 
-  letter-spacing: 2.5px;
+.anc-specs {
+  display: grid;
 
-  color:
-    rgba(255,255,255,0.42);
+  grid-template-columns: repeat(3,1fr);
+
+  gap: 12px;
+
+  max-width: 800px;
+
+  margin: 40px auto 0;
+}
+
+.anc-specs > div {
+  padding: 22px;
+
+  text-align: left;
+
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.035);
+
+  border: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   40MM TECH
+   ========================================================= */
+
+.tech-feature {
+  position: relative;
+
+  margin-top: 35px;
+
+  padding: 100px 45px;
 
   text-align: center;
 
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(255,255,255,0.07),
+      transparent 35%
+    ),
+    rgba(255,255,255,0.025);
+
+  border: 1px solid var(--border);
 }
 
+.tech-feature-content {
+  max-width: 800px;
 
-.anc-core > strong {
+  margin: 0 auto;
+}
 
-  margin-top: 5px;
+.tech-number {
+  margin-top: 25px;
 
-  font-size: 67px;
+  font-size: clamp(100px, 18vw, 180px);
 
-  line-height: 0.85;
+  line-height: .8;
 
-  letter-spacing: -6px;
+  font-weight: 800;
+
+  letter-spacing: -9px;
 
   background:
     linear-gradient(
-      135deg,
-      #ffffff,
-      #b5c2ff
+      180deg,
+      #fff,
+      rgba(255,255,255,0.28)
     );
 
   -webkit-background-clip: text;
   background-clip: text;
 
   -webkit-text-fill-color: transparent;
+}
 
+.tech-number span {
+  font-size: .28em;
+
+  letter-spacing: -1px;
+}
+
+.tech-tags {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 30px;
+}
+
+.tech-tags span {
+  padding: 9px 13px;
+
+  border-radius: 100px;
+
+  background: rgba(255,255,255,0.045);
+
+  border: 1px solid var(--border);
+
+  font-size: 8px;
+
+  letter-spacing: 1.5px;
+
+  color: var(--muted);
 }
 
 
-.anc-core > small {
+/* =========================================================
+   VIDEOS
+   ========================================================= */
 
-  margin-top: 8px;
+.product-video {
+  display: grid;
 
-  font-size: 10px;
+  grid-template-columns: repeat(2,1fr);
 
-  letter-spacing: 4px;
+  gap: 18px;
 
-  color:
-    rgba(255,255,255,0.48);
+  margin-top: 35px;
+}
 
+.product-video video {
+  width: 100%;
+
+  aspect-ratio: 16 / 10;
+
+  object-fit: cover;
+
+  border-radius: 22px;
+
+  border: 1px solid var(--border);
+
+  background: #000;
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,0.45);
 }
 
 
-/* =========================================
-   BUTTON — ALWAYS VISIBLE
-   ========================================= */
+/* =========================================================
+   GLASS GALLERY
+   ========================================================= */
 
-.anc-button {
+.product-gallery {
+  display: grid;
 
-  position: relative !important;
+  grid-template-columns:
+    repeat(3,1fr);
 
-  display: flex !important;
+  gap: 15px;
 
-  visibility: visible !important;
-
-  opacity: 1 !important;
-
-  width: 100% !important;
-
-  max-width: 520px !important;
-
-  min-height: 60px;
-
-  margin: 45px auto 0 !important;
-
-  z-index: 100 !important;
-
-  cursor: pointer;
-
+  margin-top: 35px;
 }
 
-
-/* Mobile */
-
-@media (max-width: 600px) {
-
-  .anc-3d-stage {
-
-    width: 290px;
-    height: 290px;
-
-  }
-
-  .anc-core {
-
-    width: 155px;
-    height: 155px;
-
-  }
-
-  .anc-core > strong {
-
-    font-size: 54px;
-
-  }
-
-  .anc-disc {
-
-    width: 240px;
-    height: 240px;
-
-  }
-
-  .disc-mid {
-
-    width: 215px;
-    height: 215px;
-
-  }
-
-  .disc-front {
-
-    width: 190px;
-    height: 190px;
-
-  }
-
-}
-/* =========================================
-   ANC 3D — GRAPHIC FIX
-   ========================================= */
-
-.anc-3d-stage {
+.glass-photo {
   position: relative;
-  isolation: isolate;
-  overflow: visible;
+
+  padding: 10px;
+
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.10),
+      rgba(255,255,255,0.025)
+    );
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.12),
+    0 20px 55px rgba(0,0,0,0.4);
+
+  transition:
+    transform .4s ease,
+    border-color .4s ease,
+    box-shadow .4s ease;
 }
 
-.anc-disc,
-.anc-energy,
-.anc-core {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
+.glass-photo::before {
+  content: "";
 
-.anc-disc {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255,255,255,0.12),
+      transparent 35%
+    );
+
   pointer-events: none;
 }
 
-.disc-back {
-  z-index: 1;
+.glass-photo:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(255,255,255,0.28);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    0 30px 70px rgba(0,0,0,0.55);
 }
 
-.disc-mid {
-  z-index: 2;
+.glass-photo img {
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+
+  border-radius: 14px;
 }
 
-.disc-front {
-  z-index: 3;
+
+/* =========================================================
+   FINAL OFFER
+   ========================================================= */
+
+.final-offer {
+  position: relative;
+
+  margin: 35px 0 80px;
+
+  padding: 100px 30px;
+
+  text-align: center;
+
+  border-radius: 32px;
+
+  background:
+    radial-gradient(
+      circle at 50% 25%,
+      rgba(150,175,255,0.13),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.075),
+      rgba(255,255,255,0.02)
+    );
+
+  border: 1px solid var(--border);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.10),
+    0 35px 100px rgba(0,0,0,0.55);
 }
 
-.energy-1 {
-  z-index: 4;
+.final-offer-label {
+  font-size: 9px;
+
+  letter-spacing: 4px;
+
+  color: var(--soft);
 }
 
-.energy-2 {
-  z-index: 5;
+.final-offer h2 {
+  max-width: 800px;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.energy-3 {
-  z-index: 6;
+.final-offer > p {
+  margin: 25px auto;
+
+  color: var(--muted);
 }
 
-.anc-core {
-  z-index: 20 !important;
+.final-price {
+  margin-top: 35px;
+
+  font-size: clamp(50px, 9vw, 85px);
+
+  font-weight: 800;
+
+  letter-spacing: -4px;
 }
 
-/* Prevent animated layers from visually clipping */
-.anc-3d-stage,
-.anc-disc,
-.anc-energy {
-  transform-style: preserve-3d;
+.final-price small {
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  color: var(--muted);
 }
 
-/* Keep the graphic centered */
-.anc-3d-stage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-/* Mobile stability */
-@media (max-width: 600px) {
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .product-container {
+    width: min(100% - 20px, 1180px);
+  }
+
+  .product-hero {
+    padding-top: 65px;
+  }
+
+  .product-hero h1 {
+    font-size: 44px;
+
+    letter-spacing: -2.5px;
+  }
+
+  .hero-specs {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .offer-card {
+    padding: 25px 18px;
+  }
+
+  .battery-feature,
+  .spatial-feature,
+  .anc-feature,
+  .tech-feature {
+    padding: 70px 18px;
+  }
+
+  .battery-number,
+  .tech-number {
+    letter-spacing: -6px;
+  }
+
+  .spatial-visual,
   .anc-3d-stage {
-    overflow: visible;
-    transform: scale(0.88);
-    transform-origin: center center;
+    transform: scale(.82);
+
+    margin-top: -20px;
     margin-bottom: 20px;
   }
-}
-/* =========================================
-   VOLTICA — CLEAN CTA SYSTEM
-   ========================================= */
-
-.feature-button,
-.anc-button,
-.spatial-button {
-    position: relative !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    width: 100% !important;
-    max-width: 520px !important;
-    height: 60px !important;
-
-    margin: 42px auto 0 !important;
-    padding: 0 24px !important;
-
-    box-sizing: border-box !important;
-
-    overflow: hidden !important;
-
-    border-radius: 16px !important;
-
-    text-decoration: none !important;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.12),
-            rgba(255,255,255,0.035)
-        ) !important;
-
-    border: 1px solid
-        rgba(255,255,255,0.20) !important;
-
-    color: #fff !important;
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.14),
-        0 15px 40px rgba(0,0,0,0.45);
-
-    z-index: 50 !important;
-
-    cursor: pointer;
-
-    transition:
-        transform .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
-}
-
-
-/* Texte */
-
-.feature-button span,
-.anc-button span,
-.spatial-button span {
-    display: block !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    color: #fff !important;
-
-    font-size: 10px !important;
-    font-weight: 700 !important;
-
-    line-height: 1 !important;
-
-    letter-spacing: 2px !important;
-
-    white-space: nowrap !important;
-}
-
-
-/* Flèche */
-
-.feature-button strong,
-.anc-button strong,
-.spatial-button strong {
-    display: block !important;
-
-    width: auto !important;
-    height: auto !important;
-
-    margin:
-        0 0 0 16px !important;
-
-    padding: 0 !important;
-
-    color: #fff !important;
-
-    font-size: 22px !important;
-    font-weight: 400 !important;
-
-    line-height: 1 !important;
-}
-
-
-/* Hover */
-
-.feature-button:hover,
-.anc-button:hover,
-.spatial-button:hover {
-    transform: translateY(-4px) !important;
-
-    border-color:
-        rgba(255,255,255,0.40) !important;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.18),
-        0 22px 55px rgba(0,0,0,0.55),
-        0 0 30px rgba(150,170,255,0.10);
-}
-
-
-.feature-button:hover strong,
-.anc-button:hover strong,
-.spatial-button:hover strong {
-    transform: translateX(6px);
-}
-
-
-/* =========================================
-   SECTION SPACING
-   ========================================= */
-
-.battery-feature > .feature-button,
-.spatial-feature > .feature-button,
-.anc-feature > .feature-button {
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 600px) {
-
-    .feature-button,
-    .anc-button,
-    .spatial-button {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: 56px !important;
-
-        margin-top: 35px !important;
-    }
-
-    .feature-button span,
-    .anc-button span,
-    .spatial-button span {
-        font-size: 8px !important;
-        letter-spacing: 1.5px !important;
-    }
-
-    .feature-button strong,
-    .anc-button strong,
-    .spatial-button strong {
-        font-size: 19px !important;
-        margin-left: 12px !important;
-    }
-}
-
-/* =========================================
-   VOLTICA — PERFECTLY CENTERED CTA
-   ========================================= */
-
-.feature-button,
-.anc-button,
-.spatial-button {
-    position: relative !important;
-
-    display: block !important;
-
-    width: 100% !important;
-    max-width: 520px !important;
-    height: 60px !important;
-
-    margin: 42px auto 0 !important;
-    padding: 0 !important;
-
-    box-sizing: border-box !important;
-
-    border-radius: 16px !important;
-
-    text-decoration: none !important;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.12),
-            rgba(255,255,255,0.035)
-        ) !important;
-
-    border: 1px solid
-        rgba(255,255,255,0.20) !important;
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.14),
-        0 15px 40px rgba(0,0,0,0.45);
-
-    z-index: 100 !important;
-}
-
-
-/* =========================================
-   TEXTE — CENTRE ABSOLU
-   ========================================= */
-
-.feature-button span,
-.anc-button span,
-.spatial-button span {
-
-    position: absolute !important;
-
-    top: 50% !important;
-    left: 50% !important;
-
-    transform:
-        translate(-50%, -50%) !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    width: max-content !important;
-
-    color: #ffffff !important;
-
-    font-size: 10px !important;
-
-    font-weight: 700 !important;
-
-    line-height: 1 !important;
-
-    letter-spacing: 2px !important;
-
-    white-space: nowrap !important;
-
-    text-align: center !important;
-}
-
-
-/* =========================================
-   FLÈCHE — INDÉPENDANTE
-   ========================================= */
-
-.feature-button strong,
-.anc-button strong,
-.spatial-button strong {
-
-    position: absolute !important;
-
-    top: 50% !important;
-    right: 22px !important;
-
-    transform:
-        translateY(-50%) !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    color: #ffffff !important;
-
-    font-size: 22px !important;
-
-    font-weight: 400 !important;
-
-    line-height: 1 !important;
-
-    transition:
-        transform .3s ease !important;
-}
-
-
-/* =========================================
-   HOVER
-   ========================================= */
-
-.feature-button:hover,
-.anc-button:hover,
-.spatial-button:hover {
-
-    transform:
-        translateY(-4px) !important;
-
-    border-color:
-        rgba(255,255,255,0.40) !important;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.18),
-        0 22px 55px rgba(0,0,0,0.55),
-        0 0 30px rgba(150,170,255,0.10);
-}
-
-
-.feature-button:hover strong,
-.anc-button:hover strong,
-.spatial-button:hover strong {
-
-    transform:
-        translate(6px, -50%) !important;
-}
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 600px) {
-
-    .feature-button,
-    .anc-button,
-    .spatial-button {
-
-        width: 100% !important;
-
-        max-width: 100% !important;
-
-        height: 56px !important;
-
-    }
-
-    .feature-button span,
-    .anc-button span,
-    .spatial-button span {
-
-        font-size: 8px !important;
-
-        letter-spacing: 1.5px !important;
-
-    }
-
-    .feature-button strong,
-    .anc-button strong,
-    .spatial-button strong {
-
-        right: 17px !important;
-
-        font-size: 19px !important;
-
-    }
-
-}
-/* =========================================
-   VOLTICA — GENTLE EMBRACE
-   ========================================= */
-
-.comfort-feature {
-
-    position: relative;
-
-    width: 100%;
-
-    margin: 70px 0;
-
-    padding: 75px 45px;
-
-    overflow: hidden;
-
-    border-radius: 30px;
-
-    background:
-        radial-gradient(
-            circle at 50% 30%,
-            rgba(255,255,255,0.08),
-            transparent 34%
-        ),
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.065),
-            rgba(255,255,255,0.015)
-        );
-
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
-
-    box-shadow:
-        0 30px 90px rgba(0,0,0,0.58),
-        inset 0 1px 0 rgba(255,255,255,0.10);
-
-}
-
-
-/* =========================================
-   COMFORT VISUAL
-   ========================================= */
-
-.comfort-visual {
-
-    position: relative;
-
-    width: 360px;
-    height: 360px;
-
-    margin: 0 auto 55px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    perspective: 1000px;
-
-    transform-style: preserve-3d;
-
-}
-
-
-/* =========================================
-   SOFT HALOS
-   ========================================= */
-
-.comfort-halo {
-
-    position: absolute;
-
-    border-radius: 50%;
-
-    transform-style: preserve-3d;
-
-    border:
-        1px solid rgba(255,255,255,0.13);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,0.025),
-            transparent 65%
-        );
-
-}
-
-
-.halo-outer {
-
-    width: 330px;
-    height: 245px;
-
-    transform:
-        rotateX(68deg)
-        translateZ(-35px);
-
-    animation:
-        comfortOuter 7s ease-in-out infinite;
-
-}
-
-
-.halo-middle {
-
-    width: 280px;
-    height: 205px;
-
-    transform:
-        rotateX(68deg)
-        translateZ(5px);
-
-    border-color:
-        rgba(170,185,255,0.17);
-
-    animation:
-        comfortMiddle 6s ease-in-out infinite
-        .4s;
-
-}
-
-
-.halo-inner {
-
-    width: 225px;
-    height: 170px;
-
-    transform:
-        rotateX(68deg)
-        translateZ(40px);
-
-    border-color:
-        rgba(255,255,255,0.20);
-
-    animation:
-        comfortInner 5s ease-in-out infinite
-        .8s;
-
-}
-
-
-/* =========================================
-   HALO ANIMATION
-   ========================================= */
-
-@keyframes comfortOuter {
-
-    0%,
-    100% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(-35px)
-            scale(.92);
-
-        opacity: .35;
-
-    }
-
-    50% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(-35px)
-            scale(1.04);
-
-        opacity: .75;
-
-    }
-
-}
-
-
-@keyframes comfortMiddle {
-
-    0%,
-    100% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(5px)
-            scale(.90);
-
-        opacity: .30;
-
-    }
-
-    50% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(5px)
-            scale(1.06);
-
-        opacity: .70;
-
-    }
-
-}
-
-
-@keyframes comfortInner {
-
-    0%,
-    100% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(40px)
-            scale(.88);
-
-        opacity: .25;
-
-    }
-
-    50% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(40px)
-            scale(1.08);
-
-        opacity: .80;
-
-    }
-
-}
-
-
-/* =========================================
-   CENTRAL GLASS CORE
-   ========================================= */
-
-.comfort-core {
-
-    position: relative;
-
-    width: 190px;
-    height: 190px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 32% 20%,
-            rgba(255,255,255,0.22),
-            rgba(255,255,255,0.055) 43%,
-            rgba(5,5,10,0.80) 78%
-        );
-
-    border:
-        1px solid rgba(255,255,255,0.25);
-
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-
-    box-shadow:
-        inset 8px 8px 30px
-            rgba(255,255,255,0.08),
-
-        inset -15px -20px 40px
-            rgba(0,0,0,0.58),
-
-        0 25px 60px
-            rgba(0,0,0,0.65),
-
-        0 0 70px
-            rgba(150,170,255,0.12);
-
-    transform:
-        translateZ(80px)
-        rotateX(10deg)
-        rotateY(-10deg);
-
-    transform-style: preserve-3d;
-
-    z-index: 10;
-
-    animation:
-        comfortFloat 5s ease-in-out infinite;
-
-}
-
-
-@keyframes comfortFloat {
-
-    0%,
-    100% {
-
-        transform:
-            translateZ(80px)
-            rotateX(10deg)
-            rotateY(-10deg)
-            translateY(0);
-
-    }
-
-    50% {
-
-        transform:
-            translateZ(95px)
-            rotateX(14deg)
-            rotateY(-14deg)
-            translateY(-8px);
-
-    }
-
-}
-
-
-/* Glow */
-
-.comfort-glow {
-
-    position: absolute;
-
-    inset: -25px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(170,185,255,0.15),
-            transparent 65%
-        );
-
-    filter: blur(12px);
-
-    z-index: -1;
-
-}
-
-
-/* Typography */
-
-.comfort-core > span {
-
-    font-size: 7px;
-
-    letter-spacing: 2.5px;
-
-    color:
-        rgba(255,255,255,0.42);
-
-}
-
-
-.comfort-core > strong {
-
-    margin-top: 5px;
-
-    font-size: 70px;
-
-    line-height: .85;
-
-    font-weight: 300;
-
-    color: #ffffff;
-
-    text-shadow:
-        0 0 25px
-        rgba(180,195,255,0.25);
-
-}
-
-
-.comfort-core > small {
-
-    margin-top: 8px;
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
-
-    color:
-        rgba(255,255,255,0.48);
-
-}
-
-
-/* =========================================
-   CONTENT
-   ========================================= */
-
-.comfort-content {
-
-    max-width: 780px;
-
-    margin: 0 auto;
-
-    text-align: center;
-
-}
-
-
-.comfort-label {
-
-    margin-bottom: 20px;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 4px;
-
-    color:
-        rgba(255,255,255,0.42);
-
-}
-
-
-.comfort-content h2 {
-
-    font-size:
-        clamp(38px, 6vw, 65px);
-
-    line-height: 1;
-
-    letter-spacing: -2px;
-
-    font-weight: 800;
-
-}
-
-
-.comfort-content h2 span {
-
-    display: block;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #aebcff,
-            #ffffff
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-
-}
-
-
-.comfort-content > p {
-
-    max-width: 650px;
-
-    margin: 25px auto 0;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    color:
-        rgba(255,255,255,0.55);
-
-}
-
-
-/* =========================================
-   SPEC CARDS
-   ========================================= */
-
-.comfort-specs {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 12px;
-
-    max-width: 780px;
-
-    margin: 40px auto 0;
-
-}
-
-
-.comfort-specs > div {
-
-    padding: 22px;
-
-    text-align: left;
-
-    border-radius: 18px;
-
-    background:
-        rgba(255,255,255,0.035);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    transition:
-        transform .3s ease,
-        border-color .3s ease;
-
-}
-
-
-.comfort-specs > div:hover {
-
-    transform:
-        translateY(-4px);
-
-    border-color:
-        rgba(255,255,255,0.20);
-
-}
-
-
-.comfort-specs span {
-
-    display: block;
-
-    margin-bottom: 16px;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    color:
-        rgba(170,185,255,0.75);
-
-}
-
-
-.comfort-specs strong {
-
-    display: block;
-
-    font-size: 11px;
-
-    letter-spacing: 1.5px;
-
-}
-
-
-.comfort-specs p {
-
-    margin-top: 8px;
-
-    font-size: 11px;
-
-    line-height: 1.6;
-
-    color:
-        rgba(255,255,255,0.42);
-
-}
-
-
-/* =========================================
-   BUTTON
-   ========================================= */
-
-.comfort-button {
-
-    margin-top: 42px !important;
-
-}
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 700px) {
-
-    .comfort-feature {
-
-        margin: 50px 0;
-
-        padding:
-            55px 18px;
-
-        border-radius: 24px;
-
-    }
-
-    .comfort-visual {
-
-        width: 290px;
-        height: 290px;
-
-    }
-
-    .comfort-core {
-
-        width: 155px;
-        height: 155px;
-
-    }
-
-    .comfort-core > strong {
-
-        font-size: 55px;
-
-    }
-
-    .halo-outer {
-
-        width: 260px;
-        height: 190px;
-
-    }
-
-    .halo-middle {
-
-        width: 220px;
-        height: 165px;
-
-    }
-
-    .halo-inner {
-
-        width: 185px;
-        height: 140px;
-
-    }
-
-    .comfort-specs {
-
-        grid-template-columns: 1fr;
-
-    }
-
-}
-/* =========================================
-   VOLTICA — GENTLE EMBRACE
-   ========================================= */
-
-.comfort-feature {
-
-    position: relative;
-
-    width: 100%;
-
-    margin: 70px 0;
-
-    padding: 75px 45px;
-
-    overflow: hidden;
-
-    border-radius: 30px;
-
-    background:
-        radial-gradient(
-            circle at 50% 30%,
-            rgba(255,255,255,0.08),
-            transparent 34%
-        ),
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.065),
-            rgba(255,255,255,0.015)
-        );
-
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
-
-    box-shadow:
-        0 30px 90px rgba(0,0,0,0.58),
-        inset 0 1px 0 rgba(255,255,255,0.10);
-
-}
-
-
-/* =========================================
-   COMFORT VISUAL
-   ========================================= */
-
-.comfort-visual {
-
-    position: relative;
-
-    width: 360px;
-    height: 360px;
 
-    margin: 0 auto 55px;
+  .spatial-features,
+  .anc-specs {
+    grid-template-columns: 1fr;
+  }
 
-    display: flex;
+  .product-video {
+    grid-template-columns: 1fr;
+  }
 
-    align-items: center;
-    justify-content: center;
+  .product-gallery {
+    grid-template-columns: repeat(2,1fr);
+  }
 
-    perspective: 1000px;
+  .feature-button {
+    height: 58px;
+  }
 
-    transform-style: preserve-3d;
+  .feature-button > span:first-child {
+    font-size: 8px;
+    letter-spacing: 1.4px;
+  }
 
-}
-
-
-/* =========================================
-   SOFT HALOS
-   ========================================= */
-
-.comfort-halo {
-
-    position: absolute;
-
-    border-radius: 50%;
-
-    transform-style: preserve-3d;
-
-    border:
-        1px solid rgba(255,255,255,0.13);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,0.025),
-            transparent 65%
-        );
-
-}
-
-
-.halo-outer {
-
-    width: 330px;
-    height: 245px;
-
-    transform:
-        rotateX(68deg)
-        translateZ(-35px);
-
-    animation:
-        comfortOuter 7s ease-in-out infinite;
-
-}
-
-
-.halo-middle {
-
-    width: 280px;
-    height: 205px;
-
-    transform:
-        rotateX(68deg)
-        translateZ(5px);
-
-    border-color:
-        rgba(170,185,255,0.17);
-
-    animation:
-        comfortMiddle 6s ease-in-out infinite
-        .4s;
-
-}
-
-
-.halo-inner {
-
-    width: 225px;
-    height: 170px;
-
-    transform:
-        rotateX(68deg)
-        translateZ(40px);
-
-    border-color:
-        rgba(255,255,255,0.20);
-
-    animation:
-        comfortInner 5s ease-in-out infinite
-        .8s;
-
-}
-
-
-/* =========================================
-   HALO ANIMATION
-   ========================================= */
-
-@keyframes comfortOuter {
-
-    0%,
-    100% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(-35px)
-            scale(.92);
-
-        opacity: .35;
-
-    }
-
-    50% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(-35px)
-            scale(1.04);
-
-        opacity: .75;
-
-    }
-
-}
-
-
-@keyframes comfortMiddle {
-
-    0%,
-    100% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(5px)
-            scale(.90);
-
-        opacity: .30;
-
-    }
-
-    50% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(5px)
-            scale(1.06);
-
-        opacity: .70;
-
-    }
-
-}
-
-
-@keyframes comfortInner {
-
-    0%,
-    100% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(40px)
-            scale(.88);
-
-        opacity: .25;
-
-    }
-
-    50% {
-
-        transform:
-            rotateX(68deg)
-            translateZ(40px)
-            scale(1.08);
-
-        opacity: .80;
-
-    }
-
-}
-
-
-/* =========================================
-   CENTRAL GLASS CORE
-   ========================================= */
-
-.comfort-core {
-
-    position: relative;
-
-    width: 190px;
-    height: 190px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 32% 20%,
-            rgba(255,255,255,0.22),
-            rgba(255,255,255,0.055) 43%,
-            rgba(5,5,10,0.80) 78%
-        );
-
-    border:
-        1px solid rgba(255,255,255,0.25);
-
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-
-    box-shadow:
-        inset 8px 8px 30px
-            rgba(255,255,255,0.08),
-
-        inset -15px -20px 40px
-            rgba(0,0,0,0.58),
-
-        0 25px 60px
-            rgba(0,0,0,0.65),
-
-        0 0 70px
-            rgba(150,170,255,0.12);
-
-    transform:
-        translateZ(80px)
-        rotateX(10deg)
-        rotateY(-10deg);
-
-    transform-style: preserve-3d;
-
-    z-index: 10;
-
-    animation:
-        comfortFloat 5s ease-in-out infinite;
-
-}
-
-
-@keyframes comfortFloat {
-
-    0%,
-    100% {
-
-        transform:
-            translateZ(80px)
-            rotateX(10deg)
-            rotateY(-10deg)
-            translateY(0);
-
-    }
-
-    50% {
-
-        transform:
-            translateZ(95px)
-            rotateX(14deg)
-            rotateY(-14deg)
-            translateY(-8px);
-
-    }
-
-}
-
-
-/* Glow */
-
-.comfort-glow {
-
-    position: absolute;
-
-    inset: -25px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(170,185,255,0.15),
-            transparent 65%
-        );
-
-    filter: blur(12px);
-
-    z-index: -1;
-
-}
-
-
-/* Typography */
-
-.comfort-core > span {
-
-    font-size: 7px;
-
-    letter-spacing: 2.5px;
-
-    color:
-        rgba(255,255,255,0.42);
-
-}
-
-
-.comfort-core > strong {
-
-    margin-top: 5px;
-
-    font-size: 70px;
-
-    line-height: .85;
-
-    font-weight: 300;
+  .feature-button > strong {
+    right: 17px;
+  }
 
-    color: #ffffff;
+  .preorder-btn {
+    height: 64px;
+  }
 
-    text-shadow:
-        0 0 25px
-        rgba(180,195,255,0.25);
+  .preorder-content strong {
+    font-size: 12px;
+  }
 
-}
-
-
-.comfort-core > small {
-
-    margin-top: 8px;
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
-
-    color:
-        rgba(255,255,255,0.48);
-
-}
-
-
-/* =========================================
-   CONTENT
-   ========================================= */
-
-.comfort-content {
-
-    max-width: 780px;
-
-    margin: 0 auto;
-
-    text-align: center;
-
-}
-
-
-.comfort-label {
-
-    margin-bottom: 20px;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 4px;
-
-    color:
-        rgba(255,255,255,0.42);
-
-}
-
-
-.comfort-content h2 {
-
-    font-size:
-        clamp(38px, 6vw, 65px);
-
-    line-height: 1;
-
-    letter-spacing: -2px;
-
-    font-weight: 800;
-
-}
-
-
-.comfort-content h2 span {
-
-    display: block;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #aebcff,
-            #ffffff
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-
-}
-
-
-.comfort-content > p {
-
-    max-width: 650px;
-
-    margin: 25px auto 0;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    color:
-        rgba(255,255,255,0.55);
-
-}
-
-
-/* =========================================
-   SPEC CARDS
-   ========================================= */
-
-.comfort-specs {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 12px;
-
-    max-width: 780px;
-
-    margin: 40px auto 0;
-
-}
-
-
-.comfort-specs > div {
-
-    padding: 22px;
+  .preorder-arrow {
+    right: 17px;
+  }
 
-    text-align: left;
+  .preorder-pulse {
+    left: 17px;
+  }
 
-    border-radius: 18px;
-
-    background:
-        rgba(255,255,255,0.035);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    transition:
-        transform .3s ease,
-        border-color .3s ease;
-
-}
-
-
-.comfort-specs > div:hover {
-
-    transform:
-        translateY(-4px);
-
-    border-color:
-        rgba(255,255,255,0.20);
-
-}
-
-
-.comfort-specs span {
-
-    display: block;
-
-    margin-bottom: 16px;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    color:
-        rgba(170,185,255,0.75);
-
-}
-
-
-.comfort-specs strong {
-
-    display: block;
-
-    font-size: 11px;
-
-    letter-spacing: 1.5px;
-
-}
-
-
-.comfort-specs p {
-
-    margin-top: 8px;
-
-    font-size: 11px;
-
-    line-height: 1.6;
-
-    color:
-        rgba(255,255,255,0.42);
-
-}
-
-
-/* =========================================
-   BUTTON
-   ========================================= */
-
-.comfort-button {
-
-    margin-top: 42px !important;
-
 }
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 700px) {
-
-    .comfort-feature {
-
-        margin: 50px 0;
-
-        padding:
-            55px 18px;
-
-        border-radius: 24px;
-
-    }
 
-    .comfort-visual {
+@media (max-width: 430px) {
 
-        width: 290px;
-        height: 290px;
+  .hero-spec strong {
+    font-size: 17px;
+  }
 
-    }
+  .hero-spec span {
+    font-size: 8px;
+  }
 
-    .comfort-core {
+  .product-gallery {
+    grid-template-columns: 1fr;
+  }
 
-        width: 155px;
-        height: 155px;
+  .spatial-visual,
+  .anc-3d-stage {
+    transform: scale(.72);
+  }
 
-    }
-
-    .comfort-core > strong {
-
-        font-size: 55px;
-
-    }
-
-    .halo-outer {
-
-        width: 260px;
-        height: 190px;
-
-    }
-
-    .halo-middle {
-
-        width: 220px;
-        height: 165px;
-
-    }
-
-    .halo-inner {
-
-        width: 185px;
-        height: 140px;
-
-    }
-
-    .comfort-specs {
-
-        grid-template-columns: 1fr;
-
-    }
-
-}
+   }

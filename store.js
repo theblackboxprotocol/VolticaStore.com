@@ -1,6 +1,3 @@
-/* =========================================================
-   VOLTICA STORE — PRODUCT RENDERER
-   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -10,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    grid.innerHTML = "";
 
     volticaProducts.forEach(product => {
 
@@ -17,9 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         card.className = "store-product";
 
-
         card.innerHTML = `
-
             <div class="product-image">
 
                 <span class="product-badge">
@@ -29,12 +25,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 <img
                     src="${product.image}"
                     alt="${product.name}"
-                    loading="lazy">
-
-                <div class="image-reflection"></div>
+                    style="
+                        display:block;
+                        width:100%;
+                        height:300px;
+                        object-fit:contain;
+                        position:relative;
+                        z-index:999;
+                        opacity:1;
+                        visibility:visible;
+                    "
+                >
 
             </div>
-
 
             <div class="product-info">
 
@@ -50,38 +53,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     ${product.description}
                 </p>
 
-
                 <div class="product-bottom">
 
                     <strong class="product-price">
-
                         $${product.price}
-
-                        <small>
-                            ${product.currency}
-                        </small>
-
+                        <small>${product.currency}</small>
                     </strong>
-
 
                     <a
                         href="${product.stripe}"
                         class="product-button">
 
-                        VIEW
-
-                        <span>
-                            →
-                        </span>
+                        VIEW <span>→</span>
 
                     </a>
 
                 </div>
 
             </div>
-
         `;
-
 
         grid.appendChild(card);
 

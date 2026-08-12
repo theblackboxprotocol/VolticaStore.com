@@ -2,11 +2,7 @@
    VOLTICA STORE — PRODUCT DATABASE
    ========================================================= */
 
-const volticaProducts = [
-
-    /* =====================================================
-       PRODUCT 01 — VOLTICA Q17
-       ===================================================== */
+window.volticaProducts = [
 
     {
         id: "earbuds1",
@@ -47,41 +43,19 @@ const volticaProducts = [
         ],
 
         features: [
-            [
-                "01",
-                "8+ HOURS",
-                "Extended battery life for workouts, commuting and everyday listening."
-            ],
-            [
-                "02",
-                "10 METERS",
-                "Wireless transmission distance of up to 10 meters."
-            ],
-            [
-                "03",
-                "DIGITAL DISPLAY",
-                "Integrated digital display for essential information."
-            ],
-            [
-                "04",
-                "EAR-HOOK FIT",
-                "Secure wearing style designed for active movement."
-            ],
-            [
-                "05",
-                "VOICE CONTROL",
-                "Convenient voice-control functionality."
-            ],
-            [
-                "06",
-                "MUSIC + CALLS",
-                "Designed for music playback and hands-free calling."
-            ]
+            ["01", "8+ HOURS", "Extended battery life for workouts, commuting and everyday listening."],
+            ["02", "10 METERS", "Wireless transmission distance up to 10 meters."],
+            ["03", "DIGITAL DISPLAY", "Integrated digital display."],
+            ["04", "EAR-HOOK FIT", "Secure fit designed for active movement."],
+            ["05", "VOICE CONTROL", "Convenient voice-control functionality."],
+            ["06", "MUSIC + CALLS", "Music playback and hands-free calling."]
         ],
 
         stripe:
             "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01"
-    },
+    }
+
+];
 
 
     /* =====================================================

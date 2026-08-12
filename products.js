@@ -5,26 +5,27 @@
 const volticaProducts = [
 
     {
-    id: "earbuds1",
-    sku: "CJYP266383702BY",
+        id: "earbuds1",
+        sku: "CJYP266383702BY",
 
-    name: "Voltica Q17",
+        name: "Voltica Q17",
 
-    category: "SPORT AUDIO",
+        category: "SPORT AUDIO",
 
-    badge: "NEW",
+        badge: "NEW",
 
-    price: "69.97$",
-    currency: "USD",
+        price: "69.97",
+        currency: "USD",
 
-    image:"assets/images/earbuds1-1.webp",
+        image: "assets/images/earbuds1-1.webp",
 
-    description:
-        "Wireless neckband earbuds designed for movement, workouts and everyday listening. Featuring an ear-hook fit, digital display, 8+ hours of battery life and Bluetooth connectivity up to 10 meters.",
+        description:
+            "Wireless neckband earbuds designed for movement, workouts and everyday listening. Featuring an ear-hook fit, digital display, 8+ hours of battery life and Bluetooth connectivity up to 10 meters.",
 
-    stripe: "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01"
+        stripe: "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01"
     }
 
+];
         
     {
         id: "earbuds-002",

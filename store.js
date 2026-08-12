@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </strong>
 
                     <a
-                        href="${product.stripe}"
+                        href="product-view.html?id=${product.id}"
                         class="product-button">
 
                         VIEW

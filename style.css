@@ -7186,3 +7186,399 @@ a.product-button {
     }
 
 }
+/* =========================================================
+   VOLTICA Q17 — TECHNICAL SPECIFICATIONS
+   ========================================================= */
+
+.q17-specs-section {
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 110px 20px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0),
+            rgba(18,20,22,.35),
+            rgba(0,0,0,0)
+        );
+
+    overflow: hidden;
+}
+
+
+/* HEADER */
+
+.q17-specs-header {
+
+    width: min(1000px,100%);
+
+    margin: 0 auto 45px;
+}
+
+
+.q17-specs-label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 15px;
+
+    border-radius: 11px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 7px;
+
+    letter-spacing: .30em;
+}
+
+
+.q17-specs-label span {
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.8);
+
+    box-shadow:
+        0 0 12px rgba(255,255,255,.45);
+
+    animation:
+        specsPulse 2.5s ease-in-out infinite;
+}
+
+
+@keyframes specsPulse {
+
+    0%,
+    100% {
+        opacity: .35;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+.q17-specs-header h2 {
+
+    margin: 22px 0 0;
+
+    font-size:
+        clamp(40px, 6vw, 70px);
+
+    line-height: .95;
+
+    font-weight: 300;
+
+    letter-spacing: -.045em;
+
+    color:
+        rgba(255,255,255,.90);
+}
+
+
+.q17-specs-header h2 span {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color:
+        rgba(255,255,255,.30);
+}
+
+
+/* =========================================================
+   MAIN GLASS PANEL
+   ========================================================= */
+
+.q17-specs-panel {
+
+    position: relative;
+
+    width: min(1000px,100%);
+
+    margin: 0 auto;
+
+    padding: 0 28px;
+
+    box-sizing: border-box;
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(39,42,45,.72),
+            rgba(13,14,16,.72)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:
+        blur(30px)
+        saturate(120%);
+
+    -webkit-backdrop-filter:
+        blur(30px)
+        saturate(120%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.09),
+        inset 0 -1px 0 rgba(0,0,0,.5),
+        0 35px 80px rgba(0,0,0,.40);
+
+    overflow: hidden;
+}
+
+
+/* MOVING GLASS */
+
+.q17-specs-panel::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -100%;
+
+    left: -70%;
+
+    width: 30%;
+    height: 300%;
+
+    transform: rotate(25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.055),
+            transparent
+        );
+
+    animation:
+        specsSweep 10s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes specsSweep {
+
+    0% {
+        left: -70%;
+    }
+
+    18% {
+        left: 160%;
+    }
+
+    100% {
+        left: 160%;
+    }
+}
+
+
+/* TOP LINE */
+
+.q17-specs-topline {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 22px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    color:
+        rgba(255,255,255,.23);
+
+    font-size: 7px;
+
+    letter-spacing: .28em;
+}
+
+
+/* =========================================================
+   SPEC ROW
+   ========================================================= */
+
+.q17-spec-row {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        55px
+        minmax(180px, 1fr)
+        minmax(150px, .7fr);
+
+    align-items: center;
+
+    min-height: 70px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.065);
+
+    transition:
+        background .3s ease,
+        padding .3s ease;
+}
+
+
+.q17-spec-row:hover {
+
+    background:
+        rgba(255,255,255,.035);
+
+    padding-left: 8px;
+}
+
+
+/* NUMBER */
+
+.q17-spec-number {
+
+    color:
+        rgba(255,255,255,.20);
+
+    font-size: 8px;
+
+    letter-spacing: .12em;
+}
+
+
+/* NAME */
+
+.q17-spec-name {
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 8px;
+
+    letter-spacing: .22em;
+}
+
+
+/* VALUE */
+
+.q17-spec-row strong {
+
+    color:
+        rgba(255,255,255,.82);
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: .02em;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   BOTTOM
+   ========================================================= */
+
+.q17-spec-bottom {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 23px 0;
+
+    color:
+        rgba(255,255,255,.20);
+
+    font-size: 7px;
+
+    letter-spacing: .25em;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .q17-specs-section {
+
+        padding: 80px 15px;
+    }
+
+    .q17-specs-panel {
+
+        padding: 0 18px;
+
+        border-radius: 21px;
+    }
+
+    .q17-spec-row {
+
+        grid-template-columns:
+            35px
+            1fr;
+
+        padding: 18px 0;
+
+        min-height: auto;
+
+        gap: 4px;
+    }
+
+    .q17-spec-row strong {
+
+        grid-column: 2;
+
+        text-align: left;
+
+        margin-top: 4px;
+
+        font-size: 12px;
+    }
+
+    .q17-spec-name {
+
+        font-size: 7px;
+    }
+
+    .q17-spec-bottom {
+
+        flex-direction: column;
+
+        gap: 9px;
+    }
+
+}

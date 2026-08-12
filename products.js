@@ -14,7 +14,7 @@ const volticaProducts = [
 
     badge: "NEW",
 
-    price: "XX.XX",
+    price: "69.97$",
     currency: "USD",
 
     image: "assets/images/earbuds1-1.webp",
@@ -22,7 +22,7 @@ const volticaProducts = [
     description:
         "Wireless neckband earbuds designed for movement, workouts and everyday listening. Featuring an ear-hook fit, digital display, 8+ hours of battery life and Bluetooth connectivity up to 10 meters.",
 
-    stripe: "TON_PAYMENT_LINK"
+    stripe: "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01"
     }
 
         

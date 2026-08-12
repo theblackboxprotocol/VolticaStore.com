@@ -7582,3 +7582,320 @@ a.product-button {
     }
 
 }
+/* =========================================================
+   VOLTICA STORE — MAIN LANDING ENTRY
+   ========================================================= */
+
+.voltica-store-entry {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 32px 20px 22px;
+
+    box-sizing: border-box;
+
+    position: relative;
+
+    z-index: 100;
+}
+
+
+/* =========================================================
+   MAIN STORE BUTTON
+   ========================================================= */
+
+.voltica-store-button {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    min-width: 300px;
+
+    padding: 16px 24px;
+
+    box-sizing: border-box;
+
+    border-radius: 18px;
+
+    text-decoration: none;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.22);
+
+    backdrop-filter:
+        blur(24px)
+        saturate(140%);
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(140%);
+
+    box-shadow:
+
+        inset 0 1px 0
+        rgba(255,255,255,.16),
+
+        inset 0 -1px 0
+        rgba(0,0,0,.35),
+
+        0 20px 50px
+        rgba(0,0,0,.38);
+
+    overflow: hidden;
+
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1),
+        border-color .4s ease,
+        box-shadow .4s ease;
+}
+
+
+/* =========================================================
+   MOVING GLASS REFLECTION
+   ========================================================= */
+
+.voltica-store-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -120%;
+
+    left: -80%;
+
+    width: 35%;
+
+    height: 340%;
+
+    transform: rotate(25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.18),
+            transparent
+        );
+
+    animation:
+        storeGlassSweep 5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes storeGlassSweep {
+
+    0% {
+        left: -80%;
+    }
+
+    25% {
+        left: 160%;
+    }
+
+    100% {
+        left: 160%;
+    }
+}
+
+
+/* =========================================================
+   V LOGO
+   ========================================================= */
+
+.store-button-logo {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 48px;
+
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.16),
+            rgba(255,255,255,.045)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 0 25px rgba(255,255,255,.04);
+
+    font-size: 21px;
+
+    font-weight: 300;
+
+    letter-spacing: -.08em;
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.store-button-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.store-button-content small {
+
+    font-size: 7px;
+
+    letter-spacing: .35em;
+
+    color:
+        rgba(255,255,255,.35);
+}
+
+
+.store-button-content strong {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: .20em;
+
+    color:
+        rgba(255,255,255,.90);
+}
+
+
+/* =========================================================
+   SUBTLE PULSE
+   ========================================================= */
+
+.voltica-store-button {
+
+    animation:
+        storeButtonPulse 3.5s ease-in-out infinite;
+}
+
+
+@keyframes storeButtonPulse {
+
+    0%,
+    100% {
+
+        box-shadow:
+
+            inset 0 1px 0
+            rgba(255,255,255,.16),
+
+            0 20px 50px
+            rgba(0,0,0,.38),
+
+            0 0 0
+            rgba(255,255,255,0);
+    }
+
+    50% {
+
+        box-shadow:
+
+            inset 0 1px 0
+            rgba(255,255,255,.20),
+
+            0 22px 55px
+            rgba(0,0,0,.42),
+
+            0 0 28px
+            rgba(255,255,255,.055);
+    }
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.voltica-store-button:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.015);
+
+    border-color:
+        rgba(255,255,255,.45);
+
+    box-shadow:
+
+        inset 0 1px 0
+        rgba(255,255,255,.22),
+
+        0 28px 65px
+        rgba(0,0,0,.48),
+
+        0 0 40px
+        rgba(255,255,255,.08);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .voltica-store-entry {
+
+        padding:
+            22px 15px 15px;
+    }
+
+    .voltica-store-button {
+
+        width: 100%;
+
+        min-width: 0;
+
+        max-width: 390px;
+    }
+
+}

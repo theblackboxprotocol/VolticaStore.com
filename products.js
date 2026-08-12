@@ -17,7 +17,7 @@ const volticaProducts = [
         price: "69.97",
         currency: "USD",
 
-   image: "/assets/images/earbuds1-1.webp",
+   image: "/assets/images/earbuds1-2.jpg",
 
         description:
             "Wireless neckband earbuds designed for movement, workouts and everyday listening. Featuring an ear-hook fit, digital display, 8+ hours of battery life and Bluetooth connectivity up to 10 meters.",

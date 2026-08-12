@@ -3280,3 +3280,240 @@ img {
 .dynamic-thumb:hover img {
     opacity: 1 !important;
 }
+/* =========================================================
+   VOLTICA PRODUCT VIEW — GALLERY
+   ========================================================= */
+
+.dynamic-gallery {
+    width: 100%;
+    max-width: 760px;
+}
+
+.dynamic-main-image {
+    position: relative;
+    width: 100%;
+    height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.10),
+            rgba(255,255,255,0.025)
+        );
+
+    border: 1px solid rgba(255,255,255,0.14);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.10),
+        0 30px 80px rgba(0,0,0,0.45);
+}
+
+.dynamic-main-image > img {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block !important;
+
+    object-fit: contain !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    position: relative !important;
+    z-index: 2 !important;
+
+    transition: opacity .18s ease;
+}
+
+
+/* =========================
+   THUMBNAILS
+   ========================= */
+
+.dynamic-thumbnails {
+    display: flex !important;
+    align-items: center !important;
+
+    width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    margin-top: 14px !important;
+    padding: 10px !important;
+
+    gap: 10px !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    border-radius: 20px !important;
+
+    background: rgba(10,10,14,0.72) !important;
+
+    border: 1px solid rgba(255,255,255,0.14) !important;
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    scrollbar-width: none;
+}
+
+.dynamic-thumbnails::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================
+   THUMBNAIL
+   ========================= */
+
+.dynamic-thumbnails .dynamic-thumb {
+
+    position: relative !important;
+
+    display: block !important;
+
+    flex: 0 0 76px !important;
+
+    width: 76px !important;
+    min-width: 76px !important;
+
+    height: 76px !important;
+    min-height: 76px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    overflow: hidden !important;
+
+    cursor: pointer;
+
+    border-radius: 13px !important;
+
+    background: rgba(255,255,255,0.06) !important;
+
+    border: 1px solid rgba(255,255,255,0.16) !important;
+
+    box-sizing: border-box !important;
+
+    appearance: none !important;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.dynamic-thumbnails .dynamic-thumb img {
+
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-width: 100% !important;
+    min-height: 100% !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+
+    opacity: 0.72 !important;
+    visibility: visible !important;
+
+    z-index: 1 !important;
+}
+
+
+.dynamic-thumbnails .dynamic-thumb span {
+
+    position: absolute !important;
+
+    right: 5px !important;
+    bottom: 4px !important;
+
+    z-index: 5 !important;
+
+    padding: 3px 5px !important;
+
+    border-radius: 5px !important;
+
+    background: rgba(0,0,0,0.72) !important;
+
+    color: #fff !important;
+
+    font-size: 8px !important;
+
+    line-height: 1 !important;
+
+    pointer-events: none !important;
+}
+
+
+/* ACTIVE */
+
+.dynamic-thumbnails .dynamic-thumb.active {
+
+    border-color: rgba(255,255,255,0.85) !important;
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.18),
+        0 0 25px rgba(255,255,255,0.12);
+
+    transform: translateY(-2px);
+}
+
+.dynamic-thumbnails .dynamic-thumb.active img {
+    opacity: 1 !important;
+}
+
+
+/* HOVER */
+
+.dynamic-thumbnails .dynamic-thumb:hover {
+
+    transform: translateY(-4px) scale(1.03);
+
+    border-color: rgba(255,255,255,0.5) !important;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.45);
+}
+
+.dynamic-thumbnails .dynamic-thumb:hover img {
+    opacity: 1 !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .dynamic-gallery {
+        max-width: 100%;
+    }
+
+    .dynamic-main-image {
+        height: 390px;
+    }
+
+    .dynamic-thumbnails .dynamic-thumb {
+        flex-basis: 64px !important;
+        width: 64px !important;
+        min-width: 64px !important;
+
+        height: 64px !important;
+        min-height: 64px !important;
+    }
+}

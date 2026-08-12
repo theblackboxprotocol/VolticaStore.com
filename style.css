@@ -3105,3 +3105,178 @@ img {
     }
 
 }
+/* =====================================================
+   VOLTICA PRODUCT — THUMBNAIL GALLERY OVERRIDE
+   ===================================================== */
+
+.dynamic-gallery {
+    width: 100%;
+}
+
+.dynamic-main-image {
+    position: relative;
+    width: 100%;
+    height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    border-radius: 28px;
+
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.dynamic-main-image > img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: contain !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    position: relative !important;
+    z-index: 2 !important;
+
+    transition: opacity .2s ease;
+}
+
+
+/* THUMBNAIL CONTAINER */
+
+.dynamic-thumbnails {
+    display: flex !important;
+
+    width: 100% !important;
+
+    margin-top: 14px !important;
+    padding: 10px !important;
+
+    gap: 10px !important;
+
+    overflow-x: auto !important;
+
+    background: rgba(255,255,255,0.045) !important;
+
+    border: 1px solid rgba(255,255,255,0.12) !important;
+
+    border-radius: 20px !important;
+
+    box-sizing: border-box !important;
+
+    scrollbar-width: none;
+}
+
+.dynamic-thumbnails::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* EACH THUMBNAIL */
+
+.dynamic-thumb {
+    position: relative !important;
+
+    flex: 0 0 78px !important;
+
+    width: 78px !important;
+    height: 78px !important;
+
+    min-width: 78px !important;
+    min-height: 78px !important;
+
+    padding: 0 !important;
+
+    display: block !important;
+
+    overflow: hidden !important;
+
+    cursor: pointer;
+
+    border-radius: 14px !important;
+
+    background: rgba(255,255,255,0.06) !important;
+
+    border: 1px solid rgba(255,255,255,0.15) !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* THUMBNAIL IMAGE */
+
+.dynamic-thumb img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-width: 100% !important;
+    min-height: 100% !important;
+
+    object-fit: cover !important;
+
+    opacity: .65 !important;
+
+    visibility: visible !important;
+
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+
+/* NUMBER */
+
+.dynamic-thumb span {
+    position: absolute !important;
+
+    right: 5px !important;
+    bottom: 4px !important;
+
+    z-index: 5 !important;
+
+    padding: 2px 4px;
+
+    border-radius: 4px;
+
+    background: rgba(0,0,0,.65);
+
+    color: white;
+
+    font-size: 8px;
+
+    pointer-events: none;
+}
+
+
+/* ACTIVE */
+
+.dynamic-thumb.active {
+    border-color: rgba(255,255,255,.8) !important;
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.2),
+        0 0 25px rgba(255,255,255,.12);
+}
+
+.dynamic-thumb.active img {
+    opacity: 1 !important;
+}
+
+
+/* HOVER */
+
+.dynamic-thumb:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(255,255,255,.45) !important;
+}
+
+.dynamic-thumb:hover img {
+    opacity: 1 !important;
+}

@@ -3767,3 +3767,292 @@ img {
         border-radius: 13px;
     }
 }
+/* =========================================================
+   VOLTICA HEADER — STORE PORTAL
+   ========================================================= */
+
+.store-header-button {
+
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+
+    min-width: 175px;
+    height: 58px;
+
+    padding: 7px 15px;
+
+    color: #fff;
+    text-decoration: none;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.13),
+            rgba(255,255,255,0.035)
+        );
+
+    border: 1px solid rgba(255,255,255,0.20);
+
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.16),
+        0 10px 35px rgba(0,0,0,0.35);
+
+    overflow: hidden;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* V LOGO */
+
+.store-logo-mark {
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -.05em;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.22),
+            rgba(255,255,255,.045)
+        );
+
+    border: 1px solid rgba(255,255,255,.20);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.20),
+        0 0 20px rgba(255,255,255,.05);
+}
+
+
+/* TEXT */
+
+.store-header-text {
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    line-height: 1;
+}
+
+.store-header-text small {
+
+    font-size: 8px;
+
+    letter-spacing: .28em;
+
+    opacity: .48;
+
+    margin-bottom: 5px;
+}
+
+.store-header-text strong {
+
+    font-size: 14px;
+
+    letter-spacing: .18em;
+
+    font-weight: 700;
+}
+
+
+/* ARROW */
+
+.store-header-arrow {
+
+    margin-left: auto;
+
+    font-size: 19px;
+
+    opacity: .55;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+}
+
+
+/* =========================================================
+   PREMIUM STORE PULSE
+   ========================================================= */
+
+.store-header-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -80%;
+    left: -100%;
+
+    width: 55%;
+    height: 260%;
+
+    transform: rotate(25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.18),
+            transparent
+        );
+
+    animation:
+        storeGlassSweep 4.5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes storeGlassSweep {
+
+    0% {
+        left: -100%;
+    }
+
+    35% {
+        left: 150%;
+    }
+
+    100% {
+        left: 150%;
+    }
+
+}
+
+
+/* SOFT ATTENTION GLOW */
+
+.store-header-button::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: inherit;
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,.16);
+
+    animation:
+        storeGlow 3.5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes storeGlow {
+
+    0%,
+    70%,
+    100% {
+        opacity: 0;
+    }
+
+    78% {
+        opacity: .8;
+    }
+
+    86% {
+        opacity: .15;
+    }
+
+}
+
+
+/* HOVER */
+
+.store-header-button:hover {
+
+    transform:
+        translateY(-2px)
+        scale(1.025);
+
+    border-color:
+        rgba(255,255,255,.42);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.20),
+        0 16px 45px rgba(0,0,0,.45),
+        0 0 35px rgba(255,255,255,.08);
+}
+
+
+.store-header-button:hover
+.store-header-arrow {
+
+    opacity: 1;
+
+    transform:
+        translateX(5px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .store-header-button {
+
+        min-width: 145px;
+
+        height: 50px;
+
+        gap: 8px;
+
+        padding: 6px 11px;
+
+        border-radius: 15px;
+    }
+
+    .store-logo-mark {
+
+        width: 32px;
+        height: 32px;
+
+        border-radius: 9px;
+    }
+
+    .store-header-text small {
+        font-size: 7px;
+    }
+
+    .store-header-text strong {
+        font-size: 11px;
+    }
+
+    .store-header-arrow {
+        font-size: 16px;
+    }
+
+}

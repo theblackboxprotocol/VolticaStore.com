@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const productId = params.get("id");
 
     const product =
-        volticaProducts.find(
-            item => item.id === productId
-        );
+    window.volticaProducts?.find(
+        item => item.id === productId
+    );
 
     const container =
         document.getElementById("productView");

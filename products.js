@@ -4,6 +4,10 @@
 
 const volticaProducts = [
 
+    /* =====================================================
+       PRODUCT 01 — VOLTICA Q17
+       ===================================================== */
+
     {
         id: "earbuds1",
         sku: "CJYP266383702BY",
@@ -43,25 +47,51 @@ const volticaProducts = [
         ],
 
         features: [
-            ["01", "8+ HOURS", "Extended battery life for workouts, commuting and everyday listening."],
-            ["02", "10 METERS", "Wireless transmission distance of up to 10 meters."],
-            ["03", "DIGITAL DISPLAY", "Integrated digital display for essential information."],
-            ["04", "EAR-HOOK FIT", "Secure wearing style designed for active movement."],
-            ["05", "VOICE CONTROL", "Convenient voice-control functionality."],
-            ["06", "MUSIC + CALLS", "Designed for music playback and hands-free calling."]
+            [
+                "01",
+                "8+ HOURS",
+                "Extended battery life for workouts, commuting and everyday listening."
+            ],
+            [
+                "02",
+                "10 METERS",
+                "Wireless transmission distance of up to 10 meters."
+            ],
+            [
+                "03",
+                "DIGITAL DISPLAY",
+                "Integrated digital display for essential information."
+            ],
+            [
+                "04",
+                "EAR-HOOK FIT",
+                "Secure wearing style designed for active movement."
+            ],
+            [
+                "05",
+                "VOICE CONTROL",
+                "Convenient voice-control functionality."
+            ],
+            [
+                "06",
+                "MUSIC + CALLS",
+                "Designed for music playback and hands-free calling."
+            ]
         ],
 
-        stripe: "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01"
-    }
+        stripe:
+            "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01"
+    },
 
-];
-    
-    }
 
-];
-        
+    /* =====================================================
+       PRODUCT 02 — VOLTICA AIR PRO
+       ===================================================== */
+
     {
         id: "earbuds-002",
+
+        sku: "VOL-AIR-PRO",
 
         name: "Voltica Air Pro",
 
@@ -73,18 +103,49 @@ const volticaProducts = [
 
         currency: "USD",
 
-        image: "assets/images/earbuds-02.jpg",
+        images: [
+            "assets/images/earbuds-02.jpg"
+        ],
 
         description:
             "Enhanced wireless audio, immersive bass and intelligent noise reduction.",
 
-        stripe:
-            "#"
+        specifications: [
+            ["Category", "Wireless Earbuds"],
+            ["Audio", "Enhanced Wireless Audio"],
+            ["Feature", "Intelligent Noise Reduction"]
+        ],
+
+        features: [
+            [
+                "01",
+                "WIRELESS AUDIO",
+                "Freedom to listen without cables."
+            ],
+            [
+                "02",
+                "IMMERSIVE BASS",
+                "Designed for a richer low-frequency experience."
+            ],
+            [
+                "03",
+                "NOISE REDUCTION",
+                "Designed to reduce unwanted environmental noise."
+            ]
+        ],
+
+        stripe: "#"
     },
 
 
+    /* =====================================================
+       PRODUCT 03 — VOLTICA ELITE BUDS
+       ===================================================== */
+
     {
         id: "earbuds-003",
+
+        sku: "VOL-ELITE-BUDS",
 
         name: "Voltica Elite Buds",
 
@@ -96,13 +157,38 @@ const volticaProducts = [
 
         currency: "USD",
 
-        image: "assets/images/earbuds-03.jpg",
+        images: [
+            "assets/images/earbuds-03.jpg"
+        ],
 
         description:
             "Premium wireless earbuds created for listeners who expect more from every detail.",
 
-        stripe:
-            "#"
+        specifications: [
+            ["Category", "Premium Wireless Earbuds"],
+            ["Design", "Compact Wireless"],
+            ["Positioning", "Premium Audio"]
+        ],
+
+        features: [
+            [
+                "01",
+                "PREMIUM AUDIO",
+                "Designed for detailed everyday listening."
+            ],
+            [
+                "02",
+                "WIRELESS DESIGN",
+                "Clean, cable-free listening."
+            ],
+            [
+                "03",
+                "VOLTiCA SELECTED",
+                "Part of the Voltica Store curated collection."
+            ]
+        ],
+
+        stripe: "#"
     }
 
 ];

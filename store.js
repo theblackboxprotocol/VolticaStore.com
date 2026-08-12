@@ -1,5 +1,4 @@
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     const grid = document.getElementById("product-grid");
 
@@ -9,35 +8,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
     grid.innerHTML = "";
 
-    volticaProducts.forEach(product => {
+    volticaProducts.forEach(function (product) {
 
-        const card = document.createElement("article");
+        const images = product.images || [product.image];
 
-        card.className = "store-product";
+        const article = document.createElement("article");
 
-        card.innerHTML = `
+        article.className = "store-product";
+
+        article.innerHTML = `
+
             <div class="product-image">
 
                 <span class="product-badge">
                     ${product.badge}
                 </span>
 
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                    style="
-                        display:block;
-                        width:100%;
-                        height:300px;
-                        object-fit:contain;
-                        position:relative;
-                        z-index:999;
-                        opacity:1;
-                        visibility:visible;
-                    "
-                >
+                <div class="product-main-photo">
+
+                    <img
+                        src="${images[0]}"
+                        alt="${product.name}"
+                        class="main-product-img">
+
+                    <div class="image-scan"></div>
+
+                </div>
+
+                <div class="product-thumbnails">
+
+                    ${images.map((image, index) => `
+
+                        <button
+                            class="product-thumb ${index === 0 ? "active" : ""}"
+                            data-image="${image}"
+                            aria-label="View image ${index + 1}">
+
+                            <img
+                                src="${image}"
+                                alt="${product.name} view ${index + 1}">
+
+                            <span>
+                                ${String(index + 1).padStart(2, "0")}
+                            </span>
+
+                        </button>
+
+                    `).join("")}
+
+                </div>
 
             </div>
+
 
             <div class="product-info">
 
@@ -64,16 +86,63 @@ document.addEventListener("DOMContentLoaded", () => {
                         href="${product.stripe}"
                         class="product-button">
 
-                        VIEW <span>→</span>
+                        VIEW
+
+                        <span>→</span>
 
                     </a>
 
                 </div>
 
             </div>
+
         `;
 
-        grid.appendChild(card);
+        grid.appendChild(article);
+
+
+        /* =========================
+           PRODUCT GALLERY
+        ========================= */
+
+        const mainImage =
+            article.querySelector(".main-product-img");
+
+        const thumbnails =
+            article.querySelectorAll(".product-thumb");
+
+
+        thumbnails.forEach(function (thumbnail) {
+
+            thumbnail.addEventListener("click", function () {
+
+                const newImage =
+                    thumbnail.dataset.image;
+
+                if (mainImage.src.endsWith(newImage)) {
+                    return;
+                }
+
+                mainImage.style.opacity = "0";
+
+                setTimeout(function () {
+
+                    mainImage.src = newImage;
+
+                    mainImage.style.opacity = "1";
+
+                }, 160);
+
+
+                thumbnails.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+
+                thumbnail.classList.add("active");
+
+            });
+
+        });
 
     });
 

@@ -2661,3 +2661,6 @@ img {
 
     filter: none !important;
 }
+.store-product .product-image {
+    overflow: visible !important;
+}

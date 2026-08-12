@@ -138,7 +138,7 @@ window.volticaProducts = [
         ]
     ],
 
-    stripe: "https://buy.stripe.com/eVqeVdacX8hz0WX6eteAg00"
+    stripe: "https://buy.stripe.com/7sY28s5tZ78bbyo9SG2Ji02"
         }
 
     /* =====================================================

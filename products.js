@@ -54,8 +54,6 @@ window.volticaProducts = [
             "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01"
     }
 
-];
-
 
     /* =====================================================
        PRODUCT 02 — VOLTICA AIR PRO

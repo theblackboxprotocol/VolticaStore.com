@@ -2646,3 +2646,18 @@ img {
     }
 
    }
+/* IMAGE DEBUG */
+.store-product .product-image img {
+    display: block !important;
+    width: 82% !important;
+    height: 82% !important;
+    object-fit: contain !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    position: relative !important;
+    z-index: 20 !important;
+
+    filter: none !important;
+}

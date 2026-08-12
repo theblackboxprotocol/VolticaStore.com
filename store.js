@@ -108,8 +108,33 @@ document.addEventListener("DOMContentLoaded", function () {
         const mainImage =
             article.querySelector(".main-product-img");
 
-        const thumbnails =
-            article.querySelectorAll(".product-thumb");
+        function changeProductImage(button, image) {
+
+    const mainImage =
+        document.getElementById(
+            "mainProductImage"
+        );
+
+    mainImage.style.opacity = "0";
+
+    setTimeout(function () {
+
+        mainImage.src = image;
+
+        mainImage.style.opacity = "1";
+
+    }, 150);
+
+    document
+        .querySelectorAll(".voltica-thumb")
+        .forEach(function (item) {
+
+            item.classList.remove("active");
+
+        });
+
+    button.classList.add("active");
+        }
 
 
         thumbnails.forEach(function (thumbnail) {

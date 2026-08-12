@@ -24,7 +24,6 @@ window.volticaProducts = [
             "assets/images/earbuds1-6.jpg",
             "assets/images/earbuds1-7.jpg",
             "assets/images/earbuds1-8.jpg",
-            "assets/images/earbuds1-9.jpg"
         ],
 
         description:

@@ -2664,3 +2664,151 @@ img {
 .store-product .product-image {
     overflow: visible !important;
 }
+.store-menu {
+    position: relative;
+    z-index: 1000;
+}
+
+.store-menu-button {
+    appearance: none;
+    border: 1px solid rgba(255,255,255,.15);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.035)
+        );
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    color: white;
+
+    padding: 13px 20px;
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    letter-spacing: .16em;
+    font-size: 11px;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.store-menu-button:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(255,255,255,.35);
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.35),
+        inset 0 0 20px rgba(255,255,255,.05);
+}
+
+
+.store-dropdown {
+
+    position: absolute;
+
+    top: calc(100% + 12px);
+    right: 0;
+
+    width: 245px;
+
+    padding: 10px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(30,30,35,.78),
+            rgba(8,8,12,.68)
+        );
+
+    border: 1px solid rgba(255,255,255,.14);
+
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55),
+        inset 0 1px rgba(255,255,255,.08);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(-12px)
+        scale(.96);
+
+    transform-origin: top right;
+
+    transition:
+        opacity .25s ease,
+        transform .3s cubic-bezier(.2,.8,.2,1),
+        visibility .3s;
+}
+
+.store-menu:hover .store-dropdown,
+.store-menu:focus-within .store-dropdown {
+
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+.store-dropdown a {
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 14px 15px;
+
+    border-radius: 14px;
+
+    color: rgba(255,255,255,.78);
+
+    text-decoration: none;
+
+    font-size: 13px;
+    letter-spacing: .05em;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+}
+
+.store-dropdown a span {
+
+    width: 25px;
+
+    color: rgba(255,255,255,.28);
+
+    font-size: 9px;
+    letter-spacing: .12em;
+}
+
+.store-dropdown a:hover {
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.11),
+            rgba(255,255,255,.035)
+        );
+
+    transform: translateX(4px);
+}

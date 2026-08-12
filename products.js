@@ -55,7 +55,7 @@ const volticaProducts = [
     }
 
 ];
-    stripe: "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01"
+    
     }
 
 ];

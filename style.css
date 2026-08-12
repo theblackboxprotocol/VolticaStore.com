@@ -2812,3 +2812,296 @@ img {
 
     transform: translateX(4px);
 }
+/* =========================================================
+   VOLTICA — PRODUCT GLASS GALLERY
+   ========================================================= */
+
+.product-image {
+    position: relative;
+    min-height: 430px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 18px;
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.025)
+        );
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.10),
+        0 25px 70px rgba(0,0,0,.35);
+}
+
+
+/* MAIN IMAGE */
+
+.product-main-photo {
+    position: relative;
+
+    flex: 1;
+
+    min-height: 340px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+}
+
+
+.main-product-img {
+
+    width: 100%;
+    height: 340px;
+
+    object-fit: contain;
+
+    display: block;
+
+    opacity: 1;
+
+    transition:
+        opacity .16s ease,
+        transform .5s cubic-bezier(.2,.8,.2,1);
+
+    filter:
+        drop-shadow(0 25px 35px rgba(0,0,0,.55));
+}
+
+
+.product-main-photo:hover
+.main-product-img {
+
+    transform: scale(1.055);
+}
+
+
+/* SCANNING TECH EFFECT */
+
+.image-scan {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(255,255,255,.08) 50%,
+            transparent 100%
+        );
+
+    transform: translateY(-100%);
+
+    animation: volticaScan 5s ease-in-out infinite;
+
+    opacity: .35;
+}
+
+
+@keyframes volticaScan {
+
+    0% {
+        transform: translateY(-100%);
+    }
+
+    45%,
+    100% {
+        transform: translateY(100%);
+    }
+
+}
+
+
+/* THUMBNAIL BAR */
+
+.product-thumbnails {
+
+    display: flex;
+
+    gap: 9px;
+
+    padding: 10px;
+
+    margin-top: 10px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(0,0,0,.28);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+
+.product-thumbnails::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* INDIVIDUAL THUMBNAIL */
+
+.product-thumb {
+
+    position: relative;
+
+    flex: 0 0 68px;
+
+    width: 68px;
+    height: 68px;
+
+    padding: 0;
+
+    border-radius: 13px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.025)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.10);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.product-thumb img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    opacity: .65;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+}
+
+
+.product-thumb span {
+
+    position: absolute;
+
+    bottom: 4px;
+    right: 5px;
+
+    font-size: 7px;
+
+    letter-spacing: .12em;
+
+    color: rgba(255,255,255,.65);
+
+    text-shadow:
+        0 1px 4px rgba(0,0,0,.8);
+}
+
+
+.product-thumb:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.04);
+
+    border-color:
+        rgba(255,255,255,.30);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.45),
+        0 0 20px rgba(255,255,255,.06);
+}
+
+
+.product-thumb:hover img {
+
+    opacity: 1;
+
+    transform: scale(1.08);
+}
+
+
+/* ACTIVE THUMBNAIL */
+
+.product-thumb.active {
+
+    border-color:
+        rgba(255,255,255,.65);
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.15),
+        0 0 25px rgba(255,255,255,.12);
+}
+
+
+.product-thumb.active img {
+
+    opacity: 1;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .product-image {
+        min-height: 390px;
+        padding: 12px;
+    }
+
+    .product-main-photo {
+        min-height: 300px;
+    }
+
+    .main-product-img {
+        height: 300px;
+    }
+
+    .product-thumb {
+        flex-basis: 58px;
+        width: 58px;
+        height: 58px;
+    }
+
+}

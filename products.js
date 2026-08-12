@@ -70,8 +70,8 @@ window.volticaProducts = [
     category: "WIRELESS AUDIO",
     badge: "NEW",
 
-    price: "69.97",
-    currency: "CAD",
+    price: "59.97",
+    currency: "USD",
 
     images: [
         "assets/images/earbuds2-1.webp",
@@ -138,7 +138,7 @@ window.volticaProducts = [
         ]
     ],
 
-    stripe: "TON_STRIPE_LINK_ICI"
+    stripe: "https://buy.stripe.com/eVqeVdacX8hz0WX6eteAg00"
         }
 
     /* =====================================================

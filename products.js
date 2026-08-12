@@ -62,54 +62,84 @@ window.volticaProducts = [
        ===================================================== */
 
     {
-        id: "earbuds-002",
+        {
+    id: "earbuds2",
+    sku: "CJEJ263111801AZ",
 
-        sku: "VOL-AIR-PRO",
+    name: "Voltica TWS Pro",
+    category: "WIRELESS AUDIO",
+    badge: "NEW",
 
-        name: "Voltica Air Pro",
+    price: "69.97",
+    currency: "CAD",
 
-        category: "EARBUDS",
+    images: [
+        "assets/images/earbuds2-1.webp",
+        "assets/images/earbuds2-2.webp",
+        "assets/images/earbuds2-3.webp",
+        "assets/images/earbuds2-4.webp",
+        "assets/images/earbuds2-5.webp",
+        "assets/images/earbuds2-6.webp",
+        "assets/images/earbuds2-7.webp",
+        "assets/images/earbuds2-8.webp"
+    ],
 
-        badge: "FEATURED",
+    description:
+        "True wireless earbuds engineered for secure everyday listening. Featuring Bluetooth 5.0 connectivity, touch controls, CVC noise cancellation, magnetic charging and an IPX4 water-resistant design.",
 
-        price: "79.97",
+    specifications: [
+        ["PRODUCT TYPE", "Wireless TWS Earbuds"],
+        ["BLUETOOTH", "Wireless 5.0"],
+        ["TRANSMISSION RANGE", "Up to 10 m / 32.8 ft"],
+        ["FREQUENCY", "2.4 GHz – 2.48 GHz"],
+        ["TALK TIME", "Up to 4 hours"],
+        ["MUSIC PLAY TIME", "Up to 4 hours"],
+        ["EARBUD BATTERY", "65 mAh each"],
+        ["CHARGING DOCK", "500 mAh"],
+        ["DOCK CHARGING TIME", "Approx. 2.5 hours"],
+        ["WATER RESISTANCE", "IPX4"],
+        ["NOISE CANCELLATION", "CVC"],
+        ["MATERIAL", "ABS"],
+        ["EARBUD WEIGHT", "6 g each"],
+        ["DOCK WEIGHT", "48 g"],
+        ["CHARGING", "Micro USB"]
+    ],
 
-        currency: "USD",
-
-        images: [
-            "assets/images/earbuds-02.jpg"
+    features: [
+        [
+            "01",
+            "WIRELESS 5.0",
+            "Stable wireless connectivity with transmission up to 10 meters."
         ],
-
-        description:
-            "Enhanced wireless audio, immersive bass and intelligent noise reduction.",
-
-        specifications: [
-            ["Category", "Wireless Earbuds"],
-            ["Audio", "Enhanced Wireless Audio"],
-            ["Feature", "Intelligent Noise Reduction"]
+        [
+            "02",
+            "TOUCH CONTROL",
+            "Control music, calls, pairing and voice assistance directly from the earbuds."
         ],
-
-        features: [
-            [
-                "01",
-                "WIRELESS AUDIO",
-                "Freedom to listen without cables."
-            ],
-            [
-                "02",
-                "IMMERSIVE BASS",
-                "Designed for a richer low-frequency experience."
-            ],
-            [
-                "03",
-                "NOISE REDUCTION",
-                "Designed to reduce unwanted environmental noise."
-            ]
+        [
+            "03",
+            "CVC MICROPHONE",
+            "Noise-reduction technology designed for clearer hands-free calls."
         ],
+        [
+            "04",
+            "MAGNETIC DOCK",
+            "Magnetic charging keeps the earbuds securely positioned inside the case."
+        ],
+        [
+            "05",
+            "500mAh CASE",
+            "Rechargeable charging dock provides multiple additional earbud charges."
+        ],
+        [
+            "06",
+            "IPX4",
+            "Water-resistant construction designed for everyday use and active environments."
+        ]
+    ],
 
-        stripe: "#"
-    },
-
+    stripe: "TON_STRIPE_LINK_ICI"
+        }
 
     /* =====================================================
        PRODUCT 03 — VOLTICA ELITE BUDS

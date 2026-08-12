@@ -1,21 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <a href="store.html" class="store-header-button">
 
-    <span class="store-logo-mark">V</span>
-
-    <span class="store-header-text">
-        <small>VOLTICA</small>
-        <strong>STORE</strong>
-    </span>
-
-    <span class="store-header-arrow">→</span>
-
-    </a>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Voltica Store</title>
 
@@ -25,6 +17,10 @@
     >
 
     <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
 
         * {
             box-sizing: border-box;
@@ -42,32 +38,283 @@
             font-family: Arial, Helvetica, sans-serif;
             overflow-x: hidden;
         }
-<body>
-        <div class="voltica-store-entry">
-    <a href="store.html" class="voltica-store-button">
-        <span class="store-logo">V</span>
 
-        <span class="store-text">
-            <small>EXPLORE</small>
-            <strong>VOLTICA STORE</strong>
-        </span>
-    </a>
-</div>
-        /* =========================
+
+        /* =====================================================
+           VOLTICA STORE — TOP ENTRY
+        ===================================================== */
+
+        .store-entry {
+
+            width: 100%;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 35px 20px 30px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255,255,255,0.055),
+                    transparent 55%
+                ),
+                #000;
+
+            position: relative;
+
+            z-index: 50;
+        }
+
+
+        .store-header-button {
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 17px;
+
+            width: min(390px, 92vw);
+
+            min-height: 78px;
+
+            padding: 13px 22px;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.13),
+                    rgba(255,255,255,0.035)
+                );
+
+            border:
+                1px solid rgba(255,255,255,0.24);
+
+            border-radius: 20px;
+
+            backdrop-filter:
+                blur(25px)
+                saturate(140%);
+
+            -webkit-backdrop-filter:
+                blur(25px)
+                saturate(140%);
+
+            box-shadow:
+
+                inset 0 1px 0
+                rgba(255,255,255,0.18),
+
+                inset 0 -1px 0
+                rgba(0,0,0,0.35),
+
+                0 20px 60px
+                rgba(0,0,0,0.55);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+
+        /* moving glass reflection */
+
+        .store-header-button::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: -120%;
+            left: -80%;
+
+            width: 35%;
+            height: 340%;
+
+            transform: rotate(25deg);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.18),
+                    transparent
+                );
+
+            animation:
+                storeSweep 5s ease-in-out infinite;
+
+            pointer-events: none;
+        }
+
+
+        @keyframes storeSweep {
+
+            0% {
+                left: -80%;
+            }
+
+            25% {
+                left: 160%;
+            }
+
+            100% {
+                left: 160%;
+            }
+        }
+
+
+        .store-logo-mark {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 51px;
+            height: 51px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.16),
+                    rgba(255,255,255,0.035)
+                );
+
+            border:
+                1px solid rgba(255,255,255,0.20);
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255,255,255,0.16),
+
+                0 0 25px
+                rgba(255,255,255,0.04);
+
+            font-size: 23px;
+
+            font-weight: 300;
+        }
+
+
+        .store-header-text {
+
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: flex-start;
+
+            gap: 5px;
+        }
+
+
+        .store-header-text small {
+
+            font-size: 7px;
+
+            letter-spacing: 0.35em;
+
+            color:
+                rgba(255,255,255,0.38);
+        }
+
+
+        .store-header-text strong {
+
+            font-size: 16px;
+
+            letter-spacing: 0.22em;
+
+            font-weight: 600;
+
+            color:
+                rgba(255,255,255,0.94);
+        }
+
+
+        .store-header-arrow {
+
+            position: relative;
+
+            z-index: 2;
+
+            display: none;
+        }
+
+
+        .store-header-button:hover {
+
+            transform:
+                translateY(-5px)
+                scale(1.015);
+
+            border-color:
+                rgba(255,255,255,0.48);
+
+            box-shadow:
+
+                inset 0 1px 0
+                rgba(255,255,255,0.22),
+
+                0 30px 70px
+                rgba(0,0,0,0.65),
+
+                0 0 40px
+                rgba(255,255,255,0.08);
+        }
+
+
+        /* =====================================================
            HERO
-        ========================= */
+        ===================================================== */
 
         .hero {
+
             position: relative;
+
             width: 100%;
+
             height: 100svh;
+
             min-height: 650px;
+
             overflow: hidden;
+
             background: #000;
         }
 
+
         .hero-video {
+
             position: absolute;
+
             inset: 0;
 
             width: 100%;
@@ -76,8 +323,11 @@
             object-fit: cover;
         }
 
+
         .hero-overlay {
+
             position: absolute;
+
             inset: 0;
 
             background:
@@ -89,64 +339,104 @@
                 );
         }
 
+
         .hero-content {
+
             position: absolute;
+
             z-index: 5;
 
             left: 50%;
             bottom: 8%;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
-            width: min(900px, 92%);
+            width:
+                min(900px, 92%);
 
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
 
             text-align: center;
         }
 
+
         .logo {
-            width: min(420px, 72vw);
+
+            width:
+                min(420px, 72vw);
+
             height: auto;
 
             margin-bottom: 22px;
 
             filter:
-                drop-shadow(0 0 20px rgba(255,255,255,0.12))
-                drop-shadow(0 20px 45px rgba(0,0,0,0.8));
+                drop-shadow(
+                    0 0 20px
+                    rgba(255,255,255,0.12)
+                )
+                drop-shadow(
+                    0 20px 45px
+                    rgba(0,0,0,0.8)
+                );
         }
 
+
         .tagline {
+
             font-size: 12px;
+
             letter-spacing: 7px;
+
             text-transform: uppercase;
 
-            color: rgba(255,255,255,0.78);
+            color:
+                rgba(255,255,255,0.78);
 
             margin-bottom: 30px;
         }
 
+
+        /* =====================================================
+           PREORDER BUTTON
+        ===================================================== */
+
         .preorder {
+
             display: inline-flex;
+
             align-items: center;
+
             justify-content: center;
 
-            padding: 17px 34px;
+            padding:
+                17px 34px;
 
-            border: 1px solid rgba(255,255,255,0.55);
+            border:
+                1px solid
+                rgba(255,255,255,0.55);
+
             border-radius: 4px;
 
-            background: rgba(255,255,255,0.08);
+            background:
+                rgba(255,255,255,0.08);
 
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
 
             color: white;
+
             text-decoration: none;
 
             font-size: 12px;
+
             font-weight: 600;
 
             letter-spacing: 3px;
@@ -157,49 +447,66 @@
                 box-shadow 0.3s ease;
         }
 
-        .preorder:hover {
-            transform: translateY(-3px);
 
-            background: rgba(255,255,255,0.16);
+        .preorder:hover {
+
+            transform:
+                translateY(-3px);
+
+            background:
+                rgba(255,255,255,0.16);
 
             box-shadow:
-                0 15px 50px rgba(255,255,255,0.12);
+                0 15px 50px
+                rgba(255,255,255,0.12);
         }
 
 
-        /* =========================
+        /* =====================================================
            PRODUCT SECTION
-        ========================= */
+        ===================================================== */
 
         .product-section {
+
             position: relative;
 
-            padding: 110px 20px;
+            padding:
+                110px 20px;
 
             background:
+
                 radial-gradient(
                     circle at 50% 0%,
                     rgba(255,255,255,0.08),
                     transparent 45%
                 ),
+
                 #030303;
         }
 
+
         .section-label {
+
             text-align: center;
 
             font-size: 11px;
+
             letter-spacing: 5px;
 
-            color: rgba(255,255,255,0.45);
+            color:
+                rgba(255,255,255,0.45);
 
             margin-bottom: 18px;
         }
 
+
         .section-title {
+
             text-align: center;
 
-            font-size: clamp(32px, 6vw, 68px);
+            font-size:
+                clamp(32px, 6vw, 68px);
+
             font-weight: 300;
 
             letter-spacing: -2px;
@@ -207,10 +514,14 @@
             margin-bottom: 60px;
         }
 
+
         .product-video {
+
             display: block;
 
-            width: min(1100px, 100%);
+            width:
+                min(1100px, 100%);
+
             max-height: 720px;
 
             margin: auto;
@@ -219,43 +530,58 @@
 
             border-radius: 12px;
 
-            border: 1px solid rgba(255,255,255,0.10);
+            border:
+                1px solid
+                rgba(255,255,255,0.10);
 
             box-shadow:
-                0 30px 100px rgba(0,0,0,0.8);
+                0 30px 100px
+                rgba(0,0,0,0.8);
         }
 
 
-        /* =========================
-           PREORDER
-        ========================= */
+        /* =====================================================
+           PREORDER SECTION
+        ===================================================== */
 
         .preorder-section {
+
             min-height: 500px;
 
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
+
             justify-content: center;
 
             text-align: center;
 
-            padding: 100px 20px;
+            padding:
+                100px 20px;
 
             background: #000;
         }
 
+
         .preorder-section h2 {
-            font-size: clamp(35px, 7vw, 75px);
+
+            font-size:
+                clamp(35px, 7vw, 75px);
+
             font-weight: 300;
 
             margin-bottom: 20px;
         }
 
+
         .preorder-section p {
+
             max-width: 600px;
 
-            color: rgba(255,255,255,0.55);
+            color:
+                rgba(255,255,255,0.55);
 
             line-height: 1.7;
 
@@ -263,67 +589,152 @@
         }
 
 
-        /* =========================
+        /* =====================================================
            FOOTER
-        ========================= */
+        ===================================================== */
 
         footer {
-            padding: 35px 20px;
+
+            padding:
+                35px 20px;
 
             text-align: center;
 
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top:
+                1px solid
+                rgba(255,255,255,0.08);
 
-            color: rgba(255,255,255,0.35);
+            color:
+                rgba(255,255,255,0.35);
 
             font-size: 10px;
+
             letter-spacing: 3px;
         }
 
 
-        /* =========================
+        /* =====================================================
            MOBILE
-        ========================= */
+        ===================================================== */
 
         @media (max-width: 600px) {
 
+            .store-entry {
+
+                padding:
+                    22px 15px 20px;
+            }
+
+
+            .store-header-button {
+
+                width: 100%;
+
+                max-width: 390px;
+
+                min-height: 72px;
+            }
+
+
+            .store-logo-mark {
+
+                width: 45px;
+                height: 45px;
+            }
+
+
+            .store-header-text strong {
+
+                font-size: 13px;
+            }
+
+
             .hero {
+
                 min-height: 700px;
             }
 
+
             .hero-content {
+
                 bottom: 7%;
             }
 
+
             .logo {
+
                 width: 82vw;
             }
 
+
             .tagline {
+
                 font-size: 9px;
+
                 letter-spacing: 4px;
             }
 
+
             .preorder {
+
                 width: 85%;
-                padding: 17px 20px;
+
+                padding:
+                    17px 20px;
             }
 
+
             .product-section {
-                padding: 80px 15px;
+
+                padding:
+                    80px 15px;
             }
 
         }
 
     </style>
+
 </head>
+
 
 <body>
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- =====================================================
+         VOLTICA STORE — MAIN STORE BUTTON
+         ===================================================== -->
+
+    <div class="store-entry">
+
+        <a
+            href="store.html"
+            class="store-header-button">
+
+            <span class="store-logo-mark">
+                V
+            </span>
+
+            <span class="store-header-text">
+
+                <small>
+                    EXPLORE
+                </small>
+
+                <strong>
+                    VOLTICA STORE
+                </strong>
+
+            </span>
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HERO / FIRST VIDEO
+         ===================================================== -->
 
     <section class="hero">
 
@@ -341,7 +752,9 @@
 
         </video>
 
+
         <div class="hero-overlay"></div>
+
 
         <div class="hero-content">
 
@@ -350,9 +763,11 @@
                 alt="Voltica Premium"
                 class="logo">
 
+
             <div class="tagline">
                 The Future of Everyday
             </div>
+
 
             <a
                 href="#preorder"
@@ -368,15 +783,16 @@
 
 
 
-    <!-- =========================
-         PRODUCT
-    ========================== -->
+    <!-- =====================================================
+         PRODUCT VIDEO
+         ===================================================== -->
 
     <section class="product-section">
 
         <div class="section-label">
             VOLTICA PREMIUM
         </div>
+
 
         <h2 class="section-title">
             Designed to stand out.
@@ -402,9 +818,9 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          PREORDER
-    ========================== -->
+         ===================================================== -->
 
     <section
         class="preorder-section"
@@ -414,14 +830,17 @@
             VOLTICA STORE
         </div>
 
+
         <h2>
             Your next favorite.
         </h2>
+
 
         <p>
             Premium design. Smart technology.
             Made to stand out from the ordinary.
         </p>
+
 
         <a
             href="product.html"
@@ -435,6 +854,10 @@
 
 
 
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
     <footer>
 
         VOLTICA PREMIUM © 2026
@@ -443,4 +866,5 @@
 
 
 </body>
+
 </html>

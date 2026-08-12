@@ -4778,3 +4778,427 @@ a.product-button {
     }
 
 }
+/* =========================================================
+   VOLTICA — FINAL PRODUCT CTA
+   ========================================================= */
+
+.dynamic-final {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 620px;
+
+    padding: 100px 20px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255,255,255,.045),
+            transparent 55%
+        );
+}
+
+
+/* =========================================================
+   GLASS PANEL
+   ========================================================= */
+
+.final-glass-panel {
+
+    position: relative;
+
+    width: min(760px, 100%);
+
+    padding: 65px 55px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.115),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:
+        blur(32px)
+        saturate(145%);
+
+    -webkit-backdrop-filter:
+        blur(32px)
+        saturate(145%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.16),
+        inset 0 -1px 0 rgba(255,255,255,.035),
+        0 35px 90px rgba(0,0,0,.48);
+
+    overflow: hidden;
+}
+
+
+/* GLASS REFLECTION */
+
+.final-glass-panel::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -100%;
+    left: -70%;
+
+    width: 45%;
+    height: 300%;
+
+    transform: rotate(25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+    animation:
+        finalGlassSweep 7s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes finalGlassSweep {
+
+    0% {
+        left: -70%;
+    }
+
+    25% {
+        left: 160%;
+    }
+
+    100% {
+        left: 160%;
+    }
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.final-label {
+
+    position: relative;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    letter-spacing: .45em;
+
+    color:
+        rgba(255,255,255,.48);
+
+    padding-left: .45em;
+
+    margin-bottom: 25px;
+}
+
+
+/* LINE */
+
+.final-line {
+
+    width: 45px;
+
+    height: 1px;
+
+    margin: 0 auto 32px;
+
+    background:
+        rgba(255,255,255,.30);
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.final-glass-panel h2 {
+
+    position: relative;
+
+    margin: 0;
+
+    font-size:
+        clamp(45px, 7vw, 82px);
+
+    line-height: .95;
+
+    font-weight: 300;
+
+    letter-spacing: -.045em;
+
+    color:
+        rgba(255,255,255,.94);
+}
+
+
+.final-glass-panel h2 span {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-weight: 300;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.final-glass-panel p {
+
+    max-width: 480px;
+
+    margin:
+        30px auto 35px;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    letter-spacing: .015em;
+
+    color:
+        rgba(255,255,255,.48);
+}
+
+
+/* =========================================================
+   BUY BUTTON
+   ========================================================= */
+
+.final-buy-button {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 245px;
+
+    height: 58px;
+
+    padding: 0 30px;
+
+    box-sizing: border-box;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.17),
+            rgba(255,255,255,.055)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.28);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.20),
+        0 15px 40px rgba(0,0,0,.38);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: .20em;
+
+    overflow: hidden;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+}
+
+
+/* BUTTON LIGHT */
+
+.final-buy-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -80%;
+    left: -100%;
+
+    width: 45%;
+    height: 260%;
+
+    transform: rotate(25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.22),
+            transparent
+        );
+
+    animation:
+        buySweep 5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes buySweep {
+
+    0% {
+        left: -100%;
+    }
+
+    30% {
+        left: 160%;
+    }
+
+    100% {
+        left: 160%;
+    }
+}
+
+
+.final-buy-button:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.025);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.21),
+            rgba(255,255,255,.075)
+        );
+
+    border-color:
+        rgba(255,255,255,.52);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.25),
+        0 22px 55px rgba(0,0,0,.50),
+        0 0 35px rgba(255,255,255,.08);
+}
+
+
+/* =========================================================
+   META
+   ========================================================= */
+
+.final-meta {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 22px;
+
+    margin-top: 30px;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 7px;
+
+    letter-spacing: .25em;
+}
+
+
+.final-meta span {
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .dynamic-final {
+
+        min-height: 560px;
+
+        padding: 70px 15px;
+    }
+
+    .final-glass-panel {
+
+        padding: 50px 25px;
+
+        border-radius: 25px;
+    }
+
+    .final-glass-panel h2 {
+
+        font-size: 48px;
+    }
+
+    .final-buy-button {
+
+        width: 100%;
+
+        min-width: 0;
+    }
+
+    .final-meta {
+
+        gap: 12px;
+    }
+
+}

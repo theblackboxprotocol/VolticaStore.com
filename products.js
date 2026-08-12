@@ -5,28 +5,27 @@
 const volticaProducts = [
 
     {
-        id: "earbuds-001",
+    id: "earbuds1",
+    sku: "CJYP266383702BY",
 
-        name: "Voltica Air",
+    name: "Voltica Q17",
 
-        category: "EARBUDS",
+    category: "SPORT AUDIO",
 
-        badge: "NEW",
+    badge: "NEW",
 
-        price: "59.97",
+    price: "XX.XX",
+    currency: "USD",
 
-        currency: "USD",
+    image: "assets/images/earbuds1-1.webp",
 
-        image: "assets/images/earbuds-01.jpg",
+    description:
+        "Wireless neckband earbuds designed for movement, workouts and everyday listening. Featuring an ear-hook fit, digital display, 8+ hours of battery life and Bluetooth connectivity up to 10 meters.",
 
-        description:
-            "True wireless earbuds engineered for clean sound and effortless everyday listening.",
+    stripe: "TON_PAYMENT_LINK"
+    }
 
-        stripe:
-            "#"
-    },
-
-
+        
     {
         id: "earbuds-002",
 

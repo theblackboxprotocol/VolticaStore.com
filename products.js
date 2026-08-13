@@ -1,4 +1,12 @@
+/* =========================================================
+   VOLTICA STORE — PRODUCT DATABASE
+   ========================================================= */
+
 const volticaProducts = [
+
+    /* =====================================================
+       PRODUCT 01 — VOLTICA Q17
+       ===================================================== */
 
     {
         id: "earbuds1",
@@ -27,6 +35,7 @@ const volticaProducts = [
             "Wireless neckband earbuds designed for movement, workouts and everyday listening. Featuring an ear-hook fit, digital display, 8+ hours of battery life and Bluetooth connectivity up to 10 meters.",
 
         specifications: [
+
             ["MODEL", "YYK-Q17"],
             ["COLOR", "Gem Blue"],
             ["VERSION", "Electroplated"],
@@ -36,21 +45,57 @@ const volticaProducts = [
             ["MATERIAL", "Plastic"],
             ["WEARING STYLE", "Ear-hook"],
             ["FUNCTIONS", "Music / Calls / Voice Control"]
+
         ],
 
         features: [
-            ["01", "8+ HOURS", "Extended battery life for workouts, commuting and everyday listening."],
-            ["02", "10 METERS", "Wireless transmission distance of up to 10 meters."],
-            ["03", "DIGITAL DISPLAY", "Integrated digital display for essential information."],
-            ["04", "EAR-HOOK FIT", "Secure wearing style designed for active movement."],
-            ["05", "VOICE CONTROL", "Convenient voice-control functionality."],
-            ["06", "MUSIC + CALLS", "Designed for music playback and hands-free calling."]
+
+            [
+                "01",
+                "8+ HOURS",
+                "Extended battery life for workouts, commuting and everyday listening."
+            ],
+
+            [
+                "02",
+                "10 METERS",
+                "Wireless transmission distance of up to 10 meters."
+            ],
+
+            [
+                "03",
+                "DIGITAL DISPLAY",
+                "Integrated digital display for essential information."
+            ],
+
+            [
+                "04",
+                "EAR-HOOK FIT",
+                "Secure wearing style designed for active movement."
+            ],
+
+            [
+                "05",
+                "VOICE CONTROL",
+                "Convenient voice-control functionality."
+            ],
+
+            [
+                "06",
+                "MUSIC + CALLS",
+                "Designed for music playback and hands-free calling."
+            ]
+
         ],
 
         stripe:
-            "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01"
+            "https://buy.stripe.com/7sY28s5tZ78bbyo9SG2Ji02"
     },
 
+
+    /* =====================================================
+       PRODUCT 02 — VOLTICA TWS PRO
+       ===================================================== */
 
     {
         id: "earbuds2",
@@ -64,6 +109,7 @@ const volticaProducts = [
         currency: "USD",
 
         images: [
+
             "assets/images/earbuds2-1.webp",
             "assets/images/earbuds2-2.webp",
             "assets/images/earbuds2-3.webp",
@@ -72,12 +118,14 @@ const volticaProducts = [
             "assets/images/earbuds2-6.webp",
             "assets/images/earbuds2-7.webp",
             "assets/images/earbuds2-8.webp"
+
         ],
 
         description:
             "True wireless earbuds with touch control, IPX4 water resistance, CVC noise cancellation, magnetic charging and a compact ergonomic design. Built for everyday listening, calls and active use.",
 
         specifications: [
+
             ["PRODUCT TYPE", "Wireless 5.0 Earbuds"],
             ["TRANSMISSION RANGE", "10m / 32.8ft"],
             ["FREQUENCY", "2.4GHz – 2.48GHz"],
@@ -92,117 +140,139 @@ const volticaProducts = [
             ["EARBUD WEIGHT", "6g each"],
             ["DOCK WEIGHT", "48g"],
             ["SUPPORT", "English / Chinese"]
+
         ],
 
         features: [
-            ["01", "TRUE WIRELESS", "Left and right earbuds can be used independently or together in stereo mode."],
-            ["02", "TOUCH CONTROL", "Control calls, music, pairing and voice assistance with simple touch controls."],
-            ["03", "CVC NOISE CANCELLATION", "High-sensitivity microphone with CVC technology for clearer calls."],
-            ["04", "MAGNETIC CHARGING", "Magnetic charging dock keeps the earbuds securely positioned while charging."],
-            ["05", "500mAh DOCK", "Portable charging case provides multiple additional charges."],
-            ["06", "IPX4", "Water-resistant design for everyday outdoor and active use."]
+
+            [
+                "01",
+                "TRUE WIRELESS",
+                "Left and right earbuds can be used independently or together in stereo mode."
+            ],
+
+            [
+                "02",
+                "TOUCH CONTROL",
+                "Control calls, music, pairing and voice assistance with simple touch controls."
+            ],
+
+            [
+                "03",
+                "CVC NOISE CANCELLATION",
+                "High-sensitivity microphone with CVC technology for clearer calls."
+            ],
+
+            [
+                "04",
+                "MAGNETIC CHARGING",
+                "Magnetic charging dock keeps the earbuds securely positioned while charging."
+            ],
+
+            [
+                "05",
+                "500mAh DOCK",
+                "Portable charging case provides multiple additional charges."
+            ],
+
+            [
+                "06",
+                "IPX4",
+                "Water-resistant design for everyday outdoor and active use."
+            ]
+
         ],
 
         stripe:
-            "https://buy.stripe.com/7sY28s5tZ78bbyo9SG2Ji02"
+            "#"
+    },
+
+
+    /* =====================================================
+       PRODUCT 03 — VOLTICA T11
+       ===================================================== */
+
+    {
+        id: "earbuds3",
+        sku: "CJEJ137306101AZ",
+
+        name: "Voltica T11",
+        category: "WIRELESS AUDIO",
+        badge: "NEW",
+
+        price: "49.97",
+        currency: "USD",
+
+        images: [
+
+            "assets/images/earbuds3-1.webp",
+            "assets/images/earbuds3-2.webp",
+            "assets/images/earbuds3-3.webp",
+            "assets/images/earbuds3-4.webp",
+            "assets/images/earbuds3-5.webp",
+            "assets/images/earbuds3-6.webp"
+
+        ],
+
+        description:
+            "T11 wireless Bluetooth 5.0 earbuds designed for everyday listening, hands-free calls and convenient wireless freedom. Featuring a 15-meter transmission range, stereo audio, battery display, voice control and multi-point connectivity.",
+
+        specifications: [
+
+            ["MODEL", "T11"],
+            ["TRANSMISSION RANGE", "15 meters"],
+            ["BLUETOOTH", "Bluetooth 5.0"],
+            ["FUNCTIONS", "Battery Display / Calls / Voice Control / Music"],
+            ["CONNECTION", "Multi-Point"],
+            ["CHANNEL", "Stereo"],
+            ["WEARING STYLE", "Earplug"],
+            ["EAR MODE", "Bilateral Stereo"],
+            ["PACKAGE", "Earphones / Charging Compartment / Data Cable"]
+
+        ],
+
+        features: [
+
+            [
+                "01",
+                "15 METERS",
+                "Extended wireless transmission range for everyday freedom of movement."
+            ],
+
+            [
+                "02",
+                "BLUETOOTH 5.0",
+                "Reliable wireless connectivity for compatible mobile devices."
+            ],
+
+            [
+                "03",
+                "STEREO AUDIO",
+                "Bilateral stereo configuration for an immersive listening experience."
+            ],
+
+            [
+                "04",
+                "MULTI-POINT",
+                "Supports multi-point connection for greater everyday flexibility."
+            ],
+
+            [
+                "05",
+                "VOICE CONTROL",
+                "Voice-control functionality available directly through the earbuds."
+            ],
+
+            [
+                "06",
+                "CALLS + MUSIC",
+                "Designed for both hands-free calls and everyday music playback."
+            ]
+
+        ],
+
+        stripe:
+            "https://buy.stripe.com/28E9AU5tZgILbyo2qe2Ji03"
     }
-    
-    ];
-{
-    id: "earbuds3",
-    sku: "CJEJ137306101AZ",
 
-    name: "Voltica T11",
-    category: "WIRELESS AUDIO",
-    badge: "NEW",
-
-    price: "49.97",
-    currency: "USD",
-
-    images: [
-        "assets/images/earbuds3-1.webp",
-        "assets/images/earbuds3-2.webp",
-        "assets/images/earbuds3-3.webp",
-        "assets/images/earbuds3-4.webp",
-        "assets/images/earbuds3-5.webp",
-        "assets/images/earbuds3-6.webp"
-    ],
-
-    description:
-        "Compact T11 wireless earbuds featuring Bluetooth 5.0 connectivity, stereo audio, multi-point connection, voice control and battery display. Designed for everyday listening, calls and convenient wireless freedom.",
-
-    specifications: [
-        [
-            "TRANSMISSION RANGE",
-            "15 meters"
-        ],
-        [
-            "BLUETOOTH",
-            "Bluetooth 5.0"
-        ],
-        [
-            "CHANNEL",
-            "Stereo"
-        ],
-        [
-            "CONNECTION",
-            "Multi-point"
-        ],
-        [
-            "FUNCTIONS",
-            "Battery Display / Calls / Voice Control / Music"
-        ],
-        [
-            "BATTERY DISPLAY",
-            "Supported"
-        ],
-        [
-            "WEARING STYLE",
-            "Earplug"
-        ],
-        [
-            "EAR MODE",
-            "Bilateral Stereo"
-        ],
-        [
-            "PACKAGE",
-            "Earphones / Charging Compartment / Data Cable"
-        ]
-    ],
-
-    features: [
-        [
-            "01",
-            "15 METERS",
-            "Extended wireless transmission range for everyday freedom of movement."
-        ],
-        [
-            "02",
-            "BLUETOOTH 5.0",
-            "Reliable wireless connectivity for compatible mobile devices."
-        ],
-        [
-            "03",
-            "STEREO AUDIO",
-            "Bilateral stereo configuration for an immersive listening experience."
-        ],
-        [
-            "04",
-            "MULTI-POINT",
-            "Supports multi-point connection for greater everyday flexibility."
-        ],
-        [
-            "05",
-            "VOICE CONTROL",
-            "Voice-control functionality available directly through the earbuds."
-        ],
-        [
-            "06",
-            "CALLS + MUSIC",
-            "Designed for both hands-free calls and everyday music playback."
-        ]
-    ],
-
-    stripe:
-        "https://buy.stripe.com/28E9AU5tZgILbyo2qe2Ji03"
-}
+];

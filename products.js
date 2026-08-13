@@ -193,86 +193,45 @@ const volticaProducts = [
        ===================================================== */
 
     {
-        id: "earbuds3",
-        sku: "CJEJ137306101AZ",
+    id: "earbuds3",
+    sku: "CJEJ137306101AZ",
 
-        name: "Voltica T11",
-        category: "WIRELESS AUDIO",
-        badge: "NEW",
+    name: "Voltica T11",
+    category: "WIRELESS AUDIO",
+    badge: "NEW",
 
-        price: "49.97",
-        currency: "USD",
+    price: "49.97",
+    currency: "USD",
 
-        images: [
+    images: [
+        "assets/images/earbuds3-1.webp",
+        "assets/images/earbuds3-2.webp",
+        "assets/images/earbuds3-3.webp",
+        "assets/images/earbuds3-4.webp",
+        "assets/images/earbuds3-5.webp",
+        "assets/images/earbuds3-6.webp"
+    ],
 
-            "assets/images/earbuds3-1.webp",
-            "assets/images/earbuds3-2.webp",
-            "assets/images/earbuds3-3.webp",
-            "assets/images/earbuds3-4.webp",
-            "assets/images/earbuds3-5.webp",
-            "assets/images/earbuds3-6.webp"
+    description: "T11 Wireless Bluetooth 5.0 earbuds with stereo audio, 15-meter transmission range, battery display, voice control and multi-point connection.",
 
-        ],
+    specifications: [
+        ["TRANSMISSION RANGE", "15 meters"],
+        ["BLUETOOTH", "5.0"],
+        ["FUNCTIONS", "Battery Display / Calls / Voice Control / Music / Multi-Point"],
+        ["CHANNEL", "Stereo"],
+        ["WEARING STYLE", "Earplug"],
+        ["EAR MODE", "Bilateral Stereo"]
+    ],
 
-        description:
-            "T11 wireless Bluetooth 5.0 earbuds designed for everyday listening, hands-free calls and convenient wireless freedom. Featuring a 15-meter transmission range, stereo audio, battery display, voice control and multi-point connectivity.",
+    features: [
+        ["01", "15 METERS", "Extended wireless transmission range for everyday freedom of movement."],
+        ["02", "BLUETOOTH 5.0", "Reliable wireless connectivity for compatible mobile devices."],
+        ["03", "STEREO AUDIO", "Bilateral stereo configuration for an immersive listening experience."],
+        ["04", "MULTI-POINT", "Supports multi-point connection for greater everyday flexibility."],
+        ["05", "VOICE CONTROL", "Voice-control functionality available directly through the earbuds."],
+        ["06", "CALLS + MUSIC", "Designed for both hands-free calls and everyday music playback."]
+    ],
 
-        specifications: [
-
-            ["MODEL", "T11"],
-            ["TRANSMISSION RANGE", "15 meters"],
-            ["BLUETOOTH", "Bluetooth 5.0"],
-            ["FUNCTIONS", "Battery Display / Calls / Voice Control / Music"],
-            ["CONNECTION", "Multi-Point"],
-            ["CHANNEL", "Stereo"],
-            ["WEARING STYLE", "Earplug"],
-            ["EAR MODE", "Bilateral Stereo"],
-            ["PACKAGE", "Earphones / Charging Compartment / Data Cable"]
-
-        ],
-
-        features: [
-
-            [
-                "01",
-                "15 METERS",
-                "Extended wireless transmission range for everyday freedom of movement."
-            ],
-
-            [
-                "02",
-                "BLUETOOTH 5.0",
-                "Reliable wireless connectivity for compatible mobile devices."
-            ],
-
-            [
-                "03",
-                "STEREO AUDIO",
-                "Bilateral stereo configuration for an immersive listening experience."
-            ],
-
-            [
-                "04",
-                "MULTI-POINT",
-                "Supports multi-point connection for greater everyday flexibility."
-            ],
-
-            [
-                "05",
-                "VOICE CONTROL",
-                "Voice-control functionality available directly through the earbuds."
-            ],
-
-            [
-                "06",
-                "CALLS + MUSIC",
-                "Designed for both hands-free calls and everyday music playback."
-            ]
-
-        ],
-
-        stripe:
-            "https://buy.stripe.com/28E9AU5tZgILbyo2qe2Ji03"
-    }
-
+    stripe: "https://buy.stripe.com/28E9AU5tZgILbyo2qe2Ji03"
+}
 ];

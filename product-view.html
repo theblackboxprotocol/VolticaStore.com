@@ -837,6 +837,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+    <script src="products.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+
+    const product = volticaProducts.find(
+        item => item.id === productId
+    );
+
+    if (!product) {
+        document.body.innerHTML = `
+            <div style="
+                color:white;
+                background:#050505;
+                min-height:100vh;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-family:Arial;
+            ">
+                PRODUCT NOT FOUND
+            </div>
+        `;
+        return;
+    }
+
+    console.log("VOLTICA PRODUCT:", product.name);
+
+});
+</script>
 </body>
 
 </html>

@@ -824,9 +824,19 @@ function changeProductImage(button, image) {
 
 }
 
+<script src="products.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+
+    console.log("Product ID:", productId);
+    console.log("Products:", volticaProducts);
+
+});
 </script>
-
-
 </body>
 
 </html>

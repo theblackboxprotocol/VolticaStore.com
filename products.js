@@ -107,7 +107,8 @@ const volticaProducts = [
             "https://buy.stripe.com/7sY28s5tZ78bbyo9SG2Ji02"
     }
     
-        {
+    ];
+{
         id: "earbuds3",
         sku: "CJEJ137306101AZ",
 
@@ -125,7 +126,7 @@ const volticaProducts = [
             "assets/images/earbuds3-4.webp",
             "assets/images/earbuds3-5.webp",
             "assets/images/earbuds3-6.webp"
-        ],
+        ].
 
         description:
             "Compact wireless Bluetooth 5.0 earbuds designed for everyday listening, calls and seamless multi-point connectivity. Featuring stereo sound, voice control, battery display and a 15-meter transmission range.",
@@ -177,5 +178,5 @@ const volticaProducts = [
 
         stripe:
             "https://buy.stripe.com/28E9AU5tZgILbyo2qe2Ji03"
-    },
-].
+    }
+];

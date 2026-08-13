@@ -8376,3 +8376,380 @@ a.product-button {
 
 }
 }
+/* =========================================================
+   VOLTICA STORE — TOP NAVIGATION
+   ========================================================= */
+
+.voltica-store-topbar {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 110px;
+
+    padding: 22px 28px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    z-index: 1000;
+}
+
+
+/* =========================================================
+   HOME — TOP LEFT
+   ========================================================= */
+
+.voltica-home-button {
+
+    position: absolute;
+
+    top: 22px;
+    left: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 15px;
+
+    color: rgba(255,255,255,.8);
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    background: rgba(255,255,255,.035);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: 10px;
+
+    transition: .3s ease;
+}
+
+
+.voltica-home-button:hover {
+
+    color: #fff;
+
+    border-color: rgba(255,255,255,.28);
+
+    background: rgba(255,255,255,.07);
+
+    transform: translateX(3px);
+
+}
+
+
+.voltica-nav-arrow {
+
+    font-size: 16px;
+
+    opacity: .7;
+}
+
+
+.voltica-nav-label {
+
+    font-weight: 600;
+}
+
+
+
+/* =========================================================
+   STORE — DIRECTLY UNDER HOME
+   ========================================================= */
+
+.voltica-store-topbar .store-menu {
+
+    position: absolute;
+
+    top: 70px;
+    left: 28px;
+
+    z-index: 1100;
+}
+
+
+.voltica-store-topbar
+.store-menu-button {
+
+    min-width: 115px;
+
+    padding: 10px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.035);
+
+    color: rgba(255,255,255,.8);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    transition: .3s ease;
+}
+
+
+.voltica-store-topbar
+.store-menu-button:hover {
+
+    color: #fff;
+
+    background: rgba(255,255,255,.07);
+
+    border-color: rgba(255,255,255,.28);
+
+}
+
+
+.store-menu-chevron {
+
+    font-size: 15px;
+
+    opacity: .6;
+
+}
+
+
+
+/* =========================================================
+   STORE DROPDOWN
+   ========================================================= */
+
+.voltica-store-topbar .store-dropdown {
+
+    position: absolute;
+
+    top: calc(100% + 8px);
+
+    left: 0;
+
+    width: 230px;
+
+    padding: 8px;
+
+    display: none;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    border-radius: 14px;
+
+    background: rgba(12,12,16,.82);
+
+    backdrop-filter: blur(25px);
+
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45);
+}
+
+
+.voltica-store-topbar
+.store-menu:hover
+.store-dropdown {
+
+    display: flex;
+
+}
+
+
+.voltica-store-topbar
+.store-dropdown a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 11px 12px;
+
+    color: rgba(255,255,255,.72);
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: .8px;
+
+    border-radius: 8px;
+
+    transition: .25s ease;
+}
+
+
+.voltica-store-topbar
+.store-dropdown a span {
+
+    width: 22px;
+
+    color: rgba(255,255,255,.35);
+
+    font-size: 9px;
+
+}
+
+
+.voltica-store-topbar
+.store-dropdown a:hover {
+
+    color: #fff;
+
+    background: rgba(255,255,255,.07);
+
+}
+
+
+
+/* =========================================================
+   VOLTICA STORE — TOP RIGHT
+   ========================================================= */
+
+.voltica-store-logo {
+
+    position: absolute;
+
+    top: 22px;
+    right: 28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    text-decoration: none;
+
+    line-height: .9;
+
+}
+
+
+.voltica-logo-main {
+
+    color: #fff;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+}
+
+
+.voltica-logo-sub {
+
+    margin-top: 6px;
+
+    color: rgba(255,255,255,.42);
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    letter-spacing: 5px;
+}
+
+
+
+/* =========================================================
+   KEEP HEADER CENTERED
+   ========================================================= */
+
+.store-header {
+
+    position: relative;
+
+    padding-top: 30px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .voltica-store-topbar {
+
+        min-height: 105px;
+
+        padding: 16px;
+    }
+
+
+    .voltica-home-button {
+
+        top: 16px;
+        left: 16px;
+    }
+
+
+    .voltica-store-topbar .store-menu {
+
+        top: 62px;
+        left: 16px;
+    }
+
+
+    .voltica-store-logo {
+
+        top: 18px;
+        right: 16px;
+    }
+
+
+    .voltica-logo-main {
+
+        font-size: 17px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .voltica-logo-sub {
+
+        font-size: 7px;
+
+        letter-spacing: 3px;
+    }
+
+}

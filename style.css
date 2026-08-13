@@ -8753,3 +8753,368 @@ a.product-button {
     }
 
 }
+/* =========================================================
+   VOLTICA GLASS NAVIGATION
+   HOME + VOLTICA STORE
+   ========================================================= */
+
+.voltica-store-navigation {
+
+    position: fixed;
+
+    top: 24px;
+    left: 24px;
+
+    z-index: 9999;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+}
+
+
+/* =========================================================
+   GLASS SELECT BUTTON
+   ========================================================= */
+
+.voltica-glass-select {
+
+    position: relative;
+
+    min-width: 170px;
+
+    height: 44px;
+
+    padding: 0 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    text-decoration: none;
+
+    color: rgba(255,255,255,.82);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.085),
+            rgba(255,255,255,.025)
+        );
+
+    border: 1px solid rgba(255,255,255,.14);
+
+    border-radius: 12px;
+
+    backdrop-filter: blur(22px) saturate(130%);
+
+    -webkit-backdrop-filter: blur(22px) saturate(130%);
+
+    box-shadow:
+
+        inset 0 1px 0 rgba(255,255,255,.08),
+
+        0 8px 30px rgba(0,0,0,.25);
+
+    transition:
+
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.voltica-glass-number {
+
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    color: rgba(255,255,255,.42);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    border-radius: 7px;
+
+    background: rgba(255,255,255,.035);
+
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.voltica-glass-text {
+
+    flex: 1;
+
+    font-family:
+
+        Inter,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.voltica-glass-arrow {
+
+    font-size: 15px;
+
+    line-height: 1;
+
+    color: rgba(255,255,255,.38);
+
+    transition:
+
+        transform .25s ease,
+        color .25s ease;
+
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.voltica-glass-select:hover {
+
+    color: #fff;
+
+    transform: translateX(4px);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.13),
+            rgba(255,255,255,.045)
+        );
+
+    border-color: rgba(255,255,255,.27);
+
+    box-shadow:
+
+        inset 0 1px 0 rgba(255,255,255,.12),
+
+        0 12px 38px rgba(0,0,0,.35);
+
+}
+
+
+.voltica-glass-select:hover
+.voltica-glass-arrow {
+
+    color: #fff;
+
+    transform: translateX(3px);
+
+}
+
+
+/* =========================================================
+   ACTIVE / CURRENT STORE
+   ========================================================= */
+
+.voltica-glass-select[href="store.html"] {
+
+    border-color: rgba(255,255,255,.19);
+
+}
+
+
+.voltica-glass-select[href="store.html"]
+.voltica-glass-number {
+
+    color: rgba(255,255,255,.7);
+
+    border-color: rgba(255,255,255,.18);
+
+}
+
+
+/* =========================================================
+   VOLTICA STORE BRAND — TOP RIGHT
+   ========================================================= */
+
+.voltica-store-brand {
+
+    position: fixed;
+
+    top: 26px;
+    right: 28px;
+
+    z-index: 9999;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    line-height: .85;
+
+    pointer-events: none;
+
+}
+
+
+.voltica-store-brand span {
+
+    font-family:
+
+        Inter,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+    color: rgba(255,255,255,.94);
+
+    text-shadow:
+
+        0 0 22px rgba(255,255,255,.08);
+
+}
+
+
+.voltica-store-brand small {
+
+    margin-top: 7px;
+
+    font-family:
+
+        Inter,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    font-size: 7px;
+
+    font-weight: 600;
+
+    letter-spacing: 5px;
+
+    color: rgba(255,255,255,.38);
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .voltica-store-navigation {
+
+        top: 14px;
+
+        left: 14px;
+
+        gap: 7px;
+
+    }
+
+
+    .voltica-glass-select {
+
+        min-width: 148px;
+
+        height: 40px;
+
+        padding: 0 11px;
+
+        border-radius: 10px;
+
+    }
+
+
+    .voltica-glass-text {
+
+        font-size: 9px;
+
+        letter-spacing: 1.6px;
+
+    }
+
+
+    .voltica-glass-number {
+
+        width: 21px;
+
+        height: 21px;
+
+    }
+
+
+    .voltica-store-brand {
+
+        top: 17px;
+
+        right: 16px;
+
+    }
+
+
+    .voltica-store-brand span {
+
+        font-size: 16px;
+
+        letter-spacing: 3px;
+
+    }
+
+
+    .voltica-store-brand small {
+
+        font-size: 6px;
+
+        letter-spacing: 3px;
+
+    }
+
+}

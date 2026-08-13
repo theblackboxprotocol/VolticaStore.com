@@ -107,7 +107,7 @@ const volticaProducts = [
             "https://buy.stripe.com/7sY28s5tZ78bbyo9SG2Ji02"
     }
     
-    {
+        {
         id: "earbuds3",
         sku: "CJEJ137306101AZ",
 
@@ -178,4 +178,4 @@ const volticaProducts = [
         stripe:
             "https://buy.stripe.com/28E9AU5tZgILbyo2qe2Ji03"
     },
-];
+].

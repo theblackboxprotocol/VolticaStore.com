@@ -5,15 +5,12 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Voltica Store</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -28,47 +25,69 @@
 </main>
 
 
-<!-- IMPORTANT : products.js DOIT être chargé avant le script -->
+<!-- =====================================================
+     PRODUCT DATABASE
+     ===================================================== -->
+
 <script src="products.js"></script>
 
+
+<!-- =====================================================
+     PRODUCT ENGINE
+     ===================================================== -->
 
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
 
-
-    /* =====================================================
-       GET PRODUCT ID FROM URL
-       ===================================================== */
+    const container =
+        document.getElementById("productView");
 
     const params =
-        new URLSearchParams(
-            window.location.search
-        );
+        new URLSearchParams(window.location.search);
 
     const productId =
         params.get("id");
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
+       CHECK DATABASE
+    ----------------------------------------------------- */
+
+    if (
+        typeof volticaProducts === "undefined" ||
+        !Array.isArray(volticaProducts)
+    ) {
+
+        container.innerHTML = `
+            <section class="product-not-found">
+
+                <span>ERROR</span>
+
+                <h1>
+                    Product database unavailable.
+                </h1>
+
+                <a href="store.html">
+                    RETURN TO STORE
+                </a>
+
+            </section>
+        `;
+
+        return;
+    }
+
+
+    /* -----------------------------------------------------
        FIND PRODUCT
-       ===================================================== */
+    ----------------------------------------------------- */
 
     const product =
         volticaProducts.find(
             item => item.id === productId
         );
 
-
-    const container =
-        document.getElementById(
-            "productView"
-        );
-
-
-    /* =====================================================
-       PRODUCT NOT FOUND
-       ===================================================== */
 
     if (!product) {
 
@@ -82,6 +101,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     Product not found.
                 </h1>
 
+                <p>
+                    ${productId
+                        ? `ID: ${productId}`
+                        : "No product ID supplied."
+                    }
+                </p>
+
                 <a href="store.html">
                     RETURN TO STORE
                 </a>
@@ -94,36 +120,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
        PAGE TITLE
-       ===================================================== */
+    ----------------------------------------------------- */
 
     document.title =
         `${product.name} — Voltica Store`;
 
 
-    /* =====================================================
-       PRODUCT DATA
-       ===================================================== */
+    /* -----------------------------------------------------
+       DATA
+    ----------------------------------------------------- */
 
     const images =
-        product.images || [product.image];
-
+        Array.isArray(product.images)
+            ? product.images
+            : [product.image];
 
     const features =
-        product.features || [];
-
+        Array.isArray(product.features)
+            ? product.features
+            : [];
 
     const specifications =
-        product.specifications || [];
+        Array.isArray(product.specifications)
+            ? product.specifications
+            : [];
 
 
-    /* =====================================================
-       BUILD PRODUCT PAGE
-       ===================================================== */
+    /* -----------------------------------------------------
+       BUILD PAGE
+    ----------------------------------------------------- */
 
     container.innerHTML = `
-
 
         <!-- =================================================
              HERO
@@ -138,13 +167,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <div class="dynamic-gallery">
 
-
                 <div class="dynamic-main-image">
 
                     <span class="dynamic-badge">
                         ${product.badge || "NEW"}
                     </span>
-
 
                     <img
                         id="mainProductImage"
@@ -154,12 +181,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
 
-                <!-- =========================================
-                     GLASS THUMBNAILS
-                     ========================================= -->
+                <!-- GLASS THUMBNAILS -->
 
                 <div class="voltica-glass-gallery">
-
 
                     ${images.map((image, index) => `
 
@@ -170,12 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     ? "active"
                                     : ""
                             }"
-                            onclick="
-                                changeProductImage(
-                                    this,
-                                    '${image}'
-                                )
-                            ">
+                            data-image="${image}">
 
                             <img
                                 src="${image}"
@@ -189,11 +208,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     `).join("")}
 
-
                 </div>
 
             </div>
-
 
 
             <!-- =============================================
@@ -202,34 +219,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <div class="dynamic-product-info">
 
-
                 <span class="dynamic-category">
-
-                    VOLTICA /
-                    ${product.category}
-
+                    VOLTICA / ${product.category}
                 </span>
 
 
-
-                <!-- =========================================
-                     TECH TITLE
-                     ========================================= -->
+                <!-- TECH TITLE -->
 
                 <div class="q17-title-tech">
 
-                    <span
-                        class="q17-title-status">
+                    <span class="q17-title-status"></span>
+
+                    <span class="q17-title-label">
+                        VOLTICA / ${product.name}
                     </span>
-
-                    <span
-                        class="q17-title-label">
-
-                        VOLTICA /
-                        ${product.name}
-
-                    </span>
-
 
                     <h1>
                         ${product.name}
@@ -238,59 +241,39 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
 
-
-                <!-- =========================================
-                     SUBTITLE
-                     ========================================= -->
+                <!-- SUBTITLE -->
 
                 <div class="q17-subtitle-glass">
 
-                    <span
-                        class="q17-subtitle-line">
-                    </span>
+                    <span class="q17-subtitle-line"></span>
 
                     <h2>
-
                         Wireless freedom.
-
-                        <span>
-                            Built to move.
-                        </span>
-
+                        <span>Built to move.</span>
                     </h2>
 
                 </div>
 
 
+                <!-- DESCRIPTION -->
 
-                <!-- =========================================
-                     DESCRIPTION
-                     ========================================= -->
+                <div class="q17-description-card">
 
-                <div
-                    class="q17-description-card">
-
-
-                    <div
-                        class="q17-description-top">
+                    <div class="q17-description-top">
 
                         <span>
-                            VOLTICA /
-                            PRODUCT INSIGHT
+                            VOLTICA / PRODUCT INSIGHT
                         </span>
 
                         <i></i>
 
                     </div>
 
-
                     <p>
                         ${product.description}
                     </p>
 
-
-                    <div
-                        class="q17-description-bottom">
+                    <div class="q17-description-bottom">
 
                         <span>
                             ${product.category}
@@ -309,47 +292,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
 
+                <!-- PURCHASE -->
 
-                <!-- =========================================
-                     PURCHASE
-                     ========================================= -->
+                <div class="q17-purchase-zone">
 
-                <div
-                    class="q17-purchase-zone">
+                    <div class="q17-price-glass">
 
-
-                    <div
-                        class="q17-price-glass">
-
-
-                        <span
-                            class="q17-price-label">
-
-                            ${product.name}
-                            / PRICE
-
+                        <span class="q17-price-label">
+                            ${product.name} / PRICE
                         </span>
 
-
                         <strong>
-
                             $${product.price}
-
                         </strong>
 
-
-                        <span
-                            class="q17-price-currency">
-
+                        <span class="q17-price-currency">
                             ${product.currency}
-
                         </span>
 
                     </div>
 
-
-
-                    <!-- BUY BUTTON -->
 
                     <a
                         href="${product.stripe}"
@@ -362,11 +324,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </a>
 
 
-
-                    <!-- TRUST -->
-
-                    <div
-                        class="q17-trust-glass">
+                    <div class="q17-trust-glass">
 
                         <span>
                             ✓ SECURE CHECKOUT
@@ -385,21 +343,15 @@ document.addEventListener("DOMContentLoaded", function () {
         </section>
 
 
-
         <!-- =================================================
              FEATURES
              ================================================= -->
 
-        <section
-            class="q17-tech-section">
+        <section class="q17-tech-section">
 
+            <div class="q17-tech-header">
 
-            <div
-                class="q17-tech-header">
-
-
-                <div
-                    class="q17-tech-label">
+                <div class="q17-tech-label">
 
                     <span></span>
 
@@ -407,52 +359,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 </div>
 
-
                 <h2>
-
                     Built for
-
-                    <span>
-                        ${product.category.toLowerCase()}.
-                    </span>
-
+                    <span>movement.</span>
                 </h2>
 
             </div>
 
 
-
-            <div
-                class="q17-tech-grid">
-
+            <div class="q17-tech-grid">
 
                 ${features.map(feature => `
 
-                    <div
-                        class="q17-tech-card">
+                    <div class="q17-tech-card">
 
-
-                        <div
-                            class="q17-tech-number">
-
+                        <div class="q17-tech-number">
                             ${feature[0]}
-
                         </div>
 
-
-                        <div
-                            class="q17-tech-content">
-
+                        <div class="q17-tech-content">
 
                             <strong>
                                 ${feature[1]}
                             </strong>
 
-
                             <p>
                                 ${feature[2]}
                             </p>
-
 
                         </div>
 
@@ -460,55 +393,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 `).join("")}
 
-
             </div>
 
 
+            <div class="q17-tech-footer">
 
-            <div
-                class="q17-tech-footer">
-
-                <span
-                    class="q17-tech-footer-line">
-                </span>
-
+                <span class="q17-tech-footer-line"></span>
 
                 <span>
                     TECHNICAL DATA
                 </span>
 
-
-                <span
-                    class="q17-tech-footer-line">
-                </span>
+                <span class="q17-tech-footer-line"></span>
 
             </div>
 
         </section>
 
 
-
         <!-- =================================================
              SPECIFICATIONS
              ================================================= -->
 
-        <section
-            class="q17-specs-section">
+        <section class="q17-specs-section">
 
+            <div class="q17-specs-header">
 
-            <div
-                class="q17-specs-header">
-
-
-                <div
-                    class="q17-specs-label">
+                <div class="q17-specs-label">
 
                     <span></span>
 
                     TECHNICAL DATA
 
                 </div>
-
 
                 <h2>
 
@@ -523,13 +440,9 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
 
+            <div class="q17-specs-panel">
 
-            <div
-                class="q17-specs-panel">
-
-
-                <div
-                    class="q17-specs-topline">
+                <div class="q17-specs-topline">
 
                     <span>
                         ${product.name}
@@ -543,46 +456,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
 
-
                 ${specifications.map(
                     (spec, index) => `
 
-                    <div
-                        class="q17-spec-row">
+                    <div class="q17-spec-row">
 
-
-                        <span
-                            class="q17-spec-number">
-
-                            ${String(index + 1)
-                                .padStart(2, "0")}
-
+                        <span class="q17-spec-number">
+                            ${String(index + 1).padStart(2, "0")}
                         </span>
 
-
-                        <span
-                            class="q17-spec-name">
-
+                        <span class="q17-spec-name">
                             ${spec[0]}
-
                         </span>
-
 
                         <strong>
-
                             ${spec[1]}
-
                         </strong>
-
 
                     </div>
 
                 `).join("")}
 
 
-
-                <div
-                    class="q17-spec-bottom">
+                <div class="q17-spec-bottom">
 
                     <span>
                         ${product.name}
@@ -599,78 +495,50 @@ document.addEventListener("DOMContentLoaded", function () {
         </section>
 
 
-
         <!-- =================================================
              FINAL CTA
              ================================================= -->
 
-        <section
-            class="dynamic-final">
+        <section class="dynamic-final">
 
+            <div class="final-glass-panel">
 
-            <div
-                class="final-glass-panel">
-
-
-                <div
-                    class="final-label">
-
+                <div class="final-label">
                     ${product.name}
-
                 </div>
 
-
-                <div
-                    class="final-line">
-                </div>
-
+                <div class="final-line"></div>
 
                 <h2>
-
                     Ready to
-
-                    <span>
-                        move?
-                    </span>
-
+                    <span>move?</span>
                 </h2>
 
-
                 <p>
-
                     ${product.description}
-
                 </p>
-
 
                 <a
                     href="${product.stripe}"
                     class="final-buy-button">
 
-                    GET
-                    ${product.name.toUpperCase()}
+                    GET ${product.name.toUpperCase()}
 
                 </a>
 
-
-                <div
-                    class="final-meta">
-
+                <div class="final-meta">
 
                     <span>
                         SECURE CHECKOUT
                     </span>
 
-
                     <span>
                         QUALITY SELECTED
                     </span>
 
-
                     <span>
                         VOLTICA
                     </span>
-
 
                 </div>
 
@@ -679,39 +547,25 @@ document.addEventListener("DOMContentLoaded", function () {
         </section>
 
 
-
         <!-- =================================================
              NAVIGATION
              ================================================= -->
 
-        <section
-            class="voltica-bottom-nav">
+        <section class="voltica-bottom-nav">
 
+            <div class="voltica-nav-line"></div>
 
-            <div
-                class="voltica-nav-line">
-            </div>
-
-
-            <div
-                class="voltica-nav-buttons">
-
+            <div class="voltica-nav-buttons">
 
                 <a
                     href="index.html"
                     class="voltica-nav-button home-button">
 
-
-                    <span
-                        class="nav-icon">
-
+                    <span class="nav-icon">
                         ⌂
-
                     </span>
 
-
-                    <span
-                        class="nav-button-text">
+                    <span class="nav-button-text">
 
                         <small>
                             RETURN
@@ -726,22 +580,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 </a>
 
 
-
                 <a
                     href="store.html"
                     class="voltica-nav-button store-button">
 
-
-                    <span
-                        class="nav-icon">
-
+                    <span class="nav-icon">
                         V
-
                     </span>
 
-
-                    <span
-                        class="nav-button-text">
+                    <span class="nav-button-text">
 
                         <small>
                             EXPLORE
@@ -755,31 +602,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 </a>
 
-
             </div>
 
-
-            <div
-                class="voltica-nav-brand">
-
+            <div class="voltica-nav-brand">
                 VOLTICA
-
             </div>
 
         </section>
 
     `;
 
-});
 
-
-
-/* =========================================================
-   GALLERY
-   ========================================================= */
-
-function changeProductImage(button, image) {
-
+    /* -----------------------------------------------------
+       GALLERY EVENTS
+    ----------------------------------------------------- */
 
     const mainImage =
         document.getElementById(
@@ -787,89 +623,54 @@ function changeProductImage(button, image) {
         );
 
 
-    if (!mainImage) {
-        return;
-    }
-
-
-    mainImage.style.opacity = "0";
-
-
-    setTimeout(function () {
-
-        mainImage.src = image;
-
-        mainImage.style.opacity = "1";
-
-    }, 150);
-
-
-
-    document
-        .querySelectorAll(
+    const thumbnails =
+        document.querySelectorAll(
             ".voltica-thumb"
-        )
-        .forEach(function (item) {
-
-            item.classList.remove(
-                "active"
-            );
-
-        });
+        );
 
 
-    button.classList.add(
-        "active"
-    );
+    thumbnails.forEach(function (thumbnail) {
 
-}
+        thumbnail.addEventListener(
+            "click",
+            function () {
 
-<script src="products.js"></script>
+                const image =
+                    this.dataset.image;
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+                if (!mainImage) {
+                    return;
+                }
 
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get("id");
+                mainImage.style.opacity = "0";
 
-    console.log("Product ID:", productId);
-    console.log("Products:", volticaProducts);
+                setTimeout(function () {
 
-});
-</script>
-    <script src="products.js"></script>
+                    mainImage.src = image;
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+                    mainImage.style.opacity = "1";
 
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get("id");
+                }, 150);
 
-    const product = volticaProducts.find(
-        item => item.id === productId
-    );
 
-    if (!product) {
-        document.body.innerHTML = `
-            <div style="
-                color:white;
-                background:#050505;
-                min-height:100vh;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                font-family:Arial;
-            ">
-                PRODUCT NOT FOUND
-            </div>
-        `;
-        return;
-    }
+                thumbnails.forEach(function (item) {
 
-    console.log("VOLTICA PRODUCT:", product.name);
+                    item.classList.remove(
+                        "active"
+                    );
+
+                });
+
+                this.classList.add("active");
+
+            }
+        );
+
+    });
 
 });
+
 </script>
+
 </body>
-
 </html>

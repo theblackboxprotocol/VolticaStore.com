@@ -106,5 +106,76 @@ const volticaProducts = [
         stripe:
             "https://buy.stripe.com/7sY28s5tZ78bbyo9SG2Ji02"
     }
+    
+    {
+        id: "earbuds3",
+        sku: "CJEJ137306101AZ",
 
+        name: "Voltica T11",
+        category: "WIRELESS AUDIO",
+        badge: "NEW",
+
+        price: "49.97",
+        currency: "USD",
+
+        images: [
+            "assets/images/earbuds3-1.webp",
+            "assets/images/earbuds3-2.webp",
+            "assets/images/earbuds3-3.webp",
+            "assets/images/earbuds3-4.webp",
+            "assets/images/earbuds3-5.webp",
+            "assets/images/earbuds3-6.webp"
+        ],
+
+        description:
+            "Compact wireless Bluetooth 5.0 earbuds designed for everyday listening, calls and seamless multi-point connectivity. Featuring stereo sound, voice control, battery display and a 15-meter transmission range.",
+
+        specifications: [
+            ["PRODUCT TYPE", "T11 Wireless Bluetooth Headset"],
+            ["BLUETOOTH", "5.0"],
+            ["TRANSMISSION RANGE", "Up to 15 meters"],
+            ["CHANNEL", "Stereo"],
+            ["CONNECTION", "Multi-point"],
+            ["FUNCTIONS", "Music / Calls / Voice Control"],
+            ["BATTERY DISPLAY", "Supported"],
+            ["WEARING STYLE", "Earplug"],
+            ["EAR MODE", "Bilateral Stereo"]
+        ],
+
+        features: [
+            [
+                "01",
+                "15 METERS",
+                "Extended wireless transmission range for everyday freedom of movement."
+            ],
+            [
+                "02",
+                "BLUETOOTH 5.0",
+                "Reliable wireless connectivity for compatible mobile devices."
+            ],
+            [
+                "03",
+                "STEREO AUDIO",
+                "Bilateral stereo configuration for an immersive listening experience."
+            ],
+            [
+                "04",
+                "MULTI-POINT",
+                "Supports multi-point connection for greater everyday flexibility."
+            ],
+            [
+                "05",
+                "VOICE CONTROL",
+                "Voice-control functionality available directly through the earbuds."
+            ],
+            [
+                "06",
+                "CALLS + MUSIC",
+                "Designed for both hands-free calls and everyday music playback."
+            ]
+        ],
+
+        stripe:
+            "https://buy.stripe.com/28E9AU5tZgILbyo2qe2Ji03"
+    },
 ];

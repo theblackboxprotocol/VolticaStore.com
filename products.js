@@ -234,7 +234,7 @@ const volticaProducts = [
         ],
 
         stripe:
-            "https://buy.stripe.com/28E9AU5tZgILbyo2qe2Ji03"
+            "https://buy.stripe.com/4gM9AU9KffEHcCs1ma2Ji05"
     }
 
 ];

@@ -259,7 +259,7 @@ const volticaProducts = [
             "assets/images/earbuds4-3.webp",
             "assets/images/earbuds4-4.webp",
             "assets/images/earbuds4-5.webp",
-            "assets/images/earbuds4-6.webp",
+            "assets/images/earbuds4-6.jpg",
             "assets/images/earbuds4-7.webp"
         ],
 

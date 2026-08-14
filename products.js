@@ -231,10 +231,88 @@ const volticaProducts = [
                 "CALLS + MUSIC",
                 "Designed for both hands-free calls and everyday music playback."
             ]
+    
         ],
 
         stripe:
             "https://buy.stripe.com/4gM9AU9KffEHcCs1ma2Ji05"
-    }
+    },
+    
+    /* =====================================================
+       PRODUCT 04 — VOLTICA T75
+       ===================================================== */
 
+    {
+        id: "earbuds4",
+        sku: "VLT-AUD-T75-001",
+
+        name: "Voltica T75",
+        category: "OPEN-EAR AUDIO",
+        badge: "NEW",
+
+        price: "39.99",
+        currency: "USD",
+
+        images: [
+            "assets/images/earbuds4-1.webp",
+            "assets/images/earbuds4-2.webp",
+            "assets/images/earbuds4-3.webp",
+            "assets/images/earbuds4-4.webp",
+            "assets/images/earbuds4-5.webp",
+            "assets/images/earbuds4-6.webp",
+            "assets/images/earbuds4-7.webp"
+        ],
+
+        description:
+            "Experience wireless audio without completely blocking your ears. The Voltica T75 features an ergonomic open-ear clip design that sits comfortably outside the ear canal, making it ideal for workouts, gaming, calls, office use and everyday listening.",
+
+        specifications: [
+            ["MODEL", "T75"],
+            ["DESIGN", "Open-Ear Ear Clip"],
+            ["CONNECTIVITY", "Bluetooth Wireless"],
+            ["AUDIO MODE", "Low-Latency Dual Channel"],
+            ["CONTROL", "Touch Control"],
+            ["WATER RESISTANCE", "IPX5"],
+            ["AUDIO", "Hi-Fi"],
+            ["WEARING STYLE", "Ear Clip"],
+            ["GLASSES COMPATIBILITY", "Yes"],
+            ["COLORS", "Black / White / Beige-Cream"]
+        ],
+
+        features: [
+            [
+                "01",
+                "OPEN-EAR DESIGN",
+                "Ear-clip construction sits outside the ear canal while keeping you aware of your surroundings."
+            ],
+            [
+                "02",
+                "LOW LATENCY",
+                "Low-latency wireless mode designed for improved audio and visual synchronization."
+            ],
+            [
+                "03",
+                "IPX5",
+                "Water and sweat-resistant construction designed for active everyday use."
+            ],
+            [
+                "04",
+                "TOUCH CONTROL",
+                "Convenient touch controls provide easy access to everyday functions."
+            ],
+            [
+                "05",
+                "ERGONOMIC FIT",
+                "Flexible ear-clip design engineered for comfortable extended wear and compatibility with glasses."
+            ],
+            [
+                "06",
+                "HI-FI AUDIO",
+                "High-sensitivity moving-ring speaker design delivers detailed wireless audio."
+            ]
+        ],
+
+        stripe:"https://buy.stripe.com/5kQ6oI9Kf9gj8mc3ui2Ji06"
+            
+}
 ];

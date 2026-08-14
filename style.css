@@ -10343,3 +10343,13 @@ a[href="store.html"] {
     align-items: center !important;
     justify-content: center !important;
 }
+/* VOLTICA NAV — BIGGER HOME + STORE BUTTONS */
+header nav a,
+nav a {
+    padding: 16px 30px !important;
+    font-size: 18px !important;
+    min-height: 50px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}

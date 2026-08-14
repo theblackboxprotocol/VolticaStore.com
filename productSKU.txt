@@ -1,1 +1,42 @@
+VOLTICA STORE — PRODUCT SKU
 
+SKU: VLT-AUD-T75-001
+
+Product: T75 Open-Ear Wireless Earbuds
+
+Category: Audio / Wireless Earbuds
+
+Supplier Model: T75
+Supplier SKU: Not provided
+
+Product Cost: 9.03 USD
+Shipping Cost: 9.00 USD
+Total Supplier Cost: 18.03 USD
+
+Voltica Pricing:
+Normal Price: 34.99 USD
+Reference Price: 39.99 USD
+
+Variants:
+- Black
+- White
+- Beige/Cream
+
+Key Features:
+- Ear-clip open-ear design
+- Bluetooth wireless connectivity
+- Low-latency mode
+- Touch controls
+- IPX5 water/sweat resistance
+- Hi-Fi audio
+- Gaming-oriented sound
+- Compatible with glasses
+- Ergonomic ear-clip design
+
+Supplier Link:
+https://a.aliexpress.com/_mKwN1sj
+
+Notes:
+Voltica SKU internally assigned because supplier SKU was not provided.
+Verify exact battery capacity, charging-case capacity, dimensions,
+delivery time, and certifications before final publication.

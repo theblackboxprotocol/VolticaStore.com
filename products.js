@@ -315,4 +315,80 @@ const volticaProducts = [
         stripe:"https://buy.stripe.com/5kQ6oI9Kf9gj8mc3ui2Ji06"
             
 }
+        /* =====================================================
+       PRODUCT 05 — VOLTICA J10 GAMING KEYBOARD SET
+       ===================================================== */
+
+    {
+        id: "keyboard1",
+        sku: "VLT-GAM-J10-001",
+
+        name: "Voltica J10",
+        category: "GAMING GEAR",
+        badge: "NEW",
+
+        price: "43.99",
+        currency: "USD",
+
+        images: [
+            "assets/images/keyboard1-1.webp",
+            "assets/images/keyboard1-2.webp",
+            "assets/images/keyboard1-3.webp",
+            "assets/images/keyboard1-4.webp",
+            "assets/images/keyboard1-5.webp",
+            "assets/images/keyboard1-6.webp",
+            "assets/images/keyboard1-7.webp",
+            "assets/images/keyboard1-8.webp"
+        ],
+
+        description:
+            "A wired gaming keyboard and mouse set designed to bring responsive control, vibrant illumination and a complete gaming setup to your desk. Featuring a 108-key keyboard, USB connectivity and a striking tricolor backlight.",
+
+        specifications: [
+            ["PRODUCT TYPE", "Gaming Keyboard + Mouse Set"],
+            ["KEYBOARD", "108 Keys"],
+            ["CONNECTION", "Wired"],
+            ["INTERFACE", "USB"],
+            ["BACKLIGHT", "Tri-Color"],
+            ["KEYBOARD TYPE", "Gaming Keyboard"],
+            ["MOUSE", "Wired Gaming Mouse"],
+            ["USE", "Gaming / Desktop / Everyday Use"]
+        ],
+
+        features: [
+            [
+                "01",
+                "108-KEY LAYOUT",
+                "Full-size keyboard layout designed for gaming, productivity and everyday desktop use."
+            ],
+            [
+                "02",
+                "TRI-COLOR BACKLIGHT",
+                "Colorful three-color illumination gives your setup a distinctive gaming aesthetic."
+            ],
+            [
+                "03",
+                "WIRED CONTROL",
+                "Direct wired USB connection provides a simple and reliable desktop setup."
+            ],
+            [
+                "04",
+                "KEYBOARD + MOUSE",
+                "Complete gaming combination with both keyboard and mouse included."
+            ],
+            [
+                "05",
+                "USB CONNECTION",
+                "Plug-and-play wired connectivity for compatible computers."
+            ],
+            [
+                "06",
+                "GAMING DESIGN",
+                "Designed to bring a bold illuminated look to your gaming station."
+            ]
+        ],
+
+        stripe:
+            ""
+}
 ];

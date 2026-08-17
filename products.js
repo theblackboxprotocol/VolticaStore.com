@@ -391,5 +391,90 @@ const volticaProducts = [
 
         stripe:
             "https://buy.stripe.com/00w9AU1dJ9gj45Wfd02Ji07"
-}
+},
+        /* =====================================================
+       PRODUCT 06 — VOLTICA AI 360 GIMBAL
+       ===================================================== */
+
+    {
+        id: "gimbal1",
+        sku: "VLT-CRT-GMBL-001",
+
+        name: "Voltica AI 360 Gimbal",
+        category: "CREATOR GEAR",
+        badge: "NEW",
+
+        price: "39.99",
+        currency: "USD",
+
+        images: [
+            "assets/images/gimbal1-1.webp",
+            "assets/images/gimbal1-2.webp",
+            "assets/images/gimbal1-3.webp",
+            "assets/images/gimbal1-4.webp",
+            "assets/images/gimbal1-5.jpg",
+            "assets/images/gimbal1-6.webp",
+            "assets/images/gimbal1-7.webp",
+            "assets/images/gimbal1-8.webp",
+            "assets/images/gimbal1-9.webp",
+            "assets/images/gimbal1-10.webp",
+            "assets/images/gimbal1-11.webp",
+            "assets/images/gimbal1-12.webp",
+            "assets/images/gimbal1-13.webp"
+        ],
+
+        description:
+            "Intelligent 360° AI face tracking gimbal designed for creators, VLOG production, live streaming and hands-free smartphone recording. Featuring automatic subject tracking, gesture recognition, horizontal and vertical shooting, a built-in 1200mAh battery and tripod compatibility.",
+
+        specifications: [
+            ["PRODUCT TYPE", "AI 360° Smartphone Gimbal"],
+            ["ROTATION", "360°"],
+            ["TRACKING", "AI Intelligent Face Tracking"],
+            ["BATTERY", "1200mAh Built-in Lithium Battery"],
+            ["BATTERY LIFE", "Up to 8 hours"],
+            ["CONTROL", "Hand Gesture Recognition"],
+            ["GESTURE START", "OK Gesture"],
+            ["GESTURE STOP", "Palm Gesture"],
+            ["SHOOTING MODES", "Horizontal / Vertical"],
+            ["APP REQUIRED", "No"],
+            ["TRIPOD SUPPORT", "Yes"],
+            ["USE", "TikTok / VLOG / Live Streaming"]
+        ],
+
+        features: [
+            [
+                "01",
+                "360° AI TRACKING",
+                "Intelligent 360-degree rotation automatically follows your movements while recording."
+            ],
+            [
+                "02",
+                "SMART FACE TRACKING",
+                "AI-powered subject tracking keeps you centered while filming hands-free."
+            ],
+            [
+                "03",
+                "GESTURE CONTROL",
+                "Use simple hand gestures to activate or stop automatic tracking."
+            ],
+            [
+                "04",
+                "8-HOUR BATTERY",
+                "Built-in 1200mAh lithium battery provides up to 8 hours of operation."
+            ],
+            [
+                "05",
+                "HORIZONTAL + VERTICAL",
+                "Switch between horizontal and vertical shooting for different content formats."
+            ],
+            [
+                "06",
+                "NO APP REQUIRED",
+                "Open and use the gimbal without installing a dedicated smartphone application."
+            ]
+        ],
+
+        stripe:
+            "https://buy.stripe.com/6oUbJ2cWrdwzbyo4ym2Ji08"
+    }
 ];

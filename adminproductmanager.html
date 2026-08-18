@@ -1703,7 +1703,242 @@
         );
 
     </script>
+<script>
 
+    /* =====================================================
+       VOLTICA PRODUCT MANAGER
+       PRODUCT DATA GENERATOR
+       ===================================================== */
+
+    const addProductButton =
+        document.querySelector(".button-primary");
+
+
+    addProductButton.addEventListener("click", function () {
+
+        /* -------------------------------------------------
+           READ BASIC INFORMATION
+           ------------------------------------------------- */
+
+        const productName =
+            document.getElementById("productName").value.trim();
+
+        const volticaSku =
+            document.getElementById("productSku").value.trim();
+
+        const cjSku =
+            document.getElementById("cjSku").value.trim();
+
+        const category =
+            document.getElementById("category").value.trim();
+
+        const cost =
+            document.getElementById("cost").value.trim();
+
+        const price =
+            document.getElementById("price").value.trim();
+
+        const description =
+            document.getElementById("description").value.trim();
+
+        const features =
+            document.getElementById("features").value.trim();
+
+        const specifications =
+            document.getElementById("specifications").value.trim();
+
+
+        /* -------------------------------------------------
+           BASIC VALIDATION
+           ------------------------------------------------- */
+
+        if (!productName) {
+
+            alert("Please enter a product name.");
+
+            return;
+
+        }
+
+
+        if (!volticaSku) {
+
+            alert("Please enter the Voltica SKU.");
+
+            return;
+
+        }
+
+
+        if (!category) {
+
+            alert("Please select a category.");
+
+            return;
+
+        }
+
+
+        if (!price) {
+
+            alert("Please enter the Voltica price.");
+
+            return;
+
+        }
+
+
+        /* -------------------------------------------------
+           CREATE PRODUCT ID
+           ------------------------------------------------- */
+
+        const productId =
+            volticaSku
+                .toLowerCase()
+                .replace(/^vlt-/, "")
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-|-$/g, "");
+
+
+        /* -------------------------------------------------
+           CREATE IMAGE PATHS
+           ------------------------------------------------- */
+
+        const imageFiles =
+            Array.from(imageInput.files);
+
+
+        const imagePaths =
+            imageFiles.map(function (file) {
+
+                return (
+                    "assets/images/" +
+                    file.name
+                );
+
+            });
+
+
+        /* -------------------------------------------------
+           CREATE PRODUCT OBJECT
+           ------------------------------------------------- */
+
+        const productObject = {
+
+            id: productId,
+
+            sku: volticaSku,
+
+            cjSku: cjSku,
+
+            name: productName,
+
+            category: category,
+
+            badge: "NEW",
+
+            price: price,
+
+            currency: "USD",
+
+            images: imagePaths,
+
+            description: description,
+
+            features: features,
+
+            specifications: specifications,
+
+            cost: cost
+
+        };
+
+
+        /* -------------------------------------------------
+           CREATE JAVASCRIPT OUTPUT
+           ------------------------------------------------- */
+
+        const productCode = `
+
+{
+    id: "${productObject.id}",
+    sku: "${productObject.sku}",
+    cjSku: "${productObject.cjSku}",
+    name: "${productObject.name}",
+    category: "${productObject.category}",
+    badge: "${productObject.badge}",
+
+    price: "${productObject.price}",
+    currency: "${productObject.currency}",
+
+    images: [
+${productObject.images
+    .map(function (image) {
+
+        return `        "${image}"`;
+
+    })
+    .join(",\n")}
+    ],
+
+    description:
+        "${productObject.description}",
+
+    features:
+        ${JSON.stringify(productObject.features)},
+
+    specifications:
+        ${JSON.stringify(productObject.specifications)}
+},
+
+        `;
+
+
+        /* -------------------------------------------------
+           SHOW RESULT
+           ------------------------------------------------- */
+
+        console.log(
+            "VOLITCA PRODUCT GENERATED:",
+            productObject
+        );
+
+
+        alert(
+            "PRODUCT GENERATED!\\n\\n" +
+            "ID: " +
+            productObject.id +
+            "\\n\\n" +
+            "Open the browser console (F12) " +
+            "to see the generated products.js block."
+        );
+
+
+        /* -------------------------------------------------
+           COPY TO CLIPBOARD
+           ------------------------------------------------- */
+
+        navigator.clipboard.writeText(
+            productCode
+        )
+        .then(function () {
+
+            console.log(
+                "Product code copied to clipboard."
+            );
+
+        })
+        .catch(function () {
+
+            console.log(
+                productCode
+            );
+
+        });
+
+    });
+
+</script>
 
 </body>
 

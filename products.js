@@ -554,4 +554,79 @@ const volticaProducts = [
         stripe:
             "https://buy.stripe.com/7sY4gA5tZgIL9qg3ui2Ji09"
     },
+        /* =====================================================
+       PRODUCT 07 — VOLTICA LAPTOP STAND
+       ===================================================== */
+
+    {
+        id: "stand1",
+        sku: "VLT-TEC-LST-001",
+
+        name: "Voltica Laptop Stand",
+        category: "TECH / LAPTOP ACCESSORIES",
+        badge: "NEW",
+
+        price: "42.99",
+        currency: "USD",
+
+        images: [
+            "assets/images/stand1-1.webp",
+            "assets/images/stand1-2.webp",
+            "assets/images/stand1-3.webp",
+            "assets/images/stand1-4.webp",
+            "assets/images/stand1-5.webp"
+        ],
+
+        description:
+            "A multifunctional foldable laptop stand designed for a cleaner, more ergonomic workspace. Featuring 9 adjustable viewing angles, improved airflow, integrated smartphone holders and support for laptops up to 17 inches.",
+
+        specifications: [
+            ["PRODUCT TYPE", "Foldable Laptop Stand"],
+            ["COMPATIBILITY", "Laptops up to 17 inches"],
+            ["MAXIMUM LOAD", "Up to 20KG"],
+            ["ADJUSTMENT", "9 Adjustable Angles"],
+            ["DESIGN", "Foldable / Ergonomic"],
+            ["MATERIAL", "Durable Laptop Stand Construction"],
+            ["COOLING", "Ventilated Open-Panel Design"],
+            ["COOLING FEATURE", "Integrated Cooling Knob"],
+            ["PHONE HOLDER", "Built-in / Left + Right"],
+            ["COLOR", "Black"]
+        ],
+
+        features: [
+            [
+                "01",
+                "17\" COMPATIBILITY",
+                "Designed to support laptops and notebooks up to 17 inches."
+            ],
+            [
+                "02",
+                "20KG SUPPORT",
+                "High load capacity provides stable support for a wide range of laptops."
+            ],
+            [
+                "03",
+                "9 ANGLES",
+                "Nine adjustable viewing angles allow you to find a comfortable ergonomic position."
+            ],
+            [
+                "04",
+                "FOLDABLE DESIGN",
+                "Folds down easily for convenient storage, transport and everyday use."
+            ],
+            [
+                "05",
+                "COOLING AIRFLOW",
+                "Open-panel construction and the integrated cooling knob help improve airflow beneath the laptop."
+            ],
+            [
+                "06",
+                "MULTI-FUNCTIONAL",
+                "Built-in smartphone holders and open space underneath provide room for your keyboard and mouse."
+            ]
+        ],
+
+        stripe:
+            "https://buy.stripe.com/bJe7sM8Gb647cCs7Ky2Ji0a"
+    },
 ];

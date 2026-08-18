@@ -1,45 +1,89 @@
 /* =====================================================
    VOLTICA STORE
-   ADMIN API AUTHENTICATION
+   ADMIN PRODUCT API
    ===================================================== */
 
 const API_URL =
     "https://api.volticastore.com/api/admin-api.php";
 
 
-async function authenticateAPI() {
+/* =====================================================
+   PUBLISH PRODUCT
+   ===================================================== */
 
-    const password = prompt(
-        "VOLTICA STORE\n\nADMIN PASSWORD"
+async function publishProduct(
+    password,
+    product
+) {
+
+    const formData =
+        new FormData();
+
+
+    /* -------------------------------------------------
+       ADMIN PASSWORD
+       ------------------------------------------------- */
+
+    formData.append(
+        "password",
+        password
     );
 
 
-    if (!password) {
+    /* -------------------------------------------------
+       PRODUCT DATA
+       ------------------------------------------------- */
 
-        alert("Admin password required.");
+    formData.append(
+        "product",
+        product
+    );
 
-        return false;
+
+    /* -------------------------------------------------
+       PRODUCT IMAGES
+       ------------------------------------------------- */
+
+    const imageInput =
+        document.getElementById(
+            "productImages"
+        );
+
+
+    if (
+        imageInput &&
+        imageInput.files.length
+    ) {
+
+        Array.from(
+            imageInput.files
+        ).forEach(function(file) {
+
+            formData.append(
+                "images[]",
+                file,
+                file.name
+            );
+
+        });
 
     }
 
 
+    /* -------------------------------------------------
+       SEND TO PHP
+       ------------------------------------------------- */
+
     try {
 
-        const response = await fetch(
-            API_URL,
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type":
-                        "application/json"
-                },
-
-                body: JSON.stringify({
-                    password: password
-                })
-            }
-        );
+        const response =
+            await fetch(
+                API_URL,
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
 
 
         const result =
@@ -58,10 +102,10 @@ async function authenticateAPI() {
         ) {
 
             alert(
-                "AUTHENTICATION FAILED\n\n" +
+                "PUBLISH FAILED\n\n" +
                 (
                     result.error ||
-                    "Invalid administrator password."
+                    "Unknown API error"
                 )
             );
 
@@ -71,8 +115,16 @@ async function authenticateAPI() {
 
 
         alert(
-            "✓ ADMIN AUTHENTICATED\n\n" +
-            "✓ API CONNECTION SUCCESSFUL"
+            "🔥 PRODUCT PUBLISHED!\n\n" +
+            "✓ GitHub updated\n" +
+            "✓ products.js updated\n" +
+            "✓ Images uploaded"
+        );
+
+
+        console.log(
+            "Uploaded images:",
+            result.uploaded_images
         );
 
 

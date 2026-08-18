@@ -476,5 +476,85 @@ const volticaProducts = [
 
         stripe:
             "https://buy.stripe.com/6oUbJ2cWrdwzbyo4ym2Ji08"
-    }
+    },
+        /* =====================================================
+       PRODUCT 07 — VOLTICA TRI-FOLD TOUCH KEYBOARD
+       ===================================================== */
+
+    {
+        id: "keyboard2",
+        sku: "VLT-CRT-TKB-002",
+
+        name: "Voltica Tri-Fold Touch Keyboard",
+        category: "CREATOR GEAR",
+        badge: "NEW",
+
+        price: "37.99",
+        currency: "USD",
+
+        images: [
+            "assets/images/keyboard2-1.webp",
+            "assets/images/keyboard2-2.webp",
+            "assets/images/keyboard2-3.webp",
+            "assets/images/keyboard2-4.webp",
+            "assets/images/keyboard2-5.webp",
+            "assets/images/keyboard2-6.webp",
+            "assets/images/keyboard2-7.webp",
+            "assets/images/keyboard2-8.webp"
+        ],
+
+        description:
+            "Ultra-thin tri-fold Bluetooth keyboard with an integrated touchpad, designed for portable productivity across Apple, Android and Microsoft devices. Its compact folding design makes it ideal for mobile work, travel and everyday creators.",
+
+        specifications: [
+            ["PRODUCT TYPE", "Tri-Fold Bluetooth Touch Keyboard"],
+            ["DESIGN", "Ultra-thin / Three-Fold"],
+            ["CONNECTION", "Bluetooth 3.0"],
+            ["SYSTEM COMPATIBILITY", "Apple / Android / Microsoft"],
+            ["BATTERY", "Built-in Rechargeable Lithium Battery"],
+            ["BATTERY CAPACITY", "140mAh"],
+            ["CHARGING TIME", "Under 2 hours"],
+            ["CONTINUOUS USE", "Up to 100 hours"],
+            ["TOUCHPAD", "54.8 × 44.8 mm"],
+            ["SPREAD SIZE", "152 × 97 × 18 mm"],
+            ["FOLDING SIZE", "302 × 97 × 18 mm"],
+            ["COLOR", "Black"]
+        ],
+
+        features: [
+            [
+                "01",
+                "TRI-FOLD DESIGN",
+                "Three-fold construction creates a compact keyboard that is easy to carry and store."
+            ],
+            [
+                "02",
+                "INTEGRATED TOUCHPAD",
+                "Built-in touchpad provides convenient cursor control without requiring a separate mouse."
+            ],
+            [
+                "03",
+                "THREE-SYSTEM",
+                "Designed for compatibility with Apple, Android and Microsoft operating systems."
+            ],
+            [
+                "04",
+                "100-HOUR USE",
+                "Rechargeable 140mAh battery provides up to 100 hours of continuous use."
+            ],
+            [
+                "05",
+                "ULTRA-THIN",
+                "Slim portable construction designed for mobile productivity and travel."
+            ],
+            [
+                "06",
+                "BLUETOOTH 3.0",
+                "Wireless Bluetooth connectivity for convenient cable-free operation."
+            ]
+        ],
+
+        stripe:
+            ""
+    },
 ];

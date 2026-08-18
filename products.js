@@ -777,4 +777,33 @@ const volticaProducts = [
 
     stripe: "https://buy.stripe.com/4gM4gA09F0JNfOE3ui2Ji0d"
 },
+
+// =================================================
+// PRODUCT XX — VULVE
+// =================================================
+
+{
+    id: "vulve",
+    sku: "Vlt",
+    cjSku: "Cj",
+    name: "Vulve",
+    category: "lifestyle",
+    badge: "NEW",
+
+    price: "38",
+    currency: "USD",
+
+    images: [
+        "assets/images/1000049868.jpg"
+    ],
+
+    description:
+        "Salut",
+
+    features:
+        ["01-salut"],
+
+    specifications:
+        ["Des"]
+},
 ];

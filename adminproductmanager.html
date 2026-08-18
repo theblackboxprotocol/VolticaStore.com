@@ -1939,7 +1939,132 @@ ${productObject.images
     });
 
 </script>
+<script>
 
+/* =====================================================
+   VOLTICA IMAGE MANAGER
+   ===================================================== */
+
+function getProductImages() {
+
+    if (!imageInput || !imageInput.files.length) {
+
+        return [];
+
+    }
+
+
+    const images = Array.from(imageInput.files);
+
+
+    return images.map(function(file) {
+
+        return {
+            name: file.name,
+            path: "assets/images/" + file.name,
+            type: file.type,
+            size: file.size
+        };
+
+    });
+
+}
+
+
+/* =====================================================
+   IMAGE VALIDATION
+   ===================================================== */
+
+function validateProductImages() {
+
+    const images = getProductImages();
+
+
+    if (images.length === 0) {
+
+        console.log(
+            "No product images selected."
+        );
+
+        return false;
+
+    }
+
+
+    console.log(
+        "VOLITCA PRODUCT IMAGES:"
+    );
+
+
+    images.forEach(function(image, index) {
+
+        console.log(
+            (index + 1) +
+            ". " +
+            image.path
+        );
+
+    });
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   IMAGE PREVIEW
+   ===================================================== */
+
+function showProductImages() {
+
+    const images =
+        getProductImages();
+
+
+    if (!images.length) {
+
+        return;
+
+    }
+
+
+    console.log(
+        "Images ready for upload:"
+    );
+
+
+    images.forEach(function(image) {
+
+        console.log(
+            "✓ " + image.path
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   CONNECT TO IMAGE INPUT
+   ===================================================== */
+
+if (typeof imageInput !== "undefined") {
+
+    imageInput.addEventListener(
+        "change",
+        function() {
+
+            validateProductImages();
+
+            showProductImages();
+
+        }
+    );
+
+}
+
+</script>
 </body>
 
 </html>

@@ -957,7 +957,49 @@
             }
 
         }
+.image-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 18px;
+}
 
+.image-preview-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+}
+
+.image-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.image-preview-name {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 6px;
+    font-size: 9px;
+    color: #fff;
+    background: rgba(0,0,0,0.75);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.image-preview-count {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    color: #8d9199;
+    padding: 4px 0;
+}
     </style>
 
 </head>
@@ -1939,132 +1981,7 @@ ${productObject.images
     });
 
 </script>
-<script>
-
-/* =====================================================
-   VOLTICA IMAGE MANAGER
-   ===================================================== */
-
-function getProductImages() {
-
-    if (!imageInput || !imageInput.files.length) {
-
-        return [];
-
-    }
-
-
-    const images = Array.from(imageInput.files);
-
-
-    return images.map(function(file) {
-
-        return {
-            name: file.name,
-            path: "assets/images/" + file.name,
-            type: file.type,
-            size: file.size
-        };
-
-    });
-
-}
-
-
-/* =====================================================
-   IMAGE VALIDATION
-   ===================================================== */
-
-function validateProductImages() {
-
-    const images = getProductImages();
-
-
-    if (images.length === 0) {
-
-        console.log(
-            "No product images selected."
-        );
-
-        return false;
-
-    }
-
-
-    console.log(
-        "VOLITCA PRODUCT IMAGES:"
-    );
-
-
-    images.forEach(function(image, index) {
-
-        console.log(
-            (index + 1) +
-            ". " +
-            image.path
-        );
-
-    });
-
-
-    return true;
-
-}
-
-
-/* =====================================================
-   IMAGE PREVIEW
-   ===================================================== */
-
-function showProductImages() {
-
-    const images =
-        getProductImages();
-
-
-    if (!images.length) {
-
-        return;
-
-    }
-
-
-    console.log(
-        "Images ready for upload:"
-    );
-
-
-    images.forEach(function(image) {
-
-        console.log(
-            "✓ " + image.path
-        );
-
-    });
-
-}
-
-
-/* =====================================================
-   CONNECT TO IMAGE INPUT
-   ===================================================== */
-
-if (typeof imageInput !== "undefined") {
-
-    imageInput.addEventListener(
-        "change",
-        function() {
-
-            validateProductImages();
-
-            showProductImages();
-
-        }
-    );
-
-}
-
-</script>
+    
 </body>
 
 </html>

@@ -728,6 +728,6 @@ const volticaProducts = [
         ["Installation", "Wall-mounted / Desktop"]
     ],
 
-    stripe: "STRIPE_LINK_HERE"
+    stripe: "https://buy.stripe.com/5kQdRa7C70JN45W3ui2Ji0c"
 },  
 ];

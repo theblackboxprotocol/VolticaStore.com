@@ -172,38 +172,109 @@ if (!$adminPassword) {
 
 /* =====================================================
    ADMIN PASSWORD
+   SUPPORT JSON + FORM DATA
    ===================================================== */
 
-$password =
-    $_POST["password"] ?? "";
+$password = "";
 
 
-if (!$password) {
+/*
+ * JSON request
+ */
+
+$contentType =
+    $_SERVER["CONTENT_TYPE"] ?? "";
+
+
+if (
+    stripos(
+        $contentType,
+        "application/json"
+    ) !== false
+) {
+
+    $rawInput =
+        file_get_contents("php://input");
+
+
+    $jsonInput =
+        json_decode(
+            $rawInput,
+            true
+        );
+
+
+    if (
+        is_array($jsonInput) &&
+        isset($jsonInput["password"])
+    ) {
+
+        $password =
+            trim(
+                (string)$jsonInput["password"]
+            );
+
+    }
+
+}
+
+
+/*
+ * Multipart/form-data / normal POST
+ */
+
+if (
+    $password === "" &&
+    isset($_POST["password"])
+) {
+
+    $password =
+        trim(
+            (string)$_POST["password"]
+        );
+
+}
+
+
+/*
+ * Password missing
+ */
+
+if ($password === "") {
 
     http_response_code(401);
 
     echo json_encode([
         "success" => false,
-        "error" => "Admin password required"
+        "error" =>
+            "Admin password required"
     ]);
 
     exit;
 }
 
 
-if (!hash_equals($adminPassword, $password)) {
+/*
+ * Verify password
+ */
+
+if (
+    !hash_equals(
+        $adminPassword,
+        $password
+    )
+) {
 
     http_response_code(401);
 
     echo json_encode([
         "success" => false,
-        "error" => "Invalid password"
+        "error" =>
+            "Invalid password"
     ]);
 
     exit;
 }
-
-
 /* =====================================================
    PRODUCT DATA
    ===================================================== */

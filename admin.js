@@ -82,7 +82,82 @@ async function publishProduct(password, product) {
             "VOLTICA RAW API RESPONSE:",
             text
         );
+/* =====================================================
+   IMAGE PREVIEW
+   ===================================================== */
 
+const imageInput =
+    document.getElementById("productImages");
+
+const imagePreview =
+    document.getElementById("imagePreview");
+
+
+if (imageInput && imagePreview) {
+
+    imageInput.addEventListener(
+        "change",
+        function() {
+
+            imagePreview.innerHTML = "";
+
+            const files =
+                Array.from(this.files);
+
+
+            if (!files.length) {
+                return;
+            }
+
+
+            files.forEach(function(file) {
+
+                if (
+                    !file.type.startsWith("image/")
+                ) {
+                    return;
+                }
+
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "image-preview-item";
+
+
+                const image =
+                    document.createElement("img");
+
+                image.src =
+                    URL.createObjectURL(file);
+
+                image.alt =
+                    file.name;
+
+
+                const name =
+                    document.createElement("div");
+
+                name.className =
+                    "image-preview-name";
+
+                name.textContent =
+                    file.name;
+
+
+                item.appendChild(image);
+
+                item.appendChild(name);
+
+                imagePreview.appendChild(item);
+
+            });
+
+        }
+    );
+
+}
 
         let result;
 

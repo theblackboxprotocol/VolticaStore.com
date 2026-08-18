@@ -629,7 +629,7 @@ const volticaProducts = [
             "https://buy.stripe.com/bJe7sM8Gb647cCs7Ky2Ji0a"
     },
     // =================================================
-// PRODUCT 01 — VOLTICA SMART CAR CUP WARMER
+// PRODUCT 08 — VOLTICA SMART CAR CUP WARMER
 // =================================================
 
 {
@@ -639,7 +639,7 @@ const volticaProducts = [
     category: "Lifestyle / Automotive Accessories",
     badge: "NEW",
 
-    price: 39.99,
+    price: "39.99",
     currency: "USD",
 
     images: [
@@ -674,6 +674,6 @@ const volticaProducts = [
         ["Timing Function", "No"]
     ],
 
-    stripe: "#"
+    stripe: "https://buy.stripe.com/eVq7sM5tZ0JNfOE2qe2Ji0b"
 }
 ];

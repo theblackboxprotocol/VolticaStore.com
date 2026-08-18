@@ -569,7 +569,7 @@ async function publishProduct(
     /* -------------------------------------------------
        PRODUCT
        ------------------------------------------------- */
-
+console.log("PRODUCT SENT TO PHP:", product);
     formData.append(
         "product",
         product

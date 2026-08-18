@@ -2085,6 +2085,696 @@ clearImagesButton.addEventListener(
 );
 
             </script>
+    <script>
+
+/* =====================================================
+   VOLTICA PRODUCT MANAGER
+   ADD PRODUCT → PRODUCTS.JS GENERATOR
+   ===================================================== */
+
+
+/* -----------------------------------------------------
+   CATEGORY MAP
+   ----------------------------------------------------- */
+
+const volticaCategories = {
+
+    earbuds: "Wireless Audio",
+
+    gaming: "Gaming Gear",
+
+    creator: "Creator Gear",
+
+    headphones: "Headphones",
+
+    tech: "Tech",
+
+    lifestyle: "Lifestyle"
+
+};
+
+
+/* -----------------------------------------------------
+   CREATE PRODUCT ID
+   ----------------------------------------------------- */
+
+function createProductId(name) {
+
+    return name
+        .toLowerCase()
+        .replace(/voltica/g, "")
+        .trim()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
+}
+
+
+/* -----------------------------------------------------
+   ESCAPE JAVASCRIPT STRING
+   ----------------------------------------------------- */
+
+function escapeJS(value) {
+
+    return String(value || "")
+        .replace(/\\/g, "\\\\")
+        .replace(/"/g, '\\"')
+        .replace(/\r?\n/g, " ");
+
+}
+
+
+/* -----------------------------------------------------
+   FEATURES PARSER
+   ----------------------------------------------------- */
+
+function parseFeatures(text) {
+
+    if (!text.trim()) {
+        return [];
+    }
+
+
+    return text
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean)
+        .map(line => {
+
+            /*
+             Expected:
+
+             01 — Feature name — Description
+            */
+
+            const parts =
+                line.split("—")
+                    .map(part => part.trim());
+
+
+            if (parts.length >= 3) {
+
+                return [
+                    parts[0],
+                    parts[1],
+                    parts.slice(2).join(" — ")
+                ];
+
+            }
+
+
+            return [
+                String(
+                    arguments
+                ),
+                parts[0],
+                parts.slice(1).join(" — ")
+            ];
+
+        });
+
+}
+
+
+/* -----------------------------------------------------
+   SPECIFICATIONS PARSER
+   ----------------------------------------------------- */
+
+function parseSpecifications(text) {
+
+    if (!text.trim()) {
+        return [];
+    }
+
+
+    return text
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean)
+        .map(line => {
+
+            const separator =
+                line.indexOf(":");
+
+
+            if (separator === -1) {
+
+                return [
+                    line,
+                    ""
+                ];
+
+            }
+
+
+            const name =
+                line
+                    .substring(0, separator)
+                    .trim();
+
+
+            const value =
+                line
+                    .substring(separator + 1)
+                    .trim();
+
+
+            return [
+                name,
+                value
+            ];
+
+        });
+
+}
+
+
+/* -----------------------------------------------------
+   IMAGE PATHS
+   ----------------------------------------------------- */
+
+function getImagePaths() {
+
+    const input =
+        document.getElementById(
+            "productImages"
+        );
+
+
+    if (!input || !input.files.length) {
+
+        return [];
+
+    }
+
+
+    return Array.from(input.files)
+        .map(file =>
+            "assets/images/" + file.name
+        );
+
+}
+
+
+/* -----------------------------------------------------
+   GENERATE IMAGE ARRAY
+   ----------------------------------------------------- */
+
+function generateImages(images) {
+
+    if (!images.length) {
+
+        return "    images: [],";
+
+    }
+
+
+    const lines =
+        images.map(image =>
+            `        "${image}"`
+        );
+
+
+    return [
+        "    images: [",
+        lines.join(",\n"),
+        "    ],"
+    ].join("\n");
+
+}
+
+
+/* -----------------------------------------------------
+   GENERATE FEATURES
+   ----------------------------------------------------- */
+
+function generateFeatures(features) {
+
+    if (!features.length) {
+
+        return `    features: [],`;
+
+    }
+
+
+    const lines =
+        features.map(feature => {
+
+            return `        ["${escapeJS(feature[0])}", "${escapeJS(feature[1])}", "${escapeJS(feature[2])}"]`;
+
+        });
+
+
+    return [
+        "    features: [",
+        lines.join(",\n"),
+        "    ],"
+    ].join("\n");
+
+}
+
+
+/* -----------------------------------------------------
+   GENERATE SPECIFICATIONS
+   ----------------------------------------------------- */
+
+function generateSpecifications(specifications) {
+
+    if (!specifications.length) {
+
+        return `    specifications: [],`;
+
+    }
+
+
+    const lines =
+        specifications.map(spec => {
+
+            return `        ["${escapeJS(spec[0])}", "${escapeJS(spec[1])}"]`;
+
+        });
+
+
+    return [
+        "    specifications: [",
+        lines.join(",\n"),
+        "    ],"
+    ].join("\n");
+
+}
+
+
+/* -----------------------------------------------------
+   GENERATE PRODUCTS.JS BLOCK
+   ----------------------------------------------------- */
+
+function generateProductJS() {
+
+
+    const name =
+        document
+            .getElementById("productName")
+            .value
+            .trim();
+
+
+    const volticaSku =
+        document
+            .getElementById("productSku")
+            .value
+            .trim();
+
+
+    const cjSku =
+        document
+            .getElementById("cjSku")
+            .value
+            .trim();
+
+
+    const categoryValue =
+        document
+            .getElementById("category")
+            .value;
+
+
+    const price =
+        document
+            .getElementById("price")
+            .value
+            .trim();
+
+
+    const description =
+        document
+            .getElementById("description")
+            .value
+            .trim();
+
+
+    const featuresText =
+        document
+            .getElementById("features")
+            .value;
+
+
+    const specificationsText =
+        document
+            .getElementById("specifications")
+            .value;
+
+
+    /* -----------------------------------------------
+       VALIDATION
+       ----------------------------------------------- */
+
+    if (!name) {
+
+        alert(
+            "Please enter a Product Name."
+        );
+
+        return null;
+
+    }
+
+
+    if (!volticaSku) {
+
+        alert(
+            "Please enter the Voltica SKU."
+        );
+
+        return null;
+
+    }
+
+
+    if (!categoryValue) {
+
+        alert(
+            "Please select a Category."
+        );
+
+        return null;
+
+    }
+
+
+    if (!price) {
+
+        alert(
+            "Please enter the Voltica Price."
+        );
+
+        return null;
+
+    }
+
+
+    /* -----------------------------------------------
+       PRODUCT ID
+       ----------------------------------------------- */
+
+    const productId =
+        createProductId(name);
+
+
+    /* -----------------------------------------------
+       PRODUCT NUMBER
+       ----------------------------------------------- */
+
+    const existingProducts =
+        window.volticaProductCount || 10;
+
+
+    /* -----------------------------------------------
+       DATA
+       ----------------------------------------------- */
+
+    const images =
+        getImagePaths();
+
+
+    const features =
+        parseFeatures(featuresText);
+
+
+    const specifications =
+        parseSpecifications(
+            specificationsText
+        );
+
+
+    /* -----------------------------------------------
+       GENERATE
+       ----------------------------------------------- */
+
+    const productBlock = `
+// =================================================
+// PRODUCT ${String(existingProducts + 1).padStart(2, "0")} — ${name.toUpperCase()}
+// =================================================
+
+{
+    id: "${escapeJS(productId)}",
+    sku: "${escapeJS(volticaSku)}",
+    cjSku: "${escapeJS(cjSku)}",
+    name: "${escapeJS(name)}",
+    category: "${escapeJS(volticaCategories[categoryValue])}",
+    badge: "NEW",
+
+    price: "${escapeJS(price)}",
+    currency: "USD",
+
+${generateImages(images)}
+
+    description:
+        "${escapeJS(description)}",
+
+${generateFeatures(features)}
+
+${generateSpecifications(specifications)}
+},`;
+
+
+    return productBlock;
+
+}
+
+
+/* -----------------------------------------------------
+   ADD PRODUCT BUTTON
+   ----------------------------------------------------- */
+
+const addProductButton =
+    document.querySelector(
+        ".button-primary"
+    );
+
+
+if (addProductButton) {
+
+    addProductButton.addEventListener(
+        "click",
+        function () {
+
+
+            const product =
+                generateProductJS();
+
+
+            if (!product) {
+                return;
+            }
+
+
+            /* ---------------------------------------
+               SAVE GENERATED PRODUCT
+               --------------------------------------- */
+
+            window.generatedVolticaProduct =
+                product;
+
+
+            /* ---------------------------------------
+               DISPLAY RESULT
+               --------------------------------------- */
+
+            showGeneratedProduct(product);
+
+        }
+    );
+
+}
+
+
+/* -----------------------------------------------------
+   RESULT WINDOW
+   ----------------------------------------------------- */
+
+function showGeneratedProduct(product) {
+
+
+    let output =
+        document.getElementById(
+            "generatedProduct"
+        );
+
+
+    if (!output) {
+
+        output =
+            document.createElement(
+                "div"
+            );
+
+        output.id =
+            "generatedProduct";
+
+
+        output.style.cssText = `
+            position:fixed;
+            inset:0;
+            z-index:99999;
+            background:rgba(0,0,0,.88);
+            backdrop-filter:blur(18px);
+            padding:20px;
+            overflow:auto;
+        `;
+
+
+        document.body.appendChild(
+            output
+        );
+
+    }
+
+
+    output.innerHTML = `
+
+        <div style="
+            max-width:900px;
+            margin:20px auto;
+            background:#111318;
+            border:1px solid rgba(255,255,255,.12);
+            border-radius:20px;
+            padding:20px;
+            color:white;
+        ">
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                gap:15px;
+                margin-bottom:18px;
+            ">
+
+                <strong style="
+                    font-size:18px;
+                ">
+                    PRODUCT GENERATED
+                </strong>
+
+
+                <button
+                    type="button"
+                    onclick="
+                        document
+                        .getElementById('generatedProduct')
+                        .remove();
+                    "
+                    style="
+                        border:1px solid rgba(255,255,255,.15);
+                        background:rgba(255,255,255,.06);
+                        color:white;
+                        border-radius:10px;
+                        padding:10px 14px;
+                    "
+                >
+                    CLOSE
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="generatedProductText"
+                readonly
+                style="
+                    width:100%;
+                    min-height:520px;
+                    resize:vertical;
+                    background:#050608;
+                    color:#f4f4f5;
+                    border:1px solid rgba(255,255,255,.1);
+                    border-radius:14px;
+                    padding:16px;
+                    font-family:monospace;
+                    font-size:12px;
+                    line-height:1.6;
+                "
+            ></textarea>
+
+
+            <button
+                type="button"
+                id="copyGeneratedProduct"
+                style="
+                    width:100%;
+                    margin-top:14px;
+                    padding:15px;
+                    border:0;
+                    border-radius:12px;
+                    background:white;
+                    color:black;
+                    font-weight:700;
+                    font-size:14px;
+                "
+            >
+                COPY TO CLIPBOARD
+            </button>
+
+        </div>
+    `;
+
+
+    document
+        .getElementById(
+            "generatedProductText"
+        )
+        .value = product;
+
+
+    document
+        .getElementById(
+            "copyGeneratedProduct"
+        )
+        .addEventListener(
+            "click",
+            async function () {
+
+                const text =
+                    document
+                        .getElementById(
+                            "generatedProductText"
+                        )
+                        .value;
+
+
+                try {
+
+                    await navigator.clipboard.writeText(
+                        text
+                    );
+
+
+                    this.textContent =
+                        "✓ COPIED";
+
+
+                    setTimeout(() => {
+
+                        this.textContent =
+                            "COPY TO CLIPBOARD";
+
+                    }, 1800);
+
+
+                } catch (error) {
+
+                    alert(
+                        "Copy failed. Please select the text manually."
+                    );
+
+                }
+
+            }
+        );
+
+}
+
+    </script>
 </body>
 
 </html>

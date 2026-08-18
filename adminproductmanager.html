@@ -2089,17 +2089,17 @@ clearImagesButton.addEventListener(
 
 /* =====================================================
    VOLTICA PRODUCT MANAGER
-   ADD PRODUCT → PRODUCTS.JS GENERATOR
+   PRODUCTS.JS GENERATOR — VERSION 2
    ===================================================== */
 
 
 /* -----------------------------------------------------
-   CATEGORY MAP
+   CATEGORY
    ----------------------------------------------------- */
 
-const volticaCategories = {
+const categoryNames = {
 
-    earbuds: "Wireless Audio",
+    earbuds: "Earbuds",
 
     gaming: "Gaming Gear",
 
@@ -2122,8 +2122,7 @@ function createProductId(name) {
 
     return name
         .toLowerCase()
-        .replace(/voltica/g, "")
-        .trim()
+        .replace(/^voltica\s*/i, "")
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-+|-+$/g, "");
 
@@ -2131,7 +2130,7 @@ function createProductId(name) {
 
 
 /* -----------------------------------------------------
-   ESCAPE JAVASCRIPT STRING
+   ESCAPE JS
    ----------------------------------------------------- */
 
 function escapeJS(value) {
@@ -2145,7 +2144,10 @@ function escapeJS(value) {
 
 
 /* -----------------------------------------------------
-   FEATURES PARSER
+   FEATURES
+   FORMAT:
+
+   01 — FEATURE NAME — Description
    ----------------------------------------------------- */
 
 function parseFeatures(text) {
@@ -2154,22 +2156,15 @@ function parseFeatures(text) {
         return [];
     }
 
-
     return text
         .split(/\r?\n/)
         .map(line => line.trim())
         .filter(Boolean)
         .map(line => {
 
-            /*
-             Expected:
-
-             01 — Feature name — Description
-            */
-
-            const parts =
-                line.split("—")
-                    .map(part => part.trim());
+            const parts = line
+                .split("—")
+                .map(part => part.trim());
 
 
             if (parts.length >= 3) {
@@ -2184,9 +2179,7 @@ function parseFeatures(text) {
 
 
             return [
-                String(
-                    arguments
-                ),
+                "",
                 parts[0],
                 parts.slice(1).join(" — ")
             ];
@@ -2197,7 +2190,10 @@ function parseFeatures(text) {
 
 
 /* -----------------------------------------------------
-   SPECIFICATIONS PARSER
+   SPECIFICATIONS
+   FORMAT:
+
+   Material: Fiber-Reinforced Polymer
    ----------------------------------------------------- */
 
 function parseSpecifications(text) {
@@ -2205,7 +2201,6 @@ function parseSpecifications(text) {
     if (!text.trim()) {
         return [];
     }
-
 
     return text
         .split(/\r?\n/)
@@ -2227,21 +2222,16 @@ function parseSpecifications(text) {
             }
 
 
-            const name =
+            return [
+
                 line
                     .substring(0, separator)
-                    .trim();
+                    .trim(),
 
-
-            const value =
                 line
                     .substring(separator + 1)
-                    .trim();
+                    .trim()
 
-
-            return [
-                name,
-                value
             ];
 
         });
@@ -2250,7 +2240,7 @@ function parseSpecifications(text) {
 
 
 /* -----------------------------------------------------
-   IMAGE PATHS
+   IMAGES
    ----------------------------------------------------- */
 
 function getImagePaths() {
@@ -2270,36 +2260,30 @@ function getImagePaths() {
 
     return Array.from(input.files)
         .map(file =>
-            "assets/images/" + file.name
+            `assets/images/${file.name}`
         );
 
 }
 
 
 /* -----------------------------------------------------
-   GENERATE IMAGE ARRAY
+   GENERATE IMAGES
    ----------------------------------------------------- */
 
 function generateImages(images) {
 
     if (!images.length) {
 
-        return "    images: [],";
+        return `    images: [],`;
 
     }
 
 
-    const lines =
-        images.map(image =>
-            `        "${image}"`
-        );
-
-
-    return [
-        "    images: [",
-        lines.join(",\n"),
-        "    ],"
-    ].join("\n");
+    return `    images: [
+${images
+    .map(image => `        "${escapeJS(image)}"`)
+    .join(",\n")}
+    ],`;
 
 }
 
@@ -2317,19 +2301,13 @@ function generateFeatures(features) {
     }
 
 
-    const lines =
-        features.map(feature => {
-
-            return `        ["${escapeJS(feature[0])}", "${escapeJS(feature[1])}", "${escapeJS(feature[2])}"]`;
-
-        });
-
-
-    return [
-        "    features: [",
-        lines.join(",\n"),
-        "    ],"
-    ].join("\n");
+    return `    features: [
+${features
+    .map(feature =>
+        `        ["${escapeJS(feature[0])}", "${escapeJS(feature[1])}", "${escapeJS(feature[2])}"]`
+    )
+    .join(",\n")}
+    ],`;
 
 }
 
@@ -2347,29 +2325,22 @@ function generateSpecifications(specifications) {
     }
 
 
-    const lines =
-        specifications.map(spec => {
-
-            return `        ["${escapeJS(spec[0])}", "${escapeJS(spec[1])}"]`;
-
-        });
-
-
-    return [
-        "    specifications: [",
-        lines.join(",\n"),
-        "    ],"
-    ].join("\n");
+    return `    specifications: [
+${specifications
+    .map(spec =>
+        `        ["${escapeJS(spec[0])}", "${escapeJS(spec[1])}"]`
+    )
+    .join(",\n")}
+    ],`;
 
 }
 
 
 /* -----------------------------------------------------
-   GENERATE PRODUCTS.JS BLOCK
+   GENERATE PRODUCT
    ----------------------------------------------------- */
 
-function generateProductJS() {
-
+function generateProduct() {
 
     const name =
         document
@@ -2392,7 +2363,7 @@ function generateProductJS() {
             .trim();
 
 
-    const categoryValue =
+    const category =
         document
             .getElementById("category")
             .value;
@@ -2424,15 +2395,13 @@ function generateProductJS() {
             .value;
 
 
-    /* -----------------------------------------------
+    /* -------------------------------------------------
        VALIDATION
-       ----------------------------------------------- */
+       ------------------------------------------------- */
 
     if (!name) {
 
-        alert(
-            "Please enter a Product Name."
-        );
+        alert("Please enter a Product Name.");
 
         return null;
 
@@ -2441,20 +2410,16 @@ function generateProductJS() {
 
     if (!volticaSku) {
 
-        alert(
-            "Please enter the Voltica SKU."
-        );
+        alert("Please enter the Voltica SKU.");
 
         return null;
 
     }
 
 
-    if (!categoryValue) {
+    if (!category) {
 
-        alert(
-            "Please select a Category."
-        );
+        alert("Please select a Category.");
 
         return null;
 
@@ -2463,34 +2428,20 @@ function generateProductJS() {
 
     if (!price) {
 
-        alert(
-            "Please enter the Voltica Price."
-        );
+        alert("Please enter the Voltica Price.");
 
         return null;
 
     }
 
 
-    /* -----------------------------------------------
-       PRODUCT ID
-       ----------------------------------------------- */
+    /* -------------------------------------------------
+       DATA
+       ------------------------------------------------- */
 
     const productId =
         createProductId(name);
 
-
-    /* -----------------------------------------------
-       PRODUCT NUMBER
-       ----------------------------------------------- */
-
-    const existingProducts =
-        window.volticaProductCount || 10;
-
-
-    /* -----------------------------------------------
-       DATA
-       ----------------------------------------------- */
 
     const images =
         getImagePaths();
@@ -2506,13 +2457,13 @@ function generateProductJS() {
         );
 
 
-    /* -----------------------------------------------
-       GENERATE
-       ----------------------------------------------- */
+    /* -------------------------------------------------
+       PRODUCT BLOCK
+       ------------------------------------------------- */
 
-    const productBlock = `
+    return `
 // =================================================
-// PRODUCT ${String(existingProducts + 1).padStart(2, "0")} — ${name.toUpperCase()}
+// PRODUCT XX — ${name.toUpperCase()}
 // =================================================
 
 {
@@ -2520,7 +2471,7 @@ function generateProductJS() {
     sku: "${escapeJS(volticaSku)}",
     cjSku: "${escapeJS(cjSku)}",
     name: "${escapeJS(name)}",
-    category: "${escapeJS(volticaCategories[categoryValue])}",
+    category: "${escapeJS(category)}",
     badge: "NEW",
 
     price: "${escapeJS(price)}",
@@ -2536,14 +2487,11 @@ ${generateFeatures(features)}
 ${generateSpecifications(specifications)}
 },`;
 
-
-    return productBlock;
-
 }
 
 
 /* -----------------------------------------------------
-   ADD PRODUCT BUTTON
+   ADD PRODUCT
    ----------------------------------------------------- */
 
 const addProductButton =
@@ -2558,27 +2506,14 @@ if (addProductButton) {
         "click",
         function () {
 
-
             const product =
-                generateProductJS();
+                generateProduct();
 
 
             if (!product) {
                 return;
             }
 
-
-            /* ---------------------------------------
-               SAVE GENERATED PRODUCT
-               --------------------------------------- */
-
-            window.generatedVolticaProduct =
-                product;
-
-
-            /* ---------------------------------------
-               DISPLAY RESULT
-               --------------------------------------- */
 
             showGeneratedProduct(product);
 
@@ -2589,48 +2524,44 @@ if (addProductButton) {
 
 
 /* -----------------------------------------------------
-   RESULT WINDOW
+   SHOW RESULT
    ----------------------------------------------------- */
 
 function showGeneratedProduct(product) {
 
-
-    let output =
+    let modal =
         document.getElementById(
             "generatedProduct"
         );
 
 
-    if (!output) {
-
-        output =
-            document.createElement(
-                "div"
-            );
-
-        output.id =
-            "generatedProduct";
-
-
-        output.style.cssText = `
-            position:fixed;
-            inset:0;
-            z-index:99999;
-            background:rgba(0,0,0,.88);
-            backdrop-filter:blur(18px);
-            padding:20px;
-            overflow:auto;
-        `;
-
-
-        document.body.appendChild(
-            output
-        );
-
+    if (modal) {
+        modal.remove();
     }
 
 
-    output.innerHTML = `
+    modal =
+        document.createElement(
+            "div"
+        );
+
+
+    modal.id =
+        "generatedProduct";
+
+
+    modal.style.cssText = `
+        position:fixed;
+        inset:0;
+        z-index:99999;
+        background:rgba(0,0,0,.90);
+        backdrop-filter:blur(20px);
+        padding:20px;
+        overflow:auto;
+    `;
+
+
+    modal.innerHTML = `
 
         <div style="
             max-width:900px;
@@ -2646,12 +2577,12 @@ function showGeneratedProduct(product) {
                 display:flex;
                 justify-content:space-between;
                 align-items:center;
-                gap:15px;
-                margin-bottom:18px;
+                margin-bottom:16px;
             ">
 
                 <strong style="
                     font-size:18px;
+                    letter-spacing:.05em;
                 ">
                     PRODUCT GENERATED
                 </strong>
@@ -2659,17 +2590,13 @@ function showGeneratedProduct(product) {
 
                 <button
                     type="button"
-                    onclick="
-                        document
-                        .getElementById('generatedProduct')
-                        .remove();
-                    "
+                    id="closeGeneratedProduct"
                     style="
-                        border:1px solid rgba(255,255,255,.15);
                         background:rgba(255,255,255,.06);
+                        border:1px solid rgba(255,255,255,.15);
                         color:white;
                         border-radius:10px;
-                        padding:10px 14px;
+                        padding:9px 13px;
                     "
                 >
                     CLOSE
@@ -2684,7 +2611,6 @@ function showGeneratedProduct(product) {
                 style="
                     width:100%;
                     min-height:520px;
-                    resize:vertical;
                     background:#050608;
                     color:#f4f4f5;
                     border:1px solid rgba(255,255,255,.1);
@@ -2709,14 +2635,19 @@ function showGeneratedProduct(product) {
                     background:white;
                     color:black;
                     font-weight:700;
-                    font-size:14px;
                 "
             >
                 COPY TO CLIPBOARD
             </button>
 
         </div>
+
     `;
+
+
+    document.body.appendChild(
+        modal
+    );
 
 
     document
@@ -2725,6 +2656,24 @@ function showGeneratedProduct(product) {
         )
         .value = product;
 
+
+    /* -------------------------------------------------
+       CLOSE
+       ------------------------------------------------- */
+
+    document
+        .getElementById(
+            "closeGeneratedProduct"
+        )
+        .addEventListener(
+            "click",
+            () => modal.remove()
+        );
+
+
+    /* -------------------------------------------------
+       COPY
+       ------------------------------------------------- */
 
     document
         .getElementById(
@@ -2744,9 +2693,9 @@ function showGeneratedProduct(product) {
 
                 try {
 
-                    await navigator.clipboard.writeText(
-                        text
-                    );
+                    await navigator
+                        .clipboard
+                        .writeText(text);
 
 
                     this.textContent =
@@ -2764,7 +2713,7 @@ function showGeneratedProduct(product) {
                 } catch (error) {
 
                     alert(
-                        "Copy failed. Please select the text manually."
+                        "Copy failed. Please copy the text manually."
                     );
 
                 }
@@ -2774,7 +2723,7 @@ function showGeneratedProduct(product) {
 
 }
 
-    </script>
+                                                         </script>
 </body>
 
 </html>

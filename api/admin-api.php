@@ -10,19 +10,49 @@
    CORS
    ===================================================== */
 
-header("Access-Control-Allow-Origin: https://theblackboxprotocol.github.io");
-header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Content-Type: application/json; charset=UTF-8");
+$allowedOrigins = [
+    "https://theblackboxprotocol.github.io",
+    "https://volticastore.com",
+    "https://www.volticastore.com"
+];
+
+$origin = $_SERVER["HTTP_ORIGIN"] ?? "";
+
+if (in_array($origin, $allowedOrigins, true)) {
+
+    header(
+        "Access-Control-Allow-Origin: " . $origin
+    );
+
+}
+
+header("Vary: Origin");
+
+header(
+    "Access-Control-Allow-Methods: POST, OPTIONS"
+);
+
+header(
+    "Access-Control-Allow-Headers: Content-Type"
+);
+
+header(
+    "Access-Control-Max-Age: 86400"
+);
+
+header(
+    "Content-Type: application/json; charset=UTF-8"
+);
 
 
 /* =====================================================
-   PREFLIGHT REQUEST
+   PREFLIGHT
    ===================================================== */
 
 if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
 
-    http_response_code(200);
+    http_response_code(204);
+
     exit;
 
 }
@@ -47,10 +77,11 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
 
 /* =====================================================
-   LOAD ENVIRONMENT FILE
+   LOAD .ENV
    ===================================================== */
 
-$envPath = "/home/u379666423/.env";
+$envPath =
+    "/home/u379666423/.env";
 
 
 if (!file_exists($envPath)) {
@@ -68,7 +99,7 @@ if (!file_exists($envPath)) {
 
 
 /* =====================================================
-   READ ENV
+   READ .ENV
    ===================================================== */
 
 $envLines = file(
@@ -163,7 +194,7 @@ if (!$adminPassword) {
 
 
 /* =====================================================
-   READ REQUEST
+   READ JSON
    ===================================================== */
 
 $input =
@@ -192,7 +223,7 @@ $password =
 
 
 /* =====================================================
-   VERIFY ADMIN PASSWORD
+   VERIFY PASSWORD
    ===================================================== */
 
 if (
@@ -216,7 +247,7 @@ if (
 
 
 /* =====================================================
-   GITHUB CONFIGURATION
+   GITHUB REPOSITORY
    ===================================================== */
 
 $githubOwner =
@@ -227,7 +258,7 @@ $githubRepo =
     "VolticaStore.com";
 
 
-$githubApi =
+$githubUrl =
     "https://api.github.com/repos/"
     . $githubOwner
     . "/"
@@ -235,11 +266,11 @@ $githubApi =
 
 
 /* =====================================================
-   GITHUB REQUEST
+   GITHUB API REQUEST
    ===================================================== */
 
 $ch =
-    curl_init($githubApi);
+    curl_init($githubUrl);
 
 
 curl_setopt_array(
@@ -267,11 +298,11 @@ curl_setopt_array(
 );
 
 
-$response =
+$githubResponse =
     curl_exec($ch);
 
 
-$httpStatus =
+$githubStatus =
     curl_getinfo(
         $ch,
         CURLINFO_HTTP_CODE
@@ -289,7 +320,7 @@ curl_close($ch);
    CURL ERROR
    ===================================================== */
 
-if ($response === false) {
+if ($githubResponse === false) {
 
     http_response_code(502);
 
@@ -305,17 +336,18 @@ if ($response === false) {
 
 
 /* =====================================================
-   GITHUB AUTH FAILURE
+   GITHUB ERROR
    ===================================================== */
 
-if ($httpStatus !== 200) {
+if ($githubStatus !== 200) {
 
     http_response_code(502);
 
     echo json_encode([
         "success" => false,
-        "error" => "GitHub API returned HTTP "
-            . $httpStatus
+        "error" =>
+            "GitHub API returned HTTP "
+            . $githubStatus
     ]);
 
     exit;

@@ -675,5 +675,59 @@ const volticaProducts = [
     ],
 
     stripe: "https://buy.stripe.com/eVq7sM5tZ0JNfOE2qe2Ji0b"
-}
+}, 
+  // =================================================
+// PRODUCT 09 — VOLTICA HEXA RGB
+// =================================================
+
+{
+    id: "hexa1",
+    sku: "VLT-LIF-HEXA-001",
+    name: "Voltica Hexa RGB",
+    category: "Lifestyle / Smart Lighting",
+    badge: "NEW",
+
+    price: "47.99",
+    currency: "USD",
+
+    images: [
+        "assets/images/hexa1-1.webp",
+        "assets/images/hexa1-2.webp",
+        "assets/images/hexa1-3.webp",
+        "assets/images/hexa1-4.webp",
+        "assets/images/hexa1-5.webp",
+        "assets/images/hexa1-6.webp",
+        "assets/images/hexa1-7.webp",
+        "assets/images/hexa1-8.webp",
+        "assets/images/hexa1-9.webp"
+    ],
+
+    description:
+        "Transform your space with modular smart RGB lighting designed for gaming setups, bedrooms, workspaces and entertainment areas. The Voltica Hexa RGB features sound-reactive lighting, customizable hexagonal arrangements, 16 million RGB colors and multiple dynamic lighting modes.",
+
+    features: [
+        ["01", "12-PIECE MODULAR SYSTEM", "Create custom geometric designs, wall patterns and unique desktop arrangements."],
+        ["02", "SOUND-REACTIVE LIGHTING", "Built-in microphone detects music rhythms and synchronizes the lighting dynamically."],
+        ["03", "16 MILLION RGB COLORS", "Customize your environment with a virtually unlimited range of vibrant RGB colors."],
+        ["04", "MULTIPLE LIGHTING MODES", "Choose from static, gradient, strobe, jump and music rhythm modes."],
+        ["05", "APP + RF CONTROL", "Control your lighting using the mobile app or included 2.4G RF remote."],
+        ["06", "WALL OR DESKTOP", "Flexible installation allows the panels to be mounted on walls or displayed on a desktop."]
+    ],
+
+    specifications: [
+        ["Product Name", "Smart Quantum Light LS-3"],
+        ["Package", "12 Hexagonal RGB Light Panels"],
+        ["Module Size", "Approx. 103 × 89 × 28 mm"],
+        ["Detailed Unit Dimensions", "89 × 52 × 27 mm"],
+        ["Rated Power", "1.5W per unit"],
+        ["Maximum Capacity", "Up to 15 units per power supply"],
+        ["Rated Input", "5V / 2A"],
+        ["Control", "Mobile APP + 2.4G RF Remote Control"],
+        ["Color Display", "16 Million RGB Colors"],
+        ["Lighting Modes", "Static / Gradient / Strobe / Jump / Music Rhythm"],
+        ["Installation", "Wall-mounted / Desktop"]
+    ],
+
+    stripe: "STRIPE_LINK_HERE"
+},  
 ];

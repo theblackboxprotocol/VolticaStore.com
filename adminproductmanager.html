@@ -1419,11 +1419,9 @@
                 <div class="actions">
 
                     <button
-                        type="button"
-                        class="button">
-
-                        CLEAR
-
+                       type="button"
+                       id="clearImages">
+                       CLEAR
                     </button>
 
 
@@ -2065,6 +2063,28 @@ productImageInput.addEventListener(
 );
 
     </script>
+            <script>
+
+const clearImagesButton =
+    document.getElementById("clearImages");
+
+clearImagesButton.addEventListener(
+    "click",
+    function () {
+
+        imageInput.value = "";
+
+        const preview =
+            document.getElementById("imagePreview");
+
+        if (preview) {
+            preview.innerHTML = "";
+        }
+
+    }
+);
+
+            </script>
 </body>
 
 </html>

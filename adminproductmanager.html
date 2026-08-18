@@ -1,1 +1,1392 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
 
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>Voltica Product Manager</title>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    :root {
+        --bg: #050608;
+        --panel: rgba(18, 20, 24, 0.72);
+        --panel-light: rgba(255, 255, 255, 0.045);
+        --border: rgba(255, 255, 255, 0.10);
+        --border-hover: rgba(255, 255, 255, 0.22);
+        --text: #f4f4f5;
+        --muted: #8d9199;
+        --accent: #ffffff;
+        --success: #7dffb2;
+    }
+
+
+    body {
+        min-height: 100vh;
+        background:
+            radial-gradient(
+                circle at 15% 10%,
+                rgba(255,255,255,0.055),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 85% 80%,
+                rgba(255,255,255,0.035),
+                transparent 35%
+            ),
+            #050608;
+
+        color: var(--text);
+
+        font-family:
+            Inter,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+
+        letter-spacing: 0.01em;
+    }
+
+
+    body::before {
+        content: "";
+
+        position: fixed;
+        inset: 0;
+
+        pointer-events: none;
+
+        background:
+            linear-gradient(
+                rgba(255,255,255,0.018) 1px,
+                transparent 1px
+            );
+
+        background-size: 100% 4px;
+
+        opacity: 0.25;
+    }
+
+
+    /* =====================================================
+       LAYOUT
+       ===================================================== */
+
+    .admin-shell {
+        min-height: 100vh;
+
+        display: flex;
+    }
+
+
+    /* =====================================================
+       SIDEBAR
+       ===================================================== */
+
+    .admin-sidebar {
+        width: 250px;
+
+        min-height: 100vh;
+
+        padding: 32px 20px;
+
+        border-right:
+            1px solid var(--border);
+
+        background:
+            rgba(8, 9, 12, 0.82);
+
+        backdrop-filter:
+            blur(24px);
+
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+
+    .brand {
+        padding: 4px 12px 38px;
+    }
+
+
+    .brand-main {
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+    }
+
+
+    .brand-sub {
+        margin-top: 5px;
+
+        color: var(--muted);
+
+        font-size: 9px;
+        letter-spacing: 0.24em;
+    }
+
+
+    .admin-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+
+    .admin-nav-button {
+        width: 100%;
+
+        padding: 14px 15px;
+
+        border:
+            1px solid transparent;
+
+        border-radius: 13px;
+
+        background: transparent;
+
+        color: var(--muted);
+
+        text-align: left;
+
+        font-size: 11px;
+        font-weight: 700;
+
+        letter-spacing: 0.13em;
+
+        cursor: pointer;
+
+        transition:
+            0.25s ease;
+    }
+
+
+    .admin-nav-button:hover,
+    .admin-nav-button.active {
+        color: var(--text);
+
+        background:
+            rgba(255,255,255,0.055);
+
+        border-color:
+            var(--border);
+    }
+
+
+    .admin-nav-button.active {
+        box-shadow:
+            inset 3px 0 0 #fff;
+    }
+
+
+    .sidebar-bottom {
+        position: absolute;
+
+        left: 20px;
+        right: 20px;
+        bottom: 25px;
+
+        padding-top: 20px;
+
+        border-top:
+            1px solid var(--border);
+    }
+
+
+    .system-status {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+
+        color: var(--muted);
+
+        font-size: 9px;
+        letter-spacing: 0.12em;
+    }
+
+
+    .status-dot {
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background: var(--success);
+
+        box-shadow:
+            0 0 12px rgba(125,255,178,0.65);
+    }
+
+
+    /* =====================================================
+       MAIN
+       ===================================================== */
+
+    .admin-main {
+        width: 100%;
+
+        margin-left: 250px;
+
+        padding: 42px;
+    }
+
+
+    .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: 38px;
+    }
+
+
+    .page-label {
+        color: var(--muted);
+
+        font-size: 9px;
+        letter-spacing: 0.25em;
+
+        margin-bottom: 9px;
+    }
+
+
+    .page-title {
+        font-size: clamp(28px, 4vw, 46px);
+
+        font-weight: 700;
+
+        letter-spacing: -0.04em;
+    }
+
+
+    .page-title span {
+        color: #777b83;
+    }
+
+
+    .topbar-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+
+    .admin-button {
+        border: 1px solid var(--border);
+
+        background:
+            rgba(255,255,255,0.055);
+
+        color: var(--text);
+
+        border-radius: 12px;
+
+        padding: 13px 18px;
+
+        font-size: 10px;
+        font-weight: 800;
+
+        letter-spacing: 0.12em;
+
+        cursor: pointer;
+
+        transition: 0.25s ease;
+    }
+
+
+    .admin-button:hover {
+        background:
+            rgba(255,255,255,0.11);
+
+        border-color:
+            var(--border-hover);
+
+        transform:
+            translateY(-1px);
+    }
+
+
+    .admin-button.primary {
+        background: #f4f4f5;
+        color: #08090b;
+
+        border-color: #f4f4f5;
+    }
+
+
+    .admin-button.primary:hover {
+        background: #ffffff;
+    }
+
+
+    /* =====================================================
+       STAT CARDS
+       ===================================================== */
+
+    .stats-grid {
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        gap: 14px;
+
+        margin-bottom: 34px;
+    }
+
+
+    .stat-card {
+        padding: 22px;
+
+        border:
+            1px solid var(--border);
+
+        border-radius: 18px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,0.065),
+                rgba(255,255,255,0.018)
+            );
+
+        backdrop-filter:
+            blur(20px);
+    }
+
+
+    .stat-label {
+        color: var(--muted);
+
+        font-size: 9px;
+        letter-spacing: 0.16em;
+    }
+
+
+    .stat-value {
+        margin-top: 12px;
+
+        font-size: 29px;
+        font-weight: 700;
+    }
+
+
+    .stat-meta {
+        margin-top: 6px;
+
+        color: #737780;
+
+        font-size: 9px;
+    }
+
+
+    /* =====================================================
+       PRODUCT PANEL
+       ===================================================== */
+
+    .product-panel {
+        border:
+            1px solid var(--border);
+
+        border-radius: 22px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,0.055),
+                rgba(255,255,255,0.018)
+            );
+
+        backdrop-filter:
+            blur(24px);
+
+        overflow: hidden;
+    }
+
+
+    .panel-header {
+        padding: 22px 24px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        border-bottom:
+            1px solid var(--border);
+    }
+
+
+    .panel-title {
+        font-size: 12px;
+
+        font-weight: 800;
+
+        letter-spacing: 0.14em;
+    }
+
+
+    .panel-count {
+        color: var(--muted);
+
+        font-size: 9px;
+
+        margin-left: 8px;
+    }
+
+
+    .search-box {
+        width: 230px;
+
+        padding: 11px 14px;
+
+        border:
+            1px solid var(--border);
+
+        border-radius: 10px;
+
+        background:
+            rgba(0,0,0,0.25);
+
+        color: var(--text);
+
+        outline: none;
+
+        font-size: 11px;
+    }
+
+
+    .search-box:focus {
+        border-color:
+            var(--border-hover);
+    }
+
+
+    /* =====================================================
+       TABLE
+       ===================================================== */
+
+    .product-table {
+        width: 100%;
+
+        border-collapse: collapse;
+    }
+
+
+    .product-table th {
+        padding: 14px 22px;
+
+        color: #666a72;
+
+        font-size: 8px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.15em;
+
+        text-align: left;
+
+        border-bottom:
+            1px solid var(--border);
+    }
+
+
+    .product-table td {
+        padding: 18px 22px;
+
+        border-bottom:
+            1px solid rgba(255,255,255,0.055);
+
+        font-size: 11px;
+    }
+
+
+    .product-table tr:last-child td {
+        border-bottom: none;
+    }
+
+
+    .product-table tr:hover {
+        background:
+            rgba(255,255,255,0.025);
+    }
+
+
+    .product-name {
+        font-weight: 700;
+    }
+
+
+    .product-sku {
+        color: #777b83;
+
+        font-family: monospace;
+
+        font-size: 10px;
+    }
+
+
+    .product-category {
+        color: var(--muted);
+
+        font-size: 9px;
+    }
+
+
+    .product-price {
+        font-weight: 700;
+    }
+
+
+    .status {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 6px;
+
+        padding: 6px 9px;
+
+        border-radius: 8px;
+
+        background:
+            rgba(125,255,178,0.06);
+
+        color: var(--success);
+
+        font-size: 8px;
+
+        font-weight: 800;
+
+        letter-spacing: 0.08em;
+    }
+
+
+    .status::before {
+        content: "";
+
+        width: 5px;
+        height: 5px;
+
+        border-radius: 50%;
+
+        background: currentColor;
+    }
+
+
+    .edit-button {
+        padding: 7px 10px;
+
+        border:
+            1px solid var(--border);
+
+        border-radius: 8px;
+
+        background: transparent;
+
+        color: var(--muted);
+
+        font-size: 8px;
+
+        font-weight: 800;
+
+        letter-spacing: 0.1em;
+
+        cursor: pointer;
+    }
+
+
+    .edit-button:hover {
+        color: var(--text);
+
+        border-color:
+            var(--border-hover);
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1000px) {
+
+        .stats-grid {
+            grid-template-columns:
+                repeat(2, 1fr);
+        }
+
+    }
+
+
+    @media (max-width: 760px) {
+
+        .admin-sidebar {
+            position: relative;
+
+            width: 100%;
+
+            min-height: auto;
+
+            border-right: none;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+
+        .admin-shell {
+            display: block;
+        }
+
+
+        .admin-main {
+            margin-left: 0;
+
+            padding: 25px 18px 50px;
+        }
+
+
+        .sidebar-bottom {
+            position: static;
+
+            margin-top: 25px;
+        }
+
+
+        .topbar {
+            align-items: flex-start;
+
+            flex-direction: column;
+
+            gap: 20px;
+        }
+
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+
+
+        .panel-header {
+            align-items: flex-start;
+
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+
+        .search-box {
+            width: 100%;
+        }
+
+
+        .product-panel {
+            overflow-x: auto;
+        }
+
+
+        .product-table {
+            min-width: 720px;
+        }
+
+    }
+
+</style>
+
+</head><body><div class="admin-shell"><!-- =====================================================
+     SIDEBAR
+     ===================================================== -->
+
+<aside class="admin-sidebar">
+
+
+    <div class="brand">
+
+        <div class="brand-main">
+            VOLTICA
+        </div>
+
+        <div class="brand-sub">
+            PRODUCT MANAGER
+        </div>
+
+    </div>
+
+
+    <nav class="admin-nav">
+
+        <button
+            class="admin-nav-button active">
+
+            DASHBOARD
+
+        </button>
+
+
+        <button
+            class="admin-nav-button">
+
+            PRODUCTS
+
+        </button>
+
+
+        <button
+            class="admin-nav-button">
+
+            CATEGORIES
+
+        </button>
+
+
+        <button
+            class="admin-nav-button">
+
+            SEO / METADATA
+
+        </button>
+
+
+        <button
+            class="admin-nav-button">
+
+            SETTINGS
+
+        </button>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            PRODUCT SYSTEM ONLINE
+
+        </div>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main class="admin-main">
+
+
+    <header class="topbar">
+
+        <div>
+
+            <div class="page-label">
+                VOLTICA / ADMINISTRATION
+            </div>
+
+            <h1 class="page-title">
+                Product
+                <span>Manager.</span>
+            </h1>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <button class="admin-button">
+                VIEW STORE
+            </button>
+
+            <button class="admin-button primary">
+                + ADD PRODUCT
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         STATISTICS
+         ===================================================== -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                TOTAL PRODUCTS
+            </div>
+
+            <div class="stat-value">
+                10
+            </div>
+
+            <div class="stat-meta">
+                CURRENT CATALOG
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                ACTIVE
+            </div>
+
+            <div class="stat-value">
+                10
+            </div>
+
+            <div class="stat-meta">
+                PUBLISHED PRODUCTS
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                COLLECTIONS
+            </div>
+
+            <div class="stat-value">
+                6
+            </div>
+
+            <div class="stat-meta">
+                STORE CATEGORIES
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                SYSTEM
+            </div>
+
+            <div class="stat-value">
+                100%
+            </div>
+
+            <div class="stat-meta">
+                READY
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRODUCT TABLE
+         ===================================================== -->
+
+    <section class="product-panel">
+
+
+        <div class="panel-header">
+
+            <div>
+
+                <span class="panel-title">
+                    PRODUCTS
+                </span>
+
+                <span class="panel-count">
+                    10 ITEMS
+                </span>
+
+            </div>
+
+
+            <input
+                type="search"
+                class="search-box"
+                placeholder="Search products...">
+
+        </div>
+
+
+        <table class="product-table">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        PRODUCT
+                    </th>
+
+                    <th>
+                        SKU
+                    </th>
+
+                    <th>
+                        CATEGORY
+                    </th>
+
+                    <th>
+                        PRICE
+                    </th>
+
+                    <th>
+                        STATUS
+                    </th>
+
+                    <th>
+                        ACTION
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                <tr>
+
+                    <td>
+                        <div class="product-name">
+                            Voltica Q17
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="product-sku">
+                            VLT-AUD-Q17-001
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-category">
+                            Sport Audio
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-price">
+                            $69.97
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status">
+                            ACTIVE
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="edit-button">
+                            EDIT
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <div class="product-name">
+                            Voltica TWS Pro
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="product-sku">
+                            VLT-AUD-TWS-001
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-category">
+                            Wireless Audio
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-price">
+                            $59.97
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status">
+                            ACTIVE
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="edit-button">
+                            EDIT
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <div class="product-name">
+                            Voltica T11
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="product-sku">
+                            VLT-AUD-T11-001
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-category">
+                            Wireless Audio
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-price">
+                            $49.97
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status">
+                            ACTIVE
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="edit-button">
+                            EDIT
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <div class="product-name">
+                            Voltica T75
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="product-sku">
+                            VLT-AUD-T75-001
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-category">
+                            Wireless Audio
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-price">
+                            $39.99
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status">
+                            ACTIVE
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="edit-button">
+                            EDIT
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <div class="product-name">
+                            Voltica J10
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="product-sku">
+                            VLT-GAM-J10-001
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-category">
+                            Gaming Gear
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-price">
+                            $43.99
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status">
+                            ACTIVE
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="edit-button">
+                            EDIT
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <div class="product-name">
+                            Voltica AI 360 Gimbal
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="product-sku">
+                            VLT-CRE-GIM-001
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-category">
+                            Creator Gear
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-price">
+                            $39.99
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status">
+                            ACTIVE
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="edit-button">
+                            EDIT
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <div class="product-name">
+                            Voltica Tri-Fold Touch Keyboard
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="product-sku">
+                            VLT-CRE-KEY-001
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-category">
+                            Creator Gear
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-price">
+                            $37.99
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status">
+                            ACTIVE
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="edit-button">
+                            EDIT
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <div class="product-name">
+                            Voltica Laptop Stand
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="product-sku">
+                            VLT-TEC-STAND-001
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-category">
+                            Tech
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-price">
+                            $42.99
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status">
+                            ACTIVE
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="edit-button">
+                            EDIT
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <div class="product-name">
+                            Voltica Smart Car Cup Warmer
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="product-sku">
+                            VLT-LIF-CUP-001
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-category">
+                            Lifestyle
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-price">
+                            $39.99
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status">
+                            ACTIVE
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="edit-button">
+                            EDIT
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <div class="product-name">
+                            Voltica Hexa RGB
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="product-sku">
+                            VLT-LIF-HEXA-001
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-category">
+                            Lifestyle
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="product-price">
+                            $47.99
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status">
+                            ACTIVE
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="edit-button">
+                            EDIT
+                        </button>
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+
+</main>
+
+</div></body></html>

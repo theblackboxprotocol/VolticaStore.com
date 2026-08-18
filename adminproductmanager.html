@@ -1981,7 +1981,90 @@ ${productObject.images
     });
 
 </script>
-    
+    <script>
+
+const productImageInput =
+    document.getElementById("imageInput");
+
+const productImagePreview =
+    document.getElementById("imagePreview");
+
+
+productImageInput.addEventListener(
+    "change",
+    function () {
+
+        productImagePreview.innerHTML = "";
+
+
+        const files =
+            Array.from(this.files);
+
+
+        if (!files.length) {
+            return;
+        }
+
+
+        const count =
+            document.createElement("div");
+
+        count.className =
+            "image-preview-count";
+
+        count.textContent =
+            files.length +
+            (files.length === 1
+                ? " image selected"
+                : " images selected");
+
+        productImagePreview.appendChild(count);
+
+
+        files.forEach(function(file) {
+
+            if (!file.type.startsWith("image/")) {
+                return;
+            }
+
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "image-preview-item";
+
+
+            const image =
+                document.createElement("img");
+
+            image.src =
+                URL.createObjectURL(file);
+
+
+            const name =
+                document.createElement("div");
+
+            name.className =
+                "image-preview-name";
+
+            name.textContent =
+                file.name;
+
+
+            item.appendChild(image);
+
+            item.appendChild(name);
+
+            productImagePreview.appendChild(item);
+
+        });
+
+    }
+
+);
+
+    </script>
 </body>
 
 </html>

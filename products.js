@@ -628,4 +628,52 @@ const volticaProducts = [
         stripe:
             "https://buy.stripe.com/bJe7sM8Gb647cCs7Ky2Ji0a"
     },
+    // =================================================
+// PRODUCT 01 — VOLTICA SMART CAR CUP WARMER
+// =================================================
+
+{
+    id: "lifestyle1",
+    sku: "VLT-LIF-CUP-001",
+    name: "Voltica Smart Car Cup Warmer",
+    category: "Lifestyle / Automotive Accessories",
+    badge: "NEW",
+
+    price: 39.99,
+    currency: "USD",
+
+    images: [
+        "assets/images/lifestyle1-1.webp",
+        "assets/images/lifestyle1-2.webp",
+        "assets/images/lifestyle1-3.webp",
+        "assets/images/lifestyle1-4.webp",
+        "assets/images/lifestyle1-5.webp",
+        "assets/images/lifestyle1-6.webp"
+    ],
+
+    description:
+        "A compact 2-in-1 vehicle cup warmer and cooler designed to keep your favorite beverages at a more comfortable temperature while driving, traveling or working.",
+
+    features: [
+        ["01", "2-IN-1 TEMPERATURE CONTROL", "Warm or cool beverages directly inside your vehicle."],
+        ["02", "SMART DIGITAL DISPLAY", "Clear digital display for convenient temperature monitoring."],
+        ["03", "STABLE CUP DESIGN", "Non-slip rubber base helps keep the cup securely positioned."],
+        ["04", "VEHICLE POWERED", "Designed for convenient use with vehicle power."],
+        ["05", "COMPACT FORM", "11 × 11 × 18 cm design fits easily into everyday spaces."],
+        ["06", "36W POWER", "Efficient 36W rated power for everyday vehicle use."]
+    ],
+
+    specifications: [
+        ["Product Type", "Vehicle Cup Warmer / Cooler"],
+        ["Color", "Black"],
+        ["Dimensions", "11 × 11 × 18 cm"],
+        ["Rated Power", "36W"],
+        ["Rated Frequency", "50Hz"],
+        ["Operation", "Mechanical"],
+        ["Power Supply", "Vehicle Power / AC"],
+        ["Timing Function", "No"]
+    ],
+
+    stripe: "#"
+}
 ];

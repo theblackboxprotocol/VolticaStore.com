@@ -413,7 +413,6 @@ const volticaProducts = [
             "assets/images/gimbal1-3.webp",
             "assets/images/gimbal1-4.webp",
             "assets/images/gimbal1-5.jpg",
-            "assets/images/gimbal1-6.webp",
             "assets/images/gimbal1-7.webp",
             "assets/images/gimbal1-8.webp",
             "assets/images/gimbal1-9.webp",

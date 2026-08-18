@@ -497,10 +497,7 @@ const volticaProducts = [
             "assets/images/keyboard2-2.webp",
             "assets/images/keyboard2-3.webp",
             "assets/images/keyboard2-4.webp",
-            "assets/images/keyboard2-5.webp",
-            "assets/images/keyboard2-6.webp",
-            "assets/images/keyboard2-7.webp",
-            "assets/images/keyboard2-8.webp"
+            "assets/images/keyboard2-5.webp"
         ],
 
         description:
@@ -555,6 +552,6 @@ const volticaProducts = [
         ],
 
         stripe:
-            ""
+            "https://buy.stripe.com/7sY4gA5tZgIL9qg3ui2Ji09"
     },
 ];

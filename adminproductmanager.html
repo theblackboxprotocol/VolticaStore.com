@@ -2438,7 +2438,960 @@ function showGeneratedProduct(product) {
 }
 
                 </script>
-                                                 </script>
+              <script>
+
+/* =====================================================
+   VOLTICA PRODUCT MANAGER
+   GITHUB PRODUCT WRITER
+   ===================================================== */
+
+const API_URL =
+    "https://api.volticastore.com/api/admin-api.php";
+
+
+/* =====================================================
+   ELEMENTS
+   ===================================================== */
+
+const imageInput =
+    document.getElementById("productImages");
+
+const imagePreview =
+    document.getElementById("imagePreview");
+
+const addProductButton =
+    document.querySelector(".button-primary");
+
+const clearImagesButton =
+    document.getElementById("clearImages");
+
+
+/* =====================================================
+   IMAGE PREVIEW
+   ===================================================== */
+
+if (imageInput && imagePreview) {
+
+    imageInput.addEventListener(
+        "change",
+        function () {
+
+            imagePreview.innerHTML = "";
+
+            const files =
+                Array.from(this.files || []);
+
+            if (!files.length) {
+                return;
+            }
+
+            const count =
+                document.createElement("div");
+
+            count.className =
+                "image-preview-count";
+
+            count.textContent =
+                files.length +
+                (
+                    files.length === 1
+                        ? " image selected"
+                        : " images selected"
+                );
+
+            imagePreview.appendChild(count);
+
+
+            files.forEach(function (file) {
+
+                if (!file.type.startsWith("image/")) {
+                    return;
+                }
+
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "image-preview-item";
+
+
+                const image =
+                    document.createElement("img");
+
+                image.src =
+                    URL.createObjectURL(file);
+
+                image.alt =
+                    file.name;
+
+
+                const name =
+                    document.createElement("div");
+
+                name.className =
+                    "image-preview-name";
+
+                name.textContent =
+                    file.name;
+
+
+                item.appendChild(image);
+                item.appendChild(name);
+
+                imagePreview.appendChild(item);
+
+            });
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CLEAR IMAGES
+   ===================================================== */
+
+if (clearImagesButton) {
+
+    clearImagesButton.addEventListener(
+        "click",
+        function () {
+
+            if (imageInput) {
+                imageInput.value = "";
+            }
+
+            if (imagePreview) {
+                imagePreview.innerHTML = "";
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE JAVASCRIPT
+   ===================================================== */
+
+function escapeJS(value) {
+
+    return String(value || "")
+        .replace(/\\/g, "\\\\")
+        .replace(/"/g, '\\"')
+        .replace(/\r?\n/g, "\\n");
+
+}
+
+
+/* =====================================================
+   CREATE PRODUCT ID
+   ===================================================== */
+
+function createProductId(name) {
+
+    return name
+        .toLowerCase()
+        .replace(/^voltica\s*/i, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
+}
+
+
+/* =====================================================
+   PARSE FEATURES
+   ===================================================== */
+
+function parseFeatures(text) {
+
+    if (!text || !text.trim()) {
+        return [];
+    }
+
+    return text
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean)
+        .map((line, index) => {
+
+            const parts =
+                line
+                    .split("—")
+                    .map(part => part.trim());
+
+
+            if (parts.length >= 3) {
+
+                return [
+                    parts[0],
+                    parts[1],
+                    parts.slice(2).join(" — ")
+                ];
+
+            }
+
+
+            return [
+                String(index + 1).padStart(2, "0"),
+                parts[0] || "",
+                parts.slice(1).join(" — ")
+            ];
+
+        });
+
+}
+
+
+/* =====================================================
+   PARSE SPECIFICATIONS
+   ===================================================== */
+
+function parseSpecifications(text) {
+
+    if (!text || !text.trim()) {
+        return [];
+    }
+
+    return text
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean)
+        .map(line => {
+
+            const separator =
+                line.indexOf(":");
+
+
+            if (separator === -1) {
+
+                return [
+                    line,
+                    ""
+                ];
+
+            }
+
+
+            return [
+
+                line
+                    .substring(0, separator)
+                    .trim(),
+
+                line
+                    .substring(separator + 1)
+                    .trim()
+
+            ];
+
+        });
+
+}
+
+
+/* =====================================================
+   GET IMAGE PATHS
+   ===================================================== */
+
+function getImagePaths() {
+
+    if (!imageInput || !imageInput.files.length) {
+        return [];
+    }
+
+    return Array
+        .from(imageInput.files)
+        .map(file =>
+            "assets/images/" + file.name
+        );
+
+}
+
+
+/* =====================================================
+   GENERATE PRODUCT
+   ===================================================== */
+
+function generateProduct() {
+
+    const getValue = id => {
+
+        const element =
+            document.getElementById(id);
+
+        return element
+            ? element.value.trim()
+            : "";
+
+    };
+
+
+    const name =
+        getValue("productName");
+
+    const volticaSku =
+        getValue("productSku");
+
+    const cjSku =
+        getValue("cjSku");
+
+    const category =
+        getValue("category");
+
+    const cost =
+        getValue("cost");
+
+    const price =
+        getValue("price");
+
+    const description =
+        getValue("description");
+
+
+    const featuresElement =
+        document.getElementById("features");
+
+    const specificationsElement =
+        document.getElementById(
+            "specifications"
+        );
+
+
+    const featuresText =
+        featuresElement
+            ? featuresElement.value
+            : "";
+
+
+    const specificationsText =
+        specificationsElement
+            ? specificationsElement.value
+            : "";
+
+
+    /* =================================================
+       VALIDATION
+       ================================================= */
+
+    if (!name) {
+
+        alert(
+            "Please enter a Product Name."
+        );
+
+        return null;
+
+    }
+
+
+    if (!volticaSku) {
+
+        alert(
+            "Please enter the Voltica SKU."
+        );
+
+        return null;
+
+    }
+
+
+    if (!category) {
+
+        alert(
+            "Please select a Category."
+        );
+
+        return null;
+
+    }
+
+
+    if (!price) {
+
+        alert(
+            "Please enter the Voltica Price."
+        );
+
+        return null;
+
+    }
+
+
+    /* =================================================
+       DATA
+       ================================================= */
+
+    const productId =
+        createProductId(name);
+
+
+    const images =
+        getImagePaths();
+
+
+    const features =
+        parseFeatures(featuresText);
+
+
+    const specifications =
+        parseSpecifications(
+            specificationsText
+        );
+
+
+    /* =================================================
+       PRODUCT OBJECT
+       ================================================= */
+
+    return {
+
+        id: productId,
+
+        sku: volticaSku,
+
+        cjSku: cjSku,
+
+        name: name,
+
+        category: category,
+
+        badge: "NEW",
+
+        price: price,
+
+        currency: "USD",
+
+        images: images,
+
+        description: description,
+
+        features: features,
+
+        specifications: specifications,
+
+        cost: cost
+
+    };
+
+}
+
+
+/* =====================================================
+   CREATE PRODUCTS.JS BLOCK
+   ===================================================== */
+
+function createProductCode(product) {
+
+    return `
+// =================================================
+// PRODUCT XX — ${product.name.toUpperCase()}
+// =================================================
+
+{
+    id: "${escapeJS(product.id)}",
+    sku: "${escapeJS(product.sku)}",
+    cjSku: "${escapeJS(product.cjSku)}",
+    name: "${escapeJS(product.name)}",
+    category: "${escapeJS(product.category)}",
+    badge: "${escapeJS(product.badge)}",
+
+    price: "${escapeJS(product.price)}",
+    currency: "USD",
+
+    images: [
+${product.images
+    .map(image =>
+        `        "${escapeJS(image)}"`
+    )
+    .join(",\n")}
+    ],
+
+    description:
+        "${escapeJS(product.description)}",
+
+    features: [
+${product.features
+    .map(feature =>
+        `        ["${escapeJS(feature[0])}", "${escapeJS(feature[1])}", "${escapeJS(feature[2])}"]`
+    )
+    .join(",\n")}
+    ],
+
+    specifications: [
+${product.specifications
+    .map(spec =>
+        `        ["${escapeJS(spec[0])}", "${escapeJS(spec[1])}"]`
+    )
+    .join(",\n")}
+    ]
+},`;
+
+}
+
+
+/* =====================================================
+   ADMIN AUTHENTICATION
+   ===================================================== */
+
+async function authenticateAPI() {
+
+    const password =
+        prompt(
+            "VOLTICA ADMIN PASSWORD"
+        );
+
+
+    if (!password) {
+        return null;
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL,
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            action:
+                                "authenticate",
+
+                            password:
+                                password
+
+                        })
+
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!response.ok ||
+            !result.success) {
+
+            alert(
+                "AUTHENTICATION FAILED\n\n" +
+                (
+                    result.error ||
+                    "Invalid administrator password."
+                )
+            );
+
+            return null;
+
+        }
+
+
+        return password;
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "API ERROR:",
+            error
+        );
+
+
+        alert(
+            "API CONNECTION FAILED\n\n" +
+            error.message
+        );
+
+
+        return null;
+
+    }
+
+}
+
+
+/* =====================================================
+   SEND PRODUCT TO PHP
+   ===================================================== */
+
+async function sendProductToAPI(
+    password,
+    product
+) {
+
+    const productCode =
+        createProductCode(product);
+
+
+    const response =
+        await fetch(
+            API_URL,
+            {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+
+                body:
+                    JSON.stringify({
+
+                        action:
+                            "add_product",
+
+                        password:
+                            password,
+
+                        product:
+                            product,
+
+                        productCode:
+                            productCode
+
+                    })
+
+            }
+        );
+
+
+    const result =
+        await response.json();
+
+
+    if (!response.ok ||
+        !result.success) {
+
+        throw new Error(
+            result.error ||
+            "GitHub product update failed."
+        );
+
+    }
+
+
+    return result;
+
+}
+
+
+/* =====================================================
+   ADD PRODUCT
+   ===================================================== */
+
+if (addProductButton) {
+
+    addProductButton.addEventListener(
+        "click",
+        async function () {
+
+            const product =
+                generateProduct();
+
+
+            if (!product) {
+                return;
+            }
+
+
+            const password =
+                await authenticateAPI();
+
+
+            if (!password) {
+                return;
+            }
+
+
+            const originalText =
+                this.textContent;
+
+
+            this.disabled = true;
+
+            this.textContent =
+                "UPLOADING...";
+
+
+            try {
+
+                const result =
+                    await sendProductToAPI(
+                        password,
+                        product
+                    );
+
+
+                console.log(
+                    "VOLTICA API SUCCESS:",
+                    result
+                );
+
+
+                alert(
+                    "✓ PRODUCT ADDED SUCCESSFULLY\n\n" +
+                    "Product:\n" +
+                    product.name +
+                    "\n\n" +
+                    "GitHub products.js updated."
+                );
+
+
+                showGeneratedProduct(
+                    createProductCode(product)
+                );
+
+
+            }
+
+
+            catch (error) {
+
+                console.error(
+                    "VOLTICA API ERROR:",
+                    error
+                );
+
+
+                alert(
+                    "PRODUCT UPLOAD FAILED\n\n" +
+                    error.message
+                );
+
+            }
+
+
+            finally {
+
+                this.disabled = false;
+
+                this.textContent =
+                    originalText;
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SHOW GENERATED PRODUCT
+   ===================================================== */
+
+function showGeneratedProduct(productCode) {
+
+    let modal =
+        document.getElementById(
+            "generatedProduct"
+        );
+
+
+    if (modal) {
+        modal.remove();
+    }
+
+
+    modal =
+        document.createElement("div");
+
+
+    modal.id =
+        "generatedProduct";
+
+
+    modal.style.cssText = `
+        position:fixed;
+        inset:0;
+        z-index:99999;
+        background:rgba(0,0,0,.92);
+        backdrop-filter:blur(20px);
+        padding:20px;
+        overflow:auto;
+    `;
+
+
+    modal.innerHTML = `
+
+        <div style="
+            max-width:900px;
+            margin:20px auto;
+            background:#111318;
+            border:1px solid rgba(255,255,255,.12);
+            border-radius:20px;
+            padding:20px;
+            color:white;
+        ">
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                margin-bottom:16px;
+            ">
+
+                <strong>
+                    PRODUCT ADDED
+                </strong>
+
+                <button
+                    type="button"
+                    id="closeGeneratedProduct"
+                    style="
+                        background:rgba(255,255,255,.06);
+                        border:1px solid rgba(255,255,255,.15);
+                        color:white;
+                        border-radius:10px;
+                        padding:9px 13px;
+                    "
+                >
+                    CLOSE
+                </button>
+
+            </div>
+
+
+            <div style="
+                padding:14px;
+                margin-bottom:14px;
+                border-radius:12px;
+                background:rgba(0,255,140,.08);
+                border:1px solid rgba(0,255,140,.20);
+                color:#9fffc8;
+                font-weight:600;
+            ">
+                ✓ GITHUB PRODUCTS.JS UPDATED
+            </div>
+
+
+            <textarea
+                id="generatedProductText"
+                readonly
+                style="
+                    width:100%;
+                    min-height:520px;
+                    box-sizing:border-box;
+                    background:#050608;
+                    color:#f4f4f5;
+                    border:1px solid rgba(255,255,255,.1);
+                    border-radius:14px;
+                    padding:16px;
+                    font-family:monospace;
+                    font-size:12px;
+                    line-height:1.6;
+                "
+            ></textarea>
+
+
+            <button
+                type="button"
+                id="copyGeneratedProduct"
+                style="
+                    width:100%;
+                    margin-top:14px;
+                    padding:15px;
+                    border:0;
+                    border-radius:12px;
+                    background:white;
+                    color:black;
+                    font-weight:700;
+                "
+            >
+                COPY TO CLIPBOARD
+            </button>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(
+        modal
+    );
+
+
+    document
+        .getElementById(
+            "generatedProductText"
+        )
+        .value =
+            productCode;
+
+
+    document
+        .getElementById(
+            "closeGeneratedProduct"
+        )
+        .addEventListener(
+            "click",
+            () => modal.remove()
+        );
+
+
+    document
+        .getElementById(
+            "copyGeneratedProduct"
+        )
+        .addEventListener(
+            "click",
+            async function () {
+
+                try {
+
+                    await navigator
+                        .clipboard
+                        .writeText(
+                            productCode
+                        );
+
+
+                    this.textContent =
+                        "✓ COPIED";
+
+
+                    setTimeout(
+                        () => {
+
+                            this.textContent =
+                                "COPY TO CLIPBOARD";
+
+                        },
+                        1800
+                    );
+
+                }
+
+                catch (error) {
+
+                    alert(
+                        "Copy failed. Please copy manually."
+                    );
+
+                }
+
+            }
+        );
+
+}
+
+        </script>                                   </script>
 </body>
 
 </html>

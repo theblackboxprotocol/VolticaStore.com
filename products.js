@@ -775,6 +775,6 @@ const volticaProducts = [
         ["Package Includes", "1 x Bluetooth Speaker, 1 x Magnetic Base, 1 x Power Adapter, User Manual."]
     ],
 
-    stripe: "À AJOUTER"
+    stripe: "https://buy.stripe.com/4gM4gA09F0JNfOE3ui2Ji0d"
 },
 ];

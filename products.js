@@ -730,4 +730,51 @@ const volticaProducts = [
 
     stripe: "https://buy.stripe.com/5kQdRa7C70JN45W3ui2Ji0c"
 },  
+    // =================================================
+// PRODUCT 10 — VOLTICA LEVITATING FLOATING SPEAKER
+// =================================================
+
+{
+    id: "lifestyle3",
+    sku: "VLT-LIF-SPEAKER-001",
+    name: "Levitating Floating Bluetooth Speaker | Magnetic Suspension Wireless Audio with 360° Sound & Modern Home Decor",
+    category: "Lifestyle / Ambient Audio",
+    badge: "FEATURED",
+
+    price: "98.99",
+    currency: "USD",
+
+    images: [
+        "assets/images/lifestyle3-1.webp",
+        "assets/images/lifestyle3-2.webp",
+        "assets/images/lifestyle3-3.webp",
+        "assets/images/lifestyle3-4.webp",
+        "assets/images/lifestyle3-5.webp"
+    ],
+
+    description:
+        "Elevate your audio experience and home aesthetic with the Levitating Floating Bluetooth Speaker. Combining cutting-edge magnetic suspension technology with high-fidelity acoustics, this futuristic wireless speaker literally floats and rotates in mid-air while delivering crisp, immersive 360-degree sound.\n\nDesigned to be a striking conversation piece, it seamlessly blends modern art with advanced technology. Whether you want to upgrade your living room decor, office desk, or bedside table, this mesmerizing ornament delivers premium sound quality wrapped in an eye-catching, zero-gravity design.",
+
+    features: [
+        ["01", "Zero-Gravity Levitation", "Uses advanced magnetic suspension to effortlessly float and rotate above its base."],
+        ["02", "360° Immersive Sound", "Engineered to project clear highs, balanced mids, and rich bass evenly across any room."],
+        ["03", "Seamless Wireless Pairing", "Quick and stable Bluetooth connectivity for effortless streaming from your smartphone, tablet, or laptop."],
+        ["04", "Sleek Modern Decor", "Crafted with a futuristic aesthetic that serves as both a high-tech gadget and a premium home ornament."]
+    ],
+
+    specifications: [
+        ["Product Name", "Levitating Floating Wireless Bluetooth Speaker"],
+        ["Material", "Fiber-Reinforced Polymer (FRP)"],
+        ["Material Source", "Man-made"],
+        ["Production Process", "Precision Casting"],
+        ["Surface Technology", "High-definition Inkjet Coating"],
+        ["Hanging Form / Placement", "Magnetic Suspension / Desktop Ornament"],
+        ["Applicable Scene", "Home, Office, Living Room, Studio"],
+        ["Production Method", "Semi-manual and Semi-mechanical"],
+        ["Connectivity", "Bluetooth Wireless"],
+        ["Package Includes", "1 x Bluetooth Speaker, 1 x Magnetic Base, 1 x Power Adapter, User Manual."]
+    ],
+
+    stripe: "À AJOUTER"
+},
 ];

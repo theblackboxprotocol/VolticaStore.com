@@ -25,25 +25,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const categoryMap = {
 
-        "SPORT AUDIO": "earbuds",
-        "WIRELESS AUDIO": "earbuds",
-        "OPEN-EAR AUDIO": "earbuds",
+    "SPORT AUDIO": "earbuds",
+    "WIRELESS AUDIO": "earbuds",
+    "OPEN-EAR AUDIO": "earbuds",
+    "EARBUDS": "earbuds",
 
-        "GAMING GEAR": "gaming",
+    "GAMING GEAR": "gaming",
+    "GAMING": "gaming",
 
-        "CREATOR GEAR": "creator",
+    "CREATOR GEAR": "creator",
+    "CREATOR": "creator",
 
-        "HEADPHONES": "headphones",
+    "HEADPHONES": "headphones",
 
-        "TECH": "tech",
-        "TECH / LAPTOP ACCESSORIES": "tech",
+    "TECH": "tech",
+    "TECH / LAPTOP ACCESSORIES": "tech",
 
-        "LIFESTYLE": "lifestyle",
-        "LIFESTYLE / AUTOMOTIVE ACCESSORIES": "lifestyle",
-        "LIFESTYLE / SMART LIGHTING": "lifestyle",
-        "LIFESTYLE / AMBIENT AUDIO": "lifestyle"
+    "LIFESTYLE": "lifestyle",
+    "LIFESTYLE / AUTOMOTIVE": "lifestyle",
+    "LIFESTYLE / AUTOMOTIVE ACCESSORIES": "lifestyle",
+    "LIFESTYLE / SMART LIGHTING": "lifestyle",
+    "LIFESTYLE / AMBIENT AUDIO": "lifestyle"
 
-    };
+};
 
 
     /* =========================================================

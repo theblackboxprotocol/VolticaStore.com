@@ -728,4 +728,69 @@ const volticaProducts = [
     stripe:
         "https://buy.stripe.com/7sY4gAaOj6476e47Ky2Ji0f"
 },
+
+// =================================================
+// PRODUCT 14 — 100W GAN FOUR-PORT MOBILE PHONE CHARGER
+// =================================================
+
+{
+    id: "100w-gan-four-port-mobile-phone-charger",
+
+    sku: "CJSJ137397502BY",
+
+    name: "100W GaN Four-port Mobile Phone Charger",
+
+    category: "TECH",
+
+    badge: "NEW",
+
+    supplierLink:
+        "https://www.cjdropshipping.com/product/-p-1468106557278523392.html",
+
+    cost:
+        "38.68",
+
+    price:
+        "59.99",
+
+    currency: "USD",
+
+    images: [
+        "assets/images/1000050045.webp",
+        "assets/images/1000050048.webp",
+        "assets/images/1000050049.webp",
+        "assets/images/1000050050.webp",
+        "assets/images/1000050051.webp",
+        "assets/images/1000050054.webp",
+        "assets/images/1000050046.webp"
+    ],
+
+    description:
+        "Power up your entire digital life with the Baseus 100W GaN Pro Fast Charger. Engineered with cutting-edge Gallium Nitride (GaN) technology, this desktop power station offers high-performance charging in a compact, travel-friendly design. With a powerful 100W total output and four versatile charging ports, it is the perfect solution for laptops, smartphones, tablets, and gaming consoles simultaneously.\n​Equipped with BPS 2.0 power split technology, this charger intelligently distributes power to your devices, ensuring safe, stable, and rapid charging. Whether you are at your workspace or on the go, the foldable plug and sleek black finish make it a premium addition to any tech setup. Simplify your cables and upgrade your speed with the ultimate charging hub for high-performance devices.",
+
+    specifications: [
+        ["Brand Baseus", ""],
+        ["Model 100W GaN Pro Quick Charger", ""],
+        ["Technology GaN (Gallium Nitride) + BPS 2.0", ""],
+        ["Total Power 100W Max", ""],
+        ["Ports 4 Ports (2x Type-C, 2x USB-A)", ""],
+        ["Color Black", ""],
+        ["Build Material High-durability Polymer / Heat-resistant internal shielding", ""],
+        ["Plug Design Foldable (space-saving)", ""],
+        ["Compatibility Universal (PD 3.1, PPS, QC support)", ""],
+        ["Packing List", ""],
+        ["1 x 100W GaN Pro Charger", ""]
+    ],
+
+    features: [
+        ["01", "01-100W Powerful Output: Delivers high-speed charging for power-hungry devices, including MacBook Pro, laptops, tablets, and smartphones.", ""],
+        ["02", "02-4-in-1 Versatility: Features 2x USB-C and 2x USB-A ports, allowing you to charge four devices at once from a single outlet.", ""],
+        ["03", "03-Advanced GaN Technology: Uses GaN semiconductor materials for higher efficiency, reduced size, and better heat dissipation compared to traditional silicon chargers.", ""],
+        ["04", "04-Intelligent BPS 2.0: Automatically detects and optimizes power distribution to each connected device for maximum safety and speed.", ""],
+        ["05", "05-Travel-Ready Design: Compact build with a foldable plug, making it effortless to pack and perfect for office, home, or travel use.", ""]
+    ],
+
+    stripe:
+        "https://buy.stripe.com/fZu4gAcWr9gjeKA9SG2Ji0g"
+},
 ];

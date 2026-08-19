@@ -633,3 +633,147 @@ console.log(
     "✓ API:",
     API_URL
 );
+document.addEventListener("DOMContentLoaded", function () {
+
+    const skuButton =
+        document.getElementById("generateSkuButton");
+
+    const skuInput =
+        document.getElementById("productSku");
+
+    const categoryInput =
+        document.getElementById("category");
+
+
+    if (!skuButton || !skuInput) {
+        return;
+    }
+
+
+    function generateRandomCode(length = 6) {
+
+        const characters =
+            "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+        let result = "";
+
+        for (let i = 0; i < length; i++) {
+
+            result +=
+                characters.charAt(
+                    Math.floor(
+                        Math.random() *
+                        characters.length
+                    )
+                );
+
+        }
+
+        return result;
+    }
+
+
+    function getCategoryCode() {
+
+        if (!categoryInput) {
+            return "GEN";
+        }
+
+        const category =
+            categoryInput.value
+                .toLowerCase()
+                .trim();
+
+
+        if (
+            category.includes("earbud") ||
+            category.includes("audio")
+        ) {
+            return "AUD";
+        }
+
+
+        if (
+            category.includes("gaming") ||
+            category.includes("gamer")
+        ) {
+            return "GAM";
+        }
+
+
+        if (
+            category.includes("headphone")
+        ) {
+            return "AUD";
+        }
+
+
+        if (
+            category.includes("tech") ||
+            category.includes("electronic")
+        ) {
+            return "TEC";
+        }
+
+
+        if (
+            category.includes("lifestyle")
+        ) {
+            return "LIF";
+        }
+
+
+        if (
+            category.includes("creator")
+        ) {
+            return "CRT";
+        }
+
+
+        return "GEN";
+    }
+
+
+    skuButton.addEventListener(
+        "click",
+        function () {
+
+            const categoryCode =
+                getCategoryCode();
+
+
+            const randomCode =
+                generateRandomCode(6);
+
+
+            const sku =
+                "VLT-" +
+                categoryCode +
+                "-" +
+                randomCode;
+
+
+            skuInput.value = sku;
+
+
+            skuInput.focus();
+
+
+            skuButton.textContent =
+                "✓ SKU GENERATED";
+
+
+            setTimeout(
+                function () {
+
+                    skuButton.textContent =
+                        "GENERATE SKU";
+
+                },
+                1500
+            );
+
+        }
+    );
+
+});

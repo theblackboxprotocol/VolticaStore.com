@@ -666,4 +666,66 @@ const volticaProducts = [
     stripe:
         "https://buy.stripe.com/dRm6oI2hNakngSI2qe2Ji0e"
 },
+
+// =================================================
+// PRODUCT 13 — STARRY SKY & GALAXY PROJECTOR | 10-IN-1
+// =================================================
+
+{
+    id: "starry-sky-galaxy-projector-10-in-1",
+
+    sku: "CJYD212349808HS",
+
+    name: "Starry Sky & Galaxy Projector | 10-in-1",
+
+    category: "LIFESTYLE",
+
+    badge: "NEW",
+
+    supplierLink:
+        "https://www.cjdropshipping.com/product/-p-2408290911051600500.html",
+
+    cost:
+        "69.11",
+
+    price:
+        "83.74",
+
+    currency: "USD",
+
+    images: [
+        "assets/images/1000050028.webp",
+        "assets/images/1000050029.webp",
+        "assets/images/1000050030.webp",
+        "assets/images/1000050031.webp",
+        "assets/images/1000050032.webp"
+    ],
+
+    description:
+        "Transform your bedroom, living room, or ceiling into a breathtaking cosmic canvas with the Star Poray Ambience Light Projector. Designed to create a romantic, relaxing, and deeply immersive atmosphere, this multi-functional night lamp features interchangeable projection discs that bring the wonders of the universe straight indoors.\n​Whether you want to drift off under a realistic lunar moon, watch deep-sea jellyfish and majestic whales float across your ceiling, or explore distant galaxies, starships, and Saturn rings, this projector adapts instantly to your mood. Compact, sleek, and powered via USB, it is the ultimate ambient lighting accessory for bedrooms, relaxation spaces, or modern home decor.",
+
+    specifications: [
+        ["Product Type Astrolabe Ambience Light Projector / Night Lamp", ""],
+        ["Color Black", ""],
+        ["Included Slides / Discs", "10 Theme Discs (Manta, Northern Lights, Star Saturn, Dinosaur World, Dark Cloud Planet, Star Planet, Starship, Space Warship, Black Whale, Zodiac)"],
+        ["Dimensions 190 mm x 100 mm", ""],
+        ["Power / Charging Method USB Powered", ""],
+        ["Applicable Scene Bedroom, Living Room, Home Decor, Romantic Atmosphere, Relaxation Space", ""],
+        ["Package List", ""],
+        ["1 x Projection Lamp,", ""],
+        ["1 x Set of Projection Discs,", ""],
+        ["1 x USB Cable,", ""],
+        ["1 x User Manual", ""]
+    ],
+
+    features: [
+        ["01", "01-10-in-1 Interchangeable Themes: Includes versatile projection discs featuring celestial bodies, deep-sea creatures (Manta, Black Whale), starships, northern lights, and starry galaxies.", ""],
+        ["02", "02-Immersive Ambience: Perfect for creating a romantic vibe, calming children's bedtime routines, or setting a relaxing mood for meditation.", ""],
+        ["03", "03-Sleek, Modern Design: Features a stylish black disc-shaped housing supported by a sturdy minimal frame that complements any room aesthetic.", ""],
+        ["04", "04-Convenient USB Powered: Easy to plug in and power using standard USB chargers, laptops, or power banks for flexible placement anywhere in the home.", ""]
+    ],
+
+    stripe:
+        "https://buy.stripe.com/7sY4gAaOj6476e47Ky2Ji0f"
+},
 ];

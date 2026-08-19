@@ -793,4 +793,65 @@ const volticaProducts = [
     stripe:
         "https://buy.stripe.com/fZu4gAcWr9gjeKA9SG2Ji0g"
 },
+
+// =================================================
+// PRODUCT 15 — MODULAR HEXAGON RHYTHM WALL LIGHTS | SMART RGB
+// =================================================
+
+{
+    id: "modular-hexagon-rhythm-wall-lights-smart-rgb",
+
+    sku: "CJYD197940402BY",
+
+    name: "Modular Hexagon Rhythm Wall Lights | Smart RGB",
+
+    category: "LIFESTYLE",
+
+    badge: "NEW",
+
+    supplierLink:
+        "https://www.cjdropshipping.com/product/-p-1763544551962189824.html",
+
+    cost:
+        "77.57",
+
+    price:
+        "94.57",
+
+    currency: "USD",
+
+    images: [
+        "assets/images/1000050113.jpg",
+        "assets/images/1000050111.jpg",
+        "assets/images/1000050109.jpg",
+        "assets/images/1000050105.jpg",
+        "assets/images/1000050103.jpg"
+    ],
+
+    description:
+        "Elevate your gaming setup, bedroom, or creative studio with the Modular Hexagon Rhythm Wall Lights. These innovative LED panels are more than just wall decor; they are a complete sensory experience. Featuring a flexible modular design, you can assemble the geometric segments to create custom shapes that perfectly match your personal aesthetic.\n​Built for enthusiasts, these smart lights synchronize in real-time with your music, games, or movies thanks to the integrated rhythmic audio-pickup technology. Use the dedicated mobile application or the included remote control to seamlessly switch between thousands of colors, customize dynamic scenes, and set the ultimate mood for any occasion. Modern, minimalist, and CE-certified for safety and peace of mind, these panels are a must-have upgrade for transforming any ordinary room into a high-tech sanctuary.",
+
+    specifications: [
+        ["Product Type Modular RGB Wall Lighting System", ""],
+        ["Lamp Shade Material Durable PVC", ""],
+        ["Light Source Type Energy-Efficient LED", ""],
+        ["Control Method Graffiti App + Remote Control (with Rhythm Pickup)", ""],
+        ["Voltage 220V", ""],
+        ["Style Modern and Minimalist", ""],
+        ["Certification EU CE Certification", ""],
+        ["Light Colors 12 Sets / Multi-color RGB", ""],
+        ["Package List 12 x Modular Light Bars, Remote Control, Power Adapter, USB Cable, Connectors", ""]
+    ],
+
+    features: [
+        ["01", "01-Creative Modular Design: Freely assemble the light segments to design unique wall patterns tailored to your space.", ""],
+        ["02", "02-Intelligent Music Sync: Features built-in pickup rhythm technology that pulses and reacts to ambient sound and music.", ""],
+        ["03", "03-​Dual Control Options: Manage your colors, brightness, and modes easily via the smartphone app or the included remote control.", ""],
+        ["04", "04-Modern & Minimalist Style: A clean aesthetic that seamlessly complements desktop gaming stations, modern living rooms, and creative studios.", ""],
+        ["05", "05-​Certified Quality: Built to meet European safety standards (EU CE certification).", ""]
+    ],
+
+    stripe:
+        "https://buy.stripe.com/cNi28s5tZ3VZgSIgh42Ji0h"
+},
 ];

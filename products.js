@@ -603,6 +603,67 @@ const volticaProducts = [
 
         stripe:
             "https://buy.stripe.com/4gM4gA09F0JNfOE3ui2Ji0d"
-    }
+    },
 
+// =================================================
+// PRODUCT 12 — VOLTICA™ WIILALA 3D SMART HOLOGRAM DISPLAY FAN
+// =================================================
+
+{
+    id: "wiilala-3d-smart-hologram-display-fan",
+
+    sku: "CJTY304719902BY",
+
+    name: "Voltica™ Wiilala 3D Smart Hologram Display Fan",
+
+    category: "LIFESTYLE",
+
+    badge: "NEW",
+
+    supplierLink:
+        "https://www.cjdropshipping.com/product/-p-2086387249086910465.html",
+
+    cost:
+        "63.05",
+
+    price:
+        "78.87",
+
+    currency: "USD",
+
+    images: [
+        "assets/images/1000050010.webp",
+        "assets/images/1000050007.webp",
+        "assets/images/1000050008.webp",
+        "assets/images/1000050014.webp",
+        "assets/images/1000050012.webp",
+        "assets/images/1000050011.webp",
+        "assets/images/1000050015.webp",
+        "assets/images/1000050013.webp"
+    ],
+
+    description:
+        "Stunning 3D Visuals That Command Attention\nIn a world of flat screens, give your audience something impossible to ignore. Powered by a high-density 224-LED array, the Voltica™ Hologram Fan projects crystal-clear, exclusive themes for truly immersive effects. Watch complex models, logos, and animations materialize in thin air.\n​Flawless Audio-Visual Synchronization\nA true premium experience engages all the senses. Thanks to built-in Bluetooth, the device connects seamlessly to your external speakers. Sync your 3D animations with high-fidelity soundscapes or dynamic voiceovers to create a fully synchronized, multi-sensory marketing display.\n​Total Control in the Palm of Your Hand\nForget complicated software. The dedicated Holoscope APP allows you to upload and manage your displays with just one tap. Update your promotional campaigns on the fly from your smartphone, ensuring your messaging is always relevant and impactful.\n​Sleek, Compact, and Versatile Design\nEngineered to blend perfectly into high-end environments. The sleek device measures just 28cm (11\") in length, maintaining a low-profile aesthetic. It comes equipped with an adjustable height design and a 30cm (11.8\") protective cover, giving you the flexibility to deploy it as a stunning desktop feature or a dominant store sign.",
+
+    specifications: [
+        ["Naked-Eye 3D LED Holographic Projection", ""],
+        ["28cm / 11\"x3.5cm / 1.4\"", ""],
+        ["Base Width 8.2cm / 3.2\"", ""],
+        ["Protective Cover 30cm / 11.8\" diameter", ""],
+        ["Connectivity Wi-Fi (App Control), Bluetooth (Audio)", ""],
+        ["Software Holoscope APP (iOS/Android compatible)", ""],
+        ["Stand Adjustable height design", ""]
+    ],
+
+    features: [
+        ["01", "01-3-in-1 Smart Technology: Combines APP Control, Bluetooth Audio, and Naked-Eye 3D into a single, cohesive unit.", ""],
+        ["02", "02-Holoscope Ecosystem: Effortlessly upload, switch, and manage 3D displays directly from your mobile device.", ""],
+        ["03", "03-Immersive Audio Sync: Built-in Bluetooth pairs instantly with external speakers for high-impact audio-visual presentations.", ""],
+        ["04", "04-Premium Build: Features an adjustable height stand and a clear, protective 30cm acrylic cover for safety and optimal viewing.", ""],
+        ["05", "05-Plug-and-Play Brilliance: Simply power it on and let the 224 LED lights create breathtaking volumetric illusions.", ""]
+    ],
+
+    stripe:
+        "https://buy.stripe.com/dRm6oI2hNakngSI2qe2Ji0e"
+},
 ];

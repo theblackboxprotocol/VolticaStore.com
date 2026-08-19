@@ -9,6 +9,10 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
+    <meta
+        name="description"
+        content="Voltica Store — Product">
+
     <title>Voltica Store</title>
 
     <link
@@ -19,6 +23,7 @@
 
 
 <body>
+
 
 <main
     id="productView"
@@ -32,10 +37,7 @@
 
 
 <!-- =====================================================
-     VOLTICA PRODUCT DATABASE
-     
-     IMPORTANT:
-     products.js MUST be loaded before the product engine.
+     VOLTICA DATABASE
      ===================================================== -->
 
 <script src="products.js"></script>
@@ -47,389 +49,1057 @@
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const container =
-        document.getElementById("productView");
+        "use strict";
 
 
-    /* =====================================================
-       READ PRODUCT ID FROM URL
-       Example:
-       product-view.html?id=earbuds3
-       ===================================================== */
+        /* =================================================
+           CONTAINER
+           ================================================= */
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
+        const container =
+            document.getElementById(
+                "productView"
+            );
 
 
-    const productId =
-        params.get("id");
+        if (!container) {
+            return;
+        }
 
 
-    console.log(
-        "VOLTICA PRODUCT ID:",
-        productId
-    );
+        /* =================================================
+           URL PRODUCT ID
+           ================================================= */
 
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
 
-    /* =====================================================
-       CHECK PRODUCT DATABASE
-       ===================================================== */
 
-    if (
-        typeof volticaProducts === "undefined" ||
-        !Array.isArray(volticaProducts)
-    ) {
+        const productId =
+            params.get("id");
 
-        container.innerHTML = `
 
-            <section class="product-not-found">
+        /* =================================================
+           DATABASE CHECK
+           ================================================= */
 
-                <span>DATABASE ERROR</span>
+        if (
+            typeof volticaProducts === "undefined" ||
+            !Array.isArray(volticaProducts)
+        ) {
 
-                <h1>
-                    Product database unavailable.
-                </h1>
+            showError(
+                "DATABASE ERROR",
+                "Product database unavailable.",
+                "products.js could not be loaded."
+            );
 
-                <p>
-                    products.js could not be loaded.
-                </p>
+            return;
+        }
 
-                <a href="store.html">
-                    RETURN TO STORE
-                </a>
 
-            </section>
+        /* =================================================
+           FIND PRODUCT
+           ================================================= */
 
-        `;
+        const product =
+            volticaProducts.find(
+                function (item) {
 
-        console.error(
-            "VOLTICA ERROR: volticaProducts is unavailable."
-        );
+                    return String(item.id)
+                        .trim()
+                        ===
+                        String(productId)
+                        .trim();
 
-        return;
-    }
+                }
+            );
 
 
-    /* =====================================================
-       FIND PRODUCT
-       ===================================================== */
+        /* =================================================
+           PRODUCT NOT FOUND
+           ================================================= */
 
-    const product =
-        volticaProducts.find(
-            item =>
-                String(item.id).trim() ===
-                String(productId).trim()
-        );
+        if (!product) {
 
+            showError(
+                "404",
+                "Product not found.",
+                productId
+                    ? `Product ID: ${productId}`
+                    : "No product ID was provided."
+            );
 
-    console.log(
-        "VOLTICA PRODUCT:",
-        product
-    );
+            return;
+        }
 
 
-    /* =====================================================
-       PRODUCT NOT FOUND
-       ===================================================== */
+        /* =================================================
+           HELPERS
+           ================================================= */
 
-    if (!product) {
+        function escapeHTML(value) {
 
-        container.innerHTML = `
+            return String(
+                value ?? ""
+            )
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
 
-            <section class="product-not-found">
+        }
 
-                <span>404</span>
 
-                <h1>
-                    Product not found.
-                </h1>
+        function clean(value, fallback = "") {
 
-                <p>
-                    Product ID:
-                    <strong>
-                        ${productId || "NONE"}
-                    </strong>
-                </p>
+            if (
+                value === undefined ||
+                value === null
+            ) {
+                return fallback;
+            }
 
-                <a href="store.html">
-                    RETURN TO STORE
-                </a>
+            const result =
+                String(value).trim();
 
-            </section>
+            return result || fallback;
+        }
 
-        `;
 
-        console.error(
-            "VOLTICA ERROR: Product not found:",
-            productId
-        );
+        function getImages() {
 
-        return;
-    }
+            if (
+                Array.isArray(product.images)
+            ) {
 
+                return product.images
+                    .filter(Boolean);
 
-    /* =====================================================
-       PAGE TITLE
-       ===================================================== */
+            }
 
-    document.title =
-        `${product.name} — Voltica Store`;
 
+            if (product.image) {
+                return [product.image];
+            }
 
-    /* =====================================================
-       SAFE PRODUCT DATA
-       ===================================================== */
 
-    const images =
-        Array.isArray(product.images)
-            ? product.images.filter(Boolean)
-            : [];
+            return [];
+        }
 
 
-    const features =
-        Array.isArray(product.features)
-            ? product.features
-            : [];
+        function getFeatures() {
 
+            return Array.isArray(
+                product.features
+            )
+                ? product.features
+                : [];
 
-    const specifications =
-        Array.isArray(product.specifications)
-            ? product.specifications
-            : [];
+        }
 
 
-    const description =
-        product.description ||
-        "Product details not available.";
+        function getSpecifications() {
 
+            return Array.isArray(
+                product.specifications
+            )
+                ? product.specifications
+                : [];
 
-    const category =
-        product.category ||
-        "VOLTICA";
+        }
 
 
-    const currency =
-        product.currency ||
-        "USD";
+        function formatPrice() {
 
+            const price =
+                Number(product.price);
 
-    const badge =
-        product.badge ||
-        "NEW";
 
+            if (
+                Number.isNaN(price)
+            ) {
+                return clean(
+                    product.price,
+                    "—"
+                );
+            }
 
-    const stripe =
-        product.stripe ||
-        "#";
 
+            return price.toFixed(2);
 
-    /* =====================================================
-       CHECK IMAGES
-       ===================================================== */
+        }
 
-    if (images.length === 0) {
 
-        container.innerHTML = `
+        function createSubtitle() {
 
-            <section class="product-not-found">
+            const category =
+                clean(
+                    product.category,
+                    "VOLTICA"
+                ).toUpperCase();
 
-                <span>IMAGE ERROR</span>
 
-                <h1>
-                    Product images unavailable.
-                </h1>
+            if (
+                category.includes("GAMING")
+            ) {
 
-                <p>
-                    ${product.name}
-                </p>
-
-                <a href="store.html">
-                    RETURN TO STORE
-                </a>
-
-            </section>
-
-        `;
-
-        return;
-    }
-
-
-    /* =====================================================
-       BUILD PRODUCT PAGE
-       ===================================================== */
-
-    container.innerHTML = `
-
-        <!-- =================================================
-             PRODUCT HERO
-             ================================================= -->
-
-        <section class="dynamic-product-hero">
-
-
-            <!-- =============================================
-                 PRODUCT GALLERY
-                 ============================================= -->
-
-            <div class="dynamic-gallery">
-
-
-                <div class="dynamic-main-image">
-
-                    <span class="dynamic-badge">
-                        ${badge}
-                    </span>
-
-
-                    <img
-                        id="mainProductImage"
-                        src="${images[0]}"
-                        alt="${product.name}">
-
-                </div>
-
-
-                <!-- =========================================
-                     GLASS THUMBNAILS
-                     ========================================= -->
-
-                <div class="voltica-glass-gallery">
-
-
-                    ${images.map(
-                        (image, index) => `
-
-                        <button
-                            type="button"
-                            class="voltica-thumb ${
-                                index === 0
-                                    ? "active"
-                                    : ""
-                            }"
-                            data-image="${image}">
-
-                            <img
-                                src="${image}"
-                                alt="${product.name} ${index + 1}">
-
-                            <span>
-                                ${String(index + 1)
-                                    .padStart(2, "0")}
-                            </span>
-
-                        </button>
-
-                    `).join("")}
-
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =============================================
-                 PRODUCT INFORMATION
-                 ============================================= -->
-
-            <div class="dynamic-product-info">
-
-
-                <span class="dynamic-category">
-
-                    VOLTICA /
-                    ${category}
-
-                </span>
-
-
-                <!-- =========================================
-                     PRODUCT TITLE
-                     ========================================= -->
-
-                <div class="q17-title-tech">
-
-                    <span
-                        class="q17-title-status">
-                    </span>
-
-
-                    <span
-                        class="q17-title-label">
-
-                        VOLTICA /
-                        ${product.name}
-
-                    </span>
-
-
-                    <h1>
-                        ${product.name}
-                    </h1>
-
-                </div>
-
-
-                <!-- =========================================
-                     SUBTITLE
-                     ========================================= -->
-
-                <div class="q17-subtitle-glass">
-
-                    <span
-                        class="q17-subtitle-line">
-                    </span>
-
-
+                return `
                     <h2>
+                        Built to play.
+                        <span>Designed to perform.</span>
+                    </h2>
+                `;
 
-                        Wireless freedom.
+            }
+
+
+            if (
+                category.includes("CREATOR")
+            ) {
+
+                return `
+                    <h2>
+                        Create without limits.
+                        <span>Built to move.</span>
+                    </h2>
+                `;
+
+            }
+
+
+            if (
+                category.includes("LIFESTYLE")
+            ) {
+
+                return `
+                    <h2>
+                        Technology for life.
+                        <span>Designed different.</span>
+                    </h2>
+                `;
+
+            }
+
+
+            if (
+                category.includes("TECH")
+            ) {
+
+                return `
+                    <h2>
+                        Smarter everyday.
+                        <span>Built to adapt.</span>
+                    </h2>
+                `;
+
+            }
+
+
+            return `
+                <h2>
+                    Wireless freedom.
+                    <span>Built to move.</span>
+                </h2>
+            `;
+
+        }
+
+
+        /* =================================================
+           DATA
+           ================================================= */
+
+        const images =
+            getImages();
+
+
+        const features =
+            getFeatures();
+
+
+        const specifications =
+            getSpecifications();
+
+
+        const description =
+            clean(
+                product.description,
+                "Product details not available."
+            );
+
+
+        const category =
+            clean(
+                product.category,
+                "VOLTICA"
+            );
+
+
+        const badge =
+            clean(
+                product.badge,
+                "NEW"
+            );
+
+
+        const currency =
+            clean(
+                product.currency,
+                "USD"
+            );
+
+
+        const stripe =
+            clean(
+                product.stripe,
+                ""
+            );
+
+
+        const name =
+            clean(
+                product.name,
+                "Voltica Product"
+            );
+
+
+        /* =================================================
+           PAGE TITLE
+           ================================================= */
+
+        document.title =
+            `${name} — Voltica Store`;
+
+
+        /* =================================================
+           META DESCRIPTION
+           ================================================= */
+
+        const metaDescription =
+            document.querySelector(
+                'meta[name="description"]'
+            );
+
+
+        if (metaDescription) {
+
+            metaDescription.setAttribute(
+                "content",
+                description.substring(
+                    0,
+                    155
+                )
+            );
+
+        }
+
+
+        /* =================================================
+           IMAGE CHECK
+           ================================================= */
+
+        if (images.length === 0) {
+
+            showError(
+                "IMAGE ERROR",
+                "Product images unavailable.",
+                name
+            );
+
+            return;
+        }
+
+
+        /* =================================================
+           SAFE STRIPE
+           ================================================= */
+
+        const buyButton =
+            stripe
+                ? `
+                    <a
+                        href="${escapeHTML(stripe)}"
+                        class="q17-buy-button">
 
                         <span>
-                            Built to move.
+                            BUY NOW
                         </span>
 
-                    </h2>
+                    </a>
+                `
+                : `
+                    <div
+                        class="q17-buy-button"
+                        style="opacity:.45;pointer-events:none;">
 
-                </div>
+                        <span>
+                            COMING SOON
+                        </span>
+
+                    </div>
+                `;
+
+
+        const finalButton =
+            stripe
+                ? `
+                    <a
+                        href="${escapeHTML(stripe)}"
+                        class="final-buy-button">
+
+                        BUY NOW
+
+                    </a>
+                `
+                : `
+                    <div
+                        class="final-buy-button"
+                        style="opacity:.45;pointer-events:none;">
+
+                        COMING SOON
+
+                    </div>
+                `;
+
+
+        /* =================================================
+           BUILD PAGE
+           ================================================= */
+
+        container.innerHTML = `
+
+            <!-- =============================================
+                 HERO
+                 ============================================= -->
+
+            <section
+                class="dynamic-product-hero">
 
 
                 <!-- =========================================
-                     DESCRIPTION
+                     GALLERY
                      ========================================= -->
 
                 <div
-                    class="q17-description-card">
+                    class="dynamic-gallery">
 
 
                     <div
-                        class="q17-description-top">
+                        class="dynamic-main-image">
 
-                        <span>
-                            VOLTICA /
-                            PRODUCT INSIGHT
+
+                        <span
+                            class="dynamic-badge">
+
+                            ${escapeHTML(badge)}
+
                         </span>
 
-                        <i></i>
+
+                        <img
+                            id="mainProductImage"
+                            src="${escapeHTML(images[0])}"
+                            alt="${escapeHTML(name)}">
+
 
                     </div>
 
 
-                    <p>
-                        ${description}
-                    </p>
+                    <div
+                        class="voltica-glass-gallery">
+
+
+                        ${images.map(
+                            function (
+                                image,
+                                index
+                            ) {
+
+                                return `
+
+                                    <button
+                                        type="button"
+                                        class="voltica-thumb ${
+                                            index === 0
+                                                ? "active"
+                                                : ""
+                                        }"
+                                        data-image="${escapeHTML(image)}">
+
+
+                                        <img
+                                            src="${escapeHTML(image)}"
+                                            alt="${escapeHTML(name)} view ${index + 1}">
+
+
+                                        <span>
+                                            ${String(
+                                                index + 1
+                                            ).padStart(2, "0")}
+                                        </span>
+
+
+                                    </button>
+
+                                `;
+
+                            }
+                        ).join("")}
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     PRODUCT INFO
+                     ========================================= -->
+
+                <div
+                    class="dynamic-product-info">
+
+
+                    <span
+                        class="dynamic-category">
+
+                        VOLTICA /
+                        ${escapeHTML(category)}
+
+                    </span>
+
+
+                    <!-- =====================================
+                         TITLE
+                         ===================================== -->
+
+                    <div
+                        class="q17-title-tech">
+
+
+                        <span
+                            class="q17-title-status">
+                        </span>
+
+
+                        <span
+                            class="q17-title-label">
+
+                            VOLTICA /
+                            ${escapeHTML(name)}
+
+                        </span>
+
+
+                        <h1>
+                            ${escapeHTML(name)}
+                        </h1>
+
+
+                    </div>
+
+
+                    <!-- =====================================
+                         SMART SUBTITLE
+                         ===================================== -->
+
+                    <div
+                        class="q17-subtitle-glass">
+
+
+                        <span
+                            class="q17-subtitle-line">
+                        </span>
+
+
+                        ${createSubtitle()}
+
+
+                    </div>
+
+
+                    <!-- =====================================
+                         DESCRIPTION
+                         ===================================== -->
+
+                    <div
+                        class="q17-description-card">
+
+
+                        <div
+                            class="q17-description-top">
+
+                            <span>
+                                VOLTICA /
+                                PRODUCT INSIGHT
+                            </span>
+
+                            <i></i>
+
+                        </div>
+
+
+                        <p>
+                            ${escapeHTML(description)}
+                        </p>
+
+
+                        <div
+                            class="q17-description-bottom">
+
+
+                            <span>
+                                ${escapeHTML(category)}
+                            </span>
+
+
+                            <span>
+                                QUALITY SELECTED
+                            </span>
+
+
+                            <span>
+                                VOLTICA
+                            </span>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- =====================================
+                         PURCHASE
+                         ===================================== -->
+
+                    <div
+                        class="q17-purchase-zone">
+
+
+                        <div
+                            class="q17-price-glass">
+
+
+                            <span
+                                class="q17-price-label">
+
+                                ${escapeHTML(name)}
+                                / PRICE
+
+                            </span>
+
+
+                            <strong>
+
+                                $${formatPrice()}
+
+                            </strong>
+
+
+                            <span
+                                class="q17-price-currency">
+
+                                ${escapeHTML(currency)}
+
+                            </span>
+
+
+                        </div>
+
+
+                        ${buyButton}
+
+
+                        <div
+                            class="q17-trust-glass">
+
+
+                            <span>
+                                ✓ SECURE CHECKOUT
+                            </span>
+
+
+                            <span>
+                                ✓ QUALITY SELECTED
+                            </span>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =============================================
+                 FEATURES
+                 ============================================= -->
+
+            ${
+                features.length
+                    ? `
+
+                    <section
+                        class="q17-tech-section">
+
+
+                        <div
+                            class="q17-tech-header">
+
+
+                            <div
+                                class="q17-tech-label">
+
+                                <span></span>
+
+                                ENGINEERED FOR EVERYDAY
+
+                            </div>
+
+
+                            <h2>
+
+                                Built for
+
+                                <span>
+                                    ${escapeHTML(
+                                        category
+                                    )}.
+                                </span>
+
+                            </h2>
+
+
+                        </div>
+
+
+                        <div
+                            class="q17-tech-grid">
+
+
+                            ${features.map(
+                                function (
+                                    feature
+                                ) {
+
+                                    const number =
+                                        clean(
+                                            feature[0],
+                                            ""
+                                        );
+
+
+                                    const title =
+                                        clean(
+                                            feature[1],
+                                            ""
+                                        );
+
+
+                                    const text =
+                                        clean(
+                                            feature[2],
+                                            ""
+                                        );
+
+
+                                    return `
+
+                                        <div
+                                            class="q17-tech-card">
+
+
+                                            <div
+                                                class="q17-tech-number">
+
+                                                ${escapeHTML(
+                                                    number
+                                                )}
+
+                                            </div>
+
+
+                                            <div
+                                                class="q17-tech-content">
+
+
+                                                <strong>
+                                                    ${escapeHTML(
+                                                        title
+                                                    )}
+                                                </strong>
+
+
+                                                ${
+                                                    text
+                                                        ? `
+                                                        <p>
+                                                            ${escapeHTML(
+                                                                text
+                                                            )}
+                                                        </p>
+                                                        `
+                                                        : ""
+                                                }
+
+
+                                            </div>
+
+
+                                        </div>
+
+                                    `;
+
+                                }
+                            ).join("")}
+
+
+                        </div>
+
+
+                        <div
+                            class="q17-tech-footer">
+
+
+                            <span
+                                class="q17-tech-footer-line">
+                            </span>
+
+
+                            <span>
+                                TECHNICAL DATA
+                            </span>
+
+
+                            <span
+                                class="q17-tech-footer-line">
+                            </span>
+
+
+                        </div>
+
+
+                    </section>
+
+                    `
+                    : ""
+            }
+
+
+            <!-- =============================================
+                 SPECIFICATIONS
+                 ============================================= -->
+
+            ${
+                specifications.length
+                    ? `
+
+                    <section
+                        class="q17-specs-section">
+
+
+                        <div
+                            class="q17-specs-header">
+
+
+                            <div
+                                class="q17-specs-label">
+
+                                <span></span>
+
+                                TECHNICAL DATA
+
+                            </div>
+
+
+                            <h2>
+
+                                ${escapeHTML(name)}
+
+                                <span>
+                                    Specifications.
+                                </span>
+
+                            </h2>
+
+
+                        </div>
+
+
+                        <div
+                            class="q17-specs-panel">
+
+
+                            <div
+                                class="q17-specs-topline">
+
+
+                                <span>
+
+                                    ${escapeHTML(name)}
+                                    / TECHNICAL PROFILE
+
+                                </span>
+
+
+                                <span>
+                                    VOLTICA
+                                </span>
+
+
+                            </div>
+
+
+                            ${specifications.map(
+                                function (
+                                    spec,
+                                    index
+                                ) {
+
+                                    return `
+
+                                        <div
+                                            class="q17-spec-row">
+
+
+                                            <span
+                                                class="q17-spec-number">
+
+                                                ${String(
+                                                    index + 1
+                                                ).padStart(
+                                                    2,
+                                                    "0"
+                                                )}
+
+                                            </span>
+
+
+                                            <span
+                                                class="q17-spec-name">
+
+                                                ${escapeHTML(
+                                                    spec[0]
+                                                )}
+
+                                            </span>
+
+
+                                            <strong>
+
+                                                ${escapeHTML(
+                                                    spec[1]
+                                                )}
+
+                                            </strong>
+
+
+                                        </div>
+
+                                    `;
+
+                                }
+                            ).join("")}
+
+
+                            <div
+                                class="q17-spec-bottom">
+
+
+                                <span>
+                                    ${escapeHTML(name)}
+                                </span>
+
+
+                                <span>
+                                    ENGINEERED FOR EVERYDAY
+                                </span>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+                    `
+                    : ""
+            }
+
+
+            <!-- =============================================
+                 FINAL CTA
+                 ============================================= -->
+
+            <section
+                class="dynamic-final">
+
+
+                <div
+                    class="final-glass-panel">
 
 
                     <div
-                        class="q17-description-bottom">
+                        class="final-label">
+
+                        ${escapeHTML(name)}
+
+                    </div>
+
+
+                    <div
+                        class="final-line">
+                    </div>
+
+
+                    <h2>
+
+                        Ready to
 
                         <span>
-                            ${category}
+                            move?
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        ${escapeHTML(
+                            description.substring(
+                                0,
+                                180
+                            )
+                        )}
+
+                    </p>
+
+
+                    ${finalButton}
+
+
+                    <div
+                        class="final-meta">
+
+
+                        <span>
+                            SECURE CHECKOUT
                         </span>
 
 
@@ -442,560 +1112,316 @@ document.addEventListener("DOMContentLoaded", function () {
                             VOLTICA
                         </span>
 
+
                     </div>
+
 
                 </div>
 
 
-                <!-- =========================================
-                     PURCHASE
-                     ========================================= -->
+            </section>
+
+
+            <!-- =============================================
+                 NAVIGATION
+                 ============================================= -->
+
+            <section
+                class="voltica-bottom-nav">
+
 
                 <div
-                    class="q17-purchase-zone">
+                    class="voltica-nav-line">
+                </div>
 
 
-                    <div
-                        class="q17-price-glass">
+                <div
+                    class="voltica-nav-buttons">
 
-
-                        <span
-                            class="q17-price-label">
-
-                            ${product.name}
-                            / PRICE
-
-                        </span>
-
-
-                        <strong>
-
-                            $${product.price}
-
-                        </strong>
-
-
-                        <span
-                            class="q17-price-currency">
-
-                            ${currency}
-
-                        </span>
-
-                    </div>
-
-
-                    <!-- =====================================
-                         STRIPE BUY BUTTON
-                         ===================================== -->
 
                     <a
-                        href="${stripe}"
-                        class="q17-buy-button">
+                        href="index.html"
+                        class="voltica-nav-button home-button">
 
-                        <span>
-                            BUY ${product.name.toUpperCase()}
+
+                        <span
+                            class="nav-icon">
+
+                            ⌂
+
                         </span>
+
+
+                        <span
+                            class="nav-button-text">
+
+
+                            <small>
+                                RETURN
+                            </small>
+
+
+                            <strong>
+                                HOME
+                            </strong>
+
+
+                        </span>
+
 
                     </a>
 
 
-                    <div
-                        class="q17-trust-glass">
+                    <a
+                        href="store.html"
+                        class="voltica-nav-button store-button">
 
-                        <span>
-                            ✓ SECURE CHECKOUT
+
+                        <span
+                            class="nav-icon">
+
+                            V
+
                         </span>
 
 
-                        <span>
-                            ✓ QUALITY SELECTED
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
+                        <span
+                            class="nav-button-text">
 
 
-
-        <!-- =================================================
-             FEATURES
-             ================================================= -->
-
-        <section
-            class="q17-tech-section">
-
-
-            <div
-                class="q17-tech-header">
-
-
-                <div
-                    class="q17-tech-label">
-
-                    <span></span>
-
-                    ENGINEERED FOR EVERYDAY
-
-                </div>
-
-
-                <h2>
-
-                    Built for
-
-                    <span>
-                        movement.
-                    </span>
-
-                </h2>
-
-            </div>
-
-
-            <div
-                class="q17-tech-grid">
-
-
-                ${features.map(
-                    feature => `
-
-                    <div
-                        class="q17-tech-card">
-
-
-                        <div
-                            class="q17-tech-number">
-
-                            ${feature[0]}
-
-                        </div>
-
-
-                        <div
-                            class="q17-tech-content">
+                            <small>
+                                EXPLORE
+                            </small>
 
 
                             <strong>
-                                ${feature[1]}
+                                STORE
                             </strong>
 
 
-                            <p>
-                                ${feature[2]}
-                            </p>
-
-
-                        </div>
-
-                    </div>
-
-                `).join("")}
-
-
-            </div>
-
-
-            <div
-                class="q17-tech-footer">
-
-                <span
-                    class="q17-tech-footer-line">
-                </span>
-
-
-                <span>
-                    TECHNICAL DATA
-                </span>
-
-
-                <span
-                    class="q17-tech-footer-line">
-                </span>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             SPECIFICATIONS
-             ================================================= -->
-
-        <section
-            class="q17-specs-section">
-
-
-            <div
-                class="q17-specs-header">
-
-
-                <div
-                    class="q17-specs-label">
-
-                    <span></span>
-
-                    TECHNICAL DATA
-
-                </div>
-
-
-                <h2>
-
-                    ${product.name}
-
-                    <span>
-                        Specifications.
-                    </span>
-
-                </h2>
-
-            </div>
-
-
-            <div
-                class="q17-specs-panel">
-
-
-                <div
-                    class="q17-specs-topline">
-
-                    <span>
-
-                        ${product.name}
-                        / TECHNICAL PROFILE
-
-                    </span>
-
-
-                    <span>
-                        VOLTICA
-                    </span>
-
-                </div>
-
-
-                ${specifications.map(
-                    (spec, index) => `
-
-                    <div
-                        class="q17-spec-row">
-
-
-                        <span
-                            class="q17-spec-number">
-
-                            ${String(index + 1)
-                                .padStart(2, "0")}
-
                         </span>
 
 
-                        <span
-                            class="q17-spec-name">
+                    </a>
 
-                            ${spec[0]}
-
-                        </span>
-
-
-                        <strong>
-
-                            ${spec[1]}
-
-                        </strong>
-
-
-                    </div>
-
-                `).join("")}
-
-
-                <div
-                    class="q17-spec-bottom">
-
-                    <span>
-                        ${product.name}
-                    </span>
-
-
-                    <span>
-                        ENGINEERED FOR EVERYDAY
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             FINAL CTA
-             ================================================= -->
-
-        <section
-            class="dynamic-final">
-
-
-            <div
-                class="final-glass-panel">
-
-
-                <div
-                    class="final-label">
-
-                    ${product.name}
 
                 </div>
 
 
                 <div
-                    class="final-line">
-                </div>
+                    class="voltica-nav-brand">
 
-
-                <h2>
-
-                    Ready to
-
-                    <span>
-                        move?
-                    </span>
-
-                </h2>
-
-
-                <p>
-
-                    ${description}
-
-                </p>
-
-
-                <a
-                    href="${stripe}"
-                    class="final-buy-button">
-
-                    GET
-                    ${product.name.toUpperCase()}
-
-                </a>
-
-
-                <div
-                    class="final-meta">
-
-                    <span>
-                        SECURE CHECKOUT
-                    </span>
-
-
-                    <span>
-                        QUALITY SELECTED
-                    </span>
-
-
-                    <span>
-                        VOLTICA
-                    </span>
+                    VOLTICA
 
                 </div>
 
-            </div>
 
-        </section>
+            </section>
 
-
-
-        <!-- =================================================
-             NAVIGATION
-             ================================================= -->
-
-        <section
-            class="voltica-bottom-nav">
+        `;
 
 
-            <div
-                class="voltica-nav-line">
-            </div>
+        /* =================================================
+           GALLERY ENGINE
+           ================================================= */
+
+        const mainImage =
+            document.getElementById(
+                "mainProductImage"
+            );
 
 
-            <div
-                class="voltica-nav-buttons">
+        const thumbnails =
+            container.querySelectorAll(
+                ".voltica-thumb"
+            );
 
 
-                <a
-                    href="index.html"
-                    class="voltica-nav-button home-button">
+        thumbnails.forEach(
+            function (thumbnail) {
 
-                    <span
-                        class="nav-icon">
+                thumbnail.addEventListener(
+                    "click",
+                    function () {
 
-                        ⌂
-
-                    </span>
-
-
-                    <span
-                        class="nav-button-text">
-
-                        <small>
-                            RETURN
-                        </small>
+                        const newImage =
+                            this.dataset.image;
 
 
-                        <strong>
-                            HOME
-                        </strong>
-
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="store.html"
-                    class="voltica-nav-button store-button">
-
-                    <span
-                        class="nav-icon">
-                        V
-                    </span>
+                        if (
+                            !mainImage ||
+                            !newImage
+                        ) {
+                            return;
+                        }
 
 
-                    <span
-                        class="nav-button-text">
-
-                        <small>
-                            EXPLORE
-                        </small>
-
-
-                        <strong>
-                            STORE
-                        </strong>
-
-                    </span>
-
-                </a>
+                        if (
+                            mainImage.getAttribute(
+                                "src"
+                            ) === newImage
+                        ) {
+                            return;
+                        }
 
 
-            </div>
+                        mainImage.style.opacity =
+                            "0";
 
 
-            <div
-                class="voltica-nav-brand">
+                        setTimeout(
+                            function () {
 
-                VOLTICA
-
-            </div>
-
-        </section>
-
-    `;
+                                mainImage.src =
+                                    newImage;
 
 
-    /* =====================================================
-       GALLERY
-       ===================================================== */
+                                mainImage.style.opacity =
+                                    "1";
 
-    const mainImage =
-        document.getElementById(
-            "mainProductImage"
-        );
+                            },
+                            150
+                        );
 
 
-    const thumbnails =
-        document.querySelectorAll(
-            ".voltica-thumb"
-        );
+                        thumbnails.forEach(
+                            function (item) {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
 
 
-    thumbnails.forEach(
-        function (thumbnail) {
+                        this.classList.add(
+                            "active"
+                        );
 
-            thumbnail.addEventListener(
-                "click",
-                function () {
-
-                    const image =
-                        this.dataset.image;
-
-
-                    if (!mainImage) {
-                        return;
                     }
+                );
+
+            }
+        );
 
 
-                    mainImage.style.opacity =
-                        "0";
+        /* =================================================
+           IMAGE ERROR HANDLING
+           ================================================= */
 
+        container
+            .querySelectorAll(
+                "img"
+            )
+            .forEach(
+                function (image) {
 
-                    setTimeout(
+                    image.addEventListener(
+                        "error",
                         function () {
 
-                            mainImage.src =
-                                image;
-
-                            mainImage.style.opacity =
-                                "1";
-
-                        },
-                        150
-                    );
-
-
-                    thumbnails.forEach(
-                        function (item) {
-
-                            item.classList.remove(
-                                "active"
-                            );
+                            this.style.opacity =
+                                "0.25";
 
                         }
-                    );
-
-
-                    this.classList.add(
-                        "active"
                     );
 
                 }
             );
 
-        }
-    );
+
+        /* =================================================
+           DEBUG
+           ================================================= */
+
+        console.log(
+            "✓ VOLTICA PRODUCT LOADED:",
+            name
+        );
+
+        console.log(
+            "✓ PRODUCT ID:",
+            product.id
+        );
+
+        console.log(
+            "✓ IMAGES:",
+            images.length
+        );
+
+        console.log(
+            "✓ FEATURES:",
+            features.length
+        );
+
+        console.log(
+            "✓ SPECIFICATIONS:",
+            specifications.length
+        );
+
+    });
 
 
-    /* =====================================================
-       DEBUG
-       ===================================================== */
+/* ============================================================
+   ERROR SCREEN
+   ============================================================ */
 
-    console.log(
-        "✓ VOLTICA PRODUCT LOADED:",
-        product.name
-    );
+function showError(
+    label,
+    title,
+    message
+) {
 
-    console.log(
-        "✓ PRODUCT ID:",
-        product.id
-    );
+    const container =
+        document.getElementById(
+            "productView"
+        );
 
-    console.log(
-        "✓ STRIPE:",
-        product.stripe
-    );
 
-});
+    if (!container) {
+        return;
+    }
+
+
+    container.innerHTML = `
+
+        <section
+            class="product-not-found">
+
+
+            <span>
+                ${String(label)}
+            </span>
+
+
+            <h1>
+                ${String(title)}
+            </h1>
+
+
+            <p>
+                ${String(message)}
+            </p>
+
+
+            <a
+                href="store.html">
+
+                RETURN TO STORE
+
+            </a>
+
+
+        </section>
+
+    `;
+
+}
 
 </script>
 
+
 </body>
+
 </html>

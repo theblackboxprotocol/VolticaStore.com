@@ -854,4 +854,53 @@ const volticaProducts = [
     stripe:
         "https://buy.stripe.com/cNi28s5tZ3VZgSIgh42Ji0h"
 },
+
+// =================================================
+// PRODUCT 16 — GAMING COMPUTER PAD LARGE WORLD MAP MOUSE MAT BIG DESK
+// =================================================
+
+{
+    id: "gaming-computer-pad-large-world-map-mouse-mat-big-desk",
+
+    sku: "CJJT106172412LO",
+
+    name: "Gaming Computer Pad Large World Map Mouse Mat Big Desk",
+
+    category: "GAMING GEAR",
+
+    badge: "NEW",
+
+    supplierLink:
+        "https://www.cjdropshipping.com/product/-p-1377449685635174400.html",
+
+    cost:
+        "17.51",
+
+    price:
+        "27.99",
+
+    currency: "USD",
+
+    images: [
+        "assets/images/1000050148.jpg",
+        "assets/images/1000050140.jpg",
+        "assets/images/1000050144.jpg",
+        "assets/images/1000050142.jpg"
+    ],
+
+    description:
+        "Product name: mouse pad\nPattern: 400x900mm\nA-4mm\nPacking list\nMouse pad x1",
+
+    specifications: [
+
+    ],
+
+    features: [
+        ["01", "01-400x900mmx4mm", ""],
+        ["02", "02-world map", ""]
+    ],
+
+    stripe:
+        "https://buy.stripe.com/14AaEY8Gbakn6e4e8W2Ji0i"
+},
 ];

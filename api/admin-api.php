@@ -6,41 +6,65 @@
    GITHUB PRODUCT WRITER
    ===================================================== */
 
+header(
+    "Content-Type: application/json; charset=UTF-8"
+);
+
 
 /* =====================================================
    CONFIGURATION
    ===================================================== */
 
 $allowedOrigins = [
+
     "https://volticastore.com",
+
     "https://www.volticastore.com",
+
     "https://theblackboxprotocol.github.io"
+
 ];
 
 $githubOwner = "theblackboxprotocol";
-$githubRepo  = "VolticaStore.com";
 
-$productsPath = "products.js";
-$imagePath    = "assets/images";
+$githubRepo =
+    "VolticaStore.com";
 
-$envPath = "/home/u379666423/.env";
+$productsPath =
+    "products.js";
+
+$imagePath =
+    "assets/images";
+
+$envPath =
+    "/home/u379666423/.env";
 
 
 /* =====================================================
    CORS
    ===================================================== */
 
-$origin = $_SERVER["HTTP_ORIGIN"] ?? "";
+$origin =
+    $_SERVER["HTTP_ORIGIN"] ?? "";
 
-if (in_array($origin, $allowedOrigins, true)) {
+if (
+    in_array(
+        $origin,
+        $allowedOrigins,
+        true
+    )
+) {
 
     header(
-        "Access-Control-Allow-Origin: " . $origin
+        "Access-Control-Allow-Origin: "
+        . $origin
     );
 
 }
 
-header("Vary: Origin");
+header(
+    "Vary: Origin"
+);
 
 header(
     "Access-Control-Allow-Methods: POST, OPTIONS"
@@ -52,10 +76,6 @@ header(
 
 header(
     "Access-Control-Max-Age: 86400"
-);
-
-header(
-    "Content-Type: application/json; charset=UTF-8"
 );
 
 
@@ -85,8 +105,12 @@ if (
     http_response_code(405);
 
     echo json_encode([
+
         "success" => false,
-        "error" => "POST request required"
+
+        "error" =>
+            "POST request required"
+
     ]);
 
     exit;
@@ -98,13 +122,19 @@ if (
    LOAD ENV
    ===================================================== */
 
-if (!file_exists($envPath)) {
+if (
+    !file_exists($envPath)
+) {
 
     http_response_code(500);
 
     echo json_encode([
+
         "success" => false,
-        "error" => "ENV file not found"
+
+        "error" =>
+            "ENV file not found"
+
     ]);
 
     exit;
@@ -112,19 +142,24 @@ if (!file_exists($envPath)) {
 }
 
 
-$envLines = file(
-    $envPath,
-    FILE_IGNORE_NEW_LINES |
-    FILE_SKIP_EMPTY_LINES
-);
+$envLines =
+    file(
+        $envPath,
+        FILE_IGNORE_NEW_LINES |
+        FILE_SKIP_EMPTY_LINES
+    );
 
 
 $env = [];
 
 
-foreach ($envLines as $line) {
+foreach (
+    $envLines
+    as $line
+) {
 
-    $line = trim($line);
+    $line =
+        trim($line);
 
     if (
         $line === "" ||
@@ -138,16 +173,18 @@ foreach ($envLines as $line) {
 
 
     [$key, $value] =
-        explode("=", $line, 2);
+        explode(
+            "=",
+            $line,
+            2
+        );
 
 
     $key =
         trim($key);
 
-
     $value =
         trim($value);
-
 
     $value =
         trim(
@@ -169,19 +206,23 @@ foreach ($envLines as $line) {
 $githubToken =
     $env["GITHUB_TOKEN"] ?? "";
 
-
 $adminPassword =
     $env["ADMIN_PASSWORD"] ?? "";
 
 
-if ($adminPassword === "") {
+if (
+    $adminPassword === ""
+) {
 
     http_response_code(500);
 
     echo json_encode([
+
         "success" => false,
+
         "error" =>
             "ADMIN_PASSWORD not configured"
+
     ]);
 
     exit;
@@ -189,14 +230,19 @@ if ($adminPassword === "") {
 }
 
 
-if ($githubToken === "") {
+if (
+    $githubToken === ""
+) {
 
     http_response_code(500);
 
     echo json_encode([
+
         "success" => false,
+
         "error" =>
             "GITHUB_TOKEN not configured"
+
     ]);
 
     exit;
@@ -212,14 +258,19 @@ $password =
     $_POST["password"] ?? "";
 
 
-if ($password === "") {
+if (
+    $password === ""
+) {
 
     http_response_code(401);
 
     echo json_encode([
+
         "success" => false,
+
         "error" =>
             "Admin password required"
+
     ]);
 
     exit;
@@ -237,9 +288,12 @@ if (
     http_response_code(401);
 
     echo json_encode([
+
         "success" => false,
+
         "error" =>
             "Invalid password"
+
     ]);
 
     exit;
@@ -252,17 +306,24 @@ if (
    ===================================================== */
 
 $product =
-    $_POST["product"] ?? "";
+    trim(
+        $_POST["product"] ?? ""
+    );
 
 
-if (trim($product) === "") {
+if (
+    $product === ""
+) {
 
     http_response_code(400);
 
     echo json_encode([
+
         "success" => false,
+
         "error" =>
             "Product data missing"
+
     ]);
 
     exit;
@@ -287,7 +348,8 @@ function githubRequest(
 
     $headers = [
 
-        "Authorization: Bearer " . $token,
+        "Authorization: Bearer "
+            . $token,
 
         "Accept: application/vnd.github+json",
 
@@ -304,7 +366,8 @@ function githubRequest(
         $ch,
         [
 
-            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_RETURNTRANSFER =>
+                true,
 
             CURLOPT_CUSTOMREQUEST =>
                 $method,
@@ -312,18 +375,23 @@ function githubRequest(
             CURLOPT_HTTPHEADER =>
                 $headers,
 
-            CURLOPT_TIMEOUT => 60
+            CURLOPT_TIMEOUT =>
+                60
 
         ]
     );
 
 
-    if ($payload !== null) {
+    if (
+        $payload !== null
+    ) {
 
         curl_setopt(
             $ch,
             CURLOPT_POSTFIELDS,
-            json_encode($payload)
+            json_encode(
+                $payload
+            )
         );
 
     }
@@ -332,13 +400,11 @@ function githubRequest(
     $response =
         curl_exec($ch);
 
-
     $status =
         curl_getinfo(
             $ch,
             CURLINFO_HTTP_CODE
         );
-
 
     $error =
         curl_error($ch);
@@ -349,11 +415,14 @@ function githubRequest(
 
     return [
 
-        "response" => $response,
+        "response" =>
+            $response,
 
-        "status" => $status,
+        "status" =>
+            $status,
 
-        "error" => $error
+        "error" =>
+            $error
 
     ];
 
@@ -361,7 +430,7 @@ function githubRequest(
 
 
 /* =====================================================
-   VERIFY GITHUB REPOSITORY
+   GITHUB BASE URL
    ===================================================== */
 
 $repoUrl =
@@ -370,6 +439,10 @@ $repoUrl =
     . "/"
     . $githubRepo;
 
+
+/* =====================================================
+   VERIFY REPOSITORY
+   ===================================================== */
 
 $repoResult =
     githubRequest(
@@ -407,10 +480,7 @@ if (
    ===================================================== */
 
 $productsUrl =
-    "https://api.github.com/repos/"
-    . $githubOwner
-    . "/"
-    . $githubRepo
+    $repoUrl
     . "/contents/"
     . $productsPath;
 
@@ -489,7 +559,9 @@ $currentProducts =
     );
 
 
-if ($currentProducts === false) {
+if (
+    $currentProducts === false
+) {
 
     http_response_code(500);
 
@@ -505,6 +577,232 @@ if ($currentProducts === false) {
     exit;
 
 }
+
+
+/* =====================================================
+   EXTRACT EXISTING IDS / SKUS
+   ===================================================== */
+
+$existingIds = [];
+
+$existingSkus = [];
+
+
+if (
+    preg_match_all(
+        '/\bid\s*:\s*"([^"]+)"/',
+        $currentProducts,
+        $idMatches
+    )
+) {
+
+    $existingIds =
+        $idMatches[1];
+
+}
+
+
+if (
+    preg_match_all(
+        '/\bsku\s*:\s*"([^"]+)"/',
+        $currentProducts,
+        $skuMatches
+    )
+) {
+
+    $existingSkus =
+        $skuMatches[1];
+
+}
+
+
+/* =====================================================
+   EXTRACT PRODUCT NUMBER
+   ===================================================== */
+
+$productNumbers = [];
+
+
+if (
+    preg_match_all(
+        '/PRODUCT\s+(\d+)/i',
+        $currentProducts,
+        $numberMatches
+    )
+) {
+
+    foreach (
+        $numberMatches[1]
+        as $number
+    ) {
+
+        $productNumbers[] =
+            intval($number);
+
+    }
+
+}
+
+
+$nextProductNumber = 1;
+
+
+if (
+    !empty($productNumbers)
+) {
+
+    $nextProductNumber =
+        max($productNumbers) + 1;
+
+}
+
+
+/* =====================================================
+   EXTRACT PRODUCT ID
+   ===================================================== */
+
+if (
+    preg_match(
+        '/\bid\s*:\s*"([^"]+)"/',
+        $product,
+        $productIdMatch
+    )
+) {
+
+    $newProductId =
+        trim(
+            $productIdMatch[1]
+        );
+
+}
+else {
+
+    http_response_code(400);
+
+    echo json_encode([
+
+        "success" => false,
+
+        "error" =>
+            "Product ID missing"
+
+    ]);
+
+    exit;
+
+}
+
+
+/* =====================================================
+   EXTRACT PRODUCT SKU
+   ===================================================== */
+
+if (
+    preg_match(
+        '/\bsku\s*:\s*"([^"]+)"/',
+        $product,
+        $productSkuMatch
+    )
+) {
+
+    $newProductSku =
+        trim(
+            $productSkuMatch[1]
+        );
+
+}
+else {
+
+    http_response_code(400);
+
+    echo json_encode([
+
+        "success" => false,
+
+        "error" =>
+            "Product SKU missing"
+
+    ]);
+
+    exit;
+
+}
+
+
+/* =====================================================
+   DUPLICATE ID CHECK
+   ===================================================== */
+
+if (
+    in_array(
+        $newProductId,
+        $existingIds,
+        true
+    )
+) {
+
+    http_response_code(409);
+
+    echo json_encode([
+
+        "success" => false,
+
+        "error" =>
+            "Product ID already exists",
+
+        "id" =>
+            $newProductId
+
+    ]);
+
+    exit;
+
+}
+
+
+/* =====================================================
+   DUPLICATE SKU CHECK
+   ===================================================== */
+
+if (
+    in_array(
+        $newProductSku,
+        $existingSkus,
+        true
+    )
+) {
+
+    http_response_code(409);
+
+    echo json_encode([
+
+        "success" => false,
+
+        "error" =>
+            "Supplier SKU already exists",
+
+        "sku" =>
+            $newProductSku
+
+    ]);
+
+    exit;
+
+}
+
+
+/* =====================================================
+   RENAME PRODUCT HEADER
+   ===================================================== */
+
+$product =
+    preg_replace(
+        '/PRODUCT\s+AUTO/i',
+        "PRODUCT "
+        . $nextProductNumber,
+        $product,
+        1
+    );
 
 
 /* =====================================================
@@ -591,11 +889,15 @@ $updatedProducts =
 
 $uploadedImages = [];
 
+$uploadedImageMetadata = [];
+
 
 if (
     isset($_FILES["images"]) &&
     isset($_FILES["images"]["name"]) &&
-    is_array($_FILES["images"]["name"])
+    is_array(
+        $_FILES["images"]["name"]
+    )
 ) {
 
     $imageCount =
@@ -633,7 +935,6 @@ if (
 
         $originalName =
             $_FILES["images"]["name"][$i];
-
 
         $tmpFile =
             $_FILES["images"]["tmp_name"][$i];
@@ -706,17 +1007,10 @@ if (
 
 
         $imageUrl =
-            "https://api.github.com/repos/"
-            . $githubOwner
-            . "/"
-            . $githubRepo
+            $repoUrl
             . "/contents/"
             . $githubImagePath;
 
-
-        /* ---------------------------------------------
-           CHECK EXISTING IMAGE
-           --------------------------------------------- */
 
         $existingImage =
             githubRequest(
@@ -738,10 +1032,6 @@ if (
         ];
 
 
-        /* ---------------------------------------------
-           UPDATE EXISTING IMAGE
-           --------------------------------------------- */
-
         if (
             $existingImage["status"] === 200
         ) {
@@ -762,7 +1052,6 @@ if (
                 $imagePayload["sha"] =
                     $existingData["sha"];
 
-
                 $imagePayload["message"] =
                     "Update product image: "
                     . $safeName;
@@ -771,10 +1060,6 @@ if (
 
         }
 
-
-        /* ---------------------------------------------
-           UPLOAD TO GITHUB
-           --------------------------------------------- */
 
         $uploadResult =
             githubRequest(
@@ -821,19 +1106,35 @@ if (
         $uploadedImages[] =
             $githubImagePath;
 
+
+        $uploadedImageMetadata[] = [
+
+            "path" =>
+                $githubImagePath,
+
+            "sha" =>
+                json_decode(
+                    $uploadResult["response"],
+                    true
+                )["content"]["sha"]
+                ?? null
+
+        ];
+
     }
 
 }
 
 
 /* =====================================================
-   UPDATE PRODUCTS.JS ON GITHUB
+   UPDATE PRODUCTS.JS
    ===================================================== */
 
 $productsPayload = [
 
     "message" =>
-        "Add new Voltica product",
+        "Add Voltica product #"
+        . $nextProductNumber,
 
     "content" =>
         base64_encode(
@@ -859,6 +1160,12 @@ if (
     $updateProducts["status"] !== 200
 ) {
 
+    /*
+       Images may already exist.
+       We report them explicitly so the
+       failure is visible to the admin.
+    */
+
     http_response_code(502);
 
     echo json_encode([
@@ -873,6 +1180,9 @@ if (
 
         "uploaded_images" =>
             $uploadedImages,
+
+        "warning" =>
+            "Images were uploaded but products.js was not updated",
 
         "github_response" =>
             json_decode(
@@ -897,6 +1207,15 @@ echo json_encode([
 
     "message" =>
         "Product successfully published",
+
+    "product_number" =>
+        $nextProductNumber,
+
+    "product_id" =>
+        $newProductId,
+
+    "sku" =>
+        $newProductSku,
 
     "repository" =>
         $githubOwner

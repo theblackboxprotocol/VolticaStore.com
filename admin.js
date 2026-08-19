@@ -21,7 +21,7 @@ const clearImagesButton =
     document.getElementById("clearImages");
 
 const addProductButton =
-    document.querySelector(".button-primary");
+    document.getElementById("addProduct");
 
 
 /* =====================================================
@@ -38,26 +38,20 @@ if (imageInput) {
                 return;
             }
 
-
             imagePreview.innerHTML = "";
-
 
             const files =
                 Array.from(this.files);
-
 
             if (!files.length) {
                 return;
             }
 
-
             const count =
                 document.createElement("div");
 
-
             count.className =
                 "image-preview-count";
-
 
             count.textContent =
                 files.length +
@@ -67,9 +61,7 @@ if (imageInput) {
                         : " images selected"
                 );
 
-
             imagePreview.appendChild(count);
-
 
             files.forEach(
                 function (file) {
@@ -80,41 +72,31 @@ if (imageInput) {
                         return;
                     }
 
-
                     const item =
                         document.createElement("div");
-
 
                     item.className =
                         "image-preview-item";
 
-
                     const image =
                         document.createElement("img");
-
 
                     image.src =
                         URL.createObjectURL(file);
 
-
                     image.alt =
                         file.name;
-
 
                     const name =
                         document.createElement("div");
 
-
                     name.className =
                         "image-preview-name";
-
 
                     name.textContent =
                         file.name;
 
-
                     item.appendChild(image);
-
                     item.appendChild(name);
 
                     imagePreview.appendChild(item);
@@ -139,16 +121,11 @@ if (clearImagesButton) {
         function () {
 
             if (imageInput) {
-
                 imageInput.value = "";
-
             }
 
-
             if (imagePreview) {
-
                 imagePreview.innerHTML = "";
-
             }
 
         }
@@ -158,12 +135,12 @@ if (clearImagesButton) {
 
 
 /* =====================================================
-   ESCAPE PRODUCT DATA
+   ESCAPE JAVASCRIPT STRING
    ===================================================== */
 
 function escapeJS(value) {
 
-    return String(value || "")
+    return String(value ?? "")
         .replace(/\\/g, "\\\\")
         .replace(/"/g, '\\"')
         .replace(/\r?\n/g, "\\n");
@@ -177,24 +154,16 @@ function escapeJS(value) {
 
 function createProductId(name) {
 
-    return name
+    const id =
+        String(name || "")
+            .toLowerCase()
+            .replace(/^voltica\s*/i, "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "");
 
-        .toLowerCase()
-
-        .replace(
-            /^voltica\s*/i,
-            ""
-        )
-
-        .replace(
-            /[^a-z0-9]+/g,
-            "-"
-        )
-
-        .replace(
-            /^-+|-+$/g,
-            ""
-        );
+    return id || "product";
 
 }
 
@@ -205,70 +174,51 @@ function createProductId(name) {
 
 function parseFeatures(text) {
 
-    if (!text.trim()) {
-
+    if (!String(text || "").trim()) {
         return [];
-
     }
 
-
     return text
-
         .split(/\r?\n/)
-
-        .map(
-            line =>
-                line.trim()
-        )
-
+        .map(line => line.trim())
         .filter(Boolean)
+        .map(function (line, index) {
 
-        .map(
-            function (line, index) {
+            const parts =
+                line
+                    .split("—")
+                    .map(part => part.trim());
 
-                const parts =
-                    line
-                        .split("—")
-                        .map(
-                            part =>
-                                part.trim()
-                        );
-
-
-                if (
-                    parts.length >= 3
-                ) {
-
-                    return [
-
-                        parts[0],
-
-                        parts[1],
-
-                        parts
-                            .slice(2)
-                            .join(" — ")
-
-                    ];
-
-                }
-
+            if (parts.length >= 3) {
 
                 return [
 
-                    String(index + 1)
-                        .padStart(2, "0"),
+                    parts[0],
 
-                    parts[0] || "",
+                    parts[1],
 
                     parts
-                        .slice(1)
+                        .slice(2)
                         .join(" — ")
 
                 ];
 
             }
-        );
+
+            return [
+
+                String(index + 1)
+                    .padStart(2, "0"),
+
+                parts[0] || "",
+
+                parts
+                    .slice(1)
+                    .join(" — ")
+
+            ];
+
+        });
 
 }
 
@@ -279,65 +229,46 @@ function parseFeatures(text) {
 
 function parseSpecifications(text) {
 
-    if (!text.trim()) {
-
+    if (!String(text || "").trim()) {
         return [];
-
     }
 
-
     return text
-
         .split(/\r?\n/)
-
-        .map(
-            line =>
-                line.trim()
-        )
-
+        .map(line => line.trim())
         .filter(Boolean)
+        .map(function (line) {
 
-        .map(
-            function (line) {
+            const separator =
+                line.indexOf(":");
 
-                const separator =
-                    line.indexOf(":");
-
-
-                if (
-                    separator === -1
-                ) {
-
-                    return [
-
-                        line,
-
-                        ""
-
-                    ];
-
-                }
-
+            if (separator === -1) {
 
                 return [
-
-                    line
-                        .substring(
-                            0,
-                            separator
-                        )
-                        .trim(),
-
-                    line
-                        .substring(
-                            separator + 1
-                        )
-                        .trim()
-
+                    line,
+                    ""
                 ];
 
             }
-        );
+
+            return [
+
+                line
+                    .substring(
+                        0,
+                        separator
+                    )
+                    .trim(),
+
+                line
+                    .substring(
+                        separator + 1
+                    )
+                    .trim()
+
+            ];
+
+        });
 
 }
 
@@ -352,18 +283,11 @@ function getImagePaths() {
         !imageInput ||
         !imageInput.files.length
     ) {
-
         return [];
-
     }
 
-
     return Array
-
-        .from(
-            imageInput.files
-        )
-
+        .from(imageInput.files)
         .map(
             file =>
                 "assets/images/" +
@@ -385,13 +309,11 @@ function generateProduct() {
             .value
             .trim();
 
-
     const category =
         document
             .getElementById("category")
             .value
             .trim();
-
 
     const supplierLink =
         document
@@ -399,13 +321,11 @@ function generateProduct() {
             .value
             .trim();
 
-
-    const cjSku =
+    const sku =
         document
             .getElementById("cjSku")
             .value
             .trim();
-
 
     const cost =
         document
@@ -413,13 +333,17 @@ function generateProduct() {
             .value
             .trim();
 
-
     const price =
         document
             .getElementById("price")
             .value
             .trim();
 
+    const stripe =
+        document
+            .getElementById("stripe")
+            .value
+            .trim();
 
     const description =
         document
@@ -427,12 +351,10 @@ function generateProduct() {
             .value
             .trim();
 
-
     const featuresText =
         document
             .getElementById("features")
             .value;
-
 
     const specificationsText =
         document
@@ -477,7 +399,7 @@ function generateProduct() {
     }
 
 
-    if (!cjSku) {
+    if (!sku) {
 
         alert(
             "Please enter the Supplier SKU."
@@ -499,41 +421,46 @@ function generateProduct() {
     }
 
 
-    /* =================================================
-       PRODUCT DATA
-       ================================================= */
+    if (
+        !imageInput ||
+        !imageInput.files.length
+    ) {
+
+        alert(
+            "Please select at least one product image."
+        );
+
+        return null;
+
+    }
+
 
     const productId =
         createProductId(name);
 
-
     const images =
         getImagePaths();
 
-
     const features =
-        parseFeatures(
-            featuresText
-        );
-
+        parseFeatures(featuresText);
 
     const specifications =
-        parseSpecifications(
-            specificationsText
-        );
+        parseSpecifications(specificationsText);
 
 
     /* =================================================
        PRODUCT BLOCK
-       ================================================= */
+    ================================================= */
 
     return `
 // =================================================
-// PRODUCT XX — ${name.toUpperCase()}
+// PRODUCT AUTO — ${name.toUpperCase()}
 // =================================================
 
 {
     id: "${escapeJS(productId)}",
+
+    sku: "${escapeJS(sku)}",
 
     name: "${escapeJS(name)}",
 
@@ -543,9 +470,6 @@ function generateProduct() {
 
     supplierLink:
         "${escapeJS(supplierLink)}",
-
-    cjSku:
-        "${escapeJS(cjSku)}",
 
     cost:
         "${escapeJS(cost)}",
@@ -567,15 +491,6 @@ ${images
     description:
         "${escapeJS(description)}",
 
-    features: [
-${features
-    .map(
-        feature =>
-            `        ["${escapeJS(feature[0])}", "${escapeJS(feature[1])}", "${escapeJS(feature[2])}"]`
-    )
-    .join(",\n")}
-    ],
-
     specifications: [
 ${specifications
     .map(
@@ -583,7 +498,19 @@ ${specifications
             `        ["${escapeJS(spec[0])}", "${escapeJS(spec[1])}"]`
     )
     .join(",\n")}
-    ]
+    ],
+
+    features: [
+${features
+    .map(
+        feature =>
+            `        ["${escapeJS(feature[0])}", "${escapeJS(feature[1])}", "${escapeJS(feature[2])}"]`
+    )
+    .join(",\n")}
+    ]${stripe ? `,
+
+    stripe:
+        "${escapeJS(stripe)}"` : ""}
 },`;
 
 }
@@ -601,30 +528,16 @@ async function publishProduct(
     const formData =
         new FormData();
 
-
-    /* =================================================
-       PASSWORD
-       ================================================= */
-
     formData.append(
         "password",
         password
     );
-
-
-    /* =================================================
-       PRODUCT
-       ================================================= */
 
     formData.append(
         "product",
         product
     );
 
-
-    /* =================================================
-       IMAGES
-       ================================================= */
 
     if (
         imageInput &&
@@ -647,10 +560,6 @@ async function publishProduct(
 
     }
 
-
-    /* =================================================
-       SEND API REQUEST
-       ================================================= */
 
     try {
 
@@ -703,14 +612,10 @@ async function publishProduct(
 
             "✓ products.js updated\n" +
 
-            "✓ Images uploaded"
+            "✓ Images uploaded\n" +
 
-        );
+            "✓ Product ID verified"
 
-
-        console.log(
-            "Uploaded images:",
-            result.uploaded_images
         );
 
 
@@ -734,7 +639,6 @@ async function publishProduct(
 
         );
 
-
         return false;
 
     }
@@ -753,7 +657,6 @@ async function authenticateAPI() {
             "VOLTICA STORE\n\nADMIN PASSWORD"
         );
 
-
     if (!password) {
 
         alert(
@@ -763,7 +666,6 @@ async function authenticateAPI() {
         return null;
 
     }
-
 
     return password;
 
@@ -780,39 +682,21 @@ if (addProductButton) {
         "click",
         async function () {
 
-            /* -----------------------------------------
-               GENERATE PRODUCT
-               ----------------------------------------- */
-
             const product =
                 generateProduct();
 
-
             if (!product) {
-
                 return;
-
             }
 
-
-            /* -----------------------------------------
-               PASSWORD
-               ----------------------------------------- */
 
             const password =
                 await authenticateAPI();
 
-
             if (!password) {
-
                 return;
-
             }
 
-
-            /* -----------------------------------------
-               BUTTON STATE
-               ----------------------------------------- */
 
             this.disabled = true;
 
@@ -820,20 +704,12 @@ if (addProductButton) {
                 "PUBLISHING...";
 
 
-            /* -----------------------------------------
-               PUBLISH
-               ----------------------------------------- */
-
             const published =
                 await publishProduct(
                     password,
                     product
                 );
 
-
-            /* -----------------------------------------
-               SUCCESS
-               ----------------------------------------- */
 
             if (published) {
 
@@ -843,10 +719,6 @@ if (addProductButton) {
 
             }
 
-
-            /* -----------------------------------------
-               RESTORE BUTTON
-               ----------------------------------------- */
 
             this.disabled = false;
 
@@ -870,19 +742,13 @@ function showGeneratedProduct(product) {
             "generatedProduct"
         );
 
-
     if (modal) {
-
         modal.remove();
-
     }
 
 
     modal =
-        document.createElement(
-            "div"
-        );
-
+        document.createElement("div");
 
     modal.id =
         "generatedProduct";
@@ -891,9 +757,7 @@ function showGeneratedProduct(product) {
     modal.style.cssText = `
 
         position: fixed;
-
         inset: 0;
-
         z-index: 99999;
 
         background:
@@ -903,7 +767,6 @@ function showGeneratedProduct(product) {
             blur(20px);
 
         padding: 20px;
-
         overflow: auto;
 
     `;
@@ -914,7 +777,6 @@ function showGeneratedProduct(product) {
         <div style="
 
             max-width:900px;
-
             margin:20px auto;
 
             background:#111318;
@@ -939,25 +801,16 @@ function showGeneratedProduct(product) {
             <div style="
 
                 display:flex;
-
-                justify-content:
-                    space-between;
-
+                justify-content:space-between;
                 align-items:center;
-
                 gap:15px;
-
                 margin-bottom:16px;
 
             ">
 
-
                 <strong style="
-
                     font-size:18px;
-
                     letter-spacing:.05em;
-
                 ">
 
                     PRODUCT PUBLISHED
@@ -966,36 +819,24 @@ function showGeneratedProduct(product) {
 
 
                 <button
-
                     type="button"
-
                     id="closeGeneratedProduct"
-
                     style="
-
                         background:
                             rgba(255,255,255,.06);
-
                         border:
                             1px solid
                             rgba(255,255,255,.15);
-
                         color:white;
-
                         border-radius:10px;
-
                         padding:9px 13px;
-
                         cursor:pointer;
-
                     "
-
                 >
 
                     CLOSE
 
                 </button>
-
 
             </div>
 
@@ -1003,7 +844,6 @@ function showGeneratedProduct(product) {
             <div style="
 
                 padding:14px;
-
                 margin-bottom:14px;
 
                 border-radius:12px;
@@ -1016,7 +856,6 @@ function showGeneratedProduct(product) {
                     rgba(0,255,140,.20);
 
                 color:#9fffc8;
-
                 font-weight:600;
 
             ">
@@ -1028,72 +867,41 @@ function showGeneratedProduct(product) {
 
 
             <textarea
-
                 id="generatedProductText"
-
                 readonly
-
                 style="
-
                     width:100%;
-
                     min-height:520px;
-
                     box-sizing:border-box;
-
                     background:#050608;
-
                     color:#f4f4f5;
-
                     border:
                         1px solid
                         rgba(255,255,255,.1);
-
                     border-radius:14px;
-
                     padding:16px;
-
                     font-family:monospace;
-
                     font-size:12px;
-
                     line-height:1.6;
-
                     resize:vertical;
-
                 "
-
             ></textarea>
 
 
             <button
-
                 type="button"
-
                 id="copyGeneratedProduct"
-
                 style="
-
                     width:100%;
-
                     margin-top:14px;
-
                     padding:15px;
-
                     border:0;
-
                     border-radius:12px;
-
                     background:white;
-
                     color:black;
-
                     font-weight:700;
-
                     cursor:pointer;
-
                 "
-
             >
 
                 COPY PRODUCT BLOCK
@@ -1116,12 +924,8 @@ function showGeneratedProduct(product) {
             "generatedProductText"
         );
 
-
     if (textarea) {
-
-        textarea.value =
-            product;
-
+        textarea.value = product;
     }
 
 
@@ -1130,15 +934,12 @@ function showGeneratedProduct(product) {
             "closeGeneratedProduct"
         );
 
-
     if (closeButton) {
 
         closeButton.addEventListener(
             "click",
             function () {
-
                 modal.remove();
-
             }
         );
 
@@ -1149,7 +950,6 @@ function showGeneratedProduct(product) {
         document.getElementById(
             "copyGeneratedProduct"
         );
-
 
     if (copyButton) {
 
@@ -1163,10 +963,8 @@ function showGeneratedProduct(product) {
                         .clipboard
                         .writeText(product);
 
-
                     this.textContent =
                         "✓ COPIED";
-
 
                     setTimeout(
                         function () {

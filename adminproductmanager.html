@@ -19,21 +19,15 @@
 
     <style>
 
-        /* =====================================================
-           RESET
-        ===================================================== */
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
-
 
         body {
 
@@ -63,30 +57,17 @@
 
         }
 
-
-        /* =====================================================
-           CONTAINER
-        ===================================================== */
-
         .admin-container {
 
             width: 100%;
-
             max-width: 950px;
-
             margin: auto;
 
         }
 
-
-        /* =====================================================
-           HEADER
-        ===================================================== */
-
         .admin-header {
 
             margin-bottom: 30px;
-
             padding: 28px;
 
             border:
@@ -102,11 +83,8 @@
                     rgba(255,255,255,.025)
                 );
 
-            backdrop-filter:
-                blur(25px);
-
-            -webkit-backdrop-filter:
-                blur(25px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
 
             box-shadow:
                 0 25px 80px
@@ -114,11 +92,9 @@
 
         }
 
-
         .admin-label {
 
             font-size: 10px;
-
             letter-spacing: .35em;
 
             color:
@@ -128,20 +104,16 @@
 
         }
 
-
         .admin-header h1 {
 
             font-size:
                 clamp(28px,5vw,48px);
 
             font-weight: 300;
-
             letter-spacing: -.03em;
-
             margin-bottom: 10px;
 
         }
-
 
         .admin-header p {
 
@@ -149,15 +121,9 @@
                 rgba(255,255,255,.48);
 
             font-size: 14px;
-
             line-height: 1.6;
 
         }
-
-
-        /* =====================================================
-           FORM CARD
-        ===================================================== */
 
         .product-form {
 
@@ -172,11 +138,8 @@
             background:
                 rgba(255,255,255,.035);
 
-            backdrop-filter:
-                blur(25px);
-
-            -webkit-backdrop-filter:
-                blur(25px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
 
             box-shadow:
                 0 30px 90px
@@ -184,35 +147,23 @@
 
         }
 
-
-        /* =====================================================
-           FIELD GROUP
-        ===================================================== */
-
         .field {
-
             margin-bottom: 22px;
-
         }
-
 
         .field label {
 
             display: block;
-
             margin-bottom: 9px;
 
             font-size: 10px;
-
             letter-spacing: .22em;
-
             text-transform: uppercase;
 
             color:
                 rgba(255,255,255,.48);
 
         }
-
 
         input,
         select,
@@ -249,7 +200,6 @@
 
         }
 
-
         input:focus,
         select:focus,
         textarea:focus {
@@ -266,21 +216,13 @@
 
         }
 
-
         textarea {
 
             min-height: 130px;
-
             resize: vertical;
-
             line-height: 1.6;
 
         }
-
-
-        /* =====================================================
-           TWO COLUMN
-        ===================================================== */
 
         .field-grid {
 
@@ -293,15 +235,9 @@
 
         }
 
-
-        /* =====================================================
-           SUPPLIER LINK
-        ===================================================== */
-
         .supplier-box {
 
             padding: 20px;
-
             margin-bottom: 24px;
 
             border:
@@ -315,13 +251,10 @@
 
         }
 
-
         .supplier-title {
 
             font-size: 12px;
-
             letter-spacing: .16em;
-
             text-transform: uppercase;
 
             margin-bottom: 18px;
@@ -331,10 +264,46 @@
 
         }
 
+        .stripe-box {
 
-        /* =====================================================
-           IMAGE UPLOAD
-        ===================================================== */
+            padding: 20px;
+            margin-bottom: 24px;
+
+            border:
+                1px solid
+                rgba(120,150,255,.18);
+
+            border-radius: 18px;
+
+            background:
+                rgba(80,100,255,.035);
+
+        }
+
+        .stripe-title {
+
+            font-size: 12px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+
+            color:
+                rgba(255,255,255,.75);
+
+        }
+
+        .stripe-help {
+
+            margin-bottom: 16px;
+
+            color:
+                rgba(255,255,255,.40);
+
+            font-size: 12px;
+            line-height: 1.5;
+
+        }
 
         .upload-zone {
 
@@ -357,7 +326,6 @@
 
         }
 
-
         .upload-zone:hover {
 
             border-color:
@@ -368,26 +336,20 @@
 
         }
 
-
         .upload-zone input {
 
             border: 0;
-
             padding: 10px;
-
             background: transparent;
 
         }
 
-
         .upload-title {
 
             font-size: 15px;
-
             margin-bottom: 7px;
 
         }
-
 
         .upload-description {
 
@@ -395,15 +357,9 @@
                 rgba(255,255,255,.42);
 
             font-size: 12px;
-
             margin-bottom: 12px;
 
         }
-
-
-        /* =====================================================
-           IMAGE PREVIEW
-        ===================================================== */
 
         #imagePreview {
 
@@ -416,11 +372,9 @@
                 );
 
             gap: 14px;
-
             margin-top: 20px;
 
         }
-
 
         .image-preview-count {
 
@@ -430,11 +384,9 @@
                 rgba(255,255,255,.55);
 
             font-size: 12px;
-
             letter-spacing: .08em;
 
         }
-
 
         .image-preview-item {
 
@@ -450,19 +402,16 @@
 
         }
 
-
         .image-preview-item img {
 
             display: block;
 
             width: 100%;
-
             height: 120px;
 
             object-fit: cover;
 
         }
-
 
         .image-preview-name {
 
@@ -474,17 +423,10 @@
                 rgba(255,255,255,.48);
 
             overflow: hidden;
-
             white-space: nowrap;
-
             text-overflow: ellipsis;
 
         }
-
-
-        /* =====================================================
-           BUTTONS
-        ===================================================== */
 
         .button-row {
 
@@ -499,7 +441,6 @@
 
         }
 
-
         button {
 
             min-height: 56px;
@@ -513,26 +454,28 @@
             cursor: pointer;
 
             font-size: 11px;
-
             font-weight: 700;
-
             letter-spacing: .16em;
 
             transition:
                 transform .25s ease,
                 background .25s ease,
-                box-shadow .25s ease;
+                box-shadow .25s ease,
+                opacity .25s ease;
 
         }
-
 
         button:hover {
-
-            transform:
-                translateY(-2px);
-
+            transform: translateY(-2px);
         }
 
+        button:disabled {
+
+            cursor: wait;
+            opacity: .55;
+            transform: none;
+
+        }
 
         .button-primary {
 
@@ -551,7 +494,6 @@
 
         }
 
-
         .button-primary:hover {
 
             box-shadow:
@@ -559,7 +501,6 @@
                 rgba(255,255,255,.20);
 
         }
-
 
         .button-secondary {
 
@@ -570,7 +511,6 @@
 
         }
 
-
         .button-secondary:hover {
 
             background:
@@ -578,50 +518,31 @@
 
         }
 
-
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
-
         @media (max-width: 650px) {
 
             body {
-
-                padding:
-                    15px 10px 50px;
-
+                padding: 15px 10px 50px;
             }
-
 
             .admin-header,
             .product-form {
 
                 padding: 20px;
-
                 border-radius: 20px;
 
             }
 
-
             .field-grid {
-
                 grid-template-columns: 1fr;
-
             }
-
 
             .button-row {
-
                 grid-template-columns: 1fr;
-
             }
 
-
             #imagePreview {
-
                 grid-template-columns:
                     repeat(2, minmax(0,1fr));
-
             }
 
         }
@@ -636,10 +557,6 @@
 
 <div class="admin-container">
 
-
-    <!-- =====================================================
-         HEADER
-         ===================================================== -->
 
     <header class="admin-header">
 
@@ -659,17 +576,8 @@
     </header>
 
 
-
-    <!-- =====================================================
-         PRODUCT FORM
-         ===================================================== -->
-
     <main class="product-form">
 
-
-        <!-- =================================================
-             BASIC PRODUCT INFORMATION
-             ================================================= -->
 
         <div class="field">
 
@@ -687,9 +595,7 @@
         </div>
 
 
-
         <div class="field-grid">
-
 
             <div class="field">
 
@@ -703,34 +609,57 @@
                         Select Category
                     </option>
 
-                    <option value="earbuds">
-                        Earbuds
+                    <option value="SPORT AUDIO">
+                        Sport Audio
                     </option>
 
-                    <option value="gaming">
+                    <option value="WIRELESS AUDIO">
+                        Wireless Audio
+                    </option>
+
+                    <option value="OPEN-EAR AUDIO">
+                        Open-Ear Audio
+                    </option>
+
+                    <option value="GAMING GEAR">
                         Gaming Gear
                     </option>
 
-                    <option value="creator">
+                    <option value="CREATOR GEAR">
                         Creator Gear
                     </option>
 
-                    <option value="headphones">
+                    <option value="TECH / LAPTOP ACCESSORIES">
+                        Tech / Laptop Accessories
+                    </option>
+
+                    <option value="LIFESTYLE / AUTOMOTIVE">
+                        Lifestyle / Automotive
+                    </option>
+
+                    <option value="LIFESTYLE / SMART LIGHTING">
+                        Lifestyle / Smart Lighting
+                    </option>
+
+                    <option value="LIFESTYLE / AMBIENT AUDIO">
+                        Lifestyle / Ambient Audio
+                    </option>
+
+                    <option value="HEADPHONES">
                         Headphones
                     </option>
 
-                    <option value="tech">
+                    <option value="TECH">
                         Tech
                     </option>
 
-                    <option value="lifestyle">
+                    <option value="LIFESTYLE">
                         Lifestyle
                     </option>
 
                 </select>
 
             </div>
-
 
 
             <div class="field">
@@ -749,21 +678,14 @@
 
             </div>
 
-
         </div>
 
-
-
-        <!-- =================================================
-             SUPPLIER INFORMATION
-             ================================================= -->
 
         <div class="supplier-box">
 
             <div class="supplier-title">
                 Supplier Information
             </div>
-
 
             <div class="field">
 
@@ -782,7 +704,6 @@
 
 
             <div class="field-grid">
-
 
                 <div class="field">
 
@@ -816,16 +737,39 @@
 
                 </div>
 
-
             </div>
 
         </div>
 
 
+        <div class="stripe-box">
 
-        <!-- =================================================
-             DESCRIPTION
-             ================================================= -->
+            <div class="stripe-title">
+                Stripe Payment
+            </div>
+
+            <div class="stripe-help">
+                Paste the Stripe Payment Link for this product.
+                Leave empty if payment will be configured later.
+            </div>
+
+            <div class="field">
+
+                <label for="stripe">
+                    Stripe Payment Link
+                </label>
+
+                <input
+                    type="url"
+                    id="stripe"
+                    placeholder="https://buy.stripe.com/..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
+
 
         <div class="field">
 
@@ -841,11 +785,6 @@
         </div>
 
 
-
-        <!-- =================================================
-             FEATURES
-             ================================================= -->
-
         <div class="field">
 
             <label for="features">
@@ -859,11 +798,6 @@
 
         </div>
 
-
-
-        <!-- =================================================
-             SPECIFICATIONS
-             ================================================= -->
 
         <div class="field">
 
@@ -879,17 +813,11 @@
         </div>
 
 
-
-        <!-- =================================================
-             PRODUCT IMAGES
-             ================================================= -->
-
         <div class="field">
 
             <label>
                 Product Images
             </label>
-
 
             <div class="upload-zone">
 
@@ -901,7 +829,6 @@
                     Select all product images at once.
                 </div>
 
-
                 <input
                     type="file"
                     id="productImages"
@@ -911,16 +838,10 @@
 
             </div>
 
-
             <div id="imagePreview"></div>
 
         </div>
 
-
-
-        <!-- =================================================
-             ACTIONS
-             ================================================= -->
 
         <div class="button-row">
 
@@ -936,8 +857,7 @@
 
             <button
                 type="button"
-                id="add product"
-                
+                id="addProduct"
                 class="button-primary">
 
                 ADD PRODUCT
@@ -949,14 +869,8 @@
 
     </main>
 
-
 </div>
 
-
-
-<!-- =========================================================
-     ADMIN JAVASCRIPT
-     ========================================================= -->
 
 <script src="admin.js"></script>
 

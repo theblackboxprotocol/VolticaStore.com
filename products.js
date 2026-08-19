@@ -835,4 +835,62 @@ const volticaProducts = [
     specifications:
         ["Reste"]
 },
+
+// =================================================
+// PRODUCT XX — VOLTICA 3D HOLOGRAM FAN
+// =================================================
+
+{
+    id: "3d-hologram-fan",
+
+    name: "Voltica 3D Hologram Fan",
+
+    category: "lifestyle",
+
+    badge: "NEW",
+
+    supplierLink:
+        "https://www.cjdropshipping.com/product/-p-2086387249086910465.html",
+
+    cjSku:
+        "CJTY304719901AZ",
+
+    cost:
+        "41.75",
+
+    price:
+        "59.99",
+
+    currency: "USD",
+
+    images: [
+        "assets/images/1000049879.jpg",
+        "assets/images/1000049881.jpg",
+        "assets/images/1000049883.jpg",
+        "assets/images/1000049885.jpg",
+        "assets/images/1000049887.jpg",
+        "assets/images/1000049889.jpg",
+        "assets/images/1000049891.jpg",
+        "assets/images/1000049893.jpg"
+    ],
+
+    description:
+        "Transform your space into a futuristic hub with the Smart 3D Hologram LED Fan. This cutting-edge, 3-in-1 device bridges the gap between art and technology, projecting stunning, high-definition \"naked-eye\" 3D visuals that appear to float in mid-air.\n​Designed for creators, tech enthusiasts, and those looking to elevate their interior aesthetic, this compact holographic display is more than just a decoration—it’s an immersive experience. With built-in Bluetooth audio synchronization, your visuals dance to the rhythm of your music, while the dedicated smartphone app allows you to upload and manage your displays with a single tap.\n​Whether you’re setting up a high-tech home office, a striking gaming room, or a unique conversation piece for your living room, the adjustable-height stand ensures it fits perfectly in any space. Discover the next generation of visual displays with Voltica Store.",
+
+    features: [
+        ["01", "01-Immersive Naked-Eye 3D: Projects vivid, high-clarity holograms without the need for 3D glasses.", ""],
+        ["02", "02-Smart 3-in-1 Functionality: Combines a holographic projector, Bluetooth audio synchronization, and easy App control.", ""],
+        ["03", "03-App-Managed Displays: Upload custom content or exclusive themes directly from your smartphone for endless customization.", ""],
+        ["04", "04-Sleek, Adjustable Design: Features a modern, compact footprint with a height-adjustable stand to fit any desktop or shelf.", ""],
+        ["05", "05-Audio-Visual Sync: Seamlessly connects to your speakers to create a dynamic, synchronized audio-visual show.", ""]
+    ],
+
+    specifications: [
+        ["3D Holographic LED Fan (Projector)", ""],
+        ["Bluetooth Audio Sync, Wi-Fi (for App)", ""],
+        ["Naked-Eye 3D Holographic Projection", ""],
+        ["iOS & Android (via App)", ""],
+        ["1x Smart 3D Hologram Fan, 1x Adjustable Stand, Power Adapter, User Manual", ""]
+    ]
+},
 ];

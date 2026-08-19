@@ -806,4 +806,33 @@ const volticaProducts = [
     specifications:
         ["Des"]
 },
+
+// =================================================
+// PRODUCT XX — ROLEX DUHMGAY
+// =================================================
+
+{
+    id: "rolex-duhmgay",
+    sku: "Vf",
+    cjSku: "Cj",
+    name: "Rolex duhmgay",
+    category: "lifestyle",
+    badge: "NEW",
+
+    price: "800",
+    currency: "USD",
+
+    images: [
+        "assets/images/1000048576.png"
+    ],
+
+    description:
+        "Flip the coin !",
+
+    features:
+        ["01-meduasa 02-surlewis"],
+
+    specifications:
+        ["Reste"]
+},
 ];

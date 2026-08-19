@@ -1,8 +1,3 @@
-/* =====================================================
-   VOLTICA STORE
-   DYNAMIC PRODUCT RENDERER
-   ===================================================== */
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const grid =
@@ -16,22 +11,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =================================================
-       CLEAR STATIC PRODUCTS
-       ================================================= */
+    /* =====================================================
+       STORE PRODUCT RENDERER
+       ===================================================== */
 
     grid.innerHTML = "";
 
 
-    /* =================================================
-       RENDER PRODUCTS
-       ================================================= */
-
     volticaProducts.forEach(function (product) {
 
         const images =
-            product.images ||
-            [product.image];
+            Array.isArray(product.images) &&
+            product.images.length
+                ? product.images
+                : [product.image];
 
 
         const article =
@@ -42,33 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =================================================
-           SHORT DESCRIPTION
-        ================================================= */
-
-        let shortDescription =
-            product.description || "";
-
-
-        /*
-         * Keep the store card clean.
-         * Full description remains available
-         * on product-view.html.
-         */
-
-        if (shortDescription.length > 115) {
-
-            shortDescription =
-                shortDescription.substring(
-                    0,
-                    115
-                ).trim() + "…";
-
-        }
-
-
-        /* =================================================
-           PRODUCT HTML
-        ================================================= */
+           PRODUCT CARD
+           ================================================= */
 
         article.innerHTML = `
 
@@ -84,7 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <img
                         src="${images[0]}"
                         alt="${product.name}"
-                        class="main-product-img">
+                        class="main-product-img"
+                        loading="lazy">
 
                     <div class="image-scan"></div>
 
@@ -105,20 +74,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                         : ""
                                 }"
                                 data-image="${image}"
-                                aria-label="View image ${
-                                    index + 1
-                                }">
+                                aria-label="View image ${index + 1}">
 
                                 <img
                                     src="${image}"
-                                    alt="${product.name} view ${
-                                        index + 1
-                                    }">
+                                    alt="${product.name} view ${index + 1}"
+                                    loading="lazy">
 
                                 <span>
-                                    ${String(
-                                        index + 1
-                                    ).padStart(2, "0")}
+                                    ${String(index + 1).padStart(2, "0")}
                                 </span>
 
                             </button>
@@ -135,17 +99,17 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="product-info">
 
                 <div class="product-category">
-                    ${product.category || ""}
+                    ${product.category || "VOLTICA"}
                 </div>
 
 
-                <h3>
+                <h3 class="store-product-title">
                     ${product.name}
                 </h3>
 
 
-                <p>
-                    ${shortDescription}
+                <p class="store-product-description">
+                    ${product.description || ""}
                 </p>
 
 
@@ -168,9 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         VIEW
 
-                        <span>
-                            →
-                        </span>
+                        <span>→</span>
 
                     </a>
 
@@ -185,8 +147,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =================================================
+           PRODUCT TITLE LIMIT
+           ================================================= */
+
+        const title =
+            article.querySelector(
+                ".store-product-title"
+            );
+
+
+        if (title) {
+
+            title.style.display =
+                "-webkit-box";
+
+            title.style.webkitLineClamp =
+                "2";
+
+            title.style.webkitBoxOrient =
+                "vertical";
+
+            title.style.overflow =
+                "hidden";
+
+        }
+
+
+        /* =================================================
+           DESCRIPTION LIMIT
+           ================================================= */
+
+        const description =
+            article.querySelector(
+                ".store-product-description"
+            );
+
+
+        if (description) {
+
+            description.style.display =
+                "-webkit-box";
+
+            description.style.webkitLineClamp =
+                "2";
+
+            description.style.webkitBoxOrient =
+                "vertical";
+
+            description.style.overflow =
+                "hidden";
+
+        }
+
+
+        /* =================================================
            PRODUCT GALLERY
-        ================================================= */
+           ================================================= */
 
         const mainImage =
             article.querySelector(
@@ -200,63 +216,63 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-        thumbnails.forEach(function (thumbnail) {
+        thumbnails.forEach(
+            function (thumbnail) {
 
-            thumbnail.addEventListener(
-                "click",
-                function () {
+                thumbnail.addEventListener(
+                    "click",
+                    function () {
 
-                    const newImage =
-                        thumbnail.dataset.image;
-
-
-                    if (
-                        mainImage.src.endsWith(
-                            newImage
-                        )
-                    ) {
-                        return;
-                    }
+                        const newImage =
+                            thumbnail.dataset.image;
 
 
-                    /* Fade out */
+                        if (
+                            !newImage ||
+                            !mainImage
+                        ) {
+                            return;
+                        }
 
-                    mainImage.style.opacity =
-                        "0";
-
-
-                    setTimeout(function () {
-
-                        mainImage.src =
-                            newImage;
 
                         mainImage.style.opacity =
-                            "1";
-
-                    }, 160);
+                            "0";
 
 
-                    /* Active thumbnail */
+                        setTimeout(
+                            function () {
 
-                    thumbnails.forEach(
-                        function (item) {
+                                mainImage.src =
+                                    newImage;
 
-                            item.classList.remove(
-                                "active"
-                            );
+                                mainImage.style.opacity =
+                                    "1";
 
-                        }
-                    );
+                            },
+                            150
+                        );
 
 
-                    thumbnail.classList.add(
-                        "active"
-                    );
+                        thumbnails.forEach(
+                            function (item) {
 
-                }
-            );
+                                item.classList.remove(
+                                    "active"
+                                );
 
-        });
+                            }
+                        );
+
+
+                        thumbnail.classList.add(
+                            "active"
+                        );
+
+                    }
+                );
+
+            }
+        );
 
     });
 

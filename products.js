@@ -28,7 +28,7 @@ const volticaProducts = [
         ],
 
         description:
-            "Sport-ready wireless neckband earbuds with an ear-hook fit, digital display and 8+ hours of battery life.",
+            "Wireless neckband earbuds with an ear-hook fit, digital display, 8+ hours of battery life and up to 10 meters of Bluetooth range.",
 
         specifications: [
             ["MODEL", "YYK-Q17"],
@@ -43,12 +43,12 @@ const volticaProducts = [
         ],
 
         features: [
-            ["01", "8+ HOURS", "Extended battery life for workouts, commuting and everyday listening."],
+            ["01", "8+ HOURS", "Extended battery life for everyday listening and workouts."],
             ["02", "10 METERS", "Wireless transmission distance of up to 10 meters."],
-            ["03", "DIGITAL DISPLAY", "Integrated digital display for essential information."],
-            ["04", "EAR-HOOK FIT", "Secure wearing style designed for active movement."],
+            ["03", "DIGITAL DISPLAY", "Integrated display for essential battery information."],
+            ["04", "EAR-HOOK FIT", "Secure fit designed for active movement."],
             ["05", "VOICE CONTROL", "Convenient voice-control functionality."],
-            ["06", "MUSIC + CALLS", "Designed for music playback and hands-free calling."]
+            ["06", "MUSIC + CALLS", "Designed for music playback and hands-free calls."]
         ],
 
         stripe:
@@ -83,7 +83,7 @@ const volticaProducts = [
         ],
 
         description:
-            "True wireless earbuds with touch controls, CVC noise cancellation, IPX4 protection and a portable charging case.",
+            "True wireless earbuds with touch controls, CVC noise cancellation, IPX4 protection and a magnetic charging case.",
 
         specifications: [
             ["PRODUCT TYPE", "Wireless 5.0 Earbuds"],
@@ -103,12 +103,12 @@ const volticaProducts = [
         ],
 
         features: [
-            ["01", "TRUE WIRELESS", "Left and right earbuds can be used independently or together in stereo mode."],
-            ["02", "TOUCH CONTROL", "Control calls, music, pairing and voice assistance with simple touch controls."],
-            ["03", "CVC NOISE CANCELLATION", "High-sensitivity microphone with CVC technology for clearer calls."],
-            ["04", "MAGNETIC CHARGING", "Magnetic charging dock keeps the earbuds securely positioned while charging."],
-            ["05", "500mAh DOCK", "Portable charging case provides multiple additional charges."],
-            ["06", "IPX4", "Water-resistant design for everyday outdoor and active use."]
+            ["01", "TRUE WIRELESS", "Use both earbuds together or independently."],
+            ["02", "TOUCH CONTROL", "Control calls, music and voice assistance by touch."],
+            ["03", "CVC NOISE CANCELLATION", "Technology designed for clearer calls."],
+            ["04", "MAGNETIC CHARGING", "Magnetic charging dock securely holds the earbuds."],
+            ["05", "500mAh DOCK", "Portable charging case provides additional charges."],
+            ["06", "IPX4", "Water-resistant design for everyday active use."]
         ],
 
         stripe:
@@ -141,7 +141,7 @@ const volticaProducts = [
         ],
 
         description:
-            "Wireless Bluetooth 5.0 earbuds with 15m range, stereo audio, voice control and multi-point connectivity.",
+            "Bluetooth 5.0 stereo earbuds with a 15-meter transmission range, battery display, voice control and multi-point connectivity.",
 
         specifications: [
             ["TRANSMISSION RANGE", "15 meters"],
@@ -153,12 +153,12 @@ const volticaProducts = [
         ],
 
         features: [
-            ["01", "15 METERS", "Extended wireless transmission range for everyday freedom of movement."],
-            ["02", "BLUETOOTH 5.0", "Reliable wireless connectivity for compatible mobile devices."],
-            ["03", "STEREO AUDIO", "Bilateral stereo configuration for an immersive listening experience."],
-            ["04", "MULTI-POINT", "Supports multi-point connection for greater everyday flexibility."],
-            ["05", "VOICE CONTROL", "Voice-control functionality available directly through the earbuds."],
-            ["06", "CALLS + MUSIC", "Designed for both hands-free calls and everyday music playback."]
+            ["01", "15 METERS", "Extended wireless transmission range."],
+            ["02", "BLUETOOTH 5.0", "Reliable wireless connectivity."],
+            ["03", "STEREO AUDIO", "Bilateral stereo configuration."],
+            ["04", "MULTI-POINT", "Supports multi-point connection."],
+            ["05", "VOICE CONTROL", "Voice-control functionality."],
+            ["06", "CALLS + MUSIC", "Designed for calls and everyday music."]
         ],
 
         stripe:
@@ -192,7 +192,7 @@ const volticaProducts = [
         ],
 
         description:
-            "Open-ear wireless earbuds with a comfortable ear-clip design, low-latency mode, touch controls and IPX5 protection.",
+            "Open-ear wireless earbuds with an ergonomic ear-clip design, low-latency Bluetooth, touch controls and IPX5 water resistance.",
 
         specifications: [
             ["MODEL", "T75"],
@@ -208,12 +208,12 @@ const volticaProducts = [
         ],
 
         features: [
-            ["01", "OPEN-EAR DESIGN", "Ear-clip construction sits outside the ear canal while keeping you aware of your surroundings."],
-            ["02", "LOW LATENCY", "Low-latency wireless mode designed for improved audio and visual synchronization."],
-            ["03", "IPX5", "Water and sweat-resistant construction designed for active everyday use."],
-            ["04", "TOUCH CONTROL", "Convenient touch controls provide easy access to everyday functions."],
-            ["05", "ERGONOMIC FIT", "Flexible ear-clip design engineered for comfortable extended wear and compatibility with glasses."],
-            ["06", "HI-FI AUDIO", "High-sensitivity moving-ring speaker design delivers detailed wireless audio."]
+            ["01", "OPEN-EAR DESIGN", "Sits outside the ear canal while keeping you aware of your surroundings."],
+            ["02", "LOW LATENCY", "Designed for improved audio and visual synchronization."],
+            ["03", "IPX5", "Water and sweat-resistant construction."],
+            ["04", "TOUCH CONTROL", "Convenient touch controls for everyday functions."],
+            ["05", "ERGONOMIC FIT", "Flexible ear-clip design compatible with glasses."],
+            ["06", "HI-FI AUDIO", "High-sensitivity speaker design for detailed wireless audio."]
         ],
 
         stripe:
@@ -222,7 +222,7 @@ const volticaProducts = [
 
 
     /* =====================================================
-       PRODUCT 05 — VOLTICA J10
+       PRODUCT 05 — VOLTICA J10 GAMING KEYBOARD SET
        ===================================================== */
 
     {
@@ -262,12 +262,12 @@ const volticaProducts = [
         ],
 
         features: [
-            ["01", "108-KEY LAYOUT", "Full-size keyboard layout designed for gaming, productivity and everyday desktop use."],
-            ["02", "TRI-COLOR BACKLIGHT", "Colorful three-color illumination gives your setup a distinctive gaming aesthetic."],
-            ["03", "WIRED CONTROL", "Direct wired USB connection provides a simple and reliable desktop setup."],
-            ["04", "KEYBOARD + MOUSE", "Complete gaming combination with both keyboard and mouse included."],
-            ["05", "USB CONNECTION", "Plug-and-play wired connectivity for compatible computers."],
-            ["06", "GAMING DESIGN", "Designed to bring a bold illuminated look to your gaming station."]
+            ["01", "108-KEY LAYOUT", "Full-size layout for gaming and productivity."],
+            ["02", "TRI-COLOR BACKLIGHT", "Colorful illumination for a distinctive setup."],
+            ["03", "WIRED CONTROL", "Direct USB connection."],
+            ["04", "KEYBOARD + MOUSE", "Complete gaming combination included."],
+            ["05", "USB CONNECTION", "Plug-and-play wired connectivity."],
+            ["06", "GAMING DESIGN", "Bold illuminated gaming aesthetic."]
         ],
 
         stripe:
@@ -306,7 +306,7 @@ const volticaProducts = [
         ],
 
         description:
-            "Smart 360° smartphone gimbal with AI face tracking, gesture control, vertical and horizontal shooting, and up to 8 hours of battery life.",
+            "AI-powered 360° smartphone gimbal with automatic face tracking, gesture control, vertical and horizontal shooting and up to 8 hours of battery life.",
 
         specifications: [
             ["PRODUCT TYPE", "AI 360° Smartphone Gimbal"],
@@ -324,12 +324,12 @@ const volticaProducts = [
         ],
 
         features: [
-            ["01", "360° AI TRACKING", "Intelligent 360-degree rotation automatically follows your movements while recording."],
-            ["02", "SMART FACE TRACKING", "AI-powered subject tracking keeps you centered while filming hands-free."],
-            ["03", "GESTURE CONTROL", "Use simple hand gestures to activate or stop automatic tracking."],
-            ["04", "8-HOUR BATTERY", "Built-in 1200mAh lithium battery provides up to 8 hours of operation."],
-            ["05", "HORIZONTAL + VERTICAL", "Switch between horizontal and vertical shooting for different content formats."],
-            ["06", "NO APP REQUIRED", "Open and use the gimbal without installing a dedicated smartphone application."]
+            ["01", "360° AI TRACKING", "Automatically follows your movements while recording."],
+            ["02", "SMART FACE TRACKING", "Keeps your subject centered while filming hands-free."],
+            ["03", "GESTURE CONTROL", "Activate or stop tracking with simple hand gestures."],
+            ["04", "8-HOUR BATTERY", "1200mAh battery provides up to 8 hours of operation."],
+            ["05", "HORIZONTAL + VERTICAL", "Switch between common content formats."],
+            ["06", "NO APP REQUIRED", "Use the gimbal without a dedicated smartphone app."]
         ],
 
         stripe:
@@ -338,14 +338,14 @@ const volticaProducts = [
 
 
     /* =====================================================
-       PRODUCT 07 — VOLTICA TRI-FOLD KEYBOARD
+       PRODUCT 07 — VOLTICA TRI-FOLD TOUCH KEYBOARD
        ===================================================== */
 
     {
         id: "keyboard2",
         sku: "VLT-CRT-TKB-002",
 
-        name: "Voltica Tri-Fold Keyboard",
+        name: "Voltica Tri-Fold Touch Keyboard",
         category: "CREATOR GEAR",
         badge: "NEW",
 
@@ -361,7 +361,7 @@ const volticaProducts = [
         ],
 
         description:
-            "Ultra-thin foldable Bluetooth keyboard with an integrated touchpad, designed for mobile work, travel and everyday productivity.",
+            "Ultra-thin tri-fold Bluetooth keyboard with an integrated touchpad for portable work, travel and mobile productivity.",
 
         specifications: [
             ["PRODUCT TYPE", "Tri-Fold Bluetooth Touch Keyboard"],
@@ -379,12 +379,12 @@ const volticaProducts = [
         ],
 
         features: [
-            ["01", "TRI-FOLD DESIGN", "Three-fold construction creates a compact keyboard that is easy to carry and store."],
-            ["02", "INTEGRATED TOUCHPAD", "Built-in touchpad provides convenient cursor control without requiring a separate mouse."],
-            ["03", "THREE-SYSTEM", "Designed for compatibility with Apple, Android and Microsoft operating systems."],
-            ["04", "100-HOUR USE", "Rechargeable 140mAh battery provides up to 100 hours of continuous use."],
-            ["05", "ULTRA-THIN", "Slim portable construction designed for mobile productivity and travel."],
-            ["06", "BLUETOOTH 3.0", "Wireless Bluetooth connectivity for convenient cable-free operation."]
+            ["01", "TRI-FOLD DESIGN", "Compact folding construction for easy transport."],
+            ["02", "INTEGRATED TOUCHPAD", "Built-in cursor control without a separate mouse."],
+            ["03", "THREE-SYSTEM", "Compatible with Apple, Android and Microsoft systems."],
+            ["04", "100-HOUR USE", "Rechargeable battery provides up to 100 hours of use."],
+            ["05", "ULTRA-THIN", "Slim construction designed for mobile productivity."],
+            ["06", "BLUETOOTH 3.0", "Wireless Bluetooth connectivity."]
         ],
 
         stripe:
@@ -416,7 +416,7 @@ const volticaProducts = [
         ],
 
         description:
-            "Foldable ergonomic laptop stand with 9 adjustable angles, improved airflow, phone holders and support for laptops up to 17 inches.",
+            "Foldable ergonomic laptop stand with 9 adjustable angles, improved airflow, smartphone holders and support for laptops up to 17 inches.",
 
         specifications: [
             ["PRODUCT TYPE", "Foldable Laptop Stand"],
@@ -432,12 +432,12 @@ const volticaProducts = [
         ],
 
         features: [
-            ["01", "17\" COMPATIBILITY", "Designed to support laptops and notebooks up to 17 inches."],
-            ["02", "20KG SUPPORT", "High load capacity provides stable support for a wide range of laptops."],
-            ["03", "9 ANGLES", "Nine adjustable viewing angles allow you to find a comfortable ergonomic position."],
-            ["04", "FOLDABLE DESIGN", "Folds down easily for convenient storage, transport and everyday use."],
-            ["05", "COOLING AIRFLOW", "Open-panel construction and the integrated cooling knob help improve airflow beneath the laptop."],
-            ["06", "MULTI-FUNCTIONAL", "Built-in smartphone holders and open space underneath provide room for your keyboard and mouse."]
+            ["01", "17\" COMPATIBILITY", "Supports laptops and notebooks up to 17 inches."],
+            ["02", "20KG SUPPORT", "High load capacity for stable laptop support."],
+            ["03", "9 ANGLES", "Nine adjustable viewing angles for ergonomic positioning."],
+            ["04", "FOLDABLE DESIGN", "Easy to store and transport."],
+            ["05", "COOLING AIRFLOW", "Open-panel design helps improve airflow."],
+            ["06", "MULTI-FUNCTIONAL", "Built-in smartphone holders and workspace underneath."]
         ],
 
         stripe:
@@ -446,14 +446,14 @@ const volticaProducts = [
 
 
     /* =====================================================
-       PRODUCT 09 — VOLTICA SMART CUP WARMER
+       PRODUCT 09 — VOLTICA SMART CAR CUP WARMER
        ===================================================== */
 
     {
         id: "lifestyle1",
         sku: "VLT-LIF-CUP-001",
 
-        name: "Voltica Smart Cup Warmer",
+        name: "Voltica Smart Car Cup Warmer",
         category: "LIFESTYLE / AUTOMOTIVE",
         badge: "NEW",
 
@@ -470,15 +470,15 @@ const volticaProducts = [
         ],
 
         description:
-            "Compact 2-in-1 car cup warmer and cooler with a digital display, non-slip base and vehicle power connection.",
+            "Compact 2-in-1 vehicle cup warmer and cooler with digital temperature display and a stable non-slip base.",
 
         features: [
-            ["01", "2-IN-1 TEMPERATURE CONTROL", "Warm or cool beverages directly inside your vehicle."],
-            ["02", "SMART DIGITAL DISPLAY", "Clear digital display for convenient temperature monitoring."],
-            ["03", "STABLE CUP DESIGN", "Non-slip rubber base helps keep the cup securely positioned."],
-            ["04", "VEHICLE POWERED", "Designed for convenient use with vehicle power."],
-            ["05", "COMPACT FORM", "11 × 11 × 18 cm design fits easily into everyday spaces."],
-            ["06", "36W POWER", "Efficient 36W rated power for everyday vehicle use."]
+            ["01", "2-IN-1 TEMPERATURE CONTROL", "Warm or cool beverages inside your vehicle."],
+            ["02", "SMART DIGITAL DISPLAY", "Clear display for temperature monitoring."],
+            ["03", "STABLE CUP DESIGN", "Non-slip base helps keep the cup securely positioned."],
+            ["04", "VEHICLE POWERED", "Designed for convenient vehicle use."],
+            ["05", "COMPACT FORM", "Compact 11 × 11 × 18 cm design."],
+            ["06", "36W POWER", "Efficient 36W rated power."]
         ],
 
         specifications: [
@@ -525,15 +525,15 @@ const volticaProducts = [
         ],
 
         description:
-            "Modular RGB lighting panels with 16 million colors, sound-reactive effects and multiple lighting modes for walls or desktops.",
+            "Modular smart RGB lighting with sound-reactive effects, 16 million colors and customizable hexagonal designs.",
 
         features: [
-            ["01", "12-PIECE MODULAR SYSTEM", "Create custom geometric designs, wall patterns and unique desktop arrangements."],
-            ["02", "SOUND-REACTIVE LIGHTING", "Built-in microphone detects music rhythms and synchronizes the lighting dynamically."],
-            ["03", "16 MILLION RGB COLORS", "Customize your environment with a virtually unlimited range of vibrant RGB colors."],
-            ["04", "MULTIPLE LIGHTING MODES", "Choose from static, gradient, strobe, jump and music rhythm modes."],
-            ["05", "APP + RF CONTROL", "Control your lighting using the mobile app or included 2.4G RF remote."],
-            ["06", "WALL OR DESKTOP", "Flexible installation allows the panels to be mounted on walls or displayed on a desktop."]
+            ["01", "12-PIECE MODULAR SYSTEM", "Create custom geometric wall or desktop designs."],
+            ["02", "SOUND-REACTIVE LIGHTING", "Synchronizes lighting with music rhythms."],
+            ["03", "16 MILLION RGB COLORS", "Customize your environment with vibrant RGB colors."],
+            ["04", "MULTIPLE LIGHTING MODES", "Static, gradient, strobe, jump and music modes."],
+            ["05", "APP + RF CONTROL", "Control lighting through the mobile app or RF remote."],
+            ["06", "WALL OR DESKTOP", "Install panels on walls or display them on a desktop."]
         ],
 
         specifications: [
@@ -556,14 +556,14 @@ const volticaProducts = [
 
 
     /* =====================================================
-       PRODUCT 11 — VOLTICA FLOATING SPEAKER
+       PRODUCT 11 — VOLTICA LEVITATING SPEAKER
        ===================================================== */
 
     {
         id: "lifestyle3",
         sku: "VLT-LIF-SPEAKER-001",
 
-        name: "Voltica Floating Speaker",
+        name: "Voltica Levitating Speaker",
         category: "LIFESTYLE / AMBIENT AUDIO",
         badge: "FEATURED",
 
@@ -579,13 +579,13 @@ const volticaProducts = [
         ],
 
         description:
-            "Futuristic Bluetooth speaker with magnetic levitation, rotating 360° design and immersive wireless sound.",
+            "Futuristic Bluetooth speaker with magnetic levitation, rotating 360° sound and a striking modern design.",
 
         features: [
-            ["01", "ZERO-GRAVITY LEVITATION", "Uses magnetic suspension to float and rotate above its base."],
-            ["02", "360° IMMERSIVE SOUND", "Designed to deliver balanced wireless sound throughout the room."],
+            ["01", "ZERO-GRAVITY LEVITATION", "Magnetic suspension makes the speaker float and rotate above its base."],
+            ["02", "360° IMMERSIVE SOUND", "Designed to project balanced wireless audio across the room."],
             ["03", "WIRELESS PAIRING", "Bluetooth connectivity for smartphones, tablets and laptops."],
-            ["04", "MODERN DECOR", "Futuristic design combines technology with contemporary home decor."]
+            ["04", "MODERN DECOR", "A futuristic speaker that doubles as a high-tech home ornament."]
         ],
 
         specifications: [
@@ -603,84 +603,6 @@ const volticaProducts = [
 
         stripe:
             "https://buy.stripe.com/4gM4gA09F0JNfOE3ui2Ji0d"
-    },
-
-
-    /* =====================================================
-       PRODUCT 12 — VOLTICA 3D HOLOGRAM FAN
-       ===================================================== */
-
-    {
-        id: "salut",
-
-        name: "Voltica 3D Hologram Fan",
-        category: "LIFESTYLE",
-        badge: "NEW",
-
-        supplierLink:
-            "https://www.cjdropshipping.com/product/-p-2086387249086910465.html",
-
-        cjSku:
-            "CJTY304719901AZ",
-
-        cost:
-            "41.75",
-
-        price:
-            "57.99",
-
-        currency:
-            "USD",
-
-        images: [
-            "assets/images/1000049879.jpg",
-            "assets/images/1000049881.jpg",
-            "assets/images/1000049883.jpg",
-            "assets/images/1000049885.jpg",
-            "assets/images/1000049887.jpg",
-            "assets/images/1000049889.jpg",
-            "assets/images/1000049891.jpg",
-            "assets/images/1000049893.jpg"
-        ],
-
-        description:
-            "Smart 3D hologram LED fan with app control, Bluetooth audio synchronization and an adjustable desktop stand.",
-
-        features: [
-            [
-                "01",
-                "IMMERSIVE 3D",
-                "Projects high-clarity 3D visuals without special glasses."
-            ],
-            [
-                "02",
-                "3-IN-1 FUNCTION",
-                "Combines holographic display, Bluetooth synchronization and app control."
-            ],
-            [
-                "03",
-                "APP CONTROL",
-                "Upload and manage custom display content from your smartphone."
-            ],
-            [
-                "04",
-                "ADJUSTABLE DESIGN",
-                "Compact stand design adapts easily to desktops and shelves."
-            ],
-            [
-                "05",
-                "AUDIO SYNC",
-                "Synchronizes visual effects with compatible audio."
-            ]
-        ],
-
-        specifications: [
-            ["Product Type", "3D Holographic LED Fan"],
-            ["Connectivity", "Bluetooth / Wi-Fi"],
-            ["Display", "Naked-Eye 3D Holographic Projection"],
-            ["Compatibility", "iOS / Android"],
-            ["Package", "3D Hologram Fan / Adjustable Stand / Power Adapter / User Manual"]
-        ]
     }
 
 ];

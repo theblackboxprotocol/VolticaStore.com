@@ -897,6 +897,69 @@ const volticaProducts = [
 
     features: [
         ["01", "01-400x900mmx4mm", ""],
-        ["02", "02-world map", 
-  
+        ["02", "02-world map",
+
+// =================================================
+// PRODUCT 17 — SOUNDCORE BY ANKER SPACE Q45 WIRELESS OVER-EAR HEADPHONES
+// =================================================
+
+{
+    id: "soundcore-by-anker-space-q45-wireless-over-ear-headphones",
+
+    sku: "CJYP272510404DW",
+
+    name: "Soundcore by Anker Space Q45 Wireless Over-Ear Headphones",
+
+    category: "HEADPHONES",
+
+    badge: "NEW",
+
+    supplierLink:
+        "https://www.cjdropshipping.com/product/-p-2601110810071616400.html",
+
+    cost:
+        "159.99",
+
+    price:
+        "189.99",
+
+    currency: "USD",
+
+    images: [
+        "assets/images/1000050174.webp",
+        "assets/images/1000050176.webp",
+        "assets/images/1000050175.webp",
+        "assets/images/1000050177.webp",
+        "assets/images/1000050187.jpg",
+        "assets/images/1000050202.webp",
+        "assets/images/1000050203.webp"
+    ],
+
+    description:
+        "Soundcore by Anker Space Q45 Wireless Over-Ear Headphones\n\nImmerse yourself in pristine audio and total peace with the Soundcore by Anker Space Q45 Over-Ear Headphones. Engineered with an upgraded triple dynamic noise filtering system and ultra-wideband noise reduction, these headphones block out up to 98% of ambient noise—from airplane engines to bustling office chatter—so your music takes center stage.\n​Featuring innovative car-grade acoustics and Hi-Res Gold Certification, the Space Q45 delivers deep bass, crisp highs, and exceptional detail whether you're listening wired or wirelessly. Designed for marathon listening sessions, they offer an incredible 65-hour battery life on a single charge and an ultra-comfortable ergonomic fit. Stay connected seamlessly with dual-microphone AI noise reduction for crystal-clear calls and the latest Bluetooth 5.3 technology.",
+
+    specifications: [
+        ["BrandSoundcore by Anker", ""],
+        ["Model Space Q45 Over-ear Headphones", ""],
+        ["Innovative Car-grade Acoustics", ""],
+        ["Audio Certification Hi-Res Gold Certified", ""],
+        ["Noise Cancellation Triple Dynamic Noise Filtering / Ultra-wideband", ""],
+        ["Battery Life Up to 65 Hours", ""],
+        ["Connectivity Bluetooth 5.3", ""],
+        ["Dual Microphone AI Noise Reduction", ""],
+        ["Call Quality", ""],
+        ["Available Colors Crescent White, Black, Deep Blue", ""]
+    ],
+
+    features: [
+        ["01", "01-Triple Dynamic Noise Filtering: Advanced ANC system targets and blocks medium to high-frequency noises effectively.", ""],
+        ["02", "02-Hi-Res Gold Certified Audio: Custom-built diaphragms reproduce high-definition sound with rich fidelity.", ""],
+        ["03", "03-65-Hour Extended Battery Life: Enjoy days of continuous playback without needing to recharge.", ""],
+        ["04", "04-Crystal-Clear AI Calls: Dual microphones paired with an AI algorithm isolate your voice accurately from background disruptions.", ""],
+        ["05", "Latest Bluetooth 5.3: Provides a faster, more stable, and ultra-low-latency wireless connection.", ""]
+    ],
+
+    stripe:
+        "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+},
 ];

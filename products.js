@@ -793,7 +793,6 @@ const volticaProducts = [
     stripe:
         "https://buy.stripe.com/fZu4gAcWr9gjeKA9SG2Ji0g"
 },
-
 // =================================================
 // PRODUCT 15 — MODULAR HEXAGON RHYTHM WALL LIGHTS | SMART RGB
 // =================================================
@@ -829,31 +828,33 @@ const volticaProducts = [
     ],
 
     description:
-        "Elevate your gaming setup, bedroom, or creative studio with the Modular Hexagon Rhythm Wall Lights. These innovative LED panels are more than just wall decor; they are a complete sensory experience. Featuring a flexible modular design, you can assemble the geometric segments to create custom shapes that perfectly match your personal aesthetic.\n​Built for enthusiasts, these smart lights synchronize in real-time with your music, games, or movies thanks to the integrated rhythmic audio-pickup technology. Use the dedicated mobile application or the included remote control to seamlessly switch between thousands of colors, customize dynamic scenes, and set the ultimate mood for any occasion. Modern, minimalist, and CE-certified for safety and peace of mind, these panels are a must-have upgrade for transforming any ordinary room into a high-tech sanctuary.",
+        "Elevate your gaming setup, bedroom, or creative studio with the Modular Hexagon Rhythm Wall Lights. These innovative LED panels are more than just wall decor; they are a complete sensory experience. Featuring a flexible modular design, you can assemble the geometric segments to create custom shapes that perfectly match your personal aesthetic.\nBuilt for enthusiasts, these smart lights synchronize in real-time with your music, games, or movies thanks to the integrated rhythmic audio-pickup technology. Use the dedicated mobile application or the included remote control to seamlessly switch between thousands of colors, customize dynamic scenes, and set the ultimate mood for any occasion. Modern, minimalist, and CE-certified for safety and peace of mind, these panels are a must-have upgrade for transforming any ordinary room into a high-tech sanctuary.",
 
     specifications: [
-        ["Product Type Modular RGB Wall Lighting System", ""],
-        ["Lamp Shade Material Durable PVC", ""],
-        ["Light Source Type Energy-Efficient LED", ""],
-        ["Control Method Graffiti App + Remote Control (with Rhythm Pickup)", ""],
-        ["Voltage 220V", ""],
-        ["Style Modern and Minimalist", ""],
-        ["Certification EU CE Certification", ""],
-        ["Light Colors 12 Sets / Multi-color RGB", ""],
-        ["Package List 12 x Modular Light Bars, Remote Control, Power Adapter, USB Cable, Connectors", ""]
+        ["PRODUCT TYPE", "Modular RGB Wall Lighting System"],
+        ["LAMP SHADE MATERIAL", "Durable PVC"],
+        ["LIGHT SOURCE TYPE", "Energy-Efficient LED"],
+        ["CONTROL METHOD", "Graffiti App + Remote Control with Rhythm Pickup"],
+        ["VOLTAGE", "220V"],
+        ["STYLE", "Modern and Minimalist"],
+        ["CERTIFICATION", "EU CE Certification"],
+        ["LIGHT COLORS", "12 Sets / Multi-color RGB"],
+        ["PACKAGE", "12 x Modular Light Bars, Remote Control, Power Adapter, USB Cable, Connectors"]
     ],
 
     features: [
-        ["01", "01-Creative Modular Design: Freely assemble the light segments to design unique wall patterns tailored to your space.", ""],
-        ["02", "02-Intelligent Music Sync: Features built-in pickup rhythm technology that pulses and reacts to ambient sound and music.", ""],
-        ["03", "03-​Dual Control Options: Manage your colors, brightness, and modes easily via the smartphone app or the included remote control.", ""],
-        ["04", "04-Modern & Minimalist Style: A clean aesthetic that seamlessly complements desktop gaming stations, modern living rooms, and creative studios.", ""],
-        ["05", "05-​Certified Quality: Built to meet European safety standards (EU CE certification).", ""]
+        ["01", "CREATIVE MODULAR DESIGN", "Freely assemble the light segments to design unique wall patterns tailored to your space."],
+        ["02", "INTELLIGENT MUSIC SYNC", "Features built-in pickup rhythm technology that pulses and reacts to ambient sound and music."],
+        ["03", "DUAL CONTROL OPTIONS", "Manage colors, brightness and modes easily via the smartphone app or included remote control."],
+        ["04", "MODERN & MINIMALIST", "A clean aesthetic that complements desktop gaming stations, modern living rooms and creative studios."],
+        ["05", "CERTIFIED QUALITY", "Built to meet European safety standards with EU CE certification."]
     ],
 
     stripe:
         "https://buy.stripe.com/cNi28s5tZ3VZgSIgh42Ji0h"
 },
+
+
 // =================================================
 // PRODUCT 16 — GAMING COMPUTER PAD LARGE WORLD MAP MOUSE MAT BIG DESK
 // =================================================
@@ -910,6 +911,8 @@ const volticaProducts = [
     stripe:
         "https://buy.stripe.com/14AaEY8Gbakn6e4e8W2Ji0i"
 },
+
+
 // =================================================
 // PRODUCT 17 — SOUNDCORE BY ANKER SPACE Q45 WIRELESS OVER-EAR HEADPHONES
 // =================================================
@@ -947,30 +950,32 @@ const volticaProducts = [
     ],
 
     description:
-        "Soundcore by Anker Space Q45 Wireless Over-Ear Headphones\n\nImmerse yourself in pristine audio and total peace with the Soundcore by Anker Space Q45 Over-Ear Headphones. Engineered with an upgraded triple dynamic noise filtering system and ultra-wideband noise reduction, these headphones block out up to 98% of ambient noise—from airplane engines to bustling office chatter—so your music takes center stage.\n​Featuring innovative car-grade acoustics and Hi-Res Gold Certification, the Space Q45 delivers deep bass, crisp highs, and exceptional detail whether you're listening wired or wirelessly. Designed for marathon listening sessions, they offer an incredible 65-hour battery life on a single charge and an ultra-comfortable ergonomic fit. Stay connected seamlessly with dual-microphone AI noise reduction for crystal-clear calls and the latest Bluetooth 5.3 technology.",
+        "Soundcore by Anker Space Q45 Wireless Over-Ear Headphones\n\nImmerse yourself in pristine audio and total peace with the Soundcore by Anker Space Q45 Over-Ear Headphones. Engineered with an upgraded triple dynamic noise filtering system and ultra-wideband noise reduction, these headphones block out up to 98% of ambient noise—from airplane engines to bustling office chatter—so your music takes center stage.\nFeaturing innovative car-grade acoustics and Hi-Res Gold Certification, the Space Q45 delivers deep bass, crisp highs, and exceptional detail whether you're listening wired or wirelessly. Designed for marathon listening sessions, they offer an incredible 65-hour battery life on a single charge and an ultra-comfortable ergonomic fit. Stay connected seamlessly with dual-microphone AI noise reduction for crystal-clear calls and the latest Bluetooth 5.3 technology.",
 
     specifications: [
-        ["BrandSoundcore by Anker", ""],
-        ["Model Space Q45 Over-ear Headphones", ""],
-        ["Innovative Car-grade Acoustics", ""],
-        ["Audio Certification Hi-Res Gold Certified", ""],
-        ["Noise Cancellation Triple Dynamic Noise Filtering / Ultra-wideband", ""],
-        ["Battery Life Up to 65 Hours", ""],
-        ["Connectivity Bluetooth 5.3", ""],
-        ["Dual Microphone AI Noise Reduction", ""],
-        ["Call Quality", ""],
-        ["Available Colors Crescent White, Black, Deep Blue", ""]
+        ["BRAND", "Soundcore by Anker"],
+        ["MODEL", "Space Q45 Over-ear Headphones"],
+        ["ACOUSTICS", "Innovative Car-grade Acoustics"],
+        ["AUDIO CERTIFICATION", "Hi-Res Gold Certified"],
+        ["NOISE CANCELLATION", "Triple Dynamic Noise Filtering / Ultra-wideband"],
+        ["BATTERY LIFE", "Up to 65 Hours"],
+        ["CONNECTIVITY", "Bluetooth 5.3"],
+        ["MICROPHONES", "Dual Microphone AI Noise Reduction"],
+        ["CALL QUALITY", "AI Enhanced Crystal-Clear Calls"],
+        ["AVAILABLE COLORS", "Crescent White, Black, Deep Blue"]
     ],
 
     features: [
-        ["01", "01-Triple Dynamic Noise Filtering: Advanced ANC system targets and blocks medium to high-frequency noises effectively.", ""],
-        ["02", "02-Hi-Res Gold Certified Audio: Custom-built diaphragms reproduce high-definition sound with rich fidelity.", ""],
-        ["03", "03-65-Hour Extended Battery Life: Enjoy days of continuous playback without needing to recharge.", ""],
-        ["04", "04-Crystal-Clear AI Calls: Dual microphones paired with an AI algorithm isolate your voice accurately from background disruptions.", ""],
-        ["05", "Latest Bluetooth 5.3: Provides a faster, more stable, and ultra-low-latency wireless connection.", ""]
+        ["01", "TRIPLE DYNAMIC NOISE FILTERING", "Advanced ANC system targets and blocks medium to high-frequency noises effectively."],
+        ["02", "HI-RES GOLD CERTIFIED AUDIO", "Custom-built diaphragms reproduce high-definition sound with rich fidelity."],
+        ["03", "65-HOUR EXTENDED BATTERY LIFE", "Enjoy days of continuous playback without needing to recharge."],
+        ["04", "CRYSTAL-CLEAR AI CALLS", "Dual microphones paired with an AI algorithm isolate your voice accurately from background disruptions."],
+        ["05", "BLUETOOTH 5.3", "Provides a faster, more stable and ultra-low-latency wireless connection."]
     ],
 
     stripe:
         "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
-},
+}
+
 ];
+

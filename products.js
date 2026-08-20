@@ -853,8 +853,7 @@ const volticaProducts = [
 
     stripe:
         "https://buy.stripe.com/cNi28s5tZ3VZgSIgh42Ji0h"
-},
-
+    {,
 // =================================================
 // PRODUCT 16 — GAMING COMPUTER PAD LARGE WORLD MAP MOUSE MAT BIG DESK
 // =================================================
@@ -889,16 +888,28 @@ const volticaProducts = [
     ],
 
     description:
-        "Product name: mouse pad\nPattern: 400x900mm\nA-4mm\nPacking list\nMouse pad x1",
+        "Large 400x900mm gaming desk mat featuring a world map design, designed to provide a smooth and spacious surface for gaming, work and everyday desktop use.",
 
     specifications: [
-
+        ["PRODUCT TYPE", "Large Gaming Desk Mat"],
+        ["SIZE", "400 × 900 mm"],
+        ["THICKNESS", "4 mm"],
+        ["DESIGN", "World Map"],
+        ["USE", "Gaming / Office / Desktop"],
+        ["PACKAGE", "1 × Mouse Pad"]
     ],
 
     features: [
-        ["01", "01-400x900mmx4mm", ""],
-        ["02", "02-world map",
+        ["01", "400 × 900 MM", "Large surface area designed for full-size gaming setups."],
+        ["02", "WORLD MAP DESIGN", "Detailed world map graphic adds a distinctive look to your desk."],
+        ["03", "4 MM THICKNESS", "Comfortable padded surface for extended gaming and work sessions."],
+        ["04", "FULL DESK COVERAGE", "Provides room for your keyboard, mouse and other accessories."],
+        ["05", "GAMING READY", "Designed for gaming setups and everyday desktop use."]
+    ],
 
+    stripe:
+        "TON LIEN STRIPE DU PRODUIT 16"
+},
 // =================================================
 // PRODUCT 17 — SOUNDCORE BY ANKER SPACE Q45 WIRELESS OVER-EAR HEADPHONES
 // =================================================

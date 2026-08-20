@@ -853,7 +853,7 @@ const volticaProducts = [
 
     stripe:
         "https://buy.stripe.com/cNi28s5tZ3VZgSIgh42Ji0h"
-    {,
+},
 // =================================================
 // PRODUCT 16 — GAMING COMPUTER PAD LARGE WORLD MAP MOUSE MAT BIG DESK
 // =================================================

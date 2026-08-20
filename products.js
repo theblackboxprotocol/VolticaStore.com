@@ -908,7 +908,7 @@ const volticaProducts = [
     ],
 
     stripe:
-        "TON LIEN STRIPE DU PRODUIT 16"
+        "https://buy.stripe.com/14AaEY8Gbakn6e4e8W2Ji0i"
 },
 // =================================================
 // PRODUCT 17 — SOUNDCORE BY ANKER SPACE Q45 WIRELESS OVER-EAR HEADPHONES

@@ -918,7 +918,7 @@ const volticaProducts = [
 // =================================================
 
 {
-    id: "soundcore-by-anker-space-q45-wireless-over-ear-headphones",
+    id: "headphones1",
 
     sku: "CJYP272510404DW",
 

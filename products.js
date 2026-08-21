@@ -975,7 +975,61 @@ const volticaProducts = [
 
     stripe:
         "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
-}
+},
 
+// =================================================
+// PRODUCT 18 — KIWI EARS ORCHESTRA II DIAMOND EDITION (VOLTICA EXCLUSIVE).
+// =================================================
+
+{
+    id: "kiwi-ears-orchestra-ii-diamond-edition-voltica-exclusive",
+
+    sku: "Kiwi ears Orchestra II",
+
+    name: "Kiwi Ears Orchestra II Diamond Edition (Voltica Exclusive).",
+
+    category: "SPORT AUDIO",
+
+    badge: "NEW",
+
+    supplierLink:
+        "www.kiwiears.com",
+
+    cost:
+        "317.49",
+
+    price:
+        "4999.99",
+
+    currency: "USD",
+
+    images: [
+        "assets/images/1000050312.jpg",
+        "assets/images/1000050322.jpg",
+        "assets/images/1000050310.jpg",
+        "assets/images/1000050325.jpg",
+        "assets/images/1000050324.jpg"
+    ],
+
+    description:
+        "Price: $4,999.99 USD\nAvailability: Ultra-Limited Drop (Global Exclusive)\n​Product Overview\n​Discover the ultimate fusion of reference-grade acoustics and high jewelry craftsmanship. The Kiwi Ears Orchestra II Diamond Edition (Voltica Exclusive) transcends traditional consumer electronics, transforming world-class In-Ear Monitors (IEMs) into a breathtaking, wearable masterpiece. Available exclusively at Voltica Store, this ultra-limited release is designed for the world's most discerning audiophiles and collectors who demand uncompromised performance and unmatched elegance.\n\nLuxury with a Purpose: Supporting a Vital Cause\n​True luxury leaves a lasting legacy. At Voltica Store, we believe high-end tech should empower communities. 100% of the profit margin from every sale of the Kiwi Ears Orchestra II Diamond Edition is donated directly to support women and single mothers affected by domestic violence and crisis situations. When you invest in this masterpiece, you are not only elevating your auditory experience—you are driving profound, positive social change.",
+
+    specifications: [
+        ["​Unrivaled Rarity", "Strictly limited production runs ensuring absolute exclusivity."],
+        ["Artisanal Excellence", "Hand-finished detailing that bridges the gap between high-end audio engineering and fine jewelry."],
+        ["Impactful Philanthropy", "Direct contribution to women's shelter initiatives with every single order."],
+        ["Elevate your sound. Define your legacy. Secure your pair today exclusively at VolticaStore.com.", ""]
+    ],
+
+    features: [
+        ["01", "01-Acoustic Foundation: Built upon the acclaimed multi-driver hybrid architecture of the Kiwi Ears Orchestra II for pristine, studio-grade sound quality.", ""],
+        ["02", "02-Bespoke Diamond Craftsmanship: Each earpiece faceplate is meticulously hand-set with brilliant-cut pavé diamonds, casting a mesmerizing sparkle from every angle.", ""],
+        ["03", "03-Audiophile Performance: Delivers deep, textured bass, a rich and immersive midrange, and crystal-clear highs that reveal the finest details in your music.", ""],
+        ["04", "04-Luxury Presentation: Arrives in a custom-built, velvet-lined high-lacquer black presentation case accented with diamond trim, complete with a serialized metal VIP membership card.", ""]
+    ],
+
+    stripe:
+        "https://buy.stripe.com/3cI3cwcWr647cCs5Cq2Ji0k"
+},
 ];
 

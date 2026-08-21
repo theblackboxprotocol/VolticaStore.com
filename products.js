@@ -1083,31 +1083,24 @@ const volticaProducts = [
     stripe:
         "https://buy.stripe.com/4gM6oIe0vcsvgSI5Cq2Ji0l"
 },
-
-// =================================================
-// PRODUCT 20 — VLT-HP-5370 | VOLTICA PLANAR ELITE AUDIOPHILE HEADPHONES
+    // =================================================
+// PRODUCT 20 — VOLTICA PLANAR ELITE AUDIOPHILE HEADPHONES
 // =================================================
 
 {
-    id: "vlt-hp-5370-voltica-planar-elite-audiophile-headphones",
-
+    id: "headphones2",
     sku: "VLT-HP-5370",
 
-    name: "VLT-HP-5370 | Voltica Planar Elite Audiophile Headphones",
-
+    name: "Voltica Planar Elite Audiophile Headphones",
     category: "HEADPHONES",
-
     badge: "NEW",
 
     supplierLink:
         "https://www.alibaba.com/x/B2LDpO?ck=pdp",
 
-    cost:
-        "400.00",
+    cost: "400.00",
 
-    price:
-        "469.99",
-
+    price: "469.99",
     currency: "USD",
 
     images: [
@@ -1122,24 +1115,48 @@ const volticaProducts = [
         "Experience uncompromising sonic purity with the Voltica Planar Elite. Engineered for true audiophiles and music creators, these wired Hi-Fi headphones utilize advanced 106mm isodynamic planar magnetic drivers to deliver breathtaking acoustic clarity, ultra-low distortion, and an expansive soundstage. Whether you are mixing tracks or getting lost in your favorite albums, every nuance is rendered with absolute precision.",
 
     specifications: [
-        ["​Model", "FA-5370"],
-        ["​Driver Unit", "106mm"],
-        ["​Transducer Principle", "Isodynamic / Planar Magnetic"],
-        ["​Impedance", "50Ω"],
-        ["​Sensitivity", "100 dB/mW at 1kHz"],
-        ["​Total Harmonic Distortion (THD)", "0.2% @ 1kHz / 100dB SPL"],
-        ["​Frequency Response", "10Hz - 20kHz"],
-        ["​Plug Type", "3.5mm"],
-        ["​Cord Length", "1.5m"],
-        ["​Weight", "475g"]
+        ["MODEL", "FA-5370"],
+        ["DRIVER UNIT", "106mm"],
+        ["TRANSDUCER PRINCIPLE", "Isodynamic / Planar Magnetic"],
+        ["IMPEDANCE", "50Ω"],
+        ["SENSITIVITY", "100 dB/mW at 1kHz"],
+        ["TOTAL HARMONIC DISTORTION", "0.2% @ 1kHz / 100dB SPL"],
+        ["FREQUENCY RESPONSE", "10Hz - 20kHz"],
+        ["PLUG TYPE", "3.5mm"],
+        ["CORD LENGTH", "1.5m"],
+        ["WEIGHT", "475g"]
     ],
 
     features: [
-        ["01", "01-Massive Planar Drivers: Equipped with large 106mm isodynamic drivers for ultra-responsive, crystal-clear sound reproduction across the entire frequency spectrum.", ""],
-        ["02", "02-Dual-Sided Planar Design: Custom-engineered acoustic structure ensuring balanced magnetic fields and lightning-fast transient response.", ""],
-        ["03", "03-Audiophile-Grade Performance: High impedance (50Ω) and low harmonic distortion for an uncolored, studio-monitor listening experience.", ""],
-        ["04", "04-Premium Comfort & Build: Ergonomic dual-headband distribution and over-ear custom design built for extended listening sessions.", ""],
-        ["05", "05-Detachable High-Purity Cable: Features a 1.5m cord with a standard 3.5mm termination for seamless connectivity with high-res audio players, DACs, and amps.", ""]
+        [
+            "01",
+            "MASSIVE PLANAR DRIVERS",
+            "Equipped with large 106mm isodynamic drivers for ultra-responsive and highly detailed sound reproduction."
+        ],
+
+        [
+            "02",
+            "DUAL-SIDED PLANAR DESIGN",
+            "Custom-engineered acoustic architecture designed for balanced magnetic fields and fast transient response."
+        ],
+
+        [
+            "03",
+            "AUDIOPHILE PERFORMANCE",
+            "50Ω impedance and ultra-low harmonic distortion deliver a detailed and natural listening experience."
+        ],
+
+        [
+            "04",
+            "PREMIUM COMFORT",
+            "Ergonomic dual-headband construction and over-ear design engineered for extended listening sessions."
+        ],
+
+        [
+            "05",
+            "DETACHABLE HIGH-PURITY CABLE",
+            "1.5m cable with standard 3.5mm termination for high-resolution players, DACs and headphone amplifiers."
+        ]
     ],
 
     stripe:

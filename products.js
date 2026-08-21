@@ -1031,5 +1031,57 @@ const volticaProducts = [
     stripe:
         "https://buy.stripe.com/3cI3cwcWr647cCs5Cq2Ji0k"
 },
+
+// =================================================
+// PRODUCT 19 — VOLTICA SMART MIRROR PRO (700X1000MM CONNECTED TOUCH DISPLAY)
+// =================================================
+
+{
+    id: "smart-mirror-pro-700x1000mm-connected-touch-display",
+
+    sku: "VLT-MIRROR-710",
+
+    name: "Voltica Smart Mirror Pro (700x1000mm Connected Touch Display)",
+
+    category: "TECH",
+
+    badge: "NEW",
+
+    supplierLink:
+        "https://www.alibaba.com/x/B2LBWO?ck=pdp",
+
+    cost:
+        "697.00",
+
+    price:
+        "817.99",
+
+    currency: "USD",
+
+    images: [
+        "assets/images/1000050359.jpg",
+        "assets/images/1000050361.jpg",
+        "assets/images/1000050355.jpg",
+        "assets/images/1000050351.jpg",
+        "assets/images/1000050350.jpg"
+    ],
+
+    description:
+        "Transform your daily routine into a futuristic experience with the Voltica Smart Mirror Pro. Designed for modern smart homes and luxury spaces, this 700x1000mm connected mirror bridges the gap between high-end interior design and cutting-edge technology. Featuring an integrated interactive touchscreen, crystal-clear LED ambient lighting, and full application streaming capabilities, it’s much more than a mirror—it's your personal smart hub.",
+
+    specifications: [
+        ["Elevate your living space with next-generation tech. Exclusively at VolticaStore.com.", ""]
+    ],
+
+    features: [
+        ["01", "01-Interactive Smart Display: Access weather updates, stream your favorite videos, browse the web, or check your schedule directly on the built-in 10-point touch screen.", ""],
+        ["02", "02-Customizable LED Lighting: Easily switch between warm light (3000K), natural light (4000K), and white light (6000K) with adjustable brightness to suit your mood or makeup needs.", ""],
+        ["03", "03-IP65 Waterproof Rating: Specifically engineered for safe, reliable operation in high-humidity environments like bathrooms and home spas.", ""],
+        ["04", "04-Versatile Connectivity: Equipped with HDMI, dual USB ports, LAN, and audio output options for effortless media integration.", ""]
+    ],
+
+    stripe:
+        "https://buy.stripe.com/4gM6oIe0vcsvgSI5Cq2Ji0l"
+},
 ];
 

@@ -4,6 +4,22 @@
    VOLTICA STORE
    ADMIN API
    GITHUB PRODUCT WRITER
+   VERSION — HARDENED / DIAGNOSTIC
+   ===================================================== */
+
+
+/* =====================================================
+   ERROR HANDLING
+   ===================================================== */
+
+ini_set("display_errors", "0");
+ini_set("log_errors", "1");
+
+error_reporting(E_ALL);
+
+
+/* =====================================================
+   JSON RESPONSE
    ===================================================== */
 
 header(
@@ -25,19 +41,76 @@ $allowedOrigins = [
 
 ];
 
-$githubOwner = "theblackboxprotocol";
+
+$githubOwner =
+    "theblackboxprotocol";
+
 
 $githubRepo =
     "VolticaStore.com";
 
+
 $productsPath =
     "products.js";
+
 
 $imagePath =
     "assets/images";
 
+
 $envPath =
     "/home/u379666423/.env";
+
+
+$lockPath =
+    sys_get_temp_dir()
+    . "/voltica-product-manager.lock";
+
+
+/*
+   Maximum product block size.
+*/
+
+$maxProductBytes =
+    1024 * 1024;
+
+
+/*
+   Maximum image size per file.
+   15 MB.
+*/
+
+$maxImageBytes =
+    15 * 1024 * 1024;
+
+
+/*
+   Allowed image extensions.
+*/
+
+$allowedExtensions = [
+
+    "jpg",
+    "jpeg",
+    "png",
+    "webp",
+    "gif"
+
+];
+
+
+/*
+   Allowed MIME types.
+*/
+
+$allowedMimeTypes = [
+
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "image/gif"
+
+];
 
 
 /* =====================================================
@@ -46,6 +119,7 @@ $envPath =
 
 $origin =
     $_SERVER["HTTP_ORIGIN"] ?? "";
+
 
 if (
     in_array(
@@ -62,20 +136,179 @@ if (
 
 }
 
+
 header(
     "Vary: Origin"
 );
+
 
 header(
     "Access-Control-Allow-Methods: POST, OPTIONS"
 );
 
+
 header(
     "Access-Control-Allow-Headers: Content-Type"
 );
 
+
 header(
     "Access-Control-Max-Age: 86400"
+);
+
+
+/* =====================================================
+   HELPER — JSON RESPONSE
+   ===================================================== */
+
+function sendJson(
+    array $data,
+    int $status = 200
+): void {
+
+    http_response_code(
+        $status
+    );
+
+    echo json_encode(
+
+        $data,
+
+        JSON_UNESCAPED_SLASHES |
+        JSON_UNESCAPED_UNICODE
+
+    );
+
+    exit;
+
+}
+
+
+/* =====================================================
+   HELPER — ERROR RESPONSE
+   ===================================================== */
+
+function failResponse(
+    string $message,
+    int $status = 500,
+    array $extra = []
+): void {
+
+    sendJson(
+
+        array_merge(
+
+            [
+
+                "success" => false,
+
+                "error" =>
+                    $message
+
+            ],
+
+            $extra
+
+        ),
+
+        $status
+
+    );
+
+}
+
+
+/* =====================================================
+   FATAL ERROR HANDLER
+   ===================================================== */
+
+register_shutdown_function(
+    function () {
+
+        $error =
+            error_get_last();
+
+        if (
+            !$error
+        ) {
+            return;
+        }
+
+
+        $fatalTypes = [
+
+            E_ERROR,
+            E_PARSE,
+            E_CORE_ERROR,
+            E_COMPILE_ERROR
+
+        ];
+
+
+        if (
+            !in_array(
+                $error["type"],
+                $fatalTypes,
+                true
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+           If headers have not been sent,
+           return a clean JSON diagnostic.
+        */
+
+        if (
+            !headers_sent()
+        ) {
+
+            http_response_code(
+                500
+            );
+
+            header(
+                "Content-Type: application/json; charset=UTF-8"
+            );
+
+            echo json_encode(
+
+                [
+
+                    "success" => false,
+
+                    "error" =>
+                        "PHP fatal error",
+
+                    "diagnostic" => [
+
+                        "message" =>
+                            $error["message"],
+
+                        "file" =>
+                            basename(
+                                $error["file"]
+                            ),
+
+                        "line" =>
+                            $error["line"]
+
+                    ]
+
+                ],
+
+                JSON_UNESCAPED_SLASHES |
+                JSON_UNESCAPED_UNICODE
+
+            );
+
+        }
+
+    }
 );
 
 
@@ -84,10 +317,13 @@ header(
    ===================================================== */
 
 if (
-    $_SERVER["REQUEST_METHOD"] === "OPTIONS"
+    ($_SERVER["REQUEST_METHOD"] ?? "")
+    === "OPTIONS"
 ) {
 
-    http_response_code(204);
+    http_response_code(
+        204
+    );
 
     exit;
 
@@ -99,55 +335,123 @@ if (
    ===================================================== */
 
 if (
-    $_SERVER["REQUEST_METHOD"] !== "POST"
+    ($_SERVER["REQUEST_METHOD"] ?? "")
+    !== "POST"
 ) {
 
-    http_response_code(405);
+    failResponse(
 
-    echo json_encode([
+        "POST request required",
 
-        "success" => false,
+        405,
 
-        "error" =>
-            "POST request required"
+        [
 
-    ]);
+            "method" =>
+                $_SERVER["REQUEST_METHOD"]
+                ?? "UNKNOWN"
 
-    exit;
+        ]
+
+    );
 
 }
+
+
+/* =====================================================
+   DIAGNOSTIC STEP
+   ===================================================== */
+
+$step =
+    "REQUEST RECEIVED";
 
 
 /* =====================================================
    LOAD ENV
    ===================================================== */
 
+$step =
+    "LOADING ENV";
+
+
 if (
-    !file_exists($envPath)
+    !is_file($envPath)
 ) {
 
-    http_response_code(500);
+    failResponse(
 
-    echo json_encode([
+        "ENV file not found",
 
-        "success" => false,
+        500,
 
-        "error" =>
-            "ENV file not found"
+        [
 
-    ]);
+            "step" =>
+                $step,
 
-    exit;
+            "env_path" =>
+                $envPath
+
+        ]
+
+    );
+
+}
+
+
+if (
+    !is_readable($envPath)
+) {
+
+    failResponse(
+
+        "ENV file is not readable",
+
+        500,
+
+        [
+
+            "step" =>
+                $step
+
+        ]
+
+    );
 
 }
 
 
 $envLines =
     file(
+
         $envPath,
+
         FILE_IGNORE_NEW_LINES |
         FILE_SKIP_EMPTY_LINES
+
     );
+
+
+if (
+    $envLines === false
+) {
+
+    failResponse(
+
+        "Unable to read ENV file",
+
+        500,
+
+        [
+
+            "step" =>
+                $step
+
+        ]
+
+    );
+
+}
 
 
 $env = [];
@@ -161,10 +465,31 @@ foreach (
     $line =
         trim($line);
 
+
     if (
-        $line === "" ||
-        strpos($line, "#") === 0 ||
-        strpos($line, "=") === false
+        $line === ""
+    ) {
+        continue;
+    }
+
+
+    if (
+        strpos(
+            $line,
+            "#"
+        ) === 0
+    ) {
+
+        continue;
+
+    }
+
+
+    if (
+        strpos(
+            $line,
+            "="
+        ) === false
     ) {
 
         continue;
@@ -183,8 +508,10 @@ foreach (
     $key =
         trim($key);
 
+
     $value =
         trim($value);
+
 
     $value =
         trim(
@@ -204,28 +531,35 @@ foreach (
    ===================================================== */
 
 $githubToken =
-    $env["GITHUB_TOKEN"] ?? "";
+    trim(
+        $env["GITHUB_TOKEN"]
+        ?? ""
+    );
+
 
 $adminPassword =
-    $env["ADMIN_PASSWORD"] ?? "";
+    $env["ADMIN_PASSWORD"]
+    ?? "";
 
 
 if (
     $adminPassword === ""
 ) {
 
-    http_response_code(500);
+    failResponse(
 
-    echo json_encode([
+        "ADMIN_PASSWORD not configured",
 
-        "success" => false,
+        500,
 
-        "error" =>
-            "ADMIN_PASSWORD not configured"
+        [
 
-    ]);
+            "step" =>
+                "ENV VALIDATION"
 
-    exit;
+        ]
+
+    );
 
 }
 
@@ -234,18 +568,20 @@ if (
     $githubToken === ""
 ) {
 
-    http_response_code(500);
+    failResponse(
 
-    echo json_encode([
+        "GITHUB_TOKEN not configured",
 
-        "success" => false,
+        500,
 
-        "error" =>
-            "GITHUB_TOKEN not configured"
+        [
 
-    ]);
+            "step" =>
+                "ENV VALIDATION"
 
-    exit;
+        ]
+
+    );
 
 }
 
@@ -254,26 +590,34 @@ if (
    ADMIN AUTHENTICATION
    ===================================================== */
 
+$step =
+    "AUTHENTICATION";
+
+
 $password =
-    $_POST["password"] ?? "";
+    $_POST["password"]
+    ?? "";
 
 
 if (
+    !is_string($password) ||
     $password === ""
 ) {
 
-    http_response_code(401);
+    failResponse(
 
-    echo json_encode([
+        "Admin password required",
 
-        "success" => false,
+        401,
 
-        "error" =>
-            "Admin password required"
+        [
 
-    ]);
+            "step" =>
+                $step
 
-    exit;
+        ]
+
+    );
 
 }
 
@@ -285,18 +629,26 @@ if (
     )
 ) {
 
-    http_response_code(401);
+    /*
+       Deliberately generic.
+       Do not reveal whether password
+       or account information is correct.
+    */
 
-    echo json_encode([
+    failResponse(
 
-        "success" => false,
+        "Invalid admin password",
 
-        "error" =>
-            "Invalid password"
+        401,
 
-    ]);
+        [
 
-    exit;
+            "step" =>
+                $step
+
+        ]
+
+    );
 
 }
 
@@ -305,9 +657,14 @@ if (
    PRODUCT DATA
    ===================================================== */
 
+$step =
+    "PRODUCT VALIDATION";
+
+
 $product =
     trim(
-        $_POST["product"] ?? ""
+        $_POST["product"]
+        ?? ""
     );
 
 
@@ -315,18 +672,79 @@ if (
     $product === ""
 ) {
 
-    http_response_code(400);
+    failResponse(
 
-    echo json_encode([
+        "Product data missing",
 
-        "success" => false,
+        400,
 
-        "error" =>
-            "Product data missing"
+        [
 
-    ]);
+            "step" =>
+                $step
 
-    exit;
+        ]
+
+    );
+
+}
+
+
+if (
+    strlen($product)
+    > $maxProductBytes
+) {
+
+    failResponse(
+
+        "Product data is too large",
+
+        413,
+
+        [
+
+            "step" =>
+                $step,
+
+            "maximum_bytes" =>
+                $maxProductBytes
+
+        ]
+
+    );
+
+}
+
+
+/* =====================================================
+   BASIC PRODUCT STRUCTURE VALIDATION
+   ===================================================== */
+
+if (
+    strpos(
+        $product,
+        "{"
+    ) === false ||
+    strpos(
+        $product,
+        "}"
+    ) === false
+) {
+
+    failResponse(
+
+        "Invalid product block",
+
+        400,
+
+        [
+
+            "step" =>
+                $step
+
+        ]
+
+    );
 
 }
 
@@ -336,14 +754,55 @@ if (
    ===================================================== */
 
 function githubRequest(
+
     string $method,
+
     string $url,
+
     string $token,
+
     ?array $payload = null
-) {
+
+): array {
+
+    if (
+        !function_exists("curl_init")
+    ) {
+
+        return [
+
+            "response" => "",
+
+            "status" => 0,
+
+            "error" =>
+                "PHP cURL extension is not available"
+
+        ];
+
+    }
+
 
     $ch =
         curl_init($url);
+
+
+    if (
+        $ch === false
+    ) {
+
+        return [
+
+            "response" => "",
+
+            "status" => 0,
+
+            "error" =>
+                "Unable to initialize cURL"
+
+        ];
+
+    }
 
 
     $headers = [
@@ -362,55 +821,112 @@ function githubRequest(
     ];
 
 
-    curl_setopt_array(
-        $ch,
-        [
+    $options = [
 
-            CURLOPT_RETURNTRANSFER =>
-                true,
+        CURLOPT_RETURNTRANSFER =>
+            true,
 
-            CURLOPT_CUSTOMREQUEST =>
-                $method,
+        CURLOPT_CUSTOMREQUEST =>
+            strtoupper($method),
 
-            CURLOPT_HTTPHEADER =>
-                $headers,
+        CURLOPT_HTTPHEADER =>
+            $headers,
 
-            CURLOPT_TIMEOUT =>
-                60
+        CURLOPT_CONNECTTIMEOUT =>
+            15,
 
-        ]
-    );
+        CURLOPT_TIMEOUT =>
+            60,
+
+        CURLOPT_FOLLOWLOCATION =>
+            false,
+
+        CURLOPT_SSL_VERIFYPEER =>
+            true,
+
+        CURLOPT_SSL_VERIFYHOST =>
+            2
+
+    ];
 
 
     if (
         $payload !== null
     ) {
 
-        curl_setopt(
-            $ch,
-            CURLOPT_POSTFIELDS,
+        $encodedPayload =
             json_encode(
-                $payload
-            )
-        );
+
+                $payload,
+
+                JSON_UNESCAPED_SLASHES |
+                JSON_UNESCAPED_UNICODE
+
+            );
+
+
+        if (
+            $encodedPayload === false
+        ) {
+
+            curl_close($ch);
+
+            return [
+
+                "response" => "",
+
+                "status" => 0,
+
+                "error" =>
+                    "Unable to encode GitHub payload"
+
+            ];
+
+        }
+
+
+        $options[
+            CURLOPT_POSTFIELDS
+        ] =
+            $encodedPayload;
 
     }
+
+
+    curl_setopt_array(
+        $ch,
+        $options
+    );
 
 
     $response =
         curl_exec($ch);
 
+
     $status =
         curl_getinfo(
+
             $ch,
+
             CURLINFO_HTTP_CODE
+
         );
+
 
     $error =
         curl_error($ch);
 
 
     curl_close($ch);
+
+
+    if (
+        $response === false
+    ) {
+
+        $response = "";
+
+    }
 
 
     return [
@@ -435,20 +951,28 @@ function githubRequest(
 
 $repoUrl =
     "https://api.github.com/repos/"
-    . $githubOwner
+    . rawurlencode($githubOwner)
     . "/"
-    . $githubRepo;
+    . rawurlencode($githubRepo);
 
 
 /* =====================================================
-   VERIFY REPOSITORY
+   GITHUB REPOSITORY CHECK
    ===================================================== */
+
+$step =
+    "GITHUB REPOSITORY";
+
 
 $repoResult =
     githubRequest(
+
         "GET",
+
         $repoUrl,
+
         $githubToken
+
     );
 
 
@@ -456,40 +980,190 @@ if (
     $repoResult["status"] !== 200
 ) {
 
-    http_response_code(502);
+    $githubMessage =
+        "Unknown GitHub error";
 
-    echo json_encode([
 
-        "success" => false,
+    if (
+        $repoResult["response"] !== ""
+    ) {
 
-        "error" =>
-            "GitHub repository access failed",
+        $decoded =
+            json_decode(
 
-        "github_status" =>
-            $repoResult["status"]
+                $repoResult["response"],
 
-    ]);
+                true
 
-    exit;
+            );
+
+
+        if (
+            is_array($decoded) &&
+            !empty($decoded["message"])
+        ) {
+
+            $githubMessage =
+                $decoded["message"];
+
+        }
+
+    }
+
+
+    failResponse(
+
+        "GitHub repository access failed",
+
+        502,
+
+        [
+
+            "step" =>
+                $step,
+
+            "github_status" =>
+                $repoResult["status"],
+
+            "github_error" =>
+                $repoResult["error"],
+
+            "github_message" =>
+                $githubMessage
+
+        ]
+
+    );
 
 }
+
+
+/* =====================================================
+   LOCK
+   ===================================================== */
+
+$step =
+    "ACQUIRING PRODUCT LOCK";
+
+
+$lockHandle =
+    @fopen(
+        $lockPath,
+        "c"
+    );
+
+
+if (
+    $lockHandle === false
+) {
+
+    failResponse(
+
+        "Unable to create product manager lock",
+
+        500,
+
+        [
+
+            "step" =>
+                $step
+
+        ]
+
+    );
+
+}
+
+
+if (
+    !flock(
+        $lockHandle,
+        LOCK_EX
+    )
+) {
+
+    fclose(
+        $lockHandle
+    );
+
+
+    failResponse(
+
+        "Unable to lock product manager",
+
+        500,
+
+        [
+
+            "step" =>
+                $step
+
+        ]
+
+    );
+
+}
+
+
+/* =====================================================
+   CLEANUP LOCK
+   ===================================================== */
+
+register_shutdown_function(
+
+    function () use (
+        $lockHandle
+    ) {
+
+        if (
+            is_resource($lockHandle)
+        ) {
+
+            @flock(
+                $lockHandle,
+                LOCK_UN
+            );
+
+            @fclose(
+                $lockHandle
+            );
+
+        }
+
+    }
+
+);
 
 
 /* =====================================================
    GET PRODUCTS.JS
    ===================================================== */
 
+$step =
+    "READING PRODUCTS.JS";
+
+
 $productsUrl =
     $repoUrl
     . "/contents/"
-    . $productsPath;
+    . str_replace(
+        "%2F",
+        "/",
+        rawurlencode(
+            $productsPath
+        )
+    );
 
 
 $productsResult =
     githubRequest(
+
         "GET",
+
         $productsUrl,
+
         $githubToken
+
     );
 
 
@@ -497,50 +1171,130 @@ if (
     $productsResult["status"] !== 200
 ) {
 
-    http_response_code(502);
+    $githubMessage =
+        "Unable to read products.js";
 
-    echo json_encode([
 
-        "success" => false,
+    $decoded =
+        json_decode(
 
-        "error" =>
-            "Unable to read products.js",
+            $productsResult["response"],
 
-        "github_status" =>
-            $productsResult["status"]
+            true
 
-    ]);
+        );
 
-    exit;
+
+    if (
+        is_array($decoded) &&
+        !empty($decoded["message"])
+    ) {
+
+        $githubMessage =
+            $decoded["message"];
+
+    }
+
+
+    failResponse(
+
+        "Unable to read products.js",
+
+        502,
+
+        [
+
+            "step" =>
+                $step,
+
+            "github_status" =>
+                $productsResult["status"],
+
+            "github_error" =>
+                $productsResult["error"],
+
+            "github_message" =>
+                $githubMessage
+
+        ]
+
+    );
 
 }
 
 
 $productsData =
     json_decode(
+
         $productsResult["response"],
+
         true
+
     );
 
 
 if (
-    !is_array($productsData) ||
-    empty($productsData["content"]) ||
+    !is_array($productsData)
+) {
+
+    failResponse(
+
+        "Invalid GitHub response for products.js",
+
+        500,
+
+        [
+
+            "step" =>
+                $step
+
+        ]
+
+    );
+
+}
+
+
+if (
+    empty($productsData["content"])
+) {
+
+    failResponse(
+
+        "products.js content missing",
+
+        500,
+
+        [
+
+            "step" =>
+                $step
+
+        ]
+
+    );
+
+}
+
+
+if (
     empty($productsData["sha"])
 ) {
 
-    http_response_code(500);
+    failResponse(
 
-    echo json_encode([
+        "products.js SHA missing",
 
-        "success" => false,
+        500,
 
-        "error" =>
-            "Invalid products.js response"
+        [
 
-    ]);
+            "step" =>
+                $step
 
-    exit;
+        ]
+
+    );
 
 }
 
@@ -549,13 +1303,29 @@ if (
    DECODE PRODUCTS.JS
    ===================================================== */
 
+$step =
+    "DECODING PRODUCTS.JS";
+
+
+$encodedProducts =
+    preg_replace(
+
+        "/\s+/",
+
+        "",
+
+        $productsData["content"]
+
+    );
+
+
 $currentProducts =
     base64_decode(
-        preg_replace(
-            "/\s+/",
-            "",
-            $productsData["content"]
-        )
+
+        $encodedProducts,
+
+        true
+
     );
 
 
@@ -563,18 +1333,53 @@ if (
     $currentProducts === false
 ) {
 
-    http_response_code(500);
+    failResponse(
 
-    echo json_encode([
+        "Unable to decode products.js",
 
-        "success" => false,
+        500,
 
-        "error" =>
-            "Unable to decode products.js"
+        [
 
-    ]);
+            "step" =>
+                $step
 
-    exit;
+        ]
+
+    );
+
+}
+
+
+/* =====================================================
+   BASIC PRODUCTS.JS VALIDATION
+   ===================================================== */
+
+if (
+    strpos(
+        $currentProducts,
+        "const volticaProducts"
+    ) === false &&
+    strpos(
+        $currentProducts,
+        "volticaProducts"
+    ) === false
+) {
+
+    failResponse(
+
+        "products.js does not appear to contain the Voltica product database",
+
+        500,
+
+        [
+
+            "step" =>
+                "PRODUCTS.JS VALIDATION"
+
+        ]
+
+    );
 
 }
 
@@ -590,9 +1395,13 @@ $existingSkus = [];
 
 if (
     preg_match_all(
+
         '/\bid\s*:\s*"([^"]+)"/',
+
         $currentProducts,
+
         $idMatches
+
     )
 ) {
 
@@ -604,9 +1413,13 @@ if (
 
 if (
     preg_match_all(
+
         '/\bsku\s*:\s*"([^"]+)"/',
+
         $currentProducts,
+
         $skuMatches
+
     )
 ) {
 
@@ -617,7 +1430,7 @@ if (
 
 
 /* =====================================================
-   EXTRACT PRODUCT NUMBER
+   EXTRACT PRODUCT NUMBERS
    ===================================================== */
 
 $productNumbers = [];
@@ -625,9 +1438,13 @@ $productNumbers = [];
 
 if (
     preg_match_all(
+
         '/PRODUCT\s+(\d+)/i',
+
         $currentProducts,
+
         $numberMatches
+
     )
 ) {
 
@@ -644,7 +1461,8 @@ if (
 }
 
 
-$nextProductNumber = 1;
+$nextProductNumber =
+    1;
 
 
 if (
@@ -652,7 +1470,9 @@ if (
 ) {
 
     $nextProductNumber =
-        max($productNumbers) + 1;
+        max(
+            $productNumbers
+        ) + 1;
 
 }
 
@@ -663,9 +1483,13 @@ if (
 
 if (
     preg_match(
+
         '/\bid\s*:\s*"([^"]+)"/',
+
         $product,
+
         $productIdMatch
+
     )
 ) {
 
@@ -677,18 +1501,52 @@ if (
 }
 else {
 
-    http_response_code(400);
+    failResponse(
 
-    echo json_encode([
+        "Product ID missing",
 
-        "success" => false,
+        400,
 
-        "error" =>
-            "Product ID missing"
+        [
 
-    ]);
+            "step" =>
+                "PRODUCT VALIDATION"
 
-    exit;
+        ]
+
+    );
+
+}
+
+
+/* =====================================================
+   VALIDATE PRODUCT ID
+   ===================================================== */
+
+if (
+    !preg_match(
+        '/^[a-z0-9][a-z0-9-]*$/',
+        $newProductId
+    )
+) {
+
+    failResponse(
+
+        "Invalid Product ID format",
+
+        400,
+
+        [
+
+            "step" =>
+                "PRODUCT VALIDATION",
+
+            "product_id" =>
+                $newProductId
+
+        ]
+
+    );
 
 }
 
@@ -699,9 +1557,13 @@ else {
 
 if (
     preg_match(
+
         '/\bsku\s*:\s*"([^"]+)"/',
+
         $product,
+
         $productSkuMatch
+
     )
 ) {
 
@@ -713,18 +1575,46 @@ if (
 }
 else {
 
-    http_response_code(400);
+    failResponse(
 
-    echo json_encode([
+        "Product SKU missing",
 
-        "success" => false,
+        400,
 
-        "error" =>
-            "Product SKU missing"
+        [
 
-    ]);
+            "step" =>
+                "PRODUCT VALIDATION"
 
-    exit;
+        ]
+
+    );
+
+}
+
+
+/* =====================================================
+   VALIDATE SKU
+   ===================================================== */
+
+if (
+    strlen($newProductSku) > 200
+) {
+
+    failResponse(
+
+        "Supplier SKU is too long",
+
+        400,
+
+        [
+
+            "step" =>
+                "PRODUCT VALIDATION"
+
+        ]
+
+    );
 
 }
 
@@ -735,27 +1625,33 @@ else {
 
 if (
     in_array(
+
         $newProductId,
+
         $existingIds,
+
         true
+
     )
 ) {
 
-    http_response_code(409);
+    failResponse(
 
-    echo json_encode([
+        "Product ID already exists",
 
-        "success" => false,
+        409,
 
-        "error" =>
-            "Product ID already exists",
+        [
 
-        "id" =>
-            $newProductId
+            "step" =>
+                "DUPLICATE CHECK",
 
-    ]);
+            "id" =>
+                $newProductId
 
-    exit;
+        ]
+
+    );
 
 }
 
@@ -766,27 +1662,33 @@ if (
 
 if (
     in_array(
+
         $newProductSku,
+
         $existingSkus,
+
         true
+
     )
 ) {
 
-    http_response_code(409);
+    failResponse(
 
-    echo json_encode([
+        "Supplier SKU already exists",
 
-        "success" => false,
+        409,
 
-        "error" =>
-            "Supplier SKU already exists",
+        [
 
-        "sku" =>
-            $newProductSku
+            "step" =>
+                "DUPLICATE CHECK",
 
-    ]);
+            "sku" =>
+                $newProductSku
 
-    exit;
+        ]
+
+    );
 
 }
 
@@ -797,22 +1699,56 @@ if (
 
 $product =
     preg_replace(
+
         '/PRODUCT\s+AUTO/i',
+
         "PRODUCT "
         . $nextProductNumber,
+
         $product,
+
         1
+
     );
+
+
+if (
+    $product === null
+) {
+
+    failResponse(
+
+        "Unable to rename product header",
+
+        500,
+
+        [
+
+            "step" =>
+                "PRODUCT GENERATION"
+
+        ]
+
+    );
+
+}
 
 
 /* =====================================================
    FIND PRODUCTS ARRAY CLOSING
    ===================================================== */
 
+$step =
+    "BUILDING PRODUCTS.JS";
+
+
 $closingPosition =
     strrpos(
+
         $currentProducts,
+
         "];"
+
     );
 
 
@@ -820,18 +1756,20 @@ if (
     $closingPosition === false
 ) {
 
-    http_response_code(500);
+    failResponse(
 
-    echo json_encode([
+        "products.js closing array not found",
 
-        "success" => false,
+        500,
 
-        "error" =>
-            "products.js closing array not found"
+        [
 
-    ]);
+            "step" =>
+                $step
 
-    exit;
+        ]
+
+    );
 
 }
 
@@ -842,16 +1780,23 @@ if (
 
 $before =
     substr(
+
         $currentProducts,
+
         0,
+
         $closingPosition
+
     );
 
 
 $after =
     substr(
+
         $currentProducts,
+
         $closingPosition
+
     );
 
 
@@ -859,7 +1804,8 @@ $trimmedBefore =
     rtrim($before);
 
 
-$separator = "";
+$separator =
+    "";
 
 
 if (
@@ -869,7 +1815,8 @@ if (
     ) !== ","
 ) {
 
-    $separator = ",";
+    $separator =
+        ",";
 
 }
 
@@ -883,22 +1830,73 @@ $updatedProducts =
     . $after;
 
 
+if (
+    $updatedProducts === ""
+) {
+
+    failResponse(
+
+        "Unable to build updated products.js",
+
+        500,
+
+        [
+
+            "step" =>
+                $step
+
+        ]
+
+    );
+
+}
+
+
 /* =====================================================
-   UPLOAD PRODUCT IMAGES
+   IMAGE UPLOAD PREPARATION
    ===================================================== */
+
+$step =
+    "VALIDATING PRODUCT IMAGES";
+
 
 $uploadedImages = [];
 
-$uploadedImageMetadata = [];
+$createdImagePaths = [];
+
+$updatedImagePaths = [];
 
 
 if (
-    isset($_FILES["images"]) &&
-    isset($_FILES["images"]["name"]) &&
-    is_array(
-        $_FILES["images"]["name"]
-    )
+    isset($_FILES["images"])
 ) {
+
+    if (
+        !isset(
+            $_FILES["images"]["name"]
+        ) ||
+        !is_array(
+            $_FILES["images"]["name"]
+        )
+    ) {
+
+        failResponse(
+
+            "Invalid image upload structure",
+
+            400,
+
+            [
+
+                "step" =>
+                    $step
+
+            ]
+
+        );
+
+    }
+
 
     $imageCount =
         count(
@@ -906,15 +1904,75 @@ if (
         );
 
 
-    $allowedExtensions = [
+    if (
+        $imageCount < 1
+    ) {
 
-        "jpg",
-        "jpeg",
-        "png",
-        "webp",
-        "gif"
+        failResponse(
 
-    ];
+            "At least one product image is required",
+
+            400,
+
+            [
+
+                "step" =>
+                    $step
+
+            ]
+
+        );
+
+    }
+
+
+    if (
+        $imageCount > 50
+    ) {
+
+        failResponse(
+
+            "Too many product images",
+
+            413,
+
+            [
+
+                "step" =>
+                    $step,
+
+                "maximum_images" =>
+                    50
+
+            ]
+
+        );
+
+    }
+
+
+    /*
+       Validate all files BEFORE uploading
+       anything to GitHub.
+    */
+
+    $validatedFiles = [];
+
+
+    $finfo =
+        null;
+
+
+    if (
+        class_exists("finfo")
+    ) {
+
+        $finfo =
+            new finfo(
+                FILEINFO_MIME_TYPE
+            );
+
+    }
 
 
     for (
@@ -923,316 +1981,220 @@ if (
         $i++
     ) {
 
-        if (
+        $uploadError =
             $_FILES["images"]["error"][$i]
-            !== UPLOAD_ERR_OK
+            ?? UPLOAD_ERR_NO_FILE;
+
+
+        if (
+            $uploadError !== UPLOAD_ERR_OK
         ) {
 
-            continue;
+            failResponse(
+
+                "Image upload error",
+
+                400,
+
+                [
+
+                    "step" =>
+                        $step,
+
+                    "image" =>
+                        $_FILES["images"]["name"][$i]
+                        ?? "unknown",
+
+                    "upload_error" =>
+                        $uploadError
+
+                ]
+
+            );
 
         }
 
 
         $originalName =
-            $_FILES["images"]["name"][$i];
+            $_FILES["images"]["name"][$i]
+            ?? "";
+
 
         $tmpFile =
-            $_FILES["images"]["tmp_name"][$i];
+            $_FILES["images"]["tmp_name"][$i]
+            ?? "";
+
+
+        $fileSize =
+            intval(
+                $_FILES["images"]["size"][$i]
+                ?? 0
+            );
+
+
+        if (
+            $originalName === "" ||
+            $tmpFile === ""
+        ) {
+
+            failResponse(
+
+                "Invalid uploaded image",
+
+                400,
+
+                [
+
+                    "step" =>
+                        $step
+
+                ]
+
+            );
+
+        }
+
+
+        if (
+            !is_uploaded_file($tmpFile)
+        ) {
+
+            failResponse(
+
+                "Invalid upload source",
+
+                400,
+
+                [
+
+                    "step" =>
+                        $step,
+
+                    "image" =>
+                        $originalName
+
+                ]
+
+            );
+
+        }
+
+
+        if (
+            $fileSize <= 0
+        ) {
+
+            failResponse(
+
+                "Image file is empty",
+
+                400,
+
+                [
+
+                    "step" =>
+                        $step,
+
+                    "image" =>
+                        $originalName
+
+                ]
+
+            );
+
+        }
+
+
+        if (
+            $fileSize >
+            $maxImageBytes
+        ) {
+
+            failResponse(
+
+                "Image exceeds maximum size",
+
+                413,
+
+                [
+
+                    "step" =>
+                        $step,
+
+                    "image" =>
+                        $originalName,
+
+                    "maximum_bytes" =>
+                        $maxImageBytes
+
+                ]
+
+            );
+
+        }
 
 
         $extension =
             strtolower(
                 pathinfo(
+
                     $originalName,
+
                     PATHINFO_EXTENSION
+
                 )
             );
 
 
         if (
             !in_array(
+
                 $extension,
+
                 $allowedExtensions,
+
                 true
+
             )
         ) {
 
-            continue;
+            failResponse(
+
+                "Unsupported image extension",
+
+                400,
+
+                [
+
+                    "step" =>
+                        $step,
+
+                    "image" =>
+                        $originalName
+
+                ]
+
+            );
 
         }
 
+
+        /*
+           Sanitize filename.
+        */
 
         $safeName =
             preg_replace(
+
                 "/[^a-zA-Z0-9._-]/",
+
                 "-",
-                $originalName
+
+                basename($originalName)
+
             );
 
 
         if (
-            !$safeName
-        ) {
-
-            continue;
-
-        }
-
-
-        $githubImagePath =
-            $imagePath
-            . "/"
-            . $safeName;
-
-
-        $imageBinary =
-            file_get_contents(
-                $tmpFile
-            );
-
-
-        if (
-            $imageBinary === false
-        ) {
-
-            continue;
-
-        }
-
-
-        $imageBase64 =
-            base64_encode(
-                $imageBinary
-            );
-
-
-        $imageUrl =
-            $repoUrl
-            . "/contents/"
-            . $githubImagePath;
-
-
-        $existingImage =
-            githubRequest(
-                "GET",
-                $imageUrl,
-                $githubToken
-            );
-
-
-        $imagePayload = [
-
-            "message" =>
-                "Add product image: "
-                . $safeName,
-
-            "content" =>
-                $imageBase64
-
-        ];
-
-
-        if (
-            $existingImage["status"] === 200
-        ) {
-
-            $existingData =
-                json_decode(
-                    $existingImage["response"],
-                    true
-                );
-
-
-            if (
-                !empty(
-                    $existingData["sha"]
-                )
-            ) {
-
-                $imagePayload["sha"] =
-                    $existingData["sha"];
-
-                $imagePayload["message"] =
-                    "Update product image: "
-                    . $safeName;
-
-            }
-
-        }
-
-
-        $uploadResult =
-            githubRequest(
-                "PUT",
-                $imageUrl,
-                $githubToken,
-                $imagePayload
-            );
-
-
-        if (
-            $uploadResult["status"] !== 200 &&
-            $uploadResult["status"] !== 201
-        ) {
-
-            http_response_code(502);
-
-            echo json_encode([
-
-                "success" => false,
-
-                "error" =>
-                    "Image upload failed",
-
-                "image" =>
-                    $safeName,
-
-                "github_status" =>
-                    $uploadResult["status"],
-
-                "github_response" =>
-                    json_decode(
-                        $uploadResult["response"],
-                        true
-                    )
-
-            ]);
-
-            exit;
-
-        }
-
-
-        $uploadedImages[] =
-            $githubImagePath;
-
-
-        $uploadedImageMetadata[] = [
-
-            "path" =>
-                $githubImagePath,
-
-            "sha" =>
-                json_decode(
-                    $uploadResult["response"],
-                    true
-                )["content"]["sha"]
-                ?? null
-
-        ];
-
-    }
-
-}
-
-
-/* =====================================================
-   UPDATE PRODUCTS.JS
-   ===================================================== */
-
-$productsPayload = [
-
-    "message" =>
-        "Add Voltica product #"
-        . $nextProductNumber,
-
-    "content" =>
-        base64_encode(
-            $updatedProducts
-        ),
-
-    "sha" =>
-        $productsData["sha"]
-
-];
-
-
-$updateProducts =
-    githubRequest(
-        "PUT",
-        $productsUrl,
-        $githubToken,
-        $productsPayload
-    );
-
-
-if (
-    $updateProducts["status"] !== 200
-) {
-
-    /*
-       Images may already exist.
-       We report them explicitly so the
-       failure is visible to the admin.
-    */
-
-    http_response_code(502);
-
-    echo json_encode([
-
-        "success" => false,
-
-        "error" =>
-            "products.js update failed",
-
-        "github_status" =>
-            $updateProducts["status"],
-
-        "uploaded_images" =>
-            $uploadedImages,
-
-        "warning" =>
-            "Images were uploaded but products.js was not updated",
-
-        "github_response" =>
-            json_decode(
-                $updateProducts["response"],
-                true
-            )
-
-    ]);
-
-    exit;
-
-}
-
-
-/* =====================================================
-   SUCCESS
-   ===================================================== */
-
-echo json_encode([
-
-    "success" => true,
-
-    "message" =>
-        "Product successfully published",
-
-    "product_number" =>
-        $nextProductNumber,
-
-    "product_id" =>
-        $newProductId,
-
-    "sku" =>
-        $newProductSku,
-
-    "repository" =>
-        $githubOwner
-        . "/"
-        . $githubRepo,
-
-    "products_file" =>
-        $productsPath,
-
-    "uploaded_images" =>
-        $uploadedImages,
-
-    "github_status" =>
-        200
-
-]);
-
-exit;
-
-?>
+            !is_string($safeName) ||
+            $safe

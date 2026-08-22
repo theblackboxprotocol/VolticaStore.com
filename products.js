@@ -1162,5 +1162,64 @@ const volticaProducts = [
     stripe:
         "https://buy.stripe.com/3cI5kE3lRgIL31Sc0O2Ji0m"
 },
+
+// =================================================
+// PRODUCT 21 — VOLTICA 3D FACE RECOGNITION SMART DOOR LOCK
+// =================================================
+
+{
+    id: "3d-face-recognition-smart-door-lock",
+
+    sku: "VLT-LCK-D28",
+
+    name: "Voltica 3D Face Recognition Smart Door Lock",
+
+    category: "TECH",
+
+    badge: "NEW",
+
+    supplierLink:
+        "https://www.alibaba.com/x/B2LIA2?ck=pdp",
+
+    cost:
+        "154.92",
+
+    price:
+        "207.99",
+
+    currency: "USD",
+
+    images: [
+        "assets/images/1000050433.jpg",
+        "assets/images/1000050427.jpg",
+        "assets/images/1000050435.jpg",
+        "assets/images/1000050431.jpg",
+        "assets/images/1000050429.jpg"
+    ],
+
+    description:
+        "Upgrade your home security to futuristic standards with the Voltica 3D Face Recognition Smart Lock. Featuring advanced 3D biometric facial recognition, a built-in video intercom system, and seamless Tuya app integration, this lock offers effortless keyless entry and complete peace of mind. Designed with an elegant gold and brushed aluminum finish, it merges elite security with high-end modern aesthetics.",
+
+    specifications: [
+        ["​Model Reference", "D28 FACE (Voltica SKU: VLT-LCK-D28)"],
+        ["​Unlocking Modes", "3D Face Recognition, Tuya App, Fingerprint, Password, IC Card, Mechanical Key"],
+        ["Color Finish", "Gold / Brushed Aluminum"],
+        ["Material", "High-grade Aluminum Alloy"],
+        ["Compatibility", "Fits 95% of standard doors including wood, metal, iron, steel, and aluminum doors"],
+        ["Operating Temperature", "-25°C to 60°C"]
+    ],
+
+    features: [
+        ["01", "01-3D Facial Recognition: Hands-free entry powered by advanced facial mapping that recognizes you automatically as you approach the door. Works seamlessly day or night, with glasses, or with headwear.", ""],
+        ["02", "02-6-in-1 Unlocking Methods: Access your home via 3D Face Recognition, Tuya App, Fingerprint, Passcode, IC Card, or Mechanical Emergency Key.", ""],
+        ["03", "03-​Fully Automatic Motorized Mechanism: The lock bolts retract automatically upon a successful unlock and extend automatically when closing the door", "no manual locking required."],
+        ["04", "04-Smart Video Intercom & Camera: Built-in camera and screen allow you to see, speak to, and grant access to visitors directly from the integrated screen or your mobile app when the doorbell rings", ""],
+        ["05", "05-Real-Time Mobile Alerts: Receive instant notifications on your phone regarding lock status, anomalies, or security events via the Tuya ecosystem.", ""],
+        ["06", "05-Rechargeable Long-Life Battery: Equipped with a high-capacity lithium battery for extended standby times, complete with an emergency USB backup power port.", ""]
+    ],
+
+    stripe:
+        "https://buy.stripe.com/9B68wQbSn2RVbyoc0O2Ji0n"
+},
 ];
 

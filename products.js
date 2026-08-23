@@ -13,6 +13,7 @@ const volticaProducts = [
 
 {
     id: "q45",
+    active: true,
 
     productNumber: 1,
 

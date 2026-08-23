@@ -1689,3 +1689,83 @@ body::before {
     }
 
       }
+/* =========================================================
+   STORE EYEBROW — FUTURE PULSE
+   ========================================================= */
+
+.store-eyebrow {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 22px;
+
+    color: rgba(255,255,255,.34);
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    letter-spacing: .28em;
+}
+
+
+/* Gros pulse */
+
+.large-pulse {
+
+    width: 11px;
+
+    height: 11px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 12px rgba(255,255,255,.75),
+        0 0 28px rgba(255,255,255,.25);
+
+    animation:
+        futurePulse 2s infinite;
+}
+
+
+@keyframes futurePulse {
+
+    0% {
+
+        transform: scale(1);
+
+        box-shadow:
+            0 0 10px rgba(255,255,255,.70),
+            0 0 22px rgba(255,255,255,.20);
+
+    }
+
+    50% {
+
+        transform: scale(1.22);
+
+        box-shadow:
+            0 0 18px rgba(255,255,255,.95),
+            0 0 42px rgba(255,255,255,.32);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+        box-shadow:
+            0 0 10px rgba(255,255,255,.70),
+            0 0 22px rgba(255,255,255,.20);
+
+    }
+
+}

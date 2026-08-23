@@ -2,40 +2,119 @@
    VOLTICA STORE — PRODUCTS DATABASE
    =========================================================
 
-   Product database for:
+   Central product database for:
 
    - store.html
    - product-view.html
    - adminproductmanager.html
 
-   IMPORTANT:
-   No products are currently registered.
+   The ADMIN PRODUCT MANAGER is the source of truth.
+
+   Products are stored in localStorage and exposed through:
+
+       window.volticaProducts
 
    ========================================================= */
+
+"use strict";
 
 
 /* =========================================================
-   VOLTICA PRODUCTS
+   STORAGE
    ========================================================= */
 
-const volticaProducts = [];
+const VOLTICA_PRODUCTS_STORAGE_KEY =
+    "volticaProducts";
 
 
 /* =========================================================
-   PRODUCT DATABASE HELPERS
+   LOAD PRODUCT DATABASE
    ========================================================= */
+
+function loadVolticaProductsDatabase() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                VOLTICA_PRODUCTS_STORAGE_KEY
+            );
+
+
+        if (
+            saved
+        ) {
+
+            const parsed =
+                JSON.parse(
+                    saved
+                );
+
+
+            if (
+                Array.isArray(
+                    parsed
+                )
+            ) {
+
+                return parsed;
+
+            }
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "VOLTICA: Unable to load product database.",
+            error
+        );
+
+    }
+
+
+    return [];
+
+}
+
+
+/* =========================================================
+   GLOBAL DATABASE
+   ========================================================= */
+
+window.volticaProducts =
+    loadVolticaProductsDatabase();
+
 
 /*
-   Find a product by its ID.
+ * Local reference for the helper functions.
+ */
 
-   Example:
-   const product = getVolticaProduct("product-01");
+const volticaProducts =
+    window.volticaProducts;
+
+
+/* =========================================================
+   PRODUCT HELPERS
+   ========================================================= */
+
+
+/*
+   Find a product by ID.
 */
 
-function getVolticaProduct(productId) {
+function getVolticaProduct(
+    productId
+) {
 
     return volticaProducts.find(
-        product => product.id === productId
+        product =>
+            String(
+                product.id
+            ) ===
+            String(
+                productId
+            )
     );
 
 }
@@ -53,13 +132,30 @@ function getAllVolticaProducts() {
 
 
 /*
+   Get only active products.
+*/
+
+function getActiveVolticaProducts() {
+
+    return volticaProducts.filter(
+        product =>
+            product &&
+            product.active !== false
+    );
+
+}
+
+
+/*
    Get only featured products.
 */
 
 function getFeaturedVolticaProducts() {
 
     return volticaProducts.filter(
-        product => product.featured === true
+        product =>
+            product &&
+            product.featured === true
     );
 
 }
@@ -69,13 +165,29 @@ function getFeaturedVolticaProducts() {
    Get products by category.
 */
 
-function getVolticaProductsByCategory(category) {
+function getVolticaProductsByCategory(
+    category
+) {
+
+    if (
+        !category
+    ) {
+
+        return [];
+
+    }
+
 
     return volticaProducts.filter(
         product =>
+
             product.category &&
-            product.category.toLowerCase() ===
-            category.toLowerCase()
+
+            product.category
+                .toLowerCase() ===
+            category
+                .toLowerCase()
+
     );
 
 }
@@ -89,4 +201,46 @@ console.log(
     "VOLTICA PRODUCTS DATABASE LOADED:",
     volticaProducts.length,
     "products"
+);
+
+
+/* =========================================================
+   DEBUG
+   ========================================================= */
+
+console.table(
+    volticaProducts
+);
+
+
+/* =========================================================
+   PUBLIC API
+   ========================================================= */
+
+window.VolticaProducts = {
+
+    getAll:
+        getAllVolticaProducts,
+
+    getActive:
+        getActiveVolticaProducts,
+
+    getFeatured:
+        getFeaturedVolticaProducts,
+
+    getByCategory:
+        getVolticaProductsByCategory,
+
+    getById:
+        getVolticaProduct
+
+};
+
+
+/* =========================================================
+   DATABASE READY
+   ========================================================= */
+
+console.log(
+    "VOLTICA PRODUCT DATABASE — ONLINE"
 );

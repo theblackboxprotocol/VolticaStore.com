@@ -1,0 +1,1691 @@
+/* =========================================================
+   VOLTICA STORE — STORE.CSS
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(255,255,255,.075),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 0% 60%,
+            rgba(255,255,255,.025),
+            transparent 30%
+        ),
+        #050505;
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    overflow-x: hidden;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+::selection {
+
+    background:
+        rgba(255,255,255,.18);
+
+    color:
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+   ========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    pointer-events: none;
+
+    opacity: .10;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 75%
+        );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 75%
+        );
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.store-header {
+
+    width:
+        min(1240px,92vw);
+
+    margin:
+        auto;
+
+    padding:
+        27px 0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    position:
+        relative;
+
+    z-index:
+        20;
+
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.voltica-logo {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        11px;
+
+}
+
+
+.logo-mark {
+
+    width:
+        35px;
+
+    height:
+        35px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.17);
+
+    border-radius:
+        10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.08),
+
+        0 10px 30px
+        rgba(0,0,0,.35);
+
+    color:
+        #ffffff;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+}
+
+
+.logo-name {
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-size:
+        10px;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        .34em;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.store-navigation {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        28px;
+
+}
+
+
+.store-navigation a {
+
+    position:
+        relative;
+
+    color:
+        rgba(255,255,255,.30);
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        .20em;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.store-navigation a::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    bottom:
+        -8px;
+
+    width:
+        0;
+
+    height:
+        1px;
+
+    background:
+        rgba(255,255,255,.75);
+
+    transition:
+        width .25s ease;
+
+}
+
+
+.store-navigation a:hover,
+.store-navigation a.active {
+
+    color:
+        rgba(255,255,255,.82);
+
+}
+
+
+.store-navigation a:hover::after,
+.store-navigation a.active::after {
+
+    width:
+        100%;
+
+}
+
+
+/* =========================================================
+   WHITE PULSE
+   ========================================================= */
+
+.pulse-dot {
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    display:
+        inline-block;
+
+    flex-shrink:
+        0;
+
+    border-radius:
+        50%;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 0 10px
+        rgba(255,255,255,.55);
+
+    animation:
+        whitePulse 2s infinite;
+
+}
+
+
+@keyframes whitePulse {
+
+    0% {
+
+        box-shadow:
+            0 0 0 0
+            rgba(255,255,255,.45);
+
+    }
+
+    70% {
+
+        box-shadow:
+            0 0 0 11px
+            rgba(255,255,255,0);
+
+    }
+
+    100% {
+
+        box-shadow:
+            0 0 0 0
+            rgba(255,255,255,0);
+
+    }
+
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.store-hero {
+
+    width:
+        min(1180px,92vw);
+
+    min-height:
+        560px;
+
+    margin:
+        45px auto 0;
+
+    padding:
+        70px 25px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius:
+        30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.012)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.07),
+
+        inset 0 0 100px
+        rgba(255,255,255,.012),
+
+        0 30px 100px
+        rgba(0,0,0,.40);
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
+
+}
+
+
+.store-hero::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        10%;
+
+    right:
+        10%;
+
+    height:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.25),
+            transparent
+        );
+
+}
+
+
+.store-hero::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        500px;
+
+    height:
+        500px;
+
+    top:
+        50%;
+
+    left:
+        50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,255,255,.018);
+
+    filter:
+        blur(100px);
+
+    pointer-events:
+        none;
+
+}
+
+
+/* =========================================================
+   HERO STATUS
+   ========================================================= */
+
+.hero-status {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    padding:
+        10px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.05);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    color:
+        rgba(255,255,255,.35);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .23em;
+
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.store-hero h1 {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    margin:
+        30px 0 0;
+
+    color:
+        rgba(255,255,255,.82);
+
+    font-size:
+        clamp(65px,11vw,145px);
+
+    line-height:
+        .79;
+
+    font-weight:
+        650;
+
+    letter-spacing:
+        -.095em;
+
+}
+
+
+.store-hero h1 span {
+
+    color:
+        rgba(255,255,255,.20);
+
+}
+
+
+.hero-subtitle {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    max-width:
+        650px;
+
+    margin:
+        30px auto 0;
+
+    color:
+        rgba(255,255,255,.34);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.9;
+
+}
+
+
+.hero-line {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        min(430px,80%);
+
+    height:
+        1px;
+
+    margin:
+        35px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.20),
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   PRODUCT SECTION
+   ========================================================= */
+
+.product-section {
+
+    width:
+        min(1180px,92vw);
+
+    margin:
+        110px auto 150px;
+
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.section-header {
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    justify-content:
+        space-between;
+
+    gap:
+        25px;
+
+    margin-bottom:
+        25px;
+
+}
+
+
+.section-kicker {
+
+    display:
+        block;
+
+    color:
+        rgba(255,255,255,.22);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .23em;
+
+}
+
+
+.section-header h2 {
+
+    margin-top:
+        9px;
+
+    color:
+        rgba(255,255,255,.68);
+
+    font-size:
+        30px;
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -.045em;
+
+}
+
+
+.product-counter {
+
+    color:
+        rgba(255,255,255,.16);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .20em;
+
+}
+
+
+/* =========================================================
+   PRODUCT GRID
+   ========================================================= */
+
+.product-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        14px;
+
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
+
+.product-card {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.075);
+
+    border-radius:
+        22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.05),
+
+        0 20px 70px
+        rgba(0,0,0,.35);
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+
+}
+
+
+.product-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(255,255,255,.15);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.07),
+
+        0 30px 90px
+        rgba(0,0,0,.48);
+
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+.product-image {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    aspect-ratio:
+        1 / .88;
+
+    overflow:
+        hidden;
+
+    background:
+        #080808;
+
+}
+
+
+.product-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    transition:
+        transform .5s ease;
+
+}
+
+
+.product-card:hover
+.product-image img {
+
+    transform:
+        scale(1.035);
+
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+   ========================================================= */
+
+.product-image::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 48%,
+            rgba(0,0,0,.58)
+        );
+
+}
+
+
+/* =========================================================
+   PRODUCT STATUS
+   ========================================================= */
+
+.product-status {
+
+    position:
+        absolute;
+
+    top:
+        14px;
+
+    left:
+        14px;
+
+    z-index:
+        3;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    padding:
+        8px 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(0,0,0,.42);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    color:
+        rgba(255,255,255,.43);
+
+    font-size:
+        6px;
+
+    letter-spacing:
+        .17em;
+
+}
+
+
+/* =========================================================
+   PRODUCT NUMBER
+   ========================================================= */
+
+.product-number {
+
+    position:
+        absolute;
+
+    top:
+        17px;
+
+    right:
+        17px;
+
+    z-index:
+        3;
+
+    color:
+        rgba(255,255,255,.27);
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        .18em;
+
+}
+
+
+/* =========================================================
+   PRODUCT CONTENT
+   ========================================================= */
+
+.product-content {
+
+    padding:
+        23px;
+
+}
+
+
+.product-category {
+
+    color:
+        rgba(255,255,255,.18);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .20em;
+
+}
+
+
+.product-card h3 {
+
+    margin:
+        12px 0 0;
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-size:
+        25px;
+
+    line-height:
+        .92;
+
+    letter-spacing:
+        -.05em;
+
+}
+
+
+.product-description {
+
+    margin:
+        17px 0 0;
+
+    color:
+        rgba(255,255,255,.34);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.75;
+
+}
+
+
+.product-bottom {
+
+    margin-top:
+        24px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        12px;
+
+}
+
+
+.product-price {
+
+    color:
+        rgba(255,255,255,.76);
+
+    font-size:
+        22px;
+
+    letter-spacing:
+        -.035em;
+
+}
+
+
+.product-price small {
+
+    color:
+        rgba(255,255,255,.20);
+
+    font-size:
+        6px;
+
+    letter-spacing:
+        .17em;
+
+}
+
+
+/* =========================================================
+   VIEW PRODUCT BUTTON
+   ========================================================= */
+
+.view-button {
+
+    min-height:
+        44px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    padding:
+        0 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    color:
+        rgba(255,255,255,.60);
+
+    font-size:
+        7px;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        .13em;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.view-button strong {
+
+    font-size:
+        15px;
+
+    font-weight:
+        400;
+
+}
+
+
+.view-button:hover {
+
+    background:
+        rgba(255,255,255,.88);
+
+    color:
+        #050505;
+
+    border-color:
+        rgba(255,255,255,.88);
+
+}
+
+
+/* =========================================================
+   EMPTY STORE
+   ========================================================= */
+
+.empty-store {
+
+    min-height:
+        260px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    padding:
+        40px;
+
+    border:
+        1px dashed
+        rgba(255,255,255,.10);
+
+    border-radius:
+        22px;
+
+    background:
+        rgba(255,255,255,.012);
+
+}
+
+
+.empty-store h3 {
+
+    margin-top:
+        18px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size:
+        18px;
+
+    letter-spacing:
+        -.02em;
+
+}
+
+
+.empty-store p {
+
+    margin-top:
+        10px;
+
+    color:
+        rgba(255,255,255,.22);
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   STORE CTA
+   ========================================================= */
+
+.store-cta {
+
+    width:
+        min(1180px,92vw);
+
+    margin:
+        0 auto 150px;
+
+}
+
+
+.cta-glass {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    min-height:
+        430px;
+
+    padding:
+        70px 30px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-radius:
+        28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.06),
+
+        0 30px 100px
+        rgba(0,0,0,.38);
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
+
+}
+
+
+.cta-glass::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        10%;
+
+    right:
+        10%;
+
+    height:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.24),
+            transparent
+        );
+
+}
+
+
+.cta-glass h2 {
+
+    margin:
+        20px 0 0;
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-size:
+        clamp(50px,8vw,95px);
+
+    line-height:
+        .82;
+
+    letter-spacing:
+        -.08em;
+
+}
+
+
+.cta-glass p {
+
+    max-width:
+        550px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.29);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.8;
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.store-footer {
+
+    width:
+        min(1180px,92vw);
+
+    margin:
+        0 auto;
+
+    padding:
+        25px 0 45px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    color:
+        rgba(255,255,255,.13);
+
+    font-size:
+        6px;
+
+    letter-spacing:
+        .20em;
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width:1000px) {
+
+    .product-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width:650px) {
+
+    .store-header {
+
+        width:
+            90vw;
+
+        padding-top:
+            20px;
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .store-navigation {
+
+        gap:
+            13px;
+
+    }
+
+
+    .store-navigation a {
+
+        font-size:
+            6px;
+
+    }
+
+
+    .logo-mark {
+
+        width:
+            31px;
+
+        height:
+            31px;
+
+        font-size:
+            12px;
+
+    }
+
+
+    .logo-name {
+
+        font-size:
+            8px;
+
+    }
+
+
+    .store-hero {
+
+        width:
+            90vw;
+
+        min-height:
+            480px;
+
+        margin-top:
+            25px;
+
+        padding:
+            55px 15px;
+
+    }
+
+
+    .store-hero h1 {
+
+        font-size:
+            clamp(58px,17vw,90px);
+
+    }
+
+
+    .hero-subtitle {
+
+        font-size:
+            12px;
+
+    }
+
+
+    .product-section {
+
+        width:
+            90vw;
+
+        margin-top:
+            75px;
+
+    }
+
+
+    .section-header {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            12px;
+
+    }
+
+
+    .product-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .product-card h3 {
+
+        font-size:
+            27px;
+
+    }
+
+
+    .product-description {
+
+        font-size:
+            13px;
+
+    }
+
+
+    .store-cta {
+
+        width:
+            90vw;
+
+    }
+
+
+    .cta-glass {
+
+        min-height:
+            370px;
+
+        padding:
+            50px 20px;
+
+    }
+
+
+    .cta-glass h2 {
+
+        font-size:
+            clamp(48px,15vw,80px);
+
+    }
+
+
+    .store-footer {
+
+        width:
+            90vw;
+
+        flex-direction:
+            column;
+
+        gap:
+            12px;
+
+        text-align:
+            center;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior:
+            auto;
+
+    }
+
+
+    .pulse-dot {
+
+        animation:
+            none;
+
+    }
+
+
+    .product-card,
+    .product-image img,
+    .view-button {
+
+        transition:
+            none;
+
+    }
+
+      }

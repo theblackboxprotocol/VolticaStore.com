@@ -1,37 +1,37 @@
-const STORAGE_KEY = 'voltica_products_data';
+const STORAGE_KEY = 'voltica_products_database';
 
-// Obtenir tous les produits
+// Retrieve all active inventory
 function getProducts() {
     const data = localStorage.getItem(STORAGE_KEY);
     return data ? JSON.parse(data) : [];
 }
 
-// Sauvegarder un produit (Admin)
+// Save or update a single hardware entry
 function saveSingleProduct(product) {
     let products = getProducts();
-    if (!product.id) product.id = 'prod_' + Date.now();
-    
-    const index = products.findIndex(p => p.id === product.id);
-    if (index > -1) {
-        products[index] = product;
+    if (!product.id) product.id = 'vlt_' + Date.now();
+
+    const existingIndex = products.findIndex(p => p.id === product.id);
+    if (existingIndex > -1) {
+        products[existingIndex] = product;
     } else {
         products.push(product);
     }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
 }
 
-// Supprimer un produit
+// Remove item from inventory
 function deleteProduct(id) {
     let products = getProducts().filter(p => p.id !== id);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
 }
 
-// Obtenir un seul produit par ID
+// Fetch single product by ID
 function getProductById(id) {
     return getProducts().find(p => p.id === id);
 }
 
-// Affichage dynamique dans store.html
+// Render dynamic storefront grid
 function renderStoreFront() {
     const products = getProducts();
     const categories = ['earbuds', 'gaming', 'creator', 'headphones', 'tech', 'lifestyle'];
@@ -41,9 +41,9 @@ function renderStoreFront() {
         if (!grid) return;
 
         const catProducts = products.filter(p => p.category === cat);
-        
+
         if (catProducts.length === 0) {
-            grid.innerHTML = `<p style="opacity:0.4; grid-column:1/-1;">Aucun produit disponible dans cette catégorie.</p>`;
+            grid.innerHTML = `<p style="opacity: 0.3; grid-column: 1 / -1; font-size: 11px; letter-spacing: 0.15em;">NO PRODUCTS AVAILABLE IN THIS COLLECTION.</p>`;
             return;
         }
 

@@ -2,15 +2,26 @@
    VOLTICA STORE — PRODUCTS DATABASE
    =========================================================
 
-   Central product database for:
+   CENTRAL PRODUCT DATABASE
+
+   Source of truth:
+       localStorage
+       "voltica_products_admin"
+
+   Used by:
 
    - store.html
    - product-view.html
    - adminproductmanager.html
+   - store.js
+   - product-view.js
 
-   The ADMIN PRODUCT MANAGER is the source of truth.
+   IMPORTANT:
+   The Admin Product Manager saves products using:
 
-   Products are stored in localStorage and exposed through:
+       vol­tica_products_admin
+
+   This file reads that exact database and exposes it as:
 
        window.volticaProducts
 
@@ -20,18 +31,18 @@
 
 
 /* =========================================================
-   STORAGE
+   STORAGE CONFIGURATION
    ========================================================= */
 
 const VOLTICA_PRODUCTS_STORAGE_KEY =
-    "volticaProducts";
+    "voltica_products_admin";
 
 
 /* =========================================================
-   LOAD PRODUCT DATABASE
+   LOAD DATABASE
    ========================================================= */
 
-function loadVolticaProductsDatabase() {
+function loadVolticaProducts() {
 
     try {
 
@@ -41,67 +52,69 @@ function loadVolticaProductsDatabase() {
             );
 
 
-        if (
-            saved
-        ) {
+        if (!saved) {
 
-            const parsed =
-                JSON.parse(
-                    saved
-                );
-
-
-            if (
-                Array.isArray(
-                    parsed
-                )
-            ) {
-
-                return parsed;
-
-            }
+            return [];
 
         }
+
+
+        const parsed =
+            JSON.parse(
+                saved
+            );
+
+
+        if (
+            Array.isArray(parsed)
+        ) {
+
+            return parsed;
+
+        }
+
+
+        console.warn(
+            "VOLTICA: Product database exists but is not an array."
+        );
+
+
+        return [];
 
     } catch (error) {
 
         console.error(
-            "VOLTICA: Unable to load product database.",
+            "VOLTICA: Failed to load product database.",
             error
         );
 
+
+        return [];
+
     }
-
-
-    return [];
 
 }
 
 
 /* =========================================================
-   GLOBAL DATABASE
+   GLOBAL PRODUCT DATABASE
    ========================================================= */
 
 window.volticaProducts =
-    loadVolticaProductsDatabase();
+    loadVolticaProducts();
 
 
 /*
- * Local reference for the helper functions.
- */
+   Local reference.
+*/
 
 const volticaProducts =
     window.volticaProducts;
 
 
 /* =========================================================
-   PRODUCT HELPERS
+   PRODUCT LOOKUP
    ========================================================= */
-
-
-/*
-   Find a product by ID.
-*/
 
 function getVolticaProduct(
     productId
@@ -109,20 +122,16 @@ function getVolticaProduct(
 
     return volticaProducts.find(
         product =>
-            String(
-                product.id
-            ) ===
-            String(
-                productId
-            )
+            String(product.id) ===
+            String(productId)
     );
 
 }
 
 
-/*
-   Get all products.
-*/
+/* =========================================================
+   GET ALL PRODUCTS
+   ========================================================= */
 
 function getAllVolticaProducts() {
 
@@ -131,9 +140,9 @@ function getAllVolticaProducts() {
 }
 
 
-/*
-   Get only active products.
-*/
+/* =========================================================
+   GET ACTIVE PRODUCTS
+   ========================================================= */
 
 function getActiveVolticaProducts() {
 
@@ -146,9 +155,9 @@ function getActiveVolticaProducts() {
 }
 
 
-/*
-   Get only featured products.
-*/
+/* =========================================================
+   GET FEATURED PRODUCTS
+   ========================================================= */
 
 function getFeaturedVolticaProducts() {
 
@@ -161,17 +170,15 @@ function getFeaturedVolticaProducts() {
 }
 
 
-/*
-   Get products by category.
-*/
+/* =========================================================
+   GET PRODUCTS BY CATEGORY
+   ========================================================= */
 
 function getVolticaProductsByCategory(
     category
 ) {
 
-    if (
-        !category
-    ) {
+    if (!category) {
 
         return [];
 
@@ -187,8 +194,27 @@ function getVolticaProductsByCategory(
                 .toLowerCase() ===
             category
                 .toLowerCase()
-
     );
+
+}
+
+
+/* =========================================================
+   REFRESH DATABASE
+   =========================================================
+
+   Useful if the Admin Product Manager
+   modifies localStorage while another
+   page is open.
+
+   ========================================================= */
+
+function refreshVolticaProducts() {
+
+    window.volticaProducts =
+        loadVolticaProducts();
+
+    return window.volticaProducts;
 
 }
 
@@ -198,19 +224,80 @@ function getVolticaProductsByCategory(
    ========================================================= */
 
 console.log(
-    "VOLTICA PRODUCTS DATABASE LOADED:",
-    volticaProducts.length,
-    "products"
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+);
+
+console.log(
+    "VOLTICA PRODUCTS DATABASE"
+);
+
+console.log(
+    "STATUS: ONLINE"
+);
+
+console.log(
+    "PRODUCTS:",
+    window.volticaProducts.length
+);
+
+console.log(
+    "STORAGE:",
+    VOLTICA_PRODUCTS_STORAGE_KEY
+);
+
+console.log(
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 );
 
 
 /* =========================================================
-   DEBUG
+   PRODUCT DEBUG TABLE
    ========================================================= */
 
-console.table(
-    volticaProducts
-);
+if (
+    window.volticaProducts.length
+) {
+
+    console.table(
+        window.volticaProducts.map(
+            product => ({
+
+                ID:
+                    product.id,
+
+                NAME:
+                    product.name,
+
+                CATEGORY:
+                    product.category,
+
+                SKU:
+                    product.sku,
+
+                PRICE:
+                    product.price,
+
+                ACTIVE:
+                    product.active !== false,
+
+                IMAGES:
+                    Array.isArray(
+                        product.images
+                    )
+                        ? product.images.length
+                        : 0
+
+            })
+        )
+    );
+
+} else {
+
+    console.log(
+        "VOLTICA: No products registered yet."
+    );
+
+}
 
 
 /* =========================================================
@@ -232,7 +319,10 @@ window.VolticaProducts = {
         getVolticaProductsByCategory,
 
     getById:
-        getVolticaProduct
+        getVolticaProduct,
+
+    refresh:
+        refreshVolticaProducts
 
 };
 
@@ -242,5 +332,5 @@ window.VolticaProducts = {
    ========================================================= */
 
 console.log(
-    "VOLTICA PRODUCT DATABASE — ONLINE"
+    "VOLTICA PRODUCT DATABASE — READY"
 );

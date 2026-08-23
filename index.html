@@ -12,25 +12,1060 @@
 
     <meta
         name="description"
-        content="Voltica Store — The future of everyday arrives September 1st."
+        content="Voltica Store — The future of everyday."
     >
 
     <meta
         name="theme-color"
-        content="#050505"
+        content="#030303"
     >
 
-    <title>Voltica Store — The Future Arrives September 1st</title>
+    <title>Voltica — The Future of Everyday</title>
 
 
-    <!-- =================================================
-         INDEX STYLES
-         ================================================= -->
+    <style>
 
-    <link
-        rel="stylesheet"
-        href="index.css"
-    >
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(100,100,100,.16),
+                    transparent 35%
+                ),
+                #030303;
+
+            color: #fff;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+
+        /* =================================================
+           BACKGROUND
+           ================================================= */
+
+        .tech-grid {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            opacity: .16;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                45px 45px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 85%
+                );
+
+            z-index: 0;
+        }
+
+
+        /* =================================================
+           HEADER
+           ================================================= */
+
+        header {
+
+            position: relative;
+
+            z-index: 10;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                22px
+                clamp(20px,5vw,70px);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.08);
+
+            background:
+                rgba(5,5,5,.72);
+
+            backdrop-filter:
+                blur(24px);
+        }
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 800;
+
+            letter-spacing: .18em;
+        }
+
+
+        .logo-v {
+
+            width: 38px;
+
+            height: 38px;
+
+            display: grid;
+
+            place-items: center;
+
+            border:
+                1px solid
+                rgba(255,255,255,.35);
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.20),
+                    rgba(255,255,255,.03)
+                );
+
+            box-shadow:
+                inset 0 1px rgba(255,255,255,.2),
+                0 0 25px rgba(255,255,255,.08);
+        }
+
+
+        nav {
+
+            display: flex;
+
+            gap: 25px;
+        }
+
+
+        nav a {
+
+            color:
+                rgba(255,255,255,.65);
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            letter-spacing: .15em;
+
+            transition: .25s;
+        }
+
+
+        nav a:hover {
+
+            color: white;
+        }
+
+
+        /* =================================================
+           HERO
+           ================================================= */
+
+        .hero {
+
+            position: relative;
+
+            z-index: 1;
+
+            min-height:
+                78vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding:
+                80px 20px 60px;
+        }
+
+
+        .hero-content {
+
+            width: min(1100px,100%);
+        }
+
+
+        .eyebrow {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding:
+                9px 15px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.14);
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,.055);
+
+            backdrop-filter:
+                blur(20px);
+
+            font-size: 10px;
+
+            letter-spacing: .22em;
+
+            color:
+                rgba(255,255,255,.75);
+        }
+
+
+        .pulse {
+
+            width: 7px;
+
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #fff;
+
+            box-shadow:
+                0 0 12px #fff;
+
+            animation:
+                pulse 1.7s infinite;
+        }
+
+
+        @keyframes pulse {
+
+            0%,100% {
+                opacity: .45;
+                transform: scale(.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+
+        .hero h1 {
+
+            margin-top: 28px;
+
+            font-size:
+                clamp(52px,11vw,145px);
+
+            line-height: .84;
+
+            letter-spacing:
+                -.075em;
+
+            font-weight: 900;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #fff,
+                    #aaa 55%,
+                    #444
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+        }
+
+
+        .hero h1 span {
+
+            display: block;
+        }
+
+
+        .hero-subtitle {
+
+            margin:
+                30px auto 0;
+
+            max-width: 600px;
+
+            color:
+                rgba(255,255,255,.55);
+
+            line-height: 1.7;
+
+            font-size:
+                clamp(14px,2vw,18px);
+        }
+
+
+        /* =================================================
+           PRODUCT
+           ================================================= */
+
+        .product-section {
+
+            position: relative;
+
+            z-index: 2;
+
+            width:
+                min(1150px,92%);
+
+            margin:
+                0 auto 100px;
+        }
+
+
+        .product-card {
+
+            display: grid;
+
+            grid-template-columns:
+                1.15fr
+                .85fr;
+
+            overflow: hidden;
+
+            border:
+                1px solid
+                rgba(255,255,255,.13);
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.10),
+                    rgba(255,255,255,.025)
+                );
+
+            backdrop-filter:
+                blur(30px);
+
+            box-shadow:
+                0 40px 100px
+                rgba(0,0,0,.55);
+        }
+
+
+        /* =================================================
+           GALLERY
+           ================================================= */
+
+        .product-gallery {
+
+            padding: 20px;
+
+            min-width: 0;
+        }
+
+
+        .main-image {
+
+            position: relative;
+
+            aspect-ratio: 1 / 1;
+
+            overflow: hidden;
+
+            border-radius: 22px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,.12),
+                    rgba(0,0,0,.7)
+                );
+
+            cursor: pointer;
+        }
+
+
+        .main-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+
+            transition:
+                transform .5s ease;
+        }
+
+
+        .main-image:hover img {
+
+            transform: scale(1.035);
+        }
+
+
+        .reflection {
+
+            position: absolute;
+
+            inset: auto 0 0;
+
+            height: 40%;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(255,255,255,.08)
+                );
+
+            pointer-events: none;
+        }
+
+
+        .thumbnails {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(6,1fr);
+
+            gap: 8px;
+
+            margin-top: 10px;
+        }
+
+
+        .thumbnail {
+
+            aspect-ratio: 1;
+
+            overflow: hidden;
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,.04);
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+
+        .thumbnail.active {
+
+            border-color:
+                rgba(255,255,255,.75);
+
+            box-shadow:
+                0 0 18px
+                rgba(255,255,255,.12);
+        }
+
+
+        .thumbnail img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        /* =================================================
+           PRODUCT INFO
+           ================================================= */
+
+        .product-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding:
+                clamp(28px,5vw,65px);
+        }
+
+
+        .product-label {
+
+            font-size: 10px;
+
+            letter-spacing: .25em;
+
+            color:
+                rgba(255,255,255,.45);
+
+            margin-bottom: 12px;
+        }
+
+
+        .product-info h2 {
+
+            font-size:
+                clamp(34px,5vw,64px);
+
+            line-height: .95;
+
+            letter-spacing:
+                -.05em;
+
+            margin-bottom: 20px;
+        }
+
+
+        .description {
+
+            color:
+                rgba(255,255,255,.58);
+
+            line-height: 1.75;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .price {
+
+            display: flex;
+
+            align-items: baseline;
+
+            gap: 12px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .price strong {
+
+            font-size: 32px;
+        }
+
+
+        .reference {
+
+            text-decoration: line-through;
+
+            color:
+                rgba(255,255,255,.30);
+
+            font-size: 14px;
+        }
+
+
+        /* =================================================
+           15% PASS
+           ================================================= */
+
+        .pass {
+
+            padding: 17px;
+
+            margin-bottom: 22px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.16);
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.09),
+                    rgba(255,255,255,.025)
+                );
+
+            box-shadow:
+                inset 0 1px rgba(255,255,255,.08);
+        }
+
+
+        .pass strong {
+
+            display: block;
+
+            font-size: 13px;
+
+            letter-spacing: .08em;
+
+            margin-bottom: 5px;
+        }
+
+
+        .pass span {
+
+            color:
+                rgba(255,255,255,.48);
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =================================================
+           BUTTON
+           ================================================= */
+
+        .preorder {
+
+            width: 100%;
+
+            border: none;
+
+            padding: 18px 22px;
+
+            border-radius: 15px;
+
+            background: white;
+
+            color: #050505;
+
+            font-weight: 900;
+
+            font-size: 13px;
+
+            letter-spacing: .16em;
+
+            cursor: pointer;
+
+            transition:
+                transform .2s,
+                box-shadow .2s;
+        }
+
+
+        .preorder:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 15px 45px
+                rgba(255,255,255,.18);
+        }
+
+
+        .preorder:active {
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =================================================
+           MODAL
+           ================================================= */
+
+        .modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 100;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(0,0,0,.82);
+
+            backdrop-filter:
+                blur(18px);
+        }
+
+
+        .modal.active {
+
+            display: flex;
+        }
+
+
+        .modal-box {
+
+            position: relative;
+
+            width:
+                min(850px,100%);
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(28,28,28,.96),
+                    rgba(7,7,7,.97)
+                );
+
+            box-shadow:
+                0 50px 140px
+                rgba(0,0,0,.75);
+
+            padding:
+                clamp(25px,5vw,55px);
+        }
+
+
+        .modal-close {
+
+            position: absolute;
+
+            top: 18px;
+
+            right: 20px;
+
+            width: 40px;
+
+            height: 40px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.06);
+
+            color: white;
+
+            font-size: 25px;
+
+            cursor: pointer;
+        }
+
+
+        .modal-box .eyebrow {
+
+            margin-bottom: 20px;
+        }
+
+
+        .modal-box h2 {
+
+            font-size:
+                clamp(34px,6vw,64px);
+
+            letter-spacing:
+                -.055em;
+
+            margin-bottom: 22px;
+        }
+
+
+        .modal-box p {
+
+            color:
+                rgba(255,255,255,.62);
+
+            line-height: 1.85;
+
+            font-size: 15px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .details-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 10px;
+
+            margin:
+                30px 0;
+        }
+
+
+        .detail {
+
+            padding: 17px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,.035);
+        }
+
+
+        .detail span {
+
+            display: block;
+
+            color:
+                rgba(255,255,255,.38);
+
+            font-size: 9px;
+
+            letter-spacing: .18em;
+
+            margin-bottom: 7px;
+        }
+
+
+        .detail strong {
+
+            font-size: 13px;
+        }
+
+
+        .modal-buy {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 18px;
+
+            border-radius: 14px;
+
+            background: white;
+
+            color: #000;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            font-weight: 900;
+
+            letter-spacing: .15em;
+        }
+
+
+        /* =================================================
+           FOOTER
+           ================================================= */
+
+        footer {
+
+            position: relative;
+
+            z-index: 2;
+
+            padding:
+                35px 20px;
+
+            text-align: center;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.07);
+
+            color:
+                rgba(255,255,255,.30);
+
+            font-size: 10px;
+
+            letter-spacing: .18em;
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 760px) {
+
+            header {
+
+                padding: 17px 18px;
+            }
+
+
+            nav {
+
+                gap: 13px;
+            }
+
+
+            nav a {
+
+                font-size: 9px;
+            }
+
+
+            .logo {
+
+                font-size: 11px;
+            }
+
+
+            .logo-v {
+
+                width: 32px;
+
+                height: 32px;
+            }
+
+
+            .hero {
+
+                min-height: 65vh;
+
+                padding-top: 55px;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    clamp(48px,16vw,82px);
+            }
+
+
+            .product-card {
+
+                grid-template-columns: 1fr;
+
+                border-radius: 22px;
+            }
+
+
+            .product-gallery {
+
+                padding: 12px;
+            }
+
+
+            .product-info {
+
+                padding:
+                    28px 22px 30px;
+            }
+
+
+            .product-info h2 {
+
+                font-size: 43px;
+            }
+
+
+            .thumbnails {
+
+                grid-template-columns:
+                    repeat(6,1fr);
+            }
+
+
+            .details-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .modal {
+
+                padding: 10px;
+            }
+
+
+            .modal-box {
+
+                border-radius: 20px;
+
+                padding:
+                    25px 20px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -38,468 +1073,351 @@
 <body>
 
 
-<!-- =====================================================
-     AMBIENT BACKGROUND
-     ===================================================== -->
-
-<div class="ambient-background">
-
-    <div class="ambient-orb orb-one"></div>
-
-    <div class="ambient-orb orb-two"></div>
-
-    <div class="ambient-grid"></div>
-
-</div>
-
+<div class="tech-grid"></div>
 
 
 <!-- =====================================================
      HEADER
      ===================================================== -->
 
-<header class="site-header">
-
+<header>
 
     <a
         href="index.html"
-        class="voltica-logo"
+        class="logo"
     >
 
-        <span class="logo-mark">
+        <span class="logo-v">
             V
         </span>
 
-        <span class="logo-name">
+        <span>
             VOLTICA
         </span>
 
     </a>
 
 
-    <nav class="main-navigation">
+    <nav>
 
-
-        <a
-            href="index.html"
-            class="active"
-        >
+        <a href="index.html">
             HOME
         </a>
 
-
-        <a href="store.html">
+        <a href="#product">
             STORE
         </a>
 
-
-        <a href="contact.html">
-            CONTACT US
+        <a href="mailto:support@volticastore.com">
+            CONTACT
         </a>
 
-
     </nav>
-
 
 </header>
 
 
 
 <!-- =====================================================
-     MAIN HERO
+     HERO
      ===================================================== -->
 
-<main>
+<section class="hero">
 
+    <div class="hero-content">
 
-<section class="hero-section">
+        <span class="eyebrow">
 
+            <span class="pulse"></span>
 
-    <!-- ================================================
-         STATUS
-         ================================================ -->
+            VOLTICA STORE — PRE-ORDER
 
-    <div class="launch-status">
-
-        <span class="pulse-dot"></span>
-
-        VOLTICA STORE / SYSTEM ONLINE
-
-    </div>
-
-
-
-    <!-- ================================================
-         MAIN TITLE
-         ================================================ -->
-
-    <h1 class="hero-title">
-
-        THE FUTURE
-
-        <span>
-            IS COMING.
         </span>
 
-    </h1>
 
-
-
-    <!-- ================================================
-         DATE
-         ================================================ -->
-
-    <div class="launch-date">
-
-        <span class="date-line"></span>
-
-
-        <div>
-
-            <small>
-                OFFICIAL LAUNCH
-            </small>
-
-            <strong>
-                SEPTEMBER 1ST
-            </strong>
-
-        </div>
-
-
-        <span class="date-line"></span>
-
-    </div>
-
-
-
-    <!-- ================================================
-         DESCRIPTION
-         ================================================ -->
-
-    <p class="hero-description">
-
-        A new generation of technology,
-        intelligent gear and extraordinary products
-        is about to arrive.
-
-        <br>
-
-        Welcome to Voltica.
-
-    </p>
-
-
-
-    <!-- ================================================
-         ACTIONS
-         ================================================ -->
-
-    <div class="hero-actions">
-
-
-        <a
-            href="store.html"
-            class="primary-button"
-        >
+        <h1>
 
             <span>
-                ENTER VOLTICA
+                THE FUTURE
             </span>
 
-            <strong>
-                →
-            </strong>
+            <span>
+                OF EVERYDAY
+            </span>
 
-        </a>
+        </h1>
 
 
-        <a
-            href="#about"
-            class="secondary-button"
-        >
+        <p class="hero-subtitle">
 
-            DISCOVER MORE
+            Technology selected for the next generation.
+            Discover the first Voltica collection.
 
-        </a>
-
+        </p>
 
     </div>
-
 
 </section>
 
 
 
 <!-- =====================================================
-     FLOATING GLASS STATEMENT
-     ===================================================== -->
-
-<section class="future-panel-section">
-
-
-    <div class="future-panel">
-
-
-        <div class="panel-top">
-
-
-            <span class="panel-label">
-
-                <span class="pulse-dot"></span>
-
-                NEXT-GENERATION COMMERCE
-
-            </span>
-
-
-            <span class="panel-number">
-                01 / 01
-            </span>
-
-
-        </div>
-
-
-
-        <div class="panel-content">
-
-
-            <h2>
-
-                TECHNOLOGY
-                <br>
-
-                <span>WITHOUT LIMITS.</span>
-
-            </h2>
-
-
-            <p>
-
-                Voltica is built around one idea:
-                the products of tomorrow should feel
-                different today.
-
-            </p>
-
-
-        </div>
-
-
-
-        <div class="panel-bottom">
-
-
-            <span>
-                SEPTEMBER 01 / 2026
-            </span>
-
-
-            <span>
-                VOLTICA STORE
-            </span>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     ABOUT
+     PRODUCT
      ===================================================== -->
 
 <section
-    class="about-section"
-    id="about"
+    class="product-section"
+    id="product"
 >
 
 
-    <div class="section-heading">
+    <article class="product-card">
 
 
-        <span class="section-kicker">
+        <!-- GALLERY -->
 
-            THE VOLTICA STANDARD
-
-        </span>
+        <div class="product-gallery">
 
 
-        <span class="section-line"></span>
+            <div
+                class="main-image"
+                id="mainImageContainer"
+            >
+
+                <img
+                    id="mainImage"
+                    src="assets/images/g451-1.webp"
+                    alt="Voltica G451"
+                >
+
+                <div class="reflection"></div>
+
+            </div>
 
 
-    </div>
+            <div
+                class="thumbnails"
+                id="thumbnails"
+            ></div>
+
+
+        </div>
 
 
 
-    <div class="about-grid">
+        <!-- INFORMATION -->
+
+        <div class="product-info">
 
 
-        <!-- =============================================
-             CARD 01
-             ============================================= -->
-
-        <article class="about-card">
-
-
-            <span class="card-number">
-                01
+            <span class="product-label">
+                VOLTICA COLLECTION
             </span>
 
 
-            <span class="pulse-dot"></span>
+            <h2>
+                VOLTICA G451
+            </h2>
 
 
-            <h3>
-                CURATED
-            </h3>
+            <p class="description">
 
-
-            <p>
-
-                We search for technology that
-                actually deserves your attention.
+                Experience the next generation of
+                everyday technology with the Voltica G451.
+                A futuristic product selected for the
+                Voltica collection, designed to combine
+                modern aesthetics, premium presentation
+                and an immersive technology experience.
 
             </p>
 
 
-        </article>
+            <div class="price">
+
+                <strong>
+                    $PRE-ORDER
+                </strong>
+
+            </div>
 
 
+            <div class="pass">
 
-        <!-- =============================================
-             CARD 02
-             ============================================= -->
+                <strong>
+                    🎟️ YOUR VOLTICA 15% PASS
+                </strong>
 
-        <article class="about-card">
+                <span>
+                    Every eligible pre-order receives
+                    access to the exclusive Voltica
+                    15% lifetime promotional pass.
+                </span>
 
-
-            <span class="card-number">
-                02
-            </span>
-
-
-            <span class="pulse-dot"></span>
-
-
-            <h3>
-                DIFFERENT
-            </h3>
+            </div>
 
 
-            <p>
+            <button
+                type="button"
+                class="preorder"
+                id="preorderButton"
+            >
 
-                Products chosen to stand apart
-                from ordinary online shopping.
-
-            </p>
-
-
-        </article>
-
-
-
-        <!-- =============================================
-             CARD 03
-             ============================================= -->
-
-        <article class="about-card">
+                PRE-ORDER NOW →
+                
+            </button>
 
 
-            <span class="card-number">
-                03
-            </span>
+        </div>
 
-
-            <span class="pulse-dot"></span>
-
-
-            <h3>
-                FUTURE
-            </h3>
-
-
-            <p>
-
-                A constantly evolving collection
-                built around what comes next.
-
-            </p>
-
-
-        </article>
-
-
-    </div>
-
+    </article>
 
 </section>
 
 
 
 <!-- =====================================================
-     LAUNCH CTA
+     PRODUCT DESCRIPTION MODAL
      ===================================================== -->
 
-<section class="launch-section">
+<div
+    class="modal"
+    id="productModal"
+    aria-hidden="true"
+>
 
 
-    <div class="launch-glass">
+    <div
+        class="modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+    >
 
 
-        <div class="launch-glow"></div>
+        <button
+            type="button"
+            class="modal-close"
+            id="modalClose"
+            aria-label="Close"
+        >
+            ×
+        </button>
 
 
-        <span class="pulse-dot"></span>
+        <span class="eyebrow">
 
+            <span class="pulse"></span>
 
-        <span class="section-kicker">
-            SAVE THE DATE
+            PRODUCT DETAILS
+
         </span>
 
 
-        <h2>
-
-            SEPTEMBER
-            <span>1ST.</span>
-
+        <h2 id="modalTitle">
+            VOLTICA G451
         </h2>
 
 
         <p>
 
-            The Voltica Store officially opens.
+            The Voltica G451 is part of the first
+            Voltica technology collection.
 
         </p>
 
 
+        <p>
+
+            Built around a modern futuristic aesthetic,
+            the G451 is selected for customers who want
+            technology that looks as advanced as it feels.
+
+        </p>
+
+
+        <p>
+
+            This product is presented as a premium
+            Voltica selection, with a carefully curated
+            product experience from discovery to checkout.
+
+        </p>
+
+
+        <div class="details-grid">
+
+
+            <div class="detail">
+
+                <span>
+                    COLLECTION
+                </span>
+
+                <strong>
+                    VOLTICA
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span>
+                    STATUS
+                </span>
+
+                <strong>
+                    PRE-ORDER
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span>
+                    IMAGES
+                </span>
+
+                <strong>
+                    6 PRODUCT VIEWS
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span>
+                    MEMBER BENEFIT
+                </span>
+
+                <strong>
+                    15% LIFETIME PASS
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
         <a
-            href="store.html"
-            class="launch-button"
+            href="#"
+            id="modalStripeButton"
+            class="modal-buy"
+            target="_blank"
+            rel="noopener"
         >
 
-            EXPLORE THE COLLECTION
-
-            <strong>
-                →
-            </strong>
+            PRE-ORDER WITH STRIPE →
 
         </a>
 
 
     </div>
 
-
-</section>
-
-
-</main>
+</div>
 
 
 
@@ -507,48 +1425,343 @@
      FOOTER
      ===================================================== -->
 
-<footer class="site-footer">
+<footer>
 
-
-    <div class="footer-brand">
-
-
-        <span class="logo-mark">
-            V
-        </span>
-
-
-        <span>
-            VOLTICA
-        </span>
-
-
-    </div>
-
-
-    <div>
-
-        THE FUTURE OF EVERYDAY
-
-    </div>
-
-
-    <div>
-
-        © 2026 VOLTICA STORE
-
-    </div>
-
+    VOLTICA STORE
+    &nbsp; • &nbsp;
+    THE FUTURE OF EVERYDAY
+    &nbsp; • &nbsp;
+    © 2026
 
 </footer>
 
 
 
-<!-- =====================================================
-     SCRIPT
-     ===================================================== -->
+<script>
 
-<script src="index.js"></script>
+"use strict";
+
+
+/* =====================================================
+   STRIPE
+   =====================================================
+
+   IMPORTANT:
+   Replace the value below with your REAL
+   Stripe Payment Link.
+
+   Example:
+
+   const STRIPE_LINK =
+       "https://buy.stripe.com/XXXXXXXX";
+
+   ===================================================== */
+
+const STRIPE_LINK = "";
+
+
+/* =====================================================
+   PRODUCT IMAGES
+   ===================================================== */
+
+const productImages = [
+
+    "assets/images/g451-1.webp",
+
+    "assets/images/g451-2.webp",
+
+    "assets/images/g451-3.webp",
+
+    "assets/images/g451-4.webp",
+
+    "assets/images/g451-6.webp",
+
+    "assets/images/g451-7.webp"
+
+];
+
+
+const mainImage =
+    document.getElementById(
+        "mainImage"
+    );
+
+
+const thumbnails =
+    document.getElementById(
+        "thumbnails"
+    );
+
+
+/* =====================================================
+   BUILD THUMBNAILS
+   ===================================================== */
+
+productImages.forEach(
+    (image, index) => {
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+
+        button.type =
+            "button";
+
+
+        button.className =
+            "thumbnail";
+
+
+        if (index === 0) {
+
+            button.classList.add(
+                "active"
+            );
+
+        }
+
+
+        button.innerHTML = `
+
+            <img
+                src="${image}"
+                alt="Voltica G451 view ${index + 1}"
+                loading="lazy"
+            >
+
+        `;
+
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                mainImage.src =
+                    image;
+
+
+                document
+                    .querySelectorAll(
+                        ".thumbnail"
+                    )
+                    .forEach(
+                        item => {
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+            }
+        );
+
+
+        thumbnails.appendChild(
+            button
+        );
+
+    }
+);
+
+
+/* =====================================================
+   MODAL
+   ===================================================== */
+
+const modal =
+    document.getElementById(
+        "productModal"
+    );
+
+
+const preorderButton =
+    document.getElementById(
+        "preorderButton"
+    );
+
+
+const modalClose =
+    document.getElementById(
+        "modalClose"
+    );
+
+
+const modalStripeButton =
+    document.getElementById(
+        "modalStripeButton"
+    );
+
+
+/* =====================================================
+   STRIPE LINK
+   ===================================================== */
+
+function applyStripeLink() {
+
+    if (!STRIPE_LINK) {
+
+        modalStripeButton.href =
+            "#";
+
+        return;
+
+    }
+
+
+    modalStripeButton.href =
+        STRIPE_LINK;
+
+}
+
+
+/* =====================================================
+   OPEN MODAL
+   ===================================================== */
+
+function openModal() {
+
+    modal.classList.add(
+        "active"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+
+    applyStripeLink();
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL
+   ===================================================== */
+
+function closeModal() {
+
+    modal.classList.remove(
+        "active"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+/* =====================================================
+   PRE-ORDER
+   ===================================================== */
+
+preorderButton.addEventListener(
+    "click",
+    () => {
+
+        openModal();
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE BUTTON
+   ===================================================== */
+
+modalClose.addEventListener(
+    "click",
+    closeModal
+);
+
+
+/* =====================================================
+   CLICK OUTSIDE
+   ===================================================== */
+
+modal.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            modal
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ESCAPE
+   ===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   STRIPE PROTECTION
+   ===================================================== */
+
+modalStripeButton.addEventListener(
+    "click",
+    event => {
+
+        if (!STRIPE_LINK) {
+
+            event.preventDefault();
+
+            alert(
+                "Stripe Payment Link is not configured yet."
+            );
+
+        }
+
+    }
+);
+
+</script>
 
 
 </body>

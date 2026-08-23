@@ -176,6 +176,7 @@
 
 
                     <video
+                        id="q45Video"
                         autoplay
                         muted
                         loop
@@ -200,6 +201,92 @@
 
                     </video>
 
+
+
+                    <!-- =========================================
+                         SOUND BUTTON
+                         ========================================= -->
+
+                    <button
+                        id="soundToggle"
+                        type="button"
+                        aria-label="Turn sound on"
+                        style="
+                            position: absolute;
+                            right: 18px;
+                            bottom: 18px;
+                            z-index: 10;
+
+                            display: flex;
+                            align-items: center;
+                            gap: 9px;
+
+                            padding: 11px 16px;
+
+                            border: 1px solid
+                                rgba(255,255,255,0.18);
+
+                            border-radius: 999px;
+
+                            background:
+                                rgba(5,5,5,0.62);
+
+                            color: white;
+
+                            backdrop-filter:
+                                blur(18px);
+
+                            -webkit-backdrop-filter:
+                                blur(18px);
+
+                            font-family: inherit;
+
+                            font-size: 10px;
+
+                            font-weight: 600;
+
+                            letter-spacing: 0.14em;
+
+                            cursor: pointer;
+
+                            box-shadow:
+                                0 8px 30px
+                                rgba(0,0,0,0.35);
+
+                            transition:
+                                transform 0.25s ease,
+                                background 0.25s ease;
+                        "
+                    >
+
+                        <span
+                            id="soundPulse"
+                            style="
+                                width: 7px;
+                                height: 7px;
+
+                                border-radius: 50%;
+
+                                background: white;
+
+                                box-shadow:
+                                    0 0 0
+                                    rgba(255,255,255,0.7);
+
+                                animation:
+                                    soundPulse 1.8s
+                                    ease-in-out
+                                    infinite;
+                            "
+                        ></span>
+
+
+                        <span id="soundText">
+                            SOUND ON
+                        </span>
+
+                    </button>
+
                 </div>
 
 
@@ -210,8 +297,6 @@
 
                 <div class="thumbnails">
 
-
-                    <!-- IMAGE 01 -->
 
                     <div class="thumbnail active">
 
@@ -230,8 +315,6 @@
                     </div>
 
 
-                    <!-- IMAGE 02 -->
-
                     <div class="thumbnail">
 
                         <img
@@ -248,8 +331,6 @@
 
                     </div>
 
-
-                    <!-- IMAGE 03 -->
 
                     <div class="thumbnail">
 
@@ -268,8 +349,6 @@
                     </div>
 
 
-                    <!-- IMAGE 04 -->
-
                     <div class="thumbnail">
 
                         <img
@@ -286,8 +365,6 @@
 
                     </div>
 
-
-                    <!-- IMAGE 06 -->
 
                     <div class="thumbnail">
 
@@ -306,8 +383,6 @@
                     </div>
 
 
-                    <!-- IMAGE 07 -->
-
                     <div class="thumbnail">
 
                         <img
@@ -323,7 +398,6 @@
                         >
 
                     </div>
-
 
                 </div>
 
@@ -878,6 +952,105 @@
 
     </footer>
 
+
+
+    <!-- =====================================================
+         Q45 AUDIO CONTROL
+         ===================================================== -->
+
+    <style>
+
+        @keyframes soundPulse {
+
+            0% {
+                transform: scale(1);
+                opacity: 0.45;
+
+                box-shadow:
+                    0 0 0
+                    rgba(255,255,255,0.7);
+            }
+
+            50% {
+                transform: scale(1.45);
+                opacity: 1;
+
+                box-shadow:
+                    0 0 12px
+                    rgba(255,255,255,0.65);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.45;
+
+                box-shadow:
+                    0 0 0
+                    rgba(255,255,255,0.7);
+            }
+
+        }
+
+
+        #soundToggle:hover {
+
+            transform: translateY(-2px);
+
+            background:
+                rgba(255,255,255,0.12);
+
+        }
+
+    </style>
+
+
+    <script>
+
+        const q45Video =
+            document.getElementById("q45Video");
+
+        const soundToggle =
+            document.getElementById("soundToggle");
+
+        const soundText =
+            document.getElementById("soundText");
+
+        const soundPulse =
+            document.getElementById("soundPulse");
+
+
+        soundToggle.addEventListener(
+            "click",
+            function () {
+
+                if (q45Video.muted) {
+
+                    q45Video.muted = false;
+
+                    q45Video.volume = 1;
+
+                    soundText.textContent =
+                        "SOUND OFF";
+
+                    soundPulse.style.animation =
+                        "soundPulse 0.8s ease-in-out infinite";
+
+                } else {
+
+                    q45Video.muted = true;
+
+                    soundText.textContent =
+                        "SOUND ON";
+
+                    soundPulse.style.animation =
+                        "soundPulse 1.8s ease-in-out infinite";
+
+                }
+
+            }
+        );
+
+    </script>
 
 
 </body>

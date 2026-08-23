@@ -1,6 +1,7 @@
 /* =========================================================
    VOLTICA STORE
    ADMIN PRODUCT MANAGER
+   PRODUCT CATALOG ENGINE
    ========================================================= */
 
 "use strict";
@@ -14,6 +15,8 @@ const IMAGE_BASE_PATH = "assets/images/";
 
 const STORAGE_KEY = "voltica_products_admin";
 
+const STORE_EVENT_KEY = "voltica_store_catalog_updated";
+
 let products = [];
 
 let editingProductId = null;
@@ -22,12 +25,19 @@ let selectedImages = [];
 
 let pendingConfirmAction = null;
 
+let notificationTimer = null;
+
 
 /* =========================================================
    DOM HELPERS
    ========================================================= */
 
 const $ = (id) => document.getElementById(id);
+
+
+/* =========================================================
+   DOM REFERENCES
+   ========================================================= */
 
 const productEditor = $("productEditor");
 
@@ -156,6 +166,12 @@ function bindEvents() {
     );
 
 
+    $("productId")?.addEventListener(
+        "input",
+        handleManualIdInput
+    );
+
+
     $("confirmCancel")?.addEventListener(
         "click",
         closeConfirmation
@@ -204,7 +220,10 @@ function loadProducts() {
     try {
 
         const saved =
-            localStorage.getItem(STORAGE_KEY);
+            localStorage.getItem(
+                STORAGE_KEY
+            );
+
 
         if (saved) {
 
@@ -228,18 +247,14 @@ function loadProducts() {
     ) {
 
         products =
-            storedProducts;
+            normalizeProductCatalog(
+                storedProducts
+            );
 
         return;
 
     }
 
-
-    /*
-     * If products.js already contains
-     * volticaProducts, use it as the
-     * initial catalog.
-     */
 
     if (
         Array.isArray(
@@ -248,10 +263,8 @@ function loadProducts() {
     ) {
 
         products =
-            JSON.parse(
-                JSON.stringify(
-                    window.volticaProducts
-                )
+            normalizeProductCatalog(
+                window.volticaProducts
             );
 
     } else {
@@ -267,6 +280,162 @@ function loadProducts() {
 
 
 /* =========================================================
+   NORMALIZE ENTIRE CATALOG
+   ========================================================= */
+
+function normalizeProductCatalog(
+    catalog
+) {
+
+    if (
+        !Array.isArray(catalog)
+    ) {
+
+        return [];
+
+    }
+
+
+    return catalog.map(
+        product =>
+            normalizeProduct(
+                product
+            )
+    );
+
+}
+
+
+/* =========================================================
+   NORMALIZE PRODUCT
+   ========================================================= */
+
+function normalizeProduct(
+    product
+) {
+
+    const source =
+        product &&
+        typeof product === "object"
+            ? product
+            : {};
+
+
+    return {
+
+        id:
+            cleanText(
+                source.id
+            ),
+
+        name:
+            cleanText(
+                source.name
+            ),
+
+        category:
+            cleanText(
+                source.category
+            ),
+
+        badge:
+            cleanText(
+                source.badge
+            ),
+
+        sku:
+            cleanText(
+                source.sku
+            ),
+
+        cost:
+            numberValue(
+                source.cost
+            ),
+
+        shipping:
+            numberValue(
+                source.shipping
+            ),
+
+        price:
+            numberValue(
+                source.price
+            ),
+
+        referencePrice:
+            numberValue(
+                source.referencePrice
+            ),
+
+        shortDescription:
+            cleanText(
+                source.shortDescription
+            ),
+
+        description:
+            cleanText(
+                source.description
+            ),
+
+        keyFeatures:
+            Array.isArray(
+                source.keyFeatures
+            )
+                ? source.keyFeatures
+                    .map(
+                        item =>
+                            cleanText(item)
+                    )
+                    .filter(Boolean)
+                : [],
+
+        specifications:
+            normalizeSpecifications(
+                source.specifications
+            ),
+
+        colors:
+            Array.isArray(
+                source.colors
+            )
+                ? source.colors
+                    .map(
+                        item =>
+                            cleanText(item)
+                    )
+                    .filter(Boolean)
+                : [],
+
+        variants:
+            normalizeVariants(
+                source.variants
+            ),
+
+        images:
+            normalizeImages(
+                source.images
+            ),
+
+        stripeLink:
+            cleanText(
+                source.stripeLink
+            ),
+
+        supplierLink:
+            cleanText(
+                source.supplierLink
+            ),
+
+        active:
+            source.active !== false
+
+    };
+
+}
+
+
+/* =========================================================
    SAVE LOCAL DATABASE
    ========================================================= */
 
@@ -274,17 +443,40 @@ function saveProductsToStorage() {
 
     try {
 
+        const cleanCatalog =
+            products.map(
+                product =>
+                    normalizeProduct(
+                        product
+                    )
+            );
+
+
         localStorage.setItem(
             STORAGE_KEY,
-            JSON.stringify(products)
+            JSON.stringify(
+                cleanCatalog
+            )
         );
+
+
+        /*
+         * Notify other Voltica pages/tabs.
+         */
+
+        localStorage.setItem(
+            STORE_EVENT_KEY,
+            String(Date.now())
+        );
+
 
     } catch (error) {
 
         console.error(
-            "Unable to save products:",
+            "Unable to save Voltica products:",
             error
         );
+
 
         showNotification(
             "LOCAL STORAGE ERROR"
@@ -315,12 +507,16 @@ function openProductEditor(
         $("editorTitle").textContent =
             "EDIT PRODUCT";
 
-        populateEditor(product);
+
+        populateEditor(
+            product
+        );
 
     } else {
 
         $("editorTitle").textContent =
             "NEW PRODUCT";
+
 
         clearEditor();
 
@@ -335,13 +531,40 @@ function openProductEditor(
 }
 
 
+/* =========================================================
+   CLOSE EDITOR
+   ========================================================= */
+
 function closeProductEditor() {
 
-    productEditor.hidden = true;
+    if (
+        selectedImages.length
+    ) {
+
+        selectedImages.forEach(
+            image => {
+
+                if (
+                    image.preview
+                ) {
+
+                    URL.revokeObjectURL(
+                        image.preview
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    selectedImages = [];
 
     editingProductId = null;
 
-    selectedImages = [];
+    productEditor.hidden = true;
 
 }
 
@@ -375,9 +598,11 @@ function clearEditor() {
 
 
     fields.forEach(
-        (id) => {
+        id => {
 
-            const element = $(id);
+            const element =
+                $(id);
+
 
             if (element) {
 
@@ -414,10 +639,16 @@ function clearEditor() {
    POPULATE EDITOR
    ========================================================= */
 
-function populateEditor(product) {
+function populateEditor(
+    product
+) {
 
     $("productId").value =
         product.id || "";
+
+
+    $("productId").dataset.manual =
+        "true";
 
 
     $("productName").value =
@@ -513,7 +744,30 @@ function populateEditor(product) {
 
 function handleProductNameInput() {
 
-    if (editingProductId) {
+    if (
+        editingProductId
+    ) {
+
+        return;
+
+    }
+
+
+    const idField =
+        $("productId");
+
+
+    if (!idField) {
+
+        return;
+
+    }
+
+
+    if (
+        idField.dataset.manual ===
+        "true"
+    ) {
 
         return;
 
@@ -524,43 +778,33 @@ function handleProductNameInput() {
         $("productName")?.value || "";
 
 
-    if (
-        !$("productId")
-    ) {
-
-        return;
-
-    }
-
-
-    if (
-        $("productId").dataset.manual === "true"
-    ) {
-
-        return;
-
-    }
-
-
-    $("productId").value =
+    idField.value =
         slugify(name);
 
 }
 
 
 /* =========================================================
-   MANUAL ID DETECTION
+   MANUAL ID
    ========================================================= */
 
-$("productId")?.addEventListener(
-    "input",
-    () => {
+function handleManualIdInput() {
 
-        $("productId").dataset.manual =
-            "true";
+    const field =
+        $("productId");
+
+
+    if (!field) {
+
+        return;
 
     }
-);
+
+
+    field.dataset.manual =
+        "true";
+
+}
 
 
 /* =========================================================
@@ -579,20 +823,53 @@ function saveProduct() {
             "PRODUCT NAME REQUIRED"
         );
 
+
         $("productName")?.focus();
+
 
         return;
 
     }
 
 
-    if (!product.price) {
+    if (
+        product.price <= 0
+    ) {
 
         showNotification(
             "PRODUCT PRICE REQUIRED"
         );
 
+
         $("productPrice")?.focus();
+
+
+        return;
+
+    }
+
+
+    /*
+     * Prevent accidental duplicate IDs.
+     */
+
+    const duplicateId =
+        products.some(
+            item =>
+                item.id === product.id &&
+                item.id !== editingProductId
+        );
+
+
+    if (duplicateId) {
+
+        showNotification(
+            "PRODUCT ID ALREADY EXISTS"
+        );
+
+
+        $("productId")?.focus();
+
 
         return;
 
@@ -616,6 +893,7 @@ function saveProduct() {
             products[index] =
                 product;
 
+
             showNotification(
                 "PRODUCT UPDATED"
             );
@@ -624,7 +902,10 @@ function saveProduct() {
 
     } else {
 
-        products.push(product);
+        products.push(
+            product
+        );
+
 
         showNotification(
             "PRODUCT CREATED"
@@ -633,7 +914,18 @@ function saveProduct() {
     }
 
 
+    /*
+     * This is the important bridge:
+     *
+     * ADMIN
+     * ↓
+     * LOCAL DATABASE
+     * ↓
+     * STORE
+     */
+
     saveProductsToStorage();
+
 
     renderProducts();
 
@@ -746,6 +1038,14 @@ function buildProductFromEditor() {
         images:
             normalizeImages(
                 selectedImages
+            ).map(
+                image => ({
+                    name:
+                        image.name,
+
+                    path:
+                        image.path
+                })
             ),
 
         stripeLink:
@@ -775,7 +1075,9 @@ function buildProductFromEditor() {
    DELETE PRODUCT
    ========================================================= */
 
-function deleteProduct(productId) {
+function deleteProduct(
+    productId
+) {
 
     const product =
         products.find(
@@ -826,7 +1128,9 @@ function deleteProduct(productId) {
    DUPLICATE PRODUCT
    ========================================================= */
 
-function duplicateProduct(productId) {
+function duplicateProduct(
+    productId
+) {
 
     const original =
         products.find(
@@ -844,7 +1148,11 @@ function duplicateProduct(productId) {
 
     const copy =
         JSON.parse(
-            JSON.stringify(original)
+            JSON.stringify(
+                normalizeProduct(
+                    original
+                )
+            )
         );
 
 
@@ -858,7 +1166,10 @@ function duplicateProduct(productId) {
         `${original.name} — Copy`;
 
 
-    products.push(copy);
+    products.push(
+        copy
+    );
+
 
     saveProductsToStorage();
 
@@ -879,7 +1190,9 @@ function duplicateProduct(productId) {
    TOGGLE PRODUCT
    ========================================================= */
 
-function toggleProductStatus(productId) {
+function toggleProductStatus(
+    productId
+) {
 
     const product =
         products.find(
@@ -929,7 +1242,8 @@ function renderProducts() {
 
     const search =
         (
-            $("productSearch")?.value || ""
+            $("productSearch")?.value ||
+            ""
         )
         .trim()
         .toLowerCase();
@@ -964,12 +1278,15 @@ function renderProducts() {
 
                 const matchesSearch =
                     !search ||
-                    searchable.includes(search);
+                    searchable.includes(
+                        search
+                    );
 
 
                 const matchesCategory =
                     category === "all" ||
-                    product.category === category;
+                    product.category ===
+                    category;
 
 
                 const matchesStatus =
@@ -1003,11 +1320,13 @@ function renderProducts() {
 
         productList.hidden = true;
 
+
         if (emptyState) {
 
             emptyState.hidden = false;
 
         }
+
 
         return;
 
@@ -1028,7 +1347,9 @@ function renderProducts() {
         product => {
 
             productList.appendChild(
-                createProductListItem(product)
+                createProductListItem(
+                    product
+                )
             );
 
         }
@@ -1041,10 +1362,14 @@ function renderProducts() {
    PRODUCT LIST ITEM
    ========================================================= */
 
-function createProductListItem(product) {
+function createProductListItem(
+    product
+) {
 
     const article =
-        document.createElement("article");
+        document.createElement(
+            "article"
+        );
 
 
     article.className =
@@ -1052,7 +1377,9 @@ function createProductListItem(product) {
 
 
     const image =
-        getFirstImage(product);
+        getFirstImage(
+            product
+        );
 
 
     article.innerHTML = `
@@ -1069,7 +1396,11 @@ function createProductListItem(product) {
                             onerror="this.style.opacity='0.15'"
                         >
                     `
-                    : ""
+                    : `
+                        <div class="product-image-empty">
+                            NO IMAGE
+                        </div>
+                    `
             }
 
         </div>
@@ -1078,21 +1409,32 @@ function createProductListItem(product) {
         <div class="product-list-info">
 
             <small>
-                ${escapeHTML(product.category || "UNCATEGORIZED")}
+                ${escapeHTML(
+                    product.category ||
+                    "UNCATEGORIZED"
+                )}
             </small>
 
             <h3>
-                ${escapeHTML(product.name || "Unnamed Product")}
+                ${escapeHTML(
+                    product.name ||
+                    "Unnamed Product"
+                )}
             </h3>
 
             <p>
                 SKU:
-                ${escapeHTML(product.sku || "NOT AVAILABLE")}
+                ${escapeHTML(
+                    product.sku ||
+                    "NOT AVAILABLE"
+                )}
             </p>
 
             <div class="product-list-price">
 
-                ${formatPrice(product.price)}
+                ${formatPrice(
+                    product.price
+                )}
 
             </div>
 
@@ -1175,16 +1517,9 @@ function createProductListItem(product) {
                 "click",
                 () => {
 
-                    const action =
-                        button.dataset.action;
-
-                    const id =
-                        button.dataset.id;
-
-
                     handleProductAction(
-                        action,
-                        id
+                        button.dataset.action,
+                        button.dataset.id
                     );
 
                 }
@@ -1268,7 +1603,9 @@ function handleProductAction(
    IMAGE SELECTION
    ========================================================= */
 
-function handleImageSelection(event) {
+function handleImageSelection(
+    event
+) {
 
     const files =
         Array.from(
@@ -1276,13 +1613,13 @@ function handleImageSelection(event) {
         );
 
 
-    addImageFiles(files);
+    addImageFiles(
+        files
+    );
 
 
     /*
-     * Reset input so selecting the
-     * same file again still triggers
-     * the change event.
+     * Allows selecting the same file again.
      */
 
     event.target.value = "";
@@ -1290,12 +1627,19 @@ function handleImageSelection(event) {
 }
 
 
-function addImageFiles(files) {
+/* =========================================================
+   ADD IMAGE FILES
+   ========================================================= */
+
+function addImageFiles(
+    files
+) {
 
     files.forEach(
         file => {
 
             if (
+                !file ||
                 !file.type.startsWith(
                     "image/"
                 )
@@ -1306,11 +1650,35 @@ function addImageFiles(files) {
             }
 
 
+            /*
+             * Preserve the original filename.
+             *
+             * Example:
+             *
+             * q451-1.webp
+             *
+             * becomes:
+             *
+             * assets/images/q451-1.webp
+             */
+
+            const filename =
+                file.name;
+
+
+            const path =
+                buildImagePath(
+                    filename
+                );
+
+
             const alreadyExists =
                 selectedImages.some(
                     image =>
-                        image.name ===
-                        file.name
+                        image.name
+                            .toLowerCase() ===
+                        filename
+                            .toLowerCase()
                 );
 
 
@@ -1326,11 +1694,9 @@ function addImageFiles(files) {
             selectedImages.push({
 
                 name:
-                    file.name,
+                    filename,
 
-                path:
-                    IMAGE_BASE_PATH +
-                    file.name,
+                path,
 
                 file,
 
@@ -1346,6 +1712,40 @@ function addImageFiles(files) {
 
 
     renderImagePreview();
+
+}
+
+
+/* =========================================================
+   BUILD IMAGE PATH
+   ========================================================= */
+
+function buildImagePath(
+    filename
+) {
+
+    const cleanFilename =
+        String(
+            filename || ""
+        )
+        .split("\\")
+        .pop()
+        .split("/")
+        .pop()
+        .trim();
+
+
+    if (!cleanFilename) {
+
+        return "";
+
+    }
+
+
+    return (
+        IMAGE_BASE_PATH +
+        cleanFilename
+    );
 
 }
 
@@ -1380,6 +1780,8 @@ function setupImageDragAndDrop() {
 
                     event.preventDefault();
 
+                    event.stopPropagation();
+
                     uploadArea.classList.add(
                         "drag-over"
                     );
@@ -1404,6 +1806,8 @@ function setupImageDragAndDrop() {
 
                     event.preventDefault();
 
+                    event.stopPropagation();
+
                     uploadArea.classList.remove(
                         "drag-over"
                     );
@@ -1421,11 +1825,15 @@ function setupImageDragAndDrop() {
 
             const files =
                 Array.from(
-                    event.dataTransfer.files || []
+                    event
+                        .dataTransfer
+                        .files || []
                 );
 
 
-            addImageFiles(files);
+            addImageFiles(
+                files
+            );
 
         }
     );
@@ -1470,7 +1878,9 @@ function renderImagePreview() {
         (image, index) => {
 
             const item =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             item.className =
@@ -1485,8 +1895,12 @@ function renderImagePreview() {
             item.innerHTML = `
 
                 <img
-                    src="${escapeAttribute(previewSource)}"
-                    alt="${escapeAttribute(image.name)}"
+                    src="${escapeAttribute(
+                        previewSource
+                    )}"
+                    alt="${escapeAttribute(
+                        image.name
+                    )}"
                 >
 
 
@@ -1500,7 +1914,9 @@ function renderImagePreview() {
                 <button
                     type="button"
                     class="image-preview-remove"
-                    aria-label="Remove ${escapeAttribute(image.name)}"
+                    aria-label="Remove ${escapeAttribute(
+                        image.name
+                    )}"
                 >
                     ×
                 </button>
@@ -1508,9 +1924,13 @@ function renderImagePreview() {
 
                 <span
                     class="image-preview-name"
-                    title="${escapeAttribute(image.name)}"
+                    title="${escapeAttribute(
+                        image.name
+                    )}"
                 >
-                    ${escapeHTML(image.name)}
+                    ${escapeHTML(
+                        image.name
+                    )}
                 </span>
 
             `;
@@ -1524,7 +1944,9 @@ function renderImagePreview() {
                     "click",
                     () => {
 
-                        removeImage(index);
+                        removeImage(
+                            index
+                        );
 
                     }
                 );
@@ -1544,7 +1966,9 @@ function renderImagePreview() {
    REMOVE IMAGE
    ========================================================= */
 
-function removeImage(index) {
+function removeImage(
+    index
+) {
 
     const image =
         selectedImages[index];
@@ -1652,1057 +2076,7 @@ function updateCategoryFilter() {
                             product.category
                     )
                     .filter(Boolean)
-                    .sort(
-                        (a, b) =>
-                            a.localeCompare(b)
-                    )
             )
-        ];
-
-
-    select.innerHTML = `
-
-        <option value="all">
-            ALL CATEGORIES
-        </option>
-
-    `;
-
-
-    categories.forEach(
-        category => {
-
-            const option =
-                document.createElement(
-                    "option"
-                );
-
-
-            option.value =
-                category;
-
-
-            option.textContent =
-                category;
-
-
-            select.appendChild(
-                option
-            );
-
-        }
-    );
-
-
-    if (
-        categories.includes(current)
-    ) {
-
-        select.value =
-            current;
-
-    }
-
-}
-
-
-/* =========================================================
-   BACKUP
-   ========================================================= */
-
-function backupProducts() {
-
-    const data =
-        JSON.stringify(
-            products,
-            null,
-            4
-        );
-
-
-    downloadFile(
-        data,
-        "voltica-products-backup.json",
-        "application/json"
-    );
-
-
-    showNotification(
-        "DATABASE BACKUP CREATED"
-    );
-
-}
-
-
-/* =========================================================
-   EXPORT PRODUCTS.JS
-   ========================================================= */
-
-function exportProductsJS() {
-
-    const output =
-        generateProductsJS();
-
-
-    downloadFile(
-        output,
-        "products.js",
-        "application/javascript"
-    );
-
-
-    showNotification(
-        "PRODUCTS.JS EXPORTED"
-    );
-
-}
-
-
-/* =========================================================
-   GENERATE PRODUCTS.JS
-   ========================================================= */
-
-function generateProductsJS() {
-
-    const serialized =
-        products
-            .map(
-                product =>
-                    formatProductForJS(
-                        product
-                    )
-            )
-            .join(
-                ",\n\n"
-            );
-
-
-    return `/* =========================================================
-   VOLTICA STORE
-   PRODUCT DATABASE
-   Generated by Admin Product Manager
-   ========================================================= */
-
-const volticaProducts = [
-
-${serialized}
-
-];
-
-`;
-}
-
-
-/* =========================================================
-   FORMAT PRODUCT FOR JS
-   ========================================================= */
-
-function formatProductForJS(product) {
-
-    const cleanProduct = {
-
-        id:
-            product.id || "",
-
-        name:
-            product.name || "",
-
-        category:
-            product.category || "",
-
-        badge:
-            product.badge || "",
-
-        sku:
-            product.sku || "",
-
-        cost:
-            product.cost || 0,
-
-        shipping:
-            product.shipping || 0,
-
-        price:
-            product.price || 0,
-
-        referencePrice:
-            product.referencePrice || 0,
-
-        shortDescription:
-            product.shortDescription || "",
-
-        description:
-            product.description || "",
-
-        keyFeatures:
-            product.keyFeatures || [],
-
-        specifications:
-            product.specifications || {},
-
-        colors:
-            product.colors || [],
-
-        variants:
-            product.variants || [],
-
-        images:
-            normalizeImages(
-                product.images
-            ).map(
-                image =>
-                    typeof image === "string"
-                        ? image
-                        : image.path
-            ),
-
-        stripeLink:
-            product.stripeLink || "",
-
-        supplierLink:
-            product.supplierLink || "",
-
-        active:
-            product.active !== false
-
-    };
-
-
-    return `    ${JSON.stringify(
-        cleanProduct,
-        null,
-        4
-    )
-    .replace(
-        /^/gm,
-        "    "
-    )
-    .trim()
-    }`;
-
-}
-
-
-/* =========================================================
-   CONFIRMATION
-   ========================================================= */
-
-function openConfirmation(
-    title,
-    message,
-    action
-) {
-
-    pendingConfirmAction =
-        action;
-
-
-    if (confirmTitle) {
-
-        confirmTitle.textContent =
-            title;
-
-    }
-
-
-    if (confirmMessage) {
-
-        confirmMessage.textContent =
-            message;
-
-    }
-
-
-    if (confirmOverlay) {
-
-        confirmOverlay.hidden =
-            false;
-
-    }
-
-}
-
-
-function closeConfirmation() {
-
-    pendingConfirmAction =
-        null;
-
-
-    if (confirmOverlay) {
-
-        confirmOverlay.hidden =
-            true;
-
-    }
-
-}
-
-
-function executeConfirmation() {
-
-    if (
-        typeof pendingConfirmAction ===
-        "function"
-    ) {
-
-        const action =
-            pendingConfirmAction;
-
-        closeConfirmation();
-
-        action();
-
-        return;
-
-    }
-
-
-    closeConfirmation();
-
-}
-
-
-/* =========================================================
-   NOTIFICATIONS
-   ========================================================= */
-
-let notificationTimer = null;
-
-
-function showNotification(
-    message
-) {
-
-    if (
-        !notification ||
-        !notificationText
-    ) {
-
-        return;
-
-    }
-
-
-    notificationText.textContent =
-        message;
-
-
-    notification.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        notificationTimer
-    );
-
-
-    notificationTimer =
-        setTimeout(
-            () => {
-
-                notification.classList.remove(
-                    "show"
-                );
-
-            },
-            2600
-        );
-
-}
-
-
-/* =========================================================
-   KEYBOARD
-   ========================================================= */
-
-function handleKeyboard(event) {
-
-    if (
-        event.key === "Escape"
-    ) {
-
-        if (
-            confirmOverlay &&
-            !confirmOverlay.hidden
-        ) {
-
-            closeConfirmation();
-
-            return;
-
-        }
-
-
-        if (
-            productEditor &&
-            !productEditor.hidden
-        ) {
-
-            closeProductEditor();
-
-        }
-
-    }
-
-
-    if (
-        (
-            event.ctrlKey ||
-            event.metaKey
-        ) &&
-        event.key.toLowerCase() === "s"
-    ) {
-
-        event.preventDefault();
-
-        if (
-            productEditor &&
-            !productEditor.hidden
-        ) {
-
-            saveProduct();
-
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   TEXT HELPERS
-   ========================================================= */
-
-function cleanText(value) {
-
-    return String(
-        value ?? ""
-    ).trim();
-
-}
-
-
-function numberValue(value) {
-
-    const number =
-        parseFloat(value);
-
-
-    if (
-        Number.isNaN(number)
-    ) {
-
-        return 0;
-
-    }
-
-
-    return Number(
-        number.toFixed(2)
-    );
-
-}
-
-
-function slugify(value) {
-
-    return cleanText(value)
-        .normalize("NFD")
-        .replace(
-            /[\u0300-\u036f]/g,
-            ""
-        )
-        .toLowerCase()
-        .replace(
-            /[^a-z0-9]+/g,
-            "-"
-        )
-        .replace(
-            /^-+|-+$/g,
-            ""
-        );
-
-}
-
-
-function generateUniqueId(
-    base
-) {
-
-    let id =
-        slugify(base) ||
-        "product";
-
-
-    let counter = 2;
-
-    while (
-        products.some(
-            product =>
-                product.id === id
-        )
-    ) {
-
-        id =
-            `${slugify(base)}-${counter}`;
-
-        counter++;
-
-    }
-
-
-    return id;
-
-}
-
-
-/* =========================================================
-   ARRAY HELPERS
-   ========================================================= */
-
-function linesToArray(value) {
-
-    return cleanText(value)
-        .split(/\r?\n/)
-        .map(
-            item =>
-                item.trim()
-        )
-        .filter(Boolean);
-
-}
-
-
-function arrayToLines(value) {
-
-    if (
-        !Array.isArray(value)
-    ) {
-
-        return "";
-
-    }
-
-
-    return value.join("\n");
-
-}
-
-
-function commaListToArray(value) {
-
-    return cleanText(value)
-        .split(",")
-        .map(
-            item =>
-                item.trim()
-        )
-        .filter(Boolean);
-
-}
-
-
-function arrayToCommaList(value) {
-
-    if (
-        !Array.isArray(value)
-    ) {
-
-        return "";
-
-    }
-
-
-    return value.join(", ");
-
-}
-
-
-function textToSpecifications(
-    value
-) {
-
-    const lines =
-        linesToArray(value);
-
-
-    const result = {};
-
-
-    lines.forEach(
-        line => {
-
-            const separator =
-                line.indexOf(":");
-
-
-            if (
-                separator === -1
-            ) {
-
-                result[line] = "";
-
-                return;
-
-            }
-
-
-            const key =
-                line
-                    .slice(
-                        0,
-                        separator
-                    )
-                    .trim();
-
-
-            const val =
-                line
-                    .slice(
-                        separator + 1
-                    )
-                    .trim();
-
-
-            if (key) {
-
-                result[key] =
-                    val;
-
-            }
-
-        }
-    );
-
-
-    return result;
-
-}
-
-
-function specificationsToText(
-    specifications
-) {
-
-    if (
-        !specifications
-    ) {
-
-        return "";
-
-    }
-
-
-    if (
-        Array.isArray(
-            specifications
-        )
-    ) {
-
-        return specifications.join(
-            "\n"
-        );
-
-    }
-
-
-    if (
-        typeof specifications !==
-        "object"
-    ) {
-
-        return "";
-
-    }
-
-
-    return Object.entries(
-        specifications
-    )
-    .map(
-        ([key, value]) =>
-            `${key}: ${value}`
-    )
-    .join("\n");
-
-}
-
-
-function linesToVariants(
-    value
-) {
-
-    return linesToArray(
-        value
-    ).map(
-        line => {
-
-            const separator =
-                line.indexOf("—") !== -1
-                    ? "—"
-                    : line.indexOf("-");
-
-
-            if (
-                separator === -1
-            ) {
-
-                return {
-
-                    name: line,
-                    sku: ""
-
-                };
-
-            }
-
-
-            const parts =
-                line.split(
-                    separator === "—"
-                        ? "—"
-                        : "-"
-                );
-
-
-            return {
-
-                name:
-                    cleanText(
-                        parts.shift()
-                    ),
-
-                sku:
-                    cleanText(
-                        parts.join("-")
-                    )
-
-            };
-
-        }
-    );
-
-}
-
-
-function variantsToText(
-    variants
-) {
-
-    if (
-        !Array.isArray(variants)
-    ) {
-
-        return "";
-
-    }
-
-
-    return variants
-        .map(
-            variant => {
-
-                if (
-                    typeof variant ===
-                    "string"
-                ) {
-
-                    return variant;
-
-                }
-
-
-                return `${variant.name || ""} — ${variant.sku || ""}`
-                    .trim();
-
-            }
-        )
-        .filter(Boolean)
-        .join("\n");
-
-}
-
-
-/* =========================================================
-   IMAGE NORMALIZATION
-   ========================================================= */
-
-function normalizeImages(
-    images
-) {
-
-    if (
-        !Array.isArray(images)
-    ) {
-
-        return [];
-
-    }
-
-
-    return images
-        .map(
-            image => {
-
-                if (
-                    typeof image ===
-                    "string"
-                ) {
-
-                    return {
-
-                        name:
-                            image
-                                .split("/")
-                                .pop(),
-
-                        path:
-                            image,
-
-                        preview:
-                            null
-
-                    };
-
-                }
-
-
-                return {
-
-                    name:
-                        image.name ||
-                        image.path
-                            ?.split("/")
-                            .pop() ||
-                            "",
-
-                    path:
-                        image.path ||
-                        (
-                            IMAGE_BASE_PATH +
-                            (
-                                image.name || ""
-                            )
-                        ),
-
-                    preview:
-                        image.preview ||
-                        null
-
-                };
-
-            }
-        )
-        .filter(
-            image =>
-                Boolean(
-                    image.name
-                )
-        );
-
-}
-
-
-/* =========================================================
-   IMAGE HELPERS
-   ========================================================= */
-
-function getFirstImage(
-    product
-) {
-
-    const images =
-        normalizeImages(
-            product.images
-        );
-
-
-    return images.length
-        ? images[0].path
-        : "";
-
-}
-
-
-/* =========================================================
-   FORMAT PRICE
-   ========================================================= */
-
-function formatPrice(
-    value
-) {
-
-    const number =
-        Number(value);
-
-
-    if (
-        Number.isNaN(number) ||
-        number <= 0
-    ) {
-
-        return "$0.00 USD";
-
-    }
-
-
-    return (
-        "$" +
-        number.toFixed(2) +
-        " USD"
-    );
-
-}
-
-
-/* =========================================================
-   HTML ESCAPING
-   ========================================================= */
-
-function escapeHTML(
-    value
-) {
-
-    return String(
-        value ?? ""
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
-    );
-
-}
-
-
-function escapeAttribute(
-    value
-) {
-
-    return escapeHTML(
-        value
-    );
-
-}
-
-
-/* =========================================================
-   DOWNLOAD
-   ========================================================= */
-
-function downloadFile(
-    content,
-    filename,
-    mimeType
-) {
-
-    const blob =
-        new Blob(
-            [content],
-            {
-                type:
-                    mimeType
-            }
-        );
-
-
-    const url =
-        URL.createObjectURL(
-            blob
-        );
-
-
-    const link =
-        document.createElement(
-            "a"
-        );
-
-
-    link.href =
-        url;
-
-
-    link.download =
-        filename;
-
-
-    document.body.appendChild(
-        link
-    );
-
-
-    link.click();
-
-
-    link.remove();
-
-
-    setTimeout(
-        () => {
-
-            URL.revokeObjectURL(
-                url
-            );
-
-        },
-        1000
-    );
-
-}
-
-
-/* =========================================================
-   INITIAL GLOBAL ACCESS
-   ========================================================= */
-
-window.VolticaAdmin = {
-
-    getProducts() {
-
-        return products;
-
-    },
-
-
-    saveProducts() {
-
-        saveProductsToStorage();
-
-    },
-
-
-    exportProducts() {
-
-        exportProductsJS();
-
-    },
-
-
-    openEditor(
-        product
-    ) {
-
-        openProductEditor(
-            product
-        );
-
-    }
-
-};
+        ]
+        .sort(
+            (a,

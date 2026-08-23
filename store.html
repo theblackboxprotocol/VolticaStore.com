@@ -1,42 +1,43 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Voltica Store — premium technology and lifestyle products.">
+    <meta name="description" content="Voltica Store — Premium luxury technology, audio, and high-end hardware.">
     <meta name="theme-color" content="#050505">
-    <title>Voltica Store</title>
+    <title>Voltica Store — High-End Tech</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <main class="store-page">
 
-    <!-- NAVIGATION EDGE -->
+    <!-- EDGE NAVIGATION -->
     <nav class="voltica-edge-nav" aria-label="Main navigation">
         <a href="index.html" class="voltica-edge-button">
-            <span class="voltica-edge-dot"></span>
+            <span class="voltica-edge-dot" aria-hidden="true"></span>
             <span class="voltica-edge-label">HOME</span>
         </a>
 
         <div class="voltica-store-navigation">
-            <button type="button" class="voltica-edge-button" id="volticaStoreMenuButton">
-                <span class="voltica-edge-dot"></span>
+            <button type="button" class="voltica-edge-button" id="volticaStoreMenuButton" aria-expanded="false">
+                <span class="voltica-edge-dot" aria-hidden="true"></span>
                 <span class="voltica-edge-label">VOLTICA STORE</span>
             </button>
-            <div class="voltica-store-menu" id="volticaStoreMenu">
-                <div class="voltica-store-menu-title">SECTIONS</div>
+
+            <div class="voltica-store-menu" id="volticaStoreMenu" aria-hidden="true">
+                <div class="voltica-store-menu-title">COLLECTIONS</div>
                 <a href="#earbuds"><span class="voltica-store-menu-number">01</span><span class="voltica-store-menu-name">EARBUDS</span></a>
-                <a href="#gaming"><span class="voltica-store-menu-number">02</span><span class="voltica-store-menu-name">GAMING</span></a>
-                <a href="#creator"><span class="voltica-store-menu-number">03</span><span class="voltica-store-menu-name">CREATOR</span></a>
+                <a href="#gaming"><span class="voltica-store-menu-number">02</span><span class="voltica-store-menu-name">GAMING GEAR</span></a>
+                <a href="#creator"><span class="voltica-store-menu-number">03</span><span class="voltica-store-menu-name">CREATOR GEAR</span></a>
                 <a href="#headphones"><span class="voltica-store-menu-number">04</span><span class="voltica-store-menu-name">HEADPHONES</span></a>
-                <a href="#tech"><span class="voltica-store-menu-number">05</span><span class="voltica-store-menu-name">TECH</span></a>
+                <a href="#tech"><span class="voltica-store-menu-number">05</span><span class="voltica-store-menu-name">SMART TECH</span></a>
                 <a href="#lifestyle"><span class="voltica-store-menu-number">06</span><span class="voltica-store-menu-name">LIFESTYLE</span></a>
             </div>
         </div>
 
         <a href="mailto:contact@volticastore.com" class="voltica-edge-button">
-            <span class="voltica-edge-dot"></span>
+            <span class="voltica-edge-dot" aria-hidden="true"></span>
             <span class="voltica-edge-label">CONTACT</span>
         </a>
     </nav>
@@ -49,20 +50,21 @@
         </div>
     </header>
 
-    <!-- CATEGORIES BAR -->
-    <nav class="store-categories">
+    <!-- CATEGORY BAR -->
+    <nav class="store-categories" aria-label="Product categories">
         <a href="#earbuds" class="category-glass active"><span class="category-number">01</span><strong>EARBUDS</strong><small>WIRELESS AUDIO</small></a>
-        <a href="#gaming" class="category-glass"><span class="category-number">02</span><strong>GAMING GEAR</strong><small>PLAY / CONNECT</small></a>
-        <a href="#creator" class="category-glass"><span class="category-number">03</span><strong>CREATOR GEAR</strong><small>CREATE / CAPTURE</small></a>
+        <a href="#gaming" class="category-glass"><span class="category-number">02</span><strong>GAMING GEAR</strong><small>PLAY / CONNECT / CONTROL</small></a>
+        <a href="#creator" class="category-glass"><span class="category-number">03</span><strong>CREATOR GEAR</strong><small>CREATE / CAPTURE / CONNECT</small></a>
         <a href="#headphones" class="category-glass"><span class="category-number">04</span><strong>HEADPHONES</strong><small>IMMERSIVE SOUND</small></a>
         <a href="#tech" class="category-glass"><span class="category-number">05</span><strong>TECH</strong><small>SMART DEVICES</small></a>
         <a href="#lifestyle" class="category-glass"><span class="category-number">06</span><strong>LIFESTYLE</strong><small>DESIGNED DIFFERENT</small></a>
     </nav>
 
-    <!-- SECTIONS DYNAMIQUES -->
+    <!-- DYNAMIC COLLECTION SECTIONS -->
     <section class="store-section" id="earbuds">
         <div class="store-section-heading">
             <div><span class="section-index">COLLECTION / 01</span><h2>Wireless <span>Earbuds.</span></h2></div>
+            <p>Compact form.<br>Powerful sound.<br>Zero compromise.</p>
         </div>
         <div class="store-product-grid" id="grid-earbuds"></div>
     </section>
@@ -70,6 +72,7 @@
     <section class="store-section" id="gaming">
         <div class="store-section-heading">
             <div><span class="section-index">COLLECTION / 02</span><h2>Gaming <span>Gear.</span></h2></div>
+            <p>Play.<br>Connect.<br>Control.</p>
         </div>
         <div class="store-product-grid" id="grid-gaming"></div>
     </section>
@@ -77,6 +80,7 @@
     <section class="store-section" id="creator">
         <div class="store-section-heading">
             <div><span class="section-index">COLLECTION / 03</span><h2>Creator <span>Gear.</span></h2></div>
+            <p>Create.<br>Capture.<br>Connect.</p>
         </div>
         <div class="store-product-grid" id="grid-creator"></div>
     </section>
@@ -84,6 +88,7 @@
     <section class="store-section" id="headphones">
         <div class="store-section-heading">
             <div><span class="section-index">COLLECTION / 04</span><h2>Premium <span>Headphones.</span></h2></div>
+            <p>Immersive.<br>Powerful.<br>Uncompromised.</p>
         </div>
         <div class="store-product-grid" id="grid-headphones"></div>
     </section>
@@ -91,6 +96,7 @@
     <section class="store-section" id="tech">
         <div class="store-section-heading">
             <div><span class="section-index">COLLECTION / 05</span><h2>Smart <span>Tech.</span></h2></div>
+            <p>Work.<br>Adapt.<br>Connect.</p>
         </div>
         <div class="store-product-grid" id="grid-tech"></div>
     </section>
@@ -98,10 +104,12 @@
     <section class="store-section" id="lifestyle">
         <div class="store-section-heading">
             <div><span class="section-index">COLLECTION / 06</span><h2>Smart <span>Lifestyle.</span></h2></div>
+            <p>Travel.<br>Comfort.<br>Adapt.</p>
         </div>
         <div class="store-product-grid" id="grid-lifestyle"></div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="store-footer">
         <div class="store-footer-brand">VOLTICA <span>STORE</span></div>
         <p>Premium technology. Designed to stand out.</p>
@@ -112,17 +120,25 @@
 
 <script src="products.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        renderStoreFront();
-        
-        // Menu Toggle
-        const btn = document.getElementById("volticaStoreMenuButton");
-        const menu = document.getElementById("volticaStoreMenu");
-        if(btn && menu) {
-            btn.addEventListener("click", () => menu.classList.toggle("is-open"));
-        }
-    });
+document.addEventListener("DOMContentLoaded", function () {
+    renderStoreFront();
+
+    const button = document.getElementById("volticaStoreMenuButton");
+    const menu = document.getElementById("volticaStoreMenu");
+
+    if (button && menu) {
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            menu.classList.toggle("is-open");
+        });
+        document.addEventListener("click", function (e) {
+            if (!e.target.closest(".voltica-store-navigation")) {
+                menu.classList.remove("is-open");
+            }
+        });
+    }
+});
 </script>
+
 </body>
 </html>
-

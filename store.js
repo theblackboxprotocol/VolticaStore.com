@@ -1,962 +1,1566 @@
-<!DOCTYPE html>
-<html lang="en">
+"use strict";
 
-<head>
+/* =========================================================
+   VOLTICA STORE
+   STORE ENGINE
+   ========================================================= */
 
-    <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+/* =========================================================
+   CONFIGURATION
+   ========================================================= */
 
-    <meta
-        name="description"
-        content="Voltica Q45 — Premium ANC headphones. The future of everyday."
-    >
+const VOLTICA_IMAGE_PATH = "assets/images/";
 
-    <meta
-        name="theme-color"
-        content="#030303"
-    >
+const VOLTICA_CURRENCY = "USD";
 
-    <title>Voltica Q45 — The Future of Everyday</title>
 
-    <link
-        rel="stylesheet"
-        href="store.css"
-    >
+/* =========================================================
+   STATE
+   ========================================================= */
 
-</head>
+let storeProducts = [];
 
+let currentProduct = null;
 
-<body>
+let currentImageIndex = 0;
 
 
-<!-- =====================================================
-     BACKGROUND
-     ===================================================== -->
+/* =========================================================
+   DOM
+   ========================================================= */
 
-<div
-    class="pulsar-field"
-    aria-hidden="true"
->
+const storeProductContainer =
+    document.getElementById("storeProductContainer");
 
-    <span class="pulsar p1"></span>
-    <span class="pulsar p2"></span>
-    <span class="pulsar p3"></span>
-    <span class="pulsar p4"></span>
-    <span class="pulsar p5"></span>
-    <span class="pulsar p6"></span>
+const storeProductModal =
+    document.getElementById("storeProductModal");
 
-</div>
+const storeModalOverlay =
+    document.getElementById("storeModalOverlay");
 
+const storeModalClose =
+    document.getElementById("storeModalClose");
 
-<div
-    class="tech-grid"
-    aria-hidden="true"
-></div>
+const storeModalMainImage =
+    document.getElementById("storeModalMainImage");
 
+const storeModalThumbnails =
+    document.getElementById("storeModalThumbnails");
 
+const storeModalCategory =
+    document.getElementById("storeModalCategory");
 
-<!-- =====================================================
-     HEADER
-     ===================================================== -->
+const storeModalBadge =
+    document.getElementById("storeModalBadge");
 
-<header class="store-header">
+const storeModalName =
+    document.getElementById("storeModalName");
 
+const storeModalPrice =
+    document.getElementById("storeModalPrice");
 
-    <a
-        href="index.html"
-        class="logo-acrylic"
-        aria-label="Voltica Home"
-    >
+const storeModalReferencePrice =
+    document.getElementById("storeModalReferencePrice");
 
-        <span class="logo-v">
-            V
-        </span>
+const storeModalDescription =
+    document.getElementById("storeModalDescription");
 
-        <span class="logo-text">
-            VOLTICA
-        </span>
+const storeModalFeatures =
+    document.getElementById("storeModalFeatures");
 
-    </a>
+const storeModalSpecifications =
+    document.getElementById("storeModalSpecifications");
 
+const storeModalColors =
+    document.getElementById("storeModalColors");
 
-    <nav class="store-nav">
+const storeModalBuy =
+    document.getElementById("storeModalBuy");
 
-        <a
-            href="index.html"
-            class="nav-active"
-        >
-            HOME
-        </a>
 
-        <a href="store.html">
-            STORE
-        </a>
+/* =========================================================
+   INITIALIZATION
+   ========================================================= */
 
-        <a href="#contact">
-            CONTACT
-        </a>
+document.addEventListener(
+    "DOMContentLoaded",
+    initializeStore
+);
 
-    </nav>
 
+function initializeStore() {
 
-    <button
-        type="button"
-        class="cart-acrylic"
-        id="cartButton"
-        aria-label="Open shopping cart"
-    >
+    loadProducts();
 
-        <span class="cart-icon">
+    renderStore();
 
-            <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
+    bindStoreEvents();
 
-                <path
-                    d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 7H6"
-                />
+}
 
-                <circle
-                    cx="10"
-                    cy="20"
-                    r="1"
-                />
 
-                <circle
-                    cx="18"
-                    cy="20"
-                    r="1"
-                />
+/* =========================================================
+   LOAD PRODUCTS
+   ========================================================= */
 
-            </svg>
+function loadProducts() {
 
-        </span>
+    if (
+        Array.isArray(
+            window.volticaProducts
+        )
+    ) {
 
+        storeProducts =
+            window.volticaProducts
+                .filter(
+                    product =>
+                        product &&
+                        product.active !== false
+                )
+                .map(
+                    normalizeProduct
+                );
 
-        <span
-            class="cart-count"
-            id="cartCount"
-        >
-            0
-        </span>
+        return;
 
-    </button>
+    }
 
 
-</header>
+    console.error(
+        "Voltica Store: products.js was not loaded."
+    );
 
 
+    storeProducts = [];
 
-<!-- =====================================================
-     MAIN
-     ===================================================== -->
+}
 
-<main>
 
+/* =========================================================
+   NORMALIZE PRODUCT
+   ========================================================= */
 
-<!-- =====================================================
-     HERO
-     ===================================================== -->
+function normalizeProduct(product) {
 
-<section class="store-hero">
+    return {
 
+        id:
+            cleanText(product.id),
 
-    <div
-        class="hero-pulsar"
-        aria-hidden="true"
-    >
+        name:
+            cleanText(product.name),
 
-        <span></span>
+        category:
+            cleanText(product.category),
 
-    </div>
+        badge:
+            cleanText(product.badge),
 
+        sku:
+            cleanText(product.sku),
 
-    <span class="product-category">
-        VOLTICA AUDIO
-    </span>
+        cost:
+            numberValue(product.cost),
 
+        shipping:
+            numberValue(product.shipping),
 
-    <h1 class="future-title">
+        price:
+            numberValue(product.price),
 
-        <span>
-            VOLTICA
-        </span>
+        referencePrice:
+            numberValue(
+                product.referencePrice
+            ),
 
-        <span class="future-second">
-            Q45
-        </span>
+        shortDescription:
+            cleanText(
+                product.shortDescription
+            ),
 
-    </h1>
+        description:
+            cleanText(
+                product.description
+            ),
 
+        keyFeatures:
+            Array.isArray(
+                product.keyFeatures
+            )
+                ? product.keyFeatures
+                : [],
 
-    <p
-        class="product-description"
-        style="
-            position:relative;
-            z-index:3;
-            max-width:620px;
-            margin-top:24px;
-            color:rgba(255,255,255,.58);
-            text-align:center;
-        "
-    >
+        specifications:
+            product.specifications &&
+            typeof product.specifications === "object"
+                ? product.specifications
+                : {},
 
-        Premium wireless headphones engineered
-        for immersive sound, active noise cancellation
-        and everyday comfort.
+        colors:
+            Array.isArray(product.colors)
+                ? product.colors
+                : [],
 
-    </p>
+        variants:
+            Array.isArray(product.variants)
+                ? product.variants
+                : [],
 
+        images:
+            normalizeImages(
+                product.images
+            ),
 
-    <div class="opening-acrylic">
+        stripeLink:
+            cleanText(
+                product.stripeLink
+            ),
 
-        <span class="opening-pulse"></span>
+        supplierLink:
+            cleanText(
+                product.supplierLink
+            ),
 
-        <span>
-            PRE-ORDER
-        </span>
+        active:
+            product.active !== false
 
-        <strong>
-            NOW OPEN
-        </strong>
+    };
 
-    </div>
+}
 
 
-</section>
+/* =========================================================
+   IMAGE NORMALIZATION
+   ========================================================= */
 
+function normalizeImages(images) {
 
+    if (
+        !Array.isArray(images)
+    ) {
 
-<!-- =====================================================
-     FEATURED PRODUCT
-     ===================================================== -->
+        return [];
 
-<section
-    class="products-section"
-    aria-label="Voltica Q45"
->
+    }
 
 
-    <article class="store-product">
+    return images
+        .map(
+            image => {
 
+                let path = "";
 
-        <!-- =================================================
-             PRODUCT IMAGE
-             ================================================= -->
+
+                if (
+                    typeof image ===
+                    "string"
+                ) {
+
+                    path = image;
+
+                } else if (
+                    image &&
+                    typeof image ===
+                    "object"
+                ) {
+
+                    path =
+                        image.path ||
+                        image.src ||
+                        image.url ||
+                        "";
+
+                }
+
+
+                path =
+                    cleanImagePath(
+                        path
+                    );
+
+
+                return path;
+
+            }
+        )
+        .filter(Boolean);
+
+}
+
+
+/* =========================================================
+   CLEAN IMAGE PATH
+   ========================================================= */
+
+function cleanImagePath(path) {
+
+    path =
+        cleanText(path);
+
+
+    if (!path) {
+
+        return "";
+
+    }
+
+
+    /*
+     * Already a complete URL.
+     */
+
+    if (
+        /^https?:\/\//i.test(path)
+    ) {
+
+        return path;
+
+    }
+
+
+    /*
+     * Root-relative path.
+     */
+
+    if (
+        path.startsWith("/")
+    ) {
+
+        return path;
+
+    }
+
+
+    /*
+     * Already points to assets/images.
+     */
+
+    if (
+        path.startsWith(
+            "assets/images/"
+        )
+    ) {
+
+        return path;
+
+    }
+
+
+    /*
+     * Only filename supplied.
+     */
+
+    return (
+        VOLTICA_IMAGE_PATH +
+        path
+    );
+
+}
+
+
+/* =========================================================
+   RENDER STORE
+   ========================================================= */
+
+function renderStore() {
+
+    if (
+        !storeProductContainer
+    ) {
+
+        /*
+         * The current static store.html
+         * may not contain the dynamic
+         * container yet.
+         */
+
+        return;
+
+    }
+
+
+    storeProductContainer.innerHTML = "";
+
+
+    if (
+        storeProducts.length === 0
+    ) {
+
+        renderEmptyStore();
+
+        return;
+
+    }
+
+
+    storeProducts.forEach(
+        product => {
+
+            const card =
+                createProductCard(
+                    product
+                );
+
+
+            storeProductContainer.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
+
+function createProductCard(product) {
+
+    const article =
+        document.createElement(
+            "article"
+        );
+
+
+    article.className =
+        "store-product";
+
+
+    article.dataset.productId =
+        product.id;
+
+
+    const firstImage =
+        product.images[0] || "";
+
+
+    const badge =
+        product.badge
+            ? `
+                <span class="product-badge">
+                    ${escapeHTML(product.badge)}
+                </span>
+              `
+            : "";
+
+
+    const referencePrice =
+        product.referencePrice > product.price
+            ? `
+                <span class="product-reference-price">
+                    ${formatPrice(product.referencePrice)}
+                </span>
+              `
+            : "";
+
+
+    article.innerHTML = `
 
         <div class="product-image">
 
+            ${badge}
 
-            <span class="product-badge">
-                PRE-ORDER
-            </span>
-
-
-            <img
-                src="assets/images/q451-1.webp"
-                alt="Voltica Q45 headphones"
-                loading="eager"
-            >
-
+            ${
+                firstImage
+                    ? `
+                        <img
+                            src="${escapeAttribute(firstImage)}"
+                            alt="${escapeAttribute(product.name)}"
+                            loading="lazy"
+                        >
+                    `
+                    : `
+                        <div class="product-image-empty">
+                            NO IMAGE
+                        </div>
+                    `
+            }
 
             <div
                 class="image-reflection"
                 aria-hidden="true"
             ></div>
 
-
         </div>
 
 
-
-        <!-- =================================================
-             PRODUCT INFORMATION
-             ================================================= -->
-
         <div class="product-info">
 
-
-            <span class="product-category">
-                PREMIUM AUDIO
-            </span>
+            ${
+                product.category
+                    ? `
+                        <span class="product-category">
+                            ${escapeHTML(product.category)}
+                        </span>
+                      `
+                    : ""
+            }
 
 
             <h2 class="product-title">
-                VOLTICA Q45
+                ${escapeHTML(product.name)}
             </h2>
 
 
-            <p class="product-description">
+            ${
+                product.shortDescription
+                    ? `
+                        <p class="product-description">
+                            ${escapeHTML(
+                                product.shortDescription
+                            )}
+                        </p>
+                      `
+                    : ""
+            }
 
-                Experience powerful wireless audio
-                with immersive sound, premium comfort
-                and advanced active noise cancellation.
 
-            </p>
-
-
-
-            <!-- PRICE -->
-
-            <div
-                class="product-price-row"
-                style="margin-top:18px;"
-            >
+            <div class="product-price-row">
 
                 <strong class="product-price">
-                    $189.99 USD
+                    ${formatPrice(product.price)}
                 </strong>
+
+                ${referencePrice}
 
             </div>
 
 
-            <p
-                style="
-                    margin-top:10px;
-                    color:rgba(255,255,255,.55);
-                    font-size:12px;
-                    line-height:1.6;
-                "
-            >
-
-                Includes your exclusive
-                <strong style="color:#fff;">
-                    15% OFF FOR LIFE
-                </strong>
-                customer benefit.
-
-            </p>
-
-
-
-            <!-- =================================================
-                 ACTIONS
-                 ================================================= -->
-
-            <div
-                class="product-actions"
-                style="margin-top:24px;"
-            >
-
+            <div class="product-actions">
 
                 <button
                     type="button"
                     class="acrylic-button product-view-button"
-                    id="openProductButton"
+                    data-action="view"
+                    data-product-id="${escapeAttribute(product.id)}"
                 >
                     VIEW PRODUCT
                 </button>
 
 
-                <a
-                    href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
-                    class="acrylic-button product-buy-button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    PRE-ORDER
-
-                </a>
-
-
-            </div>
-
-
-        </div>
-
-
-    </article>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     PRODUCT MODAL
-     ===================================================== -->
-
-<div
-    class="product-modal"
-    id="productModal"
-    aria-hidden="true"
->
-
-
-    <div
-        class="product-modal-overlay"
-        id="productModalOverlay"
-    ></div>
-
-
-    <div
-        class="product-modal-panel"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modalProductName"
-    >
-
-
-        <button
-            type="button"
-            class="product-modal-close"
-            id="productModalClose"
-            aria-label="Close product"
-        >
-            ×
-        </button>
-
-
-
-        <!-- =================================================
-             GALLERY
-             ================================================= -->
-
-        <div class="product-modal-gallery">
-
-
-            <div class="product-modal-main-image">
-
-                <img
-                    id="modalMainImage"
-                    src="assets/images/q451-1.webp"
-                    alt="Voltica Q45"
-                >
-
-            </div>
-
-
-            <div
-                class="product-modal-thumbnails"
-                id="modalThumbnails"
-            >
-
-
-                <button
-                    type="button"
-                    class="modal-thumb active"
-                    data-image="assets/images/q451-1.webp"
-                >
-
-                    <img
-                        src="assets/images/q451-1.webp"
-                        alt="Voltica Q45 image 1"
-                    >
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="modal-thumb"
-                    data-image="assets/images/q451-2.webp"
-                >
-
-                    <img
-                        src="assets/images/q451-2.webp"
-                        alt="Voltica Q45 image 2"
-                    >
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="modal-thumb"
-                    data-image="assets/images/q451-3.webp"
-                >
-
-                    <img
-                        src="assets/images/q451-3.webp"
-                        alt="Voltica Q45 image 3"
-                    >
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="modal-thumb"
-                    data-image="assets/images/q451-4.webp"
-                >
-
-                    <img
-                        src="assets/images/q451-4.webp"
-                        alt="Voltica Q45 image 4"
-                    >
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="modal-thumb"
-                    data-image="assets/images/q451-6.webp"
-                >
-
-                    <img
-                        src="assets/images/q451-6.webp"
-                        alt="Voltica Q45 image 6"
-                    >
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="modal-thumb"
-                    data-image="assets/images/q451-7.webp"
-                >
-
-                    <img
-                        src="assets/images/q451-7.webp"
-                        alt="Voltica Q45 image 7"
-                    >
-
-                </button>
-
+                ${
+                    product.stripeLink
+                        ? `
+                            <a
+                                href="${escapeAttribute(product.stripeLink)}"
+                                class="acrylic-button product-buy-button"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                PRE-ORDER
+                            </a>
+                          `
+                        : ""
+                }
 
             </div>
 
         </div>
 
+    `;
 
 
-        <!-- =================================================
-             DETAILS
-             ================================================= -->
+    return article;
 
-        <div class="product-modal-details">
+}
 
 
-            <span class="product-category">
-                PREMIUM AUDIO
+/* =========================================================
+   EMPTY STORE
+   ========================================================= */
+
+function renderEmptyStore() {
+
+    storeProductContainer.innerHTML = `
+
+        <div class="store-empty">
+
+            <span>
+                VOLTICA
             </span>
 
-
-            <h2 id="modalProductName">
-                VOLTICA Q45
-            </h2>
-
-
-            <div class="modal-price">
-                $189.99 USD
-            </div>
-
-
-            <div class="modal-life-offer">
-
-                <span class="pulse-dot"></span>
-
-                <strong>
-                    15% OFF FOR LIFE
-                </strong>
-
-            </div>
-
+            <strong>
+                STORE READY
+            </strong>
 
             <p>
-
-                Meet the Voltica Q45 — premium wireless
-                headphones designed for immersive everyday
-                listening.
-
-                <br><br>
-
-                Active noise cancellation helps reduce
-                unwanted surroundings while the comfortable
-                over-ear design keeps you focused on your music,
-                videos, games and calls.
-
-                <br><br>
-
-                Built for people who want premium audio
-                without compromising everyday comfort.
-
+                No active products are currently available.
             </p>
-
-
-
-            <!-- FEATURES -->
-
-            <div class="modal-features">
-
-
-                <div>
-                    <strong>
-                        ANC
-                    </strong>
-
-                    <span>
-                        Active Noise Cancellation
-                    </span>
-                </div>
-
-
-                <div>
-                    <strong>
-                        WIRELESS
-                    </strong>
-
-                    <span>
-                        Bluetooth audio
-                    </span>
-                </div>
-
-
-                <div>
-                    <strong>
-                        PREMIUM
-                    </strong>
-
-                    <span>
-                        Over-ear comfort
-                    </span>
-                </div>
-
-
-                <div>
-                    <strong>
-                        VOLTICA
-                    </strong>
-
-                    <span>
-                        Selected premium collection
-                    </span>
-                </div>
-
-
-            </div>
-
-
-
-            <!-- PURCHASE -->
-
-            <a
-                href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
-                class="modal-buy-button"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                PRE-ORDER Q45
-
-                <strong>
-                    →
-                </strong>
-
-            </a>
-
-
-            <p
-                style="
-                    margin-top:12px;
-                    font-size:10px;
-                    color:rgba(255,255,255,.38);
-                    text-align:center;
-                    letter-spacing:.08em;
-                "
-            >
-
-                SECURE CHECKOUT POWERED BY STRIPE
-
-            </p>
-
 
         </div>
 
+    `;
 
-    </div>
+}
 
-</div>
 
+/* =========================================================
+   STORE EVENTS
+   ========================================================= */
 
+function bindStoreEvents() {
 
-<!-- =====================================================
-     CONTACT
-     ===================================================== -->
+    document.addEventListener(
+        "click",
+        handleStoreClick
+    );
 
-<section
-    id="contact"
-    class="contact-section"
->
 
+    storeModalClose?.addEventListener(
+        "click",
+        closeProductModal
+    );
 
-    <div class="contact-acrylic">
 
+    storeModalOverlay?.addEventListener(
+        "click",
+        closeProductModal
+    );
 
-        <div
-            class="contact-pulsar"
-            aria-hidden="true"
-        ></div>
 
+    document.addEventListener(
+        "keydown",
+        handleKeyboard
+    );
 
-        <div class="contact-content">
+}
 
 
-            <span class="contact-label">
-                VOLTICA SUPPORT
-            </span>
+/* =========================================================
+   STORE CLICK ROUTER
+   ========================================================= */
 
+function handleStoreClick(event) {
 
-            <h2>
-                CONTACT US
-            </h2>
+    const button =
+        event.target.closest(
+            "[data-action='view']"
+        );
 
 
-            <p>
-                Need help with your order?
-            </p>
+    if (!button) {
 
+        return;
 
-            <a
-                href="mailto:support@volticastore.com"
-                class="contact-button"
-            >
+    }
 
-                <span>
-                    CONTACT US
-                </span>
 
-                <strong>
-                    →
-                </strong>
+    const productId =
+        button.dataset.productId;
 
-            </a>
 
+    openProductModal(
+        productId
+    );
 
-        </div>
+}
 
 
-    </div>
+/* =========================================================
+   OPEN PRODUCT MODAL
+   ========================================================= */
 
+function openProductModal(productId) {
 
-</section>
+    const product =
+        storeProducts.find(
+            item =>
+                item.id === productId
+        );
 
 
-</main>
+    if (!product) {
 
+        console.error(
+            "Voltica Store: product not found:",
+            productId
+        );
 
+        return;
 
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
+    }
 
-<footer class="store-footer">
 
+    currentProduct =
+        product;
 
-    <div class="footer-acrylic">
 
+    currentImageIndex = 0;
 
-        <span>
-            VOLTICA
-        </span>
 
+    renderProductModal(
+        product
+    );
 
-        <span>
-            THE FUTURE OF EVERYDAY
-        </span>
 
+    if (
+        storeProductModal
+    ) {
 
-        <span>
-            © 2026
-        </span>
+        storeProductModal.classList.add(
+            "active"
+        );
 
 
-    </div>
+        storeProductModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
 
 
-</footer>
+        document.body.style.overflow =
+            "hidden";
 
+    }
 
+}
 
-<!-- =====================================================
-     MODAL SCRIPT
-     ===================================================== -->
 
-<script>
+/* =========================================================
+   RENDER PRODUCT MODAL
+   ========================================================= */
 
-"use strict";
+function renderProductModal(product) {
 
+    if (
+        storeModalCategory
+    ) {
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+        storeModalCategory.textContent =
+            product.category ||
+            "VOLTICA";
 
+    }
 
-        const openButton =
-            document.getElementById(
-                "openProductButton"
-            );
 
+    if (
+        storeModalBadge
+    ) {
 
-        const modal =
-            document.getElementById(
-                "productModal"
-            );
+        if (product.badge) {
 
+            storeModalBadge.textContent =
+                product.badge;
 
-        const overlay =
-            document.getElementById(
-                "productModalOverlay"
-            );
+            storeModalBadge.hidden =
+                false;
 
+        } else {
 
-        const closeButton =
-            document.getElementById(
-                "productModalClose"
-            );
-
-
-        const mainImage =
-            document.getElementById(
-                "modalMainImage"
-            );
-
-
-        const thumbnails =
-            document.querySelectorAll(
-                ".modal-thumb"
-            );
-
-
-        function openModal() {
-
-            if (!modal) {
-                return;
-            }
-
-
-            modal.classList.add(
-                "active"
-            );
-
-
-            modal.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            document.body.style.overflow =
-                "hidden";
+            storeModalBadge.hidden =
+                true;
 
         }
 
-
-        function closeModal() {
-
-            if (!modal) {
-                return;
-            }
+    }
 
 
-            modal.classList.remove(
-                "active"
+    if (
+        storeModalName
+    ) {
+
+        storeModalName.textContent =
+            product.name;
+
+    }
+
+
+    if (
+        storeModalPrice
+    ) {
+
+        storeModalPrice.textContent =
+            formatPrice(
+                product.price
             );
 
+    }
 
-            modal.setAttribute(
-                "aria-hidden",
-                "true"
+
+    if (
+        storeModalReferencePrice
+    ) {
+
+        if (
+            product.referencePrice >
+            product.price
+        ) {
+
+            storeModalReferencePrice.textContent =
+                formatPrice(
+                    product.referencePrice
+                );
+
+            storeModalReferencePrice.hidden =
+                false;
+
+        } else {
+
+            storeModalReferencePrice.hidden =
+                true;
+
+        }
+
+    }
+
+
+    if (
+        storeModalDescription
+    ) {
+
+        storeModalDescription.innerHTML =
+            formatDescription(
+                product.description ||
+                product.shortDescription
             );
 
+    }
 
-            document.body.style.overflow =
+
+    renderModalImages(
+        product
+    );
+
+
+    renderModalFeatures(
+        product
+    );
+
+
+    renderModalSpecifications(
+        product
+    );
+
+
+    renderModalColors(
+        product
+    );
+
+
+    if (
+        storeModalBuy
+    ) {
+
+        if (
+            product.stripeLink
+        ) {
+
+            storeModalBuy.href =
+                product.stripeLink;
+
+            storeModalBuy.hidden =
+                false;
+
+        } else {
+
+            storeModalBuy.hidden =
+                true;
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   MODAL IMAGES
+   ========================================================= */
+
+function renderModalImages(product) {
+
+    if (
+        !storeModalMainImage
+    ) {
+
+        return;
+
+    }
+
+
+    const images =
+        product.images;
+
+
+    if (
+        images.length === 0
+    ) {
+
+        storeModalMainImage.removeAttribute(
+            "src"
+        );
+
+        storeModalMainImage.alt =
+            "No product image";
+
+        if (
+            storeModalThumbnails
+        ) {
+
+            storeModalThumbnails.innerHTML =
                 "";
 
         }
 
+        return;
 
-        openButton?.addEventListener(
-            "click",
-            openModal
-        );
+    }
 
 
-        closeButton?.addEventListener(
-            "click",
-            closeModal
-        );
+    currentImageIndex = Math.min(
+        currentImageIndex,
+        images.length - 1
+    );
 
 
-        overlay?.addEventListener(
-            "click",
-            closeModal
-        );
+    storeModalMainImage.src =
+        images[currentImageIndex];
 
 
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    closeModal();
-
-                }
-
-            }
-        );
+    storeModalMainImage.alt =
+        product.name;
 
 
-        thumbnails.forEach(
-            function (thumbnail) {
+    if (
+        !storeModalThumbnails
+    ) {
 
-                thumbnail.addEventListener(
-                    "click",
-                    function () {
+        return;
 
-
-                        const image =
-                            thumbnail.dataset.image;
+    }
 
 
-                        if (!image || !mainImage) {
-                            return;
-                        }
+    storeModalThumbnails.innerHTML =
+        "";
 
 
-                        mainImage.src =
-                            image;
+    images.forEach(
+        (
+            image,
+            index
+        ) => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
 
 
-                        thumbnails.forEach(
-                            function (item) {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            }
-                        );
+            button.type =
+                "button";
 
 
-                        thumbnail.classList.add(
-                            "active"
-                        );
+            button.className =
+                "modal-thumb";
 
-                    }
+
+            if (
+                index ===
+                currentImageIndex
+            ) {
+
+                button.classList.add(
+                    "active"
                 );
 
             }
+
+
+            button.dataset.imageIndex =
+                index;
+
+
+            button.innerHTML = `
+
+                <img
+                    src="${escapeAttribute(image)}"
+                    alt="${escapeAttribute(product.name)} ${index + 1}"
+                    loading="lazy"
+                >
+
+            `;
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    setModalImage(
+                        index
+                    );
+
+                }
+            );
+
+
+            storeModalThumbnails.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SET MODAL IMAGE
+   ========================================================= */
+
+function setModalImage(index) {
+
+    if (
+        !currentProduct
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        index < 0 ||
+        index >=
+        currentProduct.images.length
+    ) {
+
+        return;
+
+    }
+
+
+    currentImageIndex =
+        index;
+
+
+    if (
+        storeModalMainImage
+    ) {
+
+        storeModalMainImage.src =
+            currentProduct.images[index];
+
+    }
+
+
+    if (
+        storeModalThumbnails
+    ) {
+
+        storeModalThumbnails
+            .querySelectorAll(
+                ".modal-thumb"
+            )
+            .forEach(
+                (
+                    thumb,
+                    thumbIndex
+                ) => {
+
+                    thumb.classList.toggle(
+                        "active",
+                        thumbIndex === index
+                    );
+
+                }
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+function renderModalFeatures(product) {
+
+    if (
+        !storeModalFeatures
+    ) {
+
+        return;
+
+    }
+
+
+    storeModalFeatures.innerHTML =
+        "";
+
+
+    if (
+        !product.keyFeatures.length
+    ) {
+
+        storeModalFeatures.hidden =
+            true;
+
+        return;
+
+    }
+
+
+    storeModalFeatures.hidden =
+        false;
+
+
+    product.keyFeatures.forEach(
+        feature => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "modal-feature";
+
+
+            item.innerHTML = `
+
+                <span class="feature-pulse"></span>
+
+                <span>
+                    ${escapeHTML(feature)}
+                </span>
+
+            `;
+
+
+            storeModalFeatures.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SPECIFICATIONS
+   ========================================================= */
+
+function renderModalSpecifications(product) {
+
+    if (
+        !storeModalSpecifications
+    ) {
+
+        return;
+
+    }
+
+
+    storeModalSpecifications.innerHTML =
+        "";
+
+
+    const entries =
+        Object.entries(
+            product.specifications || {}
         );
 
 
+    if (
+        entries.length === 0
+    ) {
+
+        storeModalSpecifications.hidden =
+            true;
+
+        return;
+
     }
-);
-
-</script>
 
 
-</body>
+    storeModalSpecifications.hidden =
+        false;
 
-</html>
+
+    entries.forEach(
+        ([key, value]) => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "modal-specification";
+
+
+            item.innerHTML = `
+
+                <span>
+                    ${escapeHTML(key)}
+                </span>
+
+                <strong>
+                    ${escapeHTML(value)}
+                </strong>
+
+            `;
+
+
+            storeModalSpecifications.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   COLORS
+   ========================================================= */
+
+function renderModalColors(product) {
+
+    if (
+        !storeModalColors
+    ) {
+
+        return;
+
+    }
+
+
+    storeModalColors.innerHTML =
+        "";
+
+
+    if (
+        product.colors.length === 0
+    ) {
+
+        storeModalColors.hidden =
+            true;
+
+        return;
+
+    }
+
+
+    storeModalColors.hidden =
+        false;
+
+
+    product.colors.forEach(
+        color => {
+
+            const item =
+                document.createElement(
+                    "span"
+                );
+
+
+            item.className =
+                "product-color";
+
+            item.textContent =
+                color;
+
+
+            storeModalColors.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CLOSE PRODUCT MODAL
+   ========================================================= */
+
+function closeProductModal() {
+
+    if (
+        !storeProductModal
+    ) {
+
+        return;
+
+    }
+
+
+    storeProductModal.classList.remove(
+        "active"
+    );
+
+
+    storeProductModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+
+    currentProduct =
+        null;
+
+}
+
+
+/* =========================================================
+   KEYBOARD
+   ========================================================= */
+
+function handleKeyboard(event) {
+
+    if (
+        event.key === "Escape"
+    ) {
+
+        closeProductModal();
+
+        return;
+
+    }
+
+
+    if (
+        !currentProduct
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        event.key === "ArrowRight"
+    ) {
+
+        if (
+            currentProduct.images.length
+        ) {
+
+            const next =
+                (
+                    currentImageIndex + 1
+                ) %
+                currentProduct.images.length;
+
+
+            setModalImage(
+                next
+            );
+
+        }
+
+    }
+
+
+    if (
+        event.key === "ArrowLeft"
+    ) {
+
+        if (
+            currentProduct.images.length
+        ) {
+
+            const previous =
+                (
+                    currentImageIndex -
+                    1 +
+                    currentProduct.images.length
+                ) %
+                currentProduct.images.length;
+
+
+            setModalImage(
+                previous
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   DESCRIPTION FORMATTER
+   ========================================================= */
+
+function formatDescription(
+    description
+) {
+
+    if (!description) {
+
+        return "";
+
+    }
+
+
+    return escapeHTML(
+        description
+    )
+    .replace(
+        /\r?\n\r?\n/g,
+        "<br><br>"
+    )
+    .replace(
+        /\r?\n/g,
+        "<br>"
+    );
+
+}
+
+
+/* =========================================================
+   PRICE
+   ========================================================= */
+
+function formatPrice(value) {
+
+    const price =
+        Number(value);
+
+
+    if (
+        Number.isNaN(price)
+    ) {
+
+        return "$0.00 USD";
+
+    }
+
+
+    return (
+        "$" +
+        price.toFixed(2) +
+        " " +
+        VOLTICA_CURRENCY
+    );
+
+}
+
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+
+function cleanText(value) {
+
+    return String(
+        value ?? ""
+    ).trim();
+
+}
+
+
+function numberValue(value) {
+
+    const number =
+        Number(value);
+
+
+    return Number.isFinite(number)
+        ? number
+        : 0;
+
+}
+
+
+function escapeHTML(value) {
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+function escapeAttribute(value) {
+
+    return escapeHTML(
+        value
+    );
+
+}
+
+
+/* =========================================================
+   GLOBAL API
+   ========================================================= */
+
+window.VolticaStore = {
+
+    getProducts() {
+
+        return storeProducts;
+
+    },
+
+
+    getProduct(id) {
+
+        return storeProducts.find(
+            product =>
+                product.id === id
+        ) || null;
+
+    },
+
+
+    openProduct(id) {
+
+        openProductModal(id);
+
+    },
+
+
+    closeProduct() {
+
+        closeProductModal();
+
+    },
+
+
+    refresh() {
+
+        loadProducts();
+
+        renderStore();
+
+    }
+
+};

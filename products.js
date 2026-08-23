@@ -1,377 +1,423 @@
 /* =========================================================
-VOLTICA STORE
-PRODUCT DATABASE
-========================================================= */
+   VOLTICA STORE — PRODUCTS DATABASE
+   ========================================================= */
 
 const volticaProducts = [
 
-/* =========================================================
-   PRODUCT 01 — VOLTICA Q17
-   ========================================================= */
+    /* =================================================
+       PRODUCT 01 — VOLTICA Q45
+       ================================================= */
 
-{
-    id: "earbuds1",
+    {
+        id: "q45",
 
-    sku: "CJYP266383702BY",
+        productNumber: 1,
 
-    name: "Voltica Q17",
+        sku: "CJYP272510404DW",
 
-    category: "SPORT AUDIO",
+        name: "Voltica Q45",
 
-    badge: "NEW",
+        category: "ELITE AUDIO",
 
-    price: 69.97,
+        badge: "LIMITED",
 
-    referencePrice: null,
+        price: 189.99,
 
-    currency: "USD",
+        cost: null,
 
-    description:
-        "Wireless neckband earbuds designed for movement, workouts and everyday listening.",
+        supplier: "CJdropshipping",
 
-    longDescription:
-        "The Voltica Q17 combines a secure ear-hook design with wireless freedom and practical everyday controls. Built for movement, workouts and active lifestyles, it delivers comfortable audio without getting in the way.",
+        supplierLink:
+            "https://www.cjdropshipping.com/product/-p-2601110810071616400.html",
 
-    features: [
-        {
-            title: "Secure Fit",
-            description: "Ear-hook design built for movement."
+
+        /* =================================================
+           IMAGES
+           ================================================= */
+
+        images: [
+
+            "assets/Q451-1.webp",
+
+            "assets/Q451-2.webp",
+
+            "assets/Q451-3.webp",
+
+            "assets/Q451-4.webp",
+
+            "assets/Q451-6.webp",
+
+            "assets/Q451-7.webp"
+
+        ],
+
+
+        /* =================================================
+           SHORT DESCRIPTION
+           ================================================= */
+
+        shortDescription:
+            "Premium over-ear wireless headphones engineered for immersive listening, long-distance travel, intensive workflows and everyday entertainment.",
+
+
+        /* =================================================
+           DESCRIPTION
+           ================================================= */
+
+        description:
+            "The Voltica Q45 brings premium wireless audio, adaptive active noise cancellation and long-lasting battery performance together in a refined over-ear design. Built for travel, work, gaming and everyday listening, the Q45 delivers an immersive listening experience while keeping you connected throughout the day.",
+
+
+        /* =================================================
+           ELITE PASS
+           ================================================= */
+
+        elitePass: {
+
+            enabled: true,
+
+            limitedUnits: 200,
+
+            discount:
+                "15% OFF 4 LIFE",
+
+            description:
+                "The first 200 customers purchasing the Voltica Q45 through Voltica Store receive an exclusive laser-engraved metal Voltica Elite Pass Card.",
+
+            benefit:
+                "Lifetime 15% discount on future Voltica Store purchases."
+
         },
-        {
-            title: "8+ Hour Battery",
-            description: "Designed for extended everyday listening."
+
+
+        /* =================================================
+           KEY FEATURES
+           ================================================= */
+
+        features: [
+
+            "Up to 65 hours of battery life",
+
+            "Adaptive active noise cancellation",
+
+            "Up to 98% ambient noise reduction",
+
+            "Hi-Res Audio",
+
+            "Bluetooth 5.3",
+
+            "Multipoint wireless connectivity",
+
+            "AI dual-microphone call noise reduction",
+
+            "Fast charging capability",
+
+            "Over-ear closed-back design",
+
+            "Premium acoustic tuning"
+
+        ],
+
+
+        /* =================================================
+           TECHNICAL SPECIFICATIONS
+           ================================================= */
+
+        specifications: {
+
+            manufacturer:
+                "Soundcore by Anker",
+
+            retailer:
+                "Voltica Store",
+
+            formFactor:
+                "Over-Ear / Closed-Back",
+
+            wireless:
+                "Bluetooth 5.3",
+
+            connectivity:
+                "Bluetooth 5.3 with multipoint connection",
+
+            audio:
+                "Hi-Res Audio",
+
+            noiseCancellation:
+                "Triple-Stage Dynamic ANC",
+
+            microphones:
+                "Dual Mic with AI Call Noise Reduction",
+
+            battery:
+                "Up to 65 Hours with ANC Off",
+
+            charging:
+                "Fast Charge Capable"
+
         },
-        {
-            title: "Bluetooth",
-            description: "Wireless connectivity up to 10 meters."
-        },
-        {
-            title: "Digital Display",
-            description: "Quick battery information at a glance."
+
+
+        /* =================================================
+           COLORWAYS
+           ================================================= */
+
+        variants: [
+
+            {
+                name: "Moon Rock Black",
+                value: "moon-rock-black"
+            },
+
+            {
+                name: "Crescent White",
+                value: "crescent-white"
+            },
+
+            {
+                name: "Moonlit Night Blue",
+                value: "moonlit-night-blue"
+            }
+
+        ],
+
+
+        /* =================================================
+           WHY VOLTICA
+           ================================================= */
+
+        whyVoltica: [
+
+            "Premium high-tech gear selected for innovators and tech enthusiasts.",
+
+            "Exclusive Voltica Elite Pass available for the first 200 customers.",
+
+            "Dedicated customer support."
+
+        ],
+
+
+        /* =================================================
+           AVAILABILITY
+           ================================================= */
+
+        availability:
+            "200 Limited Units",
+
+        available: true,
+
+
+        /* =================================================
+           CHECKOUT
+           ================================================= */
+
+        checkout: {
+
+            provider: "Stripe",
+
+            url:
+                "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+
         }
-    ],
 
-    colors: [
-        "Black"
-    ],
-
-    images: [
-        "assets/images/earbuds1-1.webp",
-        "assets/images/earbuds1-2.webp",
-        "assets/images/earbuds1-3.webp",
-        "assets/images/earbuds1-4.webp",
-        "assets/images/earbuds1-5.webp",
-        "assets/images/earbuds1-6.webp",
-        "assets/images/earbuds1-7.webp",
-        "assets/images/earbuds1-8.webp",
-        "assets/images/earbuds1-9.jpg"
-    ],
-
-    availability: "Available",
-
-    shipping: "Calculated at checkout"
-},
+    },
 
 
-/* =========================================================
-   PRODUCT 02 — VOLTICA TWS PRO
-   ========================================================= */
+    /* =================================================
+       PRODUCT 02 — XREAL AIR 1S
+       ================================================= */
 
-{
-    id: "earbuds2",
+    {
+        id: "xreal-air-1s",
 
-    sku: "VLT-AUD-TWS-PRO-001",
+        productNumber: 2,
 
-    name: "Voltica TWS Pro",
+        sku: null,
 
-    category: "WIRELESS AUDIO",
+        name: "XREAL Air 1S",
 
-    badge: "FEATURED",
+        category: "SMART TECH",
 
-    price: 59.97,
+        badge: "FEATURED",
 
-    referencePrice: null,
+        price: 579.99,
 
-    currency: "USD",
+        cost: 464.76,
 
-    description:
-        "Premium true wireless earbuds designed for everyday listening.",
+        supplier: "Alibaba",
 
-    longDescription:
-        "Voltica TWS Pro brings a clean wireless experience to everyday life. Compact, comfortable and designed around simple controls, these earbuds are made for music, calls and everything in between.",
+        supplierLink:
+            "https://www.alibaba.com/x/B2LdQW?ck=pdp",
 
-    features: [
-        {
-            title: "True Wireless",
-            description: "Freedom from cables for everyday listening."
+
+        /* =================================================
+           IMAGES
+           ================================================= */
+
+        images: [
+
+            "assets/glass1-1.jpg",
+
+            "assets/glass1-2.jpg",
+
+            "assets/glass1-3.jpg",
+
+            "assets/glass1-4.jpg",
+
+            "assets/glass1-5.jpg",
+
+            "assets/glass1-6.jpg"
+
+        ],
+
+
+        /* =================================================
+           SHORT DESCRIPTION
+           ================================================= */
+
+        shortDescription:
+            "Step into a new dimension of portable display with the XREAL Air 1S. Intelligent AR glasses that project an ultra-bright giant virtual screen directly into your field of vision for immersive gaming, movies and mobile productivity.",
+
+
+        /* =================================================
+           DESCRIPTION
+           ================================================= */
+
+        description:
+            "The XREAL Air 1S bridges the digital and physical worlds with an immersive 52° field of view and an adjustable virtual display ranging from 31 to 500 inches. Designed for gaming, entertainment and mobile productivity, it combines advanced AI capabilities, premium audio and ultra-fluid visuals in a compact wearable display.",
+
+
+        /* =================================================
+           KEY FEATURES
+           ================================================= */
+
+        features: [
+
+            "52° immersive field of view",
+
+            "Virtual display from 31 to 500 inches",
+
+            "Automatic electrochromic lenses",
+
+            "AI voice wake-up",
+
+            "Real-time photo object recognition",
+
+            "Instant image text translation",
+
+            "TÜV Rheinland certified eye comfort",
+
+            "Low blue light technology",
+
+            "Flicker-free technology",
+
+            "USB-CDP Plug & Play",
+
+            "Compatible with smartphones",
+
+            "Compatible with portable gaming handhelds",
+
+            "Compatible with tablets",
+
+            "Compatible with laptops",
+
+            "Premium integrated audio",
+
+            "Advanced X1 chipset",
+
+            "Under 1% TV distortion"
+
+        ],
+
+
+        /* =================================================
+           TECHNICAL SPECIFICATIONS
+           ================================================= */
+
+        specifications: {
+
+            model:
+                "XREAL Air 1S",
+
+            fieldOfView:
+                "52° immersive wide view",
+
+            virtualScreen:
+                "31–500 inches",
+
+            controls:
+                "Intuitive tactile buttons + AI voice assistant",
+
+            connectivity:
+                "USB-CDP Plug & Play",
+
+            displayControl:
+                "Pixel-level image alignment accuracy",
+
+            response:
+                "Low-latency response"
+
         },
-        {
-            title: "Compact Design",
-            description: "Designed for comfortable everyday carry."
-        },
-        {
-            title: "Touch Controls",
-            description: "Simple controls at your fingertips."
-        },
-        {
-            title: "Everyday Audio",
-            description: "A versatile audio experience for daily use."
-        }
-    ],
-
-    colors: [
-        "Black",
-        "White"
-    ],
-
-    images: [
-        "assets/images/earbuds2-1.webp",
-        "assets/images/earbuds2-2.webp",
-        "assets/images/earbuds2-3.webp",
-        "assets/images/earbuds2-4.webp",
-        "assets/images/earbuds2-5.webp"
-    ],
-
-    availability: "Available",
-
-    shipping: "Calculated at checkout"
-},
 
 
-/* =========================================================
-   PRODUCT 03 — VOLTICA T75
-   ========================================================= */
+        /* =================================================
+           WHY VOLTICA
+           ================================================= */
 
-{
-    id: "t75",
+        whyVoltica: [
 
-    sku: "VLT-AUD-T75-001",
+            "Premium high-tech gear selected for innovators and tech enthusiasts.",
 
-    name: "Voltica T75",
+            "Dedicated customer support."
 
-    category: "OPEN-EAR AUDIO",
+        ],
 
-    badge: "NEW",
 
-    price: 34.99,
+        /* =================================================
+           AVAILABILITY
+           ================================================= */
 
-    referencePrice: 39.99,
+        availability:
+            "Available",
 
-    currency: "USD",
+        available: true
 
-    description:
-        "Open-ear wireless earbuds with an ear-clip design built for comfort and movement.",
-
-    longDescription:
-        "The Voltica T75 features an open-ear clip design that keeps you connected to your surroundings while delivering wireless audio. With low-latency mode, touch controls and IPX5 water and sweat resistance, it is built for everyday movement.",
-
-    features: [
-        {
-            title: "Open-Ear Design",
-            description: "Stay aware of your surroundings while listening."
-        },
-        {
-            title: "Low Latency",
-            description: "Designed for responsive audio and gaming."
-        },
-        {
-            title: "IPX5",
-            description: "Water and sweat resistant for active use."
-        },
-        {
-            title: "Touch Controls",
-            description: "Easy control without reaching for your phone."
-        }
-    ],
-
-    colors: [
-        "Black",
-        "White",
-        "Beige"
-    ],
-
-    images: [
-        "assets/images/t75-1.webp",
-        "assets/images/t75-2.webp",
-        "assets/images/t75-3.webp",
-        "assets/images/t75-4.webp",
-        "assets/images/t75-5.webp"
-    ],
-
-    availability: "Available",
-
-    shipping: "Calculated at checkout",
-
-    supplier: {
-        platform: "AliExpress",
-
-        model: "T75",
-
-        supplierSku: null,
-
-        productCost: 9.03,
-
-        shippingCost: 9.00,
-
-        totalCost: 18.03
     }
-},
-
-
-/* =========================================================
-   PRODUCT 04 — J10 GAMING SET
-   ========================================================= */
-
-{
-    id: "j10",
-
-    sku: "CJXFSPYX00075-Keyboard + mouse",
-
-    name: "Voltica J10 Gaming Set",
-
-    category: "GAMING GEAR",
-
-    badge: "GAMING",
-
-    price: 43.99,
-
-    referencePrice: null,
-
-    currency: "USD",
-
-    description:
-        "Tricolor backlight wired gaming keyboard and mouse set.",
-
-    longDescription:
-        "The Voltica J10 Gaming Set brings together a wired gaming keyboard and mouse with a tricolor backlight design. A straightforward setup for gamers looking for an affordable way to upgrade their desk.",
-
-    features: [
-        {
-            title: "Gaming Keyboard",
-            description: "Full-size wired keyboard for gaming and everyday use."
-        },
-        {
-            title: "Gaming Mouse",
-            description: "Matching wired mouse included."
-        },
-        {
-            title: "Tricolor Backlight",
-            description: "Gaming-inspired illuminated design."
-        },
-        {
-            title: "Complete Set",
-            description: "Keyboard and mouse included together."
-        }
-    ],
-
-    colors: [
-        "Black"
-    ],
-
-    images: [
-        "assets/images/keyboard1-1.webp",
-        "assets/images/keyboard1-2.webp",
-        "assets/images/keyboard1-3.webp",
-        "assets/images/keyboard1-4.webp",
-        "assets/images/keyboard1-5.webp",
-        "assets/images/keyboard1-6.webp",
-        "assets/images/keyboard1-7.webp",
-        "assets/images/keyboard1-8.webp"
-    ],
-
-    availability: "Available",
-
-    shipping: "Calculated at checkout",
-
-    supplier: {
-        platform: "CJdropshipping",
-
-        model: null,
-
-        supplierSku:
-            "CJXFSPYX00075-Keyboard + mouse",
-
-        productCost: 8.78,
-
-        shippingCost: 18.37,
-
-        totalCost: 27.15
-    }
-}
 
 ];
 
+
 /* =========================================================
-PRODUCT HELPERS
-========================================================= */
+   VOLTICA PRODUCT HELPERS
+   ========================================================= */
 
-/**
+function getVolticaProduct(productId) {
 
-* Find a product by its Voltica ID.
-  */
-  function getProductById(id) {
-  
-  return volticaProducts.find(
-  product => product.id === id
-  );
+    return volticaProducts.find(
+        product => product.id === productId
+    );
 
 }
 
-/**
 
-* Find a product by SKU.
-  */
-  function getProductBySku(sku) {
-  
-  return volticaProducts.find(
-  product => product.sku === sku
-  );
+function getVolticaProductByNumber(productNumber) {
+
+    return volticaProducts.find(
+        product => product.productNumber === productNumber
+    );
 
 }
 
-/**
 
-* Return all products.
-  */
-  function getAllProducts() {
-  
-  return volticaProducts;
+/* =========================================================
+   EXPORT / GLOBAL
+   ========================================================= */
 
-}
+window.volticaProducts =
+    volticaProducts;
 
-/**
+window.getVolticaProduct =
+    getVolticaProduct;
 
-* Return products by category.
-  */
-  function getProductsByCategory(category) {
-  
-  if (
-  !category ||
-  category.toLowerCase() === "all"
-  ) {
-  
-   return volticaProducts;
-  
-  }
-  
-  return volticaProducts.filter(
-  product =>
-  product.category.toLowerCase() ===
-  category.toLowerCase()
-  );
-
-}
-
-/**
-
-* Return featured/new products.
-  */
-  function getFeaturedProducts() {
-  
-  return volticaProducts.filter(
-  product =>
-  product.badge === "FEATURED" ||
-  product.badge === "NEW"
-  );
-
-  }
+window.getVolticaProductByNumber =
+    getVolticaProductByNumber;

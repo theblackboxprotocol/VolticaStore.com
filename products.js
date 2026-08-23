@@ -32,6 +32,14 @@ const volticaProducts = [
 
 
         /* =================================================
+           STRIPE
+           ================================================= */
+
+        stripeLink:
+            "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j",
+
+
+        /* =================================================
            IMAGES
            ================================================= */
 
@@ -204,21 +212,7 @@ const volticaProducts = [
         availability:
             "200 Limited Units",
 
-        available: true,
-
-
-        /* =================================================
-           CHECKOUT
-           ================================================= */
-
-        checkout: {
-
-            provider: "Stripe",
-
-            url:
-                "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
-
-        }
+        available: true
 
     },
 
@@ -248,6 +242,14 @@ const volticaProducts = [
 
         supplierLink:
             "https://www.alibaba.com/x/B2LdQW?ck=pdp",
+
+
+        /* =================================================
+           STRIPE
+           ================================================= */
+
+        stripeLink:
+            "https://buy.stripe.com/14A28se0v78bauk4ym2Ji0o",
 
 
         /* =================================================
@@ -410,7 +412,7 @@ function getVolticaProductByNumber(productNumber) {
 
 
 /* =========================================================
-   EXPORT / GLOBAL
+   GLOBAL EXPORT
    ========================================================= */
 
 window.volticaProducts =

@@ -1,80 +1,163 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Administration - Voltica Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltica — Admin Inventory Portal</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .admin-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(20px);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .full-width { grid-column: 1 / -1; }
+        label {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 0.18em;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: #0a0c10;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: rgba(160, 185, 255, 0.5);
+        }
+        .admin-list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Gestionnaire de Produits</h1>
-        
-        <form id="productForm" class="admin-form">
-            <input type="hidden" id="prodId">
-            <div class="form-group">
-                <label>Nom du Produit</label>
-                <input type="text" id="prodName" required>
-            </div>
-            <div class="form-group">
-                <label>Prix ($)</label>
-                <input type="number" step="0.01" id="prodPrice" required>
-            </div>
-            <div class="form-group">
-                <label>Lien Stripe Checkout (URL)</label>
-                <input type="url" id="prodStripeUrl" placeholder="https://buy.stripe.com/..." required>
-            </div>
-            <div class="form-group">
-                <label>URL de l'image</label>
-                <input type="url" id="prodImage" required>
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <textarea id="prodDesc" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn">Enregistrer le produit</button>
-        </form>
+<body style="background: #050505; color: #fff;">
 
-        <h2>Produits en ligne</h2>
-        <div id="adminProductList" class="product-grid"></div>
+    <div class="admin-container">
+        <h1 style="font-weight: 300; letter-spacing: -0.02em; margin-bottom: 8px;">Voltica Hardware Manager</h1>
+        <p style="color: rgba(255,255,255,0.4); font-size: 11px; letter-spacing: 0.1em; margin-bottom: 30px;">INTERNAL MANAGEMENT PORTAL</p>
+
+        <div class="admin-card">
+            <form id="productAdminForm">
+                <input type="hidden" id="prodId">
+                <div class="form-grid">
+                    <div>
+                        <label>Product Name</label>
+                        <input type="text" id="prodName" placeholder="e.g., Voltica Apex Headphones" required>
+                    </div>
+                    <div>
+                        <label>Category</label>
+                        <select id="prodCategory" required>
+                            <option value="earbuds">Earbuds</option>
+                            <option value="gaming">Gaming Gear</option>
+                            <option value="creator">Creator Gear</option>
+                            <option value="headphones">Headphones</option>
+                            <option value="tech">Smart Tech</option>
+                            <option value="lifestyle">Lifestyle</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Price (USD)</label>
+                        <input type="number" step="0.01" id="prodPrice" placeholder="499.00" required>
+                    </div>
+                    <div>
+                        <label>Badge Label (Optional)</label>
+                        <input type="text" id="prodBadge" placeholder="FLAGSHIP / LIMITED EDITION">
+                    </div>
+                    <div class="full-width">
+                        <label>Direct Stripe Checkout URL</label>
+                        <input type="url" id="prodStripeUrl" placeholder="https://buy.stripe.com/..." required>
+                    </div>
+                    <div class="full-width">
+                        <label>Image Asset URL</label>
+                        <input type="url" id="prodImageUrl" placeholder="assets/images/product.jpg" required>
+                    </div>
+                    <div class="full-width">
+                        <label>Product Description</label>
+                        <textarea id="prodDesc" rows="4" placeholder="Precision-engineered audio architecture with active noise reduction..." required></textarea>
+                    </div>
+                    <div class="full-width">
+                        <button type="submit" class="product-button" style="width: 100%; height: 50px; font-size: 11px;">SAVE PRODUCT ENTRY</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <h2 style="font-weight: 300; margin-bottom: 20px;">Active Inventory</h2>
+        <div id="adminInventoryList"></div>
     </div>
 
     <script src="products.js"></script>
     <script>
-        const form = document.getElementById('productForm');
-        
+        const form = document.getElementById('productAdminForm');
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const product = {
                 id: document.getElementById('prodId').value || null,
                 name: document.getElementById('prodName').value,
+                category: document.getElementById('prodCategory').value,
                 price: parseFloat(document.getElementById('prodPrice').value).toFixed(2),
+                badge: document.getElementById('prodBadge').value,
                 stripeUrl: document.getElementById('prodStripeUrl').value,
-                imageUrl: document.getElementById('prodImage').value,
+                imageUrl: document.getElementById('prodImageUrl').value,
                 description: document.getElementById('prodDesc').value
             };
             saveSingleProduct(product);
             form.reset();
             document.getElementById('prodId').value = '';
-            loadAdminList();
+            refreshAdminList();
         });
 
-        function loadAdminList() {
-            const list = document.getElementById('adminProductList');
-            const products = getProducts();
-            list.innerHTML = products.map(p => `
-                <div class="product-card">
-                    <img src="${p.imageUrl}" class="product-image">
-                    <div class="product-info">
-                        <div class="product-title">${p.name}</div>
-                        <div class="product-price">${p.price} $</div>
-                        <button onclick="deleteProduct('${p.id}'); loadAdminList();" class="btn btn-danger">Supprimer</button>
+        function refreshAdminList() {
+            const container = document.getElementById('adminInventoryList');
+            const items = getProducts();
+            if (items.length === 0) {
+                container.innerHTML = `<p style="opacity:0.4; font-size:11px;">Inventory is empty. Add products above.</p>`;
+                return;
+            }
+            container.innerHTML = items.map(item => `
+                <div class="admin-list-item">
+                    <div>
+                        <strong style="font-size:14px;">${item.name}</strong>
+                        <div style="font-size:10px; color:rgba(255,255,255,0.5); font-weight: 600; margin-top:2px;">
+                            ${item.category.toUpperCase()} — $${item.price} USD
+                        </div>
                     </div>
+                    <button onclick="deleteProduct('${item.id}'); refreshAdminList();" class="product-button" style="background:rgba(239, 68, 68, 0.15); border-color:rgba(239, 68, 68, 0.4);">DELETE</button>
                 </div>
             `).join('');
         }
 
-        loadAdminList();
+        refreshAdminList();
     </script>
 </body>
 </html>
-

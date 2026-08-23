@@ -10309,7 +10309,25 @@ a.product-button {
             0 0 18px rgba(255,255,255,0.85);
     }
 }
+/* =====================================================
+   EDGE NAV — PERFECT BUTTON ALIGNMENT
+   ===================================================== */
 
+.voltica-edge-button {
+    box-sizing: border-box;
+    margin: 0;
+
+    font-family: inherit;
+    font-size: inherit;
+    line-height: normal;
+
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+button.voltica-edge-button {
+    border-width: 1px;
+}
 
 /* MOBILE */
 

@@ -71,12 +71,12 @@ const volticaProducts = [
             }
         ],
         "images": [
-            "assets/images/1000051068.jpg",
-            "assets/images/1000051071.jpg",
-            "assets/images/1000051069.jpg",
-            "assets/images/1000051073.jpg",
-            "assets/images/1000051072.jpg",
-            "assets/images/1000051070.jpg"
+            "assets/q451-1.jpg",
+            "assets/q451-2.jpg",
+            "assets/images/q451-3.jpg",
+            "assets/images/q451-4.jpg",
+            "assets/images/q451-6.jpg",
+            "assets/images/q451-7.jpg"
         ],
         "stripeLink": "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2601110810071616400.html",

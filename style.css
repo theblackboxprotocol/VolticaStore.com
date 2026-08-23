@@ -10422,3 +10422,257 @@ nav a {
 .voltica-edge-button {
     margin-left: 0;
 }
+/* =====================================================
+   VOLTICA EDGE NAVIGATION
+   ===================================================== */
+
+.voltica-edge-nav {
+
+    position: fixed;
+
+    top: 22px;
+    left: 18px;
+
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 10px;
+
+    width: 145px;
+
+}
+
+
+/* =====================================================
+   NAVIGATION BUTTON
+   ===================================================== */
+
+.voltica-edge-button {
+
+    position: relative;
+
+    width: 145px;
+    min-width: 145px;
+    min-height: 52px;
+
+    box-sizing: border-box;
+
+    padding: 0 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 10px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.065),
+            rgba(255,255,255,0.025)
+        );
+
+    backdrop-filter:
+        blur(18px)
+        saturate(130%);
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(130%);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,0.08),
+        0 10px 35px
+        rgba(0,0,0,0.22);
+
+    color:
+        rgba(255,255,255,0.78);
+
+    text-decoration: none;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+/* =====================================================
+   STORE NAVIGATION WRAPPER
+   ===================================================== */
+
+.voltica-store-navigation {
+
+    position: relative;
+
+    width: 145px;
+    min-width: 145px;
+
+    height: 52px;
+
+    flex: 0 0 52px;
+
+}
+
+
+/* =====================================================
+   CONTACT
+   ===================================================== */
+
+.voltica-contact-button {
+
+    width: 145px;
+    min-width: 145px;
+    min-height: 52px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+}
+
+
+/* =====================================================
+   DOT
+   ===================================================== */
+
+.voltica-edge-dot {
+
+    width: 7px;
+    height: 7px;
+
+    min-width: 7px;
+
+    flex: 0 0 7px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(220,235,255,0.95);
+
+    box-shadow:
+        0 0 8px
+        rgba(180,210,255,0.7);
+
+}
+
+
+/* =====================================================
+   LABEL
+   ===================================================== */
+
+.voltica-edge-label {
+
+    display: block;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.20em;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+}
+
+
+/* =====================================================
+   VOLTICA STORE DROPDOWN
+   ===================================================== */
+
+.voltica-store-menu {
+
+    position: absolute;
+
+    left: 0;
+
+    top: calc(100% + 8px);
+
+    width: 235px;
+
+    box-sizing: border-box;
+
+    padding: 9px;
+
+    border-radius: 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,28,38,0.88),
+            rgba(8,10,16,0.82)
+        );
+
+    backdrop-filter:
+        blur(24px)
+        saturate(140%);
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(140%);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,0.08),
+        0 24px 60px
+        rgba(0,0,0,0.48);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(-8px)
+        scale(0.97);
+
+    transform-origin: top left;
+
+    transition:
+        opacity 0.22s ease,
+        visibility 0.22s ease,
+        transform 0.22s ease;
+
+}
+
+
+/* OPEN */
+
+.voltica-store-menu.is-open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+]

@@ -1,1291 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Voltica Q45 — Premium wireless ANC headphones. Pre-order now and unlock your exclusive 15% Voltica advantage."
-    >
-
-    <meta
-        name="theme-color"
-        content="#030303"
-    >
-
-    <title>VOLTICA Q45 — The Future of Everyday</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-height: 100vh;
-            background:
-                radial-gradient(
-                    circle at 50% 10%,
-                    rgba(255,255,255,.08),
-                    transparent 35%
-                ),
-                #030303;
-            color: #fff;
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-            overflow-x: hidden;
-        }
-
-
-        /* =================================================
-           BACKGROUND
-           ================================================= */
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background:
-                linear-gradient(
-                    rgba(255,255,255,.025) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,.025) 1px,
-                    transparent 1px
-                );
-            background-size: 55px 55px;
-            mask-image:
-                linear-gradient(
-                    to bottom,
-                    black,
-                    transparent 80%
-                );
-            z-index: -2;
-        }
-
-
-        body::after {
-            content: "";
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: rgba(255,255,255,.045);
-            filter: blur(100px);
-            top: -180px;
-            left: 50%;
-            transform: translateX(-50%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-
-        /* =================================================
-           HEADER
-           ================================================= */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 22px 6%;
-
-            background:
-                rgba(5,5,5,.72);
-
-            backdrop-filter:
-                blur(22px);
-
-            -webkit-backdrop-filter:
-                blur(22px);
-
-            border-bottom:
-                1px solid rgba(255,255,255,.08);
-        }
-
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-
-            color: white;
-            text-decoration: none;
-            font-weight: 800;
-            letter-spacing: 4px;
-        }
-
-
-        .logo-v {
-            width: 38px;
-            height: 38px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border:
-                1px solid rgba(255,255,255,.35);
-
-            border-radius: 10px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.16),
-                    rgba(255,255,255,.025)
-                );
-
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,.2),
-                0 0 30px rgba(255,255,255,.06);
-        }
-
-
-        nav {
-            display: flex;
-            gap: 28px;
-        }
-
-
-        nav a {
-            color: rgba(255,255,255,.65);
-            text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 2px;
-            transition: .25s;
-        }
-
-
-        nav a:hover {
-            color: white;
-        }
-
-
-        /* =================================================
-           HERO
-           ================================================= */
-
-        .hero {
-            min-height: 88vh;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            padding:
-                100px 20px 80px;
-
-            position: relative;
-        }
-
-
-        .eyebrow {
-            font-size: 11px;
-            letter-spacing: 5px;
-            color: rgba(255,255,255,.55);
-            margin-bottom: 18px;
-        }
-
-
-        .hero h1 {
-            font-size:
-                clamp(58px, 13vw, 150px);
-
-            line-height: .85;
-            letter-spacing: -7px;
-            font-weight: 800;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    #ffffff 0%,
-                    #bdbdbd 48%,
-                    #555 100%
-                );
-
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-
-            text-shadow:
-                0 0 80px rgba(255,255,255,.08);
-        }
-
-
-        .hero-model {
-            margin-top: 22px;
-
-            font-size: 18px;
-            letter-spacing: 8px;
-
-            color:
-                rgba(255,255,255,.72);
-        }
-
-
-        .hero-subtitle {
-            max-width: 620px;
-
-            margin:
-                30px auto 0;
-
-            color:
-                rgba(255,255,255,.58);
-
-            line-height: 1.8;
-            font-size: 15px;
-        }
-
-
-        .status {
-            margin-top: 28px;
-
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-
-            padding: 10px 18px;
-
-            border:
-                1px solid rgba(255,255,255,.14);
-
-            border-radius: 999px;
-
-            background:
-                rgba(255,255,255,.045);
-
-            backdrop-filter:
-                blur(16px);
-
-            font-size: 10px;
-            letter-spacing: 3px;
-        }
-
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: white;
-
-            box-shadow:
-                0 0 15px white;
-
-            animation:
-                pulse 1.5s infinite;
-        }
-
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: .4;
-                transform: scale(.8);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-        }
-
-
-        /* =================================================
-           PRODUCT
-           ================================================= */
-
-        .product-section {
-            width: min(1250px, 92%);
-            margin: auto;
-
-            display: grid;
-            grid-template-columns:
-                1.15fr
-                .85fr;
-
-            gap: 70px;
-
-            align-items: center;
-        }
-
-
-        .gallery {
-            position: relative;
-        }
-
-
-        .main-image {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-
-            object-fit: contain;
-
-            padding: 35px;
-
-            border:
-                1px solid rgba(255,255,255,.1);
-
-            border-radius: 30px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.11),
-                    rgba(255,255,255,.025)
-                );
-
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,.12),
-                0 40px 100px rgba(0,0,0,.55);
-        }
-
-
-        .thumbnails {
-            display: flex;
-            gap: 10px;
-
-            margin-top: 14px;
-
-            overflow-x: auto;
-            padding-bottom: 5px;
-        }
-
-
-        .thumb {
-            flex: 0 0 78px;
-
-            width: 78px;
-            height: 78px;
-
-            object-fit: contain;
-
-            padding: 6px;
-
-            border:
-                1px solid rgba(255,255,255,.12);
-
-            border-radius: 12px;
-
-            background:
-                rgba(255,255,255,.04);
-
-            cursor: pointer;
-
-            transition: .25s;
-        }
-
-
-        .thumb:hover,
-        .thumb.active {
-            border-color:
-                rgba(255,255,255,.6);
-
-            background:
-                rgba(255,255,255,.1);
-        }
-
-
-        /* =================================================
-           INFO
-           ================================================= */
-
-        .product-info {
-            padding: 10px;
-        }
-
-
-        .product-category {
-            font-size: 10px;
-            letter-spacing: 4px;
-            color: rgba(255,255,255,.45);
-        }
-
-
-        .product-info h2 {
-            margin-top: 14px;
-
-            font-size:
-                clamp(42px, 6vw, 72px);
-
-            letter-spacing: -3px;
-        }
-
-
-        .product-name {
-            margin-top: 5px;
-
-            font-size: 13px;
-            letter-spacing: 5px;
-
-            color:
-                rgba(255,255,255,.5);
-        }
-
-
-        .product-description {
-            margin-top: 28px;
-
-            color:
-                rgba(255,255,255,.62);
-
-            line-height: 1.8;
-            font-size: 15px;
-        }
-
-
-        .price {
-            margin-top: 30px;
-
-            font-size: 36px;
-            font-weight: 700;
-        }
-
-
-        .preorder {
-            margin-top: 28px;
-
-            padding: 20px;
-
-            border:
-                1px solid rgba(255,255,255,.16);
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.1),
-                    rgba(255,255,255,.025)
-                );
-
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,.12);
-        }
-
-
-        .preorder strong {
-            display: block;
-
-            font-size: 12px;
-            letter-spacing: 3px;
-        }
-
-
-        .preorder span {
-            display: block;
-
-            margin-top: 9px;
-
-            color:
-                rgba(255,255,255,.62);
-
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-
-        .promo {
-            margin-top: 10px;
-
-            color: white !important;
-
-            font-weight: 700;
-        }
-
-
-        .actions {
-            display: flex;
-            gap: 12px;
-
-            margin-top: 22px;
-        }
-
-
-        .button {
-            flex: 1;
-
-            min-height: 58px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 0;
-            border-radius: 14px;
-
-            text-decoration: none;
-
-            cursor: pointer;
-
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2px;
-
-            transition:
-                transform .25s,
-                box-shadow .25s;
-        }
-
-
-        .button:hover {
-            transform:
-                translateY(-3px);
-        }
-
-
-        .button-primary {
-            color: #050505;
-
-            background: white;
-
-            box-shadow:
-                0 0 35px rgba(255,255,255,.15);
-        }
-
-
-        .button-secondary {
-            color: white;
-
-            background:
-                rgba(255,255,255,.05);
-
-            border:
-                1px solid rgba(255,255,255,.16);
-        }
-
-
-        /* =================================================
-           MODAL
-           ================================================= */
-
-        .modal {
-            position: fixed;
-            inset: 0;
-
-            z-index: 999;
-
-            display: none;
-            align-items: center;
-            justify-content: center;
-
-            padding: 20px;
-
-            background:
-                rgba(0,0,0,.78);
-
-            backdrop-filter:
-                blur(18px);
-
-            -webkit-backdrop-filter:
-                blur(18px);
-        }
-
-
-        .modal.open {
-            display: flex;
-        }
-
-
-        .modal-box {
-            width: min(760px, 100%);
-            max-height: 90vh;
-            overflow-y: auto;
-
-            padding: 35px;
-
-            border:
-                1px solid rgba(255,255,255,.16);
-
-            border-radius: 26px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(40,40,40,.92),
-                    rgba(8,8,8,.96)
-                );
-
-            box-shadow:
-                0 40px 120px rgba(0,0,0,.75),
-                inset 0 1px 0 rgba(255,255,255,.1);
-
-            position: relative;
-        }
-
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 18px;
-
-            width: 42px;
-            height: 42px;
-
-            border: 0;
-            border-radius: 50%;
-
-            color: white;
-
-            background:
-                rgba(255,255,255,.08);
-
-            font-size: 24px;
-
-            cursor: pointer;
-        }
-
-
-        .modal-box h2 {
-            font-size: 32px;
-            margin-bottom: 22px;
-        }
-
-
-        .modal-box p {
-            color:
-                rgba(255,255,255,.67);
-
-            line-height: 1.8;
-
-            margin-bottom: 18px;
-        }
-
-
-        .modal-feature {
-            padding: 16px 0;
-
-            border-top:
-                1px solid rgba(255,255,255,.08);
-
-            color:
-                rgba(255,255,255,.78);
-        }
-
-
-        /* =================================================
-           FOOTER
-           ================================================= */
-
-        footer {
-            margin-top: 130px;
-
-            padding: 45px 20px;
-
-            text-align: center;
-
-            border-top:
-                1px solid rgba(255,255,255,.08);
-
-            color:
-                rgba(255,255,255,.35);
-
-            font-size: 10px;
-            letter-spacing: 3px;
-        }
-
-
-        /* =================================================
-           MOBILE
-           ================================================= */
-
-        @media (max-width: 800px) {
-
-            header {
-                padding: 17px 5%;
-            }
-
-            nav {
-                gap: 12px;
-            }
-
-            nav a {
-                font-size: 9px;
-            }
-
-            .hero {
-                min-height: 70vh;
-                padding-top: 70px;
-            }
-
-            .hero h1 {
-                letter-spacing: -4px;
-            }
-
-            .product-section {
-                grid-template-columns: 1fr;
-                gap: 35px;
-            }
-
-            .product-info {
-                padding-bottom: 30px;
-            }
-
-            .actions {
-                flex-direction: column;
-            }
-
-            .modal-box {
-                padding: 28px 22px;
-            }
-
-        }
-
-    </style>
-
-</head>
-
-
-<body>
-
-
 <!-- =====================================================
-     HEADER
+     VOLTICA Q45
      ===================================================== -->
 
-<header>
+<section class="q45-product">
 
-    <a
-        href="#"
-        class="logo"
-    >
+    <div class="q45-gallery">
 
-        <span class="logo-v">
-            V
-        </span>
-
-        <span>
-            VOLTICA
-        </span>
-
-    </a>
-
-
-    <nav>
-
-        <a href="#product">
-            PRODUCT
-        </a>
-
-        <a href="#details">
-            DETAILS
-        </a>
-
-    </nav>
-
-</header>
-
-
-
-<!-- =====================================================
-     HERO
-     ===================================================== -->
-
-<section class="hero">
-
-    <span class="eyebrow">
-        VOLTICA STORE
-    </span>
-
-
-    <h1>
-        Q45
-    </h1>
-
-
-    <span class="hero-model">
-        ELITE ANC HEADPHONES
-    </span>
-
-
-    <p class="hero-subtitle">
-        Premium wireless audio engineered for
-        immersive everyday listening.
-    </p>
-
-
-    <div class="status">
-
-        <span class="status-dot"></span>
-
-        PRE-ORDER OPEN
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PRODUCT
-     ===================================================== -->
-
-<section
-    class="product-section"
-    id="product"
->
-
-
-    <!-- GALLERY -->
-
-    <div class="gallery">
-
-
-        <img
-            id="mainImage"
-            class="main-image"
-            src="assets/images/q451-1.webp"
-            alt="Voltica Q45"
-        >
-
-
-        <div class="thumbnails">
-
-
+        <div class="q45-main-image">
             <img
-                class="thumb active"
+                id="q45MainImage"
                 src="assets/images/q451-1.webp"
                 alt="Voltica Q45"
-                data-image="assets/images/q451-1.webp"
             >
-
-
-            <img
-                class="thumb"
-                src="assets/images/q451-2.webp"
-                alt="Voltica Q45"
-                data-image="assets/images/q451-2.webp"
-            >
-
-
-            <img
-                class="thumb"
-                src="assets/images/q451-3.webp"
-                alt="Voltica Q45"
-                data-image="assets/images/q451-3.webp"
-            >
-
-
-            <img
-                class="thumb"
-                src="assets/images/q451-4.webp"
-                alt="Voltica Q45"
-                data-image="assets/images/q451-4.webp"
-            >
-
-
-            <img
-                class="thumb"
-                src="assets/images/q451-6.webp"
-                alt="Voltica Q45"
-                data-image="assets/images/q451-6.webp"
-            >
-
-
-            <img
-                class="thumb"
-                src="assets/images/q451-7.webp"
-                alt="Voltica Q45"
-                data-image="assets/images/q451-7.webp"
-            >
-
         </div>
 
-    </div>
+        <div class="q45-thumbnails">
 
+            <button type="button" onclick="changeQ45Image('assets/images/q451-1.webp')">
+                <img src="assets/images/q451-1.webp" alt="Voltica Q45">
+            </button>
 
+            <button type="button" onclick="changeQ45Image('assets/images/q451-2.webp')">
+                <img src="assets/images/q451-2.webp" alt="Voltica Q45">
+            </button>
 
-    <!-- PRODUCT INFORMATION -->
+            <button type="button" onclick="changeQ45Image('assets/images/q451-3.webp')">
+                <img src="assets/images/q451-3.webp" alt="Voltica Q45">
+            </button>
 
-    <div class="product-info">
+            <button type="button" onclick="changeQ45Image('assets/images/q451-4.webp')">
+                <img src="assets/images/q451-4.webp" alt="Voltica Q45">
+            </button>
 
-        <span class="product-category">
-            PREMIUM AUDIO
-        </span>
+            <button type="button" onclick="changeQ45Image('assets/images/q451-6.webp')">
+                <img src="assets/images/q451-6.webp" alt="Voltica Q45">
+            </button>
 
-
-        <h2>
-            Q45
-        </h2>
-
-
-        <span class="product-name">
-            VOLTICA ELITE ANC
-        </span>
-
-
-        <p class="product-description">
-            Experience the Voltica Q45 — a premium
-            wireless headphone designed for immersive
-            listening, everyday comfort and a powerful
-            next-generation aesthetic.
-        </p>
-
-
-        <div class="price">
-            $347.97 USD
-        </div>
-
-
-        <div class="preorder">
-
-            <strong>
-                PRE-ORDER
-            </strong>
-
-            <span>
-                Secure your Q45 before the collection
-                officially opens.
-            </span>
-
-            <span class="promo">
-                🎁 PRE-ORDER ADVANTAGE — 15% OFF
-            </span>
-
-            <span>
-                Use your exclusive 15% promotional
-                pass at checkout.
-            </span>
-
-        </div>
-
-
-        <div class="actions">
-
-
-            <a
-                class="button button-primary"
-                href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                PRE-ORDER →
-            </a>
-
-
-            <button
-                type="button"
-                class="button button-secondary"
-                id="detailsButton"
-            >
-                VIEW DETAILS
+            <button type="button" onclick="changeQ45Image('assets/images/q451-7.webp')">
+                <img src="assets/images/q451-7.webp" alt="Voltica Q45">
             </button>
 
         </div>
 
     </div>
 
-</section>
 
+    <div class="q45-information">
 
-
-<!-- =====================================================
-     PRODUCT DETAILS MODAL
-     ===================================================== -->
-
-<div
-    class="modal"
-    id="detailsModal"
-    aria-hidden="true"
->
-
-
-    <div class="modal-box">
-
-
-        <button
-            type="button"
-            class="modal-close"
-            id="modalClose"
-            aria-label="Close"
-        >
-            ×
-        </button>
-
-
-        <span class="eyebrow">
-            VOLTICA Q45
+        <span class="q45-label">
+            VOLTICA AUDIO
         </span>
 
+        <h1>
+            VOLTICA Q45
+        </h1>
 
-        <h2>
-            THE DETAILS
-        </h2>
-
-
-        <p>
-            The Voltica Q45 is part of the premium
-            Voltica audio collection, combining
-            immersive wireless listening with a
-            refined, technology-forward design.
+        <p class="q45-subtitle">
+            Premium ANC Wireless Headphones
         </p>
 
 
-        <div class="modal-feature">
+        <div class="q45-price">
+            $189.99
+            <span>USD</span>
+        </div>
+
+
+        <div class="q45-lifetime">
+
             <strong>
-                PREMIUM WIRELESS AUDIO
+                15% FOR LIFE
             </strong>
-            <br>
-            Designed for everyday listening and
-            immersive sound experiences.
+
+            <span>
+                Exclusive Voltica customer benefit
+            </span>
+
         </div>
 
 
-        <div class="modal-feature">
+        <p class="q45-description">
+
+            Experience premium wireless audio with
+            advanced active noise cancellation,
+            immersive sound and all-day comfort.
+
+            The Voltica Q45 is engineered for music,
+            travel, work and everyday life.
+
+        </p>
+
+
+        <div class="q45-features">
+
+            <div>
+                <strong>ANC</strong>
+                <span>Active Noise Cancellation</span>
+            </div>
+
+            <div>
+                <strong>HI-FI</strong>
+                <span>Immersive Audio</span>
+            </div>
+
+            <div>
+                <strong>WIRELESS</strong>
+                <span>Bluetooth Connectivity</span>
+            </div>
+
+            <div>
+                <strong>COMFORT</strong>
+                <span>All-Day Wear</span>
+            </div>
+
+        </div>
+
+
+        <a
+            href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+            class="q45-preorder"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <span>
+                PRE-ORDER Q45
+            </span>
+
             <strong>
-                ACTIVE NOISE CANCELLATION
+                →
             </strong>
-            <br>
-            Designed to help create a more focused
-            listening environment.
-        </div>
+        </a>
 
 
-        <div class="modal-feature">
-            <strong>
-                VOLTICA PRE-ORDER
-            </strong>
-            <br>
-            Secure your Q45 through the official
-            Voltica checkout.
-        </div>
-
-
-        <div class="modal-feature">
-            <strong>
-                EXCLUSIVE 15% ADVANTAGE
-            </strong>
-            <br>
-            Pre-order customers receive access to
-            the promotional 15% discount pass.
-        </div>
-
-
-        <div style="margin-top:25px;">
-
-            <a
-                class="button button-primary"
-                href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                PRE-ORDER Q45 →
-            </a>
-
-        </div>
+        <p class="q45-secure">
+            Secure checkout powered by Stripe
+        </p>
 
     </div>
 
-</div>
+</section>
 
-
-
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
-
-<footer id="details">
-
-    VOLTICA STORE — THE FUTURE OF EVERYDAY
-    <br><br>
-    © 2026 VOLTICA
-
-</footer>
-
-
-
-<!-- =====================================================
-     JAVASCRIPT
-     ===================================================== -->
 
 <script>
 
-"use strict";
+function changeQ45Image(image) {
 
+    const main =
+        document.getElementById("q45MainImage");
 
-/* =====================================================
-   GALLERY
-   ===================================================== */
-
-const mainImage =
-    document.getElementById(
-        "mainImage"
-    );
-
-
-document
-    .querySelectorAll(".thumb")
-    .forEach(
-        thumb => {
-
-            thumb.addEventListener(
-                "click",
-                () => {
-
-                    const image =
-                        thumb.dataset.image;
-
-
-                    mainImage.src =
-                        image;
-
-
-                    document
-                        .querySelectorAll(".thumb")
-                        .forEach(
-                            item => {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            }
-                        );
-
-
-                    thumb.classList.add(
-                        "active"
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-/* =====================================================
-   MODAL
-   ===================================================== */
-
-const detailsButton =
-    document.getElementById(
-        "detailsButton"
-    );
-
-
-const detailsModal =
-    document.getElementById(
-        "detailsModal"
-    );
-
-
-const modalClose =
-    document.getElementById(
-        "modalClose"
-    );
-
-
-function openDetails() {
-
-    detailsModal.classList.add(
-        "open"
-    );
-
-    detailsModal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-    document.body.style.overflow =
-        "hidden";
+    if (main) {
+        main.src = image;
+    }
 
 }
-
-
-function closeDetails() {
-
-    detailsModal.classList.remove(
-        "open"
-    );
-
-    detailsModal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-detailsButton.addEventListener(
-    "click",
-    openDetails
-);
-
-
-modalClose.addEventListener(
-    "click",
-    closeDetails
-);
-
-
-detailsModal.addEventListener(
-    "click",
-    event => {
-
-        if (
-            event.target ===
-            detailsModal
-        ) {
-
-            closeDetails();
-
-        }
-
-    }
-);
-
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key ===
-            "Escape"
-        ) {
-
-            closeDetails();
-
-        }
-
-    }
-);
 
 </script>
-
-
-</body>
-
-</html>

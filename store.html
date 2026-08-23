@@ -72,8 +72,6 @@
         }
 
 
-        /* Remove old header label */
-
         .store-header .store-label {
             display: none !important;
         }
@@ -251,6 +249,10 @@
                 background 0.25s ease,
                 box-shadow 0.25s ease;
 
+            font-family: inherit;
+
+            cursor: pointer;
+
         }
 
 
@@ -307,6 +309,35 @@
                 0.20em;
 
             white-space: nowrap;
+
+        }
+
+
+        /* =====================================================
+           CONTACT BUTTON
+           ===================================================== */
+
+        .voltica-contact-button {
+
+            display: flex;
+
+            width: 145px;
+
+            min-height: 52px;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .voltica-contact-button .voltica-edge-dot {
+
+            background:
+                rgba(205,220,255,0.95);
+
+            box-shadow:
+                0 0 8px
+                rgba(170,200,255,0.75);
 
         }
 
@@ -558,8 +589,6 @@
         }
 
 
-        /* Star automatically inserted */
-
         .store-product .product-badge::before {
 
             content: "✦";
@@ -764,6 +793,15 @@
                 padding:
                     0
                     11px;
+
+            }
+
+
+            .voltica-contact-button {
+
+                width: 125px;
+
+                min-height: 44px;
 
             }
 
@@ -1047,6 +1085,29 @@
             </div>
 
         </div>
+
+
+        <!-- =====================================================
+             CONTACT
+             ===================================================== -->
+
+        <a
+            href="mailto:contact@volticastore.com"
+            class="voltica-edge-button voltica-contact-button"
+            aria-label="Contact Voltica Store"
+        >
+
+            <span
+                class="voltica-edge-dot"
+                aria-hidden="true"
+            ></span>
+
+            <span class="voltica-edge-label">
+                CONTACT
+            </span>
+
+        </a>
+
 
     </nav>
 
@@ -2627,4 +2688,4 @@ document.addEventListener(
 
 </body>
 
-    </html>
+                        </html>

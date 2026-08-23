@@ -1,22 +1,13 @@
 /* =========================================================
    VOLTICA STORE — PRODUCT VIEW.JS
-   Universal Product Detail Engine
-   Compatible with admin localStorage + products.js
+   Complete Product Detail Engine
    ========================================================= */
 
 "use strict";
 
 
 /* =========================================================
-   CONFIGURATION
-   ========================================================= */
-
-const VOLTICA_STORAGE_KEY =
-    "voltica_products_admin";
-
-
-/* =========================================================
-   START
+   DOM READY
    ========================================================= */
 
 document.addEventListener(
@@ -48,13 +39,15 @@ function initializeProductView() {
 
     initializeGallery();
 
+    initializeLightbox();
+
     initializeVariants(product);
 
 }
 
 
 /* =========================================================
-   GET PRODUCT ID
+   GET PRODUCT ID FROM URL
    ========================================================= */
 
 function getProductIdFromURL() {
@@ -66,78 +59,6 @@ function getProductIdFromURL() {
 
 
     return params.get("id");
-
-}
-
-
-/* =========================================================
-   LOAD PRODUCT DATABASE
-   ========================================================= */
-
-function getProductDatabase() {
-
-    /*
-     * FIRST:
-     * Try the admin database used by store.js
-     */
-
-    try {
-
-        const saved =
-            localStorage.getItem(
-                VOLTICA_STORAGE_KEY
-            );
-
-
-        if (saved) {
-
-            const parsed =
-                JSON.parse(
-                    saved
-                );
-
-
-            if (
-                Array.isArray(parsed)
-            ) {
-
-                return parsed.filter(
-                    product =>
-                        product &&
-                        product.active !== false
-                );
-
-            }
-
-        }
-
-    } catch (error) {
-
-        console.warn(
-            "VOLTICA: Local product database unavailable.",
-            error
-        );
-
-    }
-
-
-    /*
-     * SECOND:
-     * Fallback to products.js
-     */
-
-    if (
-        Array.isArray(
-            window.volticaProducts
-        )
-    ) {
-
-        return window.volticaProducts;
-
-    }
-
-
-    return [];
 
 }
 
@@ -159,27 +80,25 @@ function getProductFromURL() {
     }
 
 
-    const database =
-        getProductDatabase();
+    if (
+        !Array.isArray(
+            window.volticaProducts
+        )
+    ) {
 
-
-    if (!database.length) {
+        console.error(
+            "VOLTICA: products.js was not loaded."
+        );
 
         return null;
 
     }
 
 
-    return database.find(
+    return window.volticaProducts.find(
         product =>
-
-            String(
-                product.id
-            ) ===
-            String(
-                productId
-            )
-
+            String(product.id) ===
+            String(productId)
     ) || null;
 
 }
@@ -191,8 +110,9 @@ function getProductFromURL() {
 
 function renderProduct(product) {
 
-
-    /* CATEGORY */
+    /*
+     * CATEGORY
+     */
 
     setText(
         "productCategory",
@@ -201,7 +121,9 @@ function renderProduct(product) {
     );
 
 
-    /* NAME */
+    /*
+     * PRODUCT NAME
+     */
 
     setText(
         "productName",
@@ -210,7 +132,9 @@ function renderProduct(product) {
     );
 
 
-    /* SHORT DESCRIPTION */
+    /*
+     * SHORT DESCRIPTION
+     */
 
     setText(
         "productShortDescription",
@@ -220,7 +144,9 @@ function renderProduct(product) {
     );
 
 
-    /* PRICE */
+    /*
+     * PRICE
+     */
 
     setText(
         "productPrice",
@@ -230,7 +156,9 @@ function renderProduct(product) {
     );
 
 
-    /* CURRENCY */
+    /*
+     * CURRENCY
+     */
 
     setText(
         "productCurrency",
@@ -239,7 +167,9 @@ function renderProduct(product) {
     );
 
 
-    /* BADGE */
+    /*
+     * BADGE
+     */
 
     setText(
         "productBadge",
@@ -248,63 +178,99 @@ function renderProduct(product) {
     );
 
 
-    /* MAIN IMAGE */
+    /*
+     * MAIN IMAGE
+     */
 
     renderMainImage(
         product
     );
 
 
-    /* THUMBNAILS */
+    /*
+     * THUMBNAILS
+     */
 
     renderThumbnails(
         product
     );
 
 
-    /* DESCRIPTION */
+    /*
+     * DESCRIPTION
+     */
 
     renderDescription(
         product
     );
 
 
-    /* FEATURES */
+    /*
+     * FEATURES
+     */
 
     renderFeatures(
         product
     );
 
 
-    /* SPECIFICATIONS */
+    /*
+     * SPECIFICATIONS
+     */
 
     renderSpecifications(
         product
     );
 
 
-    /* OPTIONS */
+    /*
+     * OPTIONS
+     */
 
     renderOptions(
         product
     );
 
 
-    /* AVAILABILITY */
+    /*
+     * VARIANTS
+     */
 
-    renderAvailability(
+    initializeVariants(
         product
     );
 
 
-    /* STRIPE */
+    /*
+     * STRIPE
+     */
 
     setupStripeButtons(
         product
     );
 
 
-    /* FINAL PRODUCT NAME */
+    /*
+     * AVAILABILITY
+     */
+
+    renderAvailability(
+        product
+    );
+
+
+    /*
+     * REFERENCE PRICE
+     */
+
+    renderReferencePrice(
+        product
+    );
+
+
+    /*
+     * FINAL PRODUCT NAME
+     */
 
     setText(
         "finalProductName",
@@ -313,7 +279,9 @@ function renderProduct(product) {
     );
 
 
-    /* PAGE TITLE */
+    /*
+     * PAGE TITLE
+     */
 
     document.title =
         `${product.name || "Product"} — Voltica Store`;
@@ -348,7 +316,9 @@ function renderMainImage(
         );
 
 
-    if (!images.length) {
+    if (
+        images.length === 0
+    ) {
 
         mainImage.removeAttribute(
             "src"
@@ -395,7 +365,8 @@ function renderThumbnails(
     }
 
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
 
     const images =
@@ -405,7 +376,10 @@ function renderThumbnails(
 
 
     images.forEach(
-        (image, index) => {
+        (
+            image,
+            index
+        ) => {
 
             const button =
                 document.createElement(
@@ -432,18 +406,40 @@ function renderThumbnails(
             }
 
 
-            button.innerHTML = `
+            button.dataset.image =
+                image;
 
-                <img
-                    src="${escapeAttribute(image)}"
-                    alt="${escapeAttribute(
-                        product.name ||
-                        "Product"
-                    )} ${index + 1}"
-                    loading="lazy"
-                >
 
-            `;
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+
+            img.src =
+                image;
+
+
+            img.alt =
+                `${product.name || "Product"} ${index + 1}`;
+
+
+            img.loading =
+                "lazy";
+
+
+            img.onerror =
+                () => {
+
+                    button.style.display =
+                        "none";
+
+                };
+
+
+            button.appendChild(
+                img
+            );
 
 
             button.addEventListener(
@@ -544,7 +540,7 @@ function initializeGallery() {
         "click",
         () => {
 
-            openImageViewer(
+            openLightbox(
                 mainImage.src
             );
 
@@ -555,109 +551,140 @@ function initializeGallery() {
 
 
 /* =========================================================
-   IMAGE VIEWER
+   LIGHTBOX
    ========================================================= */
 
-function openImageViewer(
-    image
-) {
+function initializeLightbox() {
 
-    if (!image) {
+    const lightbox =
+        document.querySelector(
+            ".product-lightbox"
+        );
+
+
+    const closeButton =
+        document.querySelector(
+            ".lightbox-close"
+        );
+
+
+    if (!lightbox) {
 
         return;
 
     }
 
 
-    let viewer =
-        document.getElementById(
-            "volticaImageViewer"
-        );
+    if (closeButton) {
 
-
-    if (!viewer) {
-
-        viewer =
-            document.createElement(
-                "div"
-            );
-
-
-        viewer.id =
-            "volticaImageViewer";
-
-
-        viewer.innerHTML = `
-
-            <div class="voltica-image-viewer">
-
-                <button
-                    type="button"
-                    class="voltica-image-close"
-                    aria-label="Close image"
-                >
-                    ×
-                </button>
-
-                <img
-                    src=""
-                    alt="Product image"
-                >
-
-            </div>
-
-        `;
-
-
-        document.body.appendChild(
-            viewer
-        );
-
-
-        viewer.addEventListener(
+        closeButton.addEventListener(
             "click",
-            event => {
-
-                if (
-                    event.target ===
-                    viewer ||
-                    event.target.classList.contains(
-                        "voltica-image-close"
-                    )
-                ) {
-
-                    viewer.classList.remove(
-                        "active"
-                    );
-
-                    document.body.style.overflow =
-                        "";
-
-                }
-
-            }
+            closeLightbox
         );
 
     }
 
 
-    const viewerImage =
-        viewer.querySelector(
-            "img"
+    lightbox.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target ===
+                lightbox
+            ) {
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key ===
+                "Escape"
+            ) {
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+}
+
+
+function openLightbox(
+    image
+) {
+
+    const lightbox =
+        document.querySelector(
+            ".product-lightbox"
         );
 
 
-    viewerImage.src =
+    const lightboxImage =
+        document.querySelector(
+            ".product-lightbox img"
+        );
+
+
+    if (
+        !lightbox ||
+        !lightboxImage ||
+        !image
+    ) {
+
+        return;
+
+    }
+
+
+    lightboxImage.src =
         image;
 
 
-    viewer.classList.add(
+    lightbox.classList.add(
         "active"
     );
 
 
     document.body.style.overflow =
         "hidden";
+
+}
+
+
+function closeLightbox() {
+
+    const lightbox =
+        document.querySelector(
+            ".product-lightbox"
+        );
+
+
+    if (!lightbox) {
+
+        return;
+
+    }
+
+
+    lightbox.classList.remove(
+        "active"
+    );
+
+
+    document.body.style.overflow =
+        "";
 
 }
 
@@ -696,7 +723,7 @@ function renderDescription(
 
             <p>
                 Premium technology selected
-                for the Voltica collection.
+                by Voltica.
             </p>
 
         `;
@@ -705,6 +732,10 @@ function renderDescription(
 
     }
 
+
+    /*
+     * Existing HTML
+     */
 
     if (
         /<[a-z][\s\S]*>/i.test(
@@ -720,10 +751,24 @@ function renderDescription(
     }
 
 
+    /*
+     * Normal text
+     */
+
+    const paragraphs =
+        String(
+            description
+        )
+        .split(
+            /\n\s*\n/
+        )
+        .filter(
+            Boolean
+        );
+
+
     container.innerHTML =
-        String(description)
-            .split(/\n\s*\n/)
-            .filter(Boolean)
+        paragraphs
             .map(
                 paragraph =>
                     `<p>${escapeHTML(
@@ -766,31 +811,33 @@ function renderFeatures(
         [];
 
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
 
     if (
-        !Array.isArray(features) ||
+        !Array.isArray(
+            features
+        ) ||
         features.length === 0
     ) {
 
         container.innerHTML = `
 
-            <div class="feature-card">
+            <article class="feature-card">
 
-                <span>
-                    VOLTICA
-                </span>
+                <span class="pulse-dot"></span>
 
                 <h3>
                     PREMIUM TECHNOLOGY
                 </h3>
 
                 <p>
-                    Selected for modern lifestyles.
+                    Selected for the
+                    Voltica collection.
                 </p>
 
-            </div>
+            </article>
 
         `;
 
@@ -800,7 +847,10 @@ function renderFeatures(
 
 
     features.forEach(
-        (feature, index) => {
+        (
+            feature,
+            index
+        ) => {
 
             const card =
                 document.createElement(
@@ -812,29 +862,40 @@ function renderFeatures(
                 "feature-card";
 
 
+            const title =
+                typeof feature ===
+                "string"
+                    ? feature
+                    : feature.title ||
+                      feature.name ||
+                      `FEATURE ${index + 1}`;
+
+
+            const text =
+                typeof feature ===
+                "string"
+                    ? ""
+                    : feature.description ||
+                      feature.text ||
+                      "";
+
+
             card.innerHTML = `
 
-                <span>
-                    0${index + 1}
-                </span>
+                <span class="pulse-dot"></span>
 
                 <h3>
                     ${escapeHTML(
-                        typeof feature === "string"
-                            ? feature
-                            : feature.title ||
-                              feature.name ||
-                              "FEATURE"
+                        title
                     )}
                 </h3>
 
                 ${
-                    typeof feature === "object" &&
-                    feature.description
+                    text
                         ? `
                             <p>
                                 ${escapeHTML(
-                                    feature.description
+                                    text
                                 )}
                             </p>
                         `
@@ -875,13 +936,14 @@ function renderSpecifications(
     }
 
 
+    container.innerHTML =
+        "";
+
+
     const specifications =
         product.specifications ||
         product.specs ||
         {};
-
-
-    container.innerHTML = "";
 
 
     if (
@@ -904,11 +966,13 @@ function renderSpecifications(
 
                 const label =
                     specification.label ||
-                    specification.name;
+                    specification.name ||
+                    "";
 
 
                 const value =
-                    specification.value;
+                    specification.value ||
+                    "";
 
 
                 if (!label) {
@@ -918,7 +982,7 @@ function renderSpecifications(
                 }
 
 
-                addSpecification(
+                addSpecificationRow(
                     container,
                     label,
                     value
@@ -927,46 +991,30 @@ function renderSpecifications(
             }
         );
 
-    } else {
 
-        Object.entries(
-            specifications
-        ).forEach(
-            ([label, value]) => {
-
-                addSpecification(
-                    container,
-                    label,
-                    value
-                );
-
-            }
-        );
+        return;
 
     }
 
 
-    if (
-        !container.children.length
-    ) {
+    Object.entries(
+        specifications
+    ).forEach(
+        (
+            [
+                label,
+                value
+            ]
+        ) => {
 
-        container.innerHTML = `
+            addSpecificationRow(
+                container,
+                label,
+                value
+            );
 
-            <div class="specification-row">
-
-                <span>
-                    PRODUCT
-                </span>
-
-                <strong>
-                    VOLTICA COLLECTION
-                </strong>
-
-            </div>
-
-        `;
-
-    }
+        }
+    );
 
 }
 
@@ -975,7 +1023,7 @@ function renderSpecifications(
    ADD SPECIFICATION
    ========================================================= */
 
-function addSpecification(
+function addSpecificationRow(
     container,
     label,
     value
@@ -993,14 +1041,21 @@ function addSpecification(
 
     row.innerHTML = `
 
-        <span>
-            ${escapeHTML(label)}
+        <span class="specification-label">
+
+            ${escapeHTML(
+                label
+            )}
+
         </span>
 
-        <strong>
+
+        <strong class="specification-value">
+
             ${escapeHTML(
-                value ?? "—"
+                value
             )}
+
         </strong>
 
     `;
@@ -1014,7 +1069,7 @@ function addSpecification(
 
 
 /* =========================================================
-   OPTIONS / COLORS
+   OPTIONS
    ========================================================= */
 
 function renderOptions(
@@ -1040,11 +1095,14 @@ function renderOptions(
         [];
 
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
 
     if (
-        !Array.isArray(variants) ||
+        !Array.isArray(
+            variants
+        ) ||
         variants.length === 0
     ) {
 
@@ -1052,7 +1110,13 @@ function renderOptions(
 
             <div class="option-empty">
 
-                STANDARD CONFIGURATION
+                <span>
+                    STANDARD CONFIGURATION
+                </span>
+
+                <strong>
+                    ONE CONFIGURATION AVAILABLE
+                </strong>
 
             </div>
 
@@ -1064,15 +1128,146 @@ function renderOptions(
 
 
     variants.forEach(
-        (variant, index) => {
+        (
+            variant,
+            index
+        ) => {
+
+            const option =
+                document.createElement(
+                    "div"
+                );
+
+
+            option.className =
+                "product-option";
+
 
             const name =
-                typeof variant === "string"
+                typeof variant ===
+                "string"
                     ? variant
                     : variant.name ||
                       variant.color ||
-                      `Option ${index + 1}`;
+                      `OPTION ${index + 1}`;
 
+
+            option.innerHTML = `
+
+                <span>
+                    OPTION ${index + 1}
+                </span>
+
+                <strong>
+                    ${escapeHTML(
+                        name
+                    )}
+                </strong>
+
+            `;
+
+
+            container.appendChild(
+                option
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   VARIANTS
+   ========================================================= */
+
+function initializeVariants(
+    product
+) {
+
+    const container =
+        document.getElementById(
+            "productVariants"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    const variants =
+        product.variants ||
+        product.colors ||
+        [];
+
+
+    container.innerHTML =
+        "";
+
+
+    if (
+        !Array.isArray(
+            variants
+        ) ||
+        variants.length === 0
+    ) {
+
+        return;
+
+    }
+
+
+    const label =
+        document.createElement(
+            "div"
+        );
+
+
+    label.className =
+        "variant-label";
+
+
+    label.innerHTML = `
+
+        <span>
+            SELECT OPTION
+        </span>
+
+        <strong id="selectedVariant">
+            ${escapeHTML(
+                getVariantName(
+                    variants[0],
+                    0
+                )
+            )}
+        </strong>
+
+    `;
+
+
+    container.appendChild(
+        label
+    );
+
+
+    const buttons =
+        document.createElement(
+            "div"
+        );
+
+
+    buttons.className =
+        "variant-buttons";
+
+
+    variants.forEach(
+        (
+            variant,
+            index
+        ) => {
 
             const button =
                 document.createElement(
@@ -1085,7 +1280,14 @@ function renderOptions(
 
 
             button.className =
-                "product-option";
+                "variant-button";
+
+
+            const name =
+                getVariantName(
+                    variant,
+                    index
+                );
 
 
             button.textContent =
@@ -1107,15 +1309,18 @@ function renderOptions(
                 "click",
                 () => {
 
-                    container
+                    buttons
                         .querySelectorAll(
-                            ".product-option"
+                            ".variant-button"
                         )
                         .forEach(
-                            option =>
-                                option.classList.remove(
+                            item => {
+
+                                item.classList.remove(
                                     "active"
-                                )
+                                );
+
+                            }
                         );
 
 
@@ -1123,108 +1328,75 @@ function renderOptions(
                         "active"
                     );
 
+
+                    const selected =
+                        document.getElementById(
+                            "selectedVariant"
+                        );
+
+
+                    if (selected) {
+
+                        selected.textContent =
+                            name;
+
+                    }
+
                 }
             );
 
 
-            container.appendChild(
+            buttons.appendChild(
                 button
             );
 
         }
     );
 
-}
 
-
-/* =========================================================
-   VARIANTS
-   ========================================================= */
-
-function initializeVariants(
-    product
-) {
-
-    const variants =
-        product.variants ||
-        product.colors ||
-        [];
-
-
-    if (
-        !Array.isArray(
-            variants
-        ) ||
-        !variants.length
-    ) {
-
-        return;
-
-    }
-
-
-    const first =
-        typeof variants[0] === "string"
-            ? variants[0]
-            : variants[0].name ||
-              variants[0].color ||
-              "";
-
-
-    setText(
-        "productAvailability",
-        first
-            ? `AVAILABLE — ${first}`
-            : "AVAILABLE"
+    container.appendChild(
+        buttons
     );
 
 }
 
 
 /* =========================================================
-   AVAILABILITY
+   VARIANT NAME
    ========================================================= */
 
-function renderAvailability(
-    product
+function getVariantName(
+    variant,
+    index
 ) {
 
-    const element =
-        document.getElementById(
-            "productAvailability"
-        );
+    if (
+        typeof variant ===
+        "string"
+    ) {
 
-
-    if (!element) {
-
-        return;
+        return variant;
 
     }
 
 
     if (
-        product.stock === 0 ||
-        product.available === false
+        variant &&
+        typeof variant ===
+        "object"
     ) {
 
-        element.innerHTML = `
-
-            <span class="pulse-dot"></span>
-            CURRENTLY UNAVAILABLE
-
-        `;
-
-        return;
+        return (
+            variant.name ||
+            variant.color ||
+            variant.title ||
+            `Option ${index + 1}`
+        );
 
     }
 
 
-    element.innerHTML = `
-
-        <span class="pulse-dot"></span>
-        AVAILABLE — READY TO ORDER
-
-    `;
+    return `Option ${index + 1}`;
 
 }
 
@@ -1237,6 +1409,13 @@ function setupStripeButtons(
     product
 ) {
 
+    const stripeLink =
+        product.stripeLink ||
+        product.stripe ||
+        product.stripeUrl ||
+        "";
+
+
     const buttons = [
 
         document.getElementById(
@@ -1248,13 +1427,6 @@ function setupStripeButtons(
         )
 
     ];
-
-
-    const stripeLink =
-        product.stripeLink ||
-        product.stripe ||
-        product.stripeUrl ||
-        "";
 
 
     buttons.forEach(
@@ -1299,14 +1471,496 @@ function setupStripeButtons(
 
 
 /* =========================================================
-   ERROR
+   AVAILABILITY
+   ========================================================= */
+
+function renderAvailability(
+    product
+) {
+
+    const element =
+        document.getElementById(
+            "productAvailability"
+        );
+
+
+    if (!element) {
+
+        return;
+
+    }
+
+
+    if (
+        product.availability
+    ) {
+
+        element.innerHTML = `
+
+            <span class="pulse-dot"></span>
+
+            <span>
+                ${escapeHTML(
+                    product.availability
+                )}
+            </span>
+
+        `;
+
+        return;
+
+    }
+
+
+    element.innerHTML = `
+
+        <span class="pulse-dot"></span>
+
+        <span>
+            AVAILABLE NOW
+        </span>
+
+    `;
+
+}
+
+
+/* =========================================================
+   REFERENCE PRICE
+   ========================================================= */
+
+function renderReferencePrice(
+    product
+) {
+
+    /*
+     * The current HTML does not have
+     * a dedicated reference-price element.
+     *
+     * We add it directly under the price
+     * panel when necessary.
+     */
+
+    if (
+        product.referencePrice ===
+        undefined ||
+        product.referencePrice ===
+        null ||
+        product.referencePrice === ""
+    ) {
+
+        return;
+
+    }
+
+
+    const pricePanel =
+        document.querySelector(
+            ".product-price-panel"
+        );
+
+
+    if (!pricePanel) {
+
+        return;
+
+    }
+
+
+    const referencePrice =
+        Number(
+            product.referencePrice
+        );
+
+
+    if (
+        Number.isNaN(
+            referencePrice
+        ) ||
+        referencePrice <= 0
+    ) {
+
+        return;
+
+    }
+
+
+    let element =
+        document.getElementById(
+            "referencePrice"
+        );
+
+
+    if (!element) {
+
+        element =
+            document.createElement(
+                "span"
+            );
+
+
+        element.id =
+            "referencePrice";
+
+
+        element.className =
+            "product-reference-price";
+
+
+        pricePanel.appendChild(
+            element
+        );
+
+    }
+
+
+    element.textContent =
+        `Reference price: ${formatPrice(
+            referencePrice
+        )}`;
+
+}
+
+
+/* =========================================================
+   IMAGE SYSTEM
+   ========================================================= */
+
+function getProductImages(
+    product
+) {
+
+    const productId =
+        String(
+            product.id || ""
+        )
+        .toLowerCase();
+
+
+    const productName =
+        String(
+            product.name || ""
+        )
+        .toLowerCase();
+
+
+    /*
+     * =====================================================
+     * G451 — EXACT IMAGE SET
+     * =====================================================
+     *
+     * These are the confirmed Voltica files.
+     */
+
+    if (
+        productId.includes("g451") ||
+        productName.includes("g451")
+    ) {
+
+        return [
+
+            "assets/images/g451-1.webp",
+
+            "assets/images/g451-2.webp",
+
+            "assets/images/g451-3.webp",
+
+            "assets/images/g451-4.webp",
+
+            "assets/images/g451-6.webp",
+
+            "assets/images/g451-7.webp"
+
+        ];
+
+    }
+
+
+    /*
+     * =====================================================
+     * NORMAL IMAGE DATABASE
+     * =====================================================
+     */
+
+    if (
+        Array.isArray(
+            product.images
+        )
+    ) {
+
+        return product.images
+            .map(
+                image => {
+
+                    /*
+                     * Plain filename/path
+                     */
+
+                    if (
+                        typeof image ===
+                        "string"
+                    ) {
+
+                        return normalizeImagePath(
+                            image
+                        );
+
+                    }
+
+
+                    /*
+                     * Object with path
+                     */
+
+                    if (
+                        image &&
+                        typeof image.path ===
+                        "string"
+                    ) {
+
+                        return normalizeImagePath(
+                            image.path
+                        );
+
+                    }
+
+
+                    /*
+                     * Object with name
+                     */
+
+                    if (
+                        image &&
+                        typeof image.name ===
+                        "string"
+                    ) {
+
+                        return normalizeImagePath(
+                            image.name
+                        );
+
+                    }
+
+
+                    return "";
+
+                }
+            )
+            .filter(Boolean);
+
+    }
+
+
+    /*
+     * SINGLE IMAGE
+     */
+
+    if (
+        typeof product.image ===
+        "string"
+    ) {
+
+        return [
+
+            normalizeImagePath(
+                product.image
+            )
+
+        ];
+
+    }
+
+
+    /*
+     * THUMBNAIL
+     */
+
+    if (
+        typeof product.thumbnail ===
+        "string"
+    ) {
+
+        return [
+
+            normalizeImagePath(
+                product.thumbnail
+            )
+
+        ];
+
+    }
+
+
+    return [];
+
+}
+
+
+/* =========================================================
+   NORMALIZE IMAGE PATH
+   ========================================================= */
+
+function normalizeImagePath(
+    image
+) {
+
+    if (!image) {
+
+        return "";
+
+    }
+
+
+    const value =
+        String(
+            image
+        ).trim();
+
+
+    if (!value) {
+
+        return "";
+
+    }
+
+
+    /*
+     * Full URL
+     */
+
+    if (
+        /^https?:\/\//i.test(
+            value
+        )
+    ) {
+
+        return value;
+
+    }
+
+
+    /*
+     * Already correct
+     */
+
+    if (
+        value.startsWith(
+            "assets/images/"
+        )
+    ) {
+
+        return value;
+
+    }
+
+
+    /*
+     * Relative ./assets/images/
+     */
+
+    if (
+        value.startsWith(
+            "./assets/images/"
+        )
+    ) {
+
+        return value.substring(
+            2
+        );
+
+    }
+
+
+    /*
+     * Filename only
+     */
+
+    if (
+        !value.includes("/")
+    ) {
+
+        return (
+            "assets/images/" +
+            value
+        );
+
+    }
+
+
+    return value;
+
+}
+
+
+/* =========================================================
+   PRICE
+   ========================================================= */
+
+function formatPrice(
+    price
+) {
+
+    if (
+        price === undefined ||
+        price === null ||
+        price === ""
+    ) {
+
+        return "—";
+
+    }
+
+
+    const numericPrice =
+        Number(
+            price
+        );
+
+
+    if (
+        Number.isNaN(
+            numericPrice
+        )
+    ) {
+
+        return String(
+            price
+        );
+
+    }
+
+
+    return new Intl.NumberFormat(
+        "en-US",
+        {
+            style:
+                "currency",
+
+            currency:
+                "USD",
+
+            minimumFractionDigits:
+                2,
+
+            maximumFractionDigits:
+                2
+        }
+    ).format(
+        numericPrice
+    );
+
+}
+
+
+/* =========================================================
+   PRODUCT ERROR
    ========================================================= */
 
 function showProductError() {
 
     const page =
-        document.getElementById(
-            "productPage"
+        document.querySelector(
+            ".product-page"
         );
 
 
@@ -1347,139 +2001,7 @@ function showProductError() {
 
 
 /* =========================================================
-   IMAGE HELPERS
-   ========================================================= */
-
-function getProductImages(
-    product
-) {
-
-    if (
-        Array.isArray(
-            product.images
-        )
-    ) {
-
-        return product.images
-            .map(
-                image => {
-
-                    if (
-                        typeof image ===
-                        "string"
-                    ) {
-
-                        return image;
-
-                    }
-
-
-                    if (
-                        image &&
-                        typeof image.path ===
-                        "string"
-                    ) {
-
-                        return image.path;
-
-                    }
-
-
-                    if (
-                        image &&
-                        typeof image.name ===
-                        "string"
-                    ) {
-
-                        return (
-                            "assets/images/" +
-                            image.name
-                        );
-
-                    }
-
-
-                    return "";
-
-                }
-            )
-            .filter(Boolean);
-
-    }
-
-
-    if (product.image) {
-
-        return [
-            product.image
-        ];
-
-    }
-
-
-    if (product.thumbnail) {
-
-        return [
-            product.thumbnail
-        ];
-
-    }
-
-
-    return [];
-
-}
-
-
-/* =========================================================
-   PRICE
-   ========================================================= */
-
-function formatPrice(
-    price
-) {
-
-    if (
-        price === undefined ||
-        price === null ||
-        price === ""
-    ) {
-
-        return "—";
-
-    }
-
-
-    const number =
-        Number(price);
-
-
-    if (
-        Number.isNaN(number)
-    ) {
-
-        return String(price);
-
-    }
-
-
-    return new Intl.NumberFormat(
-        "en-US",
-        {
-            style: "currency",
-            currency: "USD",
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        }
-    ).format(
-        number
-    );
-
-}
-
-
-/* =========================================================
-   TEXT
+   TEXT HELPER
    ========================================================= */
 
 function setText(
@@ -1507,7 +2029,7 @@ function setText(
 
 
 /* =========================================================
-   SECURITY
+   HTML ESCAPE
    ========================================================= */
 
 function escapeHTML(
@@ -1541,39 +2063,43 @@ function escapeHTML(
 }
 
 
-function escapeAttribute(
-    value
-) {
-
-    return escapeHTML(
-        value
-    );
-
-}
-
-
 /* =========================================================
    PUBLIC API
    ========================================================= */
 
 window.VolticaProductView = {
 
-    reload() {
+    reload: function () {
 
         initializeProductView();
 
     },
 
 
-    getCurrentProduct() {
+    getCurrentProduct: function () {
 
         return getProductFromURL();
+
+    },
+
+
+    getProductImages: function (
+        product
+    ) {
+
+        return getProductImages(
+            product
+        );
 
     }
 
 };
 
 
+/* =========================================================
+   READY
+   ========================================================= */
+
 console.log(
-    "VOLTICA PRODUCT VIEW — ONLINE"
+    "VOLTICA PRODUCT VIEW ENGINE — ONLINE"
 );

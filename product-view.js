@@ -47,7 +47,7 @@ function initializeProductView() {
 
 
 /* =========================================================
-   GET PRODUCT ID FROM URL
+   GET PRODUCT ID
    ========================================================= */
 
 function getProductIdFromURL() {
@@ -56,7 +56,6 @@ function getProductIdFromURL() {
         new URLSearchParams(
             window.location.search
         );
-
 
     return params.get("id");
 
@@ -110,10 +109,6 @@ function getProductFromURL() {
 
 function renderProduct(product) {
 
-    /*
-     * CATEGORY
-     */
-
     setText(
         "productCategory",
         product.category ||
@@ -122,7 +117,9 @@ function renderProduct(product) {
 
 
     /*
-     * PRODUCT NAME
+     * IMPORTANT:
+     * Your HTML uses productName,
+     * not productTitle.
      */
 
     setText(
@@ -132,10 +129,6 @@ function renderProduct(product) {
     );
 
 
-    /*
-     * SHORT DESCRIPTION
-     */
-
     setText(
         "productShortDescription",
         product.shortDescription ||
@@ -144,10 +137,6 @@ function renderProduct(product) {
     );
 
 
-    /*
-     * PRICE
-     */
-
     setText(
         "productPrice",
         formatPrice(
@@ -155,10 +144,6 @@ function renderProduct(product) {
         )
     );
 
-
-    /*
-     * CURRENCY
-     */
 
     setText(
         "productCurrency",
@@ -175,6 +160,15 @@ function renderProduct(product) {
         "productBadge",
         product.badge ||
         "PREMIUM"
+    );
+
+
+    /*
+     * REFERENCE PRICE
+     */
+
+    renderReferencePrice(
+        product
     );
 
 
@@ -233,24 +227,6 @@ function renderProduct(product) {
 
 
     /*
-     * VARIANTS
-     */
-
-    initializeVariants(
-        product
-    );
-
-
-    /*
-     * STRIPE
-     */
-
-    setupStripeButtons(
-        product
-    );
-
-
-    /*
      * AVAILABILITY
      */
 
@@ -260,16 +236,16 @@ function renderProduct(product) {
 
 
     /*
-     * REFERENCE PRICE
+     * STRIPE
      */
 
-    renderReferencePrice(
+    setupStripeButton(
         product
     );
 
 
     /*
-     * FINAL PRODUCT NAME
+     * FINAL CTA
      */
 
     setText(
@@ -290,6 +266,257 @@ function renderProduct(product) {
 
 
 /* =========================================================
+   IMAGE SYSTEM
+   ========================================================= */
+
+function getProductImages(product) {
+
+    /*
+     * STANDARD DATABASE FORMAT
+     *
+     * images: [
+     *   "assets/images/xxx-1.webp",
+     *   ...
+     * ]
+     */
+
+    if (
+        Array.isArray(
+            product.images
+        )
+    ) {
+
+        const images =
+            product.images
+                .map(
+                    image =>
+                        normalizeImagePath(
+                            image
+                        )
+                )
+                .filter(Boolean);
+
+
+        if (
+            images.length
+        ) {
+
+            return images;
+
+        }
+
+    }
+
+
+    /*
+     * SINGLE IMAGE
+     */
+
+    if (
+        product.image
+    ) {
+
+        return [
+            normalizeImagePath(
+                product.image
+            )
+        ];
+
+    }
+
+
+    /*
+     * THUMBNAIL
+     */
+
+    if (
+        product.thumbnail
+    ) {
+
+        return [
+            normalizeImagePath(
+                product.thumbnail
+            )
+        ];
+
+    }
+
+
+    /*
+     * G451 FALLBACK
+     *
+     * This guarantees the correct
+     * image paths for the G451 product.
+     *
+     * g451-1.webp
+     * g451-2.webp
+     * g451-3.webp
+     * g451-4.webp
+     * g451-6.webp
+     * g451-7.webp
+     */
+
+    if (
+        String(
+            product.id
+        ).toLowerCase() ===
+        "g451"
+    ) {
+
+        return [
+
+            "assets/images/g451-1.webp",
+
+            "assets/images/g451-2.webp",
+
+            "assets/images/g451-3.webp",
+
+            "assets/images/g451-4.webp",
+
+            "assets/images/g451-6.webp",
+
+            "assets/images/g451-7.webp"
+
+        ];
+
+    }
+
+
+    return [];
+
+}
+
+
+/* =========================================================
+   NORMALIZE IMAGE PATH
+   ========================================================= */
+
+function normalizeImagePath(
+    image
+) {
+
+    if (
+        !image
+    ) {
+
+        return "";
+
+    }
+
+
+    /*
+     * Already a normal URL/path.
+     */
+
+    if (
+        typeof image ===
+        "string"
+    ) {
+
+        /*
+         * Full URL
+         */
+
+        if (
+            image.startsWith(
+                "http://"
+            ) ||
+            image.startsWith(
+                "https://"
+            ) ||
+            image.startsWith(
+                "data:"
+            )
+        ) {
+
+            return image;
+
+        }
+
+
+        /*
+         * Correct assets path
+         */
+
+        if (
+            image.startsWith(
+                "assets/"
+            )
+        ) {
+
+            return image;
+
+        }
+
+
+        /*
+         * If database only contains
+         * filename, put it in assets/images.
+         */
+
+        return (
+            "assets/images/" +
+            image
+                .split("/")
+                .pop()
+        );
+
+    }
+
+
+    /*
+     * Object image format
+     */
+
+    if (
+        typeof image ===
+        "object"
+    ) {
+
+        if (
+            typeof image.path ===
+            "string"
+        ) {
+
+            return normalizeImagePath(
+                image.path
+            );
+
+        }
+
+
+        if (
+            typeof image.url ===
+            "string"
+        ) {
+
+            return normalizeImagePath(
+                image.url
+            );
+
+        }
+
+
+        if (
+            typeof image.name ===
+            "string"
+        ) {
+
+            return normalizeImagePath(
+                image.name
+            );
+
+        }
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =========================================================
    MAIN IMAGE
    ========================================================= */
 
@@ -303,7 +530,9 @@ function renderMainImage(
         );
 
 
-    if (!mainImage) {
+    if (
+        !mainImage
+    ) {
 
         return;
 
@@ -317,7 +546,7 @@ function renderMainImage(
 
 
     if (
-        images.length === 0
+        !images.length
     ) {
 
         mainImage.removeAttribute(
@@ -341,6 +570,10 @@ function renderMainImage(
         product.name ||
         "Voltica Product";
 
+
+    mainImage.dataset.imageIndex =
+        "0";
+
 }
 
 
@@ -358,7 +591,9 @@ function renderThumbnails(
         );
 
 
-    if (!container) {
+    if (
+        !container
+    ) {
 
         return;
 
@@ -373,6 +608,15 @@ function renderThumbnails(
         getProductImages(
             product
         );
+
+
+    if (
+        !images.length
+    ) {
+
+        return;
+
+    }
 
 
     images.forEach(
@@ -395,6 +639,14 @@ function renderThumbnails(
                 "product-thumbnail";
 
 
+            button.dataset.image =
+                image;
+
+
+            button.dataset.index =
+                index;
+
+
             if (
                 index === 0
             ) {
@@ -404,10 +656,6 @@ function renderThumbnails(
                 );
 
             }
-
-
-            button.dataset.image =
-                image;
 
 
             const img =
@@ -426,15 +674,6 @@ function renderThumbnails(
 
             img.loading =
                 "lazy";
-
-
-            img.onerror =
-                () => {
-
-                    button.style.display =
-                        "none";
-
-                };
 
 
             button.appendChild(
@@ -480,7 +719,9 @@ function changeMainImage(
         );
 
 
-    if (!mainImage) {
+    if (
+        !mainImage
+    ) {
 
         return;
 
@@ -506,7 +747,9 @@ function changeMainImage(
         );
 
 
-    if (thumbnail) {
+    if (
+        thumbnail
+    ) {
 
         thumbnail.classList.add(
             "active"
@@ -529,7 +772,9 @@ function initializeGallery() {
         );
 
 
-    if (!mainImage) {
+    if (
+        !mainImage
+    ) {
 
         return;
 
@@ -540,9 +785,15 @@ function initializeGallery() {
         "click",
         () => {
 
-            openLightbox(
+            if (
                 mainImage.src
-            );
+            ) {
+
+                openLightbox(
+                    mainImage.src
+                );
+
+            }
 
         }
     );
@@ -562,20 +813,24 @@ function initializeLightbox() {
         );
 
 
-    const closeButton =
-        document.querySelector(
-            ".lightbox-close"
-        );
-
-
-    if (!lightbox) {
+    if (
+        !lightbox
+    ) {
 
         return;
 
     }
 
 
-    if (closeButton) {
+    const closeButton =
+        lightbox.querySelector(
+            ".lightbox-close"
+        );
+
+
+    if (
+        closeButton
+    ) {
 
         closeButton.addEventListener(
             "click",
@@ -621,6 +876,10 @@ function initializeLightbox() {
 }
 
 
+/* =========================================================
+   OPEN LIGHTBOX
+   ========================================================= */
+
 function openLightbox(
     image
 ) {
@@ -632,8 +891,8 @@ function openLightbox(
 
 
     const lightboxImage =
-        document.querySelector(
-            ".product-lightbox img"
+        lightbox?.querySelector(
+            "img"
         );
 
 
@@ -663,6 +922,10 @@ function openLightbox(
 }
 
 
+/* =========================================================
+   CLOSE LIGHTBOX
+   ========================================================= */
+
 function closeLightbox() {
 
     const lightbox =
@@ -671,7 +934,9 @@ function closeLightbox() {
         );
 
 
-    if (!lightbox) {
+    if (
+        !lightbox
+    ) {
 
         return;
 
@@ -703,7 +968,9 @@ function renderDescription(
         );
 
 
-    if (!container) {
+    if (
+        !container
+    ) {
 
         return;
 
@@ -717,25 +984,21 @@ function renderDescription(
         "";
 
 
-    if (!description) {
+    if (
+        !description
+    ) {
 
         container.innerHTML = `
-
             <p>
                 Premium technology selected
                 by Voltica.
             </p>
-
         `;
 
         return;
 
     }
 
-
-    /*
-     * Existing HTML
-     */
 
     if (
         /<[a-z][\s\S]*>/i.test(
@@ -751,10 +1014,6 @@ function renderDescription(
     }
 
 
-    /*
-     * Normal text
-     */
-
     const paragraphs =
         String(
             description
@@ -762,21 +1021,23 @@ function renderDescription(
         .split(
             /\n\s*\n/
         )
-        .filter(
-            Boolean
-        );
+        .filter(Boolean);
 
 
     container.innerHTML =
         paragraphs
             .map(
                 paragraph =>
-                    `<p>${escapeHTML(
-                        paragraph
-                    ).replace(
-                        /\n/g,
-                        "<br>"
-                    )}</p>`
+                    `
+                    <p>
+                        ${escapeHTML(
+                            paragraph
+                        ).replace(
+                            /\n/g,
+                            "<br>"
+                        )}
+                    </p>
+                    `
             )
             .join("");
 
@@ -797,7 +1058,9 @@ function renderFeatures(
         );
 
 
-    if (!container) {
+    if (
+        !container
+    ) {
 
         return;
 
@@ -819,12 +1082,12 @@ function renderFeatures(
         !Array.isArray(
             features
         ) ||
-        features.length === 0
+        !features.length
     ) {
 
         container.innerHTML = `
 
-            <article class="feature-card">
+            <div class="feature-card">
 
                 <span class="pulse-dot"></span>
 
@@ -837,7 +1100,22 @@ function renderFeatures(
                     Voltica collection.
                 </p>
 
-            </article>
+            </div>
+
+            <div class="feature-card">
+
+                <span class="pulse-dot"></span>
+
+                <h3>
+                    MODERN DESIGN
+                </h3>
+
+                <p>
+                    Designed for everyday
+                    technology.
+                </p>
+
+            </div>
 
         `;
 
@@ -854,7 +1132,7 @@ function renderFeatures(
 
             const card =
                 document.createElement(
-                    "article"
+                    "div"
                 );
 
 
@@ -864,20 +1142,25 @@ function renderFeatures(
 
             const title =
                 typeof feature ===
-                "string"
-                    ? feature
-                    : feature.title ||
-                      feature.name ||
-                      `FEATURE ${index + 1}`;
+                "object"
+                    ? (
+                        feature.title ||
+                        feature.name ||
+                        `FEATURE ${index + 1}`
+                    )
+                    : `FEATURE ${index + 1}`;
 
 
             const text =
                 typeof feature ===
-                "string"
-                    ? ""
-                    : feature.description ||
-                      feature.text ||
-                      "";
+                "object"
+                    ? (
+                        feature.description ||
+                        feature.value ||
+                        feature.text ||
+                        ""
+                    )
+                    : feature;
 
 
             card.innerHTML = `
@@ -890,17 +1173,11 @@ function renderFeatures(
                     )}
                 </h3>
 
-                ${
-                    text
-                        ? `
-                            <p>
-                                ${escapeHTML(
-                                    text
-                                )}
-                            </p>
-                        `
-                        : ""
-                }
+                <p>
+                    ${escapeHTML(
+                        text
+                    )}
+                </p>
 
             `;
 
@@ -929,7 +1206,9 @@ function renderSpecifications(
         );
 
 
-    if (!container) {
+    if (
+        !container
+    ) {
 
         return;
 
@@ -966,16 +1245,12 @@ function renderSpecifications(
 
                 const label =
                     specification.label ||
-                    specification.name ||
-                    "";
+                    specification.name;
 
 
-                const value =
-                    specification.value ||
-                    "";
-
-
-                if (!label) {
+                if (
+                    !label
+                ) {
 
                     return;
 
@@ -985,12 +1260,13 @@ function renderSpecifications(
                 addSpecificationRow(
                     container,
                     label,
-                    value
+                    specification.value ??
+                    specification.description ??
+                    ""
                 );
 
             }
         );
-
 
         return;
 
@@ -1020,7 +1296,7 @@ function renderSpecifications(
 
 
 /* =========================================================
-   ADD SPECIFICATION
+   SPECIFICATION ROW
    ========================================================= */
 
 function addSpecificationRow(
@@ -1082,7 +1358,9 @@ function renderOptions(
         );
 
 
-    if (!container) {
+    if (
+        !container
+    ) {
 
         return;
 
@@ -1103,20 +1381,18 @@ function renderOptions(
         !Array.isArray(
             variants
         ) ||
-        variants.length === 0
+        !variants.length
     ) {
 
         container.innerHTML = `
 
             <div class="option-empty">
 
-                <span>
-                    STANDARD CONFIGURATION
-                </span>
+                <span class="pulse-dot"></span>
 
-                <strong>
-                    ONE CONFIGURATION AVAILABLE
-                </strong>
+                <p>
+                    Standard configuration
+                </p>
 
             </div>
 
@@ -1127,140 +1403,33 @@ function renderOptions(
     }
 
 
-    variants.forEach(
-        (
-            variant,
-            index
-        ) => {
-
-            const option =
-                document.createElement(
-                    "div"
-                );
-
-
-            option.className =
-                "product-option";
-
-
-            const name =
-                typeof variant ===
-                "string"
-                    ? variant
-                    : variant.name ||
-                      variant.color ||
-                      `OPTION ${index + 1}`;
-
-
-            option.innerHTML = `
-
-                <span>
-                    OPTION ${index + 1}
-                </span>
-
-                <strong>
-                    ${escapeHTML(
-                        name
-                    )}
-                </strong>
-
-            `;
-
-
-            container.appendChild(
-                option
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   VARIANTS
-   ========================================================= */
-
-function initializeVariants(
-    product
-) {
-
-    const container =
-        document.getElementById(
-            "productVariants"
-        );
-
-
-    if (!container) {
-
-        return;
-
-    }
-
-
-    const variants =
-        product.variants ||
-        product.colors ||
-        [];
-
-
-    container.innerHTML =
-        "";
-
-
-    if (
-        !Array.isArray(
-            variants
-        ) ||
-        variants.length === 0
-    ) {
-
-        return;
-
-    }
-
-
-    const label =
+    const heading =
         document.createElement(
             "div"
         );
 
 
-    label.className =
-        "variant-label";
+    heading.className =
+        "option-heading";
 
 
-    label.innerHTML = `
-
-        <span>
-            SELECT OPTION
-        </span>
-
-        <strong id="selectedVariant">
-            ${escapeHTML(
-                getVariantName(
-                    variants[0],
-                    0
-                )
-            )}
-        </strong>
-
-    `;
+    heading.textContent =
+        "SELECT OPTION";
 
 
     container.appendChild(
-        label
+        heading
     );
 
 
-    const buttons =
+    const options =
         document.createElement(
             "div"
         );
 
 
-    buttons.className =
-        "variant-buttons";
+    options.className =
+        "product-option-list";
 
 
     variants.forEach(
@@ -1280,14 +1449,19 @@ function initializeVariants(
 
 
             button.className =
-                "variant-button";
+                "product-option";
 
 
             const name =
-                getVariantName(
-                    variant,
-                    index
-                );
+                typeof variant ===
+                "string"
+                    ? variant
+                    : (
+                        variant.name ||
+                        variant.color ||
+                        variant.label ||
+                        `OPTION ${index + 1}`
+                    );
 
 
             button.textContent =
@@ -1309,14 +1483,14 @@ function initializeVariants(
                 "click",
                 () => {
 
-                    buttons
+                    options
                         .querySelectorAll(
-                            ".variant-button"
+                            ".product-option"
                         )
                         .forEach(
-                            item => {
+                            option => {
 
-                                item.classList.remove(
+                                option.classList.remove(
                                     "active"
                                 );
 
@@ -1328,25 +1502,11 @@ function initializeVariants(
                         "active"
                     );
 
-
-                    const selected =
-                        document.getElementById(
-                            "selectedVariant"
-                        );
-
-
-                    if (selected) {
-
-                        selected.textContent =
-                            name;
-
-                    }
-
                 }
             );
 
 
-            buttons.appendChild(
+            options.appendChild(
                 button
             );
 
@@ -1355,57 +1515,181 @@ function initializeVariants(
 
 
     container.appendChild(
-        buttons
+        options
     );
 
 }
 
 
 /* =========================================================
-   VARIANT NAME
+   VARIANTS
    ========================================================= */
 
-function getVariantName(
-    variant,
-    index
+function initializeVariants(
+    product
 ) {
 
-    if (
-        typeof variant ===
-        "string"
-    ) {
+    /*
+     * Compatibility with older HTML.
+     */
 
-        return variant;
-
-    }
-
-
-    if (
-        variant &&
-        typeof variant ===
-        "object"
-    ) {
-
-        return (
-            variant.name ||
-            variant.color ||
-            variant.title ||
-            `Option ${index + 1}`
+    const container =
+        document.getElementById(
+            "colorOptions"
         );
 
+
+    if (
+        !container
+    ) {
+
+        return;
+
     }
 
 
-    return `Option ${index + 1}`;
+    const variants =
+        product.variants ||
+        product.colors ||
+        [];
+
+
+    container.innerHTML =
+        "";
+
+
+    variants.forEach(
+        (
+            variant,
+            index
+        ) => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.type =
+                "button";
+
+
+            button.className =
+                "color-option";
+
+
+            const name =
+                typeof variant ===
+                "string"
+                    ? variant
+                    : (
+                        variant.name ||
+                        variant.color ||
+                        `Option ${index + 1}`
+                    );
+
+
+            button.textContent =
+                name;
+
+
+            if (
+                index === 0
+            ) {
+
+                button.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    container
+                        .querySelectorAll(
+                            ".color-option"
+                        )
+                        .forEach(
+                            option => {
+
+                                option.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            container.appendChild(
+                button
+            );
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   STRIPE BUTTONS
+   AVAILABILITY
    ========================================================= */
 
-function setupStripeButtons(
+function renderAvailability(
+    product
+) {
+
+    const element =
+        document.getElementById(
+            "productAvailability"
+        );
+
+
+    if (
+        !element
+    ) {
+
+        return;
+
+    }
+
+
+    const availability =
+        product.availability ||
+        product.stockStatus ||
+        "AVAILABLE";
+
+
+    element.innerHTML = `
+
+        <span class="pulse-dot"></span>
+
+        <span>
+            ${escapeHTML(
+                availability
+            )}
+        </span>
+
+    `;
+
+}
+
+
+/* =========================================================
+   STRIPE BUTTON
+   ========================================================= */
+
+function setupStripeButton(
     product
 ) {
 
@@ -1432,14 +1716,18 @@ function setupStripeButtons(
     buttons.forEach(
         button => {
 
-            if (!button) {
+            if (
+                !button
+            ) {
 
                 return;
 
             }
 
 
-            if (!stripeLink) {
+            if (
+                !stripeLink
+            ) {
 
                 button.style.display =
                     "none";
@@ -1471,61 +1759,6 @@ function setupStripeButtons(
 
 
 /* =========================================================
-   AVAILABILITY
-   ========================================================= */
-
-function renderAvailability(
-    product
-) {
-
-    const element =
-        document.getElementById(
-            "productAvailability"
-        );
-
-
-    if (!element) {
-
-        return;
-
-    }
-
-
-    if (
-        product.availability
-    ) {
-
-        element.innerHTML = `
-
-            <span class="pulse-dot"></span>
-
-            <span>
-                ${escapeHTML(
-                    product.availability
-                )}
-            </span>
-
-        `;
-
-        return;
-
-    }
-
-
-    element.innerHTML = `
-
-        <span class="pulse-dot"></span>
-
-        <span>
-            AVAILABLE NOW
-        </span>
-
-    `;
-
-}
-
-
-/* =========================================================
    REFERENCE PRICE
    ========================================================= */
 
@@ -1533,361 +1766,92 @@ function renderReferencePrice(
     product
 ) {
 
-    /*
-     * The current HTML does not have
-     * a dedicated reference-price element.
-     *
-     * We add it directly under the price
-     * panel when necessary.
-     */
+    const reference =
+        document.getElementById(
+            "referencePrice"
+        );
+
+
+    if (
+        !reference
+    ) {
+
+        return;
+
+    }
+
 
     if (
         product.referencePrice ===
         undefined ||
         product.referencePrice ===
         null ||
-        product.referencePrice === ""
+        product.referencePrice ===
+        ""
     ) {
 
-        return;
-
-    }
-
-
-    const pricePanel =
-        document.querySelector(
-            ".product-price-panel"
-        );
-
-
-    if (!pricePanel) {
+        reference.style.display =
+            "none";
 
         return;
 
     }
 
 
-    const referencePrice =
-        Number(
-            product.referencePrice
-        );
-
-
-    if (
-        Number.isNaN(
-            referencePrice
-        ) ||
-        referencePrice <= 0
-    ) {
-
-        return;
-
-    }
-
-
-    let element =
-        document.getElementById(
-            "referencePrice"
-        );
-
-
-    if (!element) {
-
-        element =
-            document.createElement(
-                "span"
-            );
-
-
-        element.id =
-            "referencePrice";
-
-
-        element.className =
-            "product-reference-price";
-
-
-        pricePanel.appendChild(
-            element
-        );
-
-    }
-
-
-    element.textContent =
+    reference.textContent =
         `Reference price: ${formatPrice(
-            referencePrice
+            product.referencePrice
         )}`;
 
 }
 
 
 /* =========================================================
-   IMAGE SYSTEM
+   ERROR
    ========================================================= */
 
-function getProductImages(
-    product
-) {
-
-    const productId =
-        String(
-            product.id || ""
-        )
-        .toLowerCase();
-
-
-    const productName =
-        String(
-            product.name || ""
-        )
-        .toLowerCase();
-
-
-    /*
-     * =====================================================
-     * G451 — EXACT IMAGE SET
-     * =====================================================
-     *
-     * These are the confirmed Voltica files.
-     */
-
-    if (
-        productId.includes("g451") ||
-        productName.includes("g451")
-    ) {
-
-        return [
-
-            "assets/images/g451-1.webp",
-
-            "assets/images/g451-2.webp",
-
-            "assets/images/g451-3.webp",
-
-            "assets/images/g451-4.webp",
-
-            "assets/images/g451-6.webp",
-
-            "assets/images/g451-7.webp"
-
-        ];
-
-    }
-
-
-    /*
-     * =====================================================
-     * NORMAL IMAGE DATABASE
-     * =====================================================
-     */
-
-    if (
-        Array.isArray(
-            product.images
-        )
-    ) {
-
-        return product.images
-            .map(
-                image => {
-
-                    /*
-                     * Plain filename/path
-                     */
-
-                    if (
-                        typeof image ===
-                        "string"
-                    ) {
-
-                        return normalizeImagePath(
-                            image
-                        );
-
-                    }
-
-
-                    /*
-                     * Object with path
-                     */
-
-                    if (
-                        image &&
-                        typeof image.path ===
-                        "string"
-                    ) {
-
-                        return normalizeImagePath(
-                            image.path
-                        );
-
-                    }
-
-
-                    /*
-                     * Object with name
-                     */
-
-                    if (
-                        image &&
-                        typeof image.name ===
-                        "string"
-                    ) {
-
-                        return normalizeImagePath(
-                            image.name
-                        );
-
-                    }
-
-
-                    return "";
-
-                }
-            )
-            .filter(Boolean);
-
-    }
-
-
-    /*
-     * SINGLE IMAGE
-     */
-
-    if (
-        typeof product.image ===
-        "string"
-    ) {
-
-        return [
-
-            normalizeImagePath(
-                product.image
-            )
-
-        ];
-
-    }
-
-
-    /*
-     * THUMBNAIL
-     */
-
-    if (
-        typeof product.thumbnail ===
-        "string"
-    ) {
-
-        return [
-
-            normalizeImagePath(
-                product.thumbnail
-            )
-
-        ];
-
-    }
-
-
-    return [];
-
-}
-
-
-/* =========================================================
-   NORMALIZE IMAGE PATH
-   ========================================================= */
-
-function normalizeImagePath(
-    image
-) {
-
-    if (!image) {
-
-        return "";
-
-    }
-
-
-    const value =
-        String(
-            image
-        ).trim();
-
-
-    if (!value) {
-
-        return "";
-
-    }
-
-
-    /*
-     * Full URL
-     */
-
-    if (
-        /^https?:\/\//i.test(
-            value
-        )
-    ) {
-
-        return value;
-
-    }
-
-
-    /*
-     * Already correct
-     */
-
-    if (
-        value.startsWith(
-            "assets/images/"
-        )
-    ) {
-
-        return value;
-
-    }
-
-
-    /*
-     * Relative ./assets/images/
-     */
-
-    if (
-        value.startsWith(
-            "./assets/images/"
-        )
-    ) {
-
-        return value.substring(
-            2
+function showProductError() {
+
+    const page =
+        document.querySelector(
+            ".product-page"
         );
 
-    }
-
-
-    /*
-     * Filename only
-     */
 
     if (
-        !value.includes("/")
+        !page
     ) {
 
-        return (
-            "assets/images/" +
-            value
-        );
+        return;
 
     }
 
 
-    return value;
+    page.innerHTML = `
+
+        <div class="product-error">
+
+            <span class="pulse-dot"></span>
+
+            <h1>
+                PRODUCT NOT FOUND
+            </h1>
+
+            <p>
+                This Voltica product could not
+                be located in the current collection.
+            </p>
+
+            <a
+                href="store.html"
+                class="back-store-button"
+            >
+                RETURN TO STORE
+            </a>
+
+        </div>
+
+    `;
 
 }
 
@@ -1953,54 +1917,6 @@ function formatPrice(
 
 
 /* =========================================================
-   PRODUCT ERROR
-   ========================================================= */
-
-function showProductError() {
-
-    const page =
-        document.querySelector(
-            ".product-page"
-        );
-
-
-    if (!page) {
-
-        return;
-
-    }
-
-
-    page.innerHTML = `
-
-        <div class="product-error">
-
-            <span class="pulse-dot"></span>
-
-            <h1>
-                PRODUCT NOT FOUND
-            </h1>
-
-            <p>
-                This Voltica product could not
-                be located in the current collection.
-            </p>
-
-            <a
-                href="store.html"
-                class="back-store-button"
-            >
-                RETURN TO STORE
-            </a>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================================
    TEXT HELPER
    ========================================================= */
 
@@ -2015,7 +1931,9 @@ function setText(
         );
 
 
-    if (!element) {
+    if (
+        !element
+    ) {
 
         return;
 
@@ -2069,29 +1987,21 @@ function escapeHTML(
 
 window.VolticaProductView = {
 
-    reload: function () {
+    reload() {
 
         initializeProductView();
 
     },
 
 
-    getCurrentProduct: function () {
+    getCurrentProduct() {
 
         return getProductFromURL();
 
     },
 
 
-    getProductImages: function (
-        product
-    ) {
-
-        return getProductImages(
-            product
-        );
-
-    }
+    getProductImages
 
 };
 

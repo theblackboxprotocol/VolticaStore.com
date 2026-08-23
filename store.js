@@ -4,6 +4,8 @@
    Dynamic Product Store Engine
    ========================================================= */
 
+"use strict";
+
 
 /* =========================================================
    GLOBAL
@@ -12,6 +14,15 @@
 let storeProducts = [];
 
 let storeCart = [];
+
+
+/* =========================================================
+   CONFIGURATION
+   ========================================================= */
+
+const STORE_STORAGE_KEY = "volticaCart";
+
+const PRODUCT_VIEW_PAGE = "product-view.html";
 
 
 /* =========================================================
@@ -39,11 +50,11 @@ function initializeStore() {
     updateCartCount();
 
     console.log(
-        "VOLTICA STORE — READY"
+        "VOLTICA STORE — READY",
+        storeProducts
     );
 
 }
-
 
 
 /* =========================================================
@@ -52,30 +63,260 @@ function initializeStore() {
 
 function loadStoreProducts() {
 
+    /*
+     * products.js MUST be loaded before store.js.
+     */
+
     if (
-        Array.isArray(
+        !Array.isArray(
             window.volticaProducts
         )
     ) {
 
-        storeProducts =
-            window.volticaProducts.filter(
-                product =>
-                    product.active !== false
-            );
-
-    } else {
-
         storeProducts = [];
 
         console.error(
-            "VOLTICA: products.js was not loaded before store.js."
+            "VOLTICA ERROR: volticaProducts is unavailable."
         );
+
+        showStoreNotification(
+            "PRODUCT DATABASE NOT LOADED"
+        );
+
+        return;
 
     }
 
+
+    /*
+     * Normalize every product before
+     * sending it to the Store engine.
+     */
+
+    storeProducts =
+        window.volticaProducts
+            .filter(
+                product =>
+                    product &&
+                    product.active !== false
+            )
+            .map(
+                normalizeProduct
+            );
+
+
+    console.log(
+        `VOLTICA: ${storeProducts.length} active product(s) loaded.`
+    );
+
 }
 
+
+/* =========================================================
+   NORMALIZE PRODUCT
+   ========================================================= */
+
+function normalizeProduct(
+    product
+) {
+
+    const normalized =
+        {
+            ...product,
+
+            id:
+                String(
+                    product.id || ""
+                ).trim(),
+
+            name:
+                String(
+                    product.name || ""
+                ).trim(),
+
+            category:
+                String(
+                    product.category || ""
+                ).trim(),
+
+            badge:
+                String(
+                    product.badge || ""
+                ).trim(),
+
+            sku:
+                String(
+                    product.sku || ""
+                ).trim(),
+
+            price:
+                Number(
+                    product.price
+                ) || 0,
+
+            referencePrice:
+                Number(
+                    product.referencePrice
+                ) || 0,
+
+            shortDescription:
+                String(
+                    product.shortDescription || ""
+                ).trim(),
+
+            description:
+                String(
+                    product.description || ""
+                ).trim(),
+
+            stripeLink:
+                String(
+                    product.stripeLink || ""
+                ).trim(),
+
+            supplierLink:
+                String(
+                    product.supplierLink || ""
+                ).trim(),
+
+            images:
+                normalizeProductImages(
+                    product.images
+                ),
+
+            colors:
+                normalizeColors(
+                    product.colors
+                ),
+
+            variants:
+                Array.isArray(
+                    product.variants
+                )
+                    ? product.variants
+                    : []
+
+        };
+
+
+    return normalized;
+
+}
+
+
+/* =========================================================
+   NORMALIZE IMAGES
+   ========================================================= */
+
+function normalizeProductImages(
+    images
+) {
+
+    if (
+        !Array.isArray(images)
+    ) {
+
+        return [];
+
+    }
+
+
+    return images
+        .map(
+            image => {
+
+                /*
+                 * Format 1:
+                 * "assets/images/q45-1.jpg"
+                 */
+
+                if (
+                    typeof image ===
+                    "string"
+                ) {
+
+                    return image.trim();
+
+                }
+
+
+                /*
+                 * Format 2:
+                 * {
+                 *     name: "q45-1.jpg",
+                 *     path: "assets/images/q45-1.jpg"
+                 * }
+                 */
+
+                if (
+                    image &&
+                    typeof image ===
+                    "object"
+                ) {
+
+                    if (
+                        image.path
+                    ) {
+
+                        return String(
+                            image.path
+                        ).trim();
+
+                    }
+
+
+                    if (
+                        image.name
+                    ) {
+
+                        return (
+                            "assets/images/" +
+                            String(
+                                image.name
+                            ).trim()
+                        );
+
+                    }
+
+                }
+
+
+                return "";
+
+            }
+        )
+        .filter(Boolean);
+
+}
+
+
+/* =========================================================
+   NORMALIZE COLORS
+   ========================================================= */
+
+function normalizeColors(
+    colors
+) {
+
+    if (
+        !Array.isArray(colors)
+    ) {
+
+        return [];
+
+    }
+
+
+    return colors
+        .map(
+            color =>
+                String(
+                    color || ""
+                ).trim()
+        )
+        .filter(Boolean);
+
+}
 
 
 /* =========================================================
@@ -180,7 +421,6 @@ function setupStoreEvents() {
 }
 
 
-
 /* =========================================================
    CATEGORY FILTER
    ========================================================= */
@@ -253,7 +493,6 @@ function setupCategoryFilter() {
 }
 
 
-
 /* =========================================================
    RENDER STORE
    ========================================================= */
@@ -307,20 +546,18 @@ function renderStore() {
         storeProducts.filter(
             product => {
 
-                const searchable = `
+                const searchable =
+                    [
 
-                    ${product.name || ""}
+                        product.name,
+                        product.category,
+                        product.shortDescription,
+                        product.description,
+                        product.sku
 
-                    ${product.category || ""}
-
-                    ${product.shortDescription || ""}
-
-                    ${product.description || ""}
-
-                    ${product.sku || ""}
-
-                `
-                .toLowerCase();
+                    ]
+                    .join(" ")
+                    .toLowerCase();
 
 
                 const matchesSearch =
@@ -349,7 +586,9 @@ function renderStore() {
         "";
 
 
-    if (!filtered.length) {
+    if (
+        !filtered.length
+    ) {
 
         renderEmptyStore(
             container
@@ -375,7 +614,6 @@ function renderStore() {
 }
 
 
-
 /* =========================================================
    PRODUCT CARD
    ========================================================= */
@@ -398,11 +636,18 @@ function createProductCard(
         product.id;
 
 
+    /*
+     * IMPORTANT:
+     * normalizeProductImages()
+     * guarantees that this is
+     * a STRING path.
+     */
+
     const image =
-        product.images &&
-        product.images.length
-            ? product.images[0]
-            : "";
+        getProductImage(
+            product,
+            0
+        );
 
 
     const price =
@@ -445,11 +690,12 @@ function createProductCard(
                             src="${escapeAttribute(image)}"
                             alt="${escapeAttribute(product.name)}"
                             loading="lazy"
+                            decoding="async"
                         >
                     `
                     : `
                         <div class="product-no-image">
-                            VOLTICA
+                            IMAGE UNAVAILABLE
                         </div>
                     `
             }
@@ -515,9 +761,6 @@ function createProductCard(
 
 
             ${
-                Array.isArray(
-                    product.colors
-                ) &&
                 product.colors.length
                     ? createColorPreview(
                         product.colors
@@ -570,6 +813,34 @@ function createProductCard(
 }
 
 
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+function getProductImage(
+    product,
+    index = 0
+) {
+
+    if (
+        !product ||
+        !Array.isArray(
+            product.images
+        )
+    ) {
+
+        return "";
+
+    }
+
+
+    return (
+        product.images[index] ||
+        ""
+    );
+
+}
+
 
 /* =========================================================
    COLOR PREVIEW
@@ -619,7 +890,6 @@ function createColorPreview(
     `;
 
 }
-
 
 
 /* =========================================================
@@ -703,10 +973,56 @@ function attachProductCardEvents(
         image.style.cursor =
             "pointer";
 
+
+        /*
+         * If an image fails,
+         * show a clean fallback.
+         */
+
+        image.addEventListener(
+            "error",
+            () => {
+
+                image.style.display =
+                    "none";
+
+                const parent =
+                    image.parentElement;
+
+
+                if (
+                    parent &&
+                    !parent.querySelector(
+                        ".product-image-error"
+                    )
+                ) {
+
+                    const fallback =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    fallback.className =
+                        "product-image-error";
+
+
+                    fallback.textContent =
+                        "IMAGE UNAVAILABLE";
+
+
+                    parent.appendChild(
+                        fallback
+                    );
+
+                }
+
+            }
+        );
+
     }
 
 }
-
 
 
 /* =========================================================
@@ -717,7 +1033,46 @@ function openProduct(
     productId
 ) {
 
-    if (!productId) {
+    const id =
+        String(
+            productId || ""
+        ).trim();
+
+
+    if (!id) {
+
+        console.error(
+            "VOLTICA: Cannot open product without an ID."
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * Verify that the product actually
+     * exists before navigating.
+     */
+
+    const product =
+        storeProducts.find(
+            item =>
+                String(item.id) ===
+                id
+        );
+
+
+    if (!product) {
+
+        console.error(
+            "VOLTICA: Product not found:",
+            id
+        );
+
+        showStoreNotification(
+            "PRODUCT NOT FOUND"
+        );
 
         return;
 
@@ -725,16 +1080,20 @@ function openProduct(
 
 
     const url =
-        `product-view.html?id=${encodeURIComponent(
-            productId
-        )}`;
+        `${PRODUCT_VIEW_PAGE}?id=${encodeURIComponent(id)}`;
+
+
+    console.log(
+        "VOLTICA: Opening product",
+        product.name,
+        id
+    );
 
 
     window.location.href =
         url;
 
 }
-
 
 
 /* =========================================================
@@ -773,7 +1132,6 @@ function renderEmptyStore(
 }
 
 
-
 /* =========================================================
    CART
    ========================================================= */
@@ -784,7 +1142,7 @@ function loadCart() {
 
         const saved =
             localStorage.getItem(
-                "volticaCart"
+                STORE_STORAGE_KEY
             );
 
 
@@ -822,7 +1180,6 @@ function loadCart() {
 }
 
 
-
 /* =========================================================
    SAVE CART
    ========================================================= */
@@ -832,7 +1189,7 @@ function saveCart() {
     try {
 
         localStorage.setItem(
-            "volticaCart",
+            STORE_STORAGE_KEY,
             JSON.stringify(
                 storeCart
             )
@@ -848,7 +1205,6 @@ function saveCart() {
     }
 
 }
-
 
 
 /* =========================================================
@@ -872,7 +1228,7 @@ function addToCart(
     if (!product) {
 
         showStoreNotification(
-            "Product not found."
+            "PRODUCT NOT FOUND"
         );
 
         return;
@@ -880,16 +1236,25 @@ function addToCart(
     }
 
 
+    const selectedColor =
+        color
+            ? String(color)
+            : null;
+
+
     const existing =
         storeCart.find(
             item =>
 
-                String(item.productId) ===
+                String(
+                    item.productId
+                ) ===
                     String(productId)
 
                 &&
 
-                item.color === color
+                item.color ===
+                    selectedColor
         );
 
 
@@ -906,10 +1271,13 @@ function addToCart(
                 product.id,
 
             quantity:
-                quantity,
+                Math.max(
+                    1,
+                    Number(quantity) || 1
+                ),
 
             color:
-                color
+                selectedColor
 
         });
 
@@ -927,7 +1295,6 @@ function addToCart(
     );
 
 }
-
 
 
 /* =========================================================
@@ -951,7 +1318,8 @@ function removeFromCart(
 
                     &&
 
-                    item.color === color
+                    item.color ===
+                        color
                 )
         );
 
@@ -963,7 +1331,6 @@ function removeFromCart(
     updateCartCount();
 
 }
-
 
 
 /* =========================================================
@@ -987,7 +1354,8 @@ function updateCartQuantity(
 
                 &&
 
-                entry.color === color
+                entry.color ===
+                    color
         );
 
 
@@ -998,11 +1366,26 @@ function updateCartQuantity(
     }
 
 
-    item.quantity =
-        Math.max(
-            1,
-            Number(quantity) || 1
+    const newQuantity =
+        Number(quantity);
+
+
+    if (
+        newQuantity <= 0
+    ) {
+
+        removeFromCart(
+            productId,
+            color
         );
+
+        return;
+
+    }
+
+
+    item.quantity =
+        newQuantity;
 
 
     saveCart();
@@ -1012,7 +1395,6 @@ function updateCartQuantity(
     updateCartCount();
 
 }
-
 
 
 /* =========================================================
@@ -1028,8 +1410,10 @@ function updateCartCount() {
                 item
             ) =>
                 total +
-                Number(
-                    item.quantity
+                (
+                    Number(
+                        item.quantity
+                    ) || 0
                 ),
             0
         );
@@ -1070,7 +1454,6 @@ function updateCartCount() {
 }
 
 
-
 /* =========================================================
    RENDER CART
    ========================================================= */
@@ -1094,7 +1477,9 @@ function renderCart() {
         "";
 
 
-    if (!storeCart.length) {
+    if (
+        !storeCart.length
+    ) {
 
         container.innerHTML = `
 
@@ -1155,10 +1540,10 @@ function renderCart() {
 
 
             const image =
-                product.images &&
-                product.images.length
-                    ? product.images[0]
-                    : "";
+                getProductImage(
+                    product,
+                    0
+                );
 
 
             cartItem.innerHTML = `
@@ -1171,6 +1556,7 @@ function renderCart() {
                                 <img
                                     src="${escapeAttribute(image)}"
                                     alt="${escapeAttribute(product.name)}"
+                                    loading="lazy"
                                 >
                             `
                             : ""
@@ -1312,7 +1698,6 @@ function renderCart() {
 }
 
 
-
 /* =========================================================
    CART TOTAL
    ========================================================= */
@@ -1385,7 +1770,6 @@ function updateCartTotal() {
 }
 
 
-
 /* =========================================================
    OPEN CART
    ========================================================= */
@@ -1419,7 +1803,6 @@ function openCart() {
 }
 
 
-
 /* =========================================================
    CLOSE CART
    ========================================================= */
@@ -1450,14 +1833,15 @@ function closeCart() {
 }
 
 
-
 /* =========================================================
    CHECKOUT
    ========================================================= */
 
 function checkoutCart() {
 
-    if (!storeCart.length) {
+    if (
+        !storeCart.length
+    ) {
 
         showStoreNotification(
             "YOUR CART IS EMPTY"
@@ -1469,10 +1853,9 @@ function checkoutCart() {
 
 
     /*
-       Stripe Payment Links are product-specific.
-       If there is only one product in the cart,
-       redirect directly to its Stripe link.
-    */
+     * Stripe Payment Links are
+     * product-specific.
+     */
 
     if (
         storeCart.length === 1
@@ -1509,20 +1892,11 @@ function checkoutCart() {
     }
 
 
-    /*
-       Multiple products cannot safely be
-       combined into one Stripe Payment Link
-       automatically.
-
-       Keep the cart intact and inform the user.
-    */
-
     showStoreNotification(
         "SELECT ONE PRODUCT AT A TIME FOR STRIPE CHECKOUT"
     );
 
 }
-
 
 
 /* =========================================================
@@ -1594,7 +1968,6 @@ function showStoreNotification(
 }
 
 
-
 /* =========================================================
    PRICE
    ========================================================= */
@@ -1618,7 +1991,6 @@ function formatPrice(
     );
 
 }
-
 
 
 /* =========================================================
@@ -1656,7 +2028,6 @@ function escapeHTML(
 }
 
 
-
 function escapeAttribute(
     value
 ) {
@@ -1666,7 +2037,6 @@ function escapeAttribute(
     );
 
 }
-
 
 
 /* =========================================================
@@ -1705,7 +2075,9 @@ window.VolticaStore = {
 
     renderStore,
 
-    renderCart
+    renderCart,
+
+    formatPrice
 
 };
 

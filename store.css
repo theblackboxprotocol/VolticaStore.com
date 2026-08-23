@@ -1,6 +1,7 @@
 /* =========================================================
-   VOLTICA STORE
-   FUTURE INTERFACE
+   VOLTICA STORE — STORE.CSS
+   Premium Storefront
+   Mobile-first / Glass / Acrylic / Tech
    ========================================================= */
 
 * {
@@ -9,91 +10,73 @@
     padding: 0;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
-
     min-height: 100vh;
-
     overflow-x: hidden;
-
-    color: #fff;
 
     background:
         radial-gradient(
-            circle at 50% 0%,
-            rgba(255,255,255,.08),
-            transparent 30%
+            circle at 50% -10%,
+            rgba(255,255,255,.09),
+            transparent 32%
         ),
         radial-gradient(
-            circle at 15% 45%,
-            rgba(150,180,255,.035),
-            transparent 25%
+            circle at 10% 40%,
+            rgba(110,110,110,.035),
+            transparent 30%
         ),
         #030303;
 
-    font-family:
-        "Segoe UI",
-        Inter,
-        Arial,
-        sans-serif;
+    color: #f5f5f5;
 
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        );
+
+    background-size: 44px 44px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 80%
+        );
+}
 
 a {
     color: inherit;
     text-decoration: none;
 }
 
-
 button {
     font: inherit;
-}
-
-
-/* =========================================================
-   TECH GRID
-   ========================================================= */
-
-.tech-grid {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: -4;
-
-    pointer-events: none;
-
-    opacity: .18;
-
-    background-image:
-
-        linear-gradient(
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        );
-
-    background-size: 80px 80px;
-
-    mask-image:
-        radial-gradient(
-            ellipse at center,
-            black 0%,
-            transparent 75%
-        );
-
+    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -102,111 +85,100 @@ button {
    ========================================================= */
 
 .pulsar-field {
-
     position: fixed;
-
     inset: 0;
-
-    z-index: -2;
-
-    pointer-events: none;
-
     overflow: hidden;
-
+    pointer-events: none;
+    z-index: -1;
 }
 
-
 .pulsar {
-
     position: absolute;
 
-    width: 5px;
-    height: 5px;
+    width: 2px;
+    height: 2px;
 
     border-radius: 50%;
 
     background: #fff;
 
     box-shadow:
-        0 0 10px rgba(255,255,255,.9),
-        0 0 30px rgba(255,255,255,.35);
+        0 0 8px rgba(255,255,255,.8);
+
+    opacity: .35;
 
     animation:
-        pulsar 3s infinite ease-in-out;
-
+        pulsarFloat 5s ease-in-out infinite;
 }
-
 
 .p1 {
-    top: 17%;
-    left: 12%;
-    animation-delay: .2s;
+    top: 18%;
+    left: 14%;
 }
-
 
 .p2 {
-    top: 28%;
-    right: 18%;
-    animation-delay: 1.1s;
+    top: 31%;
+    left: 82%;
+    animation-delay: 1s;
 }
-
 
 .p3 {
-    top: 54%;
-    left: 7%;
-    animation-delay: 1.8s;
+    top: 61%;
+    left: 23%;
+    animation-delay: 2s;
 }
-
 
 .p4 {
-    top: 62%;
-    right: 9%;
-    animation-delay: .7s;
+    top: 72%;
+    left: 76%;
+    animation-delay: 3s;
 }
-
 
 .p5 {
-    top: 81%;
-    left: 27%;
-    animation-delay: 2.2s;
+    top: 44%;
+    left: 51%;
+    animation-delay: 1.5s;
 }
-
 
 .p6 {
-    top: 76%;
-    right: 31%;
-    animation-delay: 1.4s;
+    top: 87%;
+    left: 42%;
+    animation-delay: 2.5s;
 }
 
-
-@keyframes pulsar {
-
+@keyframes pulsarFloat {
     0%,
     100% {
-
-        opacity: .15;
-
+        opacity: .2;
         transform: scale(.7);
-
-        box-shadow:
-            0 0 8px rgba(255,255,255,.35),
-            0 0 20px rgba(255,255,255,.12);
-
     }
 
     50% {
-
-        opacity: 1;
-
-        transform: scale(1.8);
-
-        box-shadow:
-            0 0 14px rgba(255,255,255,1),
-            0 0 45px rgba(255,255,255,.45),
-            0 0 90px rgba(255,255,255,.12);
-
+        opacity: .9;
+        transform: scale(2);
     }
+}
 
+
+/* =========================================================
+   TECH GRID
+   ========================================================= */
+
+.tech-grid {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -3;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 49.8%,
+            rgba(255,255,255,.025) 50%,
+            transparent 50.2%
+        );
+
+    opacity: .25;
 }
 
 
@@ -215,52 +187,29 @@ button {
    ========================================================= */
 
 .store-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
-    width: min(1320px, 92vw);
-
-    height: 86px;
-
-    margin: auto;
+    min-height: 72px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
-    border-bottom:
-        1px solid rgba(255,255,255,.055);
+    gap: 16px;
 
-}
-
-
-/* =========================================================
-   ACRYLIC
-   ========================================================= */
-
-.logo-acrylic,
-.cart-acrylic {
-
-    border:
-        1px solid rgba(255,255,255,.10);
+    padding: 13px 17px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.075),
-            rgba(255,255,255,.018)
-        );
+        rgba(4,4,4,.82);
 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.06),
-        0 15px 50px rgba(0,0,0,.35);
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
 
-    backdrop-filter:
-        blur(25px);
-
-    -webkit-backdrop-filter:
-        blur(25px);
-
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
 }
 
 
@@ -269,53 +218,45 @@ button {
    ========================================================= */
 
 .logo-acrylic {
-
-    display: flex;
-
+    display: inline-flex;
     align-items: center;
+    gap: 9px;
 
-    gap: 11px;
-
-    padding: 8px 14px 8px 8px;
-
-    border-radius: 13px;
-
+    flex-shrink: 0;
 }
-
 
 .logo-v {
-
-    width: 35px;
-    height: 35px;
+    width: 38px;
+    height: 38px;
 
     display: grid;
-
     place-items: center;
 
-    border-radius: 9px;
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    border-radius: 11px;
 
     background:
-        rgba(255,255,255,.07);
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.17),
+            rgba(255,255,255,.025)
+        );
 
-    border:
-        1px solid rgba(255,255,255,.10);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 0 25px rgba(255,255,255,.035);
 
-    font-size: 13px;
-
-    font-weight: 700;
-
+    font-size: 21px;
+    font-weight: 900;
 }
 
-
 .logo-text {
-
-    font-size: 9px;
-
-    letter-spacing: .32em;
-
-    color:
-        rgba(255,255,255,.68);
-
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: .22em;
 }
 
 
@@ -324,140 +265,114 @@ button {
    ========================================================= */
 
 .store-nav {
-
-    display: flex;
-
-    gap: 30px;
-
+    display: none;
+    align-items: center;
+    gap: 24px;
 }
-
 
 .store-nav a {
-
-    position: relative;
-
     color:
-        rgba(255,255,255,.30);
+        rgba(255,255,255,.48);
 
-    font-size: 8px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .14em;
 
-    letter-spacing: .18em;
-
-    transition: .25s ease;
-
+    transition:
+        color .2s ease;
 }
-
 
 .store-nav a:hover,
 .store-nav .nav-active {
-
     color: #fff;
-
-}
-
-
-.store-nav .nav-active::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-
-    bottom: -10px;
-
-    height: 1px;
-
-    background: #fff;
-
-    box-shadow:
-        0 0 10px rgba(255,255,255,.8);
-
 }
 
 
 /* =========================================================
-   CART
+   CART BUTTON
    ========================================================= */
 
 .cart-acrylic {
-
     position: relative;
 
-    width: 46px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
 
     display: grid;
-
     place-items: center;
 
-    border-radius: 12px;
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    color: #fff;
 
     cursor: pointer;
 
-    color: rgba(255,255,255,.70);
-
-    transition: .25s ease;
-
+    transition:
+        transform .2s ease,
+        background .2s ease;
 }
-
 
 .cart-acrylic:hover {
-
+    transform: translateY(-1px);
     background:
-        rgba(255,255,255,.12);
-
-    border-color:
-        rgba(255,255,255,.25);
-
+        rgba(255,255,255,.09);
 }
-
 
 .cart-icon svg {
-
-    width: 19px;
-    height: 19px;
+    width: 21px;
+    height: 21px;
 
     fill: none;
-
     stroke: currentColor;
-
     stroke-width: 1.5;
-
     stroke-linecap: round;
-
     stroke-linejoin: round;
-
 }
 
-
 .cart-count {
-
     position: absolute;
 
     top: -5px;
     right: -5px;
 
-    min-width: 17px;
-    height: 17px;
+    min-width: 18px;
+    height: 18px;
+
+    display: grid;
+    place-items: center;
 
     padding: 0 4px;
 
-    display: grid;
-
-    place-items: center;
+    border:
+        1px solid
+        rgba(0,0,0,.8);
 
     border-radius: 50%;
 
     background: #fff;
+    color: #000;
 
-    color: #050505;
+    font-size: 8px;
+    font-weight: 900;
 
-    font-size: 7px;
+    opacity: 0;
+    transform: scale(.7);
 
-    font-weight: 700;
+    transition:
+        opacity .2s ease,
+        transform .2s ease;
+}
 
+.cart-count.visible {
+    opacity: 1;
+    transform: scale(1);
 }
 
 
@@ -466,436 +381,381 @@ button {
    ========================================================= */
 
 .store-hero {
+    position: relative;
 
-    min-height: 610px;
-
-    width: min(1320px, 92vw);
-
-    margin: auto;
+    min-height: 430px;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
+
+    padding:
+        55px 18px 45px;
 
     text-align: center;
 
+    overflow: hidden;
 }
 
+.store-hero::before {
+    content: "";
 
-.hero-pulsar {
+    position: absolute;
 
-    width: 7px;
-    height: 7px;
+    width: 320px;
+    height: 320px;
 
-    margin-bottom: 38px;
+    top: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
 
     border-radius: 50%;
-
-    background: #fff;
-
-    box-shadow:
-        0 0 15px #fff,
-        0 0 50px rgba(255,255,255,.45);
-
-    animation:
-        heroPulsar 2.4s infinite;
-
-}
-
-
-@keyframes heroPulsar {
-
-    0%,
-    100% {
-        transform: scale(.7);
-        opacity: .35;
-    }
-
-    50% {
-        transform: scale(2);
-        opacity: 1;
-    }
-
-}
-
-
-/* =========================================================
-   FUTURE TITLE
-   ========================================================= */
-
-.future-title {
-
-    font-family:
-        "Arial Narrow",
-        "Segoe UI",
-        sans-serif;
-
-    font-size:
-        clamp(58px, 10vw, 145px);
-
-    line-height: .78;
-
-    font-weight: 300;
-
-    letter-spacing: -.085em;
-
-    color: rgba(255,255,255,.88);
-
-    text-transform: uppercase;
-
-    animation:
-        titleReveal 1.4s ease both;
-
-}
-
-
-.future-title span {
-
-    display: block;
-
-}
-
-
-.future-second {
-
-    color:
-        rgba(255,255,255,.28);
-
-    margin-left: 10vw;
-
-    animation:
-        secondReveal 1.7s ease both;
-
-}
-
-
-@keyframes titleReveal {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(30px);
-
-        filter:
-            blur(12px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-        filter:
-            blur(0);
-
-    }
-
-}
-
-
-@keyframes secondReveal {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateX(30px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateX(0);
-
-    }
-
-}
-
-
-/* =========================================================
-   OPENING ACRYLIC
-   ========================================================= */
-
-.opening-acrylic {
-
-    margin-top: 48px;
-
-    min-height: 54px;
-
-    padding:
-        0 22px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    border-radius: 14px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.07),
-            rgba(255,255,255,.018)
-        );
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.07),
-        0 20px 60px rgba(0,0,0,.35);
-
-    backdrop-filter:
-        blur(22px);
-
-    -webkit-backdrop-filter:
-        blur(22px);
-
-    color:
-        rgba(255,255,255,.42);
-
-    font-size: 8px;
-
-    font-weight: 600;
-
-    letter-spacing: .20em;
-
-}
-
-
-.opening-acrylic strong {
-
-    color: #fff;
-
-    font-size: 10px;
-
-    letter-spacing: .18em;
-
-}
-
-
-.opening-pulse {
-
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #fff;
-
-    box-shadow:
-        0 0 12px #fff,
-        0 0 30px rgba(255,255,255,.35);
-
-    animation:
-        openingPulse 1.7s infinite;
-
-}
-
-
-@keyframes openingPulse {
-
-    0%,
-    100% {
-        transform: scale(.75);
-        opacity: .4;
-    }
-
-    50% {
-        transform: scale(1.5);
-        opacity: 1;
-    }
-
-}
-
-
-/* =========================================================
-   PRODUCTS
-   ========================================================= */
-
-.products-section {
-
-    width: min(1320px, 92vw);
-
-    margin:
-        0 auto 120px;
-
-}
-
-
-.product-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0,1fr));
-
-    gap: 20px;
-
-}
-
-
-/* =========================================================
-   PRODUCT ACRYLIC CARD
-   ========================================================= */
-
-.product-card {
-
-    overflow: hidden;
-
-    border:
-        1px solid rgba(255,255,255,.085);
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.065),
-            rgba(255,255,255,.012)
-        );
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.06),
-        0 30px 80px rgba(0,0,0,.35);
-
-    backdrop-filter:
-        blur(30px);
-
-    -webkit-backdrop-filter:
-        blur(30px);
-
-    transition:
-        transform .4s ease,
-        border-color .4s ease;
-
-}
-
-
-.product-card:hover {
-
-    transform:
-        translateY(-8px);
-
-    border-color:
-        rgba(255,255,255,.18);
-
-}
-
-
-/* =========================================================
-   IMAGE
-   ========================================================= */
-
-.product-image {
-
-    position: relative;
-
-    height: 350px;
-
-    overflow: hidden;
 
     background:
         radial-gradient(
             circle,
-            rgba(255,255,255,.055),
-            transparent 65%
+            rgba(255,255,255,.075),
+            transparent 68%
         );
 
-    border-bottom:
-        1px solid rgba(255,255,255,.055);
+    filter: blur(8px);
 
+    pointer-events: none;
+}
+
+.hero-pulsar {
+    position: relative;
+
+    width: 82px;
+    height: 82px;
+
+    margin-bottom: 32px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.08),
+            transparent 68%
+        );
+
+    box-shadow:
+        0 0 60px rgba(255,255,255,.045);
+}
+
+.hero-pulsar::before,
+.hero-pulsar::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 50%;
+}
+
+.hero-pulsar::after {
+    inset: 25px;
+
+    border-color:
+        rgba(255,255,255,.16);
+}
+
+.hero-pulsar span {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 18px rgba(255,255,255,.9);
+
+    animation:
+        heroPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes heroPulse {
+    0%,
+    100% {
+        transform: scale(.7);
+        opacity: .4;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: 1;
+    }
+}
+
+.future-title {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+
+    font-size:
+        clamp(
+            42px,
+            13vw,
+            105px
+        );
+
+    line-height: .88;
+
+    letter-spacing: -.07em;
+
+    font-weight: 900;
+}
+
+.future-title span:first-child {
+    color: #fff;
+}
+
+.future-second {
+    color:
+        rgba(255,255,255,.35);
+}
+
+.opening-acrylic {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 28px;
+
+    padding:
+        10px 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.opening-acrylic strong {
+    color: #fff;
+}
+
+.opening-pulse {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 12px rgba(255,255,255,.9);
+
+    animation:
+        pulseDot 1.8s ease-in-out infinite;
 }
 
 
-.product-image img {
+/* =========================================================
+   PRODUCTS SECTION
+   ========================================================= */
 
+.products-section {
+    width:
+        min(
+            1200px,
+            calc(100% - 28px)
+        );
+
+    margin: 0 auto;
+
+    padding:
+        15px 0 80px;
+}
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
+
+.store-product {
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 25px 70px rgba(0,0,0,.32);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.store-product:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,.18);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.1),
+        0 35px 90px rgba(0,0,0,.45);
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+.product-image {
+    position: relative;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    display: grid;
+    place-items: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,.085),
+            transparent 62%
+        ),
+        rgba(0,0,0,.25);
+}
+
+.product-image img {
     width: 100%;
     height: 100%;
 
     object-fit: contain;
 
-    padding: 28px;
+    padding: 13px;
+
+    position: relative;
+    z-index: 2;
 
     transition:
-        transform .5s ease;
-
+        transform .4s ease;
 }
 
-
-.product-card:hover
+.store-product:hover
 .product-image img {
-
-    transform:
-        scale(1.06);
-
+    transform: scale(1.035);
 }
 
-
-/* =========================================================
-   PRODUCT LABEL
-   ========================================================= */
-
-.product-badge {
-
+.image-reflection {
     position: absolute;
+    inset: 0;
 
-    top: 16px;
-    left: 16px;
+    z-index: 3;
 
-    padding:
-        9px 12px;
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    border-radius: 10px;
+    pointer-events: none;
 
     background:
-        rgba(0,0,0,.45);
-
-    backdrop-filter:
-        blur(15px);
-
-    color:
-        rgba(255,255,255,.45);
-
-    font-size: 6px;
-
-    letter-spacing: .18em;
-
+        linear-gradient(
+            125deg,
+            rgba(255,255,255,.1),
+            transparent 25%,
+            transparent 72%,
+            rgba(255,255,255,.025)
+        );
 }
 
-
-.product-number {
-
+.product-badge {
     position: absolute;
 
-    top: 18px;
-    right: 18px;
+    top: 14px;
+    left: 14px;
+
+    z-index: 5;
+
+    padding:
+        7px 10px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius: 999px;
+
+    background:
+        rgba(0,0,0,.55);
+
+    backdrop-filter: blur(12px);
+
+    color: #fff;
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: .14em;
+}
+
+.product-no-image {
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    height: 100%;
 
     color:
-        rgba(255,255,255,.18);
+        rgba(255,255,255,.25);
 
-    font-size: 7px;
-
-    letter-spacing: .15em;
-
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .2em;
 }
 
 
@@ -904,163 +764,187 @@ button {
    ========================================================= */
 
 .product-info {
-
-    padding: 25px;
-
+    padding: 21px 19px 20px;
 }
-
 
 .product-category {
+    display: block;
+
+    margin-bottom: 8px;
 
     color:
-        rgba(255,255,255,.22);
+        rgba(255,255,255,.37);
 
-    font-size: 7px;
-
-    letter-spacing: .20em;
-
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .17em;
 }
 
+.product-title {
+    margin-bottom: 9px;
 
-.product-info h3 {
-
-    margin-top: 10px;
-
-    color:
-        rgba(255,255,255,.84);
-
-    font-size: 26px;
-
+    font-size: 25px;
     line-height: 1;
-
-    font-weight: 400;
 
     letter-spacing: -.045em;
 
+    font-weight: 800;
 }
 
+.product-description {
+    min-height: 42px;
 
-.product-short-description {
-
-    margin-top: 15px;
-
-    min-height: 66px;
+    margin-bottom: 17px;
 
     color:
-        rgba(255,255,255,.34);
+        rgba(255,255,255,.48);
 
     font-size: 12px;
-
-    line-height: 1.7;
-
+    line-height: 1.6;
 }
 
 
 /* =========================================================
-   PRODUCT BOTTOM
+   PRICE
    ========================================================= */
 
-.product-bottom {
-
-    margin-top: 22px;
-
-    padding-top: 18px;
-
+.product-price-row {
     display: flex;
+    align-items: baseline;
+    gap: 10px;
 
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 12px;
-
-    border-top:
-        1px solid rgba(255,255,255,.06);
-
+    margin-bottom: 17px;
 }
-
 
 .product-price {
+    font-size: 22px;
+    font-weight: 800;
 
-    color:
-        rgba(255,255,255,.88);
-
-    font-size: 20px;
-
-    font-weight: 500;
-
+    letter-spacing: -.03em;
 }
 
+.product-reference-price {
+    color:
+        rgba(255,255,255,.28);
 
-.product-actions {
+    font-size: 11px;
 
-    display: flex;
-
-    gap: 8px;
-
+    text-decoration: line-through;
 }
 
 
 /* =========================================================
-   ACRYLIC BUTTONS
+   COLORS
    ========================================================= */
 
-.acrylic-button {
+.product-colors {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-    min-height: 42px;
+    margin-bottom: 17px;
+}
+
+.product-colors > span {
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.color-list {
+    display: flex;
+    gap: 6px;
+}
+
+.color-chip {
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.35);
+
+    background:
+        linear-gradient(
+            145deg,
+            #eee,
+            #444
+        );
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   PRODUCT ACTIONS
+   ========================================================= */
+
+.product-actions {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+}
+
+.acrylic-button {
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     padding:
         0 14px;
 
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
     border:
-        1px solid rgba(255,255,255,.11);
-
-    border-radius: 10px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    color:
-        rgba(255,255,255,.55);
-
-    font-size: 7px;
-
-    font-weight: 600;
-
-    letter-spacing: .12em;
-
-    cursor: pointer;
-
-    transition: .25s ease;
-
-}
-
-
-.acrylic-button:hover {
-
-    background:
+        1px solid
         rgba(255,255,255,.12);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,255,255,.045);
 
     color: #fff;
 
-    border-color:
-        rgba(255,255,255,.25);
+    cursor: pointer;
 
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .12em;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
 }
 
+.acrylic-button:hover {
+    transform: translateY(-1px);
 
-.view-product:hover {
+    background:
+        rgba(255,255,255,.09);
 
-    background: #fff;
+    border-color:
+        rgba(255,255,255,.25);
+}
 
-    color: #050505;
+.product-buy-button {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.06)
+        );
 
+    border-color:
+        rgba(255,255,255,.24);
 }
 
 
@@ -1069,50 +953,117 @@ button {
    ========================================================= */
 
 .store-loading {
-
-    grid-column: 1 / -1;
-
-    min-height: 320px;
+    min-height: 260px;
 
     display: grid;
-
     place-items: center;
 
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,.025);
 }
 
-
 .loading-pulsar {
+    width: 24px;
+    height: 24px;
 
-    width: 10px;
-    height: 10px;
+    border:
+        1px solid
+        rgba(255,255,255,.2);
 
     border-radius: 50%;
 
-    background: #fff;
-
     box-shadow:
-        0 0 15px #fff,
-        0 0 50px rgba(255,255,255,.35);
+        0 0 30px rgba(255,255,255,.08);
 
     animation:
-        loading 1.5s infinite;
-
+        loadingPulse 1.4s ease-in-out infinite;
 }
 
-
-@keyframes loading {
-
+@keyframes loadingPulse {
     0%,
     100% {
-        opacity: .25;
-        transform: scale(.6);
+        transform: scale(.65);
+        opacity: .35;
     }
 
     50% {
+        transform: scale(1);
         opacity: 1;
-        transform: scale(1.5);
     }
+}
 
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.store-empty-state {
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.store-empty-pulsar {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 35px rgba(255,255,255,.05);
+}
+
+.store-empty-state > span {
+    margin-bottom: 9px;
+
+    color:
+        rgba(255,255,255,.32);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .18em;
+}
+
+.store-empty-state h2 {
+    margin-bottom: 10px;
+
+    font-size: 27px;
+    letter-spacing: -.04em;
+}
+
+.store-empty-state p {
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 13px;
 }
 
 
@@ -1121,195 +1072,575 @@ button {
    ========================================================= */
 
 .contact-section {
+    width:
+        min(
+            1000px,
+            calc(100% - 28px)
+        );
 
-    width: min(1100px, 92vw);
+    margin: 0 auto;
 
-    margin:
-        0 auto 110px;
-
+    padding-bottom: 75px;
 }
 
-
 .contact-acrylic {
-
     position: relative;
 
     overflow: hidden;
 
-    min-height: 230px;
+    padding: 35px 22px;
 
-    padding: 45px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 35px;
+    text-align: center;
 
     border:
-        1px solid rgba(255,255,255,.10);
+        1px solid
+        rgba(255,255,255,.1);
 
-    border-radius: 24px;
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 25px 70px rgba(0,0,0,.3);
+}
+
+.contact-pulsar {
+    width: 60px;
+    height: 60px;
+
+    margin:
+        0 auto 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.08),
+            transparent 68%
+        );
+}
+
+.contact-label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .18em;
+}
+
+.contact-content h2 {
+    margin-bottom: 10px;
+
+    font-size: 32px;
+    letter-spacing: -.05em;
+}
+
+.contact-content p {
+    margin-bottom: 21px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 13px;
+}
+
+.contact-button {
+    min-height: 48px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    padding:
+        0 22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .14em;
+}
+
+.contact-button strong {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   CART OVERLAY
+   ========================================================= */
+
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 200;
+
+    background:
+        rgba(0,0,0,.65);
+
+    backdrop-filter:
+        blur(5px);
+
+    -webkit-backdrop-filter:
+        blur(5px);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        opacity .25s ease;
+}
+
+.cart-overlay:not([hidden]) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-overlay[hidden] {
+    display: block;
+}
+
+
+/* =========================================================
+   CART DRAWER
+   ========================================================= */
+
+.cart-drawer {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    z-index: 300;
+
+    width:
+        min(
+            100%,
+            430px
+        );
+
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        rgba(8,8,8,.96);
+
+    border-left:
+        1px solid
+        rgba(255,255,255,.1);
+
+    box-shadow:
+        -30px 0 100px rgba(0,0,0,.5);
+
+    transform: translateX(105%);
+
+    transition:
+        transform .3s cubic-bezier(.22,.61,.36,1);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+}
+
+.cart-drawer.open {
+    transform: translateX(0);
+}
+
+.cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding:
+        21px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.cart-small-title {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .18em;
+}
+
+.cart-header h2 {
+    font-size: 27px;
+    letter-spacing: -.04em;
+}
+
+.cart-close {
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.cart-items {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 15px;
+}
+
+.cart-item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        72px minmax(0,1fr) 28px;
+
+    gap: 12px;
+
+    padding:
+        12px;
+
+    margin-bottom: 10px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 17px;
+
+    background:
+        rgba(255,255,255,.035);
+}
+
+.cart-item-image {
+    width: 72px;
+    height: 72px;
+
+    display: grid;
+    place-items: center;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.045);
+}
+
+.cart-item-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.cart-item-info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.cart-item-info strong {
+    overflow: hidden;
+
+    color: #fff;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cart-item-info > span {
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+}
+
+.cart-quantity {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 5px;
+}
+
+.cart-quantity button {
+    width: 26px;
+    height: 26px;
+
+    display: grid;
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: #fff;
+
+    cursor: pointer;
+}
+
+.cart-quantity span {
+    min-width: 15px;
+
+    text-align: center;
+
+    font-size: 11px;
+}
+
+.cart-remove {
+    align-self: start;
+
+    width: 28px;
+    height: 28px;
+
+    border: 0;
+
+    background: transparent;
+
+    color:
+        rgba(255,255,255,.35);
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+.cart-remove:hover {
+    color: #fff;
+}
+
+.cart-empty {
+    min-height: 250px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    text-align: center;
+}
+
+.cart-empty-pulsar {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 10px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius: 50%;
+}
+
+.cart-empty strong {
+    font-size: 11px;
+    letter-spacing: .12em;
+}
+
+.cart-empty span {
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   CART FOOTER
+   ========================================================= */
+
+.cart-footer {
+    padding:
+        17px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(0,0,0,.25);
+}
+
+.cart-total-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 13px;
+}
+
+.cart-total-row span {
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .15em;
+}
+
+.cart-total-row strong {
+    font-size: 22px;
+    letter-spacing: -.03em;
+}
+
+.checkout-button {
+    width: 100%;
+    min-height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding:
+        0 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    border-radius: 14px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.065),
-            rgba(255,255,255,.012)
+            rgba(255,255,255,.17),
+            rgba(255,255,255,.055)
         );
 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.07),
-        0 30px 80px rgba(0,0,0,.38);
+    color: #fff;
 
-    backdrop-filter:
-        blur(30px);
+    cursor: pointer;
 
-    -webkit-backdrop-filter:
-        blur(30px);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .15em;
+}
 
+.checkout-button span {
+    font-size: 20px;
+    font-weight: 400;
 }
 
 
-.contact-pulsar {
+/* =========================================================
+   NOTIFICATION
+   ========================================================= */
 
-    width: 10px;
-    height: 10px;
+.store-notification {
+    position: fixed;
 
-    flex-shrink: 0;
+    left: 50%;
+    bottom: 22px;
 
-    border-radius: 50%;
+    z-index: 500;
 
-    background: #fff;
-
-    box-shadow:
-        0 0 18px #fff,
-        0 0 60px rgba(255,255,255,.45);
-
-    animation:
-        contactGlow 2s infinite;
-
-}
-
-
-@keyframes contactGlow {
-
-    0%,
-    100% {
-        transform: scale(.7);
-        opacity: .35;
-    }
-
-    50% {
-        transform: scale(1.5);
-        opacity: 1;
-    }
-
-}
-
-
-.contact-content {
-
-    flex: 1;
-
-}
-
-
-.contact-label {
-
-    color:
-        rgba(255,255,255,.25);
-
-    font-size: 7px;
-
-    letter-spacing: .22em;
-
-}
-
-
-.contact-content h2 {
-
-    margin-top: 10px;
-
-    color:
-        rgba(255,255,255,.85);
-
-    font-size:
-        clamp(38px,5vw,65px);
-
-    line-height: .9;
-
-    font-weight: 300;
-
-    letter-spacing: -.06em;
-
-}
-
-
-.contact-content p {
-
-    margin-top: 12px;
-
-    color:
-        rgba(255,255,255,.27);
-
-    font-size: 12px;
-
-}
-
-
-.contact-button {
-
-    min-height: 45px;
-
-    margin-top: 20px;
+    max-width:
+        calc(100% - 30px);
 
     padding:
-        0 17px;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 25px;
+        12px 17px;
 
     border:
-        1px solid rgba(255,255,255,.12);
+        1px solid
+        rgba(255,255,255,.15);
 
-    border-radius: 11px;
+    border-radius: 999px;
 
     background:
-        rgba(255,255,255,.045);
+        rgba(12,12,12,.9);
 
-    color:
-        rgba(255,255,255,.62);
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.5);
 
-    font-size: 7px;
+    backdrop-filter: blur(18px);
 
-    font-weight: 600;
+    color: #fff;
 
-    letter-spacing: .15em;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .12em;
 
-    transition: .25s ease;
+    opacity: 0;
 
+    transform:
+        translate(-50%, 15px);
+
+    pointer-events: none;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
 }
 
+.store-notification.show {
+    opacity: 1;
 
-.contact-button strong {
-
-    font-size: 16px;
-
-    font-weight: 300;
-
-}
-
-
-.contact-button:hover {
-
-    background: #fff;
-
-    color: #050505;
-
+    transform:
+        translate(-50%, 0);
 }
 
 
@@ -1318,378 +1649,42 @@ button {
    ========================================================= */
 
 .store-footer {
+    width:
+        min(
+            1200px,
+            calc(100% - 28px)
+        );
 
-    width: min(1320px, 92vw);
-
-    margin: auto;
+    margin: 0 auto;
 
     padding:
         0 0 35px;
-
 }
-
 
 .footer-acrylic {
-
-    min-height: 62px;
-
-    padding:
-        0 20px;
+    min-height: 70px;
 
     display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    border:
-        1px solid rgba(255,255,255,.065);
-
-    border-radius: 14px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    backdrop-filter:
-        blur(20px);
-
-    color:
-        rgba(255,255,255,.18);
-
-    font-size: 6px;
-
-    letter-spacing: .18em;
-
-}
-
-
-/* =========================================================
-   CART DRAWER
-   ========================================================= */
-
-.cart-overlay {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 90;
-
-    background:
-        rgba(0,0,0,.65);
-
-    backdrop-filter:
-        blur(5px);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition: .3s ease;
-
-}
-
-
-.cart-overlay.open {
-
-    opacity: 1;
-
-    visibility: visible;
-
-}
-
-
-.cart-drawer {
-
-    position: fixed;
-
-    top: 0;
-    right: 0;
-
-    z-index: 100;
-
-    width:
-        min(430px, 92vw);
-
-    height: 100vh;
-
-    padding: 25px;
-
-    display: flex;
-
     flex-direction: column;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20,20,20,.97),
-            rgba(5,5,5,.98)
-        );
-
-    border-left:
-        1px solid rgba(255,255,255,.10);
-
-    box-shadow:
-        -30px 0 90px rgba(0,0,0,.55);
-
-    transform:
-        translateX(100%);
-
-    transition:
-        transform .35s cubic-bezier(.22,.61,.36,1);
-
-}
-
-
-.cart-drawer.open {
-
-    transform:
-        translateX(0);
-
-}
-
-
-.cart-header {
-
-    display: flex;
-
     align-items: center;
+    justify-content: center;
 
-    justify-content: space-between;
+    gap: 7px;
 
-    padding-bottom: 20px;
+    padding: 18px;
 
-    border-bottom:
-        1px solid rgba(255,255,255,.07);
-
-}
-
-
-.cart-small-title {
-
-    color:
-        rgba(255,255,255,.20);
-
-    font-size: 6px;
-
-    letter-spacing: .22em;
-
-}
-
-
-.cart-header h2 {
-
-    margin-top: 5px;
-
-    font-size: 30px;
-
-    font-weight: 300;
-
-    letter-spacing: -.05em;
-
-}
-
-
-.cart-close {
-
-    width: 38px;
-    height: 38px;
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    border-radius: 10px;
-
-    background:
-        rgba(255,255,255,.04);
-
-    color: #fff;
-
-    font-size: 23px;
-
-    cursor: pointer;
-
-}
-
-
-.cart-items {
-
-    flex: 1;
-
-    overflow-y: auto;
-
-    padding: 20px 0;
-
-}
-
-
-.cart-item {
-
-    padding: 15px 0;
-
-    display: grid;
-
-    grid-template-columns: 70px 1fr auto;
-
-    gap: 12px;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.06);
-
-}
-
-
-.cart-item-image {
-
-    width: 70px;
-    height: 70px;
-
-    object-fit: contain;
-
-    border-radius: 10px;
-
-    background:
-        rgba(255,255,255,.04);
-
-}
-
-
-.cart-item-name {
-
-    color:
-        rgba(255,255,255,.72);
-
-    font-size: 12px;
-
-}
-
-
-.cart-item-price {
-
-    margin-top: 7px;
-
-    color:
-        rgba(255,255,255,.35);
-
-    font-size: 10px;
-
-}
-
-
-.remove-cart-item {
-
-    border: 0;
-
-    background: none;
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
 
     color:
         rgba(255,255,255,.25);
 
-    cursor: pointer;
-
-    font-size: 18px;
-
-}
-
-
-.cart-empty {
-
-    height: 100%;
-
-    display: grid;
-
-    place-items: center;
-
-    color:
-        rgba(255,255,255,.20);
-
     font-size: 8px;
-
-    letter-spacing: .18em;
-
-}
-
-
-.cart-footer {
-
-    padding-top: 20px;
-
-    border-top:
-        1px solid rgba(255,255,255,.07);
-
-}
-
-
-.cart-total-row {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    color:
-        rgba(255,255,255,.35);
-
-    font-size: 8px;
-
-    letter-spacing: .15em;
-
-}
-
-
-.cart-total-row strong {
-
-    color: #fff;
-
-    font-size: 20px;
-
-    font-weight: 400;
-
-}
-
-
-.checkout-button {
-
-    width: 100%;
-
-    min-height: 54px;
-
-    margin-top: 18px;
-
-    border: 0;
-
-    border-radius: 12px;
-
-    background: #fff;
-
-    color: #050505;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 25px;
-
-    font-size: 8px;
-
     font-weight: 700;
+    letter-spacing: .13em;
 
-    letter-spacing: .15em;
-
-}
-
-
-.checkout-button span {
-
-    font-size: 17px;
-
-    font-weight: 300;
-
+    text-align: center;
 }
 
 
@@ -1697,109 +1692,125 @@ button {
    TABLET
    ========================================================= */
 
-@media (max-width: 950px) {
+@media (min-width: 600px) {
+
+    .store-header {
+        padding:
+            15px 26px;
+    }
+
+    .store-nav {
+        display: flex;
+    }
 
     .product-grid {
-
         grid-template-columns:
             repeat(2, minmax(0,1fr));
 
+        gap: 20px;
     }
 
+    .product-actions {
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+    }
+
+    .store-hero {
+        min-height: 500px;
+    }
+
+    .products-section {
+        padding-bottom: 100px;
+    }
 }
 
 
 /* =========================================================
-   MOBILE
+   DESKTOP
    ========================================================= */
 
-@media (max-width: 650px) {
+@media (min-width: 900px) {
 
     .store-header {
-
-        height: 72px;
-
+        padding:
+            17px 42px;
     }
-
 
     .store-nav {
-
-        display: none;
-
+        gap: 32px;
     }
-
 
     .store-hero {
-
-        min-height: 520px;
-
+        min-height: 570px;
     }
-
 
     .future-title {
-
         font-size:
-            clamp(52px, 15vw, 85px);
-
+            clamp(
+                72px,
+                9vw,
+                122px
+            );
     }
-
-
-    .future-second {
-
-        margin-left: 4vw;
-
-    }
-
-
-    .opening-acrylic {
-
-        font-size: 7px;
-
-    }
-
 
     .product-grid {
+        grid-template-columns:
+            repeat(3, minmax(0,1fr));
 
-        grid-template-columns: 1fr;
-
+        gap: 24px;
     }
 
-
-    .product-image {
-
-        height: 330px;
-
+    .product-info {
+        padding:
+            23px 22px 22px;
     }
-
 
     .contact-acrylic {
-
-        padding: 30px 25px;
-
-        align-items: flex-start;
-
+        padding:
+            55px 35px;
     }
 
-
-    .contact-pulsar {
-
-        margin-top: 5px;
-
+    .contact-content h2 {
+        font-size: 43px;
     }
-
 
     .footer-acrylic {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
 
-        min-height: 90px;
 
-        flex-direction: column;
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
 
-        justify-content: center;
+@media (min-width: 1200px) {
 
-        gap: 9px;
-
+    .store-header {
+        padding:
+            18px 55px;
     }
 
+    .products-section {
+        width:
+            min(
+                1280px,
+                calc(100% - 80px)
+            );
+    }
+
+    .store-footer {
+        width:
+            min(
+                1280px,
+                calc(100% - 80px)
+            );
+    }
+
+    .store-hero {
+        min-height: 620px;
+    }
 }
 
 
@@ -1809,14 +1820,15 @@ button {
 
 @media (prefers-reduced-motion: reduce) {
 
+    html {
+        scroll-behavior: auto;
+    }
+
     *,
     *::before,
     *::after {
-
-        animation: none !important;
-
-        transition: none !important;
-
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
     }
-
-}
+             }

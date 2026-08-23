@@ -2,981 +2,1303 @@
    VOLTICA STORE — STORE ENGINE
    ============================================================ */
 
-document.addEventListener("DOMContentLoaded", function () {
+(function () {
 
     "use strict";
 
 
     /* =========================================================
-       ENGINE START
+       ENGINE READY
        ========================================================= */
 
-    console.log(
-        "%cVOLTICA STORE ENGINE",
-        "font-weight:bold;font-size:18px;"
-    );
+    function initVolticaStore() {
 
-
-    /* =========================================================
-       CHECK DATABASE
-       ========================================================= */
-
-    if (
-        typeof volticaProducts === "undefined" ||
-        !Array.isArray(volticaProducts)
-    ) {
-
-        console.error(
-            "VOLTICA STORE: products.js was not loaded."
+        console.log(
+            "%cVOLTICA STORE ENGINE",
+            "font-weight:bold;font-size:18px;"
         );
 
-        return;
-    }
 
+        /* =====================================================
+           CHECK PRODUCT DATABASE
+           ===================================================== */
 
-    console.log(
-        "VOLTICA STORE: Product database detected.",
-        volticaProducts.length,
-        "products found."
-    );
+        if (
+            typeof volticaProducts === "undefined" ||
+            !Array.isArray(volticaProducts)
+        ) {
 
+            console.error(
+                "VOLTICA STORE ERROR: products.js was not loaded."
+            );
 
-    /* =========================================================
-       CATEGORY → STORE SECTION
-       ========================================================= */
-
-    const categoryMap = {
-
-        /* AUDIO */
-
-        "SPORT AUDIO": "earbuds",
-        "WIRELESS AUDIO": "earbuds",
-        "OPEN-EAR AUDIO": "earbuds",
-        "EARBUDS": "earbuds",
-
-        /* GAMING */
-
-        "GAMING GEAR": "gaming",
-        "GAMING": "gaming",
-
-        /* CREATOR */
-
-        "CREATOR GEAR": "creator",
-        "CREATOR": "creator",
-
-        /* HEADPHONES */
-
-        "HEADPHONES": "headphones",
-        "PREMIUM HEADPHONES": "headphones",
-
-        /* TECH */
-
-        "TECH": "tech",
-        "TECH / LAPTOP ACCESSORIES": "tech",
-        "TECHNOLOGY": "tech",
-
-        /* LIFESTYLE */
-
-        "LIFESTYLE": "lifestyle",
-        "LIFESTYLE / AUTOMOTIVE": "lifestyle",
-        "LIFESTYLE / AUTOMOTIVE ACCESSORIES": "lifestyle",
-        "LIFESTYLE / SMART LIGHTING": "lifestyle",
-        "LIFESTYLE / AMBIENT AUDIO": "lifestyle"
-    };
-
-
-    /* =========================================================
-       SECTION TITLES
-       ========================================================= */
-
-    const sectionTitles = {
-
-        earbuds: "AUDIO",
-        gaming: "GAMING GEAR",
-        creator: "CREATOR GEAR",
-        headphones: "HEADPHONES",
-        tech: "TECHNOLOGY",
-        lifestyle: "LIFESTYLE"
-
-    };
-
-
-    /* =========================================================
-       CATEGORY DETECTION
-       ========================================================= */
-
-    function getSectionId(product) {
-
-        const category = String(
-            product.category || ""
-        )
-            .toUpperCase()
-            .trim();
-
-
-        /* Direct match */
-
-        if (categoryMap[category]) {
-
-            return categoryMap[category];
+            return;
 
         }
 
 
-        /* Flexible detection */
+        console.log(
+            "VOLTICA STORE: Product database detected.",
+            volticaProducts.length,
+            "products."
+        );
 
-        if (
-            category.includes("EARBUD") ||
-            category.includes("EARPHONE") ||
-            category.includes("OPEN-EAR") ||
-            category.includes("AUDIO")
-        ) {
 
-            return "earbuds";
+        /* =====================================================
+           CATEGORY → SECTION MAP
+           ===================================================== */
+
+        const categoryMap = {
+
+            /* AUDIO */
+
+            "SPORT AUDIO":
+                "earbuds",
+
+            "WIRELESS AUDIO":
+                "earbuds",
+
+            "OPEN-EAR AUDIO":
+                "earbuds",
+
+            "EARBUDS":
+                "earbuds",
+
+            "EARPHONES":
+                "earbuds",
+
+
+            /* GAMING */
+
+            "GAMING":
+                "gaming",
+
+            "GAMING GEAR":
+                "gaming",
+
+
+            /* CREATOR */
+
+            "CREATOR":
+                "creator",
+
+            "CREATOR GEAR":
+                "creator",
+
+
+            /* HEADPHONES */
+
+            "HEADPHONES":
+                "headphones",
+
+            "PREMIUM HEADPHONES":
+                "headphones",
+
+
+            /* TECH */
+
+            "TECH":
+                "tech",
+
+            "TECHNOLOGY":
+                "tech",
+
+            "TECH / LAPTOP ACCESSORIES":
+                "tech",
+
+            "TECH / SMART SECURITY":
+                "tech",
+
+            "SMART SECURITY":
+                "tech",
+
+
+            /* LIFESTYLE */
+
+            "LIFESTYLE":
+                "lifestyle",
+
+            "LIFESTYLE / AUTOMOTIVE":
+                "lifestyle",
+
+            "LIFESTYLE / AUTOMOTIVE ACCESSORIES":
+                "lifestyle",
+
+            "LIFESTYLE / SMART LIGHTING":
+                "lifestyle",
+
+            "LIFESTYLE / AMBIENT AUDIO":
+                "lifestyle"
+
+        };
+
+
+        /* =====================================================
+           SECTION TITLES
+           ===================================================== */
+
+        const sectionTitles = {
+
+            earbuds:
+                "Wireless Earbuds.",
+
+            gaming:
+                "Gaming Gear.",
+
+            creator:
+                "Creator Gear.",
+
+            headphones:
+                "Premium Headphones.",
+
+            tech:
+                "Smart Tech.",
+
+            lifestyle:
+                "Smart Lifestyle."
+
+        };
+
+
+        /* =====================================================
+           NORMALIZE TEXT
+           ===================================================== */
+
+        function cleanText(value) {
+
+            if (
+                value === undefined ||
+                value === null
+            ) {
+
+                return "";
+
+            }
+
+
+            return String(value)
+                .replace(/\s+/g, " ")
+                .trim();
 
         }
 
 
-        if (
-            category.includes("GAMING")
-        ) {
+        /* =====================================================
+           ESCAPE HTML
+           ===================================================== */
 
-            return "gaming";
+        function escapeHTML(value) {
 
-        }
-
-
-        if (
-            category.includes("CREATOR")
-        ) {
-
-            return "creator";
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
 
         }
 
 
-        if (
-            category.includes("HEADPHONE")
-        ) {
+        /* =====================================================
+           ESCAPE ATTRIBUTE
+           ===================================================== */
 
-            return "headphones";
+        function escapeAttribute(value) {
 
-        }
-
-
-        if (
-            category.includes("TECH")
-        ) {
-
-            return "tech";
+            return escapeHTML(value);
 
         }
 
 
-        if (
-            category.includes("LIFESTYLE") ||
-            category.includes("AUTOMOTIVE") ||
-            category.includes("SMART LIGHTING") ||
-            category.includes("AMBIENT")
-        ) {
+        /* =====================================================
+           NORMALIZE CATEGORY
+           ===================================================== */
 
-            return "lifestyle";
+        function normalizeCategory(category) {
+
+            return cleanText(category)
+                .toUpperCase()
+                .replace(/\s+/g, " ");
 
         }
 
 
-        return null;
+        /* =====================================================
+           DETECT STORE SECTION
+           ===================================================== */
 
-    }
+        function getSectionId(product) {
+
+            const category =
+                normalizeCategory(
+                    product.category
+                );
 
 
-    /* =========================================================
-       TEXT CLEANER
-       ========================================================= */
+            /* ---------------------------------------------
+               Exact category match
+               --------------------------------------------- */
 
-    function cleanText(value) {
+            if (
+                categoryMap[category]
+            ) {
 
-        if (
-            value === undefined ||
-            value === null
-        ) {
+                return categoryMap[category];
+
+            }
+
+
+            /* ---------------------------------------------
+               Audio
+               --------------------------------------------- */
+
+            if (
+                category.includes("EARBUD") ||
+                category.includes("EARPHONE") ||
+                category.includes("OPEN-EAR") ||
+                category.includes("WIRELESS AUDIO") ||
+                category.includes("SPORT AUDIO")
+            ) {
+
+                return "earbuds";
+
+            }
+
+
+            /* ---------------------------------------------
+               Gaming
+               --------------------------------------------- */
+
+            if (
+                category.includes("GAMING")
+            ) {
+
+                return "gaming";
+
+            }
+
+
+            /* ---------------------------------------------
+               Creator
+               --------------------------------------------- */
+
+            if (
+                category.includes("CREATOR")
+            ) {
+
+                return "creator";
+
+            }
+
+
+            /* ---------------------------------------------
+               Headphones
+               --------------------------------------------- */
+
+            if (
+                category.includes("HEADPHONE")
+            ) {
+
+                return "headphones";
+
+            }
+
+
+            /* ---------------------------------------------
+               Tech
+               --------------------------------------------- */
+
+            if (
+                category.includes("TECH") ||
+                category.includes("SMART SECURITY") ||
+                category.includes("SMART DEVICE") ||
+                category.includes("LAPTOP") ||
+                category.includes("ELECTRONIC")
+            ) {
+
+                return "tech";
+
+            }
+
+
+            /* ---------------------------------------------
+               Lifestyle
+               --------------------------------------------- */
+
+            if (
+                category.includes("LIFESTYLE") ||
+                category.includes("AUTOMOTIVE") ||
+                category.includes("SMART LIGHTING") ||
+                category.includes("AMBIENT")
+            ) {
+
+                return "lifestyle";
+
+            }
+
+
+            /* ---------------------------------------------
+               Unknown
+               --------------------------------------------- */
+
+            return null;
+
+        }
+
+
+        /* =====================================================
+           SHORT DESCRIPTION
+           ===================================================== */
+
+        function shortDescription(product) {
+
+            let text =
+                cleanText(
+                    product.shortDescription ||
+                    product.description ||
+                    ""
+                );
+
+
+            const maxLength = 145;
+
+
+            if (
+                text.length > maxLength
+            ) {
+
+                text =
+                    text
+                        .substring(
+                            0,
+                            maxLength
+                        )
+                        .replace(
+                            /\s+\S*$/,
+                            ""
+                        )
+                        .trim();
+
+                text += "...";
+
+            }
+
+
+            return text;
+
+        }
+
+
+        /* =====================================================
+           IMAGE PATH
+           ===================================================== */
+
+        function getMainImage(product) {
+
+            /* ---------------------------------------------
+               Preferred database format
+               --------------------------------------------- */
+
+            if (
+                Array.isArray(product.images)
+            ) {
+
+                const firstImage =
+                    product.images.find(
+                        function (image) {
+
+                            return cleanText(
+                                image
+                            ) !== "";
+
+                        }
+                    );
+
+
+                if (
+                    firstImage
+                ) {
+
+                    return cleanText(
+                        firstImage
+                    );
+
+                }
+
+            }
+
+
+            /* ---------------------------------------------
+               Legacy image property
+               --------------------------------------------- */
+
+            if (
+                product.image
+            ) {
+
+                return cleanText(
+                    product.image
+                );
+
+            }
+
 
             return "";
 
         }
 
 
-        return String(value)
-            .replace(/\s+/g, " ")
-            .trim();
+        /* =====================================================
+           FORMAT PRICE
+           ===================================================== */
 
-    }
+        function formatPrice(price) {
 
+            if (
+                price === undefined ||
+                price === null ||
+                price === ""
+            ) {
 
-    /* =========================================================
-       HTML ESCAPE
-       ========================================================= */
+                return "—";
 
-    function escapeHTML(value) {
-
-        return String(value || "")
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-
-    }
+            }
 
 
-    /* =========================================================
-       SHORT DESCRIPTION
-       ========================================================= */
-
-    function shortDescription(product) {
-
-        let text = cleanText(
-            product.shortDescription ||
-            product.description ||
-            ""
-        );
+            const number =
+                Number(price);
 
 
-        if (
-            text.length > 145
-        ) {
+            if (
+                Number.isFinite(number)
+            ) {
 
-            text =
-                text
-                    .substring(0, 145)
-                    .replace(/\s+\S*$/, "")
-                    .trim() + "...";
+                return number.toFixed(2);
+
+            }
+
+
+            return cleanText(price);
 
         }
 
 
-        return text;
+        /* =====================================================
+           GET CURRENCY
+           ===================================================== */
 
-    }
+        function getCurrency(product) {
+
+            const currency =
+                cleanText(
+                    product.currency
+                );
 
 
-    /* =========================================================
-       SAFE IMAGE
-       ========================================================= */
-
-    function getMainImage(product) {
-
-        if (
-            Array.isArray(product.images) &&
-            product.images.length > 0 &&
-            product.images[0]
-        ) {
-
-            return product.images[0];
+            return currency || "USD";
 
         }
 
 
-        if (
-            product.image
-        ) {
+        /* =====================================================
+           GET BADGE
+           ===================================================== */
 
-            return product.image;
+        function getBadge(product) {
 
-        }
-
-
-        return "";
-
-    }
+            const badge =
+                cleanText(
+                    product.badge
+                );
 
 
-    /* =========================================================
-       FORMAT PRICE
-       ========================================================= */
-
-    function formatPrice(price) {
-
-        if (
-            price === undefined ||
-            price === null ||
-            price === ""
-        ) {
-
-            return "—";
+            return badge || "NEW";
 
         }
 
 
-        const number = Number(price);
+        /* =====================================================
+           CREATE MISSING SECTION
+           ===================================================== */
 
+        function createMissingSection(sectionId) {
 
-        if (
-            Number.isNaN(number)
-        ) {
-
-            return String(price);
-
-        }
-
-
-        return number.toFixed(2);
-
-    }
-
-
-    /* =========================================================
-       CREATE MISSING SECTION
-       ========================================================= */
-
-    function createMissingSection(sectionId) {
-
-        console.warn(
-            "VOLTICA STORE: Missing section detected →",
-            sectionId,
-            "Creating automatically."
-        );
-
-
-        const section =
-            document.createElement("section");
-
-
-        section.id =
-            sectionId;
-
-
-        section.className =
-            "store-section";
-
-
-        const title =
-            sectionTitles[sectionId] ||
-            sectionId.toUpperCase();
-
-
-        section.innerHTML = `
-
-            <div class="store-section-header">
-
-                <div>
-
-                    <span class="store-section-label">
-                        VOLTICA COLLECTION
-                    </span>
-
-                    <h2>
-                        ${escapeHTML(title)}
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="store-product-grid"></div>
-
-        `;
-
-
-        /*
-         * Append after existing store sections.
-         */
-
-        const existingSections =
-            document.querySelectorAll(
-                ".store-section"
-            );
-
-
-        if (
-            existingSections.length > 0
-        ) {
-
-            existingSections[
-                existingSections.length - 1
-            ].after(section);
-
-        } else {
-
-            document.body.appendChild(section);
-
-        }
-
-
-        return section;
-
-    }
-
-
-    /* =========================================================
-       FIND OR CREATE SECTION
-       ========================================================= */
-
-    function getStoreSection(sectionId) {
-
-        let section =
-            document.getElementById(
+            console.warn(
+                "VOLTICA STORE: Missing section detected:",
                 sectionId
             );
 
 
-        if (
-            section
-        ) {
+            const section =
+                document.createElement(
+                    "section"
+                );
+
+
+            section.className =
+                "store-section";
+
+
+            section.id =
+                sectionId;
+
+
+            const title =
+                sectionTitles[sectionId] ||
+                sectionId.toUpperCase();
+
+
+            section.innerHTML = `
+
+                <div class="store-section-heading">
+
+                    <div>
+
+                        <span class="section-index">
+                            VOLTICA COLLECTION
+                        </span>
+
+                        <h2>
+                            ${escapeHTML(title)}
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="store-product-grid"></div>
+
+            `;
+
+
+            const storePage =
+                document.querySelector(
+                    ".store-page"
+                );
+
+
+            const footer =
+                document.querySelector(
+                    ".store-footer"
+                );
+
+
+            if (
+                storePage &&
+                footer
+            ) {
+
+                storePage.insertBefore(
+                    section,
+                    footer
+                );
+
+            }
+            else if (
+                storePage
+            ) {
+
+                storePage.appendChild(
+                    section
+                );
+
+            }
+            else {
+
+                document.body.appendChild(
+                    section
+                );
+
+            }
+
 
             return section;
 
         }
 
 
-        return createMissingSection(
-            sectionId
-        );
+        /* =====================================================
+           FIND SECTION
+           ===================================================== */
 
-    }
+        function getStoreSection(sectionId) {
 
-
-    /* =========================================================
-       CREATE PRODUCT CARD
-       ========================================================= */
-
-    function createProductCard(product) {
-
-        const article =
-            document.createElement("article");
+            let section =
+                document.getElementById(
+                    sectionId
+                );
 
 
-        article.className =
-            "store-product";
+            if (
+                section
+            ) {
+
+                return section;
+
+            }
 
 
-        article.dataset.productId =
-            cleanText(product.id);
-
-
-        /* Product data */
-
-        const image =
-            getMainImage(product);
-
-
-        const name =
-            cleanText(product.name);
-
-
-        const category =
-            cleanText(product.category);
-
-
-        const badge =
-            cleanText(product.badge) ||
-            "NEW";
-
-
-        const description =
-            shortDescription(product);
-
-
-        const price =
-            formatPrice(product.price);
-
-
-        const currency =
-            cleanText(product.currency) ||
-            "USD";
-
-
-        const productId =
-            cleanText(product.id);
-
-
-        const encodedProductId =
-            encodeURIComponent(
-                productId
+            return createMissingSection(
+                sectionId
             );
-
-
-        /* Image */
-
-        let imageHTML = "";
-
-
-        if (
-            image
-        ) {
-
-            imageHTML = `
-
-                <img
-                    src="${escapeHTML(image)}"
-                    alt="${escapeHTML(name)}"
-                    loading="lazy"
-                    onerror="
-                        this.style.display='none';
-                        this.parentElement.classList.add('image-missing');
-                    "
-                >
-
-            `;
-
-        } else {
-
-            imageHTML = `
-
-                <div class="product-image-placeholder">
-                    VOLTICA
-                </div>
-
-            `;
 
         }
 
 
-        /* Product card */
+        /* =====================================================
+           CREATE PRODUCT CARD
+           ===================================================== */
 
-        article.innerHTML = `
+        function createProductCard(product) {
 
-            <div class="product-image">
-
-                <span class="product-badge">
-                    ${escapeHTML(badge)}
-                </span>
-
-                ${imageHTML}
-
-                <div class="image-reflection"></div>
-
-            </div>
+            const article =
+                document.createElement(
+                    "article"
+                );
 
 
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / ${escapeHTML(category)}
-                </div>
+            article.className =
+                "store-product";
 
 
-                <h3>
-                    ${escapeHTML(name)}
-                </h3>
+            const productId =
+                cleanText(
+                    product.id
+                );
 
 
-                <p>
-                    ${escapeHTML(description)}
-                </p>
+            article.dataset.productId =
+                productId;
 
 
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-
-                        $${escapeHTML(price)}
-
-                        <small>
-                            ${escapeHTML(currency)}
-                        </small>
-
-                    </strong>
+            const name =
+                cleanText(
+                    product.name
+                ) ||
+                "Voltica Product";
 
 
-                    <a
-                        href="product-view.html?id=${encodedProductId}"
-                        class="product-button"
-                        aria-label="View ${escapeHTML(name)}"
+            const category =
+                cleanText(
+                    product.category
+                ) ||
+                "TECH";
+
+
+            const badge =
+                getBadge(product);
+
+
+            const description =
+                shortDescription(product);
+
+
+            const price =
+                formatPrice(
+                    product.price
+                );
+
+
+            const currency =
+                getCurrency(product);
+
+
+            const image =
+                getMainImage(product);
+
+
+            const encodedProductId =
+                encodeURIComponent(
+                    productId
+                );
+
+
+            /* =================================================
+               IMAGE
+               ================================================= */
+
+            let imageHTML = "";
+
+
+            if (
+                image
+            ) {
+
+                imageHTML = `
+
+                    <img
+                        src="${escapeAttribute(image)}"
+                        alt="${escapeAttribute(name)}"
+                        loading="lazy"
+                        decoding="async"
                     >
 
-                        VIEW
+                `;
 
-                        <span>
-                            →
-                        </span>
+            }
+            else {
 
-                    </a>
+                imageHTML = `
+
+                    <div class="product-image-placeholder">
+
+                        VOLTICA
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /* =================================================
+               PRODUCT CARD HTML
+               ================================================= */
+
+            article.innerHTML = `
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        ${escapeHTML(badge)}
+                    </span>
+
+                    ${imageHTML}
+
+                    <div class="image-reflection"></div>
 
                 </div>
 
-            </div>
 
-        `;
+                <div class="product-info">
 
-
-        return article;
-
-    }
+                    <div class="product-category">
+                        VOLTICA / ${escapeHTML(category)}
+                    </div>
 
 
-    /* =========================================================
-       FIND EXISTING STORE SECTIONS
-       ========================================================= */
+                    <h3>
+                        ${escapeHTML(name)}
+                    </h3>
 
-    const sections =
-        document.querySelectorAll(
-            ".store-section"
+
+                    <p>
+                        ${escapeHTML(description)}
+                    </p>
+
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+
+                            $${escapeHTML(price)}
+
+                            <small>
+                                ${escapeHTML(currency)}
+                            </small>
+
+                        </strong>
+
+
+                        <a
+                            href="product-view.html?id=${encodedProductId}"
+                            class="product-button"
+                            aria-label="View ${escapeAttribute(name)}"
+                        >
+
+                            VIEW
+
+                            <span>
+                                →
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            /* =================================================
+               IMAGE ERROR HANDLING
+               ================================================= */
+
+            const imageElement =
+                article.querySelector(
+                    ".product-image img"
+                );
+
+
+            if (
+                imageElement
+            ) {
+
+                imageElement.addEventListener(
+                    "error",
+                    function () {
+
+                        console.warn(
+                            "VOLTICA STORE: Image failed to load:",
+                            image,
+                            "| Product:",
+                            name
+                        );
+
+
+                        this.style.display =
+                            "none";
+
+
+                        const container =
+                            this.closest(
+                                ".product-image"
+                            );
+
+
+                        if (
+                            container
+                        ) {
+
+                            container.classList.add(
+                                "image-missing"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            return article;
+
+        }
+
+
+        /* =====================================================
+           GET ALL STORE SECTIONS
+           ===================================================== */
+
+        const sections =
+            document.querySelectorAll(
+                ".store-section"
+            );
+
+
+        /* =====================================================
+           CLEAR STATIC PRODUCT CARDS
+           ===================================================== */
+
+        sections.forEach(
+            function (section) {
+
+                const grid =
+                    section.querySelector(
+                        ".store-product-grid"
+                    );
+
+
+                if (
+                    !grid
+                ) {
+
+                    return;
+
+                }
+
+
+                grid.innerHTML = "";
+
+            }
         );
 
 
-    /*
-     * We intentionally do NOT stop the engine
-     * when no sections exist.
-     *
-     * Missing sections will be created automatically
-     * when products are rendered.
-     */
+        /* =====================================================
+           RENDER PRODUCTS
+           ===================================================== */
+
+        let rendered = 0;
+        let skipped = 0;
 
 
-    /* =========================================================
-       CLEAR STATIC PRODUCT CARDS
-       ========================================================= */
+        volticaProducts.forEach(
+            function (product, index) {
 
-    sections.forEach(function (section) {
+                try {
 
-        const grid =
-            section.querySelector(
-                ".store-product-grid"
-            );
+                    /* -----------------------------------------
+                       Validate product
+                       ----------------------------------------- */
 
+                    if (
+                        !product ||
+                        typeof product !== "object"
+                    ) {
 
-        if (!grid) {
+                        console.warn(
+                            "VOLTICA STORE: Invalid product:",
+                            index,
+                            product
+                        );
 
-            return;
+                        skipped++;
 
-        }
+                        return;
 
-
-        grid.innerHTML = "";
-
-    });
-
-
-    /* =========================================================
-       RENDER PRODUCTS
-       ========================================================= */
-
-    let rendered =
-        0;
+                    }
 
 
-    let skipped =
-        0;
+                    const productId =
+                        cleanText(
+                            product.id
+                        );
 
 
-    volticaProducts.forEach(function (product, index) {
+                    if (
+                        !productId
+                    ) {
 
-        /* -----------------------------------------------------
-           Validate
-           ----------------------------------------------------- */
+                        console.warn(
+                            "VOLTICA STORE: Product has no ID:",
+                            index,
+                            product
+                        );
 
-        if (
-            !product ||
-            !product.id
-        ) {
+                        skipped++;
 
-            console.warn(
-                "VOLTICA STORE: Invalid product at index:",
-                index,
-                product
-            );
+                        return;
 
-            skipped++;
-
-            return;
-
-        }
+                    }
 
 
-        /* -----------------------------------------------------
-           Detect section
-           ----------------------------------------------------- */
+                    /* -----------------------------------------
+                       Detect section
+                       ----------------------------------------- */
 
-        const sectionId =
-            getSectionId(product);
+                    const sectionId =
+                        getSectionId(
+                            product
+                        );
 
 
-        if (
-            !sectionId
-        ) {
+                    if (
+                        !sectionId
+                    ) {
 
-            console.warn(
-                "VOLTICA STORE: Unknown category.",
-                {
-                    product: product.name,
-                    category: product.category,
-                    id: product.id
+                        console.warn(
+                            "VOLTICA STORE: Unknown category.",
+                            {
+                                name:
+                                    product.name,
+
+                                category:
+                                    product.category,
+
+                                id:
+                                    product.id
+                            }
+                        );
+
+                        skipped++;
+
+                        return;
+
+                    }
+
+
+                    /* -----------------------------------------
+                       Find / create section
+                       ----------------------------------------- */
+
+                    const section =
+                        getStoreSection(
+                            sectionId
+                        );
+
+
+                    if (
+                        !section
+                    ) {
+
+                        console.error(
+                            "VOLTICA STORE: Section unavailable:",
+                            sectionId
+                        );
+
+                        skipped++;
+
+                        return;
+
+                    }
+
+
+                    /* -----------------------------------------
+                       Find / create grid
+                       ----------------------------------------- */
+
+                    let grid =
+                        section.querySelector(
+                            ".store-product-grid"
+                        );
+
+
+                    if (
+                        !grid
+                    ) {
+
+                        grid =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        grid.className =
+                            "store-product-grid";
+
+
+                        section.appendChild(
+                            grid
+                        );
+
+                    }
+
+
+                    /* -----------------------------------------
+                       Create card
+                       ----------------------------------------- */
+
+                    const card =
+                        createProductCard(
+                            product
+                        );
+
+
+                    grid.appendChild(
+                        card
+                    );
+
+
+                    rendered++;
+
+
+                    console.log(
+                        "VOLTICA STORE: Rendered →",
+                        cleanText(product.name),
+                        "| ID:",
+                        productId,
+                        "| CATEGORY:",
+                        cleanText(product.category),
+                        "| SECTION:",
+                        sectionId
+                    );
+
+                }
+                catch (error) {
+
+                    console.error(
+                        "VOLTICA STORE: Product render error at index",
+                        index,
+                        product,
+                        error
+                    );
+
+                    skipped++;
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           HIDE EMPTY SECTIONS
+           ===================================================== */
+
+        document
+            .querySelectorAll(
+                ".store-section"
+            )
+            .forEach(
+                function (section) {
+
+                    const grid =
+                        section.querySelector(
+                            ".store-product-grid"
+                        );
+
+
+                    if (
+                        !grid
+                    ) {
+
+                        section.style.display =
+                            "none";
+
+                        return;
+
+                    }
+
+
+                    const productCards =
+                        grid.querySelectorAll(
+                            ".store-product"
+                        );
+
+
+                    if (
+                        productCards.length === 0
+                    ) {
+
+                        section.style.display =
+                            "none";
+
+                    }
+                    else {
+
+                        section.style.display =
+                            "";
+
+                    }
+
                 }
             );
 
-            skipped++;
 
-            return;
+        /* =====================================================
+           UPDATE CATEGORY NAVIGATION
+           ===================================================== */
 
-        }
+        document
+            .querySelectorAll(
+                ".category-glass"
+            )
+            .forEach(
+                function (button) {
+
+                    const href =
+                        button.getAttribute(
+                            "href"
+                        );
 
 
-        /* -----------------------------------------------------
-           Get or create section
-           ----------------------------------------------------- */
+                    if (
+                        !href ||
+                        !href.startsWith("#")
+                    ) {
 
-        const section =
-            getStoreSection(
-                sectionId
+                        return;
+
+                    }
+
+
+                    const target =
+                        document.getElementById(
+                            href.substring(1)
+                        );
+
+
+                    if (
+                        !target ||
+                        target.style.display === "none"
+                    ) {
+
+                        button.style.display =
+                            "none";
+
+                    }
+                    else {
+
+                        button.style.display =
+                            "";
+
+                    }
+
+                }
             );
 
 
+        /* =====================================================
+           STORE STATUS
+           ===================================================== */
+
+        console.log(
+            "%cVOLTICA STORE READY",
+            "font-weight:bold;font-size:16px;"
+        );
+
+
+        console.log(
+            "Products in database:",
+            volticaProducts.length
+        );
+
+
+        console.log(
+            "Products rendered:",
+            rendered
+        );
+
+
+        console.log(
+            "Products skipped:",
+            skipped
+        );
+
+
+        /* =====================================================
+           DIAGNOSTIC SUMMARY
+           ===================================================== */
+
         if (
-            !section
+            rendered === 0 &&
+            volticaProducts.length > 0
         ) {
 
             console.error(
-                "VOLTICA STORE: Unable to create section.",
-                sectionId
+                "VOLTICA STORE: Database contains products, but none were rendered."
             );
-
-            skipped++;
-
-            return;
 
         }
 
 
-        /* -----------------------------------------------------
-           Get grid
-           ----------------------------------------------------- */
-
-        let grid =
-            section.querySelector(
-                ".store-product-grid"
-            );
-
-
-        /*
-         * If the section exists but has no grid,
-         * create one automatically.
-         */
-
         if (
-            !grid
+            skipped > 0
         ) {
 
             console.warn(
-                "VOLTICA STORE: Missing product grid.",
-                sectionId,
-                "Creating automatically."
-            );
-
-
-            grid =
-                document.createElement("div");
-
-
-            grid.className =
-                "store-product-grid";
-
-
-            section.appendChild(
-                grid
+                "VOLTICA STORE:",
+                skipped,
+                "product(s) were skipped."
             );
 
         }
 
-
-        /* -----------------------------------------------------
-           Create card
-           ----------------------------------------------------- */
-
-        const card =
-            createProductCard(
-                product
-            );
-
-
-        grid.appendChild(
-            card
-        );
-
-
-        rendered++;
-
-
-        /* -----------------------------------------------------
-           Diagnostic
-           ----------------------------------------------------- */
-
-        console.log(
-            "VOLTICA STORE: Rendered →",
-            product.name,
-            "| category:",
-            product.category,
-            "| section:",
-            sectionId,
-            "| id:",
-            product.id
-        );
-
-    });
-
-
-    /* =========================================================
-       HIDE EMPTY COLLECTIONS
-       ========================================================= */
-
-    document
-        .querySelectorAll(".store-section")
-        .forEach(function (section) {
-
-            const grid =
-                section.querySelector(
-                    ".store-product-grid"
-                );
-
-
-            if (
-                !grid
-            ) {
-
-                return;
-
-            }
-
-
-            const products =
-                grid.querySelectorAll(
-                    ".store-product"
-                );
-
-
-            if (
-                products.length === 0
-            ) {
-
-                section.style.display =
-                    "none";
-
-            } else {
-
-                section.style.display =
-                    "";
-
-            }
-
-        });
-
-
-    /* =========================================================
-       STORE STATUS
-       ========================================================= */
-
-    console.log(
-        "%cVOLTICA STORE READY",
-        "font-weight:bold;font-size:16px;"
-    );
-
-
-    console.log(
-        "Products in database:",
-        volticaProducts.length
-    );
-
-
-    console.log(
-        "Products rendered:",
-        rendered
-    );
-
-
-    console.log(
-        "Products skipped:",
-        skipped
-    );
-
-
-    /* =========================================================
-       SMART MIRROR DIAGNOSTIC
-       ========================================================= */
-
-    const smartMirrorProducts =
-        volticaProducts.filter(function (product) {
-
-            const name =
-                String(
-                    product.name || ""
-                ).toUpperCase();
-
-
-            return (
-                name.includes("SMART MIRROR") ||
-                name.includes("MIRROR PRO")
-            );
-
-        });
-
-
-    if (
-        smartMirrorProducts.length > 0
-    ) {
-
-        smartMirrorProducts.forEach(function (product) {
-
-            console.log(
-                "%cSMART MIRROR PRODUCT DETECTED →",
-                "font-weight:bold;font-size:15px;",
-                product.name,
-                "| ID:",
-                product.id,
-                "| CATEGORY:",
-                product.category,
-                "| SECTION:",
-                getSectionId(product),
-                "| PRICE:",
-                product.price,
-                product.currency
-            );
-
-        });
-
     }
 
 
     /* =========================================================
-       KIWI EARS DIAGNOSTIC
+       DOM READY
        ========================================================= */
 
-    const kiwiProducts =
-        volticaProducts.filter(function (product) {
-
-            return String(
-                product.name || ""
-            )
-                .toUpperCase()
-                .includes("KIWI EARS");
-
-        });
-
-
     if (
-        kiwiProducts.length > 0
+        document.readyState === "loading"
     ) {
 
-        kiwiProducts.forEach(function (product) {
+        document.addEventListener(
+            "DOMContentLoaded",
+            initVolticaStore
+        );
 
-            console.log(
-                "%cKIWI EARS PRODUCT DETECTED →",
-                "font-weight:bold;font-size:15px;",
-                product.name,
-                "| ID:",
-                product.id,
-                "| CATEGORY:",
-                product.category,
-                "| SECTION:",
-                getSectionId(product),
-                "| PRICE:",
-                product.price,
-                product.currency
-            );
+    }
+    else {
 
-        });
+        initVolticaStore();
 
     }
 
 
-});
+})();

@@ -12,7 +12,7 @@
 
     <meta
         name="description"
-        content="Voltica Store — The Future of Everyday."
+        content="Voltica Store — next-generation technology, smart devices, audio, gaming gear and futuristic lifestyle products."
     >
 
     <meta
@@ -24,13 +24,14 @@
 
 
     <!-- =================================================
-         STORE STYLES
+         STORE CSS
          ================================================= -->
 
     <link
         rel="stylesheet"
         href="store.css"
     >
+
 
 </head>
 
@@ -40,13 +41,17 @@
 
 <!-- =====================================================
      HEADER
-     ===================================================== -->
+     ================================================= -->
 
 <header class="store-header">
+
+
+    <!-- LOGO -->
 
     <a
         href="index.html"
         class="voltica-logo"
+        aria-label="Voltica Home"
     >
 
         <span class="logo-mark">
@@ -60,185 +65,226 @@
     </a>
 
 
-    <nav class="store-navigation">
+    <!-- NAVIGATION -->
+
+    <nav
+        class="store-navigation"
+        aria-label="Main navigation"
+    >
 
         <a href="index.html">
             HOME
         </a>
 
-        <a
-            href="store.html"
-            class="active"
-        >
-            STORE
+        <a href="store.html">
+            COLLECTION
         </a>
 
-        <a href="contact.html">
-            CONTACT US
+        <a href="#contact">
+            CONTACT
         </a>
 
     </nav>
+
 
 </header>
 
 
 
 <!-- =====================================================
-     STORE HERO
+     MAIN
      ===================================================== -->
 
-<main>
+<main class="store-page">
 
 
-<section class="store-hero">
+    <!-- =================================================
+         HERO
+         ================================================= -->
+
+    <section class="store-hero">
 
 
-    <div class="hero-status">
+        <!-- EYEBROW -->
 
-        <span class="pulse-dot"></span>
+        <div class="store-eyebrow">
 
-        VOLTICA STORE
+            <span class="large-pulse"></span>
 
-    </div>
-
-
-    <h1>
-
-        THE FUTURE
-        <br>
-
-        <span>OF EVERYDAY.</span>
-
-    </h1>
-
-
-    <p>
-
-        Premium technology, intelligent gear and
-        next-generation products selected for
-        the modern lifestyle.
-
-    </p>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     PRODUCT COLLECTION
-     ===================================================== -->
-
-<section
-    class="product-section"
-    id="productCollection"
->
-
-
-    <div class="section-header">
-
-        <div>
-
-            <span class="section-kicker">
-                VOLTICA COLLECTION
+            <span>
+                THE FUTURE OF EVERYDAY
             </span>
-
-            <h2>
-                FEATURED GEAR
-            </h2>
 
         </div>
 
 
-        <span
-            class="product-counter"
-            id="productCounter"
-        >
-            00 PRODUCTS
-        </span>
+        <!-- TITLE -->
 
-    </div>
+        <h1>
+
+            VOLTICA
+            <span>COLLECTION</span>
+
+        </h1>
+
+
+        <!-- DESCRIPTION -->
+
+        <p class="store-intro">
+
+            Discover technology designed for
+            the next generation of everyday life.
+
+            From immersive audio and smart devices
+            to futuristic lifestyle hardware,
+            every product is selected with purpose.
+
+        </p>
+
+
+        <!-- META -->
+
+        <div class="store-meta">
+
+            <span>
+                SEPTEMBER 1ST
+            </span>
+
+            <span class="meta-separator">
+                /
+            </span>
+
+            <span id="productCounter">
+                00 PRODUCTS
+            </span>
+
+        </div>
+
+
+    </section>
 
 
 
-    <!-- ================================================
-         PRODUCTS ARE INSERTED BY store.js
-         ================================================ -->
+    <!-- =================================================
+         COLLECTION BAR
+         ================================================= -->
 
-    <div
+    <section class="collection-bar">
+
+
+        <div class="collection-label">
+
+            <span class="pulse-dot"></span>
+
+            <span>
+                VOLTICA COLLECTION
+            </span>
+
+        </div>
+
+
+        <div class="collection-status">
+
+            CURATED TECHNOLOGY
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         PRODUCT GRID
+         ================================================= -->
+
+    <section
         class="product-grid"
         id="productGrid"
+        aria-label="Voltica products"
     >
 
-        <!-- Products generated dynamically -->
+        <!--
 
-    </div>
+            PRODUCTS ARE INSERTED
+            AUTOMATICALLY BY store.js
+
+        -->
+
+
+        <div class="store-loading">
+
+            <span class="large-pulse"></span>
+
+            <p>
+                LOADING COLLECTION
+            </p>
+
+        </div>
+
+
+    </section>
 
 
 
-    <!-- ================================================
-         EMPTY STORE STATE
-         ================================================ -->
+    <!-- =================================================
+         CONTACT / SUPPORT
+         ================================================= -->
 
-    <div
-        class="empty-store"
-        id="emptyStore"
+    <section
+        class="store-contact"
+        id="contact"
     >
 
-        <span class="pulse-dot"></span>
 
-        <h3>
-            COLLECTION LOADING
-        </h3>
-
-        <p>
-            Voltica products will appear here.
-        </p>
-
-    </div>
+        <div class="contact-panel">
 
 
-</section>
+            <div class="contact-eyebrow">
+
+                <span class="pulse-dot"></span>
+
+                VOLTICA SUPPORT
+
+            </div>
 
 
+            <h2>
 
-<!-- =====================================================
-     FUTURE COLLECTION CTA
-     ===================================================== -->
+                NEED HELP?
 
-<section class="store-cta">
-
-
-    <div class="cta-glass">
+            </h2>
 
 
-        <span class="section-kicker">
-            VOLTICA STORE
-        </span>
+            <p>
+
+                Questions about a product,
+                your order or the Voltica collection?
+
+                Our support team is here to help.
+
+            </p>
 
 
-        <h2>
+            <a
+                href="mailto:support@volticastore.com"
+                class="contact-button"
+            >
 
-            THE FUTURE
-            <br>
+                CONTACT US
 
-            IS BEING BUILT.
+                <span>
+                    →
+                </span>
 
-        </h2>
-
-
-        <p>
-
-            New technology and carefully selected
-            products are being added to the collection.
-
-        </p>
+            </a>
 
 
-    </div>
+        </div>
 
 
-</section>
+    </section>
+
 
 
 </main>
@@ -251,26 +297,51 @@
 
 <footer class="store-footer">
 
-    <span>
-        VOLTICA STORE
-    </span>
 
-    <span>
+    <div class="footer-brand">
+
+        <span class="footer-mark">
+            V
+        </span>
+
+        <span>
+            VOLTICA
+        </span>
+
+    </div>
+
+
+    <div class="footer-copy">
+
+        © 2026 VOLTICA STORE
+
+    </div>
+
+
+    <div class="footer-tagline">
+
         THE FUTURE OF EVERYDAY
-    </span>
+
+    </div>
+
 
 </footer>
 
 
 
 <!-- =====================================================
-     SCRIPTS
+     PRODUCT DATABASE
+     IMPORTANT:
+     products.js MUST LOAD BEFORE store.js
      ===================================================== -->
 
-<!-- Product database -->
 <script src="products.js"></script>
 
-<!-- Store engine -->
+
+<!-- =====================================================
+     STORE ENGINE
+     ===================================================== -->
+
 <script src="store.js"></script>
 
 

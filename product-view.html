@@ -12,7 +12,7 @@
 
     <meta
         name="description"
-        content="Voltica Q45 — Soundcore Space Q45 Voltica Elite Pass Edition. Limited to 200 units."
+        content="Voltica Q45 — Soundcore Space Q45 Voltica Elite Pass Edition."
     >
 
     <meta
@@ -44,7 +44,7 @@
             <a
                 href="index.html"
                 class="brand"
-                aria-label="Voltica Store home"
+                aria-label="Voltica Store"
             >
 
                 <img
@@ -111,7 +111,7 @@
 
 
     <!-- =====================================================
-         MAIN PRODUCT
+         MAIN
          ===================================================== -->
 
     <main class="product-main">
@@ -151,23 +151,23 @@
 
 
             <!-- =================================================
-                 GALLERY
+                 LEFT — MEDIA
                  ================================================= -->
 
             <div class="gallery">
 
 
                 <!-- =============================================
-                     MAIN MEDIA
+                     PROMOTIONAL VIDEO
                      ============================================= -->
 
                 <div
                     class="main-image"
-                    id="mainMedia"
                     style="
                         padding: 0;
                         overflow: hidden;
                         position: relative;
+                        background: #050505;
                     "
                 >
 
@@ -181,10 +181,6 @@
                         VOLTICA Q45
                     </div>
 
-
-                    <!-- =========================================
-                         VIDEO
-                         ========================================= -->
 
                     <video
                         id="q45Video"
@@ -213,8 +209,9 @@
                     </video>
 
 
+
                     <!-- =========================================
-                         SOUND BUTTON
+                         SOUND CONTROL
                          ========================================= -->
 
                     <button
@@ -223,8 +220,10 @@
                         aria-label="Turn sound on"
                         style="
                             position: absolute;
+
                             right: 18px;
                             bottom: 18px;
+
                             z-index: 30;
 
                             display: flex;
@@ -233,15 +232,16 @@
 
                             padding: 11px 16px;
 
-                            border: 1px solid
+                            border:
+                                1px solid
                                 rgba(255,255,255,0.18);
 
                             border-radius: 999px;
 
                             background:
-                                rgba(5,5,5,0.65);
+                                rgba(5,5,5,0.68);
 
-                            color: white;
+                            color: #fff;
 
                             backdrop-filter:
                                 blur(18px);
@@ -261,7 +261,7 @@
 
                             box-shadow:
                                 0 8px 30px
-                                rgba(0,0,0,0.4);
+                                rgba(0,0,0,0.45);
 
                             transition:
                                 transform 0.25s ease,
@@ -278,7 +278,7 @@
 
                                 border-radius: 50%;
 
-                                background: #ffffff;
+                                background: #fff;
 
                                 animation:
                                     soundPulse
@@ -300,169 +300,117 @@
 
 
                 <!-- =================================================
-                     THUMBNAILS
+                     PRODUCT PHOTO THUMBNAILS
                      ================================================= -->
 
                 <div
                     class="thumbnails"
-                    id="thumbnailGallery"
+                    id="productThumbnails"
                 >
 
 
-                    <!-- VIDEO -->
+                    <!-- Q451-1 -->
 
                     <button
                         class="thumbnail active"
                         type="button"
-                        data-type="video"
-                        aria-label="Play Q45 promo video"
-                    >
-
-                        <div
-                            style="
-                                width: 100%;
-                                height: 100%;
-                                min-height: 70px;
-
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-
-                                border-radius: 14px;
-
-                                background:
-                                    linear-gradient(
-                                        135deg,
-                                        #111111,
-                                        #292929
-                                    );
-
-                                color: white;
-
-                                font-size: 10px;
-
-                                font-weight: 600;
-
-                                letter-spacing: 0.12em;
-                            "
-                        >
-
-                            ▶ VIDEO
-
-                        </div>
-
-                    </button>
-
-
-
-                    <!-- IMAGE 01 -->
-
-                    <button
-                        class="thumbnail"
-                        type="button"
-                        data-type="image"
-                        data-src="assets/Q451-1.webp"
-                        aria-label="View Q45 image 1"
+                        data-image="assets/Q451-1.webp"
+                        aria-label="Q45 product image 1"
                     >
 
                         <img
                             src="assets/Q451-1.webp"
-                            alt="Voltica Q45 view 1"
+                            alt="Voltica Q45 — image 1"
                         >
 
                     </button>
 
 
 
-                    <!-- IMAGE 02 -->
+                    <!-- Q451-2 -->
 
                     <button
                         class="thumbnail"
                         type="button"
-                        data-type="image"
-                        data-src="assets/Q451-2.webp"
-                        aria-label="View Q45 image 2"
+                        data-image="assets/Q451-2.webp"
+                        aria-label="Q45 product image 2"
                     >
 
                         <img
                             src="assets/Q451-2.webp"
-                            alt="Voltica Q45 view 2"
+                            alt="Voltica Q45 — image 2"
                         >
 
                     </button>
 
 
 
-                    <!-- IMAGE 03 -->
+                    <!-- Q451-3 -->
 
                     <button
                         class="thumbnail"
                         type="button"
-                        data-type="image"
-                        data-src="assets/Q451-3.webp"
-                        aria-label="View Q45 image 3"
+                        data-image="assets/Q451-3.webp"
+                        aria-label="Q45 product image 3"
                     >
 
                         <img
                             src="assets/Q451-3.webp"
-                            alt="Voltica Q45 view 3"
+                            alt="Voltica Q45 — image 3"
                         >
 
                     </button>
 
 
 
-                    <!-- IMAGE 04 -->
+                    <!-- Q451-4 -->
 
                     <button
                         class="thumbnail"
                         type="button"
-                        data-type="image"
-                        data-src="assets/Q451-4.webp"
-                        aria-label="View Q45 image 4"
+                        data-image="assets/Q451-4.webp"
+                        aria-label="Q45 product image 4"
                     >
 
                         <img
                             src="assets/Q451-4.webp"
-                            alt="Voltica Q45 view 4"
+                            alt="Voltica Q45 — image 4"
                         >
 
                     </button>
 
 
 
-                    <!-- IMAGE 06 -->
+                    <!-- Q451-6 -->
 
                     <button
                         class="thumbnail"
                         type="button"
-                        data-type="image"
-                        data-src="assets/Q451-6.webp"
-                        aria-label="View Q45 image 6"
+                        data-image="assets/Q451-6.webp"
+                        aria-label="Q45 product image 6"
                     >
 
                         <img
                             src="assets/Q451-6.webp"
-                            alt="Voltica Q45 view 6"
+                            alt="Voltica Q45 — image 6"
                         >
 
                     </button>
 
 
 
-                    <!-- IMAGE 07 -->
+                    <!-- Q451-7 -->
 
                     <button
                         class="thumbnail"
                         type="button"
-                        data-type="image"
-                        data-src="assets/Q451-7.webp"
-                        aria-label="View Q45 image 7"
+                        data-image="assets/Q451-7.webp"
+                        aria-label="Q45 product image 7"
                     >
 
                         <img
                             src="assets/Q451-7.webp"
-                            alt="Voltica Q45 view 7"
+                            alt="Voltica Q45 — image 7"
                         >
 
                     </button>
@@ -474,7 +422,7 @@
 
 
             <!-- =================================================
-                 PRODUCT INFORMATION
+                 RIGHT — PRODUCT INFORMATION
                  ================================================= -->
 
             <div class="product-info">
@@ -499,13 +447,18 @@
                     style="
                         margin-top: -8px;
                         margin-bottom: 20px;
-                        color: rgba(255,255,255,0.42);
+
+                        color:
+                            rgba(255,255,255,0.42);
+
                         font-size: 12px;
+
                         letter-spacing: 0.04em;
                     "
                 >
 
                     Soundcore Space Q45
+
                     <br>
 
                     Voltica Elite Pass Edition
@@ -546,8 +499,11 @@
                     class="glass-card"
                     style="
                         min-height: auto;
+
                         padding: 24px;
+
                         margin-bottom: 28px;
+
                         border-radius: 20px;
                     "
                 >
@@ -559,11 +515,9 @@
 
                             font-size: 9px;
 
-                            letter-spacing:
-                                0.2em;
+                            letter-spacing: 0.2em;
 
-                            text-transform:
-                                uppercase;
+                            text-transform: uppercase;
                         "
                     >
                         VOLTICA ELITE PASS
@@ -599,4 +553,250 @@
                         "
                     >
 
-                        The first 200
+                        The first 200 customers receive an
+                        exclusive laser-engraved metal
+                        Voltica Elite Pass Card.
+
+                    </p>
+
+
+                    <div
+                        style="
+                            margin-top: 14px;
+
+                            color:
+                                rgba(255,255,255,0.72);
+
+                            font-size: 11px;
+
+                            font-weight: 600;
+                        "
+                    >
+
+                        Lifetime 15% discount on future
+                        Voltica Store purchases.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     COLOR
+                     ============================================= -->
+
+                <div class="option-group">
+
+                    <div class="option-header">
+
+                        <span class="option-title">
+                            COLOR
+                        </span>
+
+                        <span class="option-value">
+                            Select
+                        </span>
+
+                    </div>
+
+
+                    <div class="options">
+
+                        <button
+                            class="option selected"
+                            type="button"
+                        >
+                            Moon Rock Black
+                        </button>
+
+                        <button
+                            class="option"
+                            type="button"
+                        >
+                            Crescent White
+                        </button>
+
+                        <button
+                            class="option"
+                            type="button"
+                        >
+                            Moonlit Night Blue
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     PURCHASE
+                     ============================================= -->
+
+                <div class="purchase-row">
+
+                    <div class="quantity">
+
+                        <button
+                            type="button"
+                            aria-label="Decrease quantity"
+                        >
+                            −
+                        </button>
+
+                        <span>
+                            1
+                        </span>
+
+                        <button
+                            type="button"
+                            aria-label="Increase quantity"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <a
+                        href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+                        class="add-cart"
+                        style="
+                            display: flex;
+
+                            align-items: center;
+
+                            justify-content: center;
+
+                            text-decoration: none;
+                        "
+                    >
+                        SECURE YOUR Q45
+                    </a>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     META
+                     ============================================= -->
+
+                <div class="product-meta">
+
+
+                    <div class="meta-row">
+
+                        <span class="meta-label">
+                            Availability
+                        </span>
+
+                        <span class="meta-value">
+                            200 Limited Units
+                        </span>
+
+                    </div>
+
+
+                    <div class="meta-row">
+
+                        <span class="meta-label">
+                            Product SKU
+                        </span>
+
+                        <span class="meta-value">
+                            CJYP272510404DW
+                        </span>
+
+                    </div>
+
+
+                    <div class="meta-row">
+
+                        <span class="meta-label">
+                            Manufacturer
+                        </span>
+
+                        <span class="meta-value">
+                            Soundcore by Anker
+                        </span>
+
+                    </div>
+
+
+                    <div class="meta-row">
+
+                        <span class="meta-label">
+                            Form Factor
+                        </span>
+
+                        <span class="meta-value">
+                            Over-Ear / Closed-Back
+                        </span>
+
+                    </div>
+
+
+                    <div class="meta-row">
+
+                        <span class="meta-label">
+                            Wireless
+                        </span>
+
+                        <span class="meta-value">
+                            Bluetooth 5.3
+                        </span>
+
+                    </div>
+
+
+                    <div class="meta-row">
+
+                        <span class="meta-label">
+                            Multipoint
+                        </span>
+
+                        <span class="meta-value">
+                            Supported
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DETAILS
+             ================================================= -->
+
+        <section class="details">
+
+            <div class="details-grid">
+
+
+                <div>
+
+                    <div class="details-label">
+                        THE Q45
+                    </div>
+
+
+                    <h2>
+                        Engineered
+                        for immersion.
+                    </h2>
+
+                </div>
+
+
+                <div>
+
+                    <p class="details-copy">
+
+                       

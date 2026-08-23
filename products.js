@@ -313,12 +313,12 @@ const volticaProducts = [
     currency: "USD",
 
     images: [
-        "assets/images/glass1-1.webp",
-        "assets/images/glass1-2.webp",
-        "assets/images/glass1-3.webp",
-        "assets/images/glass1-4.webp",
-        "assets/images/glass1-5.webp",
-        "assets/images/glass1-6.webp"
+        "assets/images/glass1-1.jpg",
+        "assets/images/glass1-2.jpg",
+        "assets/images/glass1-3.jpg",
+        "assets/images/glass1-4.jpg",
+        "assets/images/glass1-5.jpg",
+        "assets/images/glass1-6.jpg"
     ],
 
     description:

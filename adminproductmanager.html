@@ -1,595 +1,916 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
 
-<head>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <meta charset="UTF-8">
+<meta
+    name="description"
+    content="Voltica Store Product Management"
+>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="theme-color"
+    content="#050505"
+>
 
-    <title>Voltica Store — Product Manager</title>
+<title>Voltica Store — Product Manager</title>
 
-    <meta
-        name="description"
-        content="Voltica Store Product Management"
-    >
 
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    /* =====================================================
+       VOLTICA STORE
+       ADMIN PRODUCT MANAGER
+       ===================================================== */
 
-        html {
-            scroll-behavior: smooth;
-        }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+
+    body {
+
+        min-height: 100vh;
+
+        background:
+            radial-gradient(
+                circle at 20% 10%,
+                rgba(255,255,255,.07),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 80% 80%,
+                rgba(120,120,255,.05),
+                transparent 35%
+            ),
+            #050505;
+
+        color: #fff;
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+        padding:
+            30px 15px 80px;
+
+    }
+
+
+    /* =====================================================
+       CONTAINER
+       ===================================================== */
+
+    .admin-container {
+
+        width: 100%;
+        max-width: 950px;
+        margin: 0 auto;
+
+    }
+
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    .admin-header {
+
+        margin-bottom: 30px;
+        padding: 28px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.12);
+
+        border-radius: 24px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,255,255,.09),
+                rgba(255,255,255,.025)
+            );
+
+        backdrop-filter:
+            blur(25px);
+
+        -webkit-backdrop-filter:
+            blur(25px);
+
+        box-shadow:
+            0 25px 80px
+            rgba(0,0,0,.55);
+
+    }
+
+
+    .admin-label {
+
+        margin-bottom: 10px;
+
+        font-size: 10px;
+
+        letter-spacing:
+            .35em;
+
+        color:
+            rgba(255,255,255,.42);
+
+    }
+
+
+    .admin-header h1 {
+
+        margin-bottom: 10px;
+
+        font-size:
+            clamp(28px,5vw,48px);
+
+        font-weight: 300;
+
+        letter-spacing:
+            -.03em;
+
+    }
+
+
+    .admin-header p {
+
+        color:
+            rgba(255,255,255,.48);
+
+        font-size: 14px;
+
+        line-height: 1.6;
+
+    }
+
+
+    /* =====================================================
+       PRODUCT FORM
+       ===================================================== */
+
+    .product-form {
+
+        padding: 28px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.11);
+
+        border-radius: 24px;
+
+        background:
+            rgba(255,255,255,.035);
+
+        backdrop-filter:
+            blur(25px);
+
+        -webkit-backdrop-filter:
+            blur(25px);
+
+        box-shadow:
+            0 30px 90px
+            rgba(0,0,0,.55);
+
+    }
+
+
+    /* =====================================================
+       FIELDS
+       ===================================================== */
+
+    .field {
+
+        margin-bottom: 22px;
+
+    }
+
+
+    .field label {
+
+        display: block;
+
+        margin-bottom: 9px;
+
+        font-size: 10px;
+
+        letter-spacing:
+            .22em;
+
+        text-transform:
+            uppercase;
+
+        color:
+            rgba(255,255,255,.48);
+
+    }
+
+
+    input,
+    select,
+    textarea {
+
+        width: 100%;
+
+        border:
+            1px solid
+            rgba(255,255,255,.12);
+
+        border-radius: 13px;
+
+        background:
+            rgba(0,0,0,.42);
+
+        color: #fff;
+
+        padding:
+            15px 16px;
+
+        outline: none;
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+        font-size: 14px;
+
+        transition:
+            border-color .25s ease,
+            background .25s ease,
+            box-shadow .25s ease;
+
+    }
+
+
+    input::placeholder,
+    textarea::placeholder {
+
+        color:
+            rgba(255,255,255,.25);
+
+    }
+
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+
+        border-color:
+            rgba(255,255,255,.38);
+
+        background:
+            rgba(255,255,255,.045);
+
+        box-shadow:
+            0 0 30px
+            rgba(255,255,255,.045);
+
+    }
+
+
+    select {
+
+        cursor: pointer;
+
+        appearance: auto;
+
+    }
+
+
+    textarea {
+
+        min-height: 130px;
+
+        resize: vertical;
+
+        line-height: 1.6;
+
+    }
+
+
+    /* =====================================================
+       FIELD GRID
+       ===================================================== */
+
+    .field-grid {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+
+        gap: 18px;
+
+    }
+
+
+    /* =====================================================
+       SUPPLIER BOX
+       ===================================================== */
+
+    .supplier-box {
+
+        padding: 20px;
+
+        margin-bottom: 24px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.10);
+
+        border-radius: 18px;
+
+        background:
+            rgba(255,255,255,.025);
+
+    }
+
+
+    .supplier-title {
+
+        margin-bottom: 18px;
+
+        font-size: 12px;
+
+        letter-spacing:
+            .16em;
+
+        text-transform:
+            uppercase;
+
+        color:
+            rgba(255,255,255,.72);
+
+    }
+
+
+    /* =====================================================
+       STRIPE BOX
+       ===================================================== */
+
+    .stripe-box {
+
+        padding: 20px;
+
+        margin-bottom: 24px;
+
+        border:
+            1px solid
+            rgba(120,150,255,.18);
+
+        border-radius: 18px;
+
+        background:
+            rgba(80,100,255,.035);
+
+    }
+
+
+    .stripe-title {
+
+        margin-bottom: 8px;
+
+        font-size: 12px;
+
+        letter-spacing:
+            .16em;
+
+        text-transform:
+            uppercase;
+
+        color:
+            rgba(255,255,255,.75);
+
+    }
+
+
+    .stripe-help {
+
+        margin-bottom: 16px;
+
+        color:
+            rgba(255,255,255,.40);
+
+        font-size: 12px;
+
+        line-height: 1.5;
+
+    }
+
+
+    /* =====================================================
+       IMAGE UPLOAD
+       ===================================================== */
+
+    .upload-zone {
+
+        padding: 24px;
+
+        border:
+            1px dashed
+            rgba(255,255,255,.20);
+
+        border-radius: 18px;
+
+        background:
+            rgba(255,255,255,.025);
+
+        text-align: center;
+
+        transition:
+            border-color .25s ease,
+            background .25s ease;
+
+    }
+
+
+    .upload-zone:hover {
+
+        border-color:
+            rgba(255,255,255,.42);
+
+        background:
+            rgba(255,255,255,.045);
+
+    }
+
+
+    .upload-title {
+
+        margin-bottom: 7px;
+
+        font-size: 15px;
+
+    }
+
+
+    .upload-description {
+
+        margin-bottom: 12px;
+
+        color:
+            rgba(255,255,255,.42);
+
+        font-size: 12px;
+
+    }
+
+
+    .upload-zone input {
+
+        width: 100%;
+
+        border: 0;
+
+        padding: 10px;
+
+        background:
+            transparent;
+
+        cursor: pointer;
+
+    }
+
+
+    /* =====================================================
+       IMAGE PREVIEW
+       ===================================================== */
+
+    #imagePreview {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                auto-fill,
+                minmax(130px,1fr)
+            );
+
+        gap: 14px;
+
+        margin-top: 20px;
+
+    }
+
+
+    .image-preview-count {
+
+        grid-column:
+            1 / -1;
+
+        color:
+            rgba(255,255,255,.55);
+
+        font-size: 12px;
+
+        letter-spacing:
+            .08em;
+
+    }
+
+
+    .image-preview-item {
+
+        overflow: hidden;
+
+        border:
+            1px solid
+            rgba(255,255,255,.10);
+
+        border-radius: 13px;
+
+        background:
+            #080808;
+
+    }
+
+
+    .image-preview-item img {
+
+        display: block;
+
+        width: 100%;
+
+        height: 120px;
+
+        object-fit: cover;
+
+    }
+
+
+    .image-preview-name {
+
+        padding: 9px;
+
+        color:
+            rgba(255,255,255,.48);
+
+        font-size: 10px;
+
+        overflow: hidden;
+
+        white-space: nowrap;
+
+        text-overflow: ellipsis;
+
+    }
+
+
+    /* =====================================================
+       BUTTONS
+       ===================================================== */
+
+    .button-row {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 14px;
+
+        margin-top: 28px;
+
+    }
+
+
+    button {
+
+        min-height: 56px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.14);
+
+        border-radius: 14px;
+
+        cursor: pointer;
+
+        font-size: 11px;
+
+        font-weight: 700;
+
+        letter-spacing:
+            .16em;
+
+        transition:
+            transform .25s ease,
+            background .25s ease,
+            box-shadow .25s ease,
+            opacity .25s ease;
+
+    }
+
+
+    button:hover {
+
+        transform:
+            translateY(-2px);
+
+    }
+
+
+    button:active {
+
+        transform:
+            translateY(0);
+
+    }
+
+
+    button:disabled {
+
+        cursor: wait;
+
+        opacity: .55;
+
+        transform: none;
+
+    }
+
+
+    .button-primary {
+
+        background:
+            linear-gradient(
+                135deg,
+                #ffffff,
+                #cfcfcf
+            );
+
+        color:
+            #050505;
+
+        box-shadow:
+            0 15px 45px
+            rgba(255,255,255,.12);
+
+    }
+
+
+    .button-primary:hover {
+
+        box-shadow:
+            0 20px 60px
+            rgba(255,255,255,.20);
+
+    }
+
+
+    .button-secondary {
+
+        background:
+            rgba(255,255,255,.055);
+
+        color:
+            #fff;
+
+    }
+
+
+    .button-secondary:hover {
+
+        background:
+            rgba(255,255,255,.10);
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 650px) {
 
         body {
 
-            min-height: 100vh;
-
-            background:
-                radial-gradient(
-                    circle at 20% 10%,
-                    rgba(255,255,255,.07),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 80% 80%,
-                    rgba(120,120,255,.05),
-                    transparent 35%
-                ),
-                #050505;
-
-            color: #fff;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            padding: 30px 15px 80px;
+            padding:
+                15px 10px 50px;
 
         }
 
-        .admin-container {
 
-            width: 100%;
-            max-width: 950px;
-            margin: auto;
-
-        }
-
-        .admin-header {
-
-            margin-bottom: 30px;
-            padding: 28px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.12);
-
-            border-radius: 24px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,.09),
-                    rgba(255,255,255,.025)
-                );
-
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-
-            box-shadow:
-                0 25px 80px
-                rgba(0,0,0,.55);
-
-        }
-
-        .admin-label {
-
-            font-size: 10px;
-            letter-spacing: .35em;
-
-            color:
-                rgba(255,255,255,.42);
-
-            margin-bottom: 10px;
-
-        }
-
-        .admin-header h1 {
-
-            font-size:
-                clamp(28px,5vw,48px);
-
-            font-weight: 300;
-            letter-spacing: -.03em;
-            margin-bottom: 10px;
-
-        }
-
-        .admin-header p {
-
-            color:
-                rgba(255,255,255,.48);
-
-            font-size: 14px;
-            line-height: 1.6;
-
-        }
-
+        .admin-header,
         .product-form {
 
-            padding: 28px;
+            padding: 20px;
 
-            border:
-                1px solid
-                rgba(255,255,255,.11);
-
-            border-radius: 24px;
-
-            background:
-                rgba(255,255,255,.035);
-
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-
-            box-shadow:
-                0 30px 90px
-                rgba(0,0,0,.55);
+            border-radius: 20px;
 
         }
 
-        .field {
-            margin-bottom: 22px;
-        }
-
-        .field label {
-
-            display: block;
-            margin-bottom: 9px;
-
-            font-size: 10px;
-            letter-spacing: .22em;
-            text-transform: uppercase;
-
-            color:
-                rgba(255,255,255,.48);
-
-        }
-
-        input,
-        select,
-        textarea {
-
-            width: 100%;
-
-            border:
-                1px solid
-                rgba(255,255,255,.12);
-
-            border-radius: 13px;
-
-            background:
-                rgba(0,0,0,.42);
-
-            color: #fff;
-
-            padding: 15px 16px;
-
-            outline: none;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            font-size: 14px;
-
-            transition:
-                border-color .25s ease,
-                background .25s ease,
-                box-shadow .25s ease;
-
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-
-            border-color:
-                rgba(255,255,255,.38);
-
-            background:
-                rgba(255,255,255,.045);
-
-            box-shadow:
-                0 0 30px
-                rgba(255,255,255,.045);
-
-        }
-
-        textarea {
-
-            min-height: 130px;
-            resize: vertical;
-            line-height: 1.6;
-
-        }
 
         .field-grid {
 
-            display: grid;
-
             grid-template-columns:
-                repeat(2, minmax(0,1fr));
-
-            gap: 18px;
+                1fr;
 
         }
 
-        .supplier-box {
-
-            padding: 20px;
-            margin-bottom: 24px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.10);
-
-            border-radius: 18px;
-
-            background:
-                rgba(255,255,255,.025);
-
-        }
-
-        .supplier-title {
-
-            font-size: 12px;
-            letter-spacing: .16em;
-            text-transform: uppercase;
-
-            margin-bottom: 18px;
-
-            color:
-                rgba(255,255,255,.72);
-
-        }
-
-        .stripe-box {
-
-            padding: 20px;
-            margin-bottom: 24px;
-
-            border:
-                1px solid
-                rgba(120,150,255,.18);
-
-            border-radius: 18px;
-
-            background:
-                rgba(80,100,255,.035);
-
-        }
-
-        .stripe-title {
-
-            font-size: 12px;
-            letter-spacing: .16em;
-            text-transform: uppercase;
-
-            margin-bottom: 8px;
-
-            color:
-                rgba(255,255,255,.75);
-
-        }
-
-        .stripe-help {
-
-            margin-bottom: 16px;
-
-            color:
-                rgba(255,255,255,.40);
-
-            font-size: 12px;
-            line-height: 1.5;
-
-        }
-
-        .upload-zone {
-
-            padding: 24px;
-
-            border:
-                1px dashed
-                rgba(255,255,255,.20);
-
-            border-radius: 18px;
-
-            background:
-                rgba(255,255,255,.025);
-
-            text-align: center;
-
-            transition:
-                border-color .25s ease,
-                background .25s ease;
-
-        }
-
-        .upload-zone:hover {
-
-            border-color:
-                rgba(255,255,255,.42);
-
-            background:
-                rgba(255,255,255,.045);
-
-        }
-
-        .upload-zone input {
-
-            border: 0;
-            padding: 10px;
-            background: transparent;
-
-        }
-
-        .upload-title {
-
-            font-size: 15px;
-            margin-bottom: 7px;
-
-        }
-
-        .upload-description {
-
-            color:
-                rgba(255,255,255,.42);
-
-            font-size: 12px;
-            margin-bottom: 12px;
-
-        }
-
-        #imagePreview {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    auto-fill,
-                    minmax(130px,1fr)
-                );
-
-            gap: 14px;
-            margin-top: 20px;
-
-        }
-
-        .image-preview-count {
-
-            grid-column: 1 / -1;
-
-            color:
-                rgba(255,255,255,.55);
-
-            font-size: 12px;
-            letter-spacing: .08em;
-
-        }
-
-        .image-preview-item {
-
-            overflow: hidden;
-
-            border:
-                1px solid
-                rgba(255,255,255,.10);
-
-            border-radius: 13px;
-
-            background: #080808;
-
-        }
-
-        .image-preview-item img {
-
-            display: block;
-
-            width: 100%;
-            height: 120px;
-
-            object-fit: cover;
-
-        }
-
-        .image-preview-name {
-
-            padding: 9px;
-
-            font-size: 10px;
-
-            color:
-                rgba(255,255,255,.48);
-
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-
-        }
 
         .button-row {
 
-            display: grid;
+            grid-template-columns:
+                1fr;
+
+        }
+
+
+        #imagePreview {
 
             grid-template-columns:
-                1fr 1fr;
-
-            gap: 14px;
-
-            margin-top: 28px;
-
-        }
-
-        button {
-
-            min-height: 56px;
-
-            border-radius: 14px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.14);
-
-            cursor: pointer;
-
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: .16em;
-
-            transition:
-                transform .25s ease,
-                background .25s ease,
-                box-shadow .25s ease,
-                opacity .25s ease;
-
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-        }
-
-        button:disabled {
-
-            cursor: wait;
-            opacity: .55;
-            transform: none;
-
-        }
-
-        .button-primary {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ffffff,
-                    #cfcfcf
+                repeat(
+                    2,
+                    minmax(0,1fr)
                 );
 
-            color: #050505;
-
-            box-shadow:
-                0 15px 45px
-                rgba(255,255,255,.12);
-
         }
 
-        .button-primary:hover {
+    }
 
-            box-shadow:
-                0 20px 60px
-                rgba(255,255,255,.20);
+</style>
 
-        }
+</head><body><div class="admin-container"><!-- =====================================================
+     ADMIN HEADER
+     ===================================================== -->
 
-        .button-secondary {
+<header class="admin-header">
 
-            background:
-                rgba(255,255,255,.055);
+    <div class="admin-label">
+        VOLTICA STORE
+    </div>
 
-            color: #fff;
+    <h1>
+        Product Manager
+    </h1>
 
-        }
+    <p>
+        Create and publish products directly
+        to the Voltica Store.
+    </p>
 
-        .button-secondary:hover {
-
-            background:
-                rgba(255,255,255,.10);
-
-        }
-
-        @media (max-width: 650px) {
-
-            body {
-                padding: 15px 10px 50px;
-            }
-
-            .admin-header,
-            .product-form {
-
-                padding: 20px;
-                border-radius: 20px;
-
-            }
-
-            .field-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .button-row {
-                grid-template-columns: 1fr;
-            }
-
-            #imagePreview {
-                grid-template-columns:
-                    repeat(2, minmax(0,1fr));
-            }
-
-        }
-
-    </style>
-
-</head>
+</header>
 
 
-<body>
+<!-- =====================================================
+     PRODUCT FORM
+     ===================================================== -->
+
+<main class="product-form">
 
 
-<div class="admin-container">
+    <!-- =================================================
+         PRODUCT NAME
+         ================================================= -->
+
+    <div class="field">
+
+        <label for="productName">
+            Product Name
+        </label>
+
+        <input
+            type="text"
+            id="productName"
+            placeholder="Voltica TWS Pro"
+            autocomplete="off"
+        >
+
+    </div>
 
 
-    <header class="admin-header">
+    <!-- =================================================
+         CATEGORY / PRICE
+         ================================================= -->
 
-        <div class="admin-label">
-            VOLTICA STORE
-        </div>
-
-        <h1>
-            Product Manager
-        </h1>
-
-        <p>
-            Create and publish products directly
-            to the Voltica Store.
-        </p>
-
-    </header>
-
-
-    <main class="product-form">
+    <div class="field-grid">
 
 
         <div class="field">
 
-            <label for="productName">
-                Product Name
+            <label for="category">
+                Category
+            </label>
+
+            <select id="category">
+
+                <option value="">
+                    Select Category
+                </option>
+
+                <option value="SPORT AUDIO">
+                    Sport Audio
+                </option>
+
+                <option value="WIRELESS AUDIO">
+                    Wireless Audio
+                </option>
+
+                <option value="OPEN-EAR AUDIO">
+                    Open-Ear Audio
+                </option>
+
+                <option value="GAMING GEAR">
+                    Gaming Gear
+                </option>
+
+                <option value="CREATOR GEAR">
+                    Creator Gear
+                </option>
+
+                <option value="TECH / LAPTOP ACCESSORIES">
+                    Tech / Laptop Accessories
+                </option>
+
+                <option value="LIFESTYLE / AUTOMOTIVE">
+                    Lifestyle / Automotive
+                </option>
+
+                <option value="LIFESTYLE / SMART LIGHTING">
+                    Lifestyle / Smart Lighting
+                </option>
+
+                <option value="LIFESTYLE / AMBIENT AUDIO">
+                    Lifestyle / Ambient Audio
+                </option>
+
+                <option value="HEADPHONES">
+                    Headphones
+                </option>
+
+                <option value="TECH">
+                    Tech
+                </option>
+
+                <option value="LIFESTYLE">
+                    Lifestyle
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="price">
+                Voltica Price — USD
             </label>
 
             <input
-                type="text"
-                id="productName"
-                placeholder="Voltica TWS Pro"
+                type="number"
+                id="price"
+                placeholder="59.97"
+                step="0.01"
+                min="0"
+                inputmode="decimal"
+            >
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         SUPPLIER INFORMATION
+         ================================================= -->
+
+    <section class="supplier-box">
+
+        <div class="supplier-title">
+            Supplier Information
+        </div>
+
+
+        <div class="field">
+
+            <label for="supplierLink">
+                Supplier Product Link
+            </label>
+
+            <input
+                type="url"
+                id="supplierLink"
+                placeholder="https://www.cjdropshipping.com/..."
                 autocomplete="off"
+                inputmode="url"
             >
 
         </div>
@@ -597,284 +918,211 @@
 
         <div class="field-grid">
 
+
             <div class="field">
 
-                <label for="category">
-                    Category
+                <label for="cjSku">
+                    Supplier SKU
                 </label>
 
-                <select id="category">
-
-                    <option value="">
-                        Select Category
-                    </option>
-
-                    <option value="SPORT AUDIO">
-                        Sport Audio
-                    </option>
-
-                    <option value="WIRELESS AUDIO">
-                        Wireless Audio
-                    </option>
-
-                    <option value="OPEN-EAR AUDIO">
-                        Open-Ear Audio
-                    </option>
-
-                    <option value="GAMING GEAR">
-                        Gaming Gear
-                    </option>
-
-                    <option value="CREATOR GEAR">
-                        Creator Gear
-                    </option>
-
-                    <option value="TECH / LAPTOP ACCESSORIES">
-                        Tech / Laptop Accessories
-                    </option>
-
-                    <option value="LIFESTYLE / AUTOMOTIVE">
-                        Lifestyle / Automotive
-                    </option>
-
-                    <option value="LIFESTYLE / SMART LIGHTING">
-                        Lifestyle / Smart Lighting
-                    </option>
-
-                    <option value="LIFESTYLE / AMBIENT AUDIO">
-                        Lifestyle / Ambient Audio
-                    </option>
-
-                    <option value="HEADPHONES">
-                        Headphones
-                    </option>
-
-                    <option value="TECH">
-                        Tech
-                    </option>
-
-                    <option value="LIFESTYLE">
-                        Lifestyle
-                    </option>
-
-                </select>
+                <input
+                    type="text"
+                    id="cjSku"
+                    placeholder="CJXXXXXXXXXXXX"
+                    autocomplete="off"
+                >
 
             </div>
 
 
             <div class="field">
 
-                <label for="price">
-                    Voltica Price — USD
+                <label for="cost">
+                    Supplier Cost — USD
                 </label>
 
                 <input
                     type="number"
-                    id="price"
-                    placeholder="59.97"
+                    id="cost"
+                    placeholder="18.03"
                     step="0.01"
                     min="0"
-                >
-
-            </div>
-
-        </div>
-
-
-        <div class="supplier-box">
-
-            <div class="supplier-title">
-                Supplier Information
-            </div>
-
-            <div class="field">
-
-                <label for="supplierLink">
-                    Supplier Product Link
-                </label>
-
-                <input
-                    type="url"
-                    id="supplierLink"
-                    placeholder="https://www.cjdropshipping.com/..."
-                    autocomplete="off"
+                    inputmode="decimal"
                 >
 
             </div>
 
 
-            <div class="field-grid">
-
-                <div class="field">
-
-                    <label for="cjSku">
-                        Supplier SKU
-                    </label>
-
-                    <input
-                        type="text"
-                        id="cjSku"
-                        placeholder="CJXXXXXXXXXXXX"
-                        autocomplete="off"
-                    >
-
-                </div>
-
-
-                <div class="field">
-
-                    <label for="cost">
-                        Supplier Cost — USD
-                    </label>
-
-                    <input
-                        type="number"
-                        id="cost"
-                        placeholder="18.03"
-                        step="0.01"
-                        min="0"
-                    >
-
-                </div>
-
-            </div>
-
         </div>
 
+    </section>
 
-        <div class="stripe-box">
 
-            <div class="stripe-title">
-                Stripe Payment
-            </div>
+    <!-- =================================================
+         STRIPE PAYMENT
+         ================================================= -->
 
-            <div class="stripe-help">
-                Paste the Stripe Payment Link for this product.
-                Leave empty if payment will be configured later.
-            </div>
+    <section class="stripe-box">
 
-            <div class="field">
+        <div class="stripe-title">
+            Stripe Payment
+        </div>
 
-                <label for="stripe">
-                    Stripe Payment Link
-                </label>
-
-                <input
-                    type="url"
-                    id="stripe"
-                    placeholder="https://buy.stripe.com/..."
-                    autocomplete="off"
-                >
-
-            </div>
-
+        <div class="stripe-help">
+            Paste the Stripe Payment Link for this product.
+            Leave empty if payment will be configured later.
         </div>
 
 
         <div class="field">
 
-            <label for="description">
-                Product Description
+            <label for="stripe">
+                Stripe Payment Link
             </label>
 
-            <textarea
-                id="description"
-                placeholder="Describe the product..."
-            ></textarea>
+            <input
+                type="url"
+                id="stripe"
+                placeholder="https://buy.stripe.com/..."
+                autocomplete="off"
+                inputmode="url"
+            >
 
         </div>
 
-
-        <div class="field">
-
-            <label for="features">
-                Features
-            </label>
-
-            <textarea
-                id="features"
-                placeholder="01 — Feature Name — Description&#10;02 — Feature Name — Description&#10;03 — Feature Name — Description"
-            ></textarea>
-
-        </div>
+    </section>
 
 
-        <div class="field">
+    <!-- =================================================
+         DESCRIPTION
+         ================================================= -->
 
-            <label for="specifications">
-                Specifications
-            </label>
+    <div class="field">
 
-            <textarea
-                id="specifications"
-                placeholder="Material: Fiber-Reinforced Polymer&#10;Bluetooth: 5.3&#10;Battery: 40 Hours"
-            ></textarea>
+        <label for="description">
+            Product Description
+        </label>
 
-        </div>
+        <textarea
+            id="description"
+            placeholder="Describe the product..."
+        ></textarea>
+
+    </div>
 
 
-        <div class="field">
+    <!-- =================================================
+         FEATURES
+         ================================================= -->
 
-            <label>
-                Product Images
-            </label>
+    <div class="field">
 
-            <div class="upload-zone">
+        <label for="features">
+            Features
+        </label>
 
-                <div class="upload-title">
-                    Upload Product Images
-                </div>
+        <textarea
+            id="features"
+            placeholder="01 — Feature Name — Description&#10;02 — Feature Name — Description&#10;03 — Feature Name — Description"
+        ></textarea>
 
-                <div class="upload-description">
-                    Select all product images at once.
-                </div>
+    </div>
 
-                <input
-                    type="file"
-                    id="productImages"
-                    accept="image/jpeg,image/png,image/webp,image/gif"
-                    multiple
-                >
 
+    <!-- =================================================
+         SPECIFICATIONS
+         ================================================= -->
+
+    <div class="field">
+
+        <label for="specifications">
+            Specifications
+        </label>
+
+        <textarea
+            id="specifications"
+            placeholder="Material: Fiber-Reinforced Polymer&#10;Bluetooth: 5.3&#10;Battery: 40 Hours"
+        ></textarea>
+
+    </div>
+
+
+    <!-- =================================================
+         PRODUCT IMAGES
+         ================================================= -->
+
+    <div class="field">
+
+        <label for="productImages">
+            Product Images
+        </label>
+
+
+        <div class="upload-zone">
+
+            <div class="upload-title">
+                Upload Product Images
             </div>
 
-            <div id="imagePreview"></div>
+            <div class="upload-description">
+                Select all product images at once.
+            </div>
+
+
+            <input
+                type="file"
+                id="productImages"
+                name="productImages"
+                accept="image/jpeg,image/png,image/webp,image/gif"
+                multiple
+            >
 
         </div>
 
 
-        <div class="button-row">
+        <div
+            id="imagePreview"
+            aria-live="polite"
+        ></div>
 
-            <button
-                type="button"
-                id="clearImages"
-                class="button-secondary">
-
-                CLEAR IMAGES
-
-            </button>
+    </div>
 
 
-            <button
-                type="button"
-                id="addProduct"
-                class="button-primary">
+    <!-- =================================================
+         ACTION BUTTONS
+         ================================================= -->
 
-                ADD PRODUCT
-
-            </button>
-
-        </div>
+    <div class="button-row">
 
 
-    </main>
+        <button
+            type="button"
+            id="clearImages"
+            class="button-secondary"
+        >
 
-</div>
+            CLEAR IMAGES
+
+        </button>
 
 
-<script src="admin.js"></script>
+        <button
+            type="button"
+            id="addProduct"
+            class="button-primary"
+        >
+
+            ADD PRODUCT
+
+        </button>
 
 
-</body>
+    </div>
 
-</html>
+
+</main>
+
+</div><!-- =====================================================
+     ADMIN JAVASCRIPT
+     ===================================================== -->
+    <script src="admin.js"></script></body></html>

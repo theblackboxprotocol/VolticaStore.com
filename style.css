@@ -10399,3 +10399,26 @@ nav a {
     margin: 0;
     box-sizing: border-box;
 }
+/* =====================================================
+   VOLTICA EDGE NAV — LEFT ALIGNMENT
+   ===================================================== */
+
+.voltica-edge-nav {
+    align-items: flex-start;
+}
+
+.voltica-store-navigation {
+    width: 145px;
+    margin: 0;
+    padding: 0;
+}
+
+.voltica-store-navigation > .voltica-edge-button {
+    left: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.voltica-edge-button {
+    margin-left: 0;
+}

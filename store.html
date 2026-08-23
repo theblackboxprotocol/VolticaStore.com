@@ -12,15 +12,15 @@
 
     <meta
         name="description"
-        content="Voltica Store — The future of everyday technology."
+        content="Voltica Store — The future of everyday."
     >
 
     <meta
         name="theme-color"
-        content="#050505"
+        content="#030303"
     >
 
-    <title>Voltica Store</title>
+    <title>Voltica — The Future of Everyday</title>
 
     <link
         rel="stylesheet"
@@ -34,11 +34,26 @@
 
 
 <!-- =====================================================
-     AMBIENT BACKGROUND
+     PULSAR FIELD
      ===================================================== -->
 
-<div class="ambient ambient-one"></div>
-<div class="ambient ambient-two"></div>
+<div class="pulsar-field" aria-hidden="true">
+
+    <span class="pulsar p1"></span>
+    <span class="pulsar p2"></span>
+    <span class="pulsar p3"></span>
+    <span class="pulsar p4"></span>
+    <span class="pulsar p5"></span>
+    <span class="pulsar p6"></span>
+
+</div>
+
+
+<!-- =====================================================
+     BACKGROUND GRID
+     ===================================================== -->
+
+<div class="tech-grid" aria-hidden="true"></div>
 
 
 <!-- =====================================================
@@ -47,24 +62,29 @@
 
 <header class="store-header">
 
+
+    <!-- LOGO -->
+
     <a
         href="index.html"
-        class="brand"
-        aria-label="Voltica Home"
+        class="logo-acrylic"
+        aria-label="Voltica"
     >
 
-        <span class="brand-symbol">
+        <span class="logo-v">
             V
         </span>
 
-        <span class="brand-name">
+        <span class="logo-text">
             VOLTICA
         </span>
 
     </a>
 
 
-    <nav class="main-nav">
+    <!-- NAV -->
+
+    <nav class="store-nav">
 
         <a href="index.html">
             HOME
@@ -72,7 +92,7 @@
 
         <a
             href="store.html"
-            class="active"
+            class="nav-active"
         >
             STORE
         </a>
@@ -83,175 +103,167 @@
 
     </nav>
 
+
+    <!-- CART -->
+
+    <button
+        type="button"
+        class="cart-acrylic"
+        id="cartButton"
+        aria-label="Open shopping cart"
+    >
+
+        <span class="cart-icon">
+
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+
+                <path
+                    d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 7H6"
+                />
+
+                <circle
+                    cx="10"
+                    cy="20"
+                    r="1"
+                />
+
+                <circle
+                    cx="18"
+                    cy="20"
+                    r="1"
+                />
+
+            </svg>
+
+        </span>
+
+
+        <span
+            class="cart-count"
+            id="cartCount"
+        >
+            0
+        </span>
+
+    </button>
+
+
 </header>
 
 
+
 <!-- =====================================================
-     MAIN
+     HERO
      ===================================================== -->
 
 <main>
 
 
-    <!-- =================================================
-         HERO
-         ================================================= -->
-
-    <section class="store-hero">
+<section class="store-hero">
 
 
-        <div class="hero-eyebrow">
+    <div class="hero-pulsar">
 
-            <span class="hero-pulse"></span>
+        <span></span>
 
-            <span>
-                THE FUTURE OF EVERYDAY
-            </span>
-
-        </div>
+    </div>
 
 
-        <h1 class="hero-title">
+    <!-- MAIN TITLE -->
 
-            Technology.
-            <span>Reimagined.</span>
+    <h1 class="future-title">
 
-        </h1>
+        <span>THE FUTURE</span>
 
-
-        <p class="hero-description">
-
-            Discover a curated collection of
-            next-generation technology, smart devices,
-            immersive audio and futuristic lifestyle gear.
-
-        </p>
-
-
-        <div class="hero-bottom">
-
-            <div class="launch-info">
-
-                <span class="small-label">
-                    COLLECTION OPENS
-                </span>
-
-                <strong>
-                    SEPTEMBER 1ST
-                </strong>
-
-            </div>
-
-
-            <div class="product-count">
-
-                <span class="small-label">
-                    AVAILABLE
-                </span>
-
-                <strong id="productCounter">
-                    00 PRODUCTS
-                </strong>
-
-            </div>
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         COLLECTION HEADER
-         ================================================= -->
-
-    <section class="collection-header">
-
-        <div>
-
-            <span class="section-index">
-                01
-            </span>
-
-            <h2>
-                THE COLLECTION
-            </h2>
-
-        </div>
-
-
-        <div class="collection-line"></div>
-
-
-        <span class="collection-status">
-
-            CURATED BY VOLTICA
-
+        <span class="future-second">
+            OF EVERYDAY
         </span>
 
-    </section>
+    </h1>
+
+
+    <!-- OPENING -->
+
+    <div class="opening-acrylic">
+
+        <span class="opening-pulse"></span>
+
+        <span>
+            COLLECTION OPEN
+        </span>
+
+        <strong>
+            SEPT 1
+        </strong>
+
+    </div>
+
+
+</section>
 
 
 
-    <!-- =================================================
-         PRODUCT GRID
-         ================================================= -->
+<!-- =====================================================
+     PRODUCTS
+     ===================================================== -->
 
-    <section
+<section
+    class="products-section"
+    aria-label="Voltica products"
+>
+
+
+    <div
         id="productGrid"
         class="product-grid"
-        aria-label="Voltica product collection"
     >
 
-        <div class="initial-loading">
+        <div class="store-loading">
 
-            <span class="loading-pulse"></span>
-
-            <span>
-                INITIALIZING COLLECTION
-            </span>
+            <span class="loading-pulsar"></span>
 
         </div>
 
-    </section>
+    </div>
+
+
+</section>
 
 
 
-    <!-- =================================================
-         CONTACT
-         ================================================= -->
+<!-- =====================================================
+     CONTACT
+     ===================================================== -->
 
-    <section
-        id="contact"
-        class="contact-section"
-    >
-
-        <div class="contact-panel">
+<section
+    id="contact"
+    class="contact-section"
+>
 
 
-            <div class="contact-top">
+    <div class="contact-acrylic">
 
-                <span class="contact-pulse"></span>
 
-                <span>
-                    VOLTICA SUPPORT
-                </span>
+        <div class="contact-pulsar"></div>
 
-            </div>
+
+        <div class="contact-content">
+
+            <span class="contact-label">
+                VOLTICA SUPPORT
+            </span>
 
 
             <h2>
-                HAVE A QUESTION?
+                CONTACT US
             </h2>
 
 
             <p>
-
-                Need help choosing a product,
-                have a question about an order,
-                or simply want to talk technology?
-
+                Need help with your order?
             </p>
 
 
@@ -270,13 +282,103 @@
 
             </a>
 
-
         </div>
 
-    </section>
+
+    </div>
+
+
+</section>
 
 
 </main>
+
+
+
+<!-- =====================================================
+     CART DRAWER
+     ===================================================== -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    aria-hidden="true"
+></div>
+
+
+<aside
+    class="cart-drawer"
+    id="cartDrawer"
+    aria-label="Shopping cart"
+>
+
+
+    <div class="cart-header">
+
+        <div>
+
+            <span class="cart-small-title">
+                VOLTICA
+            </span>
+
+            <h2>
+                CART
+            </h2>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="cart-close"
+            id="cartClose"
+            aria-label="Close cart"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="cart-items"
+        id="cartItems"
+    ></div>
+
+
+    <div class="cart-footer">
+
+        <div class="cart-total-row">
+
+            <span>
+                TOTAL
+            </span>
+
+            <strong id="cartTotal">
+                $0.00
+            </strong>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="checkout-button"
+            id="checkoutButton"
+        >
+
+            CHECKOUT
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+    </div>
+
+
+</aside>
 
 
 
@@ -286,40 +388,28 @@
 
 <footer class="store-footer">
 
-
-    <div class="footer-left">
-
-        <span class="footer-symbol">
-            V
-        </span>
+    <div class="footer-acrylic">
 
         <span>
             VOLTICA
         </span>
 
+        <span>
+            THE FUTURE OF EVERYDAY
+        </span>
+
+        <span>
+            © 2026
+        </span>
+
     </div>
-
-
-    <span class="footer-center">
-
-        THE FUTURE OF EVERYDAY
-
-    </span>
-
-
-    <span class="footer-right">
-
-        © 2026 VOLTICA STORE
-
-    </span>
-
 
 </footer>
 
 
 
 <!-- =====================================================
-     SCRIPTS
+     DATABASE
      ===================================================== -->
 
 <script src="products.js"></script>

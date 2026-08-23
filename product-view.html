@@ -153,233 +153,83 @@
 
 
     <!-- =====================================================
-         Q45 PROMO VIDEO
-
-         COMPLETELY INDEPENDENT FROM PRODUCT GALLERY
+         Q45 HERO IMAGE
          ===================================================== -->
 
-    <section
-        id="q45PromoSection"
-        aria-label="Voltica Q45 promotional video"
-        style="
-            display:block !important;
-            visibility:visible !important;
-            opacity:1 !important;
-            width:100% !important;
-            max-width:100% !important;
-            margin:0 0 60px 0 !important;
-            padding:0 !important;
-            position:relative !important;
-        "
-    >
+    <section class="q45-hero-image">
 
-
-        <div
-            id="q45VideoBox"
-            style="
-                display:block !important;
-                visibility:visible !important;
-                opacity:1 !important;
-                position:relative !important;
-                width:100% !important;
-                height:min(72vh,720px) !important;
-                min-height:420px !important;
-                overflow:hidden !important;
-                background:#050505 !important;
-                border:1px solid rgba(255,255,255,.10) !important;
-                border-radius:28px !important;
-                box-shadow:0 30px 90px rgba(0,0,0,.55) !important;
-            "
+        <button
+            class="q45-hero-button"
+            id="openQ45Image"
+            type="button"
+            aria-label="View Voltica Q45 larger"
         >
 
-
-            <!-- =================================================
-                 ACTUAL VIDEO
-                 ================================================= -->
-
-            <video
-                id="q45Video"
-                preload="auto"
-                autoplay
-                muted
-                loop
-                playsinline
-                webkit-playsinline
-                x5-playsinline
-                style="
-                    display:block !important;
-                    visibility:visible !important;
-                    opacity:1 !important;
-                    position:absolute !important;
-                    inset:0 !important;
-                    width:100% !important;
-                    height:100% !important;
-                    min-width:100% !important;
-                    min-height:100% !important;
-                    max-width:none !important;
-                    object-fit:cover !important;
-                    background:#050505 !important;
-                    z-index:1 !important;
-                "
+            <img
+                src="assets/Q451-1.webp"
+                alt="Voltica Q45 — Voltica Elite Pass Edition"
+                class="q45-hero-photo"
             >
 
-                <source
-                    src="assets/Q45promo.mp4"
-                    type="video/mp4"
-                >
 
-            </video>
+            <div class="q45-hero-overlay">
 
-
-
-            <!-- =================================================
-                 DARK GRADIENT
-                 ================================================= -->
-
-            <div
-                style="
-                    position:absolute !important;
-                    inset:0 !important;
-                    z-index:2 !important;
-                    pointer-events:none !important;
-                    background:
-                        linear-gradient(
-                            to bottom,
-                            rgba(0,0,0,.18),
-                            transparent 45%,
-                            rgba(0,0,0,.58)
-                        ) !important;
-                "
-            ></div>
-
-
-
-            <!-- =================================================
-                 TOP LABEL
-                 ================================================= -->
-
-            <div
-                style="
-                    position:absolute !important;
-                    top:24px !important;
-                    left:24px !important;
-                    z-index:5 !important;
-                    padding:9px 15px !important;
-                    border:1px solid rgba(255,255,255,.18) !important;
-                    border-radius:999px !important;
-                    background:rgba(5,5,5,.58) !important;
-                    color:#fff !important;
-                    font-size:10px !important;
-                    font-weight:600 !important;
-                    letter-spacing:.18em !important;
-                    backdrop-filter:blur(16px) !important;
-                    -webkit-backdrop-filter:blur(16px) !important;
-                "
-            >
-
-                VOLTICA Q45
-
-            </div>
-
-
-
-            <!-- =================================================
-                 SOUND / PLAY BUTTON
-                 ================================================= -->
-
-            <button
-                id="q45SoundButton"
-                type="button"
-                style="
-                    position:absolute !important;
-                    left:50% !important;
-                    bottom:25px !important;
-                    transform:translateX(-50%) !important;
-                    z-index:10 !important;
-                    display:flex !important;
-                    align-items:center !important;
-                    justify-content:center !important;
-                    gap:10px !important;
-                    min-width:185px !important;
-                    padding:13px 20px !important;
-                    border:1px solid rgba(255,255,255,.22) !important;
-                    border-radius:999px !important;
-                    background:rgba(5,5,5,.72) !important;
-                    color:#fff !important;
-                    font-family:inherit !important;
-                    font-size:10px !important;
-                    font-weight:700 !important;
-                    letter-spacing:.16em !important;
-                    cursor:pointer !important;
-                    backdrop-filter:blur(20px) !important;
-                    -webkit-backdrop-filter:blur(20px) !important;
-                    box-shadow:0 12px 40px rgba(0,0,0,.5) !important;
-                "
-            >
-
-                <span
-                    id="q45Pulse"
-                    style="
-                        width:7px !important;
-                        height:7px !important;
-                        min-width:7px !important;
-                        border-radius:50% !important;
-                        background:#fff !important;
-                        box-shadow:0 0 10px rgba(255,255,255,.8) !important;
-                        animation:q45Pulse 1.5s ease-in-out infinite !important;
-                    "
-                ></span>
-
-
-                <span id="q45SoundText">
-                    PLAY WITH SOUND
+                <span class="q45-hero-label">
+                    VOLTICA Q45
                 </span>
 
-            </button>
 
-
-
-            <!-- =================================================
-                 LOADING MESSAGE
-                 ================================================= -->
-
-            <div
-                id="q45VideoLoading"
-                style="
-                    position:absolute !important;
-                    inset:0 !important;
-                    z-index:4 !important;
-                    display:flex !important;
-                    align-items:center !important;
-                    justify-content:center !important;
-                    pointer-events:none !important;
-                    color:rgba(255,255,255,.5) !important;
-                    font-size:10px !important;
-                    letter-spacing:.18em !important;
-                    text-transform:uppercase !important;
-                "
-            >
-
-                LOADING
+                <span class="q45-hero-expand">
+                    ⛶ VIEW
+                </span>
 
             </div>
 
-
-        </div>
+        </button>
 
     </section>
 
 
 
     <!-- =====================================================
-         PRODUCT CONTENT
+         FULLSCREEN IMAGE VIEWER
+         ===================================================== -->
+
+    <div
+        class="q45-lightbox"
+        id="q45Lightbox"
+        aria-hidden="true"
+    >
+
+        <button
+            class="q45-lightbox-close"
+            id="closeQ45Image"
+            type="button"
+            aria-label="Close image"
+        >
+            ×
+        </button>
+
+
+        <img
+            id="q45LightboxImage"
+            src="assets/Q451-1.webp"
+            alt="Voltica Q45"
+        >
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PRODUCT LAYOUT
          ===================================================== -->
 
     <section class="product-layout">
 
 
         <!-- =================================================
-             GALLERY
+             PRODUCT GALLERY
              ================================================= -->
 
         <div class="gallery">
@@ -396,6 +246,7 @@
                     alt="Voltica Q45"
                 >
 
+
                 <div class="image-label">
                     VOLTICA Q45
                 </div>
@@ -405,10 +256,9 @@
 
 
             <!-- =================================================
-                 PRODUCT PHOTOS ONLY
-
-                 NO VIDEO
-                 NO Q451-5
+                 PRODUCT PHOTOS
+                 
+                 Q451-5 REMOVED
                  ================================================= -->
 
             <div class="thumbnails">
@@ -505,7 +355,7 @@
 
 
         <!-- =================================================
-             PRODUCT INFO
+             PRODUCT INFORMATION
              ================================================= -->
 
         <div class="product-info">
@@ -546,6 +396,11 @@
 
             </p>
 
+
+
+            <!-- =================================================
+                 PRICE
+                 ================================================= -->
 
             <div class="price-area">
 
@@ -608,6 +463,7 @@
                     <span class="option-title">
                         COLOR
                     </span>
+
 
                     <span
                         class="option-value"
@@ -691,18 +547,15 @@
                     href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
                     class="add-cart"
                 >
-
                     SECURE YOUR Q45
-
                 </a>
-
 
             </div>
 
 
 
             <!-- =================================================
-                 PRODUCT META
+                 PRODUCT INFORMATION
                  ================================================= -->
 
             <div class="product-meta">
@@ -808,7 +661,7 @@
 
 
     <!-- =====================================================
-         DETAILS
+         PRODUCT DETAILS
          ===================================================== -->
 
     <section class="details">
@@ -833,6 +686,7 @@
 
 
             <div>
+
 
                 <p class="details-copy">
 
@@ -982,9 +836,7 @@
                 href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
                 class="btn btn-primary"
             >
-
                 GET THE Q45
-
             </a>
 
 
@@ -1013,6 +865,7 @@
                 alt="Voltica"
             >
 
+
             <span>
                 VOLTICA — THE FUTURE OF EVERYDAY.
             </span>
@@ -1035,80 +888,523 @@
 
 
 <!-- =========================================================
-     Q45 VIDEO CSS
+     Q45 HERO / LIGHTBOX CSS
      ========================================================= -->
 
 <style>
 
 
-@keyframes q45Pulse {
+/* =========================================================
+   HERO
+   ========================================================= */
 
-    0% {
-        transform:scale(1);
-        opacity:.45;
-    }
+.q45-hero-image {
 
-    50% {
-        transform:scale(1.5);
-        opacity:1;
-    }
+    width: 100%;
 
-    100% {
-        transform:scale(1);
-        opacity:.45;
-    }
+    margin:
+        0 0 60px 0;
 
 }
 
 
-@media (max-width:700px) {
+.q45-hero-button {
 
-    #q45VideoBox {
+    position: relative;
 
-        height:62vh !important;
+    display: block;
 
-        min-height:330px !important;
+    width: 100%;
 
-        border-radius:20px !important;
+    height: min(72vh, 720px);
 
-    }
+    min-height: 420px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius: 28px;
+
+    background: #050505;
+
+    cursor: zoom-in;
+
+    box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.50);
 
 }
 
+
+.q45-hero-photo {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .7s ease,
+        filter .7s ease;
+
+}
+
+
+.q45-hero-button:hover
+.q45-hero-photo {
+
+    transform:
+        scale(1.025);
+
+    filter:
+        brightness(1.06);
+
+}
+
+
+.q45-hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.10),
+            transparent 50%,
+            rgba(0,0,0,.55)
+        );
+
+    pointer-events: none;
+
+}
+
+
+.q45-hero-label {
+
+    padding:
+        9px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(5,5,5,.58);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    color: #fff;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: .18em;
+
+}
+
+
+.q45-hero-expand {
+
+    padding:
+        10px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(5,5,5,.58);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    color: #fff;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: .12em;
+
+}
+
+
+
+/* =========================================================
+   LIGHTBOX
+   ========================================================= */
+
+.q45-lightbox {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        rgba(0,0,0,.90);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+
+}
+
+
+.q45-lightbox.open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
+
+
+.q45-lightbox img {
+
+    display: block;
+
+    max-width: 94vw;
+
+    max-height: 90vh;
+
+    width: auto;
+
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 40px 120px
+        rgba(0,0,0,.75);
+
+}
+
+
+.q45-lightbox-close {
+
+    position: absolute;
+
+    top: 25px;
+
+    right: 25px;
+
+    z-index: 2;
+
+    width: 48px;
+
+    height: 48px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius: 50%;
+
+    background:
+        rgba(10,10,10,.65);
+
+    color: #fff;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+
+}
+
+
+
+/* =========================================================
+   THUMBNAILS
+   ========================================================= */
 
 .thumbnails {
 
-    display:grid !important;
+    display: grid;
 
     grid-template-columns:
-        repeat(6,1fr) !important;
+        repeat(6, 1fr);
 
-    gap:12px !important;
+    gap: 12px;
+
+}
+
+
+.thumbnail {
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,.025);
+
+    cursor: pointer;
+
+    transition:
+        border-color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
 
 }
 
 
 .thumbnail img {
 
-    display:block !important;
+    display: block;
 
-    width:100% !important;
+    width: 100%;
 
-    aspect-ratio:1 / 1 !important;
+    aspect-ratio: 1 / 1;
 
-    object-fit:cover !important;
+    object-fit: cover;
 
 }
 
 
-@media (max-width:700px) {
+.thumbnail:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(255,255,255,.28);
+
+}
+
+
+.thumbnail.active {
+
+    border-color:
+        rgba(255,255,255,.75);
+
+    box-shadow:
+        0 0 20px
+        rgba(255,255,255,.08);
+
+}
+
+
+
+/* =========================================================
+   Q45 PASS
+   ========================================================= */
+
+.q45-subtitle {
+
+    margin-top: -8px;
+
+    margin-bottom: 20px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    letter-spacing: .04em;
+
+}
+
+
+.q45-pass {
+
+    min-height: auto;
+
+    padding: 24px;
+
+    margin-bottom: 28px;
+
+    border-radius: 20px;
+
+}
+
+
+.pass-label {
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    text-transform: uppercase;
+
+}
+
+
+.pass-title {
+
+    margin-top: 12px;
+
+    font-size: 25px;
+
+    font-weight: 650;
+
+    letter-spacing: -.035em;
+
+}
+
+
+.q45-pass p {
+
+    margin-top: 10px;
+
+    color:
+        rgba(255,255,255,.48);
+
+    font-size: 12px;
+
+    line-height: 1.65;
+
+}
+
+
+.q45-pass strong {
+
+    display: block;
+
+    margin-top: 14px;
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-size: 11px;
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .q45-hero-button {
+
+        height: 62vh;
+
+        min-height: 330px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .q45-hero-overlay {
+
+        padding: 16px;
+
+    }
+
 
     .thumbnails {
 
         grid-template-columns:
-            repeat(3,1fr) !important;
+            repeat(3, 1fr);
 
-        gap:9px !important;
+        gap: 9px;
+
+    }
+
+
+    .q45-lightbox {
+
+        padding: 15px;
+
+    }
+
+
+    .q45-lightbox img {
+
+        max-width: 96vw;
+
+        max-height: 86vh;
+
+        border-radius: 12px;
+
+    }
+
+
+    .q45-lightbox-close {
+
+        top: 15px;
+
+        right: 15px;
 
     }
 
@@ -1126,157 +1422,120 @@
 
 
 /* =========================================================
-   Q45 VIDEO
+   HERO IMAGE LIGHTBOX
    ========================================================= */
 
-const q45Video =
+const openQ45Image =
     document.getElementById(
-        "q45Video"
+        "openQ45Image"
     );
 
 
-const q45SoundButton =
+const closeQ45Image =
     document.getElementById(
-        "q45SoundButton"
+        "closeQ45Image"
     );
 
 
-const q45SoundText =
+const q45Lightbox =
     document.getElementById(
-        "q45SoundText"
+        "q45Lightbox"
     );
 
 
-const q45Loading =
+const q45LightboxImage =
     document.getElementById(
-        "q45VideoLoading"
+        "q45LightboxImage"
     );
 
 
-/*
- * Hide loading indicator once the
- * browser confirms that video data
- * is available.
- */
-
-q45Video.addEventListener(
-    "loadeddata",
-    function () {
-
-        q45Loading.style.display =
-            "none";
-
-    }
-);
-
-
-q45Video.addEventListener(
-    "canplay",
-    function () {
-
-        q45Loading.style.display =
-            "none";
-
-    }
-);
-
-
-/*
- * Attempt muted autoplay.
- */
-
-q45Video.muted = true;
-
-
-q45Video.play().catch(
-    function () {
-
-        q45SoundText.textContent =
-            "PLAY PROMO";
-
-    }
-);
-
-
-/*
- * IMPORTANT:
- * A real user click explicitly starts
- * playback and enables audio.
- */
-
-q45SoundButton.addEventListener(
+openQ45Image.addEventListener(
     "click",
-    async function () {
+    function () {
 
-        try {
+        q45LightboxImage.src =
+            "assets/Q451-1.webp";
 
-            if (
-                q45Video.paused
-            ) {
+        q45Lightbox.classList.add(
+            "open"
+        );
 
-                q45Video.muted = false;
+        q45Lightbox.setAttribute(
+            "aria-hidden",
+            "false"
+        );
 
-                q45Video.volume = 1;
+        document.body.style.overflow =
+            "hidden";
 
-                await q45Video.play();
+    }
+);
 
-                q45SoundText.textContent =
-                    "SOUND OFF";
 
-            }
+closeQ45Image.addEventListener(
+    "click",
+    function () {
 
-            else if (
-                q45Video.muted
-            ) {
+        closeQ45Viewer();
 
-                q45Video.muted = false;
+    }
+);
 
-                q45Video.volume = 1;
 
-                await q45Video.play();
+q45Lightbox.addEventListener(
+    "click",
+    function (event) {
 
-                q45SoundText.textContent =
-                    "SOUND OFF";
+        if (
+            event.target ===
+            q45Lightbox
+        ) {
 
-            }
-
-            else {
-
-                q45Video.muted = true;
-
-                q45SoundText.textContent =
-                    "SOUND ON";
-
-            }
-
-        }
-
-        catch (error) {
-
-            /*
-             * If browser blocks audio,
-             * keep the video playing and
-             * show a clear state.
-             */
-
-            q45Video.muted = true;
-
-            await q45Video.play().catch(
-                function () {}
-            );
-
-            q45SoundText.textContent =
-                "PLAY WITH SOUND";
+            closeQ45Viewer();
 
         }
 
     }
 );
+
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            q45Lightbox.classList.contains("open")
+        ) {
+
+            closeQ45Viewer();
+
+        }
+
+    }
+);
+
+
+function closeQ45Viewer() {
+
+    q45Lightbox.classList.remove(
+        "open"
+    );
+
+    q45Lightbox.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.style.overflow =
+        "";
+
+}
 
 
 
 /* =========================================================
-   PRODUCT IMAGE GALLERY
+   PRODUCT GALLERY
    ========================================================= */
 
 const thumbnails =
@@ -1298,7 +1557,6 @@ thumbnails.forEach(
             "click",
             function () {
 
-
                 const image =
                     thumbnail.dataset.image;
 
@@ -1310,6 +1568,10 @@ thumbnails.forEach(
 
                 mainProductImage.src =
                     image;
+
+
+                mainProductImage.alt =
+                    "Voltica Q45";
 
 
                 thumbnails.forEach(
@@ -1357,7 +1619,6 @@ colorButtons.forEach(
         button.addEventListener(
             "click",
             function () {
-
 
                 colorButtons.forEach(
                     function (item) {

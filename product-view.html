@@ -1,1886 +1,528 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<head>
 
-<meta
-    name="description"
-    content="Voltica Store — Product details."
->
+    <meta charset="UTF-8">
 
-<meta
-    name="theme-color"
-    content="#050505"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Voltica Store — Product</title>
+    <meta
+        name="description"
+        content="Voltica Store — Product."
+    >
 
+    <meta
+        name="theme-color"
+        content="#050505"
+    >
 
-<style>
+    <title>Product — Voltica</title>
 
-    /* =========================================================
-       VOLTICA STORE — PRODUCT VIEW
-       ========================================================= */
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+</head>
 
 
-    html {
-        scroll-behavior: smooth;
-    }
+<body>
 
 
-    body {
-        min-height: 100vh;
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
 
-        background:
-            radial-gradient(
-                circle at 50% -10%,
-                rgba(255,255,255,0.065),
-                transparent 38%
-            ),
-            #050505;
+    <header>
 
-        color: #ffffff;
-
-        font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
-
-        overflow-x: hidden;
-    }
-
-
-    body::before {
-        content: "";
-
-        position: fixed;
-
-        inset: 0;
-
-        pointer-events: none;
-
-        background:
-            linear-gradient(
-                120deg,
-                transparent,
-                rgba(255,255,255,0.015),
-                transparent
-            );
-
-        z-index: 0;
-    }
-
-
-    /* =========================================================
-       HEADER
-       ========================================================= */
-
-    header {
-        position: fixed;
-
-        top: 0;
-        left: 0;
-
-        width: 100%;
-
-        z-index: 100;
-
-        padding: 18px 24px;
-    }
-
-
-    .nav {
-        max-width: 1350px;
-
-        margin: auto;
-
-        min-height: 66px;
-
-        padding: 10px 14px 10px 18px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.09);
-
-        border-radius: 19px;
-
-        background:
-            linear-gradient(
-                135deg,
-                rgba(255,255,255,0.075),
-                rgba(255,255,255,0.025)
-            );
-
-        backdrop-filter: blur(28px);
-        -webkit-backdrop-filter: blur(28px);
-
-        box-shadow:
-            0 20px 70px rgba(0,0,0,0.5),
-            inset 0 1px 0 rgba(255,255,255,0.07);
-    }
-
-
-    .brand {
-        display: flex;
-
-        align-items: center;
-
-        gap: 12px;
-
-        color: #ffffff;
-
-        text-decoration: none;
-    }
-
-
-    .brand img {
-        width: 43px;
-        height: 43px;
-
-        object-fit: contain;
-
-        filter:
-            drop-shadow(
-                0 0 14px rgba(255,255,255,0.15)
-            );
-    }
-
-
-    .brand-text {
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 2px;
-    }
-
-
-    .brand-name {
-        font-size: 13px;
-
-        font-weight: 700;
-
-        letter-spacing: 0.12em;
-    }
-
-
-    .brand-tagline {
-        font-size: 8px;
-
-        color:
-            rgba(255,255,255,0.38);
-
-        letter-spacing: 0.12em;
-
-        text-transform: uppercase;
-    }
-
-
-    .nav-right {
-        display: flex;
-
-        align-items: center;
-
-        gap: 8px;
-    }
-
-
-    .nav-link {
-        color:
-            rgba(255,255,255,0.62);
-
-        text-decoration: none;
-
-        font-size: 12px;
-
-        padding: 10px 13px;
-
-        border-radius: 11px;
-
-        transition:
-            background 0.25s ease,
-            color 0.25s ease;
-    }
-
-
-    .nav-link:hover {
-        color: #ffffff;
-
-        background:
-            rgba(255,255,255,0.07);
-    }
-
-
-    .cart {
-        position: relative;
-
-        width: 43px;
-        height: 43px;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.11);
-
-        border-radius: 12px;
-
-        background:
-            rgba(255,255,255,0.045);
-
-        color: #ffffff;
-
-        cursor: pointer;
-
-        font-size: 17px;
-    }
-
-
-    .cart-count {
-        position: absolute;
-
-        top: -5px;
-        right: -5px;
-
-        min-width: 17px;
-        height: 17px;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        padding: 0 4px;
-
-        border-radius: 50%;
-
-        background: #ffffff;
-
-        color: #050505;
-
-        font-size: 9px;
-
-        font-weight: 800;
-    }
-
-
-    /* =========================================================
-       MAIN
-       ========================================================= */
-
-    main {
-        position: relative;
-
-        z-index: 1;
-
-        max-width: 1350px;
-
-        margin: auto;
-
-        padding:
-            145px 24px
-            100px;
-    }
-
-
-    /* =========================================================
-       BREADCRUMB
-       ========================================================= */
-
-    .breadcrumb {
-        display: flex;
-
-        align-items: center;
-
-        gap: 8px;
-
-        margin-bottom: 32px;
-
-        color:
-            rgba(255,255,255,0.32);
-
-        font-size: 10px;
-
-        letter-spacing: 0.08em;
-
-        text-transform: uppercase;
-    }
-
-
-    .breadcrumb a {
-        color:
-            rgba(255,255,255,0.48);
-
-        text-decoration: none;
-    }
-
-
-    .breadcrumb a:hover {
-        color: #ffffff;
-    }
-
-
-    /* =========================================================
-       PRODUCT LAYOUT
-       ========================================================= */
-
-    .product-layout {
-        display: grid;
-
-        grid-template-columns:
-            minmax(0, 1.15fr)
-            minmax(360px, 0.85fr);
-
-        gap: 55px;
-
-        align-items: start;
-    }
-
-
-    /* =========================================================
-       GALLERY
-       ========================================================= */
-
-    .gallery {
-        position: sticky;
-
-        top: 115px;
-    }
-
-
-    .main-image {
-        position: relative;
-
-        height: 620px;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        overflow: hidden;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.09);
-
-        border-radius: 30px;
-
-        background:
-            radial-gradient(
-                circle at 50% 42%,
-                rgba(255,255,255,0.075),
-                transparent 62%
-            ),
-            linear-gradient(
-                145deg,
-                rgba(255,255,255,0.06),
-                rgba(255,255,255,0.018)
-            );
-
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-
-        box-shadow:
-            0 35px 100px rgba(0,0,0,0.4),
-            inset 0 1px 0 rgba(255,255,255,0.06);
-    }
-
-
-    .main-image::before {
-        content: "";
-
-        position: absolute;
-
-        width: 420px;
-        height: 420px;
-
-        border-radius: 50%;
-
-        background:
-            radial-gradient(
-                circle,
-                rgba(255,255,255,0.09),
-                transparent 68%
-            );
-
-        filter: blur(20px);
-    }
-
-
-    .product-placeholder {
-        position: relative;
-
-        z-index: 2;
-
-        width: 260px;
-        height: 260px;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.12);
-
-        border-radius: 65px;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(255,255,255,0.11),
-                rgba(255,255,255,0.025)
-            );
-
-        box-shadow:
-            0 40px 100px rgba(0,0,0,0.5);
-
-        color:
-            rgba(255,255,255,0.5);
-
-        font-size: 14px;
-
-        letter-spacing: 0.18em;
-    }
-
-
-    .image-label {
-        position: absolute;
-
-        top: 20px;
-        left: 20px;
-
-        z-index: 5;
-
-        padding: 7px 11px;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.09);
-
-        border-radius: 999px;
-
-        background:
-            rgba(255,255,255,0.045);
-
-        backdrop-filter: blur(12px);
-
-        color:
-            rgba(255,255,255,0.55);
-
-        font-size: 8px;
-
-        letter-spacing: 0.15em;
-
-        text-transform: uppercase;
-    }
-
-
-    .thumbnails {
-        display: grid;
-
-        grid-template-columns:
-            repeat(5, 1fr);
-
-        gap: 10px;
-
-        margin-top: 12px;
-    }
-
-
-    .thumbnail {
-        height: 92px;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.08);
-
-        border-radius: 15px;
-
-        background:
-            rgba(255,255,255,0.035);
-
-        color:
-            rgba(255,255,255,0.3);
-
-        font-size: 8px;
-
-        cursor: pointer;
-
-        transition:
-            border 0.25s ease,
-            background 0.25s ease;
-    }
-
-
-    .thumbnail:hover,
-    .thumbnail.active {
-        border-color:
-            rgba(255,255,255,0.25);
-
-        background:
-            rgba(255,255,255,0.07);
-
-        color:
-            rgba(255,255,255,0.7);
-    }
-
-
-    /* =========================================================
-       PRODUCT INFORMATION
-       ========================================================= */
-
-    .product-info {
-        padding-top: 8px;
-    }
-
-
-    .product-badge {
-        display: inline-flex;
-
-        padding: 7px 11px;
-
-        margin-bottom: 20px;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.1);
-
-        border-radius: 999px;
-
-        background:
-            rgba(255,255,255,0.045);
-
-        color:
-            rgba(255,255,255,0.55);
-
-        font-size: 8px;
-
-        letter-spacing: 0.16em;
-
-        text-transform: uppercase;
-    }
-
-
-    .product-category {
-        margin-bottom: 10px;
-
-        color:
-            rgba(255,255,255,0.32);
-
-        font-size: 10px;
-
-        letter-spacing: 0.18em;
-
-        text-transform: uppercase;
-    }
-
-
-    h1 {
-        font-size:
-            clamp(
-                42px,
-                5vw,
-                68px
-            );
-
-        line-height: 0.98;
-
-        letter-spacing: -0.06em;
-
-        margin-bottom: 20px;
-
-        background:
-            linear-gradient(
-                180deg,
-                #ffffff,
-                #9c9c9c
-            );
-
-        -webkit-background-clip: text;
-
-        background-clip: text;
-
-        -webkit-text-fill-color: transparent;
-    }
-
-
-    .short-description {
-        color:
-            rgba(255,255,255,0.48);
-
-        font-size: 14px;
-
-        line-height: 1.8;
-
-        max-width: 540px;
-
-        margin-bottom: 28px;
-    }
-
-
-    /* =========================================================
-       PRICE
-       ========================================================= */
-
-    .price-area {
-        display: flex;
-
-        align-items: baseline;
-
-        gap: 12px;
-
-        padding:
-            22px 0;
-
-        border-top:
-            1px solid
-            rgba(255,255,255,0.07);
-
-        border-bottom:
-            1px solid
-            rgba(255,255,255,0.07);
-
-        margin-bottom: 28px;
-    }
-
-
-    .price {
-        font-size: 32px;
-
-        font-weight: 650;
-
-        letter-spacing: -0.035em;
-    }
-
-
-    .reference-price {
-        color:
-            rgba(255,255,255,0.25);
-
-        text-decoration: line-through;
-
-        font-size: 14px;
-    }
-
-
-    /* =========================================================
-       OPTIONS
-       ========================================================= */
-
-    .option-group {
-        margin-bottom: 27px;
-    }
-
-
-    .option-header {
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        margin-bottom: 12px;
-    }
-
-
-    .option-title {
-        font-size: 11px;
-
-        font-weight: 600;
-
-        color:
-            rgba(255,255,255,0.75);
-    }
-
-
-    .option-value {
-        color:
-            rgba(255,255,255,0.35);
-
-        font-size: 10px;
-    }
-
-
-    .options {
-        display: flex;
-
-        flex-wrap: wrap;
-
-        gap: 8px;
-    }
-
-
-    .option {
-        padding: 11px 15px;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.09);
-
-        border-radius: 11px;
-
-        background:
-            rgba(255,255,255,0.035);
-
-        color:
-            rgba(255,255,255,0.55);
-
-        font-size: 11px;
-
-        cursor: pointer;
-
-        transition:
-            border 0.25s ease,
-            background 0.25s ease,
-            color 0.25s ease;
-    }
-
-
-    .option:hover,
-    .option.selected {
-        color: #ffffff;
-
-        border-color:
-            rgba(255,255,255,0.3);
-
-        background:
-            rgba(255,255,255,0.09);
-    }
-
-
-    /* =========================================================
-       QUANTITY
-       ========================================================= */
-
-    .purchase-row {
-        display: grid;
-
-        grid-template-columns:
-            125px 1fr;
-
-        gap: 10px;
-
-        margin-top: 30px;
-    }
-
-
-    .quantity {
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        padding: 5px;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.1);
-
-        border-radius: 14px;
-
-        background:
-            rgba(255,255,255,0.035);
-    }
-
-
-    .quantity button {
-        width: 34px;
-        height: 34px;
-
-        border: none;
-
-        border-radius: 9px;
-
-        background:
-            rgba(255,255,255,0.055);
-
-        color: #ffffff;
-
-        cursor: pointer;
-
-        font-size: 16px;
-    }
-
-
-    .quantity span {
-        font-size: 12px;
-
-        font-weight: 600;
-    }
-
-
-    .add-cart {
-        min-height: 46px;
-
-        border: none;
-
-        border-radius: 14px;
-
-        background: #ffffff;
-
-        color: #050505;
-
-        font-size: 12px;
-
-        font-weight: 700;
-
-        letter-spacing: 0.02em;
-
-        cursor: pointer;
-
-        transition:
-            transform 0.25s ease,
-            box-shadow 0.25s ease;
-    }
-
-
-    .add-cart:hover {
-        transform: translateY(-2px);
-
-        box-shadow:
-            0 15px 45px rgba(255,255,255,0.15);
-    }
-
-
-    /* =========================================================
-       PRODUCT META
-       ========================================================= */
-
-    .product-meta {
-        margin-top: 28px;
-
-        padding-top: 23px;
-
-        border-top:
-            1px solid
-            rgba(255,255,255,0.07);
-    }
-
-
-    .meta-row {
-        display: flex;
-
-        justify-content: space-between;
-
-        gap: 20px;
-
-        padding: 8px 0;
-
-        font-size: 10px;
-    }
-
-
-    .meta-label {
-        color:
-            rgba(255,255,255,0.28);
-
-        text-transform: uppercase;
-
-        letter-spacing: 0.1em;
-    }
-
-
-    .meta-value {
-        color:
-            rgba(255,255,255,0.55);
-
-        text-align: right;
-    }
-
-
-    /* =========================================================
-       DESCRIPTION
-       ========================================================= */
-
-    .details {
-        margin-top: 90px;
-
-        padding-top: 50px;
-
-        border-top:
-            1px solid
-            rgba(255,255,255,0.07);
-    }
-
-
-    .details-grid {
-        display: grid;
-
-        grid-template-columns:
-            0.75fr 1.25fr;
-
-        gap: 80px;
-    }
-
-
-    .details-label {
-        color:
-            rgba(255,255,255,0.3);
-
-        font-size: 9px;
-
-        letter-spacing: 0.2em;
-
-        text-transform: uppercase;
-
-        margin-bottom: 14px;
-    }
-
-
-    .details h2 {
-        font-size: 30px;
-
-        letter-spacing: -0.035em;
-    }
-
-
-    .details-copy {
-        color:
-            rgba(255,255,255,0.45);
-
-        font-size: 14px;
-
-        line-height: 1.9;
-    }
-
-
-    .feature-list {
-        margin-top: 25px;
-
-        display: grid;
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 10px;
-    }
-
-
-    .feature {
-        padding: 17px;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.07);
-
-        border-radius: 15px;
-
-        background:
-            rgba(255,255,255,0.025);
-    }
-
-
-    .feature strong {
-        display: block;
-
-        margin-bottom: 6px;
-
-        font-size: 11px;
-    }
-
-
-    .feature span {
-        color:
-            rgba(255,255,255,0.35);
-
-        font-size: 10px;
-
-        line-height: 1.5;
-    }
-
-
-    /* =========================================================
-       FOOTER
-       ========================================================= */
-
-    footer {
-        position: relative;
-
-        z-index: 1;
-
-        margin-top: 80px;
-
-        padding:
-            30px 24px;
-
-        border-top:
-            1px solid
-            rgba(255,255,255,0.07);
-    }
-
-
-    .footer-inner {
-        max-width: 1350px;
-
-        margin: auto;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-    }
-
-
-    .footer-brand {
-        display: flex;
-
-        align-items: center;
-
-        gap: 9px;
-    }
-
-
-    .footer-brand img {
-        width: 28px;
-        height: 28px;
-
-        object-fit: contain;
-    }
-
-
-    .footer-brand span,
-    .copyright {
-        color:
-            rgba(255,255,255,0.28);
-
-        font-size: 10px;
-    }
-
-
-    /* =========================================================
-       RESPONSIVE
-       ========================================================= */
-
-    @media (max-width: 950px) {
-
-        .product-layout {
-            grid-template-columns: 1fr;
-
-            gap: 45px;
-        }
-
-
-        .gallery {
-            position: relative;
-
-            top: auto;
-        }
-
-
-        .main-image {
-            height: 520px;
-        }
-
-
-        .details-grid {
-            grid-template-columns: 1fr;
-
-            gap: 35px;
-        }
-
-    }
-
-
-    @media (max-width: 650px) {
-
-        header {
-            padding: 13px;
-        }
-
-
-        .nav {
-            min-height: 60px;
-        }
-
-
-        .brand-text {
-            display: none;
-        }
-
-
-        .nav-link {
-            display: none;
-        }
-
-
-        main {
-            padding:
-                120px 16px
-                70px;
-        }
-
-
-        .breadcrumb {
-            margin-bottom: 23px;
-        }
-
-
-        .main-image {
-            height: 390px;
-
-            border-radius: 23px;
-        }
-
-
-        .product-placeholder {
-            width: 180px;
-            height: 180px;
-
-            border-radius: 48px;
-        }
-
-
-        .thumbnails {
-            grid-template-columns:
-                repeat(5, 1fr);
-        }
-
-
-        .thumbnail {
-            height: 65px;
-        }
-
-
-        .product-info {
-            padding-top: 0;
-        }
-
-
-        h1 {
-            font-size: 47px;
-        }
-
-
-        .price {
-            font-size: 28px;
-        }
-
-
-        .purchase-row {
-            grid-template-columns: 1fr;
-        }
-
-
-        .quantity {
-            width: 100%;
-        }
-
-
-        .details {
-            margin-top: 60px;
-
-            padding-top: 35px;
-        }
-
-
-        .feature-list {
-            grid-template-columns: 1fr;
-        }
-
-
-        .footer-inner {
-            flex-direction: column;
-
-            gap: 12px;
-
-            text-align: center;
-        }
-
-    }
-
-</style>
-
-</head><body><!-- =========================================================
-     HEADER
-     ========================================================= -->
-
-<header>
-
-    <nav class="nav">
-
-
-        <a
-            href="index.html"
-            class="brand"
-        >
-
-            <img
-                src="logo.png"
-                alt="Voltica Store"
-            >
-
-
-            <div class="brand-text">
-
-                <span class="brand-name">
-                    VOLTICA
-                </span>
-
-                <span class="brand-tagline">
-                    The future of everyday
-                </span>
-
-            </div>
-
-        </a>
-
-
-        <div class="nav-right">
-
-            <a
-                href="store.html"
-                class="nav-link"
-            >
-                Shop
-            </a>
-
+        <nav class="nav">
 
             <a
                 href="index.html"
-                class="nav-link"
+                class="brand"
+                aria-label="Voltica Store home"
             >
-                Home
+
+                <img
+                    src="logo.png"
+                    alt="Voltica Store"
+                >
+
+                <span class="brand-text">
+
+                    <span class="brand-name">
+                        VOLTICA
+                    </span>
+
+                    <span class="brand-tagline">
+                        THE FUTURE OF EVERYDAY
+                    </span>
+
+                </span>
+
             </a>
 
 
-            <button
-                class="cart"
-                aria-label="Shopping cart"
-            >
+            <div class="nav-right">
 
-                🛒
+                <div class="nav-links">
 
-                <span class="cart-count">
-                    0
-                </span>
-
-            </button>
-
-        </div>
-
-    </nav>
-
-</header>
-
-
-
-<!-- =========================================================
-     MAIN PRODUCT
-     ========================================================= -->
-
-<main>
-
-
-    <!-- BREADCRUMB -->
-
-    <div class="breadcrumb">
-
-        <a href="store.html">
-            Store
-        </a>
-
-        <span>
-            /
-        </span>
-
-        <span>
-            Product
-        </span>
-
-    </div>
-
-
-
-    <div class="product-layout">
-
-
-        <!-- =================================================
-             GALLERY
-             ================================================= -->
-
-        <section class="gallery">
-
-
-            <div class="main-image">
-
-                <span class="image-label">
-                    PRODUCT VIEW
-                </span>
-
-
-                <div
-                    class="product-placeholder"
-                    id="mainProductImage"
-                >
-                    VOLTICA
-                </div>
-
-            </div>
-
-
-            <div class="thumbnails">
-
-                <button
-                    class="thumbnail active"
-                >
-                    01
-                </button>
-
-                <button
-                    class="thumbnail"
-                >
-                    02
-                </button>
-
-                <button
-                    class="thumbnail"
-                >
-                    03
-                </button>
-
-                <button
-                    class="thumbnail"
-                >
-                    04
-                </button>
-
-                <button
-                    class="thumbnail"
-                >
-                    05
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             PRODUCT INFORMATION
-             ================================================= -->
-
-        <section class="product-info">
-
-
-            <span class="product-badge">
-                FEATURED
-            </span>
-
-
-            <div class="product-category">
-                VOLTICA AUDIO
-            </div>
-
-
-            <h1 id="productName">
-                Voltica Product
-            </h1>
-
-
-            <p
-                class="short-description"
-                id="productDescription"
-            >
-                Discover a premium Voltica product
-                designed for modern everyday life.
-                Experience technology with a cleaner,
-                smarter and more refined approach.
-            </p>
-
-
-
-            <!-- PRICE -->
-
-            <div class="price-area">
-
-                <span
-                    class="price"
-                    id="productPrice"
-                >
-                    $00.00
-                </span>
-
-
-                <span
-                    class="reference-price"
-                    id="referencePrice"
-                >
-                    $00.00
-                </span>
-
-            </div>
-
-
-
-            <!-- COLOR -->
-
-            <div class="option-group">
-
-                <div class="option-header">
-
-                    <span class="option-title">
-                        Color
-                    </span>
-
-                    <span
-                        class="option-value"
-                        id="selectedColor"
+                    <a
+                        href="index.html"
+                        class="nav-link"
                     >
-                        Black
-                    </span>
+                        Home
+                    </a>
 
-                </div>
-
-
-                <div class="options">
-
-                    <button
-                        class="option selected"
-                        data-color="Black"
+                    <a
+                        href="store.html"
+                        class="nav-link nav-store"
                     >
-                        Black
-                    </button>
-
-
-                    <button
-                        class="option"
-                        data-color="White"
-                    >
-                        White
-                    </button>
-
-
-                    <button
-                        class="option"
-                        data-color="Beige"
-                    >
-                        Beige
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- QUANTITY / PURCHASE -->
-
-            <div class="purchase-row">
-
-
-                <div class="quantity">
-
-                    <button
-                        type="button"
-                        id="minus"
-                    >
-                        −
-                    </button>
-
-
-                    <span id="quantity">
-                        1
-                    </span>
-
-
-                    <button
-                        type="button"
-                        id="plus"
-                    >
-                        +
-                    </button>
+                        Store
+                    </a>
 
                 </div>
 
 
                 <button
-                    class="add-cart"
-                    id="addToCart"
+                    class="cart"
+                    type="button"
+                    aria-label="Shopping cart"
                 >
-                    ADD TO CART
+
+                    🛒
+
+                    <span class="cart-count">
+                        0
+                    </span>
+
                 </button>
 
             </div>
 
+        </nav>
 
-
-            <!-- META -->
-
-            <div class="product-meta">
-
-
-                <div class="meta-row">
-
-                    <span class="meta-label">
-                        Product
-                    </span>
-
-                    <span
-                        class="meta-value"
-                        id="productSku"
-                    >
-                        VLT-PRODUCT-001
-                    </span>
-
-                </div>
-
-
-                <div class="meta-row">
-
-                    <span class="meta-label">
-                        Availability
-                    </span>
-
-                    <span class="meta-value">
-                        Available
-                    </span>
-
-                </div>
-
-
-                <div class="meta-row">
-
-                    <span class="meta-label">
-                        Shipping
-                    </span>
-
-                    <span class="meta-value">
-                        Calculated at checkout
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </div>
+    </header>
 
 
 
     <!-- =====================================================
-         DETAILS
+         MAIN PRODUCT
          ===================================================== -->
 
-    <section class="details">
+    <main class="product-main">
 
 
-        <div class="details-grid">
+        <!-- =================================================
+             BREADCRUMB
+             ================================================= -->
 
+        <div class="breadcrumb">
 
-            <div>
-
-                <div class="details-label">
-                    VOLTICA DETAILS
-                </div>
-
-
-                <h2>
-                    Built for<br>
-                    everyday life.
-                </h2>
-
-            </div>
-
-
-            <div>
-
-                <p
-                    class="details-copy"
-                    id="longDescription"
-                >
-                    Voltica products are selected around
-                    one simple idea: technology should make
-                    everyday life better.
-
-                    <br><br>
-
-                    From audio and gaming to smart
-                    accessories and lifestyle products,
-                    every item is chosen with a focus on
-                    function, design and value.
-                </p>
-
-
-                <div class="feature-list">
-
-
-                    <div class="feature">
-
-                        <strong>
-                            Modern Design
-                        </strong>
-
-                        <span>
-                            Clean aesthetics designed for
-                            today's lifestyle.
-                        </span>
-
-                    </div>
-
-
-                    <div class="feature">
-
-                        <strong>
-                            Everyday Ready
-                        </strong>
-
-                        <span>
-                            Products selected for real
-                            everyday use.
-                        </span>
-
-                    </div>
-
-
-                    <div class="feature">
-
-                        <strong>
-                            Smart Value
-                        </strong>
-
-                        <span>
-                            Technology without unnecessary
-                            premium pricing.
-                        </span>
-
-                    </div>
-
-
-                    <div class="feature">
-
-                        <strong>
-                            VOLTICA
-                        </strong>
-
-                        <span>
-                            The future of everyday.
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-
-<!-- =========================================================
-     FOOTER
-     ========================================================= -->
-
-<footer>
-
-    <div class="footer-inner">
-
-
-        <div class="footer-brand">
-
-            <img
-                src="logo.png"
-                alt="Voltica"
-            >
+            <a href="index.html">
+                Home
+            </a>
 
             <span>
-                The future of everyday.
+                /
+            </span>
+
+            <a href="store.html">
+                Store
+            </a>
+
+            <span>
+                /
+            </span>
+
+            <span>
+                Product
             </span>
 
         </div>
 
 
-        <div class="copyright">
-            © 2026 Voltica Store.
+
+        <!-- =================================================
+             PRODUCT LAYOUT
+             ================================================= -->
+
+        <section class="product-layout">
+
+
+            <!-- =================================================
+                 PRODUCT GALLERY
+                 ================================================= -->
+
+            <div class="gallery">
+
+
+                <div class="main-image">
+
+                    <div class="image-label">
+                        VOLTICA
+                    </div>
+
+
+                    <div class="product-placeholder">
+                        PRODUCT
+                    </div>
+
+                </div>
+
+
+                <div class="thumbnails">
+
+                    <div class="thumbnail active">
+                        01
+                    </div>
+
+                    <div class="thumbnail">
+                        02
+                    </div>
+
+                    <div class="thumbnail">
+                        03
+                    </div>
+
+                    <div class="thumbnail">
+                        04
+                    </div>
+
+                    <div class="thumbnail">
+                        05
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT INFORMATION
+                 ================================================= -->
+
+            <div class="product-info">
+
+
+                <div class="section-label">
+                    VOLTICA / PRODUCT
+                </div>
+
+
+                <div class="badge">
+                    COMING SOON
+                </div>
+
+
+                <h1>
+                    Product Name
+                </h1>
+
+
+                <p class="short-description">
+
+                    Product details will appear here when
+                    the Voltica collection goes live.
+
+                </p>
+
+
+
+                <!-- =============================================
+                     PRICE
+                     ============================================= -->
+
+                <div class="price-area">
+
+                    <span class="price">
+                        $0.00
+                    </span>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     OPTIONS
+                     ============================================= -->
+
+                <div class="option-group">
+
+                    <div class="option-header">
+
+                        <span class="option-title">
+                            COLOR
+                        </span>
+
+                        <span class="option-value">
+                            Select
+                        </span>
+
+                    </div>
+
+
+                    <div class="options">
+
+                        <button
+                            class="option"
+                            type="button"
+                        >
+                            Black
+                        </button>
+
+                        <button
+                            class="option"
+                            type="button"
+                        >
+                            White
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     PURCHASE
+                     ============================================= -->
+
+                <div class="purchase-row">
+
+                    <div class="quantity">
+
+                        <button
+                            type="button"
+                            aria-label="Decrease quantity"
+                        >
+                            −
+                        </button>
+
+                        <span>
+                            1
+                        </span>
+
+                        <button
+                            type="button"
+                            aria-label="Increase quantity"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <button
+                        class="add-cart"
+                        type="button"
+                        disabled
+                    >
+                        COMING SOON
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     PRODUCT META
+                     ============================================= -->
+
+                <div class="product-meta">
+
+
+                    <div class="meta-row">
+
+                        <span class="meta-label">
+                            Availability
+                        </span>
+
+                        <span class="meta-value">
+                            Coming Soon
+                        </span>
+
+                    </div>
+
+
+                    <div class="meta-row">
+
+                        <span class="meta-label">
+                            Shipping
+                        </span>
+
+                        <span class="meta-value">
+                            Calculated at checkout
+                        </span>
+
+                    </div>
+
+
+                    <div class="meta-row">
+
+                        <span class="meta-label">
+                            Brand
+                        </span>
+
+                        <span class="meta-value">
+                            Voltica
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PRODUCT DETAILS
+             ================================================= -->
+
+        <section class="details">
+
+
+            <div class="details-grid">
+
+
+                <div>
+
+                    <div class="details-label">
+                        PRODUCT DETAILS
+                    </div>
+
+
+                    <h2>
+                        Built for
+                        everyday life.
+                    </h2>
+
+                </div>
+
+
+                <div>
+
+                    <p class="details-copy">
+
+                        Product specifications, features,
+                        materials and additional information
+                        will be displayed here once the product
+                        is added to the Voltica collection.
+
+                    </p>
+
+
+                    <div class="feature-list">
+
+
+                        <div class="feature">
+
+                            <strong>
+                                Design
+                            </strong>
+
+                            <span>
+                                Voltica-inspired premium design.
+                            </span>
+
+                        </div>
+
+
+                        <div class="feature">
+
+                            <strong>
+                                Quality
+                            </strong>
+
+                            <span>
+                                Selected for everyday use.
+                            </span>
+
+                        </div>
+
+
+                        <div class="feature">
+
+                            <strong>
+                                Experience
+                            </strong>
+
+                            <span>
+                                Designed around simplicity.
+                            </span>
+
+                        </div>
+
+
+                        <div class="feature">
+
+                            <strong>
+                                Voltica
+                            </strong>
+
+                            <span>
+                                The future of everyday.
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+
+            <div class="footer-brand">
+
+                <img
+                    src="logo.png"
+                    alt="Voltica"
+                >
+
+                <span>
+                    VOLTICA — THE FUTURE OF EVERYDAY.
+                </span>
+
+            </div>
+
+
+            <div class="copyright">
+
+                © 2026 Voltica Store.
+                All rights reserved.
+
+            </div>
+
         </div>
 
-
-    </div>
-
-</footer>
+    </footer>
 
 
 
-<!-- =========================================================
-     BASIC PRODUCT INTERACTION
-     ========================================================= -->
+</body>
 
-<script>
-
-    /* =====================================================
-       QUANTITY
-       ===================================================== */
-
-    let quantity = 1;
-
-
-    const quantityDisplay =
-        document.getElementById("quantity");
-
-
-    document
-        .getElementById("minus")
-        .addEventListener("click", () => {
-
-            if (quantity > 1) {
-
-                quantity--;
-
-                quantityDisplay.textContent =
-                    quantity;
-
-            }
-
-        });
-
-
-    document
-        .getElementById("plus")
-        .addEventListener("click", () => {
-
-            quantity++;
-
-            quantityDisplay.textContent =
-                quantity;
-
-        });
-
-
-
-    /* =====================================================
-       COLOR SELECTION
-       ===================================================== */
-
-    const colorButtons =
-        document.querySelectorAll(".option");
-
-
-    const selectedColor =
-        document.getElementById("selectedColor");
-
-
-    colorButtons.forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                colorButtons.forEach(
-                    item => {
-                        item.classList.remove(
-                            "selected"
-                        );
-                    }
-                );
-
-
-                button.classList.add(
-                    "selected"
-                );
-
-
-                selectedColor.textContent =
-                    button.dataset.color;
-
-            }
-        );
-
-    });
-
-
-
-    /* =====================================================
-       ADD TO CART
-       ===================================================== */
-
-    document
-        .getElementById("addToCart")
-        .addEventListener(
-            "click",
-            () => {
-
-                alert(
-                    "Product added to cart."
-                );
-
-            }
-        );
-
-
-
-    /* =====================================================
-       THUMBNAILS
-       ===================================================== */
-
-    const thumbnails =
-        document.querySelectorAll(
-            ".thumbnail"
-        );
-
-
-    thumbnails.forEach(
-        thumbnail => {
-
-            thumbnail.addEventListener(
-                "click",
-                () => {
-
-                    thumbnails.forEach(
-                        item => {
-                            item.classList.remove(
-                                "active"
-                            );
-                        }
-                    );
-
-
-                    thumbnail.classList.add(
-                        "active"
-                    );
-
-                }
-            );
-
-        }
-    );
-
-</script>
-
-</body></html>
+</html>

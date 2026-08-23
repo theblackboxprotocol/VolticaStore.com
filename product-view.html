@@ -12,7 +12,7 @@
 
 <meta
     name="description"
-    content="Voltica Store — Premium technology. The future of everyday."
+    content="Voltica Store — Premium technology. The Future of Everyday."
 >
 
 <meta
@@ -20,7 +20,7 @@
     content="#050505"
 >
 
-<title>Voltica Store</title>
+<title>Voltica Store — Product</title>
 
 <link
     rel="stylesheet"
@@ -34,53 +34,47 @@
 
 
 <!-- =========================================================
+     VOLTICA PRODUCT VIEW
+     ========================================================= -->
+
+<div class="voltica-product-page">
+
+
+<!-- =========================================================
      HEADER
      ========================================================= -->
 
-<header>
+<header class="voltica-header">
 
-    <nav class="nav">
+    <a
+        href="index.html"
+        class="voltica-logo"
+    >
 
-        <a
-            href="index.html"
-            class="brand"
-        >
+        <span class="logo-v">
+            V
+        </span>
 
-            <img
-                src="logo.png"
-                alt="Voltica Store"
-            >
+        <span class="logo-name">
+            VOLTICA
+        </span>
 
-            <div class="brand-text">
+    </a>
 
-                <strong>
-                    VOLTICA
-                </strong>
 
-                <span>
-                    THE FUTURE OF EVERYDAY
-                </span>
+    <nav class="voltica-nav">
 
-            </div>
-
+        <a href="index.html">
+            HOME
         </a>
 
+        <a href="store.html">
+            STORE
+        </a>
 
-        <div class="nav-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="store.html">
-                Store
-            </a>
-
-            <a href="contact.html">
-                Contact Us
-            </a>
-
-        </div>
+        <a href="contact.html">
+            CONTACT US
+        </a>
 
     </nav>
 
@@ -89,157 +83,222 @@
 
 
 <!-- =========================================================
-     PRODUCT 01
-     VOLTICA Q45
+     PRODUCT 01 — Q45
      ========================================================= -->
 
-<section
-    id="product-q45"
-    class="product-page"
+<main
+    id="q45"
+    class="product-container"
 >
 
 
-    <!-- =====================================================
-         PRODUCT TOP
-         ===================================================== -->
+    <!-- PRODUCT HERO -->
 
-    <div class="product-layout">
+    <section class="product-hero">
 
 
         <!-- =================================================
              GALLERY
              ================================================= -->
 
-        <div class="product-gallery">
+        <div class="gallery-panel glass-panel">
 
+
+            <div class="panel-topline">
+
+                <span>
+                    VOLTICA / 01
+                </span>
+
+                <span>
+                    ELITE AUDIO
+                </span>
+
+            </div>
+
+
+            <!-- MAIN IMAGE -->
 
             <button
+                class="main-image-frame"
+                id="q45ImageButton"
                 type="button"
-                class="main-product-image"
-                id="q45MainImageButton"
             >
 
                 <img
                     id="q45MainImage"
                     src="assets/Q451-1.webp"
-                    alt="Voltica Q45 — Moon Rock Black"
+                    alt="Voltica Q45"
                 >
 
-                <div class="image-overlay"></div>
+
+                <div class="image-glass-reflection"></div>
 
 
-                <span class="image-number">
+                <div class="image-corner top-left"></div>
+
+                <div class="image-corner top-right"></div>
+
+                <div class="image-corner bottom-left"></div>
+
+                <div class="image-corner bottom-right"></div>
+
+
+                <div class="image-status">
+
+                    <span class="pulse-dot"></span>
+
+                    <span>
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="image-counter"
+                    id="q45Counter"
+                >
                     01 / 06
-                </span>
-
-
-                <span class="image-view-label">
-                    EXPAND
-                </span>
-
-
-                <span class="white-pulse"></span>
+                </div>
 
             </button>
 
 
 
-            <!-- =============================================
-                 Q45 THUMBNAILS
-                 ============================================= -->
+            <!-- =================================================
+                 THUMBNAILS
+                 ================================================= -->
 
-            <div class="product-thumbnails">
+            <div class="thumbnail-header">
+
+                <span>
+                    PRODUCT GALLERY
+                </span>
+
+                <span>
+                    06 IMAGES
+                </span>
+
+            </div>
+
+
+            <div class="thumbnail-grid">
 
 
                 <button
                     type="button"
-                    class="product-thumb q45-thumb active"
-                    data-image="assets/Q451-1.webp"
-                    data-alt="Voltica Q45"
+                    class="product-thumbnail active"
+                    data-main="assets/Q451-1.webp"
+                    data-number="01"
                 >
 
                     <img
                         src="assets/Q451-1.webp"
-                        alt="Voltica Q45"
+                        alt="Q45 image 1"
                     >
+
+                    <span>
+                        01
+                    </span>
 
                 </button>
 
 
                 <button
                     type="button"
-                    class="product-thumb q45-thumb"
-                    data-image="assets/Q451-2.webp"
-                    data-alt="Voltica Q45"
+                    class="product-thumbnail"
+                    data-main="assets/Q451-2.webp"
+                    data-number="02"
                 >
 
                     <img
                         src="assets/Q451-2.webp"
-                        alt="Voltica Q45"
+                        alt="Q45 image 2"
                     >
+
+                    <span>
+                        02
+                    </span>
 
                 </button>
 
 
                 <button
                     type="button"
-                    class="product-thumb q45-thumb"
-                    data-image="assets/Q451-3.webp"
-                    data-alt="Voltica Q45"
+                    class="product-thumbnail"
+                    data-main="assets/Q451-3.webp"
+                    data-number="03"
                 >
 
                     <img
                         src="assets/Q451-3.webp"
-                        alt="Voltica Q45"
+                        alt="Q45 image 3"
                     >
+
+                    <span>
+                        03
+                    </span>
 
                 </button>
 
 
                 <button
                     type="button"
-                    class="product-thumb q45-thumb"
-                    data-image="assets/Q451-4.webp"
-                    data-alt="Voltica Q45"
+                    class="product-thumbnail"
+                    data-main="assets/Q451-4.webp"
+                    data-number="04"
                 >
 
                     <img
                         src="assets/Q451-4.webp"
-                        alt="Voltica Q45"
+                        alt="Q45 image 4"
                     >
+
+                    <span>
+                        04
+                    </span>
 
                 </button>
 
 
-                <!-- IMAGE 5 INTENTIONALLY REMOVED -->
+                <!-- IMAGE 05 REMOVED BECAUSE FILE IS BROKEN -->
 
 
                 <button
                     type="button"
-                    class="product-thumb q45-thumb"
-                    data-image="assets/Q451-6.webp"
-                    data-alt="Voltica Q45"
+                    class="product-thumbnail"
+                    data-main="assets/Q451-6.webp"
+                    data-number="05"
                 >
 
                     <img
                         src="assets/Q451-6.webp"
-                        alt="Voltica Q45"
+                        alt="Q45 image 6"
                     >
+
+                    <span>
+                        05
+                    </span>
 
                 </button>
 
 
                 <button
                     type="button"
-                    class="product-thumb q45-thumb"
-                    data-image="assets/Q451-7.webp"
-                    data-alt="Voltica Q45"
+                    class="product-thumbnail"
+                    data-main="assets/Q451-7.webp"
+                    data-number="06"
                 >
 
                     <img
                         src="assets/Q451-7.webp"
-                        alt="Voltica Q45"
+                        alt="Q45 image 7"
                     >
+
+                    <span>
+                        06
+                    </span>
 
                 </button>
 
@@ -252,38 +311,48 @@
 
 
         <!-- =================================================
-             Q45 PRODUCT INFORMATION
+             PRODUCT INFORMATION
              ================================================= -->
 
-        <div class="product-information">
+        <div class="product-info-panel">
 
 
-            <div class="product-index">
+            <div class="product-number">
                 PRODUCT 01
             </div>
 
 
-            <span class="product-category">
-                ELITE AUDIO
-            </span>
+            <div class="product-category">
+                ELITE AUDIO / OVER-EAR
+            </div>
 
 
             <h1>
-                VOLTICA Q45
+                VOLTICA
+                <br>
+                <span>Q45</span>
             </h1>
 
 
-            <p class="product-subtitle">
-                Soundcore Space Q45 Over-Ear Headphones
-                — Voltica Elite Pass Edition
-            </p>
+            <div class="product-tagline">
 
-
-            <div class="product-price">
-
-                $189.99
-
+                Soundcore Space Q45
+                Over-Ear Headphones
+                <br>
                 <span>
+                    Voltica Elite Pass Edition
+                </span>
+
+            </div>
+
+
+            <div class="price-block">
+
+                <span class="price">
+                    $189.99
+                </span>
+
+                <span class="currency">
                     USD
                 </span>
 
@@ -291,33 +360,12 @@
 
 
 
-            <!-- =================================================
-                 INTRO
-                 ================================================= -->
+            <!-- ELITE PASS -->
 
-            <div class="product-introduction">
-
-                <p>
-
-                    Premium over-ear wireless headphones
-                    engineered for immersive listening,
-                    long-distance travel and intensive
-                    everyday workflows.
-
-                </p>
-
-            </div>
+            <div class="elite-pass glass-card">
 
 
-
-            <!-- =================================================
-                 ELITE PASS
-                 ================================================= -->
-
-            <div class="elite-pass-card">
-
-
-                <div class="elite-pass-top">
+                <div class="elite-pass-header">
 
                     <span>
                         VOLTICA ELITE PASS
@@ -330,45 +378,54 @@
                 </div>
 
 
-                <div class="elite-pass-main">
+                <div class="elite-pass-content">
 
-                    <h3>
-                        YOUR DISCOUNT.
-                        FOR LIFE.
-                    </h3>
-
-
-                    <p>
-
-                        The first
-                        <strong>200 customers</strong>
-                        who purchase the Q45 through
-                        Voltica Store receive an exclusive
-                        laser-engraved metal Voltica Elite
-                        Pass membership card.
-
-                    </p>
+                    <div class="elite-pass-number">
+                        200
+                    </div>
 
 
-                    <p>
+                    <div>
 
-                        Your physical Elite Pass gives you
-                        <strong>15% off every future purchase</strong>
-                        across Voltica Store.
+                        <h3>
+                            LIMITED TO THE
+                            <br>
+                            FIRST 200 CUSTOMERS
+                        </h3>
 
-                    </p>
+
+                        <p>
+
+                            Receive an exclusive
+                            laser-engraved metal Voltica
+                            Elite Pass with your Q45 purchase.
+
+                        </p>
+
+
+                        <p>
+
+                            Your Elite Pass gives you
+                            <strong>
+                                15% OFF FOR LIFE
+                            </strong>
+                            on future purchases at Voltica Store.
+
+                        </p>
+
+                    </div>
 
                 </div>
 
 
-                <div class="elite-pass-bottom">
+                <div class="elite-pass-footer">
 
                     <span>
-                        LIMITED TO 200 ELITE PASS UNITS
+                        METAL MEMBERSHIP CARD
                     </span>
 
                     <span>
-                        15% • LIFETIME
+                        LIFETIME BENEFIT
                     </span>
 
                 </div>
@@ -378,30 +435,26 @@
 
 
 
-            <!-- =================================================
-                 COLOR SELECTOR
-                 ================================================= -->
+            <!-- COLORS -->
 
-            <div class="selection-block">
+            <div class="color-panel glass-card">
 
 
-                <div class="selection-label">
-                    SELECT COLOR
+                <div class="field-label">
+                    SELECT FINISH
                 </div>
 
 
-                <div class="color-options">
+                <div class="color-list">
 
 
                     <button
                         type="button"
-                        class="color-option active"
+                        class="color-button active"
                         data-color="Moon Rock Black"
                     >
 
-                        <span
-                            class="color-swatch swatch-black"
-                        ></span>
+                        <span class="swatch black"></span>
 
                         <span>
                             Moon Rock Black
@@ -412,13 +465,11 @@
 
                     <button
                         type="button"
-                        class="color-option"
+                        class="color-button"
                         data-color="Crescent White"
                     >
 
-                        <span
-                            class="color-swatch swatch-white"
-                        ></span>
+                        <span class="swatch white"></span>
 
                         <span>
                             Crescent White
@@ -429,13 +480,11 @@
 
                     <button
                         type="button"
-                        class="color-option"
+                        class="color-button"
                         data-color="Moonlit Night Blue"
                     >
 
-                        <span
-                            class="color-swatch swatch-blue"
-                        ></span>
+                        <span class="swatch blue"></span>
 
                         <span>
                             Moonlit Night Blue
@@ -447,14 +496,14 @@
                 </div>
 
 
-                <div
-                    class="selected-color"
-                    id="q45SelectedColor"
-                >
-                    Selected:
-                    <strong>
-                        Moon Rock Black
+                <div class="selected-finish">
+
+                    SELECTED:
+
+                    <strong id="selectedColor">
+                        MOON ROCK BLACK
                     </strong>
+
                 </div>
 
 
@@ -462,99 +511,36 @@
 
 
 
-            <!-- =================================================
-                 BUY
-                 ================================================= -->
+            <!-- BUY -->
 
             <a
                 href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
-                class="primary-buy-button"
+                class="voltica-buy-button"
             >
 
-                BUY VOLTICA Q45
-
                 <span>
-                    →
+                    SECURE Q45
                 </span>
+
+                <strong>
+                    →
+                </strong>
 
             </a>
 
 
-            <div class="checkout-note">
+            <div class="secure-note">
 
-                SECURE CHECKOUT
+                SECURE STRIPE CHECKOUT
                 <span>•</span>
-                POWERED BY STRIPE
-
-            </div>
-
-
-
-            <!-- =================================================
-                 QUICK SPECS
-                 ================================================= -->
-
-            <div class="quick-specs">
-
-
-                <div class="quick-spec-row">
-
-                    <span>
-                        BATTERY
-                    </span>
-
-                    <strong>
-                        UP TO 65 HOURS
-                    </strong>
-
-                </div>
-
-
-                <div class="quick-spec-row">
-
-                    <span>
-                        NOISE CANCELLATION
-                    </span>
-
-                    <strong>
-                        ADAPTIVE ANC
-                    </strong>
-
-                </div>
-
-
-                <div class="quick-spec-row">
-
-                    <span>
-                        WIRELESS
-                    </span>
-
-                    <strong>
-                        BLUETOOTH 5.3
-                    </strong>
-
-                </div>
-
-
-                <div class="quick-spec-row">
-
-                    <span>
-                        AUDIO
-                    </span>
-
-                    <strong>
-                        HI-RES
-                    </strong>
-
-                </div>
-
+                VOLTICA STORE
 
             </div>
 
 
         </div>
 
-    </div>
+    </section>
 
 
 
@@ -562,56 +548,65 @@
          Q45 DESCRIPTION
          ===================================================== -->
 
-    <section class="product-description">
+    <section class="acrylic-section">
 
 
-        <div class="description-heading">
-
-            <span>
-                THE VOLTICA Q45
-            </span>
-
-            <h2>
-                Designed for
-                <br>
-                immersion.
-            </h2>
-
+        <div class="section-label">
+            01 / EXPERIENCE
         </div>
 
 
-        <div class="description-content">
+        <div class="acrylic-description glass-panel">
 
 
-            <p>
+            <div class="acrylic-title">
 
-                The Voltica Q45 brings premium wireless
-                audio, adaptive active noise cancellation
-                and extended battery performance into one
-                refined over-ear experience.
+                <span>
+                    THE FUTURE OF EVERYDAY
+                </span>
 
-            </p>
+                <h2>
+                    ENGINEERED
+                    <br>
+                    FOR IMMERSION.
+                </h2>
 
-
-            <p>
-
-                Built for people constantly moving between
-                work, travel, entertainment and everyday
-                life, the Q45 delivers powerful sound while
-                helping isolate you from the surrounding
-                environment.
-
-            </p>
+            </div>
 
 
-            <p>
+            <div class="acrylic-copy">
 
-                With Bluetooth 5.3 connectivity, AI-assisted
-                microphone isolation and long-lasting battery
-                life, the Q45 is designed to stay with you
-                throughout the day.
+                <p>
 
-            </p>
+                    The Voltica Q45 combines premium
+                    wireless audio, adaptive active noise
+                    cancellation and extended battery
+                    performance in a refined over-ear
+                    experience.
+
+                </p>
+
+
+                <p>
+
+                    Designed for travel, work, gaming,
+                    entertainment and everyday movement,
+                    the Q45 is built to keep you immersed
+                    wherever you go.
+
+                </p>
+
+
+                <p>
+
+                    Bluetooth 5.3 connectivity, AI-assisted
+                    microphone isolation and up to 65 hours
+                    of playback make the Q45 a serious
+                    everyday audio platform.
+
+                </p>
+
+            </div>
 
 
         </div>
@@ -622,32 +617,21 @@
 
 
     <!-- =====================================================
-         Q45 KEY FEATURES
+         Q45 FEATURES
          ===================================================== -->
 
-    <section class="features-section">
+    <section class="acrylic-section">
 
 
-        <div class="section-heading">
-
-            <span>
-                KEY FEATURES
-            </span>
-
-            <h2>
-                Engineered
-                <br>
-                for everyday.
-            </h2>
-
+        <div class="section-label">
+            02 / TECHNOLOGY
         </div>
-
 
 
         <div class="feature-grid">
 
 
-            <article class="feature-card">
+            <div class="feature-card glass-card">
 
                 <span>
                     01
@@ -660,40 +644,36 @@
                 </h3>
 
                 <p>
-
-                    Extended playback capability engineered
-                    for uninterrupted long-distance travel
-                    and intensive workflows.
-
+                    Extended playback engineered
+                    for long-distance travel and
+                    intensive workflows.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="feature-card">
+            <div class="feature-card glass-card">
 
                 <span>
                     02
                 </span>
 
                 <h3>
-                    TRIPLE DYNAMIC
+                    DYNAMIC
                     <br>
-                    NOISE FILTERING
+                    ANC
                 </h3>
 
                 <p>
-
                     Adaptive active noise cancellation
-                    designed to eliminate up to 98% of
-                    ambient environmental noise.
-
+                    designed to eliminate up to 98%
+                    of ambient environmental noise.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="feature-card">
+            <div class="feature-card glass-card">
 
                 <span>
                     03
@@ -706,40 +686,34 @@
                 </h3>
 
                 <p>
-
-                    High-fidelity audio reproduction with
-                    premium acoustic tuning for detailed,
-                    immersive listening.
-
+                    High-fidelity sound clarity with
+                    premium acoustic tuning.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="feature-card">
+            <div class="feature-card glass-card">
 
                 <span>
                     04
                 </span>
 
                 <h3>
-                    AI DUAL-MIC
+                    AI DUAL
                     <br>
-                    ISOLATION
+                    MICROPHONE
                 </h3>
 
                 <p>
-
-                    Advanced dual microphones utilizing
-                    AI algorithms for clearer voice
-                    transmission during calls.
-
+                    AI-assisted call noise reduction
+                    for clearer voice transmission.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="feature-card">
+            <div class="feature-card glass-card">
 
                 <span>
                     05
@@ -752,17 +726,14 @@
                 </h3>
 
                 <p>
-
-                    Stable, high-bandwidth wireless
-                    connectivity with ultra-low latency
-                    and multipoint support.
-
+                    Ultra-stable wireless connectivity
+                    with multipoint support.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="feature-card">
+            <div class="feature-card glass-card">
 
                 <span>
                     06
@@ -775,14 +746,11 @@
                 </h3>
 
                 <p>
-
-                    Fast-charge capability designed to
-                    quickly restore listening time when
-                    you need it.
-
+                    Fast-charge capability designed
+                    to quickly restore listening time.
                 </p>
 
-            </article>
+            </div>
 
 
         </div>
@@ -793,28 +761,31 @@
 
 
     <!-- =====================================================
-         Q45 TECHNICAL SPECIFICATIONS
+         Q45 SPECIFICATIONS
          ===================================================== -->
 
-    <section class="specifications-section">
+    <section class="acrylic-section">
 
 
-        <div class="section-heading">
-
-            <span>
-                TECHNICAL SPECIFICATIONS
-            </span>
-
-            <h2>
-                Q45
-                <br>
-                Details.
-            </h2>
-
+        <div class="section-label">
+            03 / SPECIFICATIONS
         </div>
 
 
-        <div class="specification-table">
+        <div class="spec-table glass-panel">
+
+
+            <div class="spec-table-header">
+
+                <span>
+                    VOLTICA Q45
+                </span>
+
+                <span>
+                    TECHNICAL DATA
+                </span>
+
+            </div>
 
 
             <div class="spec-row">
@@ -825,19 +796,6 @@
 
                 <strong>
                     Soundcore by Anker
-                </strong>
-
-            </div>
-
-
-            <div class="spec-row">
-
-                <span>
-                    RETAILER
-                </span>
-
-                <strong>
-                    Voltica Store
                 </strong>
 
             </div>
@@ -859,24 +817,11 @@
             <div class="spec-row">
 
                 <span>
-                    WIRELESS PROTOCOL
+                    WIRELESS
                 </span>
 
                 <strong>
                     Bluetooth 5.3
-                </strong>
-
-            </div>
-
-
-            <div class="spec-row">
-
-                <span>
-                    CONNECTION
-                </span>
-
-                <strong>
-                    Multipoint Connection
                 </strong>
 
             </div>
@@ -950,11 +895,11 @@
             <div class="spec-row">
 
                 <span>
-                    EXCLUSIVE BONUS
+                    BONUS
                 </span>
 
                 <strong>
-                    Laser-Engraved Metal Elite Pass Card
+                    Laser-Engraved Metal Elite Pass
                 </strong>
 
             </div>
@@ -967,86 +912,88 @@
 
 
 
-    <!-- =====================================================
-         Q45 FINAL CTA
-         ===================================================== -->
+    <!-- FINAL CTA -->
 
-    <section class="final-product-cta">
+    <section class="final-panel glass-panel">
 
-
-        <span>
-            LIMITED VOLTICA ELITE PASS EDITION
-        </span>
+        <div class="section-label">
+            VOLTICA ELITE EDITION
+        </div>
 
 
         <h2>
-            Own the Q45.
+            OWN THE Q45.
             <br>
-            Keep 15% forever.
+            KEEP 15% FOREVER.
         </h2>
 
 
         <p>
-            Only the first 200 Q45 purchases receive
+            Only the first 200 purchases include
             the physical Voltica Elite Pass.
         </p>
 
 
         <a
             href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
-            class="primary-buy-button"
+            class="voltica-buy-button"
         >
 
-            SECURE YOUR Q45
-
             <span>
-                →
+                SECURE YOUR Q45
             </span>
 
-        </a>
+            <strong>
+                →
+            </strong>
 
+        </a>
 
     </section>
 
 
-</section>
+</main>
 
 
 
 
 
 <!-- =========================================================
-     =========================================================
-     PRODUCT 02
-     XREAL AIR 1S
-     =========================================================
+     PRODUCT 02 — XREAL AIR 1S
      ========================================================= -->
 
-<section
-    id="product-xreal"
-    class="product-page"
+<main
+    id="xreal-air-1s"
+    class="product-container"
     style="display:none;"
 >
 
 
-    <!-- =====================================================
-         PRODUCT TOP
-         ===================================================== -->
-
-    <div class="product-layout">
+    <section class="product-hero">
 
 
-        <!-- =================================================
-             XREAL GALLERY
-             ================================================= -->
+        <!-- GALLERY -->
 
-        <div class="product-gallery">
+        <div class="gallery-panel glass-panel">
+
+
+            <div class="panel-topline">
+
+                <span>
+                    VOLTICA / 02
+                </span>
+
+                <span>
+                    AUGMENTED REALITY
+                </span>
+
+            </div>
 
 
             <button
+                class="main-image-frame"
+                id="xrealImageButton"
                 type="button"
-                class="main-product-image"
-                id="xrealMainImageButton"
             >
 
                 <img
@@ -1055,103 +1002,3263 @@
                     alt="XREAL Air 1S"
                 >
 
-                <div class="image-overlay"></div>
+
+                <div class="image-glass-reflection"></div>
 
 
-                <span class="image-number">
+                <div class="image-status">
+
+                    <span class="pulse-dot"></span>
+
+                    <span>
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="image-counter"
+                    id="xrealCounter"
+                >
                     01 / 06
-                </span>
-
-
-                <span class="image-view-label">
-                    EXPAND
-                </span>
-
-
-                <span class="white-pulse"></span>
+                </div>
 
             </button>
 
 
 
-            <!-- =================================================
-                 XREAL THUMBNAILS
-                 ================================================= -->
+            <div class="thumbnail-header">
 
-            <div class="product-thumbnails">
+                <span>
+                    PRODUCT GALLERY
+                </span>
+
+                <span>
+                    06 IMAGES
+                </span>
+
+            </div>
+
+
+            <div class="thumbnail-grid">
 
 
                 <button
                     type="button"
-                    class="product-thumb xreal-thumb active"
-                    data-image="assets/glass1-1.jpg"
+                    class="product-thumbnail xreal-thumbnail active"
+                    data-main="assets/glass1-1.jpg"
+                    data-number="01"
                 >
 
                     <img
                         src="assets/glass1-1.jpg"
-                        alt="XREAL Air 1S"
+                        alt="XREAL Air 1S image 1"
                     >
+
+                    <span>
+                        01
+                    </span>
 
                 </button>
 
 
                 <button
                     type="button"
-                    class="product-thumb xreal-thumb"
-                    data-image="assets/glass1-2.jpg"
+                    class="product-thumbnail xreal-thumbnail"
+                    data-main="assets/glass1-2.jpg"
+                    data-number="02"
                 >
 
                     <img
                         src="assets/glass1-2.jpg"
-                        alt="XREAL Air 1S"
+                        alt="XREAL Air 1S image 2"
                     >
+
+                    <span>
+                        02
+                    </span>
 
                 </button>
 
 
                 <button
                     type="button"
-                    class="product-thumb xreal-thumb"
-                    data-image="assets/glass1-3.jpg"
+                    class="product-thumbnail xreal-thumbnail"
+                    data-main="assets/glass1-3.jpg"
+                    data-number="03"
                 >
 
                     <img
                         src="assets/glass1-3.jpg"
-                        alt="XREAL Air 1S"
+                        alt="XREAL Air 1S image 3"
                     >
+
+                    <span>
+                        03
+                    </span>
 
                 </button>
 
 
                 <button
                     type="button"
-                    class="product-thumb xreal-thumb"
-                    data-image="assets/glass1-4.jpg"
+                    class="product-thumbnail xreal-thumbnail"
+                    data-main="assets/glass1-4.jpg"
+                    data-number="04"
                 >
 
                     <img
                         src="assets/glass1-4.jpg"
-                        alt="XREAL Air 1S"
+                        alt="XREAL Air 1S image 4"
                     >
+
+                    <span>
+                        04
+                    </span>
 
                 </button>
 
 
                 <button
                     type="button"
-                    class="product-thumb xreal-thumb"
-                    data-image="assets/glass1-5.jpg"
+                    class="product-thumbnail xreal-thumbnail"
+                    data-main="assets/glass1-5.jpg"
+                    data-number="05"
                 >
 
                     <img
                         src="assets/glass1-5.jpg"
-                        alt="XREAL Air 1S"
+                        alt="XREAL Air 1S image 5"
                     >
+
+                    <span>
+                        05
+                    </span>
 
                 </button>
 
 
                 <button
                     type="button"
-                    class="product-thumb xreal-thumb"
-                    data-image="
+                    class="product-thumbnail xreal-thumbnail"
+                    data-main="assets/glass1-6.jpg"
+                    data-number="06"
+                >
+
+                    <img
+                        src="assets/glass1-6.jpg"
+                        alt="XREAL Air 1S image 6"
+                    >
+
+                    <span>
+                        06
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- PRODUCT INFO -->
+
+        <div class="product-info-panel">
+
+
+            <div class="product-number">
+                PRODUCT 02
+            </div>
+
+
+            <div class="product-category">
+                AUGMENTED REALITY
+            </div>
+
+
+            <h1>
+                XREAL
+                <br>
+                <span>AIR 1S</span>
+            </h1>
+
+
+            <div class="product-tagline">
+
+                AI Augmented Reality
+                Smart Glasses
+
+            </div>
+
+
+            <div class="price-block">
+
+                <span class="price">
+                    $579.99
+                </span>
+
+                <span class="currency">
+                    USD
+                </span>
+
+            </div>
+
+
+            <div class="glass-card xreal-intro">
+
+                <p>
+
+                    Step into a new dimension of portable
+                    display with the XREAL Air 1S.
+
+                </p>
+
+                <p>
+
+                    Experience an ultra-bright giant virtual
+                    screen designed for gaming, movies and
+                    mobile productivity.
+
+                </p>
+
+            </div>
+
+
+            <div class="xreal-highlight glass-card">
+
+                <div>
+
+                    <span>
+                        FIELD OF VIEW
+                    </span>
+
+                    <strong>
+                        52°
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        VIRTUAL SCREEN
+                    </span>
+
+                    <strong>
+                        31" — 500"
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="coming-soon">
+
+                <span class="pulse-dot"></span>
+
+                PRODUCT AVAILABLE SOON
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- DESCRIPTION -->
+
+    <section class="acrylic-section">
+
+
+        <div class="section-label">
+            01 / EXPERIENCE
+        </div>
+
+
+        <div class="acrylic-description glass-panel">
+
+
+            <div class="acrylic-title">
+
+                <span>
+                    XREAL AIR 1S
+                </span>
+
+                <h2>
+                    YOUR SCREEN.
+                    <br>
+                    ANYWHERE.
+                </h2>
+
+            </div>
+
+
+            <div class="acrylic-copy">
+
+                <p>
+
+                    The XREAL Air 1S bridges the digital
+                    and physical worlds through an immersive
+                    portable display.
+
+                </p>
+
+
+                <p>
+
+                    Its 52° field of view creates the
+                    sensation of a giant cinematic screen
+                    ranging from 31 to 500 inches depending
+                    on viewing distance.
+
+                </p>
+
+
+                <p>
+
+                    Advanced AI features provide voice
+                    wake-up, real-time object recognition
+                    and instant image text translation.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- FEATURES -->
+
+    <section class="acrylic-section">
+
+
+        <div class="section-label">
+            02 / TECHNOLOGY
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card glass-card">
+
+                <span>
+                    01
+                </span>
+
+                <h3>
+                    MASSIVE
+                    <br>
+                    DISPLAY
+                </h3>
+
+                <p>
+                    Virtual screen from 31 to 500 inches.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card glass-card">
+
+                <span>
+                    02
+                </span>
+
+                <h3>
+                    52°
+                    <br>
+                    FOV
+                </h3>
+
+                <p>
+                    Wide immersive field of view.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card glass-card">
+
+                <span>
+                    03
+                </span>
+
+                <h3>
+                    AI
+                    <br>
+                    CAPABILITIES
+                </h3>
+
+                <p>
+                    Voice wake-up, object recognition
+                    and text translation.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card glass-card">
+
+                <span>
+                    04
+                </span>
+
+                <h3>
+                    ELECTROCHROMIC
+                    <br>
+                    LENSES
+                </h3>
+
+                <p>
+                    Intelligent environmental adaptation.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card glass-card">
+
+                <span>
+                    05
+                </span>
+
+                <h3>
+                    EYE
+                    <br>
+                    COMFORT
+                </h3>
+
+                <p>
+                    TÜV Rheinland certified technologies.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card glass-card">
+
+                <span>
+                    06
+                </span>
+
+                <h3>
+                    USB-C
+                    <br>
+                    PLUG & PLAY
+                </h3>
+
+                <p>
+                    Connect compatible modern devices.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- SPECIFICATIONS -->
+
+    <section class="acrylic-section">
+
+
+        <div class="section-label">
+            03 / SPECIFICATIONS
+        </div>
+
+
+        <div class="spec-table glass-panel">
+
+
+            <div class="spec-table-header">
+
+                <span>
+                    XREAL AIR 1S
+                </span>
+
+                <span>
+                    TECHNICAL DATA
+                </span>
+
+            </div>
+
+
+            <div class="spec-row">
+
+                <span>
+                    MODEL
+                </span>
+
+                <strong>
+                    XREAL Air 1S
+                </strong>
+
+            </div>
+
+
+            <div class="spec-row">
+
+                <span>
+                    FIELD OF VIEW
+                </span>
+
+                <strong>
+                    52° immersive wide view
+                </strong>
+
+            </div>
+
+
+            <div class="spec-row">
+
+                <span>
+                    VIRTUAL DISPLAY
+                </span>
+
+                <strong>
+                    31–500 inches
+                </strong>
+
+            </div>
+
+
+            <div class="spec-row">
+
+                <span>
+                    VIEWING DISTANCE
+                </span>
+
+                <strong>
+                    1m–10m
+                </strong>
+
+            </div>
+
+
+            <div class="spec-row">
+
+                <span>
+                    CONTROLS
+                </span>
+
+                <strong>
+                    Tactile buttons + AI voice assistant
+                </strong>
+
+            </div>
+
+
+            <div class="spec-row">
+
+                <span>
+                    CONNECTIVITY
+                </span>
+
+                <strong>
+                    USB-C Plug & Play
+                </strong>
+
+            </div>
+
+
+            <div class="spec-row">
+
+                <span>
+                    DISPLAY CONTROL
+                </span>
+
+                <strong>
+                    Pixel-level image alignment
+                </strong>
+
+            </div>
+
+
+            <div class="spec-row">
+
+                <span>
+                    AI
+                </span>
+
+                <strong>
+                    Voice + Recognition + Translation
+                </strong>
+
+            </div>
+
+
+            <div class="spec-row">
+
+                <span>
+                    PROCESSOR
+                </span>
+
+                <strong>
+                    Advanced X1 chipset
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <section class="final-panel glass-panel">
+
+        <div class="section-label">
+            XREAL AIR 1S
+        </div>
+
+
+        <h2>
+            STEP INTO
+            <br>
+            ANOTHER DIMENSION.
+        </h2>
+
+
+        <div class="coming-soon">
+
+            <span class="pulse-dot"></span>
+
+            PRODUCT AVAILABLE SOON
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     LIGHTBOX
+     ========================================================= -->
+
+<div
+    id="imageLightbox"
+    class="image-lightbox"
+>
+
+    <button
+        id="closeLightbox"
+        class="lightbox-close"
+        type="button"
+    >
+        ×
+    </button>
+
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Expanded product image"
+    >
+
+</div>
+
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="voltica-footer">
+
+    <span>
+        VOLTICA STORE
+    </span>
+
+    <span>
+        THE FUTURE OF EVERYDAY
+    </span>
+
+</footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     PREMIUM PRODUCT CSS
+     ========================================================= -->
+
+<style>
+
+
+/* =========================================================
+   CORE
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(255,255,255,.055),
+            transparent 38%
+        ),
+        #050505;
+
+    color: #bdbdbd;
+
+    font-family:
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+}
+
+
+button,
+a {
+    font-family: inherit;
+}
+
+
+button {
+    border: 0;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.voltica-header {
+
+    width:
+        min(1240px, 92vw);
+
+    margin:
+        auto;
+
+    padding:
+        26px 0;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+}
+
+
+.voltica-logo {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    color:
+        #eee;
+
+    text-decoration:
+        none;
+
+}
+
+
+.logo-v {
+
+    width:
+        31px;
+
+    height:
+        31px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    border-radius:
+        9px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.12);
+
+    font-weight:
+        700;
+
+}
+
+
+.logo-name {
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        .25em;
+
+}
+
+
+.voltica-nav {
+
+    display:
+        flex;
+
+    gap:
+        26px;
+
+}
+
+
+.voltica-nav a {
+
+    color:
+        rgba(255,255,255,.3);
+
+    text-decoration:
+        none;
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .18em;
+
+    transition:
+        color .2s ease;
+
+}
+
+
+.voltica-nav a:hover {
+
+    color:
+        white;
+
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.product-container {
+
+    width:
+        min(1240px, 92vw);
+
+    margin:
+        auto;
+
+    padding:
+        50px 0 120px;
+
+}
+
+
+/* =========================================================
+   GLASS
+   ========================================================= */
+
+.glass-panel,
+.glass-card {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.095);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.018)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.07),
+
+        inset 0 0 45px
+        rgba(255,255,255,.012),
+
+        0 25px 80px
+        rgba(0,0,0,.45);
+
+    backdrop-filter:
+        blur(24px);
+
+    -webkit-backdrop-filter:
+        blur(24px);
+
+}
+
+
+.glass-panel::before,
+.glass-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    height:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.22),
+            transparent
+        );
+
+    opacity:
+        .6;
+
+}
+
+
+.glass-panel::after,
+.glass-card::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        180px;
+
+    height:
+        180px;
+
+    top:
+        -110px;
+
+    right:
+        -90px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    filter:
+        blur(40px);
+
+    border-radius:
+        50%;
+
+    pointer-events:
+        none;
+
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.product-hero {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(360px, .92fr);
+
+    gap:
+        35px;
+
+    align-items:
+        start;
+
+}
+
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+
+.gallery-panel {
+
+    padding:
+        14px;
+
+    border-radius:
+        27px;
+
+}
+
+
+.panel-topline {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    padding:
+        7px 9px 14px;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .19em;
+
+}
+
+
+.main-image-frame {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    aspect-ratio:
+        1 / .78;
+
+    padding:
+        0;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:
+        20px;
+
+    background:
+        #080808;
+
+    cursor:
+        zoom-in;
+
+}
+
+
+.main-image-frame img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    transition:
+        transform .5s ease;
+
+}
+
+
+.main-image-frame:hover img {
+
+    transform:
+        scale(1.025);
+
+}
+
+
+.image-glass-reflection {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.08),
+            transparent 22%,
+            transparent 72%,
+            rgba(255,255,255,.025)
+        );
+
+    pointer-events:
+        none;
+
+}
+
+
+.image-status {
+
+    position:
+        absolute;
+
+    bottom:
+        17px;
+
+    left:
+        17px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    padding:
+        9px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(0,0,0,.45);
+
+    backdrop-filter:
+        blur(14px);
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .14em;
+
+}
+
+
+.pulse-dot {
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    display:
+        inline-block;
+
+    border-radius:
+        50%;
+
+    background:
+        #fff;
+
+    box-shadow:
+        0 0 0 0
+        rgba(255,255,255,.5);
+
+    animation:
+        pulse 2s infinite;
+
+}
+
+
+@keyframes pulse {
+
+    0% {
+        box-shadow:
+            0 0 0 0
+            rgba(255,255,255,.45);
+    }
+
+    70% {
+        box-shadow:
+            0 0 0 10px
+            rgba(255,255,255,0);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(255,255,255,0);
+    }
+
+}
+
+
+.image-counter {
+
+    position:
+        absolute;
+
+    top:
+        17px;
+
+    right:
+        17px;
+
+    padding:
+        8px 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(0,0,0,.4);
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .12em;
+
+}
+
+
+/* =========================================================
+   THUMBNAILS
+   ========================================================= */
+
+.thumbnail-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    padding:
+        17px 5px 10px;
+
+    color:
+        rgba(255,255,255,.22);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .18em;
+
+}
+
+
+.thumbnail-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap:
+        8px;
+
+}
+
+
+.product-thumbnail {
+
+    position:
+        relative;
+
+    aspect-ratio:
+        1;
+
+    padding:
+        3px;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:
+        13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.015)
+        );
+
+    opacity:
+        .5;
+
+    cursor:
+        pointer;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.product-thumbnail img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    display:
+        block;
+
+    border-radius:
+        9px;
+
+}
+
+
+.product-thumbnail span {
+
+    position:
+        absolute;
+
+    bottom:
+        6px;
+
+    right:
+        6px;
+
+    padding:
+        3px 5px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:
+        5px;
+
+    background:
+        rgba(0,0,0,.6);
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size:
+        6px;
+
+}
+
+
+.product-thumbnail:hover {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+.product-thumbnail.active {
+
+    opacity:
+        1;
+
+    border-color:
+        rgba(255,255,255,.5);
+
+    box-shadow:
+        0 0 0 1px
+        rgba(255,255,255,.06),
+
+        0 10px 25px
+        rgba(0,0,0,.35);
+
+}
+
+
+/* =========================================================
+   PRODUCT INFO
+   ========================================================= */
+
+.product-info-panel {
+
+    padding:
+        12px 5px;
+
+}
+
+
+.product-number {
+
+    color:
+        rgba(255,255,255,.18);
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        .28em;
+
+}
+
+
+.product-category {
+
+    margin-top:
+        14px;
+
+    color:
+        rgba(255,255,255,.28);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .22em;
+
+}
+
+
+.product-info-panel h1 {
+
+    margin:
+        17px 0 0;
+
+    color:
+        #d6d6d6;
+
+    font-size:
+        clamp(52px, 7vw, 88px);
+
+    line-height:
+        .78;
+
+    letter-spacing:
+        -.075em;
+
+    font-weight:
+        650;
+
+    text-shadow:
+        0 1px 20px
+        rgba(255,255,255,.08);
+
+}
+
+
+.product-info-panel h1 span {
+
+    color:
+        rgba(255,255,255,.35);
+
+}
+
+
+.product-tagline {
+
+    margin-top:
+        22px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.7;
+
+}
+
+
+.product-tagline span {
+
+    color:
+        rgba(255,255,255,.22);
+
+}
+
+
+.price-block {
+
+    display:
+        flex;
+
+    align-items:
+        baseline;
+
+    gap:
+        8px;
+
+    margin:
+        27px 0;
+
+}
+
+
+.price {
+
+    color:
+        #d8d8d8;
+
+    font-size:
+        31px;
+
+    letter-spacing:
+        -.04em;
+
+}
+
+
+.currency {
+
+    color:
+        rgba(255,255,255,.2);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .18em;
+
+}
+
+
+/* =========================================================
+   ELITE PASS
+   ========================================================= */
+
+.elite-pass {
+
+    border-radius:
+        18px;
+
+}
+
+
+.elite-pass-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+
+    padding:
+        14px 17px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.07);
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .17em;
+
+}
+
+
+.elite-pass-header strong {
+
+    color:
+        rgba(255,255,255,.7);
+
+}
+
+
+.elite-pass-content {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        80px 1fr;
+
+    gap:
+        17px;
+
+    padding:
+        20px 17px;
+
+}
+
+
+.elite-pass-number {
+
+    color:
+        rgba(255,255,255,.12);
+
+    font-size:
+        48px;
+
+    font-weight:
+        700;
+
+    line-height:
+        .8;
+
+    letter-spacing:
+        -.08em;
+
+}
+
+
+.elite-pass-content h3 {
+
+    margin:
+        0 0 11px;
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.05;
+
+}
+
+
+.elite-pass-content p {
+
+    margin:
+        7px 0;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size:
+        9px;
+
+    line-height:
+        1.6;
+
+}
+
+
+.elite-pass-content strong {
+
+    color:
+        rgba(255,255,255,.7);
+
+}
+
+
+.elite-pass-footer {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    padding:
+        11px 17px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:
+        rgba(255,255,255,.17);
+
+    font-size:
+        6px;
+
+    letter-spacing:
+        .15em;
+
+}
+
+
+/* =========================================================
+   COLOR
+   ========================================================= */
+
+.color-panel {
+
+    margin-top:
+        12px;
+
+    padding:
+        17px;
+
+    border-radius:
+        18px;
+
+}
+
+
+.field-label {
+
+    margin-bottom:
+        11px;
+
+    color:
+        rgba(255,255,255,.2);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .18em;
+
+}
+
+
+.color-list {
+
+    display:
+        grid;
+
+    gap:
+        6px;
+
+}
+
+
+.color-button {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    min-height:
+        39px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+    border-radius:
+        9px;
+
+    background:
+        rgba(255,255,255,.02);
+
+    color:
+        rgba(255,255,255,.3);
+
+    text-align:
+        left;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s ease;
+
+}
+
+
+.color-button.active {
+
+    border-color:
+        rgba(255,255,255,.35);
+
+    background:
+        rgba(255,255,255,.06);
+
+    color:
+        rgba(255,255,255,.75);
+
+}
+
+
+.swatch {
+
+    width:
+        14px;
+
+    height:
+        14px;
+
+    flex:
+        0 0 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    border-radius:
+        50%;
+
+}
+
+
+.swatch.black {
+    background: #101010;
+}
+
+
+.swatch.white {
+    background: #e4e4e4;
+}
+
+
+.swatch.blue {
+    background: #293647;
+}
+
+
+.selected-finish {
+
+    margin-top:
+        10px;
+
+    color:
+        rgba(255,255,255,.15);
+
+    font-size:
+        6px;
+
+    letter-spacing:
+        .13em;
+
+}
+
+
+.selected-finish strong {
+
+    color:
+        rgba(255,255,255,.48);
+
+}
+
+
+/* =========================================================
+   BUY
+   ========================================================= */
+
+.voltica-buy-button {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    width:
+        100%;
+
+    min-height:
+        58px;
+
+    margin-top:
+        13px;
+
+    padding:
+        0 21px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.75);
+
+    border-radius:
+        12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.95),
+            rgba(205,205,205,.86)
+        );
+
+    color:
+        #050505;
+
+    text-decoration:
+        none;
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .16em;
+
+    box-shadow:
+        0 12px 40px
+        rgba(255,255,255,.07);
+
+    transition:
+        .25s ease;
+
+}
+
+
+.voltica-buy-button strong {
+
+    font-size:
+        17px;
+
+}
+
+
+.voltica-buy-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 18px 45px
+        rgba(255,255,255,.12);
+
+}
+
+
+.secure-note {
+
+    margin:
+        8px 0 0;
+
+    color:
+        rgba(255,255,255,.13);
+
+    text-align:
+        center;
+
+    font-size:
+        6px;
+
+    letter-spacing:
+        .18em;
+
+}
+
+
+.secure-note span {
+
+    margin:
+        0 6px;
+
+}
+
+
+/* =========================================================
+   ACRYLIC SECTIONS
+   ========================================================= */
+
+.acrylic-section {
+
+    margin-top:
+        85px;
+
+}
+
+
+.section-label {
+
+    margin-bottom:
+        14px;
+
+    color:
+        rgba(255,255,255,.17);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .25em;
+
+}
+
+
+.acrylic-description {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        .9fr 1.1fr;
+
+    gap:
+        70px;
+
+    padding:
+        55px;
+
+    border-radius:
+        25px;
+
+}
+
+
+.acrylic-title span {
+
+    color:
+        rgba(255,255,255,.2);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .2em;
+
+}
+
+
+.acrylic-title h2 {
+
+    margin:
+        18px 0 0;
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-size:
+        clamp(40px, 5vw, 68px);
+
+    line-height:
+        .87;
+
+    letter-spacing:
+        -.065em;
+
+}
+
+
+.acrylic-copy {
+
+    padding-top:
+        7px;
+
+}
+
+
+.acrylic-copy p {
+
+    margin:
+        0 0 22px;
+
+    color:
+        rgba(255,255,255,.31);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.9;
+
+}
+
+
+.acrylic-copy p:last-child {
+
+    margin-bottom:
+        0;
+
+}
+
+
+/* =========================================================
+   FEATURE GRID
+   ========================================================= */
+
+.feature-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        10px;
+
+}
+
+
+.feature-card {
+
+    min-height:
+        205px;
+
+    padding:
+        23px;
+
+    border-radius:
+        19px;
+
+}
+
+
+.feature-card > span {
+
+    color:
+        rgba(255,255,255,.16);
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        .18em;
+
+}
+
+
+.feature-card h3 {
+
+    margin:
+        50px 0 12px;
+
+    color:
+        rgba(255,255,255,.67);
+
+    font-size:
+        17px;
+
+    line-height:
+        .95;
+
+    letter-spacing:
+        -.03em;
+
+}
+
+
+.feature-card p {
+
+    margin:
+        0;
+
+    color:
+        rgba(255,255,255,.27);
+
+    font-size:
+        8px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   SPEC TABLE
+   ========================================================= */
+
+.spec-table {
+
+    border-radius:
+        23px;
+
+}
+
+
+.spec-table-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    padding:
+        18px 22px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+
+    color:
+        rgba(255,255,255,.2);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .2em;
+
+}
+
+
+.spec-row {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        .7fr 1.3fr;
+
+    min-height:
+        55px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.055);
+
+}
+
+
+.spec-row:last-child {
+
+    border-bottom:
+        0;
+
+}
+
+
+.spec-row span,
+.spec-row strong {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    padding:
+        14px 22px;
+
+}
+
+
+.spec-row span {
+
+    color:
+        rgba(255,255,255,.19);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .16em;
+
+}
+
+
+.spec-row strong {
+
+    justify-content:
+        flex-end;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size:
+        9px;
+
+    font-weight:
+        500;
+
+    text-align:
+        right;
+
+}
+
+
+/* =========================================================
+   FINAL
+   ========================================================= */
+
+.final-panel {
+
+    margin-top:
+        85px;
+
+    padding:
+        90px 30px;
+
+    border-radius:
+        27px;
+
+    text-align:
+        center;
+
+}
+
+
+.final-panel h2 {
+
+    margin:
+        18px 0;
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-size:
+        clamp(45px, 6vw, 82px);
+
+    line-height:
+        .84;
+
+    letter-spacing:
+        -.075em;
+
+}
+
+
+.final-panel p {
+
+    max-width:
+        470px;
+
+    margin:
+        0 auto 27px;
+
+    color:
+        rgba(255,255,255,.27);
+
+    font-size:
+        10px;
+
+    line-height:
+        1.7;
+
+}
+
+
+.final-panel .voltica-buy-button {
+
+    max-width:
+        400px;
+
+    margin:
+        25px auto 0;
+
+}
+
+
+/* =========================================================
+   XREAL
+   ========================================================= */
+
+.xreal-intro {
+
+    padding:
+        19px;
+
+    margin-bottom:
+        10px;
+
+    border-radius:
+        17px;
+
+}
+
+
+.xreal-intro p {
+
+    margin:
+        0 0 12px;
+
+    color:
+        rgba(255,255,255,.32);
+
+    font-size:
+        10px;
+
+    line-height:
+        1.7;
+
+}
+
+
+.xreal-intro p:last-child {
+
+    margin-bottom:
+        0;
+
+}
+
+
+.xreal-highlight {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    border-radius:
+        17px;
+
+}
+
+
+.xreal-highlight div {
+
+    padding:
+        20px;
+
+}
+
+
+.xreal-highlight div + div {
+
+    border-left:
+        1px solid
+        rgba(255,255,255,.07);
+
+}
+
+
+.xreal-highlight span {
+
+    display:
+        block;
+
+    color:
+        rgba(255,255,255,.19);
+
+    font-size:
+        6px;
+
+    letter-spacing:
+        .16em;
+
+}
+
+
+.xreal-highlight strong {
+
+    display:
+        block;
+
+    margin-top:
+        10px;
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size:
+        18px;
+
+}
+
+
+.coming-soon {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        9px;
+
+    min-height:
+        52px;
+
+    margin-top:
+        13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .17em;
+
+}
+
+
+/* =========================================================
+   LIGHTBOX
+   ========================================================= */
+
+.image-lightbox {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        99999;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        25px;
+
+    background:
+        rgba(0,0,0,.94);
+
+    backdrop-filter:
+        blur(25px);
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.image-lightbox.open {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    pointer-events:
+        auto;
+
+}
+
+
+.image-lightbox img {
+
+    max-width:
+        94vw;
+
+    max-height:
+        90vh;
+
+    object-fit:
+        contain;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:
+        17px;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.7);
+
+}
+
+
+.lightbox-close {
+
+    position:
+        absolute;
+
+    top:
+        20px;
+
+    right:
+        20px;
+
+    width:
+        45px;
+
+    height:
+        45px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:
+        rgba(255,255,255,.7);
+
+    font-size:
+        25px;
+
+    cursor:
+        pointer;
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.voltica-footer {
+
+    width:
+        min(1240px, 92vw);
+
+    margin:
+        auto;
+
+    padding:
+        25px 0 45px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        rgba(255,255,255,.13);
+
+    font-size:
+        6px;
+
+    letter-spacing:
+        .18em;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .product-hero {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .product-info-panel {
+
+        max-width:
+            720px;
+
+    }
+
+
+    .acrylic-description {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            35px;
+
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .voltica-header {
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .voltica-nav {
+
+        gap:
+            12px;
+
+    }
+
+
+    .voltica-nav a {
+
+        font-size:
+            6px;
+
+    }
+
+
+    .product-container {
+
+        width:
+            91vw;
+
+        padding-top:
+            25px;
+
+    }
+
+
+    .thumbnail-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+
+    .product-info-panel h1 {
+
+        font-size:
+            57px;
+
+    }
+
+
+    .acrylic-description {
+
+        padding:
+            28px;
+
+    }
+
+
+    .feature-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .feature-card {
+
+        min-height:
+            170px;
+
+    }
+
+
+    .spec-row {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .spec-row strong {
+
+        justify-content:
+            flex-start;
+
+        padding-top:
+            0;
+
+        padding-bottom:
+            18px;
+
+        text-align:
+            left;
+
+    }
+
+
+    .elite-pass-content {
+
+        grid-template-columns:
+            55px 1fr;
+
+    }
+
+
+    .elite-pass-number {
+
+        font-size:
+            34px;
+
+    }
+
+
+    .voltica-footer {
+
+        flex-direction:
+            column;
+
+        gap:
+            10px;
+
+    }
+
+}
+
+</style>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   PRODUCT ROUTING
+   ========================================================= */
+
+const q45 =
+    document.getElementById("q45");
+
+const xreal =
+    document.getElementById("xreal-air-1s");
+
+
+function showProduct() {
+
+    const hash =
+        window.location.hash.toLowerCase();
+
+
+    if (
+        hash === "#xreal-air-1s"
+    ) {
+
+        q45.style.display =
+            "none";
+
+        xreal.style.display =
+            "block";
+
+        document.title =
+            "XREAL Air 1S — Voltica Store";
+
+    }
+
+    else {
+
+        q45.style.display =
+            "block";
+
+        xreal.style.display =
+            "none";
+
+        document.title =
+            "Voltica Q45 — Voltica Store";
+
+    }
+
+}
+
+
+showProduct();
+
+
+window.addEventListener(
+    "hashchange",
+    showProduct
+);
+
+
+
+/* =========================================================
+   Q45 THUMBNAILS
+   ========================================================= */
+
+const q45Main =
+    document.getElementById(
+        "q45MainImage"
+    );
+
+
+const q45Counter =
+    document.getElementById(
+        "q45Counter"
+    );
+
+
+const q45Thumbs =
+    document.querySelectorAll(
+        "#q45 .product-thumbnail"
+    );
+
+
+q45Thumbs.forEach(
+    function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                q45Main.src =
+                    button.dataset.main;
+
+
+                q45Thumbs.forEach(
+                    function(item) {
+
+                        item.classList
+                            .remove("active");
+
+                    }
+                );
+
+
+                button.classList
+                    .add("active");
+
+
+                q45Counter.textContent =
+                    button.dataset.number
+                    + " / 06";
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   XREAL THUMBNAILS
+   ========================================================= */
+
+const xrealMain =
+    document.getElementById(
+        "xrealMainImage"
+    );
+
+
+const xrealCounter =
+    document.getElementById(
+        "xrealCounter"
+    );
+
+
+const xrealThumbs =
+    document.querySelectorAll(
+        "#xreal-air-1s .product-thumbnail"
+    );
+
+
+xrealThumbs.forEach(
+    function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                xrealMain.src =
+                    button.dataset.main;
+
+
+                xrealThumbs.forEach(
+                    function(item) {
+
+                        item.classList
+                            .remove("active");
+
+                    }
+                );
+
+
+                button.classList
+                    .add("active");
+
+
+                xrealCounter.textContent =
+                    button.dataset.number
+                    + " / 06";
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   COLORS
+   ========================================================= */
+
+const colorButtons =
+    document.querySelectorAll(
+        ".color-button"
+    );
+
+
+const selectedColor =
+    document.getElementById(
+        "selectedColor"
+    );
+
+
+colorButtons.forEach(
+    function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                colorButtons.forEach(
+                    function(item) {
+
+                        item.classList
+                            .remove("active");
+
+                    }
+                );
+
+
+                button.classList
+                    .add("active");
+
+
+                selectedColor.textContent =
+                    button.dataset.color
+                        .toUpperCase();
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   LIGHTBOX
+   ========================================================= */
+
+const lightbox =
+    document.getElementById(
+        "imageLightbox"
+    );
+
+
+const lightboxImage =
+    document.getElementById(
+        "lightboxImage"
+    );
+
+
+const closeLightbox =
+    document.getElementById(
+        "closeLightbox"
+    );
+
+
+function openImage(image) {
+
+    lightboxImage.src =
+        image.src;
+
+    lightboxImage.alt =
+        image.alt;
+
+    lightbox.classList
+        .add("open");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeImage() {
+
+    lightbox.classList
+        .remove("open");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+document
+    .getElementById(
+        "q45ImageButton"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            openImage(q45Main);
+
+        }
+    );
+
+
+document
+    .getElementById(
+        "xrealImageButton"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            openImage(xrealMain);
+
+        }
+    );
+
+
+closeLightbox.addEventListener(
+    "click",
+    closeImage
+);
+
+
+lightbox.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target === lightbox
+        ) {
+
+            closeImage();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeImage();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+        </html>

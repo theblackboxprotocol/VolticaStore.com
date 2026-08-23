@@ -10371,3 +10371,31 @@ nav a {
     align-items: center !important;
     justify-content: center !important;
 }
+/* =====================================================
+   VOLTICA EDGE NAV — ALIGNMENT FIX
+   ===================================================== */
+
+.voltica-edge-nav {
+    align-items: flex-start;
+}
+
+.voltica-store-navigation {
+    position: relative;
+    width: 145px;
+    height: 52px;
+    margin: 0;
+    padding: 0;
+}
+
+.voltica-store-navigation > .voltica-edge-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 145px;
+    height: 52px;
+    min-height: 52px;
+
+    margin: 0;
+    box-sizing: border-box;
+}

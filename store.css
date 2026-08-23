@@ -1832,3 +1832,22 @@ button {
         transition-duration: .01ms !important;
     }
              }
+.voltica-logo-image {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+.logo-acrylic {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-text {
+    font-size: 0.95rem;
+    letter-spacing: 0.22em;
+    white-space: nowrap;
+}

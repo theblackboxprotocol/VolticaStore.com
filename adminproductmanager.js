@@ -32,32 +32,43 @@ let notificationTimer = null;
    DOM HELPERS
    ========================================================= */
 
-const $ = (id) => document.getElementById(id);
+const $ = (id) =>
+    document.getElementById(id);
 
 
 /* =========================================================
    DOM REFERENCES
    ========================================================= */
 
-const productEditor = $("productEditor");
+const productEditor =
+    $("productEditor");
 
-const productList = $("productList");
+const productList =
+    $("productList");
 
-const emptyState = $("emptyState");
+const emptyState =
+    $("emptyState");
 
-const imageUpload = $("productImageUpload");
+const imageUpload =
+    $("productImageUpload");
 
-const imagePreview = $("imagePreview");
+const imagePreview =
+    $("imagePreview");
 
-const notification = $("adminNotification");
+const notification =
+    $("adminNotification");
 
-const notificationText = $("notificationText");
+const notificationText =
+    $("notificationText");
 
-const confirmOverlay = $("confirmOverlay");
+const confirmOverlay =
+    $("confirmOverlay");
 
-const confirmTitle = $("confirmTitle");
+const confirmTitle =
+    $("confirmTitle");
 
-const confirmMessage = $("confirmMessage");
+const confirmMessage =
+    $("confirmMessage");
 
 
 /* =========================================================
@@ -186,10 +197,11 @@ function bindEvents() {
 
     confirmOverlay?.addEventListener(
         "click",
-        (event) => {
+        event => {
 
             if (
-                event.target === confirmOverlay
+                event.target ===
+                confirmOverlay
             ) {
 
                 closeConfirmation();
@@ -243,7 +255,9 @@ function loadProducts() {
 
 
     if (
-        Array.isArray(storedProducts)
+        Array.isArray(
+            storedProducts
+        )
     ) {
 
         products =
@@ -288,7 +302,9 @@ function normalizeProductCatalog(
 ) {
 
     if (
-        !Array.isArray(catalog)
+        !Array.isArray(
+            catalog
+        )
     ) {
 
         return [];
@@ -385,7 +401,9 @@ function normalizeProduct(
                 ? source.keyFeatures
                     .map(
                         item =>
-                            cleanText(item)
+                            cleanText(
+                                item
+                            )
                     )
                     .filter(Boolean)
                 : [],
@@ -402,7 +420,9 @@ function normalizeProduct(
                 ? source.colors
                     .map(
                         item =>
-                            cleanText(item)
+                            cleanText(
+                                item
+                            )
                     )
                     .filter(Boolean)
                 : [],
@@ -460,13 +480,11 @@ function saveProductsToStorage() {
         );
 
 
-        /*
-         * Notify other Voltica pages/tabs.
-         */
-
         localStorage.setItem(
             STORE_EVENT_KEY,
-            String(Date.now())
+            String(
+                Date.now()
+            )
         );
 
 
@@ -499,7 +517,14 @@ function openProductEditor(
         product?.id || null;
 
 
-    productEditor.hidden = false;
+    if (
+        productEditor
+    ) {
+
+        productEditor.hidden =
+            false;
+
+    }
 
 
     if (product) {
@@ -523,7 +548,7 @@ function openProductEditor(
     }
 
 
-    productEditor.scrollIntoView({
+    productEditor?.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
@@ -537,34 +562,36 @@ function openProductEditor(
 
 function closeProductEditor() {
 
-    if (
-        selectedImages.length
-    ) {
+    selectedImages.forEach(
+        image => {
 
-        selectedImages.forEach(
-            image => {
+            if (
+                image?.preview
+            ) {
 
-                if (
+                URL.revokeObjectURL(
                     image.preview
-                ) {
-
-                    URL.revokeObjectURL(
-                        image.preview
-                    );
-
-                }
+                );
 
             }
-        );
 
-    }
+        }
+    );
 
 
     selectedImages = [];
 
     editingProductId = null;
 
-    productEditor.hidden = true;
+
+    if (
+        productEditor
+    ) {
+
+        productEditor.hidden =
+            true;
+
+    }
 
 }
 
@@ -604,7 +631,9 @@ function clearEditor() {
                 $(id);
 
 
-            if (element) {
+            if (
+                element
+            ) {
 
                 element.value = "";
 
@@ -614,16 +643,31 @@ function clearEditor() {
     );
 
 
-    if ($("productBadge")) {
+    if (
+        $("productBadge")
+    ) {
 
-        $("productBadge").value = "";
+        $("productBadge").value =
+            "";
 
     }
 
 
-    if ($("productActive")) {
+    if (
+        $("productActive")
+    ) {
 
-        $("productActive").checked = true;
+        $("productActive").checked =
+            true;
+
+    }
+
+
+    if (
+        $("productId")
+    ) {
+
+        delete $("productId").dataset.manual;
 
     }
 
@@ -757,7 +801,9 @@ function handleProductNameInput() {
         $("productId");
 
 
-    if (!idField) {
+    if (
+        !idField
+    ) {
 
         return;
 
@@ -775,11 +821,14 @@ function handleProductNameInput() {
 
 
     const name =
-        $("productName")?.value || "";
+        $("productName")?.value ||
+        "";
 
 
     idField.value =
-        slugify(name);
+        slugify(
+            name
+        );
 
 }
 
@@ -794,7 +843,9 @@ function handleManualIdInput() {
         $("productId");
 
 
-    if (!field) {
+    if (
+        !field
+    ) {
 
         return;
 
@@ -817,7 +868,9 @@ function saveProduct() {
         buildProductFromEditor();
 
 
-    if (!product.name) {
+    if (
+        !product.name
+    ) {
 
         showNotification(
             "PRODUCT NAME REQUIRED"
@@ -825,7 +878,6 @@ function saveProduct() {
 
 
         $("productName")?.focus();
-
 
         return;
 
@@ -843,25 +895,24 @@ function saveProduct() {
 
         $("productPrice")?.focus();
 
-
         return;
 
     }
 
 
-    /*
-     * Prevent accidental duplicate IDs.
-     */
-
     const duplicateId =
         products.some(
             item =>
-                item.id === product.id &&
-                item.id !== editingProductId
+                item.id ===
+                product.id &&
+                item.id !==
+                editingProductId
         );
 
 
-    if (duplicateId) {
+    if (
+        duplicateId
+    ) {
 
         showNotification(
             "PRODUCT ID ALREADY EXISTS"
@@ -869,7 +920,6 @@ function saveProduct() {
 
 
         $("productId")?.focus();
-
 
         return;
 
@@ -888,7 +938,9 @@ function saveProduct() {
             );
 
 
-        if (index !== -1) {
+        if (
+            index !== -1
+        ) {
 
             products[index] =
                 product;
@@ -914,18 +966,7 @@ function saveProduct() {
     }
 
 
-    /*
-     * This is the important bridge:
-     *
-     * ADMIN
-     * ↓
-     * LOCAL DATABASE
-     * ↓
-     * STORE
-     */
-
     saveProductsToStorage();
-
 
     renderProducts();
 
@@ -956,15 +997,19 @@ function buildProductFromEditor() {
         );
 
 
-    if (!id) {
+    if (
+        !id
+    ) {
 
         id =
-            slugify(name);
+            slugify(
+                name
+            );
 
     }
 
 
-    const product = {
+    return {
 
         id,
 
@@ -1040,11 +1085,13 @@ function buildProductFromEditor() {
                 selectedImages
             ).map(
                 image => ({
+
                     name:
                         image.name,
 
                     path:
                         image.path
+
                 })
             ),
 
@@ -1065,9 +1112,6 @@ function buildProductFromEditor() {
 
     };
 
-
-    return product;
-
 }
 
 
@@ -1082,11 +1126,14 @@ function deleteProduct(
     const product =
         products.find(
             item =>
-                item.id === productId
+                item.id ===
+                productId
         );
 
 
-    if (!product) {
+    if (
+        !product
+    ) {
 
         return;
 
@@ -1135,11 +1182,14 @@ function duplicateProduct(
     const original =
         products.find(
             item =>
-                item.id === productId
+                item.id ===
+                productId
         );
 
 
-    if (!original) {
+    if (
+        !original
+    ) {
 
         return;
 
@@ -1197,11 +1247,14 @@ function toggleProductStatus(
     const product =
         products.find(
             item =>
-                item.id === productId
+                item.id ===
+                productId
         );
 
 
-    if (!product) {
+    if (
+        !product
+    ) {
 
         return;
 
@@ -1233,7 +1286,9 @@ function toggleProductStatus(
 
 function renderProducts() {
 
-    if (!productList) {
+    if (
+        !productList
+    ) {
 
         return;
 
@@ -1311,34 +1366,42 @@ function renderProducts() {
         );
 
 
-    productList.innerHTML = "";
+    productList.innerHTML =
+        "";
 
 
     if (
         filtered.length === 0
     ) {
 
-        productList.hidden = true;
+        productList.hidden =
+            true;
 
 
-        if (emptyState) {
+        if (
+            emptyState
+        ) {
 
-            emptyState.hidden = false;
+            emptyState.hidden =
+                false;
 
         }
-
 
         return;
 
     }
 
 
-    productList.hidden = false;
+    productList.hidden =
+        false;
 
 
-    if (emptyState) {
+    if (
+        emptyState
+    ) {
 
-        emptyState.hidden = true;
+        emptyState.hidden =
+            true;
 
     }
 
@@ -1415,12 +1478,14 @@ function createProductListItem(
                 )}
             </small>
 
+
             <h3>
                 ${escapeHTML(
                     product.name ||
                     "Unnamed Product"
                 )}
             </h3>
+
 
             <p>
                 SKU:
@@ -1430,6 +1495,7 @@ function createProductListItem(
                 )}
             </p>
 
+
             <div class="product-list-price">
 
                 ${formatPrice(
@@ -1437,6 +1503,7 @@ function createProductListItem(
                 )}
 
             </div>
+
 
             <div
                 class="product-status ${
@@ -1504,29 +1571,27 @@ function createProductListItem(
     `;
 
 
-    const buttons =
-        article.querySelectorAll(
+    article
+        .querySelectorAll(
             "[data-action]"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        handleProductAction(
+                            button.dataset.action,
+                            button.dataset.id
+                        );
+
+                    }
+                );
+
+            }
         );
-
-
-    buttons.forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    handleProductAction(
-                        button.dataset.action,
-                        button.dataset.id
-                    );
-
-                }
-            );
-
-        }
-    );
 
 
     return article;
@@ -1546,18 +1611,23 @@ function handleProductAction(
     const product =
         products.find(
             item =>
-                item.id === productId
+                item.id ===
+                productId
         );
 
 
-    if (!product) {
+    if (
+        !product
+    ) {
 
         return;
 
     }
 
 
-    switch (action) {
+    switch (
+        action
+    ) {
 
         case "edit":
 
@@ -1618,11 +1688,8 @@ function handleImageSelection(
     );
 
 
-    /*
-     * Allows selecting the same file again.
-     */
-
-    event.target.value = "";
+    event.target.value =
+        "";
 
 }
 
@@ -1649,18 +1716,6 @@ function addImageFiles(
 
             }
 
-
-            /*
-             * Preserve the original filename.
-             *
-             * Example:
-             *
-             * q451-1.webp
-             *
-             * becomes:
-             *
-             * assets/images/q451-1.webp
-             */
 
             const filename =
                 file.name;
@@ -1735,7 +1790,9 @@ function buildImagePath(
         .trim();
 
 
-    if (!cleanFilename) {
+    if (
+        !cleanFilename
+    ) {
 
         return "";
 
@@ -1760,7 +1817,9 @@ function setupImageDragAndDrop() {
         $("imageUploadSquare");
 
 
-    if (!uploadArea) {
+    if (
+        !uploadArea
+    ) {
 
         return;
 
@@ -1847,14 +1906,17 @@ function setupImageDragAndDrop() {
 
 function renderImagePreview() {
 
-    if (!imagePreview) {
+    if (
+        !imagePreview
+    ) {
 
         return;
 
     }
 
 
-    imagePreview.innerHTML = "";
+    imagePreview.innerHTML =
+        "";
 
 
     if (
@@ -2020,7 +2082,9 @@ function updateStatistics() {
         ).size;
 
 
-    if ($("totalProducts")) {
+    if (
+        $("totalProducts")
+    ) {
 
         $("totalProducts").textContent =
             products.length;
@@ -2028,7 +2092,9 @@ function updateStatistics() {
     }
 
 
-    if ($("activeProducts")) {
+    if (
+        $("activeProducts")
+    ) {
 
         $("activeProducts").textContent =
             active;
@@ -2036,7 +2102,9 @@ function updateStatistics() {
     }
 
 
-    if ($("totalCategories")) {
+    if (
+        $("totalCategories")
+    ) {
 
         $("totalCategories").textContent =
             categories;
@@ -2056,7 +2124,9 @@ function updateCategoryFilter() {
         $("categoryFilter");
 
 
-    if (!select) {
+    if (
+        !select
+    ) {
 
         return;
 
@@ -2079,4 +2149,264 @@ function updateCategoryFilter() {
             )
         ]
         .sort(
-            (a,
+            (a, b) =>
+                a.localeCompare(
+                    b
+                )
+        );
+
+
+    select.innerHTML = `
+
+        <option value="all">
+            ALL CATEGORIES
+        </option>
+
+    `;
+
+
+    categories.forEach(
+        category => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                category;
+
+
+            option.textContent =
+                category;
+
+
+            select.appendChild(
+                option
+            );
+
+        }
+    );
+
+
+    if (
+        categories.includes(
+            current
+        )
+    ) {
+
+        select.value =
+            current;
+
+    } else {
+
+        select.value =
+            "all";
+
+    }
+
+}
+
+
+/* =========================================================
+   NORMALIZE IMAGES
+   ========================================================= */
+
+function normalizeImages(
+    images
+) {
+
+    if (
+        !Array.isArray(images)
+    ) {
+
+        return [];
+
+    }
+
+
+    return images
+        .map(
+            image => {
+
+                if (
+                    typeof image ===
+                    "string"
+                ) {
+
+                    const path =
+                        image.trim();
+
+
+                    if (
+                        !path
+                    ) {
+
+                        return null;
+
+                    }
+
+
+                    return {
+
+                        name:
+                            path
+                                .split("/")
+                                .pop(),
+
+                        path
+
+                    };
+
+                }
+
+
+                if (
+                    image &&
+                    typeof image ===
+                    "object"
+                ) {
+
+                    const path =
+                        cleanText(
+                            image.path
+                        );
+
+
+                    const name =
+                        cleanText(
+                            image.name
+                        ) ||
+                        path
+                            .split("/")
+                            .pop();
+
+
+                    if (
+                        !path &&
+                        !name
+                    ) {
+
+                        return null;
+
+                    }
+
+
+                    return {
+
+                        name,
+
+                        path:
+                            path ||
+                            buildImagePath(
+                                name
+                            )
+
+                    };
+
+                }
+
+
+                return null;
+
+            }
+        )
+        .filter(Boolean);
+
+}
+
+
+/* =========================================================
+   GET FIRST IMAGE
+   ========================================================= */
+
+function getFirstImage(
+    product
+) {
+
+    const images =
+        normalizeImages(
+            product?.images
+        );
+
+
+    if (
+        !images.length
+    ) {
+
+        return "";
+
+    }
+
+
+    return (
+        images[0].path ||
+        ""
+    );
+
+}
+
+
+/* =========================================================
+   NORMALIZE VARIANTS
+   ========================================================= */
+
+function normalizeVariants(
+    variants
+) {
+
+    if (
+        !Array.isArray(
+            variants
+        )
+    ) {
+
+        return [];
+
+    }
+
+
+    return variants
+        .map(
+            variant => {
+
+                if (
+                    typeof variant ===
+                    "string"
+                ) {
+
+                    return {
+
+                        name:
+                            cleanText(
+                                variant
+                            )
+
+                    };
+
+                }
+
+
+                if (
+                    variant &&
+                    typeof variant ===
+                    "object"
+                ) {
+
+                    return {
+
+                        name:
+                            cleanText(
+                                variant.name
+                            ),
+
+                        sku:
+                            cleanText(
+                                variant.sku
+                            ),
+
+                        price:
+                            numberValue(
+                                variant.price
+                           

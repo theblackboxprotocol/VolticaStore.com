@@ -1,22 +1,13 @@
 /* =========================================================
-   VOLTICA STORE — PRODUCT VIEW.JS
-   Complete Product Detail Engine
+   VOLTICA STORE
+   PRODUCT VIEW ENGINE
    ========================================================= */
 
 "use strict";
 
 
 /* =========================================================
-   GLOBAL
-   ========================================================= */
-
-let currentProduct = null;
-
-let selectedVariant = null;
-
-
-/* =========================================================
-   DOM READY
+   INITIALIZATION
    ========================================================= */
 
 document.addEventListener(
@@ -25,15 +16,12 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   INITIALIZATION
-   ========================================================= */
-
 function initializeProductView() {
+
+    console.log("VOLTICA PRODUCT VIEW STARTING...");
 
     const product =
         getProductFromURL();
-
 
     if (!product) {
 
@@ -43,35 +31,18 @@ function initializeProductView() {
 
     }
 
-
-    currentProduct =
-        product;
-
-
-    renderProduct(
+    console.log(
+        "VOLTICA PRODUCT FOUND:",
         product
     );
 
+    renderProduct(product);
 
     initializeGallery();
 
+    initializeLightbox();
 
-    initializeVariants(
-        product
-    );
-
-
-    initializePurchaseButtons(
-        product
-    );
-
-
-    initializeKeyboard();
-
-
-    console.log(
-        "VOLTICA PRODUCT VIEW READY"
-    );
+    initializeVariants(product);
 
 }
 
@@ -87,10 +58,7 @@ function getProductIdFromURL() {
             window.location.search
         );
 
-
-    return params.get(
-        "id"
-    );
+    return params.get("id");
 
 }
 
@@ -104,8 +72,11 @@ function getProductFromURL() {
     const productId =
         getProductIdFromURL();
 
-
     if (!productId) {
+
+        console.error(
+            "VOLTICA: No product ID in URL."
+        );
 
         return null;
 
@@ -118,16 +89,41 @@ function getProductFromURL() {
         )
     ) {
 
+        console.error(
+            "VOLTICA: products.js is not loaded."
+        );
+
         return null;
 
     }
 
 
-    return window.volticaProducts.find(
-        product =>
-            String(product.id) ===
-            String(productId)
-    ) || null;
+    const product =
+        window.volticaProducts.find(
+            item =>
+                String(item.id).trim() ===
+                String(productId).trim()
+        );
+
+
+    if (!product) {
+
+        console.error(
+            "VOLTICA: Product ID not found:",
+            productId
+        );
+
+        console.error(
+            "Available IDs:",
+            window.volticaProducts.map(
+                item => item.id
+            )
+        );
+
+    }
+
+
+    return product || null;
 
 }
 
@@ -136,69 +132,39 @@ function getProductFromURL() {
    RENDER PRODUCT
    ========================================================= */
 
-function renderProduct(
-    product
-) {
-
-    /*
-     * Category
-     */
+function renderProduct(product) {
 
     setText(
         "productCategory",
-        product.category ||
-        "COLLECTION"
+        product.category || "TECHNOLOGY"
     );
 
-
-    /*
-     * Product name
-     */
 
     setText(
         "productName",
-        product.name ||
-        "Voltica Product"
+        product.name || "Voltica Product"
     );
 
 
-    /*
-     * Short description
-     */
+    setText(
+        "finalProductName",
+        product.name || "DISCOVER THE FUTURE."
+    );
+
 
     setText(
         "productShortDescription",
         product.shortDescription ||
+        product.description ||
         ""
     );
 
 
-    /*
-     * Badge
-     */
-
-    setText(
-        "productBadge",
-        product.badge ||
-        "AVAILABLE"
-    );
-
-
-    /*
-     * Price
-     */
-
     setText(
         "productPrice",
-        formatPrice(
-            product.price
-        )
+        formatPrice(product.price)
     );
 
-
-    /*
-     * Currency
-     */
 
     setText(
         "productCurrency",
@@ -206,92 +172,27 @@ function renderProduct(
     );
 
 
-    /*
-     * Main image
-     */
-
-    renderMainImage(
-        product
-    );
-
-
-    /*
-     * Thumbnails
-     */
-
-    renderThumbnails(
-        product
-    );
-
-
-    /*
-     * Description
-     */
-
-    renderDescription(
-        product
-    );
-
-
-    /*
-     * Features
-     */
-
-    renderFeatures(
-        product
-    );
-
-
-    /*
-     * Specifications
-     */
-
-    renderSpecifications(
-        product
-    );
-
-
-    /*
-     * Options
-     */
-
-    renderOptions(
-        product
-    );
-
-
-    /*
-     * Availability
-     */
-
-    renderAvailability(
-        product
-    );
-
-
-    /*
-     * Reference price
-     */
-
-    renderReferencePrice(
-        product
-    );
-
-
-    /*
-     * Final CTA
-     */
-
     setText(
-        "finalProductName",
-        product.name ||
-        "DISCOVER THE FUTURE."
+        "productBadge",
+        product.badge || "PREMIUM"
     );
 
 
-    /*
-     * Page title
-     */
+    renderMainImage(product);
+
+    renderThumbnails(product);
+
+    renderDescription(product);
+
+    renderFeatures(product);
+
+    renderSpecifications(product);
+
+    renderOptions(product);
+
+    setupStripeButtons(product);
+
+    renderAvailability(product);
 
     document.title =
         `${product.name || "Product"} — Voltica Store`;
@@ -303,9 +204,10 @@ function renderProduct(
    MAIN IMAGE
    ========================================================= */
 
-function renderMainImage(
-    product
-) {
+function renderMainImage(product) {
+
+    const image =
+        getMainImage(product);
 
     const mainImage =
         document.getElementById(
@@ -320,21 +222,14 @@ function renderMainImage(
     }
 
 
-    const images =
-        getProductImages(
-            product
-        );
-
-
-    if (!images.length) {
+    if (!image) {
 
         mainImage.removeAttribute(
             "src"
         );
 
         mainImage.alt =
-            product.name ||
-            "Voltica Product";
+            product.name || "Voltica Product";
 
         return;
 
@@ -342,16 +237,10 @@ function renderMainImage(
 
 
     mainImage.src =
-        images[0];
-
+        image;
 
     mainImage.alt =
-        product.name ||
-        "Voltica Product";
-
-
-    mainImage.dataset.currentImage =
-        images[0];
+        product.name || "Voltica Product";
 
 }
 
@@ -360,9 +249,7 @@ function renderMainImage(
    THUMBNAILS
    ========================================================= */
 
-function renderThumbnails(
-    product
-) {
+function renderThumbnails(product) {
 
     const container =
         document.getElementById(
@@ -377,36 +264,15 @@ function renderThumbnails(
     }
 
 
-    container.innerHTML =
-        "";
+    container.innerHTML = "";
 
 
     const images =
-        getProductImages(
-            product
-        );
-
-
-    if (!images.length) {
-
-        container.innerHTML = `
-
-            <div class="thumbnail-empty">
-                NO IMAGES
-            </div>
-
-        `;
-
-        return;
-
-    }
+        getProductImages(product);
 
 
     images.forEach(
-        (
-            image,
-            index
-        ) => {
+        (image, index) => {
 
             const button =
                 document.createElement(
@@ -422,21 +288,13 @@ function renderThumbnails(
                 "product-thumbnail";
 
 
-            if (
-                index === 0
-            ) {
+            if (index === 0) {
 
                 button.classList.add(
                     "active"
                 );
 
             }
-
-
-            button.setAttribute(
-                "aria-label",
-                `View image ${index + 1}`
-            );
 
 
             const img =
@@ -448,24 +306,11 @@ function renderThumbnails(
             img.src =
                 image;
 
-
             img.alt =
-                `${product.name || "Product"} image ${index + 1}`;
-
+                `${product.name || "Product"} ${index + 1}`;
 
             img.loading =
-                index === 0
-                    ? "eager"
-                    : "lazy";
-
-
-            img.onerror =
-                () => {
-
-                    button.style.display =
-                        "none";
-
-                };
+                "lazy";
 
 
             button.appendChild(
@@ -497,7 +342,7 @@ function renderThumbnails(
 
 
 /* =========================================================
-   CHANGE MAIN IMAGE
+   CHANGE IMAGE
    ========================================================= */
 
 function changeMainImage(
@@ -522,10 +367,6 @@ function changeMainImage(
         image;
 
 
-    mainImage.dataset.currentImage =
-        image;
-
-
     document
         .querySelectorAll(
             ".product-thumbnail"
@@ -541,13 +382,9 @@ function changeMainImage(
         );
 
 
-    if (thumbnail) {
-
-        thumbnail.classList.add(
-            "active"
-        );
-
-    }
+    thumbnail?.classList.add(
+        "active"
+    );
 
 }
 
@@ -575,15 +412,9 @@ function initializeGallery() {
         "click",
         () => {
 
-            if (
+            openLightbox(
                 mainImage.src
-            ) {
-
-                openLightbox(
-                    mainImage.src
-                );
-
-            }
+            );
 
         }
     );
@@ -595,104 +426,94 @@ function initializeGallery() {
    LIGHTBOX
    ========================================================= */
 
-function openLightbox(
-    image
-) {
+function initializeLightbox() {
 
-    if (!image) {
+    const lightbox =
+        document.querySelector(
+            ".product-lightbox"
+        );
+
+
+    const closeButton =
+        document.querySelector(
+            ".lightbox-close"
+        );
+
+
+    if (!lightbox) {
 
         return;
 
     }
 
 
-    let lightbox =
-        document.getElementById(
-            "volticaLightbox"
-        );
+    closeButton?.addEventListener(
+        "click",
+        closeLightbox
+    );
 
 
-    if (!lightbox) {
+    lightbox.addEventListener(
+        "click",
+        event => {
 
-        lightbox =
-            document.createElement(
-                "div"
-            );
+            if (
+                event.target === lightbox
+            ) {
 
-
-        lightbox.id =
-            "volticaLightbox";
-
-
-        lightbox.className =
-            "voltica-lightbox";
-
-
-        lightbox.innerHTML = `
-
-            <button
-                type="button"
-                class="voltica-lightbox-close"
-                aria-label="Close image"
-            >
-                ×
-            </button>
-
-            <img
-                src=""
-                alt=""
-            >
-
-        `;
-
-
-        document.body.appendChild(
-            lightbox
-        );
-
-
-        lightbox
-            .querySelector(
-                ".voltica-lightbox-close"
-            )
-            .addEventListener(
-                "click",
-                closeLightbox
-            );
-
-
-        lightbox.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    event.target ===
-                    lightbox
-                ) {
-
-                    closeLightbox();
-
-                }
+                closeLightbox();
 
             }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+}
+
+
+function openLightbox(image) {
+
+    const lightbox =
+        document.querySelector(
+            ".product-lightbox"
         );
+
+
+    const lightboxImage =
+        document.querySelector(
+            ".product-lightbox img"
+        );
+
+
+    if (
+        !lightbox ||
+        !lightboxImage ||
+        !image
+    ) {
+
+        return;
 
     }
 
 
-    const imageElement =
-        lightbox.querySelector(
-            "img"
-        );
-
-
-    imageElement.src =
+    lightboxImage.src =
         image;
-
-
-    imageElement.alt =
-        currentProduct?.name ||
-        "Product";
 
 
     lightbox.classList.add(
@@ -700,9 +521,8 @@ function openLightbox(
     );
 
 
-    document.body.classList.add(
-        "lightbox-open"
-    );
+    document.body.style.overflow =
+        "hidden";
 
 }
 
@@ -710,8 +530,8 @@ function openLightbox(
 function closeLightbox() {
 
     const lightbox =
-        document.getElementById(
-            "volticaLightbox"
+        document.querySelector(
+            ".product-lightbox"
         );
 
 
@@ -727,9 +547,8 @@ function closeLightbox() {
     );
 
 
-    document.body.classList.remove(
-        "lightbox-open"
-    );
+    document.body.style.overflow =
+        "";
 
 }
 
@@ -738,9 +557,7 @@ function closeLightbox() {
    DESCRIPTION
    ========================================================= */
 
-function renderDescription(
-    product
-) {
+function renderDescription(product) {
 
     const container =
         document.getElementById(
@@ -765,12 +582,10 @@ function renderDescription(
     if (!description) {
 
         container.innerHTML = `
-
             <p>
                 Premium technology selected
-                for the Voltica collection.
+                by Voltica.
             </p>
-
         `;
 
         return;
@@ -778,25 +593,24 @@ function renderDescription(
     }
 
 
-    /*
-     * Plain text only.
-     * Prevents accidental HTML injection.
-     */
-
-    const paragraphs =
-        String(
+    if (
+        /<[a-z][\s\S]*>/i.test(
             description
         )
-        .split(
-            /\n\s*\n/
-        )
-        .filter(
-            Boolean
-        );
+    ) {
+
+        container.innerHTML =
+            description;
+
+        return;
+
+    }
 
 
     container.innerHTML =
-        paragraphs
+        String(description)
+            .split(/\n\s*\n/)
+            .filter(Boolean)
             .map(
                 paragraph =>
                     `<p>${escapeHTML(
@@ -815,13 +629,17 @@ function renderDescription(
    FEATURES
    ========================================================= */
 
-function renderFeatures(
-    product
-) {
+function renderFeatures(product) {
 
     const container =
         document.getElementById(
             "productFeatures"
+        );
+
+
+    const section =
+        document.getElementById(
+            "featuresSection"
         );
 
 
@@ -833,43 +651,42 @@ function renderFeatures(
 
 
     const features =
-        Array.isArray(
-            product.keyFeatures
-        )
-            ? product.keyFeatures
-            : [];
+        product.keyFeatures ||
+        product.features ||
+        product.highlights ||
+        [];
 
 
-    container.innerHTML =
-        "";
+    container.innerHTML = "";
 
 
-    if (!features.length) {
+    if (
+        !Array.isArray(features) ||
+        features.length === 0
+    ) {
 
-        document.getElementById(
-            "featuresSection"
-        )?.setAttribute(
-            "hidden",
-            ""
-        );
+        if (section) {
+
+            section.hidden =
+                true;
+
+        }
 
         return;
 
     }
 
 
-    document.getElementById(
-        "featuresSection"
-    )?.removeAttribute(
-        "hidden"
-    );
+    if (section) {
+
+        section.hidden =
+            false;
+
+    }
 
 
     features.forEach(
-        (
-            feature,
-            index
-        ) => {
+        (feature, index) => {
 
             const card =
                 document.createElement(
@@ -884,23 +701,14 @@ function renderFeatures(
             card.innerHTML = `
 
                 <span class="feature-number">
-                    ${String(
-                        index + 1
-                    ).padStart(
-                        2,
-                        "0"
-                    )}
+                    ${String(index + 1).padStart(2, "0")}
                 </span>
 
+                <span class="pulse-dot"></span>
 
-                <span class="feature-pulse"></span>
-
-
-                <p>
-                    ${escapeHTML(
-                        feature
-                    )}
-                </p>
+                <h3>
+                    ${escapeHTML(feature)}
+                </h3>
 
             `;
 
@@ -919,13 +727,17 @@ function renderFeatures(
    SPECIFICATIONS
    ========================================================= */
 
-function renderSpecifications(
-    product
-) {
+function renderSpecifications(product) {
 
     const container =
         document.getElementById(
             "productSpecifications"
+        );
+
+
+    const section =
+        document.getElementById(
+            "specificationsSection"
         );
 
 
@@ -936,61 +748,84 @@ function renderSpecifications(
     }
 
 
-    container.innerHTML =
-        "";
+    container.innerHTML = "";
 
 
     const specifications =
         product.specifications ||
+        product.specs ||
         {};
 
 
-    const entries =
+    let entries = [];
+
+
+    if (
         Array.isArray(
             specifications
         )
-            ? specifications.map(
-                item => [
-                    item.label ||
-                    item.name ||
-                    "Specification",
-                    item.value ||
-                    ""
-                ]
-            )
-            : Object.entries(
+    ) {
+
+        entries =
+            specifications
+                .filter(Boolean)
+                .map(
+                    item => [
+
+                        item.label ||
+                        item.name ||
+                        "",
+
+                        item.value ||
+                        ""
+
+                    ]
+                );
+
+    } else if (
+        typeof specifications ===
+        "object"
+    ) {
+
+        entries =
+            Object.entries(
                 specifications
             );
 
+    }
 
-    if (!entries.length) {
 
-        document.getElementById(
-            "specificationsSection"
-        )?.setAttribute(
-            "hidden",
-            ""
+    entries =
+        entries.filter(
+            ([label]) =>
+                String(label).trim()
         );
+
+
+    if (entries.length === 0) {
+
+        if (section) {
+
+            section.hidden =
+                true;
+
+        }
 
         return;
 
     }
 
 
-    document.getElementById(
-        "specificationsSection"
-    )?.removeAttribute(
-        "hidden"
-    );
+    if (section) {
+
+        section.hidden =
+            false;
+
+    }
 
 
     entries.forEach(
-        (
-            [
-                label,
-                value
-            ]
-        ) => {
+        ([label, value]) => {
 
             const row =
                 document.createElement(
@@ -1004,17 +839,12 @@ function renderSpecifications(
 
             row.innerHTML = `
 
-                <span class="specification-label">
-                    ${escapeHTML(
-                        label
-                    )}
+                <span>
+                    ${escapeHTML(label)}
                 </span>
 
-
-                <strong class="specification-value">
-                    ${escapeHTML(
-                        value
-                    )}
+                <strong>
+                    ${escapeHTML(value)}
                 </strong>
 
             `;
@@ -1031,12 +861,10 @@ function renderSpecifications(
 
 
 /* =========================================================
-   OPTIONS / COLORS
+   OPTIONS
    ========================================================= */
 
-function renderOptions(
-    product
-) {
+function renderOptions(product) {
 
     const container =
         document.getElementById(
@@ -1044,6 +872,12 @@ function renderOptions(
         );
 
 
+    const section =
+        document.getElementById(
+            "optionsSection"
+        );
+
+
     if (!container) {
 
         return;
@@ -1051,425 +885,242 @@ function renderOptions(
     }
 
 
-    const variants =
-        Array.isArray(
-            product.variants
-        )
-            ? product.variants
-            : [];
+    container.innerHTML = "";
 
 
     const colors =
-        Array.isArray(
-            product.colors
-        )
+        Array.isArray(product.colors)
             ? product.colors
             : [];
 
 
-    container.innerHTML =
-        "";
+    const variants =
+        Array.isArray(product.variants)
+            ? product.variants
+            : [];
 
 
     if (
-        !variants.length &&
-        !colors.length
+        colors.length === 0 &&
+        variants.length === 0
     ) {
 
-        document.getElementById(
-            "optionsSection"
-        )?.setAttribute(
-            "hidden",
-            ""
-        );
+        if (section) {
+
+            section.hidden =
+                true;
+
+        }
 
         return;
 
     }
 
 
-    document.getElementById(
-        "optionsSection"
-    )?.removeAttribute(
-        "hidden"
-    );
+    if (section) {
+
+        section.hidden =
+            false;
+
+    }
 
 
-    const title =
-        document.createElement(
-            "span"
+    if (colors.length) {
+
+        const title =
+            document.createElement(
+                "div"
+            );
+
+
+        title.className =
+            "option-title";
+
+
+        title.textContent =
+            "COLOR";
+
+
+        container.appendChild(
+            title
         );
 
 
-    title.className =
-        "option-label";
+        const colorGroup =
+            document.createElement(
+                "div"
+            );
 
 
-    title.textContent =
-        variants.length
-            ? "SELECT YOUR CONFIGURATION"
-            : "AVAILABLE COLORS";
+        colorGroup.className =
+            "option-group";
 
 
-    container.appendChild(
-        title
-    );
+        colors.forEach(
+            (color, index) => {
+
+                const button =
+                    createOptionButton(
+                        color,
+                        index === 0
+                    );
 
 
-    const list =
-        document.createElement(
-            "div"
+                colorGroup.appendChild(
+                    button
+                );
+
+            }
         );
 
 
-    list.className =
-        "product-option-list";
+        container.appendChild(
+            colorGroup
+        );
+
+    }
 
 
-    if (
-        variants.length
-    ) {
+    if (variants.length) {
+
+        const title =
+            document.createElement(
+                "div"
+            );
+
+
+        title.className =
+            "option-title";
+
+
+        title.textContent =
+            "VARIANT";
+
+
+        container.appendChild(
+            title
+        );
+
+
+        const variantGroup =
+            document.createElement(
+                "div"
+            );
+
+
+        variantGroup.className =
+            "option-group";
+
 
         variants.forEach(
-            (
-                variant,
-                index
-            ) => {
+            (variant, index) => {
 
                 const name =
                     typeof variant === "string"
                         ? variant
-                        : (
-                            variant.name ||
-                            variant.color ||
-                            `OPTION ${index + 1}`
-                        );
-
-
-                const sku =
-                    typeof variant === "object"
-                        ? (
-                            variant.sku ||
-                            ""
-                        )
-                        : "";
+                        : variant.name ||
+                          variant.color ||
+                          `Option ${index + 1}`;
 
 
                 const button =
-                    document.createElement(
-                        "button"
+                    createOptionButton(
+                        name,
+                        index === 0
                     );
 
 
-                button.type =
-                    "button";
-
-
-                button.className =
-                    "product-option-button";
-
-
-                if (
-                    index === 0
-                ) {
-
-                    button.classList.add(
-                        "active"
-                    );
-
-
-                    selectedVariant =
-                        variant;
-
-                }
-
-
-                button.innerHTML = `
-
-                    <span>
-                        ${escapeHTML(
-                            name
-                        )}
-                    </span>
-
-                    ${
-                        sku
-                            ? `
-                                <small>
-                                    SKU: ${escapeHTML(
-                                        sku
-                                    )}
-                                </small>
-                            `
-                            : ""
-                    }
-
-                `;
-
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        document
-                            .querySelectorAll(
-                                ".product-option-button"
-                            )
-                            .forEach(
-                                item => {
-
-                                    item.classList.remove(
-                                        "active"
-                                    );
-
-                                }
-                            );
-
-
-                        button.classList.add(
-                            "active"
-                        );
-
-
-                        selectedVariant =
-                            variant;
-
-
-                        updateVariantAvailability(
-                            product,
-                            variant
-                        );
-
-                    }
-                );
-
-
-                list.appendChild(
+                variantGroup.appendChild(
                     button
                 );
 
             }
         );
 
-    } else {
 
-        colors.forEach(
-            (
-                color,
-                index
-            ) => {
+        container.appendChild(
+            variantGroup
+        );
 
-                const button =
-                    document.createElement(
-                        "button"
-                    );
+    }
+
+}
 
 
-                button.type =
-                    "button";
+function createOptionButton(
+    name,
+    active
+) {
+
+    const button =
+        document.createElement(
+            "button"
+        );
 
 
-                button.className =
-                    "product-option-button";
+    button.type =
+        "button";
 
 
-                if (
-                    index === 0
-                ) {
-
-                    button.classList.add(
-                        "active"
-                    );
+    button.className =
+        "product-option-button";
 
 
-                    selectedVariant =
-                        color;
+    if (active) {
 
-                }
+        button.classList.add(
+            "active"
+        );
 
-
-                button.textContent =
-                    color;
-
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        document
-                            .querySelectorAll(
-                                ".product-option-button"
-                            )
-                            .forEach(
-                                item => {
-
-                                    item.classList.remove(
-                                        "active"
-                                    );
-
-                                }
-                            );
+    }
 
 
-                        button.classList.add(
+    button.textContent =
+        name;
+
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            button
+                .parentElement
+                ?.querySelectorAll(
+                    ".product-option-button"
+                )
+                .forEach(
+                    item => {
+
+                        item.classList.remove(
                             "active"
                         );
-
-
-                        selectedVariant =
-                            color;
 
                     }
                 );
 
 
-                list.appendChild(
-                    button
-                );
-
-            }
-        );
-
-    }
-
-
-    container.appendChild(
-        list
-    );
-
-}
-
-
-/* =========================================================
-   LEGACY VARIANT SUPPORT
-   ========================================================= */
-
-function initializeVariants(
-    product
-) {
-
-    /*
-     * The new HTML uses #productOptions.
-     *
-     * This function exists only to keep
-     * compatibility with older markup.
-     */
-
-    const oldContainer =
-        document.getElementById(
-            "colorOptions"
-        );
-
-
-    if (
-        !oldContainer
-    ) {
-
-        return;
-
-    }
-
-
-    oldContainer.innerHTML =
-        "";
-
-}
-
-
-/* =========================================================
-   VARIANT AVAILABILITY
-   ========================================================= */
-
-function updateVariantAvailability(
-    product,
-    variant
-) {
-
-    const availability =
-        document.getElementById(
-            "productAvailability"
-        );
-
-
-    if (!availability) {
-
-        return;
-
-    }
-
-
-    const name =
-        typeof variant === "string"
-            ? variant
-            : (
-                variant?.name ||
-                variant?.color ||
-                ""
+            button.classList.add(
+                "active"
             );
 
-
-    const sku =
-        typeof variant === "object"
-            ? (
-                variant.sku ||
-                ""
-            )
-            : "";
+        }
+    );
 
 
-    if (
-        sku
-    ) {
-
-        availability.innerHTML = `
-
-            <span class="pulse-dot"></span>
-
-            <span>
-                ${escapeHTML(
-                    name
-                )}
-            </span>
-
-            <small>
-                SKU ${escapeHTML(
-                    sku
-                )}
-            </small>
-
-        `;
-
-    } else {
-
-        availability.innerHTML = `
-
-            <span class="pulse-dot"></span>
-
-            <span>
-                ${escapeHTML(
-                    name ||
-                    "AVAILABLE"
-                )}
-            </span>
-
-        `;
-
-    }
+    return button;
 
 }
 
 
 /* =========================================================
-   AVAILABILITY
+   VARIANTS — HERO
    ========================================================= */
 
-function renderAvailability(
-    product
-) {
+function initializeVariants(product) {
 
     const container =
         document.getElementById(
-            "productAvailability"
+            "productVariants"
         );
 
 
@@ -1480,120 +1131,67 @@ function renderAvailability(
     }
 
 
-    container.innerHTML = `
-
-        <span class="pulse-dot"></span>
-
-        <span>
-            AVAILABLE
-        </span>
-
-    `;
+    container.innerHTML = "";
 
 
-    if (
-        Array.isArray(
-            product.variants
-        ) &&
-        product.variants.length
-    ) {
-
-        const first =
-            product.variants[0];
+    const colors =
+        Array.isArray(product.colors)
+            ? product.colors
+            : [];
 
 
-        updateVariantAvailability(
-            product,
-            first
-        );
-
-    }
-
-}
+    const variants =
+        Array.isArray(product.variants)
+            ? product.variants
+            : [];
 
 
-/* =========================================================
-   REFERENCE PRICE
-   ========================================================= */
-
-function renderReferencePrice(
-    product
-) {
-
-    const pricePanel =
-        document.querySelector(
-            ".product-price-panel"
-        );
+    const options = [
+        ...colors,
+        ...variants
+    ];
 
 
-    if (!pricePanel) {
+    if (!options.length) {
 
         return;
 
     }
 
 
-    const oldReference =
-        pricePanel.querySelector(
-            ".product-reference-price"
-        );
+    options.forEach(
+        (option, index) => {
+
+            const name =
+                typeof option === "string"
+                    ? option
+                    : option.name ||
+                      option.color ||
+                      `Option ${index + 1}`;
 
 
-    if (
-        oldReference
-    ) {
-
-        oldReference.remove();
-
-    }
+            const button =
+                createOptionButton(
+                    name,
+                    index === 0
+                );
 
 
-    const reference =
-        Number(
-            product.referencePrice
-        );
+            container.appendChild(
+                button
+            );
 
-
-    if (
-        !reference ||
-        reference <= 0
-    ) {
-
-        return;
-
-    }
-
-
-    const element =
-        document.createElement(
-            "span"
-        );
-
-
-    element.className =
-        "product-reference-price";
-
-
-    element.textContent =
-        formatPrice(
-            reference
-        );
-
-
-    pricePanel.appendChild(
-        element
+        }
     );
 
 }
 
 
 /* =========================================================
-   PURCHASE BUTTONS
+   STRIPE
    ========================================================= */
 
-function initializePurchaseButtons(
-    product
-) {
+function setupStripeButtons(product) {
 
     const stripeLink =
         product.stripeLink ||
@@ -1602,137 +1200,47 @@ function initializePurchaseButtons(
         "";
 
 
-    const mainButton =
+    const buttons = [
+
         document.getElementById(
             "stripeButton"
-        );
+        ),
 
-
-    const finalButton =
         document.getElementById(
             "finalStripeButton"
-        );
+        )
+
+    ].filter(Boolean);
 
 
-    if (
-        mainButton
-    ) {
+    buttons.forEach(
+        button => {
 
-        configurePurchaseButton(
-            mainButton,
-            stripeLink,
-            product
-        );
+            if (!stripeLink) {
 
-    }
+                button.style.display =
+                    "none";
 
-
-    if (
-        finalButton
-    ) {
-
-        configurePurchaseButton(
-            finalButton,
-            stripeLink,
-            product
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   CONFIGURE PURCHASE BUTTON
-   ========================================================= */
-
-function configurePurchaseButton(
-    button,
-    stripeLink,
-    product
-) {
-
-    if (
-        stripeLink
-    ) {
-
-        button.href =
-            stripeLink;
-
-
-        button.target =
-            "_blank";
-
-
-        button.rel =
-            "noopener noreferrer";
-
-
-        button.classList.remove(
-            "disabled"
-        );
-
-
-        return;
-
-    }
-
-
-    /*
-     * No Stripe link yet.
-     */
-
-    button.removeAttribute(
-        "href"
-    );
-
-
-    button.removeAttribute(
-        "target"
-    );
-
-
-    button.classList.add(
-        "disabled"
-    );
-
-
-    button.addEventListener(
-        "click",
-        event => {
-
-            event.preventDefault();
-
-
-            showProductMessage(
-                "CHECKOUT COMING SOON"
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   KEYBOARD
-   ========================================================= */
-
-function initializeKeyboard() {
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key ===
-                "Escape"
-            ) {
-
-                closeLightbox();
+                return;
 
             }
 
+
+            button.href =
+                stripeLink;
+
+
+            button.target =
+                "_blank";
+
+
+            button.rel =
+                "noopener noreferrer";
+
+
+            button.style.display =
+                "flex";
+
         }
     );
 
@@ -1740,143 +1248,51 @@ function initializeKeyboard() {
 
 
 /* =========================================================
-   PRODUCT ERROR
+   AVAILABILITY
    ========================================================= */
 
-function showProductError() {
+function renderAvailability(product) {
 
-    const page =
+    const element =
         document.getElementById(
-            "productPage"
+            "productAvailability"
         );
 
 
-    if (!page) {
+    if (!element) {
 
         return;
 
     }
 
 
-    page.innerHTML = `
+    if (
+        product.active === false
+    ) {
 
-        <section class="product-error">
+        element.innerHTML = `
+            <span class="pulse-dot"></span>
+            CURRENTLY UNAVAILABLE
+        `;
 
-            <div class="error-pulsar"></div>
+        return;
 
-
-            <span>
-                VOLTICA STORE
-            </span>
-
-
-            <h1>
-                PRODUCT NOT FOUND
-            </h1>
+    }
 
 
-            <p>
-                This product could not be found
-                in the current collection.
-            </p>
-
-
-            <a
-                href="store.html"
-                class="back-store-button"
-            >
-                ← RETURN TO STORE
-            </a>
-
-        </section>
-
+    element.innerHTML = `
+        <span class="pulse-dot"></span>
+        AVAILABLE — READY TO ORDER
     `;
 
 }
 
 
 /* =========================================================
-   PRODUCT MESSAGE
+   IMAGES
    ========================================================= */
 
-function showProductMessage(
-    message
-) {
-
-    let notification =
-        document.getElementById(
-            "productNotification"
-        );
-
-
-    if (!notification) {
-
-        notification =
-            document.createElement(
-                "div"
-            );
-
-
-        notification.id =
-            "productNotification";
-
-
-        notification.className =
-            "product-notification";
-
-
-        document.body.appendChild(
-            notification
-        );
-
-    }
-
-
-    notification.textContent =
-        message;
-
-
-    notification.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        notification._timer
-    );
-
-
-    notification._timer =
-        setTimeout(
-            () => {
-
-                notification.classList.remove(
-                    "show"
-                );
-
-            },
-            2500
-        );
-
-}
-
-
-/* =========================================================
-   IMAGE HELPERS
-   ========================================================= */
-
-function getProductImages(
-    product
-) {
-
-    if (
-        !product
-    ) {
-
-        return [];
-
-    }
-
+function getProductImages(product) {
 
     if (
         Array.isArray(
@@ -1899,7 +1315,6 @@ function getProductImages(
 
 
                     return image?.path ||
-                           image?.url ||
                            "";
 
                 }
@@ -1909,9 +1324,7 @@ function getProductImages(
     }
 
 
-    if (
-        product.image
-    ) {
+    if (product.image) {
 
         return [
             product.image
@@ -1920,9 +1333,7 @@ function getProductImages(
     }
 
 
-    if (
-        product.thumbnail
-    ) {
+    if (product.thumbnail) {
 
         return [
             product.thumbnail
@@ -1936,23 +1347,34 @@ function getProductImages(
 }
 
 
+function getMainImage(product) {
+
+    const images =
+        getProductImages(product);
+
+
+    return images.length
+        ? images[0]
+        : "";
+
+}
+
+
 /* =========================================================
    PRICE
    ========================================================= */
 
-function formatPrice(
-    value
-) {
+function formatPrice(price) {
 
     const number =
-        Number(value);
+        Number(price);
 
 
     if (
         Number.isNaN(number)
     ) {
 
-        return "$0.00";
+        return "—";
 
     }
 
@@ -1960,21 +1382,11 @@ function formatPrice(
     return new Intl.NumberFormat(
         "en-US",
         {
-            style:
-                "currency",
-
-            currency:
-                "USD",
-
-            minimumFractionDigits:
-                2,
-
-            maximumFractionDigits:
-                2
+            style: "currency",
+            currency: "USD",
+            minimumFractionDigits: 2
         }
-    ).format(
-        number
-    );
+    ).format(number);
 
 }
 
@@ -2008,12 +1420,10 @@ function setText(
 
 
 /* =========================================================
-   HTML ESCAPE
+   ESCAPE
    ========================================================= */
 
-function escapeHTML(
-    value
-) {
+function escapeHTML(value) {
 
     return String(
         value ?? ""
@@ -2043,6 +1453,54 @@ function escapeHTML(
 
 
 /* =========================================================
+   ERROR
+   ========================================================= */
+
+function showProductError() {
+
+    const page =
+        document.getElementById(
+            "productPage"
+        );
+
+
+    if (!page) {
+
+        return;
+
+    }
+
+
+    page.innerHTML = `
+
+        <div class="product-error">
+
+            <span class="pulse-dot"></span>
+
+            <h1>
+                PRODUCT NOT FOUND
+            </h1>
+
+            <p>
+                This Voltica product could not
+                be located in the current collection.
+            </p>
+
+            <a
+                href="store.html"
+                class="back-store-button"
+            >
+                RETURN TO STORE
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
    PUBLIC API
    ========================================================= */
 
@@ -2054,23 +1512,10 @@ window.VolticaProductView = {
 
     },
 
-
     getCurrentProduct() {
 
-        return currentProduct;
-
-    },
-
-
-    getSelectedVariant() {
-
-        return selectedVariant;
+        return getProductFromURL();
 
     }
 
 };
-
-
-/* =========================================================
-   VOLTICA PRODUCT VIEW — ONLINE
-   ========================================================= */

@@ -1,1076 +1,413 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<head>
 
-<meta
-    name="description"
-    content="Voltica Store — The future of everyday."
->
+    <meta charset="UTF-8">
 
-<meta
-    name="theme-color"
-    content="#050505"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Voltica Store — The future of everyday.</title>
+    <meta
+        name="description"
+        content="Voltica Store — The future of everyday."
+    >
 
+    <meta
+        name="theme-color"
+        content="#050505"
+    >
 
-<style>
+    <title>Voltica Store — The future of everyday.</title>
 
-    /* =========================================================
-       VOLTICA STORE — HOME
-       ========================================================= */
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+</head>
 
 
-    html {
-        scroll-behavior: smooth;
-    }
+<body>
 
 
-    body {
-        min-height: 100vh;
-        background:
-            radial-gradient(
-                circle at 50% 0%,
-                rgba(255,255,255,0.055),
-                transparent 35%
-            ),
-            radial-gradient(
-                circle at 15% 50%,
-                rgba(255,255,255,0.025),
-                transparent 30%
-            ),
-            #050505;
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
 
-        color: #ffffff;
+    <header>
 
-        font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
-
-        overflow-x: hidden;
-    }
-
-
-    body::before {
-        content: "";
-
-        position: fixed;
-        inset: 0;
-
-        pointer-events: none;
-
-        background:
-            linear-gradient(
-                120deg,
-                transparent 0%,
-                rgba(255,255,255,0.018) 50%,
-                transparent 100%
-            );
-
-        opacity: 0.8;
-    }
-
-
-    /* =========================================================
-       HEADER
-       ========================================================= */
-
-    header {
-        position: fixed;
-
-        top: 0;
-        left: 0;
-
-        width: 100%;
-
-        z-index: 100;
-
-        padding: 20px 28px;
-    }
-
-
-    .nav {
-        max-width: 1320px;
-
-        margin: auto;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        padding: 13px 18px;
-
-        border: 1px solid rgba(255,255,255,0.09);
-
-        border-radius: 18px;
-
-        background:
-            linear-gradient(
-                135deg,
-                rgba(255,255,255,0.07),
-                rgba(255,255,255,0.025)
-            );
-
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-
-        box-shadow:
-            0 18px 60px rgba(0,0,0,0.45),
-            inset 0 1px 0 rgba(255,255,255,0.07);
-    }
-
-
-    .nav-logo {
-        display: flex;
-        align-items: center;
-
-        text-decoration: none;
-    }
-
-
-    .nav-logo img {
-        width: 46px;
-        height: 46px;
-
-        object-fit: contain;
-
-        display: block;
-
-        filter:
-            drop-shadow(
-                0 0 14px rgba(255,255,255,0.18)
-            );
-    }
-
-
-    .nav-links {
-        display: flex;
-        align-items: center;
-
-        gap: 8px;
-    }
-
-
-    .nav-links a {
-        color: rgba(255,255,255,0.72);
-
-        text-decoration: none;
-
-        font-size: 13px;
-        font-weight: 500;
-
-        padding: 10px 14px;
-
-        border-radius: 12px;
-
-        transition:
-            color 0.25s ease,
-            background 0.25s ease,
-            transform 0.25s ease;
-    }
-
-
-    .nav-links a:hover {
-        color: #ffffff;
-
-        background: rgba(255,255,255,0.07);
-
-        transform: translateY(-1px);
-    }
-
-
-    .nav-store {
-        border: 1px solid rgba(255,255,255,0.12);
-
-        background:
-            rgba(255,255,255,0.06);
-    }
-
-
-    /* =========================================================
-       HERO
-       ========================================================= */
-
-    .hero {
-        position: relative;
-
-        min-height: 100vh;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        text-align: center;
-
-        padding:
-            150px 24px
-            100px;
-    }
-
-
-    .hero::before {
-        content: "";
-
-        position: absolute;
-
-        width: 600px;
-        height: 600px;
-
-        top: 15%;
-        left: 50%;
-
-        transform: translateX(-50%);
-
-        background:
-            radial-gradient(
-                circle,
-                rgba(255,255,255,0.07),
-                transparent 68%
-            );
-
-        filter: blur(20px);
-
-        pointer-events: none;
-    }
-
-
-    .hero-content {
-        position: relative;
-
-        z-index: 2;
-
-        max-width: 900px;
-
-        animation:
-            heroIn 1.1s ease both;
-    }
-
-
-    @keyframes heroIn {
-
-        from {
-            opacity: 0;
-            transform: translateY(24px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-    }
-
-
-    .hero-logo {
-        width: min(180px, 42vw);
-
-        height: auto;
-
-        margin-bottom: 38px;
-
-        filter:
-            drop-shadow(
-                0 0 30px rgba(255,255,255,0.12)
-            );
-
-        animation:
-            logoFloat 5s ease-in-out infinite;
-    }
-
-
-    @keyframes logoFloat {
-
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-
-        50% {
-            transform: translateY(-7px);
-        }
-
-    }
-
-
-    .eyebrow {
-        display: inline-flex;
-        align-items: center;
-
-        gap: 8px;
-
-        padding: 8px 13px;
-
-        margin-bottom: 25px;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.10);
-
-        border-radius: 999px;
-
-        background:
-            rgba(255,255,255,0.035);
-
-        color:
-            rgba(255,255,255,0.65);
-
-        font-size: 11px;
-
-        letter-spacing: 0.18em;
-
-        text-transform: uppercase;
-    }
-
-
-    .eyebrow-dot {
-        width: 6px;
-        height: 6px;
-
-        border-radius: 50%;
-
-        background: #ffffff;
-
-        box-shadow:
-            0 0 12px rgba(255,255,255,0.7);
-    }
-
-
-    h1 {
-        font-size:
-            clamp(
-                54px,
-                9vw,
-                112px
-            );
-
-        line-height: 0.94;
-
-        letter-spacing: -0.065em;
-
-        font-weight: 700;
-
-        margin-bottom: 30px;
-
-        background:
-            linear-gradient(
-                180deg,
-                #ffffff 0%,
-                #cfcfcf 55%,
-                #777777 100%
-            );
-
-        -webkit-background-clip: text;
-        background-clip: text;
-
-        -webkit-text-fill-color: transparent;
-    }
-
-
-    .tagline {
-        font-size:
-            clamp(
-                20px,
-                3vw,
-                30px
-            );
-
-        font-weight: 300;
-
-        letter-spacing: 0.015em;
-
-        color:
-            rgba(255,255,255,0.72);
-
-        margin-bottom: 48px;
-    }
-
-
-    .hero-actions {
-        display: flex;
-
-        justify-content: center;
-
-        gap: 13px;
-
-        flex-wrap: wrap;
-    }
-
-
-    .btn {
-        position: relative;
-
-        display: inline-flex;
-
-        align-items: center;
-        justify-content: center;
-
-        min-width: 165px;
-
-        padding: 15px 23px;
-
-        border-radius: 14px;
-
-        text-decoration: none;
-
-        font-size: 13px;
-
-        font-weight: 600;
-
-        letter-spacing: 0.02em;
-
-        transition:
-            transform 0.25s ease,
-            box-shadow 0.25s ease,
-            background 0.25s ease;
-    }
-
-
-    .btn-primary {
-        color: #050505;
-
-        background: #ffffff;
-
-        box-shadow:
-            0 10px 40px rgba(255,255,255,0.10);
-    }
-
-
-    .btn-primary:hover {
-        transform: translateY(-3px);
-
-        box-shadow:
-            0 15px 50px rgba(255,255,255,0.18);
-    }
-
-
-    .btn-secondary {
-        color: #ffffff;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.13);
-
-        background:
-            rgba(255,255,255,0.045);
-
-        backdrop-filter: blur(12px);
-    }
-
-
-    .btn-secondary:hover {
-        transform: translateY(-3px);
-
-        background:
-            rgba(255,255,255,0.085);
-    }
-
-
-    /* =========================================================
-       SCROLL INDICATOR
-       ========================================================= */
-
-    .scroll-indicator {
-        position: absolute;
-
-        bottom: 34px;
-        left: 50%;
-
-        transform: translateX(-50%);
-
-        display: flex;
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 9px;
-
-        color:
-            rgba(255,255,255,0.35);
-
-        font-size: 9px;
-
-        letter-spacing: 0.2em;
-
-        text-transform: uppercase;
-    }
-
-
-    .scroll-line {
-        width: 1px;
-        height: 32px;
-
-        background:
-            linear-gradient(
-                to bottom,
-                rgba(255,255,255,0.5),
-                transparent
-            );
-    }
-
-
-    /* =========================================================
-       INTRO SECTION
-       ========================================================= */
-
-    .intro {
-        position: relative;
-
-        padding:
-            120px 24px
-            140px;
-    }
-
-
-    .intro-container {
-        max-width: 1100px;
-
-        margin: auto;
-
-        display: grid;
-
-        grid-template-columns:
-            1fr 1fr;
-
-        gap: 70px;
-
-        align-items: center;
-    }
-
-
-    .section-label {
-        color:
-            rgba(255,255,255,0.4);
-
-        font-size: 10px;
-
-        letter-spacing: 0.2em;
-
-        text-transform: uppercase;
-
-        margin-bottom: 18px;
-    }
-
-
-    .intro h2 {
-        font-size:
-            clamp(
-                34px,
-                5vw,
-                58px
-            );
-
-        line-height: 1;
-
-        letter-spacing: -0.045em;
-
-        margin-bottom: 25px;
-    }
-
-
-    .intro p {
-        color:
-            rgba(255,255,255,0.55);
-
-        font-size: 16px;
-
-        line-height: 1.8;
-
-        max-width: 500px;
-    }
-
-
-    /* =========================================================
-       GLASS CARD
-       ========================================================= */
-
-    .glass-card {
-        position: relative;
-
-        min-height: 300px;
-
-        padding: 32px;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.09);
-
-        border-radius: 28px;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(255,255,255,0.075),
-                rgba(255,255,255,0.018)
-            );
-
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-
-        box-shadow:
-            0 30px 90px rgba(0,0,0,0.35),
-            inset 0 1px 0 rgba(255,255,255,0.06);
-
-        overflow: hidden;
-    }
-
-
-    .glass-card::before {
-        content: "";
-
-        position: absolute;
-
-        width: 260px;
-        height: 260px;
-
-        top: -120px;
-        right: -100px;
-
-        border-radius: 50%;
-
-        background:
-            radial-gradient(
-                circle,
-                rgba(255,255,255,0.12),
-                transparent 70%
-            );
-
-        filter: blur(20px);
-    }
-
-
-    .card-number {
-        position: relative;
-
-        font-size: 11px;
-
-        letter-spacing: 0.2em;
-
-        color:
-            rgba(255,255,255,0.35);
-    }
-
-
-    .card-title {
-        position: relative;
-
-        margin-top: 85px;
-
-        font-size: 30px;
-
-        letter-spacing: -0.03em;
-    }
-
-
-    .card-subtitle {
-        position: relative;
-
-        margin-top: 12px;
-
-        color:
-            rgba(255,255,255,0.45);
-
-        font-size: 13px;
-
-        line-height: 1.6;
-    }
-
-
-    /* =========================================================
-       FOOTER
-       ========================================================= */
-
-    footer {
-        border-top:
-            1px solid
-            rgba(255,255,255,0.07);
-
-        padding:
-            30px 24px;
-    }
-
-
-    .footer-inner {
-        max-width: 1320px;
-
-        margin: auto;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        gap: 20px;
-    }
-
-
-    .footer-brand {
-        display: flex;
-
-        align-items: center;
-
-        gap: 10px;
-    }
-
-
-    .footer-brand img {
-        width: 30px;
-        height: 30px;
-
-        object-fit: contain;
-    }
-
-
-    .footer-brand span {
-        color:
-            rgba(255,255,255,0.45);
-
-        font-size: 11px;
-    }
-
-
-    .copyright {
-        color:
-            rgba(255,255,255,0.25);
-
-        font-size: 10px;
-    }
-
-
-    /* =========================================================
-       MOBILE
-       ========================================================= */
-
-    @media (max-width: 700px) {
-
-        header {
-            padding: 14px;
-        }
-
-
-        .nav {
-            padding: 10px 13px;
-
-            border-radius: 15px;
-        }
-
-
-        .nav-logo img {
-            width: 40px;
-            height: 40px;
-        }
-
-
-        .nav-links a {
-            padding: 9px 10px;
-
-            font-size: 11px;
-        }
-
-
-        .nav-links a:not(.nav-store) {
-            display: none;
-        }
-
-
-        .hero {
-            padding:
-                130px 20px
-                100px;
-        }
-
-
-        .hero-logo {
-            width: 130px;
-
-            margin-bottom: 30px;
-        }
-
-
-        h1 {
-            font-size: 58px;
-        }
-
-
-        .tagline {
-            font-size: 19px;
-
-            margin-bottom: 38px;
-        }
-
-
-        .hero-actions {
-            flex-direction: column;
-
-            align-items: center;
-        }
-
-
-        .btn {
-            width: 100%;
-
-            max-width: 290px;
-        }
-
-
-        .intro {
-            padding:
-                90px 20px
-                100px;
-        }
-
-
-        .intro-container {
-            grid-template-columns: 1fr;
-
-            gap: 35px;
-        }
-
-
-        .glass-card {
-            min-height: 260px;
-
-            padding: 26px;
-        }
-
-
-        .card-title {
-            margin-top: 70px;
-        }
-
-
-        .footer-inner {
-            flex-direction: column;
-
-            text-align: center;
-        }
-
-    }
-
-</style>
-
-</head><body><!-- =========================================================
-     HEADER
-     ========================================================= -->
-
-<header>
-
-    <nav class="nav">
-
-        <a
-            href="index.html"
-            class="nav-logo"
-            aria-label="Voltica Store"
-        >
-
-            <img
-                src="logo.png"
-                alt="Voltica Store"
-            >
-
-        </a>
-
-
-        <div class="nav-links">
-
-            <a href="#about">
-                About
-            </a>
+        <nav class="nav">
 
             <a
-                href="store.html"
-                class="nav-store"
+                href="index.html"
+                class="brand"
+                aria-label="Voltica Store home"
             >
-                Enter Store
+
+                <img
+                    src="logo.png"
+                    alt="Voltica Store"
+                >
+
+                <span class="brand-text">
+
+                    <span class="brand-name">
+                        VOLTICA
+                    </span>
+
+                    <span class="brand-tagline">
+                        THE FUTURE OF EVERYDAY
+                    </span>
+
+                </span>
+
             </a>
 
-        </div>
 
-    </nav>
+            <div class="nav-right">
 
-</header>
+                <div class="nav-links">
 
+                    <a
+                        href="index.html"
+                        class="nav-link"
+                    >
+                        Home
+                    </a>
 
+                    <a
+                        href="store.html"
+                        class="nav-link nav-store"
+                    >
+                        Store
+                    </a>
 
-<!-- =========================================================
-     HERO
-     ========================================================= -->
-
-<main>
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-
-            <img
-                src="logo.png"
-                alt="Voltica"
-                class="hero-logo"
-            >
+                </div>
 
 
-            <div class="eyebrow">
+                <button
+                    class="cart"
+                    type="button"
+                    aria-label="Shopping cart"
+                >
 
-                <span class="eyebrow-dot"></span>
+                    🛒
 
-                VOLTICA STORE
+                    <span class="cart-count">
+                        0
+                    </span>
+
+                </button>
 
             </div>
 
+        </nav>
 
-            <h1>
-                VOLTICA
-            </h1>
-
-
-            <p class="tagline">
-                The future of everyday.
-            </p>
-
-
-            <div class="hero-actions">
-
-                <a
-                    href="store.html"
-                    class="btn btn-primary"
-                >
-                    Explore the Store
-                </a>
-
-
-                <a
-                    href="#about"
-                    class="btn btn-secondary"
-                >
-                    Discover Voltica
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="scroll-indicator">
-
-            SCROLL
-
-            <span class="scroll-line"></span>
-
-        </div>
-
-    </section>
+    </header>
 
 
 
     <!-- =====================================================
-         INTRO
+         MAIN
          ===================================================== -->
 
-    <section
-        class="intro"
-        id="about"
-    >
-
-        <div class="intro-container">
+    <main>
 
 
-            <div>
+        <!-- =================================================
+             HERO
+             ================================================= -->
 
-                <div class="section-label">
-                    THE VOLTICA STANDARD
+        <section class="hero">
+
+            <div class="hero-content">
+
+
+                <img
+                    src="logo.png"
+                    alt="Voltica Store logo"
+                    class="hero-logo"
+                >
+
+
+                <div class="eyebrow">
+
+                    <span class="eyebrow-dot"></span>
+
+                    NEXT-GEN EVERYDAY
+
                 </div>
 
 
-                <h2>
-                    Technology<br>
-                    for everyday life.
-                </h2>
+                <h1>
+                    VOLTICA
+                </h1>
 
 
-                <p>
-                    Voltica brings together smart technology,
-                    audio, gaming gear, accessories and
-                    everyday essentials designed to make
-                    modern life better.
+                <p class="tagline">
+                    The future of everyday.
                 </p>
 
+
+                <div class="hero-actions">
+
+                    <a
+                        href="store.html"
+                        class="btn btn-primary"
+                    >
+                        Explore Store
+                    </a>
+
+
+                    <a
+                        href="#about"
+                        class="btn btn-secondary"
+                    >
+                        Discover Voltica
+                    </a>
+
+                </div>
+
             </div>
 
 
-            <div class="glass-card">
+            <div class="scroll-indicator">
 
-                <div class="card-number">
-                    001 / VOLTICA
+                <span>
+                    SCROLL
+                </span>
+
+                <span class="scroll-line"></span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INTRO
+             ================================================= -->
+
+        <section
+            class="intro"
+            id="about"
+        >
+
+            <div class="intro-container">
+
+
+                <div>
+
+                    <div class="section-label">
+                        VOLTICA / 001
+                    </div>
+
+
+                    <h2>
+                        Technology
+                        made for
+                        everyday life.
+                    </h2>
+
+
+                    <p>
+                        Voltica brings together technology,
+                        audio, gaming gear, accessories and
+                        products designed to make everyday
+                        life a little better.
+                    </p>
+
                 </div>
 
 
-                <div class="card-title">
-                    The future is everyday.
+                <div class="glass-card">
+
+                    <div class="card-number">
+                        VOLTICA STORE
+                    </div>
+
+
+                    <div class="card-title">
+                        Built for
+                        what's next.
+                    </div>
+
+
+                    <div class="card-subtitle">
+                        A new generation of everyday products,
+                        selected for people who want something
+                        different.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             STORE PREVIEW
+             ================================================= -->
+
+        <section class="intro">
+
+            <div class="intro-container">
+
+
+                <div class="glass-card">
+
+                    <div class="card-number">
+                        02 / STORE
+                    </div>
+
+
+                    <div class="card-title">
+                        Discover
+                        what's next.
+                    </div>
+
+
+                    <div class="card-subtitle">
+                        Explore the Voltica collection as we
+                        build the future of everyday products.
+                    </div>
+
+                    <br>
+
+
+                    <a
+                        href="store.html"
+                        class="btn btn-primary"
+                    >
+                        Enter Store
+                    </a>
+
                 </div>
 
 
-                <div class="card-subtitle">
-                    Discover products selected for people
-                    who expect more from the things they use
-                    every day.
+                <div>
+
+                    <div class="section-label">
+                        THE COLLECTION
+                    </div>
+
+
+                    <h2>
+                        Less ordinary.
+                        More Voltica.
+                    </h2>
+
+
+                    <p>
+                        From immersive audio to smart
+                        accessories and gaming gear,
+                        Voltica is built around products
+                        that stand out.
+                    </p>
+
                 </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FINAL CTA
+             ================================================= -->
+
+        <section
+            class="hero"
+            style="
+                min-height: 70vh;
+                padding-top: 100px;
+            "
+        >
+
+            <div class="hero-content">
+
+
+                <div class="eyebrow">
+
+                    <span class="eyebrow-dot"></span>
+
+                    WELCOME TO VOLTICA
+
+                </div>
+
+
+                <h1>
+                    THE FUTURE
+                </h1>
+
+
+                <p class="tagline">
+                    of everyday.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a
+                        href="store.html"
+                        class="btn btn-primary"
+                    >
+                        Enter Voltica Store
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+
+            <div class="footer-brand">
+
+                <img
+                    src="logo.png"
+                    alt="Voltica"
+                >
+
+                <span>
+                    VOLTICA — THE FUTURE OF EVERYDAY.
+                </span>
+
+            </div>
+
+
+            <div class="copyright">
+
+                © 2026 Voltica Store.
+                All rights reserved.
 
             </div>
 
         </div>
 
-    </section>
-
-</main>
+    </footer>
 
 
 
-<!-- =========================================================
-     FOOTER
-     ========================================================= -->
+</body>
 
-<footer>
-
-    <div class="footer-inner">
-
-
-        <div class="footer-brand">
-
-            <img
-                src="logo.png"
-                alt="Voltica"
-            >
-
-            <span>
-                The future of everyday.
-            </span>
-
-        </div>
-
-
-        <div class="copyright">
-            © 2026 Voltica Store. All rights reserved.
-        </div>
-
-
-    </div>
-
-</footer>
-
-</body></html>
+</html>

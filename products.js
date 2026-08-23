@@ -407,7 +407,87 @@ function getVolticaProductByNumber(productNumber) {
     return volticaProducts.find(
         product => product.productNumber === productNumber
     );
+//-------------Produit 3
+//-------------Premium 3D Face Recognition Smart Door Lock---/
 
+{
+    id: "doorlock1",
+
+    name: "Premium 3D Face Recognition Smart Door Lock",
+
+    category: "SMART HOME",
+
+    badge: "PREMIUM",
+
+    price: 207.99,
+
+    cost: 154.92,
+
+    currency: "USD",
+
+    model: "VSL-420",
+
+    sku: "",
+
+    stripeLink:
+        "https://buy.stripe.com/9B68wQbSn2RVbyoc0O2Ji0n",
+
+    supplierLink:
+        "https://www.alibaba.com/x/B2LePO?ck=pdp",
+
+    images: [
+        "assets/door1-1.jpg",
+        "assets/door1-2.jpg",
+        "assets/door1-3.jpg",
+        "assets/door1-4.jpg",
+        "assets/door1-5.jpg"
+    ],
+
+    shortDescription:
+        "Upgrade your home security to the next generation with the VSL-420 Premium Smart Door Lock in an exclusive Gold Edition finish. Powered by Tuya intelligence and advanced 3D biometric face recognition.",
+
+    description: `
+        Upgrade your home security with the VSL-420 Premium Smart Door Lock.
+
+        Featuring advanced 3D facial recognition, this fully automatic
+        smart lock combines futuristic luxury aesthetics with intelligent
+        keyless access.
+
+        Multiple unlocking methods include 3D Face Recognition, IC Card,
+        Password, Tuya Smart App control, fingerprint identification and
+        mechanical emergency keys.
+
+        The integrated HD camera and display provide a convenient video
+        intercom experience directly from your door.
+
+        Built using carbon fiber, brushed aluminum and tempered glass,
+        the Gold Edition is designed as both a security system and a
+        premium architectural element.
+    `,
+
+    features: [
+        "Advanced 3D Face Recognition",
+        "Full Automatic Locking Mechanism",
+        "IC Card Unlock",
+        "Password Entry",
+        "Tuya Smart App Control",
+        "Fingerprint Identification",
+        "Mechanical Emergency Key",
+        "Integrated HD Video Intercom",
+        "Built-in Display Screen",
+        "USB Emergency Power Interface"
+    ],
+
+    specifications: {
+        "Model": "VSL-420",
+        "Color Finish": "Gold Edition",
+        "Dimensions": "420mm × 75mm",
+        "Materials": "Carbon Fiber / Brushed Aluminum / Tempered Glass",
+        "Ecosystem": "Powered by Tuya Smart",
+        "Security": "3D Face Biometrics / Fingerprint / Card / Password",
+        "Emergency Access": "Mechanical Key / USB Emergency Power"
+    }
+},
 }
 
 

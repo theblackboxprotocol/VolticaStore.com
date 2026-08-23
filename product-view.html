@@ -3,1111 +3,34 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<meta
-    name="description"
-    content="Voltica Store — Premium technology, smart home, audio and next-generation gear."
->
+    <meta
+        name="description"
+        content="Voltica Store — Product"
+    >
 
-<meta
-    name="theme-color"
-    content="#050505"
->
+    <meta
+        name="theme-color"
+        content="#050505"
+    >
 
-<title>Voltica Store — The Future of Everyday</title>
+    <title>Voltica Store — Product</title>
 
 
-<style>
+    <!-- =================================================
+         PRODUCT VIEW STYLES
+         ================================================= -->
 
-/* =========================================================
-   RESET
-   ========================================================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-
-    margin: 0;
-
-    min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(255,255,255,.07),
-            transparent 38%
-        ),
-        radial-gradient(
-            circle at 10% 50%,
-            rgba(255,255,255,.025),
-            transparent 30%
-        ),
-        #050505;
-
-    color: #cfcfcf;
-
-    font-family:
-        Inter,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-}
-
-
-/* =========================================================
-   GLOBAL GLASS
-   ========================================================= */
-
-.glass {
-
-    position: relative;
-
-    overflow: hidden;
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.065),
-            rgba(255,255,255,.015)
-        );
-
-    box-shadow:
-        inset 0 1px 0
-        rgba(255,255,255,.065),
-
-        inset 0 0 45px
-        rgba(255,255,255,.01),
-
-        0 25px 80px
-        rgba(0,0,0,.42);
-
-    backdrop-filter:
-        blur(22px);
-
-    -webkit-backdrop-filter:
-        blur(22px);
-
-}
-
-.glass::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.2),
-            transparent
-        );
-
-    pointer-events: none;
-
-}
-
-
-/* =========================================================
-   WHITE PULSE
-   ========================================================= */
-
-.pulse-dot {
-
-    width: 6px;
-    height: 6px;
-
-    display: inline-block;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
-    background: #ffffff;
-
-    animation:
-        whitePulse 2s infinite;
-
-}
-
-@keyframes whitePulse {
-
-    0% {
-
-        box-shadow:
-            0 0 0 0
-            rgba(255,255,255,.45);
-
-    }
-
-    70% {
-
-        box-shadow:
-            0 0 0 10px
-            rgba(255,255,255,0);
-
-    }
-
-    100% {
-
-        box-shadow:
-            0 0 0 0
-            rgba(255,255,255,0);
-
-    }
-
-}
-
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
-.site-header {
-
-    width:
-        min(1240px,92vw);
-
-    margin:
-        auto;
-
-    padding:
-        25px 0;
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-}
-
-.logo {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
-
-    color:
-        #eeeeee;
-
-    text-decoration:
-        none;
-
-}
-
-.logo-v {
-
-    width:
-        34px;
-
-    height:
-        34px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    border:
-        1px solid
-        rgba(255,255,255,.18);
-
-    border-radius:
-        10px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.12),
-            rgba(255,255,255,.02)
-        );
-
-    font-weight:
-        700;
-
-}
-
-.logo-text {
-
-    font-size:
-        10px;
-
-    letter-spacing:
-        .3em;
-
-}
-
-.main-nav {
-
-    display:
-        flex;
-
-    gap:
-        28px;
-
-}
-
-.main-nav a {
-
-    color:
-        rgba(255,255,255,.32);
-
-    text-decoration:
-        none;
-
-    font-size:
-        8px;
-
-    letter-spacing:
-        .18em;
-
-    transition:
-        .25s ease;
-
-}
-
-.main-nav a:hover {
-
-    color:
-        #ffffff;
-
-}
-
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
-.store-hero {
-
-    width:
-        min(1240px,92vw);
-
-    margin:
-        45px auto 0;
-
-    min-height:
-        500px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    text-align:
-        center;
-
-    padding:
-        70px 25px;
-
-    border-radius:
-        30px;
-
-}
-
-.hero-status {
-
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    gap:
-        9px;
-
-    margin-bottom:
-        22px;
-
-    padding:
-        9px 14px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    color:
-        rgba(255,255,255,.35);
-
-    font-size:
-        7px;
-
-    letter-spacing:
-        .22em;
-
-}
-
-.store-hero h1 {
-
-    margin:
-        0;
-
-    color:
-        rgba(255,255,255,.82);
-
-    font-size:
-        clamp(58px,9vw,125px);
-
-    line-height:
-        .78;
-
-    letter-spacing:
-        -.09em;
-
-    font-weight:
-        650;
-
-}
-
-.store-hero h1 span {
-
-    color:
-        rgba(255,255,255,.27);
-
-}
-
-.hero-subtitle {
-
-    max-width:
-        650px;
-
-    margin:
-        30px auto 0;
-
-    color:
-        rgba(255,255,255,.38);
-
-    font-size:
-        15px;
-
-    line-height:
-        1.8;
-
-}
-
-.hero-line {
-
-    width:
-        min(430px,80%);
-
-    height:
-        1px;
-
-    margin:
-        35px auto 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.2),
-            transparent
-        );
-
-}
-
-
-/* =========================================================
-   STORE AREA
-   ========================================================= */
-
-.store-wrapper {
-
-    width:
-        min(1240px,92vw);
-
-    margin:
-        100px auto 130px;
-
-}
-
-.section-heading {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        end;
-
-    margin-bottom:
-        20px;
-
-}
-
-.section-heading-left {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
-
-}
-
-.section-heading span {
-
-    color:
-        rgba(255,255,255,.18);
-
-    font-size:
-        7px;
-
-    letter-spacing:
-        .25em;
-
-}
-
-.section-heading h2 {
-
-    margin:
-        8px 0 0;
-
-    color:
-        rgba(255,255,255,.68);
-
-    font-size:
-        28px;
-
-    letter-spacing:
-        -.04em;
-
-}
-
-
-/* =========================================================
-   PRODUCT GRID
-   ========================================================= */
-
-.product-grid {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:
-        14px;
-
-}
-
-
-/* =========================================================
-   PRODUCT CARD
-   ========================================================= */
-
-.product-card {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    border-radius:
-        23px;
-
-    transition:
-        transform .3s ease,
-        border-color .3s ease;
-
-}
-
-.product-card:hover {
-
-    transform:
-        translateY(-6px);
-
-    border-color:
-        rgba(255,255,255,.17);
-
-}
-
-
-/* =========================================================
-   PRODUCT IMAGE
-   ========================================================= */
-
-.product-image {
-
-    position:
-        relative;
-
-    width:
-        100%;
-
-    aspect-ratio:
-        1 / .83;
-
-    overflow:
-        hidden;
-
-    border-radius:
-        20px 20px 0 0;
-
-    background:
-        #080808;
-
-}
-
-.product-image img {
-
-    width:
-        100%;
-
-    height:
-        100%;
-
-    display:
-        block;
-
-    object-fit:
-        cover;
-
-    transition:
-        transform .5s ease;
-
-}
-
-.product-card:hover
-.product-image img {
-
-    transform:
-        scale(1.035);
-
-}
-
-.product-overlay {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent 45%,
-            rgba(0,0,0,.55)
-        );
-
-    pointer-events:
-        none;
-
-}
-
-.product-status {
-
-    position:
-        absolute;
-
-    top:
-        13px;
-
-    left:
-        13px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        7px;
-
-    padding:
-        8px 10px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.11);
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(0,0,0,.42);
-
-    backdrop-filter:
-        blur(12px);
-
-    color:
-        rgba(255,255,255,.42);
-
-    font-size:
-        6px;
-
-    letter-spacing:
-        .16em;
-
-}
-
-.product-number {
-
-    position:
-        absolute;
-
-    top:
-        14px;
-
-    right:
-        14px;
-
-    color:
-        rgba(255,255,255,.28);
-
-    font-size:
-        8px;
-
-    letter-spacing:
-        .15em;
-
-}
-
-
-/* =========================================================
-   PRODUCT CONTENT
-   ========================================================= */
-
-.product-content {
-
-    padding:
-        22px;
-
-}
-
-.product-category {
-
-    color:
-        rgba(255,255,255,.18);
-
-    font-size:
-        7px;
-
-    letter-spacing:
-        .2em;
-
-}
-
-.product-card h3 {
-
-    margin:
-        12px 0 0;
-
-    color:
-        rgba(255,255,255,.73);
-
-    font-size:
-        23px;
-
-    line-height:
-        .95;
-
-    letter-spacing:
-        -.045em;
-
-}
-
-.product-description {
-
-    min-height:
-        78px;
-
-    margin:
-        16px 0;
-
-    color:
-        rgba(255,255,255,.39);
-
-    font-size:
-        13px;
-
-    line-height:
-        1.7;
-
-}
-
-.product-bottom {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    gap:
-        12px;
-
-    margin-top:
-        18px;
-
-}
-
-.product-price {
-
-    color:
-        rgba(255,255,255,.76);
-
-    font-size:
-        22px;
-
-    letter-spacing:
-        -.03em;
-
-}
-
-.product-price small {
-
-    color:
-        rgba(255,255,255,.22);
-
-    font-size:
-        6px;
-
-    letter-spacing:
-        .15em;
-
-}
-
-
-/* =========================================================
-   VIEW BUTTON
-   ========================================================= */
-
-.view-button {
-
-    min-height:
-        45px;
-
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        12px;
-
-    padding:
-        0 15px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.18);
-
-    border-radius:
-        10px;
-
-    background:
-        rgba(255,255,255,.045);
-
-    color:
-        rgba(255,255,255,.67);
-
-    text-decoration:
-        none;
-
-    font-size:
-        7px;
-
-    font-weight:
-        600;
-
-    letter-spacing:
-        .13em;
-
-    transition:
-        .25s ease;
-
-}
-
-.view-button:hover {
-
-    background:
-        rgba(255,255,255,.9);
-
-    color:
-        #050505;
-
-    border-color:
-        rgba(255,255,255,.9);
-
-}
-
-
-/* =========================================================
-   SPECIAL PRODUCT
-   ========================================================= */
-
-.special-label {
-
-    margin-top:
-        8px;
-
-    color:
-        rgba(255,255,255,.2);
-
-    font-size:
-        6px;
-
-    letter-spacing:
-        .2em;
-
-}
-
-
-/* =========================================================
-   BOTTOM CTA
-   ========================================================= */
-
-.bottom-cta {
-
-    margin-top:
-        80px;
-
-    padding:
-        70px 30px;
-
-    border-radius:
-        27px;
-
-    text-align:
-        center;
-
-}
-
-.bottom-cta h2 {
-
-    margin:
-        15px 0;
-
-    color:
-        rgba(255,255,255,.7);
-
-    font-size:
-        clamp(42px,6vw,75px);
-
-    line-height:
-        .84;
-
-    letter-spacing:
-        -.07em;
-
-}
-
-.bottom-cta p {
-
-    max-width:
-        560px;
-
-    margin:
-        0 auto;
-
-    color:
-        rgba(255,255,255,.35);
-
-    font-size:
-        14px;
-
-    line-height:
-        1.8;
-
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-.site-footer {
-
-    width:
-        min(1240px,92vw);
-
-    margin:
-        auto;
-
-    padding:
-        25px 0 45px;
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    color:
-        rgba(255,255,255,.12);
-
-    font-size:
-        6px;
-
-    letter-spacing:
-        .2em;
-
-}
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width:1000px) {
-
-    .product-grid {
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-    }
-
-}
-
-
-@media (max-width:650px) {
-
-    .site-header {
-
-        align-items:
-            flex-start;
-
-    }
-
-    .main-nav {
-
-        gap:
-            12px;
-
-    }
-
-    .store-hero {
-
-        min-height:
-            430px;
-
-        margin-top:
-            25px;
-
-    }
-
-    .store-hero h1 {
-
-        font-size:
-            65px;
-
-    }
-
-    .hero-subtitle {
-
-        font-size:
-            13px;
-
-    }
-
-    .product-grid {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-    .store-wrapper {
-
-        margin-top:
-            70px;
-
-    }
-
-    .section-heading {
-
-        align-items:
-            flex-start;
-
-        flex-direction:
-            column;
-
-        gap:
-            12px;
-
-    }
-
-    .product-description {
-
-        min-height:
-            auto;
-
-    }
-
-    .site-footer {
-
-        flex-direction:
-            column;
-
-        gap:
-            10px;
-
-    }
-
-}
-
-</style>
+    <link
+        rel="stylesheet"
+        href="product-view.css"
+    >
 
 </head>
 
@@ -1115,227 +38,494 @@ body {
 <body>
 
 
-<!-- =========================================================
+<!-- =====================================================
      HEADER
-     ========================================================= -->
+     ===================================================== -->
 
-<header class="site-header">
-
-
-<a
-    href="index.html"
-    class="logo"
->
-
-    <span class="logo-v">
-        V
-    </span>
-
-    <span class="logo-text">
-        VOLTICA
-    </span>
-
-</a>
+<header class="product-header">
 
 
-<nav class="main-nav">
+    <a
+        href="index.html"
+        class="voltica-logo"
+    >
 
-    <a href="index.html">
-        HOME
+        <span class="logo-mark">
+            V
+        </span>
+
+        <span class="logo-name">
+            VOLTICA
+        </span>
+
     </a>
 
-    <a href="store.html">
-        STORE
-    </a>
 
-    <a href="contact.html">
-        CONTACT US
-    </a>
+    <nav class="product-navigation">
 
-</nav>
+        <a href="index.html">
+            HOME
+        </a>
+
+        <a href="store.html">
+            STORE
+        </a>
+
+        <a href="contact.html">
+            CONTACT US
+        </a>
+
+    </nav>
 
 
 </header>
 
 
 
-<!-- =========================================================
-     HERO
-     ========================================================= -->
+<!-- =====================================================
+     PRODUCT PAGE
+     ===================================================== -->
 
-<section class="store-hero glass">
+<main
+    class="product-page"
+    id="productPage"
+>
 
 
-    <div>
+    <!-- =================================================
+         PRODUCT HERO
+         ================================================= -->
+
+    <section class="product-hero">
 
 
-        <div class="hero-status">
+        <!-- =============================================
+             PRODUCT GALLERY
+             ============================================= -->
 
-            <span class="pulse-dot"></span>
+        <div class="product-gallery">
 
-            VOLTICA STORE / ONLINE
+
+            <!-- Main image -->
+
+            <div class="main-image-panel">
+
+
+                <img
+                    id="mainProductImage"
+                    src=""
+                    alt=""
+                >
+
+
+                <div
+                    class="image-reflection"
+                    aria-hidden="true"
+                ></div>
+
+
+                <div
+                    class="gallery-pulse"
+                    aria-hidden="true"
+                >
+
+                    <span class="pulse-dot"></span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Thumbnail gallery -->
+
+            <div
+                class="product-thumbnails"
+                id="productThumbnails"
+            >
+
+                <!--
+                    Thumbnails generated by
+                    product-view.js
+                -->
+
+            </div>
+
 
         </div>
 
 
-        <h1>
 
-            THE
-            <br>
+        <!-- =============================================
+             PRODUCT INFORMATION
+             ============================================= -->
 
-            <span>FUTURE</span>
-
-        </h1>
+        <div class="product-information">
 
 
-        <p class="hero-subtitle">
+            <div
+                class="product-status"
+                id="productStatus"
+            >
 
-            Premium technology, intelligent gear and
-            products selected for people who want
-            something beyond ordinary.
+                <span class="pulse-dot"></span>
 
-        </p>
+                <span id="productBadge">
+                    PREMIUM
+                </span>
 
-
-        <div class="hero-line"></div>
-
-
-    </div>
-
-
-</section>
+            </div>
 
 
 
-<!-- =========================================================
-     PRODUCTS
-     ========================================================= -->
-
-<main class="store-wrapper">
-
-
-<div class="section-heading">
-
-
-    <div>
-
-
-        <div class="section-heading-left">
-
-            <span class="pulse-dot"></span>
-
-            <span>
-                VOLTICA COLLECTION
+            <span
+                class="product-category"
+                id="productCategory"
+            >
+                PRODUCT
             </span>
 
-        </div>
 
 
-        <h2>
-            FEATURED GEAR
-        </h2>
-
-
-    </div>
-
-
-    <span>
-        03 PRODUCTS
-    </span>
-
-
-</div>
+            <h1
+                id="productName"
+            >
+                Loading Product...
+            </h1>
 
 
 
-<div class="product-grid">
+            <p
+                class="product-short-description"
+                id="productShortDescription"
+            >
+
+            </p>
 
 
 
-<!-- =========================================================
-     PRODUCT 01 — XREAL AIR 1S
-     ========================================================= -->
+            <!-- =========================================
+                 PRICE
+                 ========================================= -->
 
-<article class="product-card glass">
-
-
-    <div class="product-image">
+            <div class="product-price-panel">
 
 
-        <img
-            src="assets/glass1-1.jpg"
-            alt="XREAL Air 1S AI Augmented Reality Smart Glasses"
-        >
+                <span
+                    class="product-price"
+                    id="productPrice"
+                >
+                    $0.00
+                </span>
 
 
-        <div class="product-overlay"></div>
-
-
-        <div class="product-status">
-
-            <span class="pulse-dot"></span>
-
-            PREMIUM
-
-        </div>
-
-
-        <div class="product-number">
-            01
-        </div>
-
-
-    </div>
-
-
-
-    <div class="product-content">
-
-
-        <div class="product-category">
-            AUGMENTED REALITY / DISPLAY
-        </div>
-
-
-        <h3>
-
-            XREAL
-            <br>
-            AIR 1S
-
-        </h3>
-
-
-        <p class="product-description">
-
-            Step into a new dimension of portable
-            display technology with a giant virtual
-            cinematic screen designed for gaming,
-            entertainment and productivity.
-
-        </p>
-
-
-        <div class="product-bottom">
-
-
-            <div class="product-price">
-
-                $579.99
-
-                <small>
+                <span
+                    class="product-currency"
+                    id="productCurrency"
+                >
                     USD
-                </small>
+                </span>
+
 
             </div>
 
 
-            <a
-                href="product-view.html#glass1"
-                class="view-button"
+
+            <!-- =========================================
+                 VARIANTS
+                 ========================================= -->
+
+            <div
+                class="product-variants"
+                id="productVariants"
             >
 
-                VIEW PRODUCT
+                <!--
+                    Color / variant buttons generated
+                    by product-view.js
+                -->
+
+            </div>
+
+
+
+            <!-- =========================================
+                 PURCHASE AREA
+                 ========================================= -->
+
+            <div class="purchase-panel">
+
+
+                <a
+                    href="#"
+                    id="stripeButton"
+                    class="stripe-button"
+                    target="_blank"
+                    rel="noopener"
+                >
+
+                    <span>
+                        BUY NOW
+                    </span>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="store.html"
+                    class="back-store-button"
+                >
+
+                    ← BACK TO STORE
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- =========================================
+                 AVAILABILITY
+                 ========================================= -->
+
+            <div
+                class="product-availability"
+                id="productAvailability"
+            >
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         FULL DESCRIPTION
+         ================================================= -->
+
+    <section class="product-description-section">
+
+
+        <div class="acrylic-panel">
+
+
+            <span class="section-kicker">
+                PRODUCT OVERVIEW
+            </span>
+
+
+            <h2>
+                THE DETAILS
+            </h2>
+
+
+            <div
+                class="product-description"
+                id="productDescription"
+            >
+
+                <!-- Description generated by JS -->
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         FEATURES
+         ================================================= -->
+
+    <section
+        class="product-features-section"
+        id="featuresSection"
+    >
+
+
+        <div class="section-heading">
+
+
+            <span class="section-kicker">
+                ENGINEERED DIFFERENTLY
+            </span>
+
+
+            <h2>
+                KEY FEATURES
+            </h2>
+
+
+        </div>
+
+
+
+        <div
+            class="features-grid"
+            id="productFeatures"
+        >
+
+            <!--
+                Feature panels generated by
+                product-view.js
+            -->
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         TECHNICAL SPECIFICATIONS
+         ================================================= -->
+
+    <section
+        class="product-specifications-section"
+        id="specificationsSection"
+    >
+
+
+        <div class="section-heading">
+
+
+            <span class="section-kicker">
+                TECHNICAL DATA
+            </span>
+
+
+            <h2>
+                SPECIFICATIONS
+            </h2>
+
+
+        </div>
+
+
+
+        <div
+            class="specifications-panel acrylic-panel"
+        >
+
+
+            <div
+                class="specifications-table"
+                id="productSpecifications"
+            >
+
+                <!--
+                    Specifications generated by
+                    product-view.js
+                -->
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         PRODUCT VARIANTS / COLORS
+         ================================================= -->
+
+    <section
+        class="product-options-section"
+        id="optionsSection"
+    >
+
+
+        <div class="section-heading">
+
+
+            <span class="section-kicker">
+                AVAILABLE OPTIONS
+            </span>
+
+
+            <h2>
+                CONFIGURATION
+            </h2>
+
+
+        </div>
+
+
+
+        <div
+            class="options-panel acrylic-panel"
+            id="productOptions"
+        >
+
+            <!--
+                Options generated by
+                product-view.js
+            -->
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         FINAL PURCHASE CTA
+         ================================================= -->
+
+    <section class="product-final-cta">
+
+
+        <div class="cta-glass">
+
+
+            <span class="pulse-dot"></span>
+
+
+            <span class="section-kicker">
+                VOLTICA STORE
+            </span>
+
+
+            <h2
+                id="finalProductName"
+            >
+                DISCOVER THE FUTURE.
+            </h2>
+
+
+            <p>
+                Premium technology selected for
+                the next generation.
+            </p>
+
+
+            <a
+                href="#"
+                id="finalStripeButton"
+                class="final-buy-button"
+                target="_blank"
+                rel="noopener"
+            >
+
+                BUY NOW
 
                 <strong>
                     →
@@ -1347,280 +537,46 @@ body {
         </div>
 
 
-    </div>
-
-
-</article>
-
-
-
-<!-- =========================================================
-     PRODUCT 02 — SOUNDCORE SPACE Q45
-     ========================================================= -->
-
-<article class="product-card glass">
-
-
-    <div class="product-image">
-
-
-        <img
-            src="assets/Q451-1.webp"
-            alt="Soundcore Space Q45 Voltica Elite Pass Edition"
-        >
-
-
-        <div class="product-overlay"></div>
-
-
-        <div class="product-status">
-
-            <span class="pulse-dot"></span>
-
-            LIMITED 200
-
-        </div>
-
-
-        <div class="product-number">
-            02
-        </div>
-
-
-    </div>
-
-
-
-    <div class="product-content">
-
-
-        <div class="product-category">
-            AUDIO / ANC
-        </div>
-
-
-        <h3>
-
-            SOUNDCORE
-            <br>
-            SPACE Q45
-
-        </h3>
-
-
-        <p class="product-description">
-
-            65-hour battery life, advanced adaptive
-            noise cancellation and Hi-Res audio,
-            bundled with the exclusive Voltica Elite
-            Pass for the first 200 customers.
-
-        </p>
-
-
-        <div class="product-bottom">
-
-
-            <div class="product-price">
-
-                $189.99
-
-                <small>
-                    USD
-                </small>
-
-            </div>
-
-
-            <a
-                href="product-view.html#q45"
-                class="view-button"
-            >
-
-                VIEW PRODUCT
-
-                <strong>
-                    →
-                </strong>
-
-            </a>
-
-
-        </div>
-
-
-    </div>
-
-
-</article>
-
-
-
-<!-- =========================================================
-     PRODUCT 03 — VSL-420 SMART DOOR LOCK
-     ========================================================= -->
-
-<article class="product-card glass">
-
-
-    <div class="product-image">
-
-
-        <img
-            src="assets/door1-1.jpg"
-            alt="Premium 3D Face Recognition Smart Door Lock Gold Edition"
-        >
-
-
-        <div class="product-overlay"></div>
-
-
-        <div class="product-status">
-
-            <span class="pulse-dot"></span>
-
-            PREMIUM
-
-        </div>
-
-
-        <div class="product-number">
-            03
-        </div>
-
-
-    </div>
-
-
-
-    <div class="product-content">
-
-
-        <div class="product-category">
-            SMART HOME / SECURITY
-        </div>
-
-
-        <h3>
-
-            VSL-420
-            <br>
-            SMART LOCK
-
-        </h3>
-
-
-        <p class="product-description">
-
-            Next-generation biometric home security
-            featuring 3D facial recognition, fingerprint,
-            IC card, password, Tuya Smart control and
-            integrated video intercom.
-
-        </p>
-
-
-        <div class="product-bottom">
-
-
-            <div class="product-price">
-
-                $207.99
-
-                <small>
-                    USD
-                </small>
-
-            </div>
-
-
-            <a
-                href="product-view.html#doorlock1"
-                class="view-button"
-            >
-
-                VIEW PRODUCT
-
-                <strong>
-                    →
-                </strong>
-
-            </a>
-
-
-        </div>
-
-
-        <div class="special-label">
-            GOLD EDITION / VSL-420
-        </div>
-
-
-    </div>
-
-
-</article>
-
-
-</div>
-
-
-
-<!-- =========================================================
-     BOTTOM CTA
-     ========================================================= -->
-
-<section class="bottom-cta glass">
-
-
-    <div class="hero-status">
-
-        <span class="pulse-dot"></span>
-
-        VOLTICA STORE
-
-    </div>
-
-
-    <h2>
-
-        THE FUTURE
-        <br>
-        OF EVERYDAY.
-
-    </h2>
-
-
-    <p>
-
-        More next-generation products are being
-        selected for the Voltica collection.
-
-    </p>
-
-
-</section>
+    </section>
 
 
 </main>
 
 
 
-<!-- =========================================================
+<!-- =====================================================
      FOOTER
-     ========================================================= -->
+     ===================================================== -->
 
-<footer class="site-footer">
+<footer class="product-footer">
+
 
     <span>
         VOLTICA STORE
     </span>
 
+
     <span>
         THE FUTURE OF EVERYDAY
     </span>
 
+
 </footer>
+
+
+
+<!-- =====================================================
+     SCRIPTS
+     ===================================================== -->
+
+<!-- Product database -->
+
+<script src="products.js"></script>
+
+
+<!-- Product page engine -->
+
+<script src="product-view.js"></script>
 
 
 </body>

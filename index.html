@@ -3,472 +3,940 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="Voltica Q45 — Premium wireless ANC headphones."
-    >
+<title>Voltica Q45</title>
 
-    <meta
-        name="theme-color"
-        content="#050505"
-    >
+<style>
 
-    <title>Voltica Q45 — The Future of Everyday</title>
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: #050505;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* HEADER */
+
+header {
+    height: 80px;
+    padding: 15px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #222;
+
+    background: rgba(5,5,5,.95);
+}
+
+.logo {
+    height: 45px;
+    width: auto;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+nav a:hover {
+    color: white;
+}
 
 
-    <style>
+/* HERO */
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+.hero {
+    text-align: center;
+    padding: 90px 20px 70px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #222 0%,
+            #080808 45%,
+            #050505 75%
+        );
+}
+
+.hero small {
+    color: #888;
+    letter-spacing: 5px;
+    font-size: 11px;
+}
+
+.hero h1 {
+    margin: 20px 0 10px;
+
+    font-size:
+        clamp(60px, 12vw, 140px);
+
+    line-height: .85;
+    letter-spacing: -6px;
+}
+
+.hero h1 span {
+    display: block;
+    color: #888;
+    font-weight: 300;
+}
+
+.hero p {
+    color: #999;
+    max-width: 600px;
+    margin: 30px auto 0;
+    line-height: 1.7;
+}
 
 
-        html {
-            scroll-behavior: smooth;
-        }
+/* PRODUCT */
+
+.product {
+    max-width: 1450px;
+    margin: auto;
+
+    padding:
+        40px 30px 120px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.4fr)
+        minmax(320px, .6fr);
+
+    gap: 50px;
+}
 
 
-        body {
+/* GALLERY */
 
-            background:
-                radial-gradient(
-                    circle at 50% -10%,
-                    #202020 0%,
-                    #090909 38%,
-                    #020202 75%
+.gallery {
+    width: 100%;
+}
+
+.main-photo {
+    width: 100%;
+
+    height:
+        clamp(450px, 65vw, 800px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #202020,
+            #090909 65%,
+            #050505
+        );
+
+    border:
+        1px solid #252525;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+}
+
+.main-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.thumbs {
+
+    margin-top: 12px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 10px;
+}
+
+.thumb {
+
+    border:
+        1px solid #282828;
+
+    background: #101010;
+
+    padding: 0;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    aspect-ratio: 1 / 1;
+
+    cursor: pointer;
+}
+
+.thumb.active {
+    border-color: white;
+}
+
+.thumb img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* INFO */
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category {
+    color: #777;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 15px;
+}
+
+.info h2 {
+
+    font-size:
+        clamp(55px, 8vw, 95px);
+
+    line-height: .85;
+
+    letter-spacing: -5px;
+
+    margin: 0 0 15px;
+}
+
+.tagline {
+    color: #999;
+    font-size: 18px;
+
+    margin-bottom: 35px;
+}
+
+.price {
+
+    font-size: 48px;
+
+    font-weight: 600;
+
+    margin-bottom: 20px;
+}
+
+.price span {
+
+    font-size: 12px;
+
+    color: #777;
+
+    letter-spacing: 2px;
+}
+
+
+/* OFFER */
+
+.offer {
+
+    border:
+        1px solid #333;
+
+    background:
+        linear-gradient(
+            135deg,
+            #181818,
+            #0c0c0c
+        );
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+}
+
+.offer strong {
+
+    display: block;
+
+    font-size: 17px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 7px;
+}
+
+.offer span {
+
+    color: #888;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* DESCRIPTION */
+
+.description {
+
+    color: #999;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+
+/* FEATURES */
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+}
+
+.feature {
+
+    padding: 15px;
+
+    border:
+        1px solid #222;
+
+    border-radius: 12px;
+
+    background: #0d0d0d;
+}
+
+.feature strong {
+
+    display: block;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 5px;
+}
+
+.feature span {
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+/* STRIPE */
+
+.preorder {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    min-height: 65px;
+
+    width: 100%;
+
+    background: white;
+
+    color: black;
+
+    text-decoration: none;
+
+    border-radius: 15px;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    transition: .25s;
+}
+
+.preorder:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(255,255,255,.15);
+}
+
+.secure {
+
+    text-align: center;
+
+    color: #555;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    margin-top: 12px;
+}
+
+
+/* DETAILS */
+
+.details {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding:
+        0 25px 120px;
+
+    text-align: center;
+}
+
+.details small {
+
+    color: #666;
+
+    letter-spacing: 4px;
+}
+
+.details h2 {
+
+    font-size:
+        clamp(35px, 6vw, 65px);
+
+    margin: 20px 0;
+}
+
+.details p {
+
+    color: #888;
+
+    line-height: 1.9;
+
+}
+
+
+/* FOOTER */
+
+footer {
+
+    border-top:
+        1px solid #1d1d1d;
+
+    padding: 35px;
+
+    text-align: center;
+
+    color: #555;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+    header {
+        padding: 15px 18px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 9px;
+    }
+
+    .product {
+
+        grid-template-columns: 1fr;
+
+        padding:
+            25px 12px 80px;
+
+        gap: 35px;
+    }
+
+    .main-photo {
+        height: 430px;
+        border-radius: 20px;
+    }
+
+    .info {
+        padding: 0 5px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .hero {
+        padding:
+            70px 15px;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+    }
+
+    .thumbs {
+        gap: 5px;
+    }
+
+    .info h2 {
+        font-size: 60px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <a href="index.html">
+
+        <img
+            class="logo"
+            src="logo.png"
+            alt="Voltica"
+        >
+
+    </a>
+
+    <nav>
+
+        <a href="#q45">
+            Q45
+        </a>
+
+        <a href="#details">
+            DETAILS
+        </a>
+
+        <a href="#preorder">
+            PRE-ORDER
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<section class="hero">
+
+    <small>
+        VOLTICA AUDIO
+    </small>
+
+    <h1>
+        Q45
+        <span>
+            PREMIUM AUDIO
+        </span>
+    </h1>
+
+    <p>
+        Premium wireless headphones designed
+        for immersive everyday listening.
+    </p>
+
+</section>
+
+
+
+<section
+    class="product"
+    id="q45"
+>
+
+
+    <div class="gallery">
+
+
+        <div class="main-photo">
+
+            <img
+                id="mainImage"
+                src="assets/images/q451-1.webp"
+                alt="Voltica Q45"
+            >
+
+        </div>
+
+
+        <div class="thumbs">
+
+
+            <button
+                class="thumb active"
+                data-image="assets/images/q451-1.webp"
+            >
+
+                <img
+                    src="assets/images/q451-1.webp"
+                    alt="Q45"
+                >
+
+            </button>
+
+
+            <button
+                class="thumb"
+                data-image="assets/images/q451-2.webp"
+            >
+
+                <img
+                    src="assets/images/q451-2.webp"
+                    alt="Q45"
+                >
+
+            </button>
+
+
+            <button
+                class="thumb"
+                data-image="assets/images/q451-3.webp"
+            >
+
+                <img
+                    src="assets/images/q451-3.webp"
+                    alt="Q45"
+                >
+
+            </button>
+
+
+            <button
+                class="thumb"
+                data-image="assets/images/q451-4.webp"
+            >
+
+                <img
+                    src="assets/images/q451-4.webp"
+                    alt="Q45"
+                >
+
+            </button>
+
+
+            <button
+                class="thumb"
+                data-image="assets/images/q451-6.webp"
+            >
+
+                <img
+                    src="assets/images/q451-6.webp"
+                    alt="Q45"
+                >
+
+            </button>
+
+
+            <button
+                class="thumb"
+                data-image="assets/images/q451-7.webp"
+            >
+
+                <img
+                    src="assets/images/q451-7.webp"
+                    alt="Q45"
+                >
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+    <div class="info">
+
+
+        <span class="category">
+            PREMIUM AUDIO
+        </span>
+
+
+        <h2>
+            Q45
+        </h2>
+
+
+        <p class="tagline">
+            Premium ANC Wireless Headphones
+        </p>
+
+
+        <div class="price">
+
+            $189.99
+
+            <span>
+                USD
+            </span>
+
+        </div>
+
+
+        <div class="offer">
+
+            <strong>
+                15% FOR LIFE
+            </strong>
+
+            <span>
+                Exclusive Voltica customer benefit
+                included with your Q45 purchase.
+            </span>
+
+        </div>
+
+
+        <p class="description">
+
+            Meet the Voltica Q45 — premium
+            wireless headphones built for immersive
+            sound, active noise cancellation and
+            comfortable everyday listening.
+
+            Designed for music, travel, work and
+            everything in between.
+
+        </p>
+
+
+        <div class="features">
+
+
+            <div class="feature">
+
+                <strong>
+                    ANC
+                </strong>
+
+                <span>
+                    Active Noise Cancellation
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <strong>
+                    HI-FI
+                </strong>
+
+                <span>
+                    Immersive Audio
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <strong>
+                    WIRELESS
+                </strong>
+
+                <span>
+                    Bluetooth Connectivity
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <strong>
+                    COMFORT
+                </strong>
+
+                <span>
+                    Extended Listening
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <a
+            id="preorder"
+            class="preorder"
+            href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            PRE-ORDER Q45
+
+            <span>
+                →
+            </span>
+
+        </a>
+
+
+        <p class="secure">
+            SECURE CHECKOUT · POWERED BY STRIPE
+        </p>
+
+
+    </div>
+
+</section>
+
+
+
+<section
+    class="details"
+    id="details"
+>
+
+    <small>
+        VOLTICA Q45
+    </small>
+
+    <h2>
+        THE FUTURE OF EVERYDAY.
+    </h2>
+
+    <p>
+
+        The Voltica Q45 combines premium wireless
+        audio, active noise cancellation and
+        comfortable over-ear design for an
+        immersive listening experience wherever
+        your day takes you.
+
+    </p>
+
+</section>
+
+
+
+<footer>
+
+    VOLTICA STORE · THE FUTURE OF EVERYDAY · © 2026
+
+</footer>
+
+
+
+<script>
+
+const mainImage =
+    document.getElementById("mainImage");
+
+const thumbnails =
+    document.querySelectorAll(".thumb");
+
+
+thumbnails.forEach(
+    thumb => {
+
+        thumb.addEventListener(
+            "click",
+            function () {
+
+                const image =
+                    this.getAttribute(
+                        "data-image"
+                    );
+
+                mainImage.src =
+                    image;
+
+                thumbnails.forEach(
+                    item => {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
                 );
 
-            color: #ffffff;
-
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Arial,
-                sans-serif;
-
-            min-height: 100vh;
-
-            overflow-x: hidden;
-
-        }
-
-
-        /* =================================================
-           STAR FIELD
-           ================================================= */
-
-        body::before {
-
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            opacity: .65;
-
-            background-image:
-
-                radial-gradient(
-                    1px 1px at 10% 15%,
-                    rgba(255,255,255,.8),
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 24% 72%,
-                    rgba(255,255,255,.5),
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 38% 32%,
-                    rgba(255,255,255,.7),
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 51% 84%,
-                    rgba(255,255,255,.45),
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 63% 18%,
-                    rgba(255,255,255,.8),
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 77% 54%,
-                    rgba(255,255,255,.5),
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 91% 27%,
-                    rgba(255,255,255,.75),
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 87% 88%,
-                    rgba(255,255,255,.45),
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 16% 91%,
-                    rgba(255,255,255,.65),
-                    transparent
+                this.classList.add(
+                    "active"
                 );
 
-            background-size:
-                320px 320px,
-                430px 430px,
-                520px 520px,
-                610px 610px,
-                710px 710px,
-                820px 820px,
-                930px 930px,
-                1040px 1040px,
-                1150px 1150px;
+            }
+        );
 
-            z-index: -1;
+    }
+);
 
-        }
+</script>
 
 
-        /* =================================================
-           HEADER
-           ================================================= */
+</body>
 
-        header {
-
-            width: 100%;
-
-            padding:
-                22px
-                clamp(20px, 5vw, 70px);
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            position: relative;
-
-            z-index: 10;
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,.08);
-
-            background:
-                rgba(0,0,0,.42);
-
-            backdrop-filter:
-                blur(18px);
-
-            -webkit-backdrop-filter:
-                blur(18px);
-
-        }
-
-
-        .logo {
-
-            display: flex;
-
-            align-items: center;
-
-            text-decoration: none;
-
-        }
-
-
-        .logo img {
-
-            width:
-                clamp(115px, 18vw, 175px);
-
-            height: auto;
-
-            display: block;
-
-        }
-
-
-        nav {
-
-            display: flex;
-
-            gap: 32px;
-
-        }
-
-
-        nav a {
-
-            color: rgba(255,255,255,.75);
-
-            text-decoration: none;
-
-            font-size: 12px;
-
-            font-weight: 600;
-
-            letter-spacing: 2px;
-
-            transition:
-                color .25s ease;
-
-        }
-
-
-        nav a:hover {
-
-            color: #ffffff;
-
-        }
-
-
-        /* =================================================
-           HERO
-           ================================================= */
-
-        .hero {
-
-            min-height:
-                92vh;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            padding:
-                70px 20px 40px;
-
-        }
-
-
-        .eyebrow {
-
-            font-size: 11px;
-
-            letter-spacing: 5px;
-
-            color:
-                rgba(255,255,255,.55);
-
-            margin-bottom: 18px;
-
-        }
-
-
-        .hero h1 {
-
-            font-size:
-                clamp(52px, 11vw, 125px);
-
-            line-height: .9;
-
-            letter-spacing:
-                -5px;
-
-            font-weight: 700;
-
-            margin-bottom: 24px;
-
-        }
-
-
-        .hero h1 span {
-
-            display: block;
-
-            color:
-                rgba(255,255,255,.55);
-
-            font-weight: 300;
-
-        }
-
-
-        .hero-subtitle {
-
-            max-width: 650px;
-
-            color:
-                rgba(255,255,255,.62);
-
-            font-size:
-                clamp(15px, 2vw, 20px);
-
-            line-height: 1.7;
-
-        }
-
-
-        /* =================================================
-           PRODUCT
-           ================================================= */
-
-        .product-section {
-
-            width: 100%;
-
-            max-width: 1500px;
-
-            margin:
-                0 auto;
-
-            padding:
-                40px
-                clamp(18px, 5vw, 70px)
-                120px;
-
-        }
-
-
-        .product-card {
-
-            display: grid;
-
-            grid-template-columns:
-                minmax(0, 1.25fr)
-                minmax(340px, .75fr);
-
-            gap: 55px;
-
-            padding:
-                clamp(20px, 4vw, 50px);
-
-            border:
-                1px solid
-                rgba(255,255,255,.13);
-
-            border-radius: 34px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.09),
-                    rgba(255,255,255,.025)
-                );
-
-            box-shadow:
-                0 40px 120px
-                rgba(0,0,0,.65);
-
-            backdrop-filter:
-                blur(25px);
-
-            -webkit-backdrop-filter:
-                blur(25px);
-
-        }
-
-
-        /* =================================================
-           GALLERY
-           ================================================= */
-
-        .gallery {
-
-            min-width: 0;
-
-        }
-
-
-        .main-image {
-
-            width: 100%;
-
-            min-height:
-                clamp(480px, 60vw, 760px);
-
-            border-radius: 28px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            overflow: hidden;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(255,255,255,.09),
-                    rgba(0,0,0,.18) 60%
-                );
-
-            border:
-                1px solid
-                rgba(255,255,255,.09);
-
-            cursor: zoom-in;
-
-        }
-
-
-        .main-image img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: contain;
-
-            display: block;
-
-            transition:
-                transform .45s ease;
-
-        }
-
-
-        .main-image:hover img {
-
-            transform:
-                scale(1.035);
-
-        }
-
-
-        .thumbnails {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(6, 1fr);
-
-            gap: 10px;
-
-            margin-top: 14px;
-
-        }
-
-
-        .thumbnail
+</html>

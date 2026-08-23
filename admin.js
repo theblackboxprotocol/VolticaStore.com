@@ -1,6 +1,14 @@
 /* =====================================================
    VOLTICA STORE
    ADMIN PRODUCT MANAGER
+   admin.js
+   ===================================================== */
+
+"use strict";
+
+
+/* =====================================================
+   API CONFIGURATION
    ===================================================== */
 
 const API_URL =
@@ -41,7 +49,7 @@ if (imageInput) {
             imagePreview.innerHTML = "";
 
             const files =
-                Array.from(this.files);
+                Array.from(this.files || []);
 
             if (!files.length) {
                 return;
@@ -63,6 +71,7 @@ if (imageInput) {
 
             imagePreview.appendChild(count);
 
+
             files.forEach(
                 function (file) {
 
@@ -72,20 +81,36 @@ if (imageInput) {
                         return;
                     }
 
+
                     const item =
                         document.createElement("div");
 
                     item.className =
                         "image-preview-item";
 
+
                     const image =
                         document.createElement("img");
 
-                    image.src =
+                    const objectUrl =
                         URL.createObjectURL(file);
+
+                    image.src =
+                        objectUrl;
 
                     image.alt =
                         file.name;
+
+
+                    image.onload =
+                        function () {
+
+                            URL.revokeObjectURL(
+                                objectUrl
+                            );
+
+                        };
+
 
                     const name =
                         document.createElement("div");
@@ -96,7 +121,9 @@ if (imageInput) {
                     name.textContent =
                         file.name;
 
+
                     item.appendChild(image);
+
                     item.appendChild(name);
 
                     imagePreview.appendChild(item);
@@ -149,7 +176,7 @@ function escapeJS(value) {
 
 
 /* =====================================================
-   CREATE PRODUCT ID
+   CREATE SAFE PRODUCT ID
    ===================================================== */
 
 function createProductId(name) {
@@ -169,56 +196,132 @@ function createProductId(name) {
 
 
 /* =====================================================
+   CREATE SAFE IMAGE NAME
+   ===================================================== */
+
+function createSafeImageName(
+    filename,
+    index
+) {
+
+    const original =
+        String(filename || "")
+            .trim();
+
+    const extension =
+        (
+            original
+                .split(".")
+                .pop() || "webp"
+        )
+        .toLowerCase();
+
+
+    let base =
+        original
+            .replace(
+                /\.[^/.]+$/,
+                ""
+            )
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(
+                /[^a-z0-9]+/g,
+                "-"
+            )
+            .replace(
+                /^-+|-+$/g,
+                "");
+
+
+    if (!base) {
+        base = "product-image";
+    }
+
+
+    return (
+        base +
+        "-" +
+        String(index + 1) +
+        "." +
+        extension
+    );
+
+}
+
+
+/* =====================================================
    PARSE FEATURES
    ===================================================== */
 
 function parseFeatures(text) {
 
-    if (!String(text || "").trim()) {
+    if (
+        !String(text || "").trim()
+    ) {
+
         return [];
+
     }
+
 
     return text
         .split(/\r?\n/)
-        .map(line => line.trim())
+        .map(
+            line =>
+                line.trim()
+        )
         .filter(Boolean)
-        .map(function (line, index) {
+        .map(
+            function (
+                line,
+                index
+            ) {
 
-            const parts =
-                line
-                    .split("—")
-                    .map(part => part.trim());
+                const parts =
+                    line
+                        .split("—")
+                        .map(
+                            part =>
+                                part.trim()
+                        );
 
-            if (parts.length >= 3) {
+
+                if (
+                    parts.length >= 3
+                ) {
+
+                    return [
+
+                        parts[0],
+
+                        parts[1],
+
+                        parts
+                            .slice(2)
+                            .join(" — ")
+
+                    ];
+
+                }
+
 
                 return [
 
-                    parts[0],
+                    String(index + 1)
+                        .padStart(2, "0"),
 
-                    parts[1],
+                    parts[0] || "",
 
                     parts
-                        .slice(2)
+                        .slice(1)
                         .join(" — ")
 
                 ];
 
             }
-
-            return [
-
-                String(index + 1)
-                    .padStart(2, "0"),
-
-                parts[0] || "",
-
-                parts
-                    .slice(1)
-                    .join(" — ")
-
-            ];
-
-        });
+        );
 
 }
 
@@ -229,46 +332,63 @@ function parseFeatures(text) {
 
 function parseSpecifications(text) {
 
-    if (!String(text || "").trim()) {
+    if (
+        !String(text || "").trim()
+    ) {
+
         return [];
+
     }
+
 
     return text
         .split(/\r?\n/)
-        .map(line => line.trim())
+        .map(
+            line =>
+                line.trim()
+        )
         .filter(Boolean)
-        .map(function (line) {
+        .map(
+            function (line) {
 
-            const separator =
-                line.indexOf(":");
+                const separator =
+                    line.indexOf(":");
 
-            if (separator === -1) {
+
+                if (
+                    separator === -1
+                ) {
+
+                    return [
+
+                        line,
+
+                        ""
+
+                    ];
+
+                }
+
 
                 return [
-                    line,
-                    ""
+
+                    line
+                        .substring(
+                            0,
+                            separator
+                        )
+                        .trim(),
+
+                    line
+                        .substring(
+                            separator + 1
+                        )
+                        .trim()
+
                 ];
 
             }
-
-            return [
-
-                line
-                    .substring(
-                        0,
-                        separator
-                    )
-                    .trim(),
-
-                line
-                    .substring(
-                        separator + 1
-                    )
-                    .trim()
-
-            ];
-
-        });
+        );
 
 }
 
@@ -281,17 +401,45 @@ function getImagePaths() {
 
     if (
         !imageInput ||
+        !imageInput.files ||
         !imageInput.files.length
     ) {
+
         return [];
+
     }
+
 
     return Array
         .from(imageInput.files)
         .map(
-            file =>
-                "assets/images/" +
-                file.name
+            function (
+                file,
+                index
+            ) {
+
+                const safeName =
+                    createSafeImageName(
+                        file.name,
+                        index
+                    );
+
+
+                return {
+
+                    originalName:
+                        file.name,
+
+                    safeName:
+                        safeName,
+
+                    path:
+                        "assets/images/" +
+                        safeName
+
+                };
+
+            }
         );
 
 }
@@ -306,60 +454,69 @@ function generateProduct() {
     const name =
         document
             .getElementById("productName")
-            .value
+            ?.value
             .trim();
+
 
     const category =
         document
             .getElementById("category")
-            .value
+            ?.value
             .trim();
+
 
     const supplierLink =
         document
             .getElementById("supplierLink")
-            .value
+            ?.value
             .trim();
+
 
     const sku =
         document
             .getElementById("cjSku")
-            .value
+            ?.value
             .trim();
+
 
     const cost =
         document
             .getElementById("cost")
-            .value
+            ?.value
             .trim();
+
 
     const price =
         document
             .getElementById("price")
-            .value
+            ?.value
             .trim();
+
 
     const stripe =
         document
             .getElementById("stripe")
-            .value
+            ?.value
             .trim();
+
 
     const description =
         document
             .getElementById("description")
-            .value
+            ?.value
             .trim();
+
 
     const featuresText =
         document
             .getElementById("features")
-            .value;
+            ?.value || "";
+
 
     const specificationsText =
         document
             .getElementById("specifications")
-            .value;
+            ?.value || "";
 
 
     /* =================================================
@@ -423,6 +580,7 @@ function generateProduct() {
 
     if (
         !imageInput ||
+        !imageInput.files ||
         !imageInput.files.length
     ) {
 
@@ -435,24 +593,35 @@ function generateProduct() {
     }
 
 
+    /* =================================================
+       PRODUCT DATA
+       ================================================= */
+
     const productId =
         createProductId(name);
 
-    const images =
+
+    const imageData =
         getImagePaths();
 
+
     const features =
-        parseFeatures(featuresText);
+        parseFeatures(
+            featuresText
+        );
+
 
     const specifications =
-        parseSpecifications(specificationsText);
+        parseSpecifications(
+            specificationsText
+        );
 
 
     /* =================================================
        PRODUCT BLOCK
-    ================================================= */
+       ================================================= */
 
-    return `
+    let product = `
 // =================================================
 // PRODUCT AUTO — ${name.toUpperCase()}
 // =================================================
@@ -480,38 +649,80 @@ function generateProduct() {
     currency: "USD",
 
     images: [
-${images
-    .map(
-        image =>
-            `        "${escapeJS(image)}"`
-    )
-    .join(",\n")}
+`;
+
+
+    product +=
+        imageData
+            .map(
+                image =>
+                    `        "${escapeJS(image.path)}"`
+            )
+            .join(",\n");
+
+
+    product += `
     ],
 
     description:
         "${escapeJS(description)}",
 
     specifications: [
-${specifications
-    .map(
-        spec =>
-            `        ["${escapeJS(spec[0])}", "${escapeJS(spec[1])}"]`
-    )
-    .join(",\n")}
+`;
+
+
+    product +=
+        specifications
+            .map(
+                spec =>
+                    `        ["${escapeJS(spec[0])}", "${escapeJS(spec[1])}"]`
+            )
+            .join(",\n");
+
+
+    product += `
     ],
 
     features: [
-${features
-    .map(
-        feature =>
-            `        ["${escapeJS(feature[0])}", "${escapeJS(feature[1])}", "${escapeJS(feature[2])}"]`
-    )
-    .join(",\n")}
-    ]${stripe ? `,
+`;
+
+
+    product +=
+        features
+            .map(
+                feature =>
+                    `        ["${escapeJS(feature[0])}", "${escapeJS(feature[1])}", "${escapeJS(feature[2])}"]`
+            )
+            .join(",\n");
+
+
+    product += `
+    ]`;
+
+
+    if (stripe) {
+
+        product += `,
 
     stripe:
-        "${escapeJS(stripe)}"` : ""}
+        "${escapeJS(stripe)}"`;
+
+    }
+
+
+    product += `
 },`;
+
+
+    return {
+
+        block:
+            product,
+
+        images:
+            imageData
+
+    };
 
 }
 
@@ -522,25 +733,42 @@ ${features
 
 async function publishProduct(
     password,
-    product
+    productData
 ) {
+
+    if (
+        !productData ||
+        !productData.block
+    ) {
+
+        return false;
+
+    }
+
 
     const formData =
         new FormData();
+
 
     formData.append(
         "password",
         password
     );
 
+
     formData.append(
         "product",
-        product
+        productData.block
     );
 
 
+    /* =================================================
+       IMAGE UPLOAD
+       ================================================= */
+
     if (
         imageInput &&
+        imageInput.files &&
         imageInput.files.length
     ) {
 
@@ -548,6 +776,20 @@ async function publishProduct(
             .from(imageInput.files)
             .forEach(
                 function (file) {
+
+                    /*
+                       IMPORTANT:
+                       The PHP API expects:
+
+                       images[]
+
+                       and receives the actual
+                       uploaded file.
+
+                       We keep the original filename
+                       here. The PHP API is responsible
+                       for generating its safe filename.
+                    */
 
                     formData.append(
                         "images[]",
@@ -561,20 +803,115 @@ async function publishProduct(
     }
 
 
+    /* =================================================
+       DEBUG
+       ================================================= */
+
+    console.log(
+        "======================================"
+    );
+
+    console.log(
+        "VOLTICA API REQUEST"
+    );
+
+    console.log(
+        "API:",
+        API_URL
+    );
+
+    console.log(
+        "Images:",
+        imageInput?.files?.length || 0
+    );
+
+    console.log(
+        "======================================"
+    );
+
+
     try {
 
         const response =
             await fetch(
                 API_URL,
                 {
-                    method: "POST",
-                    body: formData
+
+                    method:
+                        "POST",
+
+                    body:
+                        formData,
+
+                    headers: {
+
+                        "Accept":
+                            "application/json"
+
+                    },
+
+                    cache:
+                        "no-store"
+
                 }
             );
 
 
-        const result =
-            await response.json();
+        /* =================================================
+           READ RESPONSE
+           ================================================= */
+
+        const responseText =
+            await response.text();
+
+
+        console.log(
+            "VOLTICA RAW API RESPONSE:",
+            responseText
+        );
+
+
+        let result;
+
+
+        try {
+
+            result =
+                JSON.parse(
+                    responseText
+                );
+
+        }
+
+        catch (jsonError) {
+
+            console.error(
+                "API returned invalid JSON:",
+                jsonError
+            );
+
+
+            alert(
+
+                "API CONNECTION FAILED\n\n" +
+
+                "HTTP STATUS: " +
+                response.status +
+                "\n\n" +
+
+                "The server did not return valid JSON.\n\n" +
+
+                responseText.substring(
+                    0,
+                    1000
+                )
+
+            );
+
+
+            return false;
+
+        }
 
 
         console.log(
@@ -583,26 +920,58 @@ async function publishProduct(
         );
 
 
+        /* =================================================
+           API ERROR
+           ================================================= */
+
         if (
             !response.ok ||
             !result.success
         ) {
 
+            let message =
+                result.error ||
+                "Unknown API error";
+
+
+            if (
+                result.step
+            ) {
+
+                message +=
+                    "\n\nSTEP: " +
+                    result.step;
+
+            }
+
+
+            if (
+                result.github_message
+            ) {
+
+                message +=
+                    "\n\nGITHUB: " +
+                    result.github_message;
+
+            }
+
+
             alert(
 
                 "PUBLISH FAILED\n\n" +
-
-                (
-                    result.error ||
-                    "Unknown API error"
-                )
+                message
 
             );
+
 
             return false;
 
         }
 
+
+        /* =================================================
+           SUCCESS
+           ================================================= */
 
         alert(
 
@@ -623,6 +992,7 @@ async function publishProduct(
 
     }
 
+
     catch (error) {
 
         console.error(
@@ -635,9 +1005,17 @@ async function publishProduct(
 
             "API CONNECTION FAILED\n\n" +
 
-            error.message
+            (
+                error?.message ||
+                "Network request failed."
+            ) +
+
+            "\n\n" +
+
+            "Check that api.volticastore.com is online."
 
         );
+
 
         return false;
 
@@ -657,6 +1035,7 @@ async function authenticateAPI() {
             "VOLTICA STORE\n\nADMIN PASSWORD"
         );
 
+
     if (!password) {
 
         alert(
@@ -666,6 +1045,7 @@ async function authenticateAPI() {
         return null;
 
     }
+
 
     return password;
 
@@ -682,45 +1062,75 @@ if (addProductButton) {
         "click",
         async function () {
 
-            const product =
+            /* =================================================
+               GENERATE
+               ================================================= */
+
+            const productData =
                 generateProduct();
 
-            if (!product) {
+
+            if (!productData) {
                 return;
             }
 
 
+            /* =================================================
+               PASSWORD
+               ================================================= */
+
             const password =
                 await authenticateAPI();
+
 
             if (!password) {
                 return;
             }
 
 
-            this.disabled = true;
+            /* =================================================
+               LOCK BUTTON
+               ================================================= */
+
+            this.disabled =
+                true;
+
 
             this.textContent =
                 "PUBLISHING...";
 
 
+            /* =================================================
+               PUBLISH
+               ================================================= */
+
             const published =
                 await publishProduct(
                     password,
-                    product
+                    productData
                 );
 
+
+            /* =================================================
+               SUCCESS MODAL
+               ================================================= */
 
             if (published) {
 
                 showGeneratedProduct(
-                    product
+                    productData.block
                 );
 
             }
 
 
-            this.disabled = false;
+            /* =================================================
+               UNLOCK
+               ================================================= */
+
+            this.disabled =
+                false;
+
 
             this.textContent =
                 "ADD PRODUCT";
@@ -733,14 +1143,17 @@ if (addProductButton) {
 
 /* =====================================================
    SHOW GENERATED PRODUCT
-   ===================================================== */
+   ================================================= */
 
-function showGeneratedProduct(product) {
+function showGeneratedProduct(
+    product
+) {
 
     let modal =
         document.getElementById(
             "generatedProduct"
         );
+
 
     if (modal) {
         modal.remove();
@@ -748,7 +1161,10 @@ function showGeneratedProduct(product) {
 
 
     modal =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     modal.id =
         "generatedProduct";
@@ -767,6 +1183,7 @@ function showGeneratedProduct(product) {
             blur(20px);
 
         padding: 20px;
+
         overflow: auto;
 
     `;
@@ -808,6 +1225,7 @@ function showGeneratedProduct(product) {
 
             ">
 
+
                 <strong style="
                     font-size:18px;
                     letter-spacing:.05em;
@@ -824,12 +1242,17 @@ function showGeneratedProduct(product) {
                     style="
                         background:
                             rgba(255,255,255,.06);
+
                         border:
                             1px solid
                             rgba(255,255,255,.15);
+
                         color:white;
+
                         border-radius:10px;
+
                         padding:9px 13px;
+
                         cursor:pointer;
                     "
                 >
@@ -838,12 +1261,14 @@ function showGeneratedProduct(product) {
 
                 </button>
 
+
             </div>
 
 
             <div style="
 
                 padding:14px;
+
                 margin-bottom:14px;
 
                 border-radius:12px;
@@ -856,6 +1281,7 @@ function showGeneratedProduct(product) {
                     rgba(0,255,140,.20);
 
                 color:#9fffc8;
+
                 font-weight:600;
 
             ">
@@ -919,37 +1345,57 @@ function showGeneratedProduct(product) {
     );
 
 
+    /* =================================================
+       PRODUCT TEXT
+       ================================================= */
+
     const textarea =
         document.getElementById(
             "generatedProductText"
         );
 
+
     if (textarea) {
-        textarea.value = product;
+
+        textarea.value =
+            product;
+
     }
 
+
+    /* =================================================
+       CLOSE
+       ================================================= */
 
     const closeButton =
         document.getElementById(
             "closeGeneratedProduct"
         );
 
+
     if (closeButton) {
 
         closeButton.addEventListener(
             "click",
             function () {
+
                 modal.remove();
+
             }
         );
 
     }
 
 
+    /* =================================================
+       COPY
+       ================================================= */
+
     const copyButton =
         document.getElementById(
             "copyGeneratedProduct"
         );
+
 
     if (copyButton) {
 
@@ -963,14 +1409,22 @@ function showGeneratedProduct(product) {
                         .clipboard
                         .writeText(product);
 
+
                     this.textContent =
                         "✓ COPIED";
+
 
                     setTimeout(
                         function () {
 
-                            copyButton.textContent =
-                                "COPY PRODUCT BLOCK";
+                            if (
+                                copyButton
+                            ) {
+
+                                copyButton.textContent =
+                                    "COPY PRODUCT BLOCK";
+
+                            }
 
                         },
                         1800
@@ -979,6 +1433,12 @@ function showGeneratedProduct(product) {
                 }
 
                 catch (error) {
+
+                    console.error(
+                        "COPY ERROR:",
+                        error
+                    );
+
 
                     alert(
                         "Copy failed. Please copy manually."
@@ -995,9 +1455,67 @@ function showGeneratedProduct(product) {
 
 
 /* =====================================================
+   API TEST HELPER
+   ===================================================== */
+
+async function testAPIConnection() {
+
+    console.log(
+        "Testing Voltica API..."
+    );
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL,
+                {
+
+                    method:
+                        "OPTIONS",
+
+                    cache:
+                        "no-store"
+
+                }
+            );
+
+
+        console.log(
+            "API OPTIONS STATUS:",
+            response.status
+        );
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "API TEST FAILED:",
+            error
+        );
+
+
+        return false;
+
+    }
+
+}
+
+
+/* =====================================================
    ADMIN JS READY
    ===================================================== */
 
 console.log(
     "✓ VOLTICA ADMIN PRODUCT MANAGER READY"
+);
+
+console.log(
+    "✓ API:",
+    API_URL
 );

@@ -1,167 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltica Store - Article</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="store-page" style="padding: 60px 20px;">
+        <a href="store.html" class="product-button" style="margin-bottom: 30px;">← RETOUR À LA BOUTIQUE</a>
+        
+        <div id="productDetailContainer" class="store-section" style="max-width: 900px; margin:0 auto;">
+            <!-- Rendu dynamique par JS -->
+        </div>
+    </div>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <script src="products.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const prodId = params.get('id');
+            const product = getProductById(prodId);
+            const container = document.getElementById('productDetailContainer');
 
-    <meta
-        name="description"
-        content="Voltica Store — Product"
-    >
+            if (!product) {
+                container.innerHTML = "<h2>Produit introuvable.</h2>";
+                return;
+            }
 
-    <meta
-        name="theme-color"
-        content="#050505"
-    >
-
-    <title>Product — Voltica Store</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
-
-    <!-- =====================================================
-         VOLTICA PRODUCT VIEW
-         ===================================================== -->
-
-    <style>
-
-        /* =====================================================
-           PAGE
-           ===================================================== */
-
-        .product-view-page {
-
-            min-height: 100vh;
-
-            background:
-                radial-gradient(
-                    circle at 50% 10%,
-                    rgba(95,120,255,0.08),
-                    transparent 35%
-                );
-
-        }
-
-
-        /* =====================================================
-           TOP NAVIGATION
-           ===================================================== */
-
-        .product-view-nav {
-
-            position: fixed;
-
-            top: 22px;
-            left: 18px;
-
-            z-index: 1000;
-
-            display: flex;
-            flex-direction: column;
-
-            gap: 10px;
-
-        }
-
-
-        .product-nav-button {
-
-            display: flex;
-
-            align-items: center;
-            gap: 10px;
-
-            min-width: 145px;
-            min-height: 52px;
-
-            padding:
-                0
-                15px;
-
-            box-sizing: border-box;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.10);
-
-            border-radius: 14px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,0.065),
-                    rgba(255,255,255,0.025)
-                );
-
-            backdrop-filter:
-                blur(18px)
-                saturate(130%);
-
-            -webkit-backdrop-filter:
-                blur(18px)
-                saturate(130%);
-
-            box-shadow:
-                inset 0 1px 0
-                rgba(255,255,255,0.08),
-                0 10px 35px
-                rgba(0,0,0,0.22);
-
-            color:
-                rgba(255,255,255,0.82);
-
-            text-decoration: none;
-
-            font-size: 9px;
-
-            font-weight: 700;
-
-            letter-spacing:
-                0.20em;
-
-            transition:
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                background 0.25s ease;
-
-        }
-
-
-        .product-nav-button:hover {
-
-            transform:
-                translateX(4px);
-
-            border-color:
-                rgba(150,180,255,0.28);
-
-            background:
-                rgba(255,255,255,0.09);
-
-        }
-
-
-        .product-nav-dot {
-
-            width: 7px;
-            height: 7px;
-
-            flex: 0 0 7px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(220,235,255,0.95);
-
-            box-shadow:
-                0 0 9px
-                rgba(180,210,255,0.
+            container.innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center;">
+                    <div class="store-product">
+                        <div class="product-image" style="aspect-ratio: 1/1;">
+                            <img src="${product.imageUrl}" alt="${product.name}" style="width:100%; height:100%; object-fit:cover;">
+                        </div>
+                    </div>
+                    <div>
+                        <span class="section-index">VOLTICA / ${product.category.toUpperCase()}</span>
+                        <h1 style="font-size: 2.5rem; margin: 10px 0;">${product.name}</h1>
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">${product.description}</p>
+                        <div style="font-size: 2rem; font-weight: bold; margin-bottom: 25px;">$${parseFloat(product.price).toFixed(2)} USD</div>
+                        <a href="${product.stripeUrl}" target="_blank" class="product-button" style="padding: 15px 30px; font-size: 1rem; width: 100%; text-align: center;">ACHETER MAINTENANT (STRIPE)</a>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>

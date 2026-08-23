@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Voltica Store — Premium technology for the future of everyday."
+    >
+
+    <meta
+        name="theme-color"
+        content="#030303"
+    >
+
+    <title>Voltica Store — Product</title>
+
+    <link
+        rel="stylesheet"
+        href="product-view.css"
+    >
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     BACKGROUND
+     ===================================================== -->
+
+<div class="product-background" aria-hidden="true">
+
+    <div class="product-stars"></div>
+    <div class="product-grid"></div>
+    <div class="product-glow product-glow-one"></div>
+    <div class="product-glow product-glow-two"></div>
+
+</div>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="product-header">
+
+    <a
+        href="index.html"
+        class="voltica-logo"
+        aria-label="Voltica Store Home"
+    >
+
+        <img
+            src="logo.png"
+            alt="Voltica"
+        >
+
+    </a>
+
+
+    <nav class="product-navigation">
+
+        <a href="index.html">
+            HOME
+        </a>
+
+        <a href="store.html">
+            STORE
+        </a>
+
+        <a href="index.html#contact">
+            CONTACT
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     PRODUCT PAGE
+     ===================================================== -->
+
+<main class="product-page" id="productPage">
+
+
+    <!-- =================================================
+         PRODUCT HERO
+         ================================================= -->
+
+    <section class="product-hero">
+
+
+        <!-- =============================================
+             GALLERY
+             ============================================= -->
+
+        <div class="product-gallery">
+
+            <div class="main-image-panel">
+
+                <img
+                    id="mainProductImage"
+                    src=""
+                    alt="Voltica product"
+                >
+
+                <button
+                    type="button"
+                    class="image-zoom-button"
+                    id="imageZoomButton"
+                    aria-label="Zoom product image"
+                >
+                    ⤢
+                </button>
+
+            </div>
+
+
+            <div
+                class="product-thumbnails"
+                id="productThumbnails"
+            ></div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             PRODUCT INFORMATION
+             ============================================= -->
+
+        <div class="product-information">
+
+            <span
+                class="product-category"
+                id="productCategory"
+            >
+                VOLTICA
+            </span>
+
+
+            <div
+                class="product-status"
+                id="productStatus"
+            >
+
+                <span class="pulse-dot"></span>
+
+                <span id="productBadge">
+                    AVAILABLE
+                </span>
+
+            </div>
+
+
+            <h1 id="productName">
+                Loading...
+            </h1>
+
+
+            <p
+                class="product-short-description"
+                id="productShortDescription"
+            >
+                Premium technology selected by Voltica.
+            </p>
+
+
+            <!-- PRICE -->
+
+            <div class="product-price-panel">
+
+                <strong
+                    class="product-price"
+                    id="productPrice"
+                >
+                    $0.00
+                </strong>
+
+                <span
+                    class="product-reference-price"
+                    id="referencePrice"
+                ></span>
+
+                <span
+                    class="product-currency"
+                    id="productCurrency"
+                >
+                    USD
+                </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 LIFETIME 15% OFFER
+                 ================================================= -->
+
+            <div class="lifetime-offer">
+
+                <span class="offer-pulse"></span>
+
+                <div>
+
+                    <strong>
+                        15% OFF FOR LIFE
+                    </strong>
+
+                    <p>
+                        Pre-order today and receive
+                        your exclusive lifetime 15% discount.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 VARIANTS
+                 ================================================= -->
+
+            <div
+                class="product-variants"
+                id="productVariants"
+            ></div>
+
+
+            <!-- =================================================
+                 PURCHASE
+                 ================================================= -->
+
+            <div class="purchase-panel">
+
+                <a
+                    href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+                    id="stripeButton"
+                    class="stripe-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <span>
+                        PRE-ORDER NOW
+                    </span>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="index.html"
+                    class="back-store-button"
+                >
+                    ← BACK TO STORE
+                </a>
+
+            </div>
+
+
+            <div
+                class="product-availability"
+                id="productAvailability"
+            >
+                PRE-ORDER AVAILABLE
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PRODUCT DESCRIPTION
+         ================================================= -->
+
+    <section class="product-description-section">
+
+        <div class="acrylic-panel">
+
+            <span class="section-kicker">
+                PRODUCT OVERVIEW
+            </span>
+
+            <h2>
+                THE DETAILS
+            </h2>
+
+            <div
+                class="product-description"
+                id="productDescription"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FEATURES
+         ================================================= -->
+
+    <section
+        class="product-features-section"
+        id="featuresSection"
+    >
+
+        <div class="section-heading">
+
+            <span class="section-kicker">
+                ENGINEERED DIFFERENTLY
+            </span>
+
+            <h2>
+                KEY FEATURES
+            </h2>
+
+        </div>
+
+
+        <div
+            class="features-grid"
+            id="productFeatures"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         SPECIFICATIONS
+         ================================================= -->
+
+    <section
+        class="product-specifications-section"
+        id="specificationsSection"
+    >
+
+        <div class="section-heading">
+
+            <span class="section-kicker">
+                TECHNICAL DATA
+            </span>
+
+            <h2>
+                SPECIFICATIONS
+            </h2>
+
+        </div>
+
+
+        <div class="specifications-panel acrylic-panel">
+
+            <div
+                class="specifications-table"
+                id="productSpecifications"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         OPTIONS
+         ================================================= -->
+
+    <section
+        class="product-options-section"
+        id="optionsSection"
+    >
+
+        <div class="section-heading">
+
+            <span class="section-kicker">
+                AVAILABLE OPTIONS
+            </span>
+
+            <h2>
+                CONFIGURATION
+            </h2>
+
+        </div>
+
+
+        <div
+            class="options-panel acrylic-panel"
+            id="productOptions"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FINAL CTA
+         ================================================= -->
+
+    <section class="product-final-cta">
+
+        <div class="cta-glass">
+
+            <span class="pulse-dot"></span>
+
+            <span class="section-kicker">
+                VOLTICA STORE
+            </span>
+
+            <h2 id="finalProductName">
+                DISCOVER THE FUTURE.
+            </h2>
+
+            <p>
+                Pre-order premium technology
+                selected for the next generation.
+            </p>
+
+
+            <a
+                href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+                id="finalStripeButton"
+                class="final-buy-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                PRE-ORDER NOW
+
+                <strong>
+                    →
+                </strong>
+
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     LIGHTBOX
+     ===================================================== -->
+
+<div
+    class="product-lightbox"
+    id="productLightbox"
+    aria-hidden="true"
+>
+
+    <button
+        type="button"
+        class="lightbox-close"
+        id="lightboxClose"
+        aria-label="Close image"
+    >
+        ×
+    </button>
+
+
+    <img
+        src=""
+        alt=""
+        id="lightboxImage"
+    >
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="product-footer">
+
+    <span>
+        VOLTICA STORE
+    </span>
+
+    <span>
+        THE FUTURE OF EVERYDAY
+    </span>
+
+    <span>
+        © 2026
+    </span>
+
+</footer>
+
+
+
+<!-- =====================================================
+     DATABASE
+     ===================================================== -->
+
+<script src="products.js"></script>
+
+
+<!-- =====================================================
+     PRODUCT ENGINE
+     ===================================================== -->
+
+<script src="product-view.js"></script>
+
+</body>
+
+</html>

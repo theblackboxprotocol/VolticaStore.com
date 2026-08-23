@@ -3,1517 +3,2436 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<meta
-    name="description"
-    content="Voltica Store — premium technology, audio, gaming gear, creator gear, smart tech and lifestyle products."
->
+    <meta
+        name="description"
+        content="Voltica Store — premium technology, audio, gaming gear, creator gear, smart tech and lifestyle products."
+    >
 
-<meta
-    name="theme-color"
-    content="#050505"
->
+    <meta
+        name="theme-color"
+        content="#050505"
+    >
 
-<title>Voltica Store</title>
+    <title>Voltica Store</title>
 
-<link
-    rel="stylesheet"
-    href="style.css"
->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+
+    <!-- =====================================================
+         VOLTICA STORE — INTERFACE OVERRIDES
+         ===================================================== -->
+
+    <style>
+
+        /* =====================================================
+           HEADER — NEW VOLTICA HERO
+           ===================================================== */
+
+        .store-header {
+            position: relative;
+            width: 100%;
+            min-height: 430px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding:
+                110px
+                40px
+                55px;
+
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+
+        .store-header-center {
+            width: 100%;
+            max-width: 1600px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* Remove old header label */
+
+        .store-header .store-label {
+            display: none !important;
+        }
+
+
+        /* =====================================================
+           VOLTICA LOGO
+           ===================================================== */
+
+        .store-header-logo {
+            display: block;
+
+            width: min(420px, 58vw);
+            height: auto;
+
+            object-fit: contain;
+
+            margin: 0 auto 22px;
+
+            filter:
+                drop-shadow(0 0 18px rgba(255,255,255,0.12))
+                drop-shadow(0 0 42px rgba(110,150,255,0.08));
+
+            animation:
+                volticaLogoFloat 6s ease-in-out infinite;
+
+            user-select: none;
+            pointer-events: none;
+        }
+
+
+        @keyframes volticaLogoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+
+        }
+
+
+        /* =====================================================
+           NEW MAIN TITLE
+           ===================================================== */
+
+        .store-header h1 {
+
+            margin: 0;
+
+            width: 100%;
+
+            font-size:
+                clamp(
+                    42px,
+                    5.8vw,
+                    96px
+                );
+
+            line-height: 0.95;
+
+            font-weight: 300;
+
+            letter-spacing:
+                -0.045em;
+
+            white-space: nowrap;
+
+            color: #f5f7ff;
+
+            text-shadow:
+                0 0 18px rgba(255,255,255,0.08),
+                0 0 45px rgba(130,150,255,0.10);
+
+        }
+
+
+        .store-header h1 span {
+            color: #aab9ff;
+            font-style: italic;
+        }
+
+
+        /* =====================================================
+           CATEGORY MENU POSITION
+           ===================================================== */
+
+        .store-categories {
+
+            position: relative;
+
+            z-index: 20;
+
+            margin-top: -10px;
+
+        }
+
+
+        /* =====================================================
+           EDGE NAVIGATION
+           ===================================================== */
+
+        .voltica-edge-nav {
+
+            position: fixed;
+
+            top: 22px;
+            left: 18px;
+
+            z-index: 1000;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 10px;
+
+            width: 145px;
+
+        }
+
+
+        .voltica-edge-button {
+
+            position: relative;
+
+            width: 145px;
+
+            min-height: 52px;
+
+            padding:
+                0
+                15px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            border-radius: 14px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.10);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.065),
+                    rgba(255,255,255,0.025)
+                );
+
+            backdrop-filter:
+                blur(18px)
+                saturate(130%);
+
+            -webkit-backdrop-filter:
+                blur(18px)
+                saturate(130%);
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255,255,255,0.08),
+                0 10px 35px
+                rgba(0,0,0,0.22);
+
+            color: rgba(255,255,255,0.78);
+
+            text-decoration: none;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+
+        }
+
+
+        .voltica-edge-button:hover {
+
+            transform:
+                translateX(4px);
+
+            border-color:
+                rgba(150,180,255,0.28);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.10),
+                    rgba(110,140,255,0.045)
+                );
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255,255,255,0.10),
+                0 12px 38px
+                rgba(60,90,180,0.15);
+
+        }
+
+
+        .voltica-edge-dot {
+
+            width: 7px;
+            height: 7px;
+
+            flex: 0 0 7px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(220,235,255,0.95);
+
+            box-shadow:
+                0 0 8px
+                rgba(180,210,255,0.7);
+
+        }
+
+
+        .voltica-edge-label {
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing:
+                0.20em;
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =====================================================
+           VOLTICA STORE DROPDOWN
+           ===================================================== */
+
+        .voltica-store-menu {
+
+            position: absolute;
+
+            left: 0;
+            top: calc(100% + 8px);
+
+            width: 235px;
+
+            padding: 9px;
+
+            border-radius: 18px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(25,28,38,0.88),
+                    rgba(8,10,16,0.82)
+                );
+
+            backdrop-filter:
+                blur(24px)
+                saturate(140%);
+
+            -webkit-backdrop-filter:
+                blur(24px)
+                saturate(140%);
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255,255,255,0.08),
+                0 24px 60px
+                rgba(0,0,0,0.48);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform:
+                translateY(-8px)
+                scale(0.97);
+
+            transform-origin:
+                top left;
+
+            transition:
+                opacity 0.22s ease,
+                visibility 0.22s ease,
+                transform 0.22s ease;
+
+        }
+
+
+        .voltica-store-menu.is-open {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translateY(0)
+                scale(1);
+
+        }
+
+
+        .voltica-store-menu-title {
+
+            padding:
+                9px
+                12px
+                8px;
+
+            color:
+                rgba(255,255,255,0.40);
+
+            font-size: 8px;
+
+            font-weight: 700;
+
+            letter-spacing:
+                0.25em;
+
+        }
+
+
+        .voltica-store-menu a {
+
+            display: grid;
+
+            grid-template-columns:
+                30px
+                1fr;
+
+            align-items: center;
+
+            gap: 7px;
+
+            min-height: 42px;
+
+            padding:
+                7px
+                10px;
+
+            border-radius: 11px;
+
+            color:
+                rgba(255,255,255,0.78);
+
+            text-decoration: none;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+
+        }
+
+
+        .voltica-store-menu a:hover {
+
+            background:
+                rgba(255,255,255,0.075);
+
+            color: #ffffff;
+
+            transform:
+                translateX(3px);
+
+        }
+
+
+        .voltica-store-menu-number {
+
+            font-size: 8px;
+
+            letter-spacing:
+                0.16em;
+
+            color:
+                rgba(160,185,255,0.65);
+
+        }
+
+
+        .voltica-store-menu-name {
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing:
+                0.13em;
+
+        }
+
+
+        /* =====================================================
+           PRODUCT BADGES — FLOATING OVER IMAGE
+           ===================================================== */
+
+        .store-product .product-image {
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .store-product .product-badge {
+
+            position: absolute;
+
+            top: 18px;
+            left: 18px;
+
+            z-index: 10;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            min-height: 32px;
+
+            padding:
+                7px
+                12px;
+
+            border-radius: 999px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.20);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.20),
+                    rgba(255,255,255,0.065)
+                );
+
+            backdrop-filter:
+                blur(15px)
+                saturate(150%);
+
+            -webkit-backdrop-filter:
+                blur(15px)
+                saturate(150%);
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255,255,255,0.20),
+                0 8px 25px
+                rgba(0,0,0,0.22);
+
+            color:
+                rgba(255,255,255,0.96);
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing:
+                0.17em;
+
+            line-height: 1;
+
+            transform:
+                translateZ(0);
+
+            animation:
+                badgePulse 2.8s ease-in-out infinite;
+
+        }
+
+
+        /* Star automatically inserted */
+
+        .store-product .product-badge::before {
+
+            content: "✦";
+
+            display: inline-block;
+
+            font-size: 10px;
+
+            color: #ffffff;
+
+            text-shadow:
+                0 0 7px
+                rgba(190,215,255,0.95),
+                0 0 14px
+                rgba(130,165,255,0.70);
+
+            animation:
+                badgeStarPulse 1.8s ease-in-out infinite;
+
+        }
+
+
+        @keyframes badgePulse {
+
+            0%,
+            100% {
+
+                box-shadow:
+                    inset 0 1px 0
+                    rgba(255,255,255,0.20),
+                    0 8px 25px
+                    rgba(0,0,0,0.22);
+
+            }
+
+            50% {
+
+                box-shadow:
+                    inset 0 1px 0
+                    rgba(255,255,255,0.28),
+                    0 0 18px
+                    rgba(140,175,255,0.20),
+                    0 10px 30px
+                    rgba(0,0,0,0.26);
+
+            }
+
+        }
+
+
+        @keyframes badgeStarPulse {
+
+            0%,
+            100% {
+
+                opacity: 0.65;
+
+                transform:
+                    scale(0.9)
+                    rotate(0deg);
+
+            }
+
+            50% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1.25)
+                    rotate(12deg);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           PRODUCT IMAGE
+           ===================================================== */
+
+        .store-product .product-image img {
+
+            display: block;
+
+            width: 100%;
+            height: auto;
+
+        }
+
+
+        /* =====================================================
+           CATEGORY BUTTONS — GLASS POLISH
+           ===================================================== */
+
+        .category-glass {
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .category-glass::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -120%;
+
+            width: 70%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.10),
+                    transparent
+                );
+
+            transform:
+                skewX(-20deg);
+
+            transition:
+                left 0.65s ease;
+
+            pointer-events: none;
+
+        }
+
+
+        .category-glass:hover::after {
+
+            left: 150%;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE — TABLET
+           ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .store-header {
+
+                min-height: 400px;
+
+                padding-top: 100px;
+
+            }
+
+
+            .store-header-logo {
+
+                width: min(360px, 55vw);
+
+            }
+
+
+            .store-header h1 {
+
+                font-size:
+                    clamp(
+                        38px,
+                        6vw,
+                        72px
+                    );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE — MOBILE
+           ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .voltica-edge-nav {
+
+                top: 12px;
+                left: 10px;
+
+                width: 125px;
+
+                gap: 7px;
+
+            }
+
+
+            .voltica-edge-button {
+
+                width: 125px;
+
+                min-height: 44px;
+
+                padding:
+                    0
+                    11px;
+
+            }
+
+
+            .voltica-edge-label {
+
+                font-size: 8px;
+
+            }
+
+
+            .voltica-store-menu {
+
+                width: 210px;
+
+            }
+
+
+            .store-header {
+
+                min-height: 350px;
+
+                padding:
+                    85px
+                    18px
+                    30px;
+
+            }
+
+
+            .store-header-logo {
+
+                width:
+                    min(300px, 70vw);
+
+                margin-bottom: 18px;
+
+            }
+
+
+            .store-header h1 {
+
+                font-size:
+                    clamp(
+                        27px,
+                        7vw,
+                        46px
+                    );
+
+                letter-spacing:
+                    -0.035em;
+
+            }
+
+
+            .store-categories {
+
+                overflow-x: auto;
+
+                justify-content:
+                    flex-start;
+
+                padding-left: 15px;
+                padding-right: 15px;
+
+                scrollbar-width: none;
+
+            }
+
+
+            .store-categories::-webkit-scrollbar {
+
+                display: none;
+
+            }
+
+
+            .category-glass {
+
+                flex:
+                    0 0 auto;
+
+            }
+
+
+            .store-product .product-badge {
+
+                top: 12px;
+                left: 12px;
+
+                min-height: 29px;
+
+                padding:
+                    6px
+                    10px;
+
+                font-size: 8px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           ACCESSIBILITY
+           ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .store-header-logo,
+            .store-product .product-badge,
+            .store-product .product-badge::before {
+
+                animation: none !important;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
+
 
 <main class="store-page">
 
 
-<!-- =====================================================
-     VOLTICA EDGE NAVIGATION
-     ===================================================== -->
+    <!-- =====================================================
+         VOLTICA EDGE NAVIGATION
+         ===================================================== -->
 
-<nav
-    class="voltica-edge-nav"
-    aria-label="Main navigation"
->
-
-    <a
-        href="index.html"
-        class="voltica-edge-button"
-        aria-label="Go to Voltica Store home"
+    <nav
+        class="voltica-edge-nav"
+        aria-label="Main navigation"
     >
 
-        <span
-            class="voltica-edge-dot"
-            aria-hidden="true"
-        ></span>
 
-        <span class="voltica-edge-label">
-            HOME
-        </span>
+        <!-- HOME -->
 
-    </a>
-
-
-    <a
-        href="store.html"
-        class="voltica-edge-button"
-        aria-current="page"
-        aria-label="Voltica Store"
-    >
-
-        <span
-            class="voltica-edge-dot"
-            aria-hidden="true"
-        ></span>
-
-        <span class="voltica-edge-label">
-            VOLTICA STORE
-        </span>
-
-    </a>
-
-</nav>
-
-
-
-<!-- =====================================================
-     VOLTICA BRAND HERO
-     ===================================================== -->
-
-<header class="store-header">
-
-    <div class="store-header-center">
-
-        <img
-            src="voltica_alu_brosse.png"
-            alt="Voltica"
-            class="store-brand-logo"
+        <a
+            href="index.html"
+            class="voltica-edge-button"
+            aria-label="Go to Voltica Store home"
         >
 
-        <h1 class="store-brand-tagline">
-            The Future of Everyday
-        </h1>
+            <span
+                class="voltica-edge-dot"
+                aria-hidden="true"
+            ></span>
 
-    </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     CATEGORY MENU
-     ===================================================== -->
-
-<nav
-    class="store-categories"
-    aria-label="Product categories"
->
-
-    <a
-        href="#earbuds"
-        class="category-glass active"
-    >
-
-        <span class="category-number">
-            01
-        </span>
-
-        <strong>
-            EARBUDS
-        </strong>
-
-        <small>
-            WIRELESS AUDIO
-        </small>
-
-    </a>
-
-
-    <a
-        href="#gaming"
-        class="category-glass"
-    >
-
-        <span class="category-number">
-            02
-        </span>
-
-        <strong>
-            GAMING GEAR
-        </strong>
-
-        <small>
-            PLAY / CONNECT / CONTROL
-        </small>
-
-    </a>
-
-
-    <a
-        href="#creator"
-        class="category-glass"
-    >
-
-        <span class="category-number">
-            03
-        </span>
-
-        <strong>
-            CREATOR GEAR
-        </strong>
-
-        <small>
-            CREATE / CAPTURE / CONNECT
-        </small>
-
-    </a>
-
-
-    <a
-        href="#headphones"
-        class="category-glass"
-    >
-
-        <span class="category-number">
-            04
-        </span>
-
-        <strong>
-            HEADPHONES
-        </strong>
-
-        <small>
-            IMMERSIVE SOUND
-        </small>
-
-    </a>
-
-
-    <a
-        href="#tech"
-        class="category-glass"
-    >
-
-        <span class="category-number">
-            05
-        </span>
-
-        <strong>
-            TECH
-        </strong>
-
-        <small>
-            SMART DEVICES
-        </small>
-
-    </a>
-
-
-    <a
-        href="#lifestyle"
-        class="category-glass"
-    >
-
-        <span class="category-number">
-            06
-        </span>
-
-        <strong>
-            LIFESTYLE
-        </strong>
-
-        <small>
-            DESIGNED DIFFERENT
-        </small>
-
-    </a>
-
-</nav>
-
-
-
-<!-- =====================================================
-     EARBUDS COLLECTION
-     ===================================================== -->
-
-<section
-    class="store-section"
-    id="earbuds"
-    aria-labelledby="earbuds-title"
->
-
-    <div class="store-section-heading">
-
-        <div>
-
-            <span class="section-index">
-                COLLECTION / 01
+            <span class="voltica-edge-label">
+                HOME
             </span>
 
-            <h2 id="earbuds-title">
-                Wireless
-                <span>Earbuds.</span>
-            </h2>
+        </a>
+
+
+        <!-- VOLTICA STORE -->
+
+        <div
+            class="voltica-store-navigation"
+            style="position:relative;"
+        >
+
+            <button
+                type="button"
+                class="voltica-edge-button"
+                id="volticaStoreMenuButton"
+                aria-expanded="false"
+                aria-controls="volticaStoreMenu"
+                aria-label="Open Voltica Store sections"
+            >
+
+                <span
+                    class="voltica-edge-dot"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="voltica-edge-label">
+                    VOLTICA STORE
+                </span>
+
+            </button>
+
+
+            <!-- =================================================
+                 STORE SECTION DROPDOWN
+                 ================================================= -->
+
+            <div
+                class="voltica-store-menu"
+                id="volticaStoreMenu"
+                aria-hidden="true"
+            >
+
+                <div class="voltica-store-menu-title">
+                    STORE SECTIONS
+                </div>
+
+
+                <a href="#earbuds">
+
+                    <span class="voltica-store-menu-number">
+                        01
+                    </span>
+
+                    <span class="voltica-store-menu-name">
+                        EARBUDS
+                    </span>
+
+                </a>
+
+
+                <a href="#gaming">
+
+                    <span class="voltica-store-menu-number">
+                        02
+                    </span>
+
+                    <span class="voltica-store-menu-name">
+                        GAMING GEAR
+                    </span>
+
+                </a>
+
+
+                <a href="#creator">
+
+                    <span class="voltica-store-menu-number">
+                        03
+                    </span>
+
+                    <span class="voltica-store-menu-name">
+                        CREATOR GEAR
+                    </span>
+
+                </a>
+
+
+                <a href="#headphones">
+
+                    <span class="voltica-store-menu-number">
+                        04
+                    </span>
+
+                    <span class="voltica-store-menu-name">
+                        HEADPHONES
+                    </span>
+
+                </a>
+
+
+                <a href="#tech">
+
+                    <span class="voltica-store-menu-number">
+                        05
+                    </span>
+
+                    <span class="voltica-store-menu-name">
+                        TECH
+                    </span>
+
+                </a>
+
+
+                <a href="#lifestyle">
+
+                    <span class="voltica-store-menu-number">
+                        06
+                    </span>
+
+                    <span class="voltica-store-menu-name">
+                        LIFESTYLE
+                    </span>
+
+                </a>
+
+            </div>
 
         </div>
 
-        <p>
-            Compact form.
-            Powerful sound.
-            Zero compromise.
-        </p>
+    </nav>
 
-    </div>
 
 
-    <div class="store-product-grid">
+    <!-- =====================================================
+         STORE HEADER
+         ===================================================== -->
 
+    <header class="store-header">
 
-        <!-- =================================================
-             PRODUCT 01 — VOLTICA Q17
-             ================================================= -->
+        <div class="store-header-center">
 
-        <article class="store-product">
 
-            <div class="product-image">
+            <!-- VOLTICA ALUMINUM LOGO -->
 
-                <span class="product-badge">
-                    NEW
-                </span>
+            <img
+                src="voltica_alu_brosse.png"
+                alt="Voltica Store"
+                class="store-header-logo"
+            >
 
-                <img
-                    src="assets/images/earbuds1-2.jpg"
-                    alt="Voltica Q17 wireless earbuds"
-                    width="800"
-                    height="800"
-                    fetchpriority="high"
-                >
 
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
+            <!-- NEW MAIN TITLE -->
 
-            </div>
+            <h1>
+                The Future of
+                <span>Everyday</span>
+            </h1>
 
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / SPORT AUDIO
-                </div>
-
-                <h3>
-                    Voltica Q17
-                </h3>
-
-                <p>
-                    Wireless freedom designed for
-                    movement, workouts and everyday
-                    listening.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $69.97
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=earbuds1"
-                        class="product-button"
-                        aria-label="View Voltica Q17"
-                    >
-
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             PRODUCT 02 — VOLTICA TWS PRO
-             ================================================= -->
-
-        <article class="store-product">
-
-            <div class="product-image">
-
-                <span class="product-badge">
-                    FEATURED
-                </span>
-
-                <img
-                    src="assets/images/earbuds2-1.webp"
-                    alt="Voltica TWS Pro true wireless earbuds"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / WIRELESS AUDIO
-                </div>
-
-                <h3>
-                    Voltica TWS Pro
-                </h3>
-
-                <p>
-                    True wireless freedom with touch
-                    control, CVC noise cancellation,
-                    magnetic charging and IPX4 protection.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $59.97
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=earbuds2"
-                        class="product-button"
-                        aria-label="View Voltica TWS Pro"
-                    >
-
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             PRODUCT 03 — VOLTICA T11
-             ================================================= -->
-
-        <article class="store-product">
-
-            <div class="product-image">
-
-                <span class="product-badge">
-                    NEW
-                </span>
-
-                <img
-                    src="assets/images/earbuds3-1.webp"
-                    alt="Voltica T11 Bluetooth earbuds"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / WIRELESS AUDIO
-                </div>
-
-                <h3>
-                    Voltica T11
-                </h3>
-
-                <p>
-                    Bluetooth 5.0 stereo earbuds with
-                    15-meter transmission, battery display,
-                    voice control and multi-point connectivity.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $49.97
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=earbuds3"
-                        class="product-button"
-                        aria-label="View Voltica T11"
-                    >
-
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             PRODUCT 04 — VOLTICA T75
-             ================================================= -->
-
-        <article class="store-product">
-
-            <div class="product-image">
-
-                <span class="product-badge">
-                    NEW
-                </span>
-
-                <img
-                    src="assets/images/earbuds4-1.webp"
-                    alt="Voltica T75 open-ear wireless earbuds"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / WIRELESS AUDIO
-                </div>
-
-                <h3>
-                    Voltica T75
-                </h3>
-
-                <p>
-                    Open-ear freedom with an ergonomic
-                    ear-clip design, low-latency Bluetooth,
-                    touch controls and IPX5 water resistance.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $39.99
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=earbuds4"
-                        class="product-button"
-                        aria-label="View Voltica T75"
-                    >
-
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     GAMING GEAR COLLECTION
-     ===================================================== -->
-
-<section
-    class="store-section"
-    id="gaming"
-    aria-labelledby="gaming-title"
->
-
-    <div class="store-section-heading">
-
-        <div>
-
-            <span class="section-index">
-                COLLECTION / 02
-            </span>
-
-            <h2 id="gaming-title">
-                Gaming
-                <span>Gear.</span>
-            </h2>
 
         </div>
 
-        <p>
-            Play.
-            Connect.
-            Control.
-        </p>
-
-    </div>
-
-
-    <div class="store-product-grid">
-
-
-        <!-- =================================================
-             PRODUCT 01 — VOLTICA J10
-             ================================================= -->
-
-        <article class="store-product">
-
-            <div class="product-image">
-
-                <span class="product-badge">
-                    NEW
-                </span>
-
-                <img
-                    src="assets/images/keyboard1-2.webp"
-                    alt="Voltica J10 gaming keyboard and mouse set"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / GAMING GEAR
-                </div>
-
-                <h3>
-                    Voltica J10
-                </h3>
-
-                <p>
-                    Wired gaming keyboard and mouse set
-                    featuring a 108-key keyboard, USB
-                    connectivity and vibrant tricolor
-                    backlighting.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $43.99
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=keyboard1"
-                        class="product-button"
-                        aria-label="View Voltica J10"
-                    >
-
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
+    </header>
 
 
 
-<!-- =====================================================
-     CREATOR GEAR COLLECTION
-     ===================================================== -->
+    <!-- =====================================================
+         CATEGORY MENU
+         ===================================================== -->
 
-<section
-    class="store-section"
-    id="creator"
-    aria-labelledby="creator-title"
->
+    <nav
+        class="store-categories"
+        aria-label="Product categories"
+    >
 
-    <div class="store-section-heading">
 
-        <div>
+        <a
+            href="#earbuds"
+            class="category-glass active"
+        >
 
-            <span class="section-index">
-                COLLECTION / 03
+            <span class="category-number">
+                01
             </span>
 
-            <h2 id="creator-title">
-                Creator
-                <span>Gear.</span>
-            </h2>
+            <strong>
+                EARBUDS
+            </strong>
+
+            <small>
+                WIRELESS AUDIO
+            </small>
+
+        </a>
+
+
+        <a
+            href="#gaming"
+            class="category-glass"
+        >
+
+            <span class="category-number">
+                02
+            </span>
+
+            <strong>
+                GAMING GEAR
+            </strong>
+
+            <small>
+                PLAY / CONNECT / CONTROL
+            </small>
+
+        </a>
+
+
+        <a
+            href="#creator"
+            class="category-glass"
+        >
+
+            <span class="category-number">
+                03
+            </span>
+
+            <strong>
+                CREATOR GEAR
+            </strong>
+
+            <small>
+                CREATE / CAPTURE / CONNECT
+            </small>
+
+        </a>
+
+
+        <a
+            href="#headphones"
+            class="category-glass"
+        >
+
+            <span class="category-number">
+                04
+            </span>
+
+            <strong>
+                HEADPHONES
+            </strong>
+
+            <small>
+                IMMERSIVE SOUND
+            </small>
+
+        </a>
+
+
+        <a
+            href="#tech"
+            class="category-glass"
+        >
+
+            <span class="category-number">
+                05
+            </span>
+
+            <strong>
+                TECH
+            </strong>
+
+            <small>
+                SMART DEVICES
+            </small>
+
+        </a>
+
+
+        <a
+            href="#lifestyle"
+            class="category-glass"
+        >
+
+            <span class="category-number">
+                06
+            </span>
+
+            <strong>
+                LIFESTYLE
+            </strong>
+
+            <small>
+                DESIGNED DIFFERENT
+            </small>
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         EARBUDS COLLECTION
+         ===================================================== -->
+
+    <section
+        class="store-section"
+        id="earbuds"
+        aria-labelledby="earbuds-title"
+    >
+
+        <div class="store-section-heading">
+
+            <div>
+
+                <span class="section-index">
+                    COLLECTION / 01
+                </span>
+
+                <h2 id="earbuds-title">
+                    Wireless
+                    <span>Earbuds.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Compact form.
+                Powerful sound.
+                Zero compromise.
+            </p>
 
         </div>
 
-        <p>
-            Create.
-            Capture.
-            Connect.
-        </p>
 
-    </div>
+        <div class="store-product-grid">
 
 
-    <div class="store-product-grid">
+            <!-- PRODUCT 01 — VOLTICA Q17 -->
 
+            <article class="store-product">
 
-        <!-- =================================================
-             PRODUCT 01 — VOLTICA AI 360 GIMBAL
-             ================================================= -->
+                <div class="product-image">
 
-        <article class="store-product">
+                    <span class="product-badge">
+                        NEW
+                    </span>
 
-            <div class="product-image">
-
-                <span class="product-badge">
-                    NEW
-                </span>
-
-                <img
-                    src="assets/images/gimbal1-1.webp"
-                    alt="Voltica AI 360 Gimbal"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / CREATOR GEAR
-                </div>
-
-                <h3>
-                    Voltica AI 360 Gimbal
-                </h3>
-
-                <p>
-                    Intelligent 360° AI face tracking
-                    with gesture control, hands-free
-                    shooting and up to 8 hours of operation.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $39.99
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=gimbal1"
-                        class="product-button"
-                        aria-label="View Voltica AI 360 Gimbal"
+                    <img
+                        src="assets/images/earbuds1-2.jpg"
+                        alt="Voltica Q17 wireless earbuds"
+                        width="800"
+                        height="800"
+                        fetchpriority="high"
                     >
 
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
 
                 </div>
 
-            </div>
 
-        </article>
+                <div class="product-info">
 
+                    <div class="product-category">
+                        VOLTICA / SPORT AUDIO
+                    </div>
 
+                    <h3>
+                        Voltica Q17
+                    </h3>
 
-        <!-- =================================================
-             PRODUCT 02 — VOLTICA TRI-FOLD TOUCH KEYBOARD
-             ================================================= -->
+                    <p>
+                        Wireless freedom designed for
+                        movement, workouts and everyday
+                        listening.
+                    </p>
 
-        <article class="store-product">
+                    <div class="product-bottom">
 
-            <div class="product-image">
+                        <strong class="product-price">
+                            $69.97
+                            <small>USD</small>
+                        </strong>
 
-                <span class="product-badge">
-                    NEW
-                </span>
+                        <a
+                            href="product-view.html?id=earbuds1"
+                            class="product-button"
+                            aria-label="View Voltica Q17"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
 
-                <img
-                    src="assets/images/keyboard2-1.webp"
-                    alt="Voltica Tri-Fold Touch Keyboard"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
+                    </div>
 
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / CREATOR GEAR
                 </div>
 
-                <h3>
-                    Voltica Tri-Fold Touch Keyboard
-                </h3>
+            </article>
 
-                <p>
-                    Ultra-thin tri-fold Bluetooth keyboard
-                    with an integrated touchpad, designed
-                    for portable productivity and mobile work.
-                </p>
 
-                <div class="product-bottom">
 
-                    <strong class="product-price">
-                        $37.99
-                        <small>USD</small>
-                    </strong>
+            <!-- PRODUCT 02 — VOLTICA TWS PRO -->
 
-                    <a
-                        href="product-view.html?id=keyboard2"
-                        class="product-button"
-                        aria-label="View Voltica Tri-Fold Touch Keyboard"
+            <article class="store-product">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        FEATURED
+                    </span>
+
+                    <img
+                        src="assets/images/earbuds2-1.webp"
+                        alt="Voltica TWS Pro true wireless earbuds"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
                     >
 
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
 
                 </div>
 
-            </div>
 
-        </article>
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / WIRELESS AUDIO
+                    </div>
+
+                    <h3>
+                        Voltica TWS Pro
+                    </h3>
+
+                    <p>
+                        True wireless freedom with touch
+                        control, CVC noise cancellation,
+                        magnetic charging and IPX4 protection.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $59.97
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=earbuds2"
+                            class="product-button"
+                            aria-label="View Voltica TWS Pro"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
 
 
-    </div>
 
-</section>
+            <!-- PRODUCT 03 — VOLTICA T11 -->
+
+            <article class="store-product">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        NEW
+                    </span>
+
+                    <img
+                        src="assets/images/earbuds3-1.webp"
+                        alt="Voltica T11 Bluetooth earbuds"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / WIRELESS AUDIO
+                    </div>
+
+                    <h3>
+                        Voltica T11
+                    </h3>
+
+                    <p>
+                        Bluetooth 5.0 stereo earbuds with
+                        15-meter transmission, battery display,
+                        voice control and multi-point connectivity.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $49.97
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=earbuds3"
+                            class="product-button"
+                            aria-label="View Voltica T11"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
 
 
 
-<!-- =====================================================
-     HEADPHONES COLLECTION
-     ===================================================== -->
+            <!-- PRODUCT 04 — VOLTICA T75 -->
 
-<section
-    class="store-section"
-    id="headphones"
-    aria-labelledby="headphones-title"
->
+            <article class="store-product">
 
-    <div class="store-section-heading">
+                <div class="product-image">
 
-        <div>
+                    <span class="product-badge">
+                        NEW
+                    </span>
 
-            <span class="section-index">
-                COLLECTION / 04
-            </span>
+                    <img
+                        src="assets/images/earbuds4-1.webp"
+                        alt="Voltica T75 open-ear wireless earbuds"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                    >
 
-            <h2 id="headphones-title">
-                Premium
-                <span>Headphones.</span>
-            </h2>
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / WIRELESS AUDIO
+                    </div>
+
+                    <h3>
+                        Voltica T75
+                    </h3>
+
+                    <p>
+                        Open-ear freedom with an ergonomic
+                        ear-clip design, low-latency Bluetooth,
+                        touch controls and IPX5 water resistance.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $39.99
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=earbuds4"
+                            class="product-button"
+                            aria-label="View Voltica T75"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
 
         </div>
 
-        <p>
-            Immersive.
-            Powerful.
-            Uncompromised.
-        </p>
-
-    </div>
+    </section>
 
 
-    <div class="store-product-grid">
 
+    <!-- =====================================================
+         GAMING GEAR COLLECTION
+         ===================================================== -->
 
-        <!-- =================================================
-             PRODUCT 17 — SOUNDCORE BY ANKER SPACE Q45
-             ================================================= -->
+    <section
+        class="store-section"
+        id="gaming"
+        aria-labelledby="gaming-title"
+    >
 
-        <article class="store-product">
+        <div class="store-section-heading">
 
-            <div class="product-image">
+            <div>
 
-                <span class="product-badge">
-                    NEW
+                <span class="section-index">
+                    COLLECTION / 02
                 </span>
 
-                <img
-                    src="assets/images/1000050174.webp"
-                    alt="Soundcore by Anker Space Q45 Wireless Over-Ear Headphones"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
+                <h2 id="gaming-title">
+                    Gaming
+                    <span>Gear.</span>
+                </h2>
 
             </div>
 
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / HEADPHONES
-                </div>
-
-                <h3>
-                    Soundcore by Anker Space Q45
-                </h3>
-
-                <p>
-                    Premium wireless over-ear headphones with
-                    advanced noise cancellation, Hi-Res audio,
-                    Bluetooth 5.3 and up to 65 hours of battery life.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $189.99
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=soundcore-by-anker-space-q45-wireless-over-ear-headphones"
-                        class="product-button"
-                        aria-label="View Soundcore by Anker Space Q45"
-                    >
-
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     TECH COLLECTION
-     ===================================================== -->
-
-<section
-    class="store-section"
-    id="tech"
-    aria-labelledby="tech-title"
->
-
-    <div class="store-section-heading">
-
-        <div>
-
-            <span class="section-index">
-                COLLECTION / 05
-            </span>
-
-            <h2 id="tech-title">
-                Smart
-                <span>Tech.</span>
-            </h2>
+            <p>
+                Play.
+                Connect.
+                Control.
+            </p>
 
         </div>
 
-        <p>
-            Work.
-            Adapt.
-            Connect.
-        </p>
 
-    </div>
+        <div class="store-product-grid">
 
 
-    <div class="store-product-grid">
+            <!-- PRODUCT — VOLTICA J10 -->
 
+            <article class="store-product">
 
-        <!-- =================================================
-             PRODUCT 01 — VOLTICA LAPTOP STAND
-             ================================================= -->
+                <div class="product-image">
 
-        <article class="store-product">
+                    <span class="product-badge">
+                        NEW
+                    </span>
 
-            <div class="product-image">
-
-                <span class="product-badge">
-                    NEW
-                </span>
-
-                <img
-                    src="assets/images/stand1-1.webp"
-                    alt="Voltica Laptop Stand"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / TECH
-                </div>
-
-                <h3>
-                    Voltica Laptop Stand
-                </h3>
-
-                <p>
-                    Foldable ergonomic laptop stand with
-                    9 adjustable angles, improved airflow,
-                    smartphone holders and support for
-                    laptops up to 17 inches.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $42.99
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=stand1"
-                        class="product-button"
-                        aria-label="View Voltica Laptop Stand"
+                    <img
+                        src="assets/images/keyboard1-2.webp"
+                        alt="Voltica J10 gaming keyboard and mouse set"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
                     >
 
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             PRODUCT 02 — VOLTICA 3D FACE RECOGNITION SMART DOOR LOCK
-             ================================================= -->
-
-        <article class="store-product">
-
-            <div class="product-image">
-
-                <span class="product-badge">
-                    NEW
-                </span>
-
-                <img
-                    src="assets/images/1000050433.jpg"
-                    alt="Voltica 3D Face Recognition Smart Door Lock"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / TECH / SMART SECURITY
-                </div>
-
-                <h3>
-                    Voltica 3D Face Recognition Smart Door Lock
-                </h3>
-
-                <p>
-                    Futuristic smart door security with 3D facial
-                    recognition, fingerprint access, Tuya connectivity,
-                    video intercom and multiple keyless entry options.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $207.99
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=3d-face-recognition-smart-door-lock"
-                        class="product-button"
-                        aria-label="View Voltica 3D Face Recognition Smart Door Lock"
-                    >
-
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
 
                 </div>
 
-            </div>
 
-        </article>
+                <div class="product-info">
 
+                    <div class="product-category">
+                        VOLTICA / GAMING GEAR
+                    </div>
 
-    </div>
+                    <h3>
+                        Voltica J10
+                    </h3>
 
-</section>
+                    <p>
+                        Wired gaming keyboard and mouse set
+                        featuring a 108-key keyboard, USB
+                        connectivity and vibrant tricolor
+                        backlighting.
+                    </p>
 
+                    <div class="product-bottom">
 
+                        <strong class="product-price">
+                            $43.99
+                            <small>USD</small>
+                        </strong>
 
-<!-- =====================================================
-     LIFESTYLE COLLECTION
-     ===================================================== -->
+                        <a
+                            href="product-view.html?id=keyboard1"
+                            class="product-button"
+                            aria-label="View Voltica J10"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
 
-<section
-    class="store-section"
-    id="lifestyle"
-    aria-labelledby="lifestyle-title"
->
+                    </div>
 
-    <div class="store-section-heading">
+                </div>
 
-        <div>
-
-            <span class="section-index">
-                COLLECTION / 06
-            </span>
-
-            <h2 id="lifestyle-title">
-                Smart
-                <span>Lifestyle.</span>
-            </h2>
+            </article>
 
         </div>
 
+    </section>
+
+
+
+    <!-- =====================================================
+         CREATOR GEAR COLLECTION
+         ===================================================== -->
+
+    <section
+        class="store-section"
+        id="creator"
+        aria-labelledby="creator-title"
+    >
+
+        <div class="store-section-heading">
+
+            <div>
+
+                <span class="section-index">
+                    COLLECTION / 03
+                </span>
+
+                <h2 id="creator-title">
+                    Creator
+                    <span>Gear.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Create.
+                Capture.
+                Connect.
+            </p>
+
+        </div>
+
+
+        <div class="store-product-grid">
+
+
+            <!-- PRODUCT — AI 360 GIMBAL -->
+
+            <article class="store-product">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        NEW
+                    </span>
+
+                    <img
+                        src="assets/images/gimbal1-1.webp"
+                        alt="Voltica AI 360 Gimbal"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / CREATOR GEAR
+                    </div>
+
+                    <h3>
+                        Voltica AI 360 Gimbal
+                    </h3>
+
+                    <p>
+                        Intelligent 360° AI face tracking
+                        with gesture control, hands-free
+                        shooting and up to 8 hours of operation.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $39.99
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=gimbal1"
+                            class="product-button"
+                            aria-label="View Voltica AI 360 Gimbal"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PRODUCT — TRI-FOLD TOUCH KEYBOARD -->
+
+            <article class="store-product">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        NEW
+                    </span>
+
+                    <img
+                        src="assets/images/keyboard2-1.webp"
+                        alt="Voltica Tri-Fold Touch Keyboard"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / CREATOR GEAR
+                    </div>
+
+                    <h3>
+                        Voltica Tri-Fold Touch Keyboard
+                    </h3>
+
+                    <p>
+                        Ultra-thin tri-fold Bluetooth keyboard
+                        with an integrated touchpad, designed
+                        for portable productivity and mobile work.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $37.99
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=keyboard2"
+                            class="product-button"
+                            aria-label="View Voltica Tri-Fold Touch Keyboard"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         HEADPHONES COLLECTION
+         ===================================================== -->
+
+    <section
+        class="store-section"
+        id="headphones"
+        aria-labelledby="headphones-title"
+    >
+
+        <div class="store-section-heading">
+
+            <div>
+
+                <span class="section-index">
+                    COLLECTION / 04
+                </span>
+
+                <h2 id="headphones-title">
+                    Premium
+                    <span>Headphones.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Immersive.
+                Powerful.
+                Uncompromised.
+            </p>
+
+        </div>
+
+
+        <div class="store-product-grid">
+
+
+            <!-- PRODUCT — SOUNDCORE Q45 -->
+
+            <article class="store-product">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        NEW
+                    </span>
+
+                    <img
+                        src="assets/images/1000050174.webp"
+                        alt="Soundcore by Anker Space Q45 Wireless Over-Ear Headphones"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / HEADPHONES
+                    </div>
+
+                    <h3>
+                        Soundcore by Anker Space Q45
+                    </h3>
+
+                    <p>
+                        Premium wireless over-ear headphones with
+                        advanced noise cancellation, Hi-Res audio,
+                        Bluetooth 5.3 and up to 65 hours of battery life.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $189.99
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=soundcore-by-anker-space-q45-wireless-over-ear-headphones"
+                            class="product-button"
+                            aria-label="View Soundcore by Anker Space Q45"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TECH COLLECTION
+         ===================================================== -->
+
+    <section
+        class="store-section"
+        id="tech"
+        aria-labelledby="tech-title"
+    >
+
+        <div class="store-section-heading">
+
+            <div>
+
+                <span class="section-index">
+                    COLLECTION / 05
+                </span>
+
+                <h2 id="tech-title">
+                    Smart
+                    <span>Tech.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Work.
+                Adapt.
+                Connect.
+            </p>
+
+        </div>
+
+
+        <div class="store-product-grid">
+
+
+            <!-- PRODUCT — LAPTOP STAND -->
+
+            <article class="store-product">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        NEW
+                    </span>
+
+                    <img
+                        src="assets/images/stand1-1.webp"
+                        alt="Voltica Laptop Stand"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / TECH
+                    </div>
+
+                    <h3>
+                        Voltica Laptop Stand
+                    </h3>
+
+                    <p>
+                        Foldable ergonomic laptop stand with
+                        9 adjustable angles, improved airflow,
+                        smartphone holders and support for
+                        laptops up to 17 inches.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $42.99
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=stand1"
+                            class="product-button"
+                            aria-label="View Voltica Laptop Stand"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PRODUCT — SMART DOOR LOCK -->
+
+            <article class="store-product">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        NEW
+                    </span>
+
+                    <img
+                        src="assets/images/1000050433.jpg"
+                        alt="Voltica 3D Face Recognition Smart Door Lock"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / TECH / SMART SECURITY
+                    </div>
+
+                    <h3>
+                        Voltica 3D Face Recognition Smart Door Lock
+                    </h3>
+
+                    <p>
+                        Futuristic smart door security with 3D facial
+                        recognition, fingerprint access, Tuya connectivity,
+                        video intercom and multiple keyless entry options.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $207.99
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=3d-face-recognition-smart-door-lock"
+                            class="product-button"
+                            aria-label="View Voltica 3D Face Recognition Smart Door Lock"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LIFESTYLE COLLECTION
+         ===================================================== -->
+
+    <section
+        class="store-section"
+        id="lifestyle"
+        aria-labelledby="lifestyle-title"
+    >
+
+        <div class="store-section-heading">
+
+            <div>
+
+                <span class="section-index">
+                    COLLECTION / 06
+                </span>
+
+                <h2 id="lifestyle-title">
+                    Smart
+                    <span>Lifestyle.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Travel.
+                Comfort.
+                Adapt.
+            </p>
+
+        </div>
+
+
+        <div class="store-product-grid">
+
+
+            <!-- PRODUCT — CAR CUP WARMER -->
+
+            <article class="store-product">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        NEW
+                    </span>
+
+                    <img
+                        src="assets/images/lifestyle1-1.webp"
+                        alt="Voltica Car Cup Warmer and Cooler"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / LIFESTYLE
+                    </div>
+
+                    <h3>
+                        Voltica Car Cup Warmer &amp; Cooler
+                    </h3>
+
+                    <p>
+                        Compact 2-in-1 vehicle cup warmer and
+                        cooler with a non-slip base, digital
+                        display and convenient 12V car power.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $39.99
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=lifestyle1"
+                            class="product-button"
+                            aria-label="View Voltica Car Cup Warmer and Cooler"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PRODUCT — HEXA RGB -->
+
+            <article class="store-product">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        NEW
+                    </span>
+
+                    <img
+                        src="assets/images/hexa1-1.webp"
+                        alt="Voltica Hexa RGB smart lighting"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / LIFESTYLE
+                    </div>
+
+                    <h3>
+                        Voltica Hexa RGB
+                    </h3>
+
+                    <p>
+                        Modular smart RGB lighting with
+                        sound-reactive effects, 16 million colors,
+                        multiple lighting modes and customizable
+                        hexagonal designs for walls or desktops.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $47.99
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=hexa1"
+                            class="product-button"
+                            aria-label="View Voltica Hexa RGB"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PRODUCT — LEVITATING SPEAKER -->
+
+            <article class="store-product">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        NEW
+                    </span>
+
+                    <img
+                        src="assets/images/lifestyle3-1.webp"
+                        alt="Voltica Levitating Floating Bluetooth Speaker"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / LIFESTYLE / AMBIENT AUDIO
+                    </div>
+
+                    <h3>
+                        Voltica Levitating Floating Speaker
+                    </h3>
+
+                    <p>
+                        Futuristic magnetic suspension speaker
+                        that floats and rotates while delivering
+                        immersive 360° wireless sound and a
+                        striking zero-gravity aesthetic.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $98.99
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=lifestyle3"
+                            class="product-button"
+                            aria-label="View Voltica Levitating Floating Speaker"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PRODUCT 21 — XREAL AIR 1S
+                 ================================================= -->
+
+            <article class="store-product">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        NEW
+                    </span>
+
+                    <img
+                        src="assets/images/glass1-1.jpg"
+                        alt="XREAL Air 1S AI Augmented Reality Smart Glasses"
+                        width="800"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                    <div
+                        class="image-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        VOLTICA / LIFESTYLE
+                    </div>
+
+                    <h3>
+                        XREAL Air 1S
+                    </h3>
+
+                    <p>
+                        AI-augmented reality smart glasses with
+                        a massive 52° field of view, cinema-grade
+                        virtual display, intelligent AI features
+                        and automatic electrochromic lenses.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <strong class="product-price">
+                            $579.99
+                            <small>USD</small>
+                        </strong>
+
+                        <a
+                            href="product-view.html?id=xreal-1s"
+                            class="product-button"
+                            aria-label="View XREAL Air 1S AI Augmented Reality Smart Glasses"
+                        >
+                            VIEW
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="store-footer">
+
+        <div class="store-footer-brand">
+
+            VOLTICA
+            <span>STORE</span>
+
+        </div>
+
+
         <p>
-            Travel.
-            Comfort.
-            Adapt.
+            Premium technology.
+            Designed to stand out.
         </p>
 
-    </div>
 
+        <small>
+            VOLTICA STORE © 2026
+        </small>
 
-    <div class="store-product-grid">
+    </footer>
 
-
-        <!-- =================================================
-             PRODUCT 01 — VOLTICA CAR CUP WARMER & COOLER
-             ================================================= -->
-
-        <article class="store-product">
-
-            <div class="product-image">
-
-                <span class="product-badge">
-                    NEW
-                </span>
-
-                <img
-                    src="assets/images/lifestyle1-1.webp"
-                    alt="Voltica Car Cup Warmer and Cooler"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / LIFESTYLE
-                </div>
-
-                <h3>
-                    Voltica Car Cup Warmer &amp; Cooler
-                </h3>
-
-                <p>
-                    Compact 2-in-1 vehicle cup warmer and
-                    cooler with a non-slip base, digital
-                    display and convenient 12V car power.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $39.99
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=lifestyle1"
-                        class="product-button"
-                        aria-label="View Voltica Car Cup Warmer and Cooler"
-                    >
-
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             PRODUCT 02 — VOLTICA HEXA RGB
-             ================================================= -->
-
-        <article class="store-product">
-
-            <div class="product-image">
-
-                <span class="product-badge">
-                    NEW
-                </span>
-
-                <img
-                    src="assets/images/hexa1-1.webp"
-                    alt="Voltica Hexa RGB smart lighting"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / LIFESTYLE
-                </div>
-
-                <h3>
-                    Voltica Hexa RGB
-                </h3>
-
-                <p>
-                    Modular smart RGB lighting with
-                    sound-reactive effects, 16 million colors,
-                    multiple lighting modes and customizable
-                    hexagonal designs for walls or desktops.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $47.99
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=hexa1"
-                        class="product-button"
-                        aria-label="View Voltica Hexa RGB"
-                    >
-
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             PRODUCT 03 — VOLTICA LEVITATING FLOATING SPEAKER
-             ================================================= -->
-
-        <article class="store-product">
-
-            <div class="product-image">
-
-                <span class="product-badge">
-                    NEW
-                </span>
-
-                <img
-                    src="assets/images/lifestyle3-1.webp"
-                    alt="Voltica Levitating Floating Bluetooth Speaker"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / LIFESTYLE / AMBIENT AUDIO
-                </div>
-
-                <h3>
-                    Voltica Levitating Floating Speaker
-                </h3>
-
-                <p>
-                    Futuristic magnetic suspension speaker
-                    that floats and rotates while delivering
-                    immersive 360° wireless sound and a
-                    striking zero-gravity aesthetic.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $98.99
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=lifestyle3"
-                        class="product-button"
-                        aria-label="View Voltica Levitating Floating Speaker"
-                    >
-
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             PRODUCT 21 — XREAL AIR 1S
-             ================================================= -->
-
-        <article class="store-product">
-
-            <div class="product-image">
-
-                <span class="product-badge">
-                    NEW
-                </span>
-
-                <img
-                    src="assets/images/glass1-1.jpg"
-                    alt="XREAL Air 1S AI Augmented Reality Smart Glasses"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    VOLTICA / LIFESTYLE
-                </div>
-
-                <h3>
-                    XREAL Air 1S
-                </h3>
-
-                <p>
-                    AI-augmented reality smart glasses with
-                    a massive 52° field of view, cinema-grade
-                    virtual display, intelligent AI features
-                    and automatic electrochromic lenses.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-                        $579.99
-                        <small>USD</small>
-                    </strong>
-
-                    <a
-                        href="product-view.html?id=xreal-1s"
-                        class="product-button"
-                        aria-label="View XREAL Air 1S AI Augmented Reality Smart Glasses"
-                    >
-
-                        VIEW
-                        <span aria-hidden="true">→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
-
-<footer class="store-footer">
-
-    <div class="store-footer-brand">
-
-        VOLTICA
-        <span>STORE</span>
-
-    </div>
-
-
-    <p>
-        Premium technology.
-        Designed to stand out.
-    </p>
-
-
-    <small>
-        VOLTICA STORE © 2026
-    </small>
-
-</footer>
 
 </main>
 
@@ -1521,6 +2440,8 @@
 
 <!-- =====================================================
      JAVASCRIPT
+     IMPORTANT:
+     products.js MUST LOAD BEFORE store.js
      ===================================================== -->
 
 <script
@@ -1533,5 +2454,177 @@
     defer
 ></script>
 
+
+
+<!-- =====================================================
+     VOLTICA STORE MENU ENGINE
+     ===================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const button =
+            document.getElementById(
+                "volticaStoreMenuButton"
+            );
+
+        const menu =
+            document.getElementById(
+                "volticaStoreMenu"
+            );
+
+
+        if (!button || !menu) {
+            return;
+        }
+
+
+        function openMenu() {
+
+            menu.classList.add(
+                "is-open"
+            );
+
+            menu.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            button.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+        }
+
+
+        function closeMenu() {
+
+            menu.classList.remove(
+                "is-open"
+            );
+
+            menu.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            button.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+
+        function toggleMenu() {
+
+            const isOpen =
+                menu.classList.contains(
+                    "is-open"
+                );
+
+
+            if (isOpen) {
+
+                closeMenu();
+
+            } else {
+
+                openMenu();
+
+            }
+
+        }
+
+
+        button.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+                toggleMenu();
+
+            }
+        );
+
+
+        /*
+         * Clicking a section closes
+         * the navigation automatically.
+         */
+
+        menu
+            .querySelectorAll("a")
+            .forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            closeMenu();
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /*
+         * Click outside closes menu.
+         */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    !event.target.closest(
+                        ".voltica-store-navigation"
+                    )
+                ) {
+
+                    closeMenu();
+
+                }
+
+            }
+        );
+
+
+        /*
+         * Escape closes menu.
+         */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeMenu();
+
+                }
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+
 </body>
-</html>
+
+    </html>

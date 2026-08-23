@@ -36,110 +36,58 @@
 
     <style>
 
-        /* =================================================
-           GLOBAL
-           ================================================= */
-
         :root {
 
-            --black:
-                #030303;
-
-            --glass:
-                rgba(255,255,255,.045);
-
-            --glass-strong:
-                rgba(255,255,255,.075);
-
-            --border:
-                rgba(255,255,255,.12);
-
-            --white:
-                #ffffff;
-
-            --muted:
-                rgba(255,255,255,.58);
-
-            --soft:
-                rgba(255,255,255,.32);
-
-            --pulse:
-                rgba(255,255,255,.9);
+            --black:#030303;
+            --glass:rgba(255,255,255,.045);
+            --glass-strong:rgba(255,255,255,.075);
+            --border:rgba(255,255,255,.12);
+            --white:#ffffff;
+            --muted:rgba(255,255,255,.58);
+            --soft:rgba(255,255,255,.32);
 
         }
 
 
         * {
-
-            box-sizing:
-                border-box;
-
+            box-sizing:border-box;
         }
 
 
         html {
-
-            scroll-behavior:
-                smooth;
-
+            scroll-behavior:smooth;
         }
 
 
         body {
-
-            margin:
-                0;
-
-            background:
-                #030303;
-
-            color:
-                #fff;
-
-            overflow-x:
-                hidden;
-
+            margin:0;
+            background:#030303;
+            color:#fff;
+            overflow-x:hidden;
         }
 
 
-
         /* =================================================
-           AMBIENT LIGHT
+           AMBIENT SYSTEM
            ================================================= */
 
         .voltica-ambient {
 
-            position:
-                fixed;
-
-            inset:
-                0;
-
-            pointer-events:
-                none;
-
-            z-index:
-                0;
-
-            overflow:
-                hidden;
+            position:fixed;
+            inset:0;
+            pointer-events:none;
+            z-index:0;
+            overflow:hidden;
 
         }
 
 
         .ambient-orb {
 
-            position:
-                absolute;
-
-            width:
-                420px;
-
-            height:
-                420px;
-
-            border-radius:
-                50%;
+            position:absolute;
+            width:420px;
+            height:420px;
+            border-radius:50%;
 
             background:
                 radial-gradient(
@@ -148,8 +96,7 @@
                     transparent 68%
                 );
 
-            filter:
-                blur(25px);
+            filter:blur(25px);
 
             animation:
                 ambientFloat 12s ease-in-out infinite;
@@ -158,77 +105,38 @@
 
 
         .ambient-orb.one {
-
-            top:
-                8%;
-
-            left:
-                -180px;
-
+            top:8%;
+            left:-180px;
         }
 
 
         .ambient-orb.two {
-
-            top:
-                48%;
-
-            right:
-                -180px;
-
-            animation-delay:
-                -4s;
-
+            top:48%;
+            right:-180px;
+            animation-delay:-4s;
         }
 
 
         .ambient-orb.three {
-
-            bottom:
-                -200px;
-
-            left:
-                35%;
-
-            animation-delay:
-                -8s;
-
+            bottom:-200px;
+            left:35%;
+            animation-delay:-8s;
         }
 
 
         @keyframes ambientFloat {
 
-            0%,
-            100% {
-
-                transform:
-                    translate3d(
-                        0,
-                        0,
-                        0
-                    );
-
-                opacity:
-                    .45;
-
+            0%,100% {
+                transform:translate3d(0,0,0);
+                opacity:.45;
             }
 
             50% {
-
-                transform:
-                    translate3d(
-                        50px,
-                        -35px,
-                        0
-                    );
-
-                opacity:
-                    .8;
-
+                transform:translate3d(50px,-35px,0);
+                opacity:.8;
             }
 
         }
-
 
 
         /* =================================================
@@ -237,34 +145,20 @@
 
         .pulse-network {
 
-            position:
-                absolute;
-
-            inset:
-                0;
-
-            pointer-events:
-                none;
+            position:absolute;
+            inset:0;
+            pointer-events:none;
 
         }
 
 
         .pulse-point {
 
-            position:
-                absolute;
-
-            width:
-                5px;
-
-            height:
-                5px;
-
-            border-radius:
-                50%;
-
-            background:
-                #fff;
+            position:absolute;
+            width:5px;
+            height:5px;
+            border-radius:50%;
+            background:#fff;
 
             box-shadow:
                 0 0 8px rgba(255,255,255,.9),
@@ -278,20 +172,14 @@
 
         .pulse-point::after {
 
-            content:
-                "";
-
-            position:
-                absolute;
-
-            inset:
-                -9px;
+            content:"";
+            position:absolute;
+            inset:-9px;
 
             border:
                 1px solid rgba(255,255,255,.18);
 
-            border-radius:
-                50%;
+            border-radius:50%;
 
             animation:
                 pulseRing 3s ease-out infinite;
@@ -300,93 +188,49 @@
 
 
         .pp1 {
-
-            top:
-                17%;
-
-            left:
-                12%;
-
+            top:17%;
+            left:12%;
         }
 
 
         .pp2 {
-
-            top:
-                31%;
-
-            right:
-                15%;
-
-            animation-delay:
-                -.8s;
-
+            top:31%;
+            right:15%;
+            animation-delay:-.8s;
         }
 
 
         .pp3 {
-
-            top:
-                58%;
-
-            left:
-                8%;
-
-            animation-delay:
-                -1.6s;
-
+            top:58%;
+            left:8%;
+            animation-delay:-1.6s;
         }
 
 
         .pp4 {
-
-            top:
-                72%;
-
-            right:
-                11%;
-
-            animation-delay:
-                -2.3s;
-
+            top:72%;
+            right:11%;
+            animation-delay:-2.3s;
         }
 
 
         .pp5 {
-
-            top:
-                89%;
-
-            left:
-                44%;
-
-            animation-delay:
-                -1.1s;
-
+            top:89%;
+            left:44%;
+            animation-delay:-1.1s;
         }
 
 
         @keyframes pulsePoint {
 
-            0%,
-            100% {
-
-                transform:
-                    scale(.75);
-
-                opacity:
-                    .35;
-
+            0%,100% {
+                transform:scale(.75);
+                opacity:.35;
             }
 
             50% {
-
-                transform:
-                    scale(1.45);
-
-                opacity:
-                    1;
-
+                transform:scale(1.45);
+                opacity:1;
             }
 
         }
@@ -395,93 +239,63 @@
         @keyframes pulseRing {
 
             0% {
-
-                transform:
-                    scale(.4);
-
-                opacity:
-                    .8;
-
+                transform:scale(.4);
+                opacity:.8;
             }
 
             100% {
-
-                transform:
-                    scale(2.5);
-
-                opacity:
-                    0;
-
+                transform:scale(2.5);
+                opacity:0;
             }
 
         }
 
 
-
         /* =================================================
-           PREMIUM HERO
+           HERO
            ================================================= */
 
         .premium-home {
 
-            position:
-                relative;
+            position:relative;
+            z-index:2;
 
-            z-index:
-                2;
+            min-height:760px;
 
-            min-height:
-                760px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
+            display:flex;
+            align-items:center;
+            justify-content:center;
 
             padding:
                 150px 24px 100px;
 
-            overflow:
-                hidden;
+            overflow:hidden;
 
         }
 
 
         .hero-glass {
 
-            position:
-                relative;
+            position:relative;
 
-            width:
-                min(1180px, 100%);
+            width:min(1180px,100%);
+            min-height:600px;
 
-            min-height:
-                600px;
-
-            display:
-                grid;
+            display:grid;
 
             grid-template-columns:
                 1fr 1fr;
 
-            align-items:
-                center;
+            align-items:center;
 
-            gap:
-                50px;
+            gap:50px;
 
-            padding:
-                70px;
+            padding:70px;
 
             border:
                 1px solid var(--border);
 
-            border-radius:
-                42px;
+            border-radius:42px;
 
             background:
                 linear-gradient(
@@ -490,32 +304,24 @@
                     rgba(255,255,255,.018)
                 );
 
-            backdrop-filter:
-                blur(35px);
-
-            -webkit-backdrop-filter:
-                blur(35px);
+            backdrop-filter:blur(35px);
+            -webkit-backdrop-filter:blur(35px);
 
             box-shadow:
                 inset 0 1px 0 rgba(255,255,255,.1),
                 0 40px 120px rgba(0,0,0,.65);
 
-            overflow:
-                hidden;
+            overflow:hidden;
 
         }
 
 
         .hero-glass::before {
 
-            content:
-                "";
+            content:"";
 
-            position:
-                absolute;
-
-            inset:
-                0;
+            position:absolute;
+            inset:0;
 
             background:
                 linear-gradient(
@@ -525,60 +331,40 @@
                     transparent 45%
                 );
 
-            transform:
-                translateX(-120%);
+            transform:translateX(-120%);
 
             animation:
                 glassSweep 8s ease-in-out infinite;
 
-            pointer-events:
-                none;
+            pointer-events:none;
 
         }
 
 
         @keyframes glassSweep {
 
-            0%,
-            55% {
-
-                transform:
-                    translateX(-120%);
-
+            0%,55% {
+                transform:translateX(-120%);
             }
 
-            75%,
-            100% {
-
-                transform:
-                    translateX(120%);
-
+            75%,100% {
+                transform:translateX(120%);
             }
 
         }
 
 
         .hero-copy {
-
-            position:
-                relative;
-
-            z-index:
-                3;
-
+            position:relative;
+            z-index:3;
         }
 
 
         .hero-kicker {
 
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            gap:
-                10px;
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
 
             padding:
                 9px 15px;
@@ -586,8 +372,7 @@
             border:
                 1px solid rgba(255,255,255,.13);
 
-            border-radius:
-                999px;
+            border-radius:999px;
 
             background:
                 rgba(255,255,255,.045);
@@ -595,31 +380,21 @@
             color:
                 rgba(255,255,255,.7);
 
-            font-size:
-                10px;
-
-            letter-spacing:
-                .22em;
+            font-size:10px;
+            letter-spacing:.22em;
 
         }
 
 
         .hero-kicker-dot {
 
-            width:
-                6px;
-
-            height:
-                6px;
-
-            border-radius:
-                50%;
-
-            background:
-                white;
+            width:6px;
+            height:6px;
+            border-radius:50%;
+            background:#fff;
 
             box-shadow:
-                0 0 14px white;
+                0 0 14px #fff;
 
             animation:
                 pulsePoint 2s infinite;
@@ -633,83 +408,56 @@
                 25px 0 0;
 
             font-size:
-                clamp(52px, 7vw, 100px);
+                clamp(52px,7vw,100px);
 
-            line-height:
-                .86;
+            line-height:.86;
 
-            letter-spacing:
-                -.07em;
+            letter-spacing:-.07em;
 
-            font-weight:
-                800;
+            font-weight:800;
 
         }
 
 
         .hero-copy h1 span {
-
-            display:
-                block;
-
+            display:block;
         }
 
 
         .hero-copy h1 span:last-child {
-
-            color:
-                rgba(255,255,255,.35);
-
+            color:rgba(255,255,255,.35);
         }
 
 
         .hero-copy p {
 
-            max-width:
-                540px;
+            max-width:540px;
+            margin:30px 0;
 
-            margin:
-                30px 0;
+            color:var(--muted);
 
-            color:
-                var(--muted);
-
-            font-size:
-                16px;
-
-            line-height:
-                1.8;
+            font-size:16px;
+            line-height:1.8;
 
         }
 
 
         .hero-actions {
 
-            display:
-                flex;
-
-            flex-wrap:
-                wrap;
-
-            gap:
-                12px;
+            display:flex;
+            flex-wrap:wrap;
+            gap:12px;
 
         }
 
 
         .hero-button {
 
-            display:
-                inline-flex;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
 
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            min-height:
-                52px;
+            min-height:52px;
 
             padding:
                 0 24px;
@@ -717,31 +465,25 @@
             border:
                 1px solid rgba(255,255,255,.16);
 
-            border-radius:
-                16px;
+            border-radius:16px;
 
-            text-decoration:
-                none;
+            text-decoration:none;
 
-            color:
-                #fff;
+            color:#fff;
 
             background:
                 rgba(255,255,255,.07);
 
-            backdrop-filter:
-                blur(15px);
+            backdrop-filter:blur(15px);
 
-            transition:
-                .35s ease;
+            transition:.35s ease;
 
         }
 
 
         .hero-button:hover {
 
-            transform:
-                translateY(-4px);
+            transform:translateY(-4px);
 
             background:
                 rgba(255,255,255,.14);
@@ -754,59 +496,41 @@
 
         .hero-button.primary {
 
-            background:
-                #fff;
-
-            color:
-                #050505;
-
-            font-weight:
-                700;
+            background:#fff;
+            color:#050505;
+            font-weight:700;
 
         }
 
 
-
         /* =================================================
-           HERO PRODUCT VISUAL
+           Q45 VISUAL
            ================================================= */
 
         .hero-product {
 
-            position:
-                relative;
+            position:relative;
 
-            min-height:
-                440px;
+            min-height:440px;
 
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
+            display:flex;
+            align-items:center;
+            justify-content:center;
 
         }
 
 
         .product-orbit {
 
-            position:
-                absolute;
+            position:absolute;
 
-            width:
-                430px;
-
-            height:
-                430px;
+            width:430px;
+            height:430px;
 
             border:
                 1px solid rgba(255,255,255,.09);
 
-            border-radius:
-                50%;
+            border-radius:50%;
 
             animation:
                 orbitSpin 20s linear infinite;
@@ -817,34 +541,22 @@
         .product-orbit::before,
         .product-orbit::after {
 
-            content:
-                "";
-
-            position:
-                absolute;
-
-            border-radius:
-                50%;
+            content:"";
+            position:absolute;
+            border-radius:50%;
 
         }
 
 
         .product-orbit::before {
 
-            width:
-                9px;
+            width:9px;
+            height:9px;
 
-            height:
-                9px;
+            top:20px;
+            left:50%;
 
-            top:
-                20px;
-
-            left:
-                50%;
-
-            background:
-                #fff;
+            background:#fff;
 
             box-shadow:
                 0 0 25px #fff;
@@ -854,20 +566,13 @@
 
         .product-orbit::after {
 
-            width:
-                6px;
+            width:6px;
+            height:6px;
 
-            height:
-                6px;
+            bottom:35px;
+            right:30px;
 
-            bottom:
-                35px;
-
-            right:
-                30px;
-
-            background:
-                #fff;
+            background:#fff;
 
             box-shadow:
                 0 0 20px #fff;
@@ -878,10 +583,7 @@
         @keyframes orbitSpin {
 
             to {
-
-                transform:
-                    rotate(360deg);
-
+                transform:rotate(360deg);
             }
 
         }
@@ -889,23 +591,17 @@
 
         .hero-product-card {
 
-            position:
-                relative;
+            position:relative;
+            z-index:3;
 
-            z-index:
-                3;
+            width:min(430px,100%);
 
-            width:
-                min(430px, 100%);
-
-            padding:
-                20px;
+            padding:20px;
 
             border:
                 1px solid rgba(255,255,255,.16);
 
-            border-radius:
-                32px;
+            border-radius:32px;
 
             background:
                 linear-gradient(
@@ -914,14 +610,10 @@
                     rgba(255,255,255,.025)
                 );
 
-            backdrop-filter:
-                blur(25px);
+            backdrop-filter:blur(25px);
 
             box-shadow:
                 0 30px 80px rgba(0,0,0,.7);
-
-            transform:
-                translateY(0);
 
             animation:
                 productFloat 5s ease-in-out infinite;
@@ -931,21 +623,12 @@
 
         @keyframes productFloat {
 
-            0%,
-            100% {
-
-                transform:
-                    translateY(0)
-                    rotateX(0deg);
-
+            0%,100% {
+                transform:translateY(0);
             }
 
             50% {
-
-                transform:
-                    translateY(-13px)
-                    rotateX(2deg);
-
+                transform:translateY(-13px);
             }
 
         }
@@ -953,14 +636,12 @@
 
         .hero-product-image {
 
-            position:
-                relative;
+            position:relative;
+            overflow:hidden;
 
-            overflow:
-                hidden;
+            display:block;
 
-            border-radius:
-                24px;
+            border-radius:24px;
 
             background:
                 radial-gradient(
@@ -974,17 +655,12 @@
 
         .hero-product-image img {
 
-            display:
-                block;
+            display:block;
 
-            width:
-                100%;
+            width:100%;
+            height:330px;
 
-            height:
-                330px;
-
-            object-fit:
-                contain;
+            object-fit:contain;
 
             filter:
                 drop-shadow(
@@ -997,24 +673,19 @@
         }
 
 
-        .hero-product-card:hover img {
+        .hero-product-card:hover
+        .hero-product-image img {
 
-            transform:
-                scale(1.05);
+            transform:scale(1.05);
 
         }
 
 
         .hero-product-label {
 
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
 
             padding:
                 16px 5px 4px;
@@ -1024,38 +695,30 @@
 
         .hero-product-label span {
 
+            display:block;
+
             color:
                 rgba(255,255,255,.45);
 
-            font-size:
-                10px;
-
-            letter-spacing:
-                .18em;
+            font-size:10px;
+            letter-spacing:.18em;
 
         }
 
 
         .hero-product-label strong {
-
-            font-size:
-                16px;
-
+            font-size:16px;
         }
 
 
-
         /* =================================================
-           15% LIFE CARD
+           15% FOR LIFE
            ================================================= */
 
         .lifetime-section {
 
-            position:
-                relative;
-
-            z-index:
-                3;
+            position:relative;
+            z-index:3;
 
             padding:
                 40px 24px 100px;
@@ -1065,35 +728,27 @@
 
         .lifetime-card {
 
-            position:
-                relative;
+            position:relative;
 
-            width:
-                min(1050px, 100%);
+            width:min(1050px,100%);
 
-            margin:
-                auto;
+            margin:auto;
 
-            padding:
-                45px;
+            padding:45px;
 
-            display:
-                grid;
+            display:grid;
 
             grid-template-columns:
                 110px 1fr auto;
 
-            align-items:
-                center;
+            align-items:center;
 
-            gap:
-                28px;
+            gap:28px;
 
             border:
                 1px solid rgba(255,255,255,.2);
 
-            border-radius:
-                30px;
+            border-radius:30px;
 
             background:
                 linear-gradient(
@@ -1102,41 +757,30 @@
                     rgba(255,255,255,.025)
                 );
 
-            backdrop-filter:
-                blur(30px);
+            backdrop-filter:blur(30px);
 
             box-shadow:
                 0 25px 90px rgba(0,0,0,.55),
                 inset 0 1px 0 rgba(255,255,255,.12);
 
-            overflow:
-                hidden;
+            overflow:hidden;
 
         }
 
 
         .lifetime-card::after {
 
-            content:
-                "";
+            content:"";
 
-            position:
-                absolute;
+            position:absolute;
 
-            width:
-                220px;
+            width:220px;
+            height:220px;
 
-            height:
-                220px;
+            right:-100px;
+            top:-100px;
 
-            right:
-                -100px;
-
-            top:
-                -100px;
-
-            border-radius:
-                50%;
+            border-radius:50%;
 
             background:
                 radial-gradient(
@@ -1145,43 +789,29 @@
                     transparent 70%
                 );
 
-            filter:
-                blur(12px);
+            filter:blur(12px);
 
         }
 
 
         .lifetime-card-icon {
 
-            width:
-                90px;
+            width:90px;
+            height:90px;
 
-            height:
-                90px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
+            display:flex;
+            align-items:center;
+            justify-content:center;
 
             border:
                 1px solid rgba(255,255,255,.2);
 
-            border-radius:
-                22px;
+            border-radius:22px;
 
             background:
                 rgba(255,255,255,.07);
 
-            font-size:
-                38px;
-
-            box-shadow:
-                0 0 35px rgba(255,255,255,.08);
+            font-size:38px;
 
             animation:
                 cardPulse 3s ease-in-out infinite;
@@ -1191,19 +821,14 @@
 
         @keyframes cardPulse {
 
-            0%,
-            100% {
-
+            0%,100% {
                 box-shadow:
                     0 0 20px rgba(255,255,255,.04);
-
             }
 
             50% {
-
                 box-shadow:
                     0 0 45px rgba(255,255,255,.16);
-
             }
 
         }
@@ -1211,34 +836,26 @@
 
         .lifetime-copy span {
 
-            display:
-                block;
-
-            margin-bottom:
-                8px;
+            display:block;
+            margin-bottom:8px;
 
             color:
                 rgba(255,255,255,.45);
 
-            font-size:
-                10px;
-
-            letter-spacing:
-                .2em;
+            font-size:10px;
+            letter-spacing:.2em;
 
         }
 
 
         .lifetime-copy h2 {
 
-            margin:
-                0;
+            margin:0;
 
             font-size:
-                clamp(25px, 4vw, 44px);
+                clamp(25px,4vw,44px);
 
-            letter-spacing:
-                -.04em;
+            letter-spacing:-.04em;
 
         }
 
@@ -1251,36 +868,29 @@
             color:
                 var(--muted);
 
-            line-height:
-                1.6;
+            line-height:1.6;
 
         }
 
 
         .lifetime-number {
 
-            position:
-                relative;
+            position:relative;
+            z-index:2;
 
-            z-index:
-                2;
-
-            text-align:
-                center;
+            text-align:center;
 
         }
 
 
         .lifetime-number strong {
 
-            display:
-                block;
+            display:block;
 
             font-size:
-                clamp(36px, 5vw, 62px);
+                clamp(36px,5vw,62px);
 
-            line-height:
-                1;
+            line-height:1;
 
         }
 
@@ -1290,27 +900,21 @@
             color:
                 rgba(255,255,255,.45);
 
-            font-size:
-                9px;
+            font-size:9px;
 
-            letter-spacing:
-                .18em;
+            letter-spacing:.18em;
 
         }
 
 
-
         /* =================================================
-           COLLECTION PRESENTATION
+           COLLECTION
            ================================================= */
 
         .collection-section {
 
-            position:
-                relative;
-
-            z-index:
-                3;
+            position:relative;
+            z-index:3;
 
             padding:
                 100px 24px;
@@ -1320,22 +924,16 @@
 
         .collection-container {
 
-            width:
-                min(1180px, 100%);
-
-            margin:
-                auto;
+            width:min(1180px,100%);
+            margin:auto;
 
         }
 
 
         .collection-heading {
 
-            max-width:
-                700px;
-
-            margin-bottom:
-                55px;
+            max-width:700px;
+            margin-bottom:55px;
 
         }
 
@@ -1345,11 +943,8 @@
             color:
                 rgba(255,255,255,.4);
 
-            font-size:
-                10px;
-
-            letter-spacing:
-                .22em;
+            font-size:10px;
+            letter-spacing:.22em;
 
         }
 
@@ -1360,10 +955,9 @@
                 14px 0 0;
 
             font-size:
-                clamp(38px, 6vw, 72px);
+                clamp(38px,6vw,72px);
 
-            letter-spacing:
-                -.06em;
+            letter-spacing:-.06em;
 
         }
 
@@ -1373,70 +967,55 @@
             color:
                 var(--muted);
 
-            line-height:
-                1.8;
+            line-height:1.8;
 
         }
 
 
         .collection-grid {
 
-            display:
-                grid;
+            display:grid;
 
             grid-template-columns:
                 1.35fr .65fr;
 
-            gap:
-                20px;
+            gap:20px;
 
         }
 
 
         .collection-card {
 
-            position:
-                relative;
+            position:relative;
 
-            min-height:
-                360px;
+            min-height:360px;
 
-            overflow:
-                hidden;
+            overflow:hidden;
 
             border:
                 1px solid rgba(255,255,255,.1);
 
-            border-radius:
-                30px;
+            border-radius:30px;
 
             background:
                 rgba(255,255,255,.035);
 
-            backdrop-filter:
-                blur(20px);
+            backdrop-filter:blur(20px);
 
         }
 
 
         .collection-card.large {
-
-            min-height:
-                560px;
-
+            min-height:560px;
         }
 
 
         .collection-card img {
 
-            width:
-                100%;
+            width:100%;
+            height:100%;
 
-            height:
-                100%;
-
-            object-fit:
-                cover;
+            object-fit:cover;
 
             transition:
                 transform .8s cubic-bezier(.2,.8,.2,1);
@@ -1445,23 +1024,17 @@
 
 
         .collection-card:hover img {
-
-            transform:
-                scale(1.06);
-
+            transform:scale(1.06);
         }
 
 
         .collection-overlay {
 
-            position:
-                absolute;
+            position:absolute;
 
-            inset:
-                auto 0 0;
+            inset:auto 0 0;
 
-            padding:
-                30px;
+            padding:30px;
 
             background:
                 linear-gradient(
@@ -1477,11 +1050,8 @@
             color:
                 rgba(255,255,255,.5);
 
-            font-size:
-                9px;
-
-            letter-spacing:
-                .2em;
+            font-size:9px;
+            letter-spacing:.2em;
 
         }
 
@@ -1491,25 +1061,21 @@
             margin:
                 8px 0 0;
 
-            font-size:
-                28px;
+            font-size:28px;
 
         }
 
 
         .collection-side {
 
-            display:
-                grid;
+            display:grid;
 
             grid-template-rows:
                 1fr 1fr;
 
-            gap:
-                20px;
+            gap:20px;
 
         }
-
 
 
         /* =================================================
@@ -1518,11 +1084,8 @@
 
         .final-section {
 
-            position:
-                relative;
-
-            z-index:
-                3;
+            position:relative;
+            z-index:3;
 
             padding:
                 80px 24px 120px;
@@ -1532,23 +1095,19 @@
 
         .final-glass {
 
-            width:
-                min(1000px, 100%);
+            width:min(1000px,100%);
 
-            margin:
-                auto;
+            margin:auto;
 
             padding:
                 80px 30px;
 
-            text-align:
-                center;
+            text-align:center;
 
             border:
                 1px solid rgba(255,255,255,.13);
 
-            border-radius:
-                38px;
+            border-radius:38px;
 
             background:
                 linear-gradient(
@@ -1557,8 +1116,7 @@
                     rgba(255,255,255,.02)
                 );
 
-            backdrop-filter:
-                blur(30px);
+            backdrop-filter:blur(30px);
 
             box-shadow:
                 0 40px 100px rgba(0,0,0,.55);
@@ -1568,23 +1126,17 @@
 
         .final-glass .pulse-dot {
 
-            display:
-                inline-block;
+            display:inline-block;
 
-            width:
-                8px;
+            width:8px;
+            height:8px;
 
-            height:
-                8px;
+            border-radius:50%;
 
-            border-radius:
-                50%;
-
-            background:
-                white;
+            background:#fff;
 
             box-shadow:
-                0 0 25px white;
+                0 0 25px #fff;
 
             animation:
                 pulsePoint 2s infinite;
@@ -1598,18 +1150,16 @@
                 22px 0 14px;
 
             font-size:
-                clamp(35px, 6vw, 65px);
+                clamp(35px,6vw,65px);
 
-            letter-spacing:
-                -.06em;
+            letter-spacing:-.06em;
 
         }
 
 
         .final-glass p {
 
-            max-width:
-                560px;
+            max-width:560px;
 
             margin:
                 0 auto 30px;
@@ -1617,23 +1167,371 @@
             color:
                 var(--muted);
 
-            line-height:
-                1.7;
+            line-height:1.7;
 
         }
 
+
+        /* =================================================
+           CART DRAWER
+           ================================================= */
+
+        .voltica-cart-overlay {
+
+            position:fixed;
+
+            inset:0;
+
+            background:
+                rgba(0,0,0,.72);
+
+            backdrop-filter:
+                blur(10px);
+
+            -webkit-backdrop-filter:
+                blur(10px);
+
+            opacity:0;
+            visibility:hidden;
+
+            transition:
+                opacity .35s ease,
+                visibility .35s ease;
+
+            z-index:9998;
+
+        }
+
+
+        .voltica-cart-overlay.active {
+
+            opacity:1;
+            visibility:visible;
+
+        }
+
+
+        .voltica-cart-drawer {
+
+            position:fixed;
+
+            top:0;
+            right:0;
+            bottom:0;
+
+            width:
+                min(430px,92vw);
+
+            z-index:9999;
+
+            display:flex;
+            flex-direction:column;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(25,25,25,.96),
+                    rgba(5,5,5,.98)
+                );
+
+            border-left:
+                1px solid rgba(255,255,255,.14);
+
+            box-shadow:
+                -30px 0 100px rgba(0,0,0,.7);
+
+            backdrop-filter:
+                blur(30px);
+
+            -webkit-backdrop-filter:
+                blur(30px);
+
+            transform:
+                translateX(105%);
+
+            transition:
+                transform .45s cubic-bezier(.2,.8,.2,1);
+
+        }
+
+
+        .voltica-cart-drawer.active {
+
+            transform:
+                translateX(0);
+
+        }
+
+
+        .voltica-cart-header {
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:space-between;
+
+            padding:
+                28px 24px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.09);
+
+        }
+
+
+        .voltica-cart-brand {
+
+            display:block;
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-size:9px;
+
+            letter-spacing:.2em;
+
+        }
+
+
+        .voltica-cart-header h2 {
+
+            margin:
+                5px 0 0;
+
+            font-size:28px;
+
+            letter-spacing:-.04em;
+
+        }
+
+
+        .voltica-cart-close {
+
+            width:44px;
+            height:44px;
+
+            border:
+                1px solid rgba(255,255,255,.12);
+
+            border-radius:14px;
+
+            background:
+                rgba(255,255,255,.05);
+
+            color:#fff;
+
+            font-size:26px;
+
+            cursor:pointer;
+
+        }
+
+
+        .voltica-cart-items {
+
+            flex:1;
+
+            overflow-y:auto;
+
+            padding:20px;
+
+        }
+
+
+        .voltica-cart-empty {
+
+            min-height:100%;
+
+            display:flex;
+
+            flex-direction:column;
+
+            align-items:center;
+
+            justify-content:center;
+
+            text-align:center;
+
+            color:
+                rgba(255,255,255,.45);
+
+        }
+
+
+        .voltica-cart-empty strong {
+
+            margin-top:10px;
+
+            color:#fff;
+
+        }
+
+
+        .voltica-cart-item {
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:space-between;
+
+            gap:15px;
+
+            padding:
+                18px 0;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.07);
+
+        }
+
+
+        .voltica-cart-item-info {
+
+            min-width:0;
+
+        }
+
+
+        .voltica-cart-item-info strong {
+
+            display:block;
+
+            color:#fff;
+
+            font-size:14px;
+
+        }
+
+
+        .voltica-cart-item-info span {
+
+            display:block;
+
+            margin-top:5px;
+
+            color:
+                rgba(255,255,255,.45);
+
+            font-size:12px;
+
+        }
+
+
+        .voltica-cart-controls {
+
+            display:flex;
+
+            align-items:center;
+
+            gap:7px;
+
+        }
+
+
+        .voltica-cart-controls button {
+
+            width:32px;
+            height:32px;
+
+            border:
+                1px solid rgba(255,255,255,.12);
+
+            border-radius:9px;
+
+            background:
+                rgba(255,255,255,.05);
+
+            color:#fff;
+
+            cursor:pointer;
+
+        }
+
+
+        .voltica-cart-controls span {
+
+            min-width:20px;
+
+            text-align:center;
+
+            font-size:12px;
+
+        }
+
+
+        .voltica-cart-footer {
+
+            padding:
+                24px;
+
+            border-top:
+                1px solid rgba(255,255,255,.09);
+
+        }
+
+
+        .voltica-cart-total {
+
+            display:flex;
+
+            justify-content:space-between;
+
+            margin-bottom:18px;
+
+            font-size:14px;
+
+        }
+
+
+        .voltica-cart-total strong {
+            font-size:18px;
+        }
+
+
+        .voltica-cart-checkout {
+
+            width:100%;
+
+            min-height:55px;
+
+            border:0;
+
+            border-radius:16px;
+
+            background:#fff;
+
+            color:#050505;
+
+            font-weight:800;
+
+            cursor:pointer;
+
+            transition:.3s ease;
+
+        }
+
+
+        .voltica-cart-checkout:hover {
+
+            transform:translateY(-2px);
+
+            box-shadow:
+                0 15px 35px rgba(255,255,255,.12);
+
+        }
 
 
         /* =================================================
            MOBILE
            ================================================= */
 
-        @media (max-width: 850px) {
+        @media (max-width:850px) {
 
             .hero-glass {
 
-                grid-template-columns:
-                    1fr;
+                grid-template-columns:1fr;
 
                 padding:
                     40px 25px;
@@ -1642,42 +1540,30 @@
 
 
             .premium-home {
-
-                padding-top:
-                    120px;
-
+                padding-top:120px;
             }
 
 
             .hero-product {
-
-                min-height:
-                    400px;
-
+                min-height:400px;
             }
 
 
             .product-orbit {
 
-                width:
-                    320px;
-
-                height:
-                    320px;
+                width:320px;
+                height:320px;
 
             }
 
 
             .lifetime-card {
 
-                grid-template-columns:
-                    1fr;
+                grid-template-columns:1fr;
 
-                text-align:
-                    center;
+                text-align:center;
 
-                justify-items:
-                    center;
+                justify-items:center;
 
                 padding:
                     35px 25px;
@@ -1687,17 +1573,13 @@
 
             .collection-grid {
 
-                grid-template-columns:
-                    1fr;
+                grid-template-columns:1fr;
 
             }
 
 
             .collection-card.large {
-
-                min-height:
-                    430px;
-
+                min-height:430px;
             }
 
 
@@ -1714,53 +1596,35 @@
         }
 
 
-        @media (max-width: 560px) {
+        @media (max-width:560px) {
 
             .hero-copy h1 {
-
-                font-size:
-                    54px;
-
+                font-size:54px;
             }
 
 
             .hero-actions {
-
-                flex-direction:
-                    column;
-
+                flex-direction:column;
             }
 
 
             .hero-button {
-
-                width:
-                    100%;
-
+                width:100%;
             }
 
 
             .hero-product-image img {
-
-                height:
-                    260px;
-
+                height:260px;
             }
 
 
             .collection-side {
-
-                grid-template-columns:
-                    1fr;
-
+                grid-template-columns:1fr;
             }
 
 
             .collection-card {
-
-                min-height:
-                    300px;
-
+                min-height:300px;
             }
 
         }
@@ -1783,9 +1647,7 @@
 >
 
     <span class="ambient-orb one"></span>
-
     <span class="ambient-orb two"></span>
-
     <span class="ambient-orb three"></span>
 
 
@@ -1801,10 +1663,6 @@
 
 </div>
 
-
-<!-- =====================================================
-     BACKGROUND
-     ===================================================== -->
 
 <div
     class="tech-grid"
@@ -1834,6 +1692,7 @@
 
 <header class="store-header">
 
+
     <a
         href="index.html"
         class="logo-acrylic"
@@ -1862,9 +1721,11 @@
             HOME
         </a>
 
+
         <a href="store.html">
             STORE
         </a>
+
 
         <a href="#contact">
             CONTACT
@@ -1873,10 +1734,17 @@
     </nav>
 
 
-    <a
-        href="store.html"
+    <!-- =================================================
+         CART BUTTON
+         ================================================= -->
+
+    <button
+        type="button"
         class="cart-acrylic"
-        aria-label="Open store"
+        id="cartButton"
+        aria-label="Open shopping cart"
+        aria-controls="indexCartDrawer"
+        aria-expanded="false"
     >
 
         <span class="cart-icon">
@@ -1906,11 +1774,20 @@
 
         </span>
 
+
         <span>
-            STORE
+            CART
         </span>
 
-    </a>
+
+        <span
+            class="cart-count"
+            id="cartCount"
+        >
+            0
+        </span>
+
+    </button>
 
 </header>
 
@@ -1923,9 +1800,8 @@
 <main>
 
 
-
 <!-- =====================================================
-     HERO — VOLTICA STORE
+     HERO
      ===================================================== -->
 
 <section class="premium-home">
@@ -1935,6 +1811,7 @@
 
 
         <div class="hero-copy">
+
 
             <div class="hero-kicker">
 
@@ -1970,12 +1847,12 @@
 
             <div class="hero-actions">
 
+
                 <a
                     href="store.html"
                     class="hero-button primary"
                 >
-                    EXPLORE STORE
-                    →
+                    EXPLORE STORE →
                 </a>
 
 
@@ -1988,13 +1865,12 @@
 
             </div>
 
+
         </div>
 
 
 
-        <!-- =================================================
-             Q45 VISUAL
-             ================================================= -->
+        <!-- Q45 -->
 
         <div class="hero-product">
 
@@ -2025,6 +1901,7 @@
 
                 <div class="hero-product-label">
 
+
                     <div>
 
                         <span>
@@ -2044,7 +1921,9 @@
 
                 </div>
 
+
             </div>
+
 
         </div>
 
@@ -2069,13 +1948,12 @@
 
 
         <div class="lifetime-card-icon">
-
             💳
-
         </div>
 
 
         <div class="lifetime-copy">
+
 
             <span>
                 VOLTICA FOUNDING CUSTOMER BENEFIT
@@ -2096,6 +1974,7 @@
 
             </p>
 
+
         </div>
 
 
@@ -2107,7 +1986,6 @@
 
             <span>
                 FIRST CUSTOMERS
-
             </span>
 
         </div>
@@ -2131,6 +2009,7 @@
 
         <div class="collection-heading">
 
+
             <span>
                 THE VOLTICA COLLECTION
             </span>
@@ -2150,14 +2029,13 @@
 
             </p>
 
+
         </div>
 
 
 
         <div class="collection-grid">
 
-
-            <!-- LARGE IMAGE -->
 
             <a
                 href="product.html?id=q45"
@@ -2187,8 +2065,6 @@
             </a>
 
 
-
-            <!-- SIDE IMAGES -->
 
             <div class="collection-side">
 
@@ -2252,6 +2128,7 @@
 
         </div>
 
+
     </div>
 
 </section>
@@ -2272,7 +2149,6 @@
 
 
         <span
-            class="section-kicker"
             style="
                 display:block;
                 margin-top:16px;
@@ -2304,9 +2180,9 @@
             href="product.html?id=q45"
             class="hero-button primary"
         >
-            DISCOVER Q45
-            →
+            DISCOVER Q45 →
         </a>
+
 
     </div>
 
@@ -2360,6 +2236,7 @@
                     CONTACT US
                 </span>
 
+
                 <strong>
                     →
                 </strong>
@@ -2380,6 +2257,129 @@
 
 
 <!-- =====================================================
+     INDEX CART OVERLAY
+     ===================================================== -->
+
+<div
+    class="voltica-cart-overlay"
+    id="indexCartOverlay"
+    aria-hidden="true"
+></div>
+
+
+
+<!-- =====================================================
+     INDEX CART DRAWER
+     ===================================================== -->
+
+<aside
+    class="voltica-cart-drawer"
+    id="indexCartDrawer"
+    aria-label="Shopping cart"
+    aria-hidden="true"
+>
+
+
+    <div class="voltica-cart-header">
+
+
+        <div>
+
+            <span class="voltica-cart-brand">
+                VOLTICA
+            </span>
+
+
+            <h2>
+                CART
+            </h2>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="voltica-cart-close"
+            id="indexCartClose"
+            aria-label="Close shopping cart"
+        >
+            ×
+        </button>
+
+
+    </div>
+
+
+
+    <div
+        class="voltica-cart-items"
+        id="indexCartItems"
+    >
+
+
+        <div class="voltica-cart-empty">
+
+            <span>
+                VOLTICA
+            </span>
+
+
+            <strong>
+                YOUR CART IS EMPTY
+            </strong>
+
+
+            <p>
+                Add a product to begin.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="voltica-cart-footer">
+
+
+        <div class="voltica-cart-total">
+
+            <span>
+                TOTAL
+            </span>
+
+
+            <strong id="indexCartTotal">
+                $0.00 USD
+            </strong>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="voltica-cart-checkout"
+            id="indexCheckoutButton"
+        >
+
+            CHECKOUT
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
      FOOTER
      ===================================================== -->
 
@@ -2392,9 +2392,11 @@
             VOLTICA
         </span>
 
+
         <span>
             THE FUTURE OF EVERYDAY
         </span>
+
 
         <span>
             © 2026
@@ -2404,6 +2406,516 @@
 
 
 </footer>
+
+
+
+<!-- =====================================================
+     STORE ENGINE
+     ===================================================== -->
+
+<script src="products.js"></script>
+
+
+<script src="store.js"></script>
+
+
+
+<!-- =====================================================
+     INDEX CART CONTROLLER
+     ===================================================== -->
+
+<script>
+
+"use strict";
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        const cartButton =
+            document.getElementById(
+                "cartButton"
+            );
+
+
+        const cartDrawer =
+            document.getElementById(
+                "indexCartDrawer"
+            );
+
+
+        const cartOverlay =
+            document.getElementById(
+                "indexCartOverlay"
+            );
+
+
+        const cartClose =
+            document.getElementById(
+                "indexCartClose"
+            );
+
+
+        const cartItems =
+            document.getElementById(
+                "indexCartItems"
+            );
+
+
+        const cartTotal =
+            document.getElementById(
+                "indexCartTotal"
+            );
+
+
+        const checkoutButton =
+            document.getElementById(
+                "indexCheckoutButton"
+            );
+
+
+        if (!cartButton || !cartDrawer) {
+
+            return;
+
+        }
+
+
+        function getCart() {
+
+            if (
+                window.VolticaStore &&
+                typeof
+                    window.VolticaStore.getCart ===
+                    "function"
+            ) {
+
+                return window.VolticaStore.getCart();
+
+            }
+
+
+            return [];
+
+        }
+
+
+        function formatPrice(value) {
+
+            const price =
+                Number(value);
+
+
+            if (!Number.isFinite(price)) {
+
+                return "$0.00 USD";
+
+            }
+
+
+            return (
+                "$" +
+                price.toFixed(2) +
+                " USD"
+            );
+
+        }
+
+
+        function escapeHTML(value) {
+
+            return String(
+                value ?? ""
+            )
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+        }
+
+
+        function renderIndexCart() {
+
+            const cart =
+                getCart();
+
+
+            cartItems.innerHTML = "";
+
+
+            if (!cart.length) {
+
+                cartItems.innerHTML = `
+
+                    <div class="voltica-cart-empty">
+
+                        <span>
+                            VOLTICA
+                        </span>
+
+                        <strong>
+                            YOUR CART IS EMPTY
+                        </strong>
+
+                        <p>
+                            Add a product to begin.
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                cartTotal.textContent =
+                    "$0.00 USD";
+
+
+                return;
+
+            }
+
+
+            let total = 0;
+
+
+            cart.forEach(
+                item => {
+
+                    const quantity =
+                        Number(
+                            item.quantity || 1
+                        );
+
+
+                    const price =
+                        Number(
+                            item.price || 0
+                        );
+
+
+                    total +=
+                        price *
+                        quantity;
+
+
+                    const element =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    element.className =
+                        "voltica-cart-item";
+
+
+                    element.innerHTML = `
+
+                        <div class="voltica-cart-item-info">
+
+                            <strong>
+                                ${escapeHTML(
+                                    item.name ||
+                                    "VOLTICA PRODUCT"
+                                )}
+                            </strong>
+
+                            <span>
+                                ${formatPrice(price)}
+                            </span>
+
+                        </div>
+
+
+                        <div class="voltica-cart-controls">
+
+                            <button
+                                type="button"
+                                data-action="decrease"
+                                data-id="${escapeHTML(item.id)}"
+                            >
+                                −
+                            </button>
+
+
+                            <span>
+                                ${quantity}
+                            </span>
+
+
+                            <button
+                                type="button"
+                                data-action="increase"
+                                data-id="${escapeHTML(item.id)}"
+                            >
+                                +
+                            </button>
+
+
+                            <button
+                                type="button"
+                                data-action="remove"
+                                data-id="${escapeHTML(item.id)}"
+                            >
+                                ×
+                            </button>
+
+                        </div>
+
+                    `;
+
+
+                    element
+                        .querySelectorAll(
+                            "[data-action]"
+                        )
+                        .forEach(
+                            button => {
+
+                                button.addEventListener(
+                                    "click",
+                                    function () {
+
+                                        const action =
+                                            this.dataset.action;
+
+
+                                        const id =
+                                            this.dataset.id;
+
+
+                                        if (
+                                            !window.VolticaStore
+                                        ) {
+
+                                            return;
+
+                                        }
+
+
+                                        if (
+                                            action ===
+                                            "increase"
+                                        ) {
+
+                                            window.VolticaStore
+                                                .changeCartQuantity(
+                                                    id,
+                                                    1
+                                                );
+
+                                        }
+
+
+                                        if (
+                                            action ===
+                                            "decrease"
+                                        ) {
+
+                                            window.VolticaStore
+                                                .changeCartQuantity(
+                                                    id,
+                                                    -1
+                                                );
+
+                                        }
+
+
+                                        if (
+                                            action ===
+                                            "remove"
+                                        ) {
+
+                                            window.VolticaStore
+                                                .removeFromCart(
+                                                    id
+                                                );
+
+                                        }
+
+
+                                        renderIndexCart();
+
+                                    }
+                                );
+
+                            }
+                        );
+
+
+                    cartItems.appendChild(
+                        element
+                    );
+
+                }
+            );
+
+
+            cartTotal.textContent =
+                formatPrice(total);
+
+        }
+
+
+
+        function openIndexCart() {
+
+            renderIndexCart();
+
+
+            cartDrawer.classList.add(
+                "active"
+            );
+
+
+            cartOverlay.classList.add(
+                "active"
+            );
+
+
+            cartDrawer.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            cartOverlay.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            cartButton.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+
+
+
+        function closeIndexCart() {
+
+            cartDrawer.classList.remove(
+                "active"
+            );
+
+
+            cartOverlay.classList.remove(
+                "active"
+            );
+
+
+            cartDrawer.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            cartOverlay.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            cartButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+
+        cartButton.addEventListener(
+            "click",
+            openIndexCart
+        );
+
+
+        cartClose.addEventListener(
+            "click",
+            closeIndexCart
+        );
+
+
+        cartOverlay.addEventListener(
+            "click",
+            closeIndexCart
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key ===
+                    "Escape"
+                ) {
+
+                    closeIndexCart();
+
+                }
+
+            }
+        );
+
+
+        checkoutButton.addEventListener(
+            "click",
+            function () {
+
+                window.open(
+                    "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j",
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+            }
+        );
+
+
+        window.addEventListener(
+            "volticaStoreReady",
+            renderIndexCart
+        );
+
+
+        renderIndexCart();
+
+
+    }
+
+);
+
+</script>
 
 
 </body>

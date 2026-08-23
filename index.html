@@ -12,1060 +12,20 @@
 
     <meta
         name="description"
-        content="Voltica Store — The future of everyday."
+        content="Voltica G45 — Premium open-ear wireless audio. Pre-order now and receive 15% off."
     >
 
     <meta
         name="theme-color"
-        content="#030303"
+        content="#050505"
     >
 
-    <title>Voltica — The Future of Everyday</title>
-
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-
-        body {
-
-            min-height: 100vh;
-
-            background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(100,100,100,.16),
-                    transparent 35%
-                ),
-                #030303;
-
-            color: #fff;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            overflow-x: hidden;
-        }
-
-
-        body.modal-open {
-            overflow: hidden;
-        }
-
-
-        /* =================================================
-           BACKGROUND
-           ================================================= */
-
-        .tech-grid {
-
-            position: fixed;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            opacity: .16;
-
-            background-image:
-
-                linear-gradient(
-                    rgba(255,255,255,.035) 1px,
-                    transparent 1px
-                ),
-
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,.035) 1px,
-                    transparent 1px
-                );
-
-            background-size:
-                45px 45px;
-
-            mask-image:
-                linear-gradient(
-                    to bottom,
-                    black,
-                    transparent 85%
-                );
-
-            z-index: 0;
-        }
-
-
-        /* =================================================
-           HEADER
-           ================================================= */
-
-        header {
-
-            position: relative;
-
-            z-index: 10;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding:
-                22px
-                clamp(20px,5vw,70px);
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,.08);
-
-            background:
-                rgba(5,5,5,.72);
-
-            backdrop-filter:
-                blur(24px);
-        }
-
-
-        .logo {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-            color: white;
-
-            text-decoration: none;
-
-            font-weight: 800;
-
-            letter-spacing: .18em;
-        }
-
-
-        .logo-v {
-
-            width: 38px;
-
-            height: 38px;
-
-            display: grid;
-
-            place-items: center;
-
-            border:
-                1px solid
-                rgba(255,255,255,.35);
-
-            border-radius: 11px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.20),
-                    rgba(255,255,255,.03)
-                );
-
-            box-shadow:
-                inset 0 1px rgba(255,255,255,.2),
-                0 0 25px rgba(255,255,255,.08);
-        }
-
-
-        nav {
-
-            display: flex;
-
-            gap: 25px;
-        }
-
-
-        nav a {
-
-            color:
-                rgba(255,255,255,.65);
-
-            text-decoration: none;
-
-            font-size: 12px;
-
-            letter-spacing: .15em;
-
-            transition: .25s;
-        }
-
-
-        nav a:hover {
-
-            color: white;
-        }
-
-
-        /* =================================================
-           HERO
-           ================================================= */
-
-        .hero {
-
-            position: relative;
-
-            z-index: 1;
-
-            min-height:
-                78vh;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            padding:
-                80px 20px 60px;
-        }
-
-
-        .hero-content {
-
-            width: min(1100px,100%);
-        }
-
-
-        .eyebrow {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 9px;
-
-            padding:
-                9px 15px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.14);
-
-            border-radius: 999px;
-
-            background:
-                rgba(255,255,255,.055);
-
-            backdrop-filter:
-                blur(20px);
-
-            font-size: 10px;
-
-            letter-spacing: .22em;
-
-            color:
-                rgba(255,255,255,.75);
-        }
-
-
-        .pulse {
-
-            width: 7px;
-
-            height: 7px;
-
-            border-radius: 50%;
-
-            background: #fff;
-
-            box-shadow:
-                0 0 12px #fff;
-
-            animation:
-                pulse 1.7s infinite;
-        }
-
-
-        @keyframes pulse {
-
-            0%,100% {
-                opacity: .45;
-                transform: scale(.8);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
-        }
-
-
-        .hero h1 {
-
-            margin-top: 28px;
-
-            font-size:
-                clamp(52px,11vw,145px);
-
-            line-height: .84;
-
-            letter-spacing:
-                -.075em;
-
-            font-weight: 900;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    #fff,
-                    #aaa 55%,
-                    #444
-                );
-
-            -webkit-background-clip: text;
-
-            background-clip: text;
-
-            color: transparent;
-        }
-
-
-        .hero h1 span {
-
-            display: block;
-        }
-
-
-        .hero-subtitle {
-
-            margin:
-                30px auto 0;
-
-            max-width: 600px;
-
-            color:
-                rgba(255,255,255,.55);
-
-            line-height: 1.7;
-
-            font-size:
-                clamp(14px,2vw,18px);
-        }
-
-
-        /* =================================================
-           PRODUCT
-           ================================================= */
-
-        .product-section {
-
-            position: relative;
-
-            z-index: 2;
-
-            width:
-                min(1150px,92%);
-
-            margin:
-                0 auto 100px;
-        }
-
-
-        .product-card {
-
-            display: grid;
-
-            grid-template-columns:
-                1.15fr
-                .85fr;
-
-            overflow: hidden;
-
-            border:
-                1px solid
-                rgba(255,255,255,.13);
-
-            border-radius: 30px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.10),
-                    rgba(255,255,255,.025)
-                );
-
-            backdrop-filter:
-                blur(30px);
-
-            box-shadow:
-                0 40px 100px
-                rgba(0,0,0,.55);
-        }
-
-
-        /* =================================================
-           GALLERY
-           ================================================= */
-
-        .product-gallery {
-
-            padding: 20px;
-
-            min-width: 0;
-        }
-
-
-        .main-image {
-
-            position: relative;
-
-            aspect-ratio: 1 / 1;
-
-            overflow: hidden;
-
-            border-radius: 22px;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(255,255,255,.12),
-                    rgba(0,0,0,.7)
-                );
-
-            cursor: pointer;
-        }
-
-
-        .main-image img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: contain;
-
-            display: block;
-
-            transition:
-                transform .5s ease;
-        }
-
-
-        .main-image:hover img {
-
-            transform: scale(1.035);
-        }
-
-
-        .reflection {
-
-            position: absolute;
-
-            inset: auto 0 0;
-
-            height: 40%;
-
-            background:
-                linear-gradient(
-                    transparent,
-                    rgba(255,255,255,.08)
-                );
-
-            pointer-events: none;
-        }
-
-
-        .thumbnails {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(6,1fr);
-
-            gap: 8px;
-
-            margin-top: 10px;
-        }
-
-
-        .thumbnail {
-
-            aspect-ratio: 1;
-
-            overflow: hidden;
-
-            border:
-                1px solid
-                rgba(255,255,255,.10);
-
-            border-radius: 10px;
-
-            background:
-                rgba(255,255,255,.04);
-
-            cursor: pointer;
-
-            transition: .25s;
-        }
-
-
-        .thumbnail.active {
-
-            border-color:
-                rgba(255,255,255,.75);
-
-            box-shadow:
-                0 0 18px
-                rgba(255,255,255,.12);
-        }
-
-
-        .thumbnail img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
-        }
-
-
-        /* =================================================
-           PRODUCT INFO
-           ================================================= */
-
-        .product-info {
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: center;
-
-            padding:
-                clamp(28px,5vw,65px);
-        }
-
-
-        .product-label {
-
-            font-size: 10px;
-
-            letter-spacing: .25em;
-
-            color:
-                rgba(255,255,255,.45);
-
-            margin-bottom: 12px;
-        }
-
-
-        .product-info h2 {
-
-            font-size:
-                clamp(34px,5vw,64px);
-
-            line-height: .95;
-
-            letter-spacing:
-                -.05em;
-
-            margin-bottom: 20px;
-        }
-
-
-        .description {
-
-            color:
-                rgba(255,255,255,.58);
-
-            line-height: 1.75;
-
-            font-size: 14px;
-
-            margin-bottom: 25px;
-        }
-
-
-        .price {
-
-            display: flex;
-
-            align-items: baseline;
-
-            gap: 12px;
-
-            margin-bottom: 25px;
-        }
-
-
-        .price strong {
-
-            font-size: 32px;
-        }
-
-
-        .reference {
-
-            text-decoration: line-through;
-
-            color:
-                rgba(255,255,255,.30);
-
-            font-size: 14px;
-        }
-
-
-        /* =================================================
-           15% PASS
-           ================================================= */
-
-        .pass {
-
-            padding: 17px;
-
-            margin-bottom: 22px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.16);
-
-            border-radius: 16px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,.09),
-                    rgba(255,255,255,.025)
-                );
-
-            box-shadow:
-                inset 0 1px rgba(255,255,255,.08);
-        }
-
-
-        .pass strong {
-
-            display: block;
-
-            font-size: 13px;
-
-            letter-spacing: .08em;
-
-            margin-bottom: 5px;
-        }
-
-
-        .pass span {
-
-            color:
-                rgba(255,255,255,.48);
-
-            font-size: 12px;
-
-            line-height: 1.5;
-        }
-
-
-        /* =================================================
-           BUTTON
-           ================================================= */
-
-        .preorder {
-
-            width: 100%;
-
-            border: none;
-
-            padding: 18px 22px;
-
-            border-radius: 15px;
-
-            background: white;
-
-            color: #050505;
-
-            font-weight: 900;
-
-            font-size: 13px;
-
-            letter-spacing: .16em;
-
-            cursor: pointer;
-
-            transition:
-                transform .2s,
-                box-shadow .2s;
-        }
-
-
-        .preorder:hover {
-
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-                0 15px 45px
-                rgba(255,255,255,.18);
-        }
-
-
-        .preorder:active {
-
-            transform:
-                translateY(0);
-        }
-
-
-        /* =================================================
-           MODAL
-           ================================================= */
-
-        .modal {
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 100;
-
-            display: none;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 20px;
-
-            background:
-                rgba(0,0,0,.82);
-
-            backdrop-filter:
-                blur(18px);
-        }
-
-
-        .modal.active {
-
-            display: flex;
-        }
-
-
-        .modal-box {
-
-            position: relative;
-
-            width:
-                min(850px,100%);
-
-            max-height: 90vh;
-
-            overflow-y: auto;
-
-            border:
-                1px solid
-                rgba(255,255,255,.15);
-
-            border-radius: 28px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(28,28,28,.96),
-                    rgba(7,7,7,.97)
-                );
-
-            box-shadow:
-                0 50px 140px
-                rgba(0,0,0,.75);
-
-            padding:
-                clamp(25px,5vw,55px);
-        }
-
-
-        .modal-close {
-
-            position: absolute;
-
-            top: 18px;
-
-            right: 20px;
-
-            width: 40px;
-
-            height: 40px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.15);
-
-            border-radius: 50%;
-
-            background:
-                rgba(255,255,255,.06);
-
-            color: white;
-
-            font-size: 25px;
-
-            cursor: pointer;
-        }
-
-
-        .modal-box .eyebrow {
-
-            margin-bottom: 20px;
-        }
-
-
-        .modal-box h2 {
-
-            font-size:
-                clamp(34px,6vw,64px);
-
-            letter-spacing:
-                -.055em;
-
-            margin-bottom: 22px;
-        }
-
-
-        .modal-box p {
-
-            color:
-                rgba(255,255,255,.62);
-
-            line-height: 1.85;
-
-            font-size: 15px;
-
-            margin-bottom: 18px;
-        }
-
-
-        .details-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2,1fr);
-
-            gap: 10px;
-
-            margin:
-                30px 0;
-        }
-
-
-        .detail {
-
-            padding: 17px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.10);
-
-            border-radius: 14px;
-
-            background:
-                rgba(255,255,255,.035);
-        }
-
-
-        .detail span {
-
-            display: block;
-
-            color:
-                rgba(255,255,255,.38);
-
-            font-size: 9px;
-
-            letter-spacing: .18em;
-
-            margin-bottom: 7px;
-        }
-
-
-        .detail strong {
-
-            font-size: 13px;
-        }
-
-
-        .modal-buy {
-
-            display: block;
-
-            width: 100%;
-
-            padding: 18px;
-
-            border-radius: 14px;
-
-            background: white;
-
-            color: #000;
-
-            text-align: center;
-
-            text-decoration: none;
-
-            font-weight: 900;
-
-            letter-spacing: .15em;
-        }
-
-
-        /* =================================================
-           FOOTER
-           ================================================= */
-
-        footer {
-
-            position: relative;
-
-            z-index: 2;
-
-            padding:
-                35px 20px;
-
-            text-align: center;
-
-            border-top:
-                1px solid
-                rgba(255,255,255,.07);
-
-            color:
-                rgba(255,255,255,.30);
-
-            font-size: 10px;
-
-            letter-spacing: .18em;
-        }
-
-
-        /* =================================================
-           MOBILE
-           ================================================= */
-
-        @media (max-width: 760px) {
-
-            header {
-
-                padding: 17px 18px;
-            }
-
-
-            nav {
-
-                gap: 13px;
-            }
-
-
-            nav a {
-
-                font-size: 9px;
-            }
-
-
-            .logo {
-
-                font-size: 11px;
-            }
-
-
-            .logo-v {
-
-                width: 32px;
-
-                height: 32px;
-            }
-
-
-            .hero {
-
-                min-height: 65vh;
-
-                padding-top: 55px;
-            }
-
-
-            .hero h1 {
-
-                font-size:
-                    clamp(48px,16vw,82px);
-            }
-
-
-            .product-card {
-
-                grid-template-columns: 1fr;
-
-                border-radius: 22px;
-            }
-
-
-            .product-gallery {
-
-                padding: 12px;
-            }
-
-
-            .product-info {
-
-                padding:
-                    28px 22px 30px;
-            }
-
-
-            .product-info h2 {
-
-                font-size: 43px;
-            }
-
-
-            .thumbnails {
-
-                grid-template-columns:
-                    repeat(6,1fr);
-            }
-
-
-            .details-grid {
-
-                grid-template-columns: 1fr;
-            }
-
-
-            .modal {
-
-                padding: 10px;
-            }
-
-
-            .modal-box {
-
-                border-radius: 20px;
-
-                padding:
-                    25px 20px;
-            }
-
-        }
-
-    </style>
+    <title>Voltica G45 — Pre-Order</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
@@ -1073,43 +33,50 @@
 <body>
 
 
+<!-- =====================================================
+     BACKGROUND
+     ===================================================== -->
+
 <div class="tech-grid"></div>
+
+<div class="ambient ambient-one"></div>
+<div class="ambient ambient-two"></div>
 
 
 <!-- =====================================================
      HEADER
      ===================================================== -->
 
-<header>
+<header class="site-header">
 
     <a
         href="index.html"
         class="logo"
     >
 
-        <span class="logo-v">
+        <span class="logo-mark">
             V
         </span>
 
-        <span>
+        <span class="logo-text">
             VOLTICA
         </span>
 
     </a>
 
 
-    <nav>
-
-        <a href="index.html">
-            HOME
-        </a>
+    <nav class="navigation">
 
         <a href="#product">
-            STORE
+            G45
         </a>
 
-        <a href="mailto:support@volticastore.com">
-            CONTACT
+        <a href="#details">
+            DETAILS
+        </a>
+
+        <a href="#preorder">
+            PRE-ORDER
         </a>
 
     </nav>
@@ -1122,38 +89,255 @@
      HERO
      ===================================================== -->
 
-<section class="hero">
+<main>
+
+
+<section
+    class="hero"
+    id="product"
+>
+
 
     <div class="hero-content">
 
+
         <span class="eyebrow">
-
-            <span class="pulse"></span>
-
-            VOLTICA STORE — PRE-ORDER
-
+            VOLTICA AUDIO
         </span>
 
 
         <h1>
-
-            <span>
-                THE FUTURE
-            </span>
-
-            <span>
-                OF EVERYDAY
-            </span>
-
+            G45
         </h1>
 
 
-        <p class="hero-subtitle">
+        <h2>
+            OPEN-EAR.
+            <br>
+            <span>REDEFINED.</span>
+        </h2>
 
-            Technology selected for the next generation.
-            Discover the first Voltica collection.
+
+        <p class="hero-description">
+
+            Experience premium wireless audio
+            without closing yourself off from
+            the world.
 
         </p>
+
+
+        <div class="hero-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                PRE-ORDER OPEN
+            </span>
+
+            <strong>
+                SEPT 1
+            </strong>
+
+        </div>
+
+
+        <div class="hero-actions">
+
+            <a
+                href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+                class="primary-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                PRE-ORDER G45
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+
+            <button
+                type="button"
+                class="secondary-button"
+                id="detailsButton"
+            >
+
+                DISCOVER G45
+
+                <span>
+                    +
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <div class="discount-note">
+
+            <span>
+                PRE-ORDER OFFER
+            </span>
+
+            <strong>
+                15% OFF
+            </strong>
+
+            <small>
+                Exclusive Voltica launch pricing
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         HERO PRODUCT IMAGE
+         ================================================= -->
+
+    <div class="hero-product">
+
+
+        <div class="product-glow"></div>
+
+
+        <div class="product-frame">
+
+
+            <span class="product-badge">
+                G45
+            </span>
+
+
+            <img
+                src="assets/images/g451-1.webp"
+                alt="Voltica G45"
+                class="hero-image"
+            >
+
+
+        </div>
+
+
+        <div class="floating-label label-one">
+            OPEN-EAR
+        </div>
+
+
+        <div class="floating-label label-two">
+            WIRELESS
+        </div>
+
+
+        <div class="floating-label label-three">
+            VOLTICA
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PRODUCT GALLERY
+     ===================================================== -->
+
+<section class="gallery-section">
+
+
+    <div class="section-heading">
+
+        <span>
+            VOLTICA G45
+        </span>
+
+        <h2>
+            SEE IT.
+            <br>
+            <strong>FEEL IT.</strong>
+        </h2>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+
+        <div class="gallery-card gallery-large">
+
+            <img
+                src="assets/images/g451-1.webp"
+                alt="Voltica G45 product"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="gallery-card">
+
+            <img
+                src="assets/images/g451-2.webp"
+                alt="Voltica G45"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="gallery-card">
+
+            <img
+                src="assets/images/g451-3.webp"
+                alt="Voltica G45"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="gallery-card">
+
+            <img
+                src="assets/images/g451-4.webp"
+                alt="Voltica G45"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="gallery-card">
+
+            <img
+                src="assets/images/g451-6.webp"
+                alt="Voltica G45"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="gallery-card gallery-large">
+
+            <img
+                src="assets/images/g451-7.webp"
+                alt="Voltica G45"
+                loading="lazy"
+            >
+
+        </div>
+
 
     </div>
 
@@ -1162,132 +346,230 @@
 
 
 <!-- =====================================================
-     PRODUCT
+     PRODUCT DETAILS
      ===================================================== -->
 
 <section
-    class="product-section"
-    id="product"
+    class="details-section"
+    id="details"
 >
 
 
-    <article class="product-card">
+    <div class="details-panel">
 
 
-        <!-- GALLERY -->
-
-        <div class="product-gallery">
-
-
-            <div
-                class="main-image"
-                id="mainImageContainer"
-            >
-
-                <img
-                    id="mainImage"
-                    src="assets/images/g451-1.webp"
-                    alt="Voltica G451"
-                >
-
-                <div class="reflection"></div>
-
-            </div>
+        <span class="section-label">
+            PRODUCT OVERVIEW
+        </span>
 
 
-            <div
-                class="thumbnails"
-                id="thumbnails"
-            ></div>
+        <h2>
+            THE G45
+        </h2>
 
 
-        </div>
+        <p>
+
+            The Voltica G45 is designed for people
+            who want immersive wireless audio while
+            staying connected to their surroundings.
+
+        </p>
 
 
+        <p>
 
-        <!-- INFORMATION -->
+            Its open-ear architecture delivers
+            comfortable listening without completely
+            blocking ambient sound, making it ideal
+            for everyday movement, work, gaming,
+            travel and active lifestyles.
 
-        <div class="product-info">
-
-
-            <span class="product-label">
-                VOLTICA COLLECTION
-            </span>
-
-
-            <h2>
-                VOLTICA G451
-            </h2>
+        </p>
 
 
-            <p class="description">
-
-                Experience the next generation of
-                everyday technology with the Voltica G451.
-                A futuristic product selected for the
-                Voltica collection, designed to combine
-                modern aesthetics, premium presentation
-                and an immersive technology experience.
-
-            </p>
+        <div class="feature-grid">
 
 
-            <div class="price">
-
-                <strong>
-                    $PRE-ORDER
-                </strong>
-
-            </div>
-
-
-            <div class="pass">
-
-                <strong>
-                    🎟️ YOUR VOLTICA 15% PASS
-                </strong>
+            <div class="feature-card">
 
                 <span>
-                    Every eligible pre-order receives
-                    access to the exclusive Voltica
-                    15% lifetime promotional pass.
+                    01
                 </span>
+
+                <h3>
+                    OPEN-EAR
+                </h3>
+
+                <p>
+                    Listen while remaining aware
+                    of your surroundings.
+                </p>
 
             </div>
 
 
-            <button
-                type="button"
-                class="preorder"
-                id="preorderButton"
-            >
+            <div class="feature-card">
 
-                PRE-ORDER NOW →
-                
-            </button>
+                <span>
+                    02
+                </span>
+
+                <h3>
+                    WIRELESS
+                </h3>
+
+                <p>
+                    Freedom from cables with
+                    modern Bluetooth connectivity.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <span>
+                    03
+                </span>
+
+                <h3>
+                    LOW LATENCY
+                </h3>
+
+                <p>
+                    Designed for responsive
+                    everyday entertainment.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <span>
+                    04
+                </span>
+
+                <h3>
+                    IPX5
+                </h3>
+
+                <p>
+                    Built to handle sweat and
+                    everyday active use.
+                </p>
+
+            </div>
 
 
         </div>
 
-    </article>
+
+    </div>
 
 </section>
 
 
 
 <!-- =====================================================
-     PRODUCT DESCRIPTION MODAL
+     PRE-ORDER
+     ===================================================== -->
+
+<section
+    class="preorder-section"
+    id="preorder"
+>
+
+
+    <div class="preorder-panel">
+
+
+        <span class="section-label">
+            VOLTICA LAUNCH
+        </span>
+
+
+        <div class="preorder-pulse">
+
+            <span></span>
+
+        </div>
+
+
+        <h2>
+            BE FIRST.
+        </h2>
+
+
+        <p>
+            The G45 launches with an exclusive
+            pre-order offer.
+        </p>
+
+
+        <div class="offer-box">
+
+            <span>
+                PRE-ORDER EXCLUSIVE
+            </span>
+
+            <strong>
+                15% OFF
+            </strong>
+
+            <small>
+                Limited launch promotion
+            </small>
+
+        </div>
+
+
+        <a
+            href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+            class="preorder-button"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            PRE-ORDER G45
+
+            <span>
+                →
+            </span>
+
+        </a>
+
+
+        <p class="secure-note">
+
+            Secure checkout powered by Stripe.
+
+        </p>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     PRODUCT DETAILS MODAL
      ===================================================== -->
 
 <div
-    class="modal"
-    id="productModal"
+    class="modal-overlay"
+    id="detailsModal"
     aria-hidden="true"
 >
 
 
     <div
-        class="modal-box"
+        class="product-modal"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modalTitle"
@@ -1304,96 +586,77 @@
         </button>
 
 
-        <span class="eyebrow">
-
-            <span class="pulse"></span>
-
-            PRODUCT DETAILS
-
+        <span class="section-label">
+            VOLTICA G45
         </span>
 
 
         <h2 id="modalTitle">
-            VOLTICA G451
+            THE FUTURE
+            <br>
+            OF EVERYDAY AUDIO.
         </h2>
 
 
         <p>
 
-            The Voltica G451 is part of the first
-            Voltica technology collection.
+            G45 combines an open-ear design,
+            wireless freedom and a lightweight
+            everyday listening experience.
 
         </p>
 
 
-        <p>
-
-            Built around a modern futuristic aesthetic,
-            the G451 is selected for customers who want
-            technology that looks as advanced as it feels.
-
-        </p>
+        <div class="modal-specs">
 
 
-        <p>
-
-            This product is presented as a premium
-            Voltica selection, with a carefully curated
-            product experience from discovery to checkout.
-
-        </p>
-
-
-        <div class="details-grid">
-
-
-            <div class="detail">
+            <div>
 
                 <span>
-                    COLLECTION
+                    DESIGN
                 </span>
 
                 <strong>
-                    VOLTICA
+                    OPEN-EAR
                 </strong>
 
             </div>
 
 
-            <div class="detail">
+            <div>
 
                 <span>
-                    STATUS
+                    CONNECTIVITY
                 </span>
 
                 <strong>
-                    PRE-ORDER
+                    BLUETOOTH
                 </strong>
 
             </div>
 
 
-            <div class="detail">
+            <div>
 
                 <span>
-                    IMAGES
+                    RESISTANCE
                 </span>
 
                 <strong>
-                    6 PRODUCT VIEWS
+                    IPX5
                 </strong>
 
             </div>
 
 
-            <div class="detail">
+            <div>
 
                 <span>
-                    MEMBER BENEFIT
+                    USE
                 </span>
 
                 <strong>
-                    15% LIFETIME PASS
+                    EVERYDAY
                 </strong>
 
             </div>
@@ -1403,14 +666,17 @@
 
 
         <a
-            href="#"
-            id="modalStripeButton"
+            href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
             class="modal-buy"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
         >
 
-            PRE-ORDER WITH STRIPE →
+            PRE-ORDER G45 — 15% OFF
+
+            <span>
+                →
+            </span>
 
         </a>
 
@@ -1425,167 +691,49 @@
      FOOTER
      ===================================================== -->
 
-<footer>
+<footer class="site-footer">
 
-    VOLTICA STORE
-    &nbsp; • &nbsp;
-    THE FUTURE OF EVERYDAY
-    &nbsp; • &nbsp;
-    © 2026
+
+    <div>
+
+        <strong>
+            VOLTICA
+        </strong>
+
+        <span>
+            THE FUTURE OF EVERYDAY
+        </span>
+
+    </div>
+
+
+    <span>
+        © 2026 VOLTICA STORE
+    </span>
+
 
 </footer>
 
 
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
 
 <script>
 
 "use strict";
 
 
-/* =====================================================
-   STRIPE
-   =====================================================
-
-   IMPORTANT:
-   Replace the value below with your REAL
-   Stripe Payment Link.
-
-   Example:
-
-   const STRIPE_LINK =
-       "https://buy.stripe.com/XXXXXXXX";
-
-   ===================================================== */
-
-const STRIPE_LINK = "";
-
-
-/* =====================================================
-   PRODUCT IMAGES
-   ===================================================== */
-
-const productImages = [
-
-    "assets/images/g451-1.webp",
-
-    "assets/images/g451-2.webp",
-
-    "assets/images/g451-3.webp",
-
-    "assets/images/g451-4.webp",
-
-    "assets/images/g451-6.webp",
-
-    "assets/images/g451-7.webp"
-
-];
-
-
-const mainImage =
+const detailsButton =
     document.getElementById(
-        "mainImage"
+        "detailsButton"
     );
 
 
-const thumbnails =
+const detailsModal =
     document.getElementById(
-        "thumbnails"
-    );
-
-
-/* =====================================================
-   BUILD THUMBNAILS
-   ===================================================== */
-
-productImages.forEach(
-    (image, index) => {
-
-        const button =
-            document.createElement(
-                "button"
-            );
-
-
-        button.type =
-            "button";
-
-
-        button.className =
-            "thumbnail";
-
-
-        if (index === 0) {
-
-            button.classList.add(
-                "active"
-            );
-
-        }
-
-
-        button.innerHTML = `
-
-            <img
-                src="${image}"
-                alt="Voltica G451 view ${index + 1}"
-                loading="lazy"
-            >
-
-        `;
-
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                mainImage.src =
-                    image;
-
-
-                document
-                    .querySelectorAll(
-                        ".thumbnail"
-                    )
-                    .forEach(
-                        item => {
-
-                            item.classList.remove(
-                                "active"
-                            );
-
-                        }
-                    );
-
-
-                button.classList.add(
-                    "active"
-                );
-
-            }
-        );
-
-
-        thumbnails.appendChild(
-            button
-        );
-
-    }
-);
-
-
-/* =====================================================
-   MODAL
-   ===================================================== */
-
-const modal =
-    document.getElementById(
-        "productModal"
-    );
-
-
-const preorderButton =
-    document.getElementById(
-        "preorderButton"
+        "detailsModal"
     );
 
 
@@ -1595,77 +743,34 @@ const modalClose =
     );
 
 
-const modalStripeButton =
-    document.getElementById(
-        "modalStripeButton"
-    );
+function openDetails() {
 
-
-/* =====================================================
-   STRIPE LINK
-   ===================================================== */
-
-function applyStripeLink() {
-
-    if (!STRIPE_LINK) {
-
-        modalStripeButton.href =
-            "#";
-
-        return;
-
-    }
-
-
-    modalStripeButton.href =
-        STRIPE_LINK;
-
-}
-
-
-/* =====================================================
-   OPEN MODAL
-   ===================================================== */
-
-function openModal() {
-
-    modal.classList.add(
+    detailsModal.classList.add(
         "active"
     );
 
-
-    modal.setAttribute(
+    detailsModal.setAttribute(
         "aria-hidden",
         "false"
     );
-
 
     document.body.classList.add(
         "modal-open"
     );
 
-
-    applyStripeLink();
-
 }
 
 
-/* =====================================================
-   CLOSE MODAL
-   ===================================================== */
+function closeDetails() {
 
-function closeModal() {
-
-    modal.classList.remove(
+    detailsModal.classList.remove(
         "active"
     );
 
-
-    modal.setAttribute(
+    detailsModal.setAttribute(
         "aria-hidden",
         "true"
     );
-
 
     document.body.classList.remove(
         "modal-open"
@@ -1674,87 +779,44 @@ function closeModal() {
 }
 
 
-/* =====================================================
-   PRE-ORDER
-   ===================================================== */
-
-preorderButton.addEventListener(
+detailsButton.addEventListener(
     "click",
-    () => {
-
-        openModal();
-
-    }
+    openDetails
 );
 
-
-/* =====================================================
-   CLOSE BUTTON
-   ===================================================== */
 
 modalClose.addEventListener(
     "click",
-    closeModal
+    closeDetails
 );
 
 
-/* =====================================================
-   CLICK OUTSIDE
-   ===================================================== */
-
-modal.addEventListener(
+detailsModal.addEventListener(
     "click",
     event => {
 
         if (
             event.target ===
-            modal
+            detailsModal
         ) {
 
-            closeModal();
+            closeDetails();
 
         }
 
     }
 );
 
-
-/* =====================================================
-   ESCAPE
-   ===================================================== */
 
 document.addEventListener(
     "keydown",
     event => {
 
         if (
-            event.key ===
-            "Escape"
+            event.key === "Escape"
         ) {
 
-            closeModal();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   STRIPE PROTECTION
-   ===================================================== */
-
-modalStripeButton.addEventListener(
-    "click",
-    event => {
-
-        if (!STRIPE_LINK) {
-
-            event.preventDefault();
-
-            alert(
-                "Stripe Payment Link is not configured yet."
-            );
+            closeDetails();
 
         }
 

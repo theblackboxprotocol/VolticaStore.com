@@ -285,3 +285,62 @@ const volticaProducts = [
 
         stripe:
             "https://buy.stripe.com/00w9AU1dJ9gj45Wfd02Ji07"
+    },
+// =================================================
+// PRODUCT 21 — XREAL AIR 1S
+// ======================
+
+{
+    id: "xreal-air-1s",
+
+    sku: "VLT-XREAL-1S",
+
+    name: "XREAL Air 1S | AI Augmented Reality Smart Glasses",
+
+    category: "LIFESTYLE",
+
+    badge: "NEW",
+
+    supplierLink:
+        "https://www.alibaba.com/x/B2LYxb?ck=pdp",
+
+    cost:
+        "464.76",
+
+    price:
+        "579.99",
+
+    currency: "USD",
+
+    images: [
+        "assets/images/glass1-1.webp",
+        "assets/images/glass1-2.webp",
+        "assets/images/glass1-3.webp",
+        "assets/images/glass1-4.webp",
+        "assets/images/glass1-5.webp",
+        "assets/images/glass1-6.webp"
+    ],
+
+    description:
+        "Step into the future of spatial computing and wearable displays with the Voltica XREAL 1S. Engineered to bridge the digital and physical worlds, these next-generation AR glasses deliver an astounding, cinema-grade virtual screen experience directly to your field of view. Equipped with advanced AI integration, automatic electrochromic lenses, and premium acoustic co-tuning, they transform gaming, entertainment, and mobile workflows into an immersive masterpiece.",
+
+    specifications: [
+        ["Model Reference", "XREAL 1S"],
+        ["Field of View (FOV)", "52° immersive wide view"],
+        ["Virtual Screen Range", "Adjustable from 31 inches up to 500 inches (1m to 10m distance adjustment)"],
+        ["Distortion Control", "TV distortion under 1% for hyper-realistic visuals"],
+        ["Processor", "Advanced X1 Chipset for ultra-fluid performance"],
+        ["Connectivity", "USB-CDP Plug & Play"]
+    ],
+
+    features: [
+        ["01", "Immersive 52° Field of View (FOV)", "Projects a massive, crystal-clear virtual screen equivalent to a 500-inch display, putting you right in the front row of your content."],
+        ["02", "Automatic Electrochromic Lenses", "Intelligently adapts to your lighting environment, becoming automatically transparent when you turn your head."],
+        ["03", "Smart AI Integration", "Features voice wake-up for hands-free control, real-time photo recognition for object identification, and instant photo-to-text translation for global communication."],
+        ["04", "Certified Eye Comfort", "Backed by multiple German TÜV Rheinland certifications including 5-star eye comfort, low blue light, and zero flicker to eliminate fatigue during long sessions."],
+        ["05", "Universal USB-CDP Plug & Play", "Instantly connects to your favorite modern devices including smartphones, tablets, laptops, and portable gaming handhelds."]
+    ],
+
+    stripe:
+        "https://buy.stripe.com/14A28se0v78bauk4ym2Ji0o"
+},

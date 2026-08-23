@@ -13,9 +13,11 @@
 
 const IMAGE_BASE_PATH = "assets/images/";
 
-const STORAGE_KEY = "voltica_products_admin";
+const STORAGE_KEY =
+    "voltica_products_admin";
 
-const STORE_EVENT_KEY = "voltica_store_catalog_updated";
+const STORE_EVENT_KEY =
+    "voltica_store_catalog_updated";
 
 let products = [];
 
@@ -29,7 +31,7 @@ let notificationTimer = null;
 
 
 /* =========================================================
-   DOM HELPERS
+   DOM HELPER
    ========================================================= */
 
 const $ = (id) =>
@@ -40,35 +42,16 @@ const $ = (id) =>
    DOM REFERENCES
    ========================================================= */
 
-const productEditor =
-    $("productEditor");
-
-const productList =
-    $("productList");
-
-const emptyState =
-    $("emptyState");
-
-const imageUpload =
-    $("productImageUpload");
-
-const imagePreview =
-    $("imagePreview");
-
-const notification =
-    $("adminNotification");
-
-const notificationText =
-    $("notificationText");
-
-const confirmOverlay =
-    $("confirmOverlay");
-
-const confirmTitle =
-    $("confirmTitle");
-
-const confirmMessage =
-    $("confirmMessage");
+let productEditor;
+let productList;
+let emptyState;
+let imageUpload;
+let imagePreview;
+let notification;
+let notificationText;
+let confirmOverlay;
+let confirmTitle;
+let confirmMessage;
 
 
 /* =========================================================
@@ -83,6 +66,8 @@ document.addEventListener(
 
 function initializeAdmin() {
 
+    cacheDOMReferences();
+
     loadProducts();
 
     bindEvents();
@@ -92,6 +77,45 @@ function initializeAdmin() {
     updateStatistics();
 
     updateCategoryFilter();
+
+}
+
+
+/* =========================================================
+   CACHE DOM
+   ========================================================= */
+
+function cacheDOMReferences() {
+
+    productEditor =
+        $("productEditor");
+
+    productList =
+        $("productList");
+
+    emptyState =
+        $("emptyState");
+
+    imageUpload =
+        $("productImageUpload");
+
+    imagePreview =
+        $("imagePreview");
+
+    notification =
+        $("adminNotification");
+
+    notificationText =
+        $("notificationText");
+
+    confirmOverlay =
+        $("confirmOverlay");
+
+    confirmTitle =
+        $("confirmTitle");
+
+    confirmMessage =
+        $("confirmMessage");
 
 }
 
@@ -168,9 +192,6 @@ function bindEvents() {
     );
 
 
-    setupImageDragAndDrop();
-
-
     $("productName")?.addEventListener(
         "input",
         handleProductNameInput
@@ -197,7 +218,7 @@ function bindEvents() {
 
     confirmOverlay?.addEventListener(
         "click",
-        event => {
+        (event) => {
 
             if (
                 event.target ===
@@ -216,6 +237,9 @@ function bindEvents() {
         "keydown",
         handleKeyboard
     );
+
+
+    setupImageDragAndDrop();
 
 }
 
@@ -294,7 +318,7 @@ function loadProducts() {
 
 
 /* =========================================================
-   NORMALIZE ENTIRE CATALOG
+   NORMALIZE CATALOG
    ========================================================= */
 
 function normalizeProductCatalog(
@@ -312,12 +336,18 @@ function normalizeProductCatalog(
     }
 
 
-    return catalog.map(
-        product =>
-            normalizeProduct(
-                product
-            )
-    );
+    return catalog
+        .map(
+            product =>
+                normalizeProduct(
+                    product
+                )
+        )
+        .filter(
+            product =>
+                product.id ||
+                product.name
+        );
 
 }
 
@@ -518,13 +548,16 @@ function openProductEditor(
 
 
     if (
-        productEditor
+        !productEditor
     ) {
 
-        productEditor.hidden =
-            false;
+        return;
 
     }
+
+
+    productEditor.hidden =
+        false;
 
 
     if (product) {
@@ -548,7 +581,7 @@ function openProductEditor(
     }
 
 
-    productEditor?.scrollIntoView({
+    productEditor.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
@@ -562,22 +595,7 @@ function openProductEditor(
 
 function closeProductEditor() {
 
-    selectedImages.forEach(
-        image => {
-
-            if (
-                image?.preview
-            ) {
-
-                URL.revokeObjectURL(
-                    image.preview
-                );
-
-            }
-
-        }
-    );
-
+    revokeSelectedImagePreviews();
 
     selectedImages = [];
 
@@ -663,14 +681,21 @@ function clearEditor() {
     }
 
 
+    const idField =
+        $("productId");
+
+
     if (
-        $("productId")
+        idField
     ) {
 
-        delete $("productId").dataset.manual;
+        idField.dataset.manual =
+            "false";
 
     }
 
+
+    revokeSelectedImagePreviews();
 
     selectedImages = [];
 
@@ -687,88 +712,198 @@ function populateEditor(
     product
 ) {
 
-    $("productId").value =
-        product.id || "";
+    if (
+        $("productId")
+    ) {
+
+        $("productId").value =
+            product.id || "";
+
+        $("productId").dataset.manual =
+            "true";
+
+    }
 
 
-    $("productId").dataset.manual =
-        "true";
+    if (
+        $("productName")
+    ) {
+
+        $("productName").value =
+            product.name || "";
+
+    }
 
 
-    $("productName").value =
-        product.name || "";
+    if (
+        $("productCategory")
+    ) {
+
+        $("productCategory").value =
+            product.category || "";
+
+    }
 
 
-    $("productCategory").value =
-        product.category || "";
+    if (
+        $("productBadge")
+    ) {
+
+        $("productBadge").value =
+            product.badge || "";
+
+    }
 
 
-    $("productBadge").value =
-        product.badge || "";
+    if (
+        $("productSku")
+    ) {
+
+        $("productSku").value =
+            product.sku || "";
+
+    }
 
 
-    $("productSku").value =
-        product.sku || "";
+    if (
+        $("productCost")
+    ) {
+
+        $("productCost").value =
+            product.cost ?? "";
+
+    }
 
 
-    $("productCost").value =
-        product.cost ?? "";
+    if (
+        $("productShipping")
+    ) {
+
+        $("productShipping").value =
+            product.shipping ?? "";
+
+    }
 
 
-    $("productShipping").value =
-        product.shipping ?? "";
+    if (
+        $("productPrice")
+    ) {
+
+        $("productPrice").value =
+            product.price ?? "";
+
+    }
 
 
-    $("productPrice").value =
-        product.price ?? "";
+    if (
+        $("productReferencePrice")
+    ) {
+
+        $("productReferencePrice").value =
+            product.referencePrice ?? "";
+
+    }
 
 
-    $("productReferencePrice").value =
-        product.referencePrice ?? "";
+    if (
+        $("shortDescription")
+    ) {
+
+        $("shortDescription").value =
+            product.shortDescription || "";
+
+    }
 
 
-    $("shortDescription").value =
-        product.shortDescription || "";
+    if (
+        $("fullDescription")
+    ) {
+
+        $("fullDescription").value =
+            product.description || "";
+
+    }
 
 
-    $("fullDescription").value =
-        product.description || "";
+    if (
+        $("keyFeatures")
+    ) {
+
+        $("keyFeatures").value =
+            arrayToLines(
+                product.keyFeatures
+            );
+
+    }
 
 
-    $("keyFeatures").value =
-        arrayToLines(
-            product.keyFeatures
-        );
+    if (
+        $("technicalSpecifications")
+    ) {
+
+        $("technicalSpecifications").value =
+            specificationsToText(
+                product.specifications
+            );
+
+    }
 
 
-    $("technicalSpecifications").value =
-        specificationsToText(
-            product.specifications
-        );
+    if (
+        $("productColors")
+    ) {
+
+        $("productColors").value =
+            arrayToCommaList(
+                product.colors
+            );
+
+    }
 
 
-    $("productColors").value =
-        arrayToCommaList(
-            product.colors
-        );
+    if (
+        $("productVariants")
+    ) {
+
+        $("productVariants").value =
+            variantsToText(
+                product.variants
+            );
+
+    }
 
 
-    $("productVariants").value =
-        variantsToText(
-            product.variants
-        );
+    if (
+        $("stripeLink")
+    ) {
+
+        $("stripeLink").value =
+            product.stripeLink || "";
+
+    }
 
 
-    $("stripeLink").value =
-        product.stripeLink || "";
+    if (
+        $("supplierLink")
+    ) {
+
+        $("supplierLink").value =
+            product.supplierLink || "";
+
+    }
 
 
-    $("supplierLink").value =
-        product.supplierLink || "";
+    if (
+        $("productActive")
+    ) {
+
+        $("productActive").checked =
+            product.active !== false;
+
+    }
 
 
-    $("productActive").checked =
-        product.active !== false;
+    revokeSelectedImagePreviews();
 
 
     selectedImages =
@@ -900,13 +1035,26 @@ function saveProduct() {
     }
 
 
+    if (
+        !product.id
+    ) {
+
+        showNotification(
+            "PRODUCT ID REQUIRED"
+        );
+
+        return;
+
+    }
+
+
     const duplicateId =
         products.some(
             item =>
                 item.id ===
-                product.id &&
+                    product.id &&
                 item.id !==
-                editingProductId
+                    editingProductId
         );
 
 
@@ -948,6 +1096,17 @@ function saveProduct() {
 
             showNotification(
                 "PRODUCT UPDATED"
+            );
+
+        } else {
+
+            products.push(
+                product
+            );
+
+
+            showNotification(
+                "PRODUCT CREATED"
             );
 
         }
@@ -1341,18 +1500,24 @@ function renderProducts() {
                 const matchesCategory =
                     category === "all" ||
                     product.category ===
-                    category;
+                        category;
 
 
                 const matchesStatus =
                     status === "all" ||
+
                     (
-                        status === "active" &&
-                        product.active !== false
+                        status ===
+                            "active" &&
+                        product.active !==
+                            false
                     ) ||
+
                     (
-                        status === "inactive" &&
-                        product.active === false
+                        status ===
+                            "inactive" &&
+                        product.active ===
+                            false
                     );
 
 
@@ -1386,6 +1551,7 @@ function renderProducts() {
                 false;
 
         }
+
 
         return;
 
@@ -1571,27 +1737,29 @@ function createProductListItem(
     `;
 
 
-    article
-        .querySelectorAll(
+    const buttons =
+        article.querySelectorAll(
             "[data-action]"
-        )
-        .forEach(
-            button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        handleProductAction(
-                            button.dataset.action,
-                            button.dataset.id
-                        );
-
-                    }
-                );
-
-            }
         );
+
+
+    buttons.forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    handleProductAction(
+                        button.dataset.action,
+                        button.dataset.id
+                    );
+
+                }
+            );
+
+        }
+    );
 
 
     return article;
@@ -1608,23 +1776,6 @@ function handleProductAction(
     productId
 ) {
 
-    const product =
-        products.find(
-            item =>
-                item.id ===
-                productId
-        );
-
-
-    if (
-        !product
-    ) {
-
-        return;
-
-    }
-
-
     switch (
         action
     ) {
@@ -1632,7 +1783,11 @@ function handleProductAction(
         case "edit":
 
             openProductEditor(
-                product
+                products.find(
+                    item =>
+                        item.id ===
+                        productId
+                )
             );
 
             break;
@@ -1718,7 +1873,23 @@ function addImageFiles(
 
 
             const filename =
-                file.name;
+                String(
+                    file.name
+                )
+                .split("\\")
+                .pop()
+                .split("/")
+                .pop()
+                .trim();
+
+
+            if (
+                !filename
+            ) {
+
+                return;
+
+            }
 
 
             const path =
@@ -1730,10 +1901,12 @@ function addImageFiles(
             const alreadyExists =
                 selectedImages.some(
                     image =>
-                        image.name
-                            .toLowerCase() ===
-                        filename
-                            .toLowerCase()
+                        String(
+                            image.name ||
+                            ""
+                        )
+                        .toLowerCase() ===
+                        filename.toLowerCase()
                 );
 
 
@@ -1998,20 +2171,22 @@ function renderImagePreview() {
             `;
 
 
-            item
-                .querySelector(
+            const removeButton =
+                item.querySelector(
                     ".image-preview-remove"
-                )
-                .addEventListener(
-                    "click",
-                    () => {
-
-                        removeImage(
-                            index
-                        );
-
-                    }
                 );
+
+
+            removeButton?.addEventListener(
+                "click",
+                () => {
+
+                    removeImage(
+                        index
+                    );
+
+                }
+            );
 
 
             imagePreview.appendChild(
@@ -2040,9 +2215,15 @@ function removeImage(
         image?.preview
     ) {
 
-        URL.revokeObjectURL(
-            image.preview
-        );
+        try {
+
+            URL.revokeObjectURL(
+                image.preview
+            );
+
+        } catch (
+            error
+        ) {}
 
     }
 
@@ -2054,6 +2235,37 @@ function removeImage(
 
 
     renderImagePreview();
+
+}
+
+
+/* =========================================================
+   REVOKE IMAGE PREVIEWS
+   ========================================================= */
+
+function revokeSelectedImagePreviews() {
+
+    selectedImages.forEach(
+        image => {
+
+            if (
+                image?.preview
+            ) {
+
+                try {
+
+                    URL.revokeObjectURL(
+                        image.preview
+                    );
+
+                } catch (
+                    error
+                ) {}
+
+            }
+
+        }
+    );
 
 }
 
@@ -2210,203 +2422,46 @@ function updateCategoryFilter() {
 
 
 /* =========================================================
-   NORMALIZE IMAGES
+   BACKUP PRODUCTS
    ========================================================= */
 
-function normalizeImages(
-    images
-) {
+function backupProducts() {
 
-    if (
-        !Array.isArray(images)
-    ) {
-
-        return [];
-
-    }
-
-
-    return images
-        .map(
-            image => {
-
-                if (
-                    typeof image ===
-                    "string"
-                ) {
-
-                    const path =
-                        image.trim();
-
-
-                    if (
-                        !path
-                    ) {
-
-                        return null;
-
-                    }
-
-
-                    return {
-
-                        name:
-                            path
-                                .split("/")
-                                .pop(),
-
-                        path
-
-                    };
-
-                }
-
-
-                if (
-                    image &&
-                    typeof image ===
-                    "object"
-                ) {
-
-                    const path =
-                        cleanText(
-                            image.path
-                        );
-
-
-                    const name =
-                        cleanText(
-                            image.name
-                        ) ||
-                        path
-                            .split("/")
-                            .pop();
-
-
-                    if (
-                        !path &&
-                        !name
-                    ) {
-
-                        return null;
-
-                    }
-
-
-                    return {
-
-                        name,
-
-                        path:
-                            path ||
-                            buildImagePath(
-                                name
-                            )
-
-                    };
-
-                }
-
-
-                return null;
-
-            }
-        )
-        .filter(Boolean);
-
-}
-
-
-/* =========================================================
-   GET FIRST IMAGE
-   ========================================================= */
-
-function getFirstImage(
-    product
-) {
-
-    const images =
-        normalizeImages(
-            product?.images
+    const data =
+        JSON.stringify(
+            products,
+            null,
+            4
         );
 
 
-    if (
-        !images.length
-    ) {
-
-        return "";
-
-    }
+    downloadFile(
+        data,
+        `voltica-products-backup-${getDateStamp()}.json`,
+        "application/json"
+    );
 
 
-    return (
-        images[0].path ||
-        ""
+    showNotification(
+        "BACKUP CREATED"
     );
 
 }
 
 
 /* =========================================================
-   NORMALIZE VARIANTS
+   EXPORT PRODUCTS.JS
    ========================================================= */
 
-function normalizeVariants(
-    variants
-) {
+function exportProductsJS() {
 
-    if (
-        !Array.isArray(
-            variants
-        )
-    ) {
-
-        return [];
-
-    }
+    const catalog =
+        products.map(
+            product =>
+                normalizeProduct(
+                    product
+                )
+        );
 
 
-    return variants
-        .map(
-            variant => {
-
-                if (
-                    typeof variant ===
-                    "string"
-                ) {
-
-                    return {
-
-                        name:
-                            cleanText(
-                                variant
-                            )
-
-                    };
-
-                }
-
-
-                if (
-                    variant &&
-                    typeof variant ===
-                    "object"
-                ) {
-
-                    return {
-
-                        name:
-                            cleanText(
-                                variant.name
-                            ),
-
-                        sku:
-                            cleanText(
-                                variant.sku
-                            ),
-
-                        price:
-                            numberValue(
-                                variant.price
-                           
+    const content =

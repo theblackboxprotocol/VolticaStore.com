@@ -792,3 +792,144 @@ body::before {
     font-size: 20px;
     font-weight: 400;
 }
+/* =========================================================
+   NOTIFICATION — OPTIMIZED
+   ========================================================= */
+
+.store-notification {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    z-index: 40;
+
+    max-width: calc(100% - 30px);
+    padding: 12px 17px;
+
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 999px;
+
+    background: rgba(12,12,12,.92);
+    box-shadow: 0 15px 50px rgba(0,0,0,.5);
+
+    color: #fff;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .12em;
+
+    opacity: 0;
+    transform: translate(-50%, 15px);
+
+    pointer-events: none;
+    transition: var(--transition-soft);
+}
+
+.store-notification.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* =========================================================
+   FOOTER — OPTIMIZED
+   ========================================================= */
+
+.store-footer {
+    width: min(1200px, calc(100% - 28px));
+    margin: 0 auto;
+    padding-bottom: 35px;
+}
+
+.footer-acrylic {
+    min-height: 70px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+    padding: 18px;
+
+    border-top: 1px solid rgba(255,255,255,.07);
+
+    color: rgba(255,255,255,.25);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .13em;
+
+    text-align: center;
+}
+
+/* =========================================================
+   RESPONSIVE — OPTIMIZED
+   ========================================================= */
+
+/* ---------- TABLET ---------- */
+@media (min-width: 600px) {
+
+    .store-header {
+        padding: 15px 26px;
+    }
+
+    .store-nav {
+        display: flex;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .product-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .store-hero {
+        min-height: 500px;
+    }
+
+    .products-section {
+        padding-bottom: 100px;
+    }
+}
+
+/* ---------- DESKTOP ---------- */
+@media (min-width: 900px) {
+
+    .store-header {
+        padding: 17px 42px;
+    }
+
+    .store-nav {
+        gap: 32px;
+    }
+
+    .store-hero {
+        min-height: 570px;
+    }
+
+    .future-title {
+        font-size: clamp(72px, 9vw, 122px);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .product-info {
+        padding: 23px 22px 22px;
+    }
+
+    .contact-acrylic {
+        padding: 55px 35px;
+    }
+
+    .contact-content h2 {
+        font-size: 43px;
+    }
+
+    .footer-acrylic {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

@@ -1,10 +1,17 @@
 /* =========================================================
    VOLTICA STORE — STORE.CSS
-   Premium Storefront
-   Mobile-first / Glass / Acrylic / Tech
+   BLACK ACRYLIC / LIQUID GLASS EDITION
+   Mobile-first / Premium / Animated / Stable
    ========================================================= */
 
-* {
+
+/* =========================================================
+   CORE
+   ========================================================= */
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -18,20 +25,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(255,255,255,.09),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 10% 40%,
-            rgba(110,110,110,.035),
-            transparent 30%
-        ),
-        #030303;
-
-    color: #f5f5f5;
+    color: #f7f7f7;
 
     font-family:
         Inter,
@@ -39,33 +33,75 @@ body {
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 50% -15%,
+            rgba(255,255,255,.12),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 5% 35%,
+            rgba(255,255,255,.045),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 95% 70%,
+            rgba(255,255,255,.025),
+            transparent 30%
+        ),
+        #020202;
 }
 
 body::before {
     content: "";
+
     position: fixed;
     inset: 0;
+
+    z-index: -10;
+
     pointer-events: none;
-    z-index: -2;
 
     background:
-        linear-gradient(
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
-        ),
         linear-gradient(
             90deg,
             rgba(255,255,255,.018) 1px,
             transparent 1px
+        ),
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
         );
 
-    background-size: 44px 44px;
+    background-size: 52px 52px;
 
     mask-image:
         linear-gradient(
             to bottom,
-            black,
-            transparent 80%
+            black 0%,
+            rgba(0,0,0,.7) 45%,
+            transparent 100%
+        );
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    z-index: -9;
+
+    pointer-events: none;
+
+    opacity: .35;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0,0,0,.75) 100%
         );
 }
 
@@ -76,20 +112,24 @@ a {
 
 button {
     font: inherit;
+    color: inherit;
     -webkit-tap-highlight-color: transparent;
 }
 
 
 /* =========================================================
-   PULSAR FIELD
+   GLOBAL ACRYLIC LIGHT
    ========================================================= */
 
 .pulsar-field {
     position: fixed;
     inset: 0;
+
+    z-index: -5;
+
     overflow: hidden;
+
     pointer-events: none;
-    z-index: -1;
 }
 
 .pulsar {
@@ -102,60 +142,66 @@ button {
 
     background: #fff;
 
+    opacity: .25;
+
     box-shadow:
         0 0 8px rgba(255,255,255,.8);
-
-    opacity: .35;
 
     animation:
         pulsarFloat 5s ease-in-out infinite;
 }
 
 .p1 {
-    top: 18%;
-    left: 14%;
+    top: 15%;
+    left: 12%;
 }
 
 .p2 {
-    top: 31%;
-    left: 82%;
+    top: 27%;
+    left: 84%;
+
     animation-delay: 1s;
 }
 
 .p3 {
-    top: 61%;
-    left: 23%;
+    top: 58%;
+    left: 20%;
+
     animation-delay: 2s;
 }
 
 .p4 {
-    top: 72%;
-    left: 76%;
+    top: 74%;
+    left: 78%;
+
     animation-delay: 3s;
 }
 
 .p5 {
-    top: 44%;
-    left: 51%;
+    top: 42%;
+    left: 52%;
+
     animation-delay: 1.5s;
 }
 
 .p6 {
-    top: 87%;
-    left: 42%;
+    top: 88%;
+    left: 43%;
+
     animation-delay: 2.5s;
 }
 
 @keyframes pulsarFloat {
+
     0%,
     100% {
-        opacity: .2;
-        transform: scale(.7);
+        opacity: .18;
+        transform: scale(.65);
     }
 
     50% {
-        opacity: .9;
-        transform: scale(2);
+        opacity: .85;
+        transform: scale(2.2);
     }
 }
 
@@ -167,18 +213,20 @@ button {
 .tech-grid {
     position: fixed;
     inset: 0;
+
+    z-index: -6;
+
     pointer-events: none;
-    z-index: -3;
+
+    opacity: .2;
 
     background:
         linear-gradient(
             90deg,
             transparent 49.8%,
-            rgba(255,255,255,.025) 50%,
+            rgba(255,255,255,.045) 50%,
             transparent 50.2%
         );
-
-    opacity: .25;
 }
 
 
@@ -189,9 +237,10 @@ button {
 .store-header {
     position: sticky;
     top: 0;
+
     z-index: 100;
 
-    min-height: 72px;
+    min-height: 70px;
 
     display: flex;
     align-items: center;
@@ -199,17 +248,45 @@ button {
 
     gap: 16px;
 
-    padding: 13px 17px;
-
-    background:
-        rgba(4,4,4,.82);
+    padding: 12px 16px;
 
     border-bottom:
-        1px solid
-        rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,.09);
 
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(12,12,12,.88),
+            rgba(5,5,5,.76)
+        );
+
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+
+    box-shadow:
+        0 10px 50px rgba(0,0,0,.28);
+}
+
+.store-header::after {
+    content: "";
+
+    position: absolute;
+
+    left: 8%;
+    right: 8%;
+    bottom: -1px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.16),
+            transparent
+        );
+
+    opacity: .6;
 }
 
 
@@ -220,71 +297,110 @@ button {
 .logo-acrylic {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
+
+    gap: 10px;
 
     flex-shrink: 0;
 }
 
+.voltica-logo-image,
 .logo-v {
     width: 38px;
     height: 38px;
 
+    flex-shrink: 0;
+
+    object-fit: contain;
+}
+
+.logo-v {
     display: grid;
     place-items: center;
 
     border:
-        1px solid
-        rgba(255,255,255,.25);
+        1px solid rgba(255,255,255,.22);
 
-    border-radius: 11px;
+    border-radius: 12px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.17),
+            rgba(255,255,255,.16),
             rgba(255,255,255,.025)
         );
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.15),
-        0 0 25px rgba(255,255,255,.035);
-
-    font-size: 21px;
-    font-weight: 900;
+        inset 0 1px 0 rgba(255,255,255,.18),
+        0 0 30px rgba(255,255,255,.04);
 }
 
 .logo-text {
-    font-size: 14px;
+    font-size: .95rem;
+
     font-weight: 800;
+
     letter-spacing: .22em;
+
+    white-space: nowrap;
 }
 
 
 /* =========================================================
-   NAV
+   NAVIGATION
    ========================================================= */
 
 .store-nav {
     display: none;
     align-items: center;
+
     gap: 24px;
 }
 
 .store-nav a {
+    position: relative;
+
     color:
-        rgba(255,255,255,.48);
+        rgba(255,255,255,.45);
 
     font-size: 10px;
     font-weight: 800;
+
     letter-spacing: .14em;
 
     transition:
-        color .2s ease;
+        color .25s ease;
+}
+
+.store-nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -7px;
+
+    height: 1px;
+
+    background: #fff;
+
+    transform:
+        scaleX(0);
+
+    transform-origin: center;
+
+    transition:
+        transform .25s ease;
 }
 
 .store-nav a:hover,
 .store-nav .nav-active {
     color: #fff;
+}
+
+.store-nav a:hover::after,
+.store-nav .nav-active::after {
+    transform: scaleX(1);
 }
 
 
@@ -302,27 +418,37 @@ button {
     place-items: center;
 
     border:
-        1px solid
-        rgba(255,255,255,.14);
+        1px solid rgba(255,255,255,.13);
 
-    border-radius: 13px;
+    border-radius: 14px;
 
     background:
-        rgba(255,255,255,.055);
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.025)
+        );
 
-    color: #fff;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.09),
+        0 10px 35px rgba(0,0,0,.25);
 
     cursor: pointer;
 
     transition:
-        transform .2s ease,
-        background .2s ease;
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
 }
 
 .cart-acrylic:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(255,255,255,.24);
+
     background:
-        rgba(255,255,255,.09);
+        rgba(255,255,255,.1);
 }
 
 .cart-icon svg {
@@ -330,8 +456,10 @@ button {
     height: 21px;
 
     fill: none;
+
     stroke: currentColor;
     stroke-width: 1.5;
+
     stroke-linecap: round;
     stroke-linejoin: round;
 }
@@ -351,18 +479,19 @@ button {
     padding: 0 4px;
 
     border:
-        1px solid
-        rgba(0,0,0,.8);
+        1px solid #000;
 
     border-radius: 50%;
 
     background: #fff;
+
     color: #000;
 
     font-size: 8px;
     font-weight: 900;
 
     opacity: 0;
+
     transform: scale(.7);
 
     transition:
@@ -383,15 +512,14 @@ button {
 .store-hero {
     position: relative;
 
-    min-height: 430px;
+    min-height: 440px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    padding:
-        55px 18px 45px;
+    padding: 60px 18px 50px;
 
     text-align: center;
 
@@ -403,10 +531,10 @@ button {
 
     position: absolute;
 
-    width: 320px;
-    height: 320px;
+    width: 420px;
+    height: 420px;
 
-    top: 25px;
+    top: -90px;
     left: 50%;
 
     transform: translateX(-50%);
@@ -416,41 +544,67 @@ button {
     background:
         radial-gradient(
             circle,
-            rgba(255,255,255,.075),
-            transparent 68%
+            rgba(255,255,255,.1),
+            rgba(255,255,255,.025) 35%,
+            transparent 70%
         );
 
-    filter: blur(8px);
+    filter: blur(12px);
 
-    pointer-events: none;
+    animation:
+        heroAura 8s ease-in-out infinite;
 }
+
+@keyframes heroAura {
+
+    0%,
+    100% {
+        transform:
+            translateX(-50%)
+            scale(.92);
+
+        opacity: .65;
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            scale(1.08);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   HERO PULSAR
+   ========================================================= */
 
 .hero-pulsar {
     position: relative;
 
-    width: 82px;
-    height: 82px;
+    width: 84px;
+    height: 84px;
 
-    margin-bottom: 32px;
+    margin-bottom: 30px;
 
     display: grid;
     place-items: center;
 
-    border-radius: 50%;
-
     border:
-        1px solid
-        rgba(255,255,255,.12);
+        1px solid rgba(255,255,255,.13);
+
+    border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
             rgba(255,255,255,.08),
-            transparent 68%
+            transparent 70%
         );
 
     box-shadow:
-        0 0 60px rgba(255,255,255,.045);
+        0 0 70px rgba(255,255,255,.05);
 }
 
 .hero-pulsar::before,
@@ -459,20 +613,21 @@ button {
 
     position: absolute;
 
-    inset: 11px;
-
     border:
-        1px solid
-        rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,.09);
 
     border-radius: 50%;
+}
+
+.hero-pulsar::before {
+    inset: 11px;
 }
 
 .hero-pulsar::after {
     inset: 25px;
 
     border-color:
-        rgba(255,255,255,.16);
+        rgba(255,255,255,.17);
 }
 
 .hero-pulsar span {
@@ -484,71 +639,77 @@ button {
     background: #fff;
 
     box-shadow:
-        0 0 18px rgba(255,255,255,.9);
+        0 0 20px rgba(255,255,255,.95);
 
     animation:
-        heroPulse 2.5s ease-in-out infinite;
+        heroPulse 2.4s ease-in-out infinite;
 }
 
 @keyframes heroPulse {
+
     0%,
     100% {
-        transform: scale(.7);
-        opacity: .4;
+        transform: scale(.65);
+        opacity: .35;
     }
 
     50% {
-        transform: scale(1.4);
+        transform: scale(1.5);
         opacity: 1;
     }
 }
 
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
 .future-title {
     position: relative;
+
     z-index: 2;
 
     display: flex;
     flex-direction: column;
 
     font-size:
-        clamp(
-            42px,
-            13vw,
-            105px
-        );
+        clamp(43px, 13vw, 105px);
 
     line-height: .88;
 
-    letter-spacing: -.07em;
+    letter-spacing: -.075em;
 
     font-weight: 900;
 }
 
 .future-title span:first-child {
     color: #fff;
+
+    text-shadow:
+        0 0 45px rgba(255,255,255,.07);
 }
 
 .future-second {
     color:
-        rgba(255,255,255,.35);
+        rgba(255,255,255,.32);
 }
 
 .opening-acrylic {
     position: relative;
+
     z-index: 2;
 
     display: inline-flex;
     align-items: center;
+
     gap: 10px;
 
     margin-top: 28px;
 
-    padding:
-        10px 14px;
+    padding: 10px 15px;
 
     border:
-        1px solid
-        rgba(255,255,255,.12);
+        1px solid rgba(255,255,255,.12);
 
     border-radius: 999px;
 
@@ -556,10 +717,14 @@ button {
         rgba(255,255,255,.045);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08);
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 12px 40px rgba(0,0,0,.2);
+
+    backdrop-filter: blur(14px);
 
     font-size: 9px;
     font-weight: 800;
+
     letter-spacing: .13em;
 }
 
@@ -576,15 +741,29 @@ button {
     background: #fff;
 
     box-shadow:
-        0 0 12px rgba(255,255,255,.9);
+        0 0 14px rgba(255,255,255,.9);
 
     animation:
         pulseDot 1.8s ease-in-out infinite;
 }
 
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        opacity: .35;
+        transform: scale(.75);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.25);
+    }
+}
+
 
 /* =========================================================
-   PRODUCTS SECTION
+   PRODUCTS
    ========================================================= */
 
 .products-section {
@@ -605,7 +784,7 @@ button {
 
     grid-template-columns: 1fr;
 
-    gap: 18px;
+    gap: 20px;
 }
 
 
@@ -616,45 +795,71 @@ button {
 .store-product {
     position: relative;
 
+    isolation: isolate;
+
     overflow: hidden;
 
     border:
-        1px solid
-        rgba(255,255,255,.1);
+        1px solid rgba(255,255,255,.105);
 
-    border-radius: 25px;
+    border-radius: 27px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.075),
-            rgba(255,255,255,.025)
+            rgba(255,255,255,.085),
+            rgba(255,255,255,.025) 55%,
+            rgba(255,255,255,.015)
         );
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 25px 70px rgba(0,0,0,.32);
+        inset 0 1px 0 rgba(255,255,255,.09),
+        0 25px 80px rgba(0,0,0,.36);
 
     transition:
-        transform .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
+        transform .35s cubic-bezier(.22,.61,.36,1),
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.store-product::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            125deg,
+            rgba(255,255,255,.055),
+            transparent 25%,
+            transparent 70%,
+            rgba(255,255,255,.025)
+        );
 }
 
 .store-product:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
 
     border-color:
-        rgba(255,255,255,.18);
+        rgba(255,255,255,.19);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.1),
-        0 35px 90px rgba(0,0,0,.45);
+        inset 0 1px 0 rgba(255,255,255,.12),
+        0 38px 100px rgba(0,0,0,.5);
 }
 
 
 /* =========================================================
    PRODUCT IMAGE
+   IMPORTANT:
+   Image is intentionally kept completely independent
+   from glass overlays.
    ========================================================= */
 
 .product-image {
@@ -669,35 +874,84 @@ button {
 
     background:
         radial-gradient(
-            circle at 50% 45%,
-            rgba(255,255,255,.085),
-            transparent 62%
+            circle at 50% 42%,
+            rgba(255,255,255,.1),
+            transparent 57%
         ),
-        rgba(0,0,0,.25);
+        linear-gradient(
+            145deg,
+            #0d0d0d,
+            #050505
+        );
 }
 
 .product-image img {
+    position: relative;
+
+    z-index: 1;
+
+    display: block;
+
     width: 100%;
     height: 100%;
 
-    object-fit: contain;
-
     padding: 13px;
 
-    position: relative;
-    z-index: 2;
+    object-fit: contain;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    filter: none;
+
+    transform:
+        translate3d(0,0,0);
 
     transition:
-        transform .4s ease;
+        transform .45s cubic-bezier(.22,.61,.36,1);
 }
 
 .store-product:hover
 .product-image img {
-    transform: scale(1.035);
+    transform:
+        scale(1.045)
+        translate3d(0,0,0);
 }
+
+
+/* =========================================================
+   IMAGE GLASS REFLECTION
+   ========================================================= */
 
 .image-reflection {
     position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    opacity: .7;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.08),
+            transparent 24%,
+            transparent 70%,
+            rgba(255,255,255,.025)
+        );
+
+    mix-blend-mode: screen;
+}
+
+.product-image::after {
+    content: "";
+
+    position: absolute;
+
     inset: 0;
 
     z-index: 3;
@@ -706,13 +960,16 @@ button {
 
     background:
         linear-gradient(
-            125deg,
-            rgba(255,255,255,.1),
-            transparent 25%,
-            transparent 72%,
-            rgba(255,255,255,.025)
+            to bottom,
+            transparent 65%,
+            rgba(0,0,0,.12)
         );
 }
+
+
+/* =========================================================
+   BADGE
+   ========================================================= */
 
 .product-badge {
     position: absolute;
@@ -720,41 +977,44 @@ button {
     top: 14px;
     left: 14px;
 
-    z-index: 5;
+    z-index: 6;
 
-    padding:
-        7px 10px;
+    padding: 7px 10px;
 
     border:
-        1px solid
-        rgba(255,255,255,.16);
+        1px solid rgba(255,255,255,.17);
 
     border-radius: 999px;
 
     background:
-        rgba(0,0,0,.55);
+        rgba(4,4,4,.62);
 
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
 
     color: #fff;
 
     font-size: 8px;
     font-weight: 900;
+
     letter-spacing: .14em;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
 }
 
 .product-no-image {
-    display: grid;
-    place-items: center;
-
     width: 100%;
     height: 100%;
+
+    display: grid;
+    place-items: center;
 
     color:
         rgba(255,255,255,.25);
 
     font-size: 12px;
     font-weight: 800;
+
     letter-spacing: .2em;
 }
 
@@ -764,7 +1024,19 @@ button {
    ========================================================= */
 
 .product-info {
-    padding: 21px 19px 20px;
+    position: relative;
+
+    z-index: 5;
+
+    padding:
+        22px 20px 21px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(8,8,8,.7),
+            rgba(5,5,5,.92)
+        );
 }
 
 .product-category {
@@ -773,17 +1045,21 @@ button {
     margin-bottom: 8px;
 
     color:
-        rgba(255,255,255,.37);
+        rgba(255,255,255,.36);
 
     font-size: 9px;
     font-weight: 800;
+
     letter-spacing: .17em;
 }
 
 .product-title {
     margin-bottom: 9px;
 
+    color: #fff;
+
     font-size: 25px;
+
     line-height: 1;
 
     letter-spacing: -.045em;
@@ -797,9 +1073,10 @@ button {
     margin-bottom: 17px;
 
     color:
-        rgba(255,255,255,.48);
+        rgba(255,255,255,.47);
 
     font-size: 12px;
+
     line-height: 1.6;
 }
 
@@ -811,13 +1088,17 @@ button {
 .product-price-row {
     display: flex;
     align-items: baseline;
+
     gap: 10px;
 
     margin-bottom: 17px;
 }
 
 .product-price {
+    color: #fff;
+
     font-size: 22px;
+
     font-weight: 800;
 
     letter-spacing: -.03em;
@@ -825,7 +1106,7 @@ button {
 
 .product-reference-price {
     color:
-        rgba(255,255,255,.28);
+        rgba(255,255,255,.27);
 
     font-size: 11px;
 
@@ -840,6 +1121,7 @@ button {
 .product-colors {
     display: flex;
     align-items: center;
+
     gap: 10px;
 
     margin-bottom: 17px;
@@ -851,23 +1133,24 @@ button {
 
     font-size: 8px;
     font-weight: 800;
+
     letter-spacing: .13em;
 }
 
 .color-list {
     display: flex;
-    gap: 6px;
+
+    gap: 7px;
 }
 
 .color-chip {
-    width: 15px;
-    height: 15px;
-
-    border-radius: 50%;
+    width: 16px;
+    height: 16px;
 
     border:
-        1px solid
-        rgba(255,255,255,.35);
+        1px solid rgba(255,255,255,.38);
+
+    border-radius: 50%;
 
     background:
         linear-gradient(
@@ -877,11 +1160,22 @@ button {
         );
 
     cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.color-chip:hover {
+    transform: scale(1.2);
+
+    box-shadow:
+        0 0 14px rgba(255,255,255,.2);
 }
 
 
 /* =========================================================
-   PRODUCT ACTIONS
+   ACTIONS
    ========================================================= */
 
 .product-actions {
@@ -889,27 +1183,29 @@ button {
 
     grid-template-columns: 1fr;
 
-    gap: 8px;
+    gap: 9px;
 }
 
 .acrylic-button {
-    min-height: 48px;
+    min-height: 49px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding:
-        0 14px;
+    padding: 0 15px;
 
     border:
-        1px solid
-        rgba(255,255,255,.12);
+        1px solid rgba(255,255,255,.13);
 
-    border-radius: 13px;
+    border-radius: 14px;
 
     background:
-        rgba(255,255,255,.045);
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
 
     color: #fff;
 
@@ -917,34 +1213,75 @@ button {
 
     font-size: 9px;
     font-weight: 800;
+
     letter-spacing: .12em;
 
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.07);
+
     transition:
-        transform .2s ease,
-        background .2s ease,
-        border-color .2s ease;
+        transform .22s ease,
+        background .22s ease,
+        border-color .22s ease,
+        box-shadow .22s ease;
 }
 
 .acrylic-button:hover {
-    transform: translateY(-1px);
-
-    background:
-        rgba(255,255,255,.09);
+    transform: translateY(-2px);
 
     border-color:
         rgba(255,255,255,.25);
+
+    background:
+        rgba(255,255,255,.095);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
 }
 
 .product-buy-button {
+    position: relative;
+
+    overflow: hidden;
+
+    border-color:
+        rgba(255,255,255,.23);
+
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.18),
-            rgba(255,255,255,.06)
+            rgba(255,255,255,.19),
+            rgba(255,255,255,.055)
+        );
+}
+
+.product-buy-button::after {
+    content: "";
+
+    position: absolute;
+
+    top: -60%;
+    left: -80%;
+
+    width: 45%;
+    height: 220%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.25),
+            transparent
         );
 
-    border-color:
-        rgba(255,255,255,.24);
+    transform: rotate(18deg);
+
+    transition:
+        left .6s ease;
+}
+
+.product-buy-button:hover::after {
+    left: 140%;
 }
 
 
@@ -959,37 +1296,36 @@ button {
     place-items: center;
 
     border:
-        1px solid
-        rgba(255,255,255,.07);
+        1px solid rgba(255,255,255,.08);
 
-    border-radius: 24px;
+    border-radius: 25px;
 
     background:
         rgba(255,255,255,.025);
 }
 
 .loading-pulsar {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
 
     border:
-        1px solid
-        rgba(255,255,255,.2);
+        1px solid rgba(255,255,255,.2);
 
     border-radius: 50%;
 
     box-shadow:
-        0 0 30px rgba(255,255,255,.08);
+        0 0 35px rgba(255,255,255,.08);
 
     animation:
         loadingPulse 1.4s ease-in-out infinite;
 }
 
 @keyframes loadingPulse {
+
     0%,
     100% {
         transform: scale(.65);
-        opacity: .35;
+        opacity: .3;
     }
 
     50% {
@@ -1016,10 +1352,9 @@ button {
     text-align: center;
 
     border:
-        1px solid
-        rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,.08);
 
-    border-radius: 24px;
+    border-radius: 25px;
 
     background:
         rgba(255,255,255,.025);
@@ -1032,13 +1367,29 @@ button {
     margin-bottom: 22px;
 
     border:
-        1px solid
-        rgba(255,255,255,.16);
+        1px solid rgba(255,255,255,.16);
 
     border-radius: 50%;
 
     box-shadow:
         0 0 35px rgba(255,255,255,.05);
+
+    animation:
+        emptyPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes emptyPulse {
+
+    0%,
+    100% {
+        transform: scale(.9);
+        opacity: .4;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
 }
 
 .store-empty-state > span {
@@ -1049,6 +1400,7 @@ button {
 
     font-size: 9px;
     font-weight: 800;
+
     letter-spacing: .18em;
 }
 
@@ -1056,6 +1408,7 @@ button {
     margin-bottom: 10px;
 
     font-size: 27px;
+
     letter-spacing: -.04em;
 }
 
@@ -1088,29 +1441,55 @@ button {
 
     overflow: hidden;
 
-    padding: 35px 22px;
+    padding: 38px 22px;
 
     text-align: center;
 
     border:
-        1px solid
-        rgba(255,255,255,.1);
+        1px solid rgba(255,255,255,.1);
 
-    border-radius: 25px;
+    border-radius: 27px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.07),
+            rgba(255,255,255,.075),
             rgba(255,255,255,.025)
         );
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.08),
-        0 25px 70px rgba(0,0,0,.3);
+        0 25px 70px rgba(0,0,0,.32);
+}
+
+.contact-acrylic::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -120px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.08),
+            transparent 70%
+        );
+
+    pointer-events: none;
 }
 
 .contact-pulsar {
+    position: relative;
+
     width: 60px;
     height: 60px;
 
@@ -1118,8 +1497,7 @@ button {
         0 auto 20px;
 
     border:
-        1px solid
-        rgba(255,255,255,.1);
+        1px solid rgba(255,255,255,.1);
 
     border-radius: 50%;
 
@@ -1129,6 +1507,21 @@ button {
             rgba(255,255,255,.08),
             transparent 68%
         );
+
+    animation:
+        contactPulse 3s ease-in-out infinite;
+}
+
+@keyframes contactPulse {
+
+    0%,
+    100% {
+        transform: scale(.95);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .contact-label {
@@ -1141,6 +1534,7 @@ button {
 
     font-size: 9px;
     font-weight: 800;
+
     letter-spacing: .18em;
 }
 
@@ -1148,6 +1542,7 @@ button {
     margin-bottom: 10px;
 
     font-size: 32px;
+
     letter-spacing: -.05em;
 }
 
@@ -1161,28 +1556,43 @@ button {
 }
 
 .contact-button {
-    min-height: 48px;
+    min-height: 49px;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     gap: 18px;
 
-    padding:
-        0 22px;
+    padding: 0 22px;
 
     border:
-        1px solid
-        rgba(255,255,255,.15);
+        1px solid rgba(255,255,255,.15);
 
-    border-radius: 13px;
+    border-radius: 14px;
 
     background:
         rgba(255,255,255,.055);
 
     font-size: 9px;
     font-weight: 800;
+
     letter-spacing: .14em;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+.contact-button:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(255,255,255,.09);
+
+    border-color:
+        rgba(255,255,255,.23);
 }
 
 .contact-button strong {
@@ -1202,23 +1612,22 @@ button {
     z-index: 200;
 
     background:
-        rgba(0,0,0,.65);
+        rgba(0,0,0,.68);
 
-    backdrop-filter:
-        blur(5px);
-
-    -webkit-backdrop-filter:
-        blur(5px);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
 
     opacity: 0;
+
     pointer-events: none;
 
     transition:
-        opacity .25s ease;
+        opacity .3s ease;
 }
 
 .cart-overlay:not([hidden]) {
     opacity: 1;
+
     pointer-events: auto;
 }
 
@@ -1251,19 +1660,23 @@ button {
     flex-direction: column;
 
     background:
-        rgba(8,8,8,.96);
+        linear-gradient(
+            145deg,
+            rgba(16,16,16,.97),
+            rgba(5,5,5,.98)
+        );
 
     border-left:
-        1px solid
-        rgba(255,255,255,.1);
+        1px solid rgba(255,255,255,.1);
 
     box-shadow:
-        -30px 0 100px rgba(0,0,0,.5);
+        -35px 0 100px rgba(0,0,0,.55);
 
-    transform: translateX(105%);
+    transform:
+        translateX(105%);
 
     transition:
-        transform .3s cubic-bezier(.22,.61,.36,1);
+        transform .35s cubic-bezier(.22,.61,.36,1);
 
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
@@ -1273,17 +1686,20 @@ button {
     transform: translateX(0);
 }
 
+
+/* =========================================================
+   CART HEADER
+   ========================================================= */
+
 .cart-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding:
-        21px;
+    padding: 21px;
 
     border-bottom:
-        1px solid
-        rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,.08);
 }
 
 .cart-small-title {
@@ -1296,11 +1712,13 @@ button {
 
     font-size: 8px;
     font-weight: 800;
+
     letter-spacing: .18em;
 }
 
 .cart-header h2 {
     font-size: 27px;
+
     letter-spacing: -.04em;
 }
 
@@ -1312,21 +1730,34 @@ button {
     place-items: center;
 
     border:
-        1px solid
-        rgba(255,255,255,.1);
+        1px solid rgba(255,255,255,.1);
 
     border-radius: 50%;
 
     background:
         rgba(255,255,255,.04);
 
-    color: #fff;
-
     cursor: pointer;
 
     font-size: 25px;
     font-weight: 300;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
 }
+
+.cart-close:hover {
+    transform: rotate(90deg);
+
+    background:
+        rgba(255,255,255,.09);
+}
+
+
+/* =========================================================
+   CART ITEMS
+   ========================================================= */
 
 .cart-items {
     flex: 1;
@@ -1346,14 +1777,12 @@ button {
 
     gap: 12px;
 
-    padding:
-        12px;
+    padding: 12px;
 
     margin-bottom: 10px;
 
     border:
-        1px solid
-        rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,.08);
 
     border-radius: 17px;
 
@@ -1400,6 +1829,7 @@ button {
     font-size: 12px;
 
     white-space: nowrap;
+
     text-overflow: ellipsis;
 }
 
@@ -1427,15 +1857,12 @@ button {
     place-items: center;
 
     border:
-        1px solid
-        rgba(255,255,255,.1);
+        1px solid rgba(255,255,255,.1);
 
     border-radius: 8px;
 
     background:
         rgba(255,255,255,.04);
-
-    color: #fff;
 
     cursor: pointer;
 }
@@ -1464,11 +1891,19 @@ button {
     cursor: pointer;
 
     font-size: 20px;
+
+    transition:
+        color .2s ease;
 }
 
 .cart-remove:hover {
     color: #fff;
 }
+
+
+/* =========================================================
+   CART EMPTY
+   ========================================================= */
 
 .cart-empty {
     min-height: 250px;
@@ -1490,14 +1925,17 @@ button {
     margin-bottom: 10px;
 
     border:
-        1px solid
-        rgba(255,255,255,.14);
+        1px solid rgba(255,255,255,.14);
 
     border-radius: 50%;
+
+    animation:
+        emptyPulse 2.5s ease-in-out infinite;
 }
 
 .cart-empty strong {
     font-size: 11px;
+
     letter-spacing: .12em;
 }
 
@@ -1514,15 +1952,13 @@ button {
    ========================================================= */
 
 .cart-footer {
-    padding:
-        17px;
+    padding: 17px;
 
     border-top:
-        1px solid
-        rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,.08);
 
     background:
-        rgba(0,0,0,.25);
+        rgba(0,0,0,.28);
 }
 
 .cart-total-row {
@@ -1539,15 +1975,19 @@ button {
 
     font-size: 9px;
     font-weight: 800;
+
     letter-spacing: .15em;
 }
 
 .cart-total-row strong {
     font-size: 22px;
+
     letter-spacing: -.03em;
 }
 
 .checkout-button {
+    position: relative;
+
     width: 100%;
     min-height: 56px;
 
@@ -1555,12 +1995,12 @@ button {
     align-items: center;
     justify-content: space-between;
 
-    padding:
-        0 18px;
+    overflow: hidden;
+
+    padding: 0 18px;
 
     border:
-        1px solid
-        rgba(255,255,255,.22);
+        1px solid rgba(255,255,255,.22);
 
     border-radius: 14px;
 
@@ -1571,18 +2011,46 @@ button {
             rgba(255,255,255,.055)
         );
 
-    color: #fff;
-
     cursor: pointer;
 
     font-size: 10px;
     font-weight: 900;
+
     letter-spacing: .15em;
 }
 
 .checkout-button span {
     font-size: 20px;
     font-weight: 400;
+}
+
+.checkout-button::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 60%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.15),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left .65s ease;
+}
+
+.checkout-button:hover::after {
+    left: 140%;
 }
 
 
@@ -1601,12 +2069,10 @@ button {
     max-width:
         calc(100% - 30px);
 
-    padding:
-        12px 17px;
+    padding: 12px 17px;
 
     border:
-        1px solid
-        rgba(255,255,255,.15);
+        1px solid rgba(255,255,255,.15);
 
     border-radius: 999px;
 
@@ -1622,6 +2088,7 @@ button {
 
     font-size: 9px;
     font-weight: 800;
+
     letter-spacing: .12em;
 
     opacity: 0;
@@ -1657,8 +2124,7 @@ button {
 
     margin: 0 auto;
 
-    padding:
-        0 0 35px;
+    padding: 0 0 35px;
 }
 
 .footer-acrylic {
@@ -1674,14 +2140,14 @@ button {
     padding: 18px;
 
     border-top:
-        1px solid
-        rgba(255,255,255,.07);
+        1px solid rgba(255,255,255,.07);
 
     color:
         rgba(255,255,255,.25);
 
     font-size: 8px;
     font-weight: 700;
+
     letter-spacing: .13em;
 
     text-align: center;
@@ -1703,20 +2169,20 @@ button {
         display: flex;
     }
 
+    .store-hero {
+        min-height: 510px;
+    }
+
     .product-grid {
         grid-template-columns:
             repeat(2, minmax(0,1fr));
 
-        gap: 20px;
+        gap: 22px;
     }
 
     .product-actions {
         grid-template-columns:
             repeat(2, minmax(0,1fr));
-    }
-
-    .store-hero {
-        min-height: 500px;
     }
 
     .products-section {
@@ -1757,12 +2223,12 @@ button {
         grid-template-columns:
             repeat(3, minmax(0,1fr));
 
-        gap: 24px;
+        gap: 25px;
     }
 
     .product-info {
         padding:
-            23px 22px 22px;
+            24px 22px 22px;
     }
 
     .contact-acrylic {
@@ -1776,6 +2242,7 @@ button {
 
     .footer-acrylic {
         flex-direction: row;
+
         justify-content: space-between;
     }
 }
@@ -1792,14 +2259,7 @@ button {
             18px 55px;
     }
 
-    .products-section {
-        width:
-            min(
-                1280px,
-                calc(100% - 80px)
-            );
-    }
-
+    .products-section,
     .store-footer {
         width:
             min(
@@ -1810,6 +2270,31 @@ button {
 
     .store-hero {
         min-height: 620px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE IMAGE SAFETY
+   ========================================================= */
+
+@media (max-width: 599px) {
+
+    .store-product,
+    .product-image,
+    .product-image img {
+        transform: translateZ(0);
+    }
+
+    .store-product:hover {
+        transform: translateY(-3px);
+    }
+
+    .store-product:hover
+    .product-image img {
+        transform:
+            scale(1.025)
+            translateZ(0);
     }
 }
 
@@ -1831,167 +2316,4 @@ button {
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
     }
-             }
-.voltica-logo-image {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-    display: block;
-    flex-shrink: 0;
-}
-
-.logo-acrylic {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-text {
-    font-size: 0.95rem;
-    letter-spacing: 0.22em;
-    white-space: nowrap;
-}
-/* =========================================================
-   VOLTICA STORE — FINAL PRODUCT VISIBILITY PATCH
-   Fix: product images disappearing / dark overlay / layering
-   ========================================================= */
-
-.store-product {
-    position: relative;
-    z-index: 10;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-    filter: none !important;
-
-    isolation: isolate;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(25,25,25,.98),
-            rgba(7,7,7,.98)
-        );
-
-    overflow: hidden;
-}
-
-.product-image {
-    position: relative;
-    z-index: 1;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-    filter: none !important;
-
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(255,255,255,.08),
-            transparent 62%
-        ),
-        #090909;
-}
-
-.product-image img {
-    position: relative;
-    z-index: 2;
-
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-    filter: none !important;
-
-    object-fit: contain;
-
-    transform: translateZ(0);
-
-    transition:
-        transform .4s ease;
-}
-
-/* Glass reflection stays ABOVE the image,
-   but can NEVER block interaction */
-
-.image-reflection {
-    position: absolute;
-    inset: 0;
-
-    z-index: 3;
-
-    pointer-events: none;
-
-    opacity: 1;
-
-    background:
-        linear-gradient(
-            125deg,
-            rgba(255,255,255,.08),
-            transparent 25%,
-            transparent 72%,
-            rgba(255,255,255,.02)
-        );
-}
-
-/* Product badges stay above everything */
-
-.product-badge {
-    z-index: 5;
-}
-
-/* Product information always remains visible */
-
-.product-info {
-    position: relative;
-    z-index: 4;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-    filter: none !important;
-
-    background:
-        rgba(8,8,8,.98);
-}
-
-/* Prevent accidental transparency from parent effects */
-
-.product-grid,
-.products-section {
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-/* Make sure images cannot be hidden by lazy-loading states */
-
-.product-image img[src] {
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-/* Mobile stability */
-
-@media (max-width: 599px) {
-
-    .store-product {
-        transform: translateZ(0);
-    }
-
-    .product-image img {
-        transform: translateZ(0);
-    }
-
-}
-
-/* Desktop hover */
-
-@media (min-width: 600px) {
-
-    .store-product:hover .product-image img {
-        transform: scale(1.035) translateZ(0);
-    }
-
-}
+       }

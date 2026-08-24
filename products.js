@@ -62,7 +62,7 @@ const volticaProducts = [
             }
         ],
         "stripeLink": "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j",
-        "supplierLink": "",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-2601110810071616400.html",
         "active": true
     }
 ];

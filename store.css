@@ -1,17 +1,11 @@
 /* =========================================================
    VOLTICA STORE — STORE.CSS
-   BLACK ACRYLIC / LIQUID GLASS EDITION
-   Mobile-first / Premium / Animated / Stable
+   NEXT-GEN GLASS / ACRYLIC
+   CLEAN LAYER ARCHITECTURE
+   NO GLOBAL PAGE BLUR
    ========================================================= */
 
-
-/* =========================================================
-   CORE
-   ========================================================= */
-
-*,
-*::before,
-*::after {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -25,7 +19,20 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 
-    color: #f7f7f7;
+    background:
+        radial-gradient(
+            circle at 50% -15%,
+            rgba(255,255,255,.08),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 0% 50%,
+            rgba(255,255,255,.025),
+            transparent 32%
+        ),
+        #030303;
+
+    color: #fff;
 
     font-family:
         Inter,
@@ -33,25 +40,13 @@ body {
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 50% -15%,
-            rgba(255,255,255,.12),
-            transparent 34%
-        ),
-        radial-gradient(
-            circle at 5% 35%,
-            rgba(255,255,255,.045),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 95% 70%,
-            rgba(255,255,255,.025),
-            transparent 30%
-        ),
-        #020202;
 }
+
+/* =========================================================
+   GLOBAL ATMOSPHERE
+   IMPORTANT:
+   NO backdrop-filter here.
+   ========================================================= */
 
 body::before {
     content: "";
@@ -59,30 +54,21 @@ body::before {
     position: fixed;
     inset: 0;
 
-    z-index: -10;
-
     pointer-events: none;
+
+    z-index: 0;
 
     background:
         linear-gradient(
             90deg,
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
+            transparent 49.9%,
+            rgba(255,255,255,.018) 50%,
+            transparent 50.1%
         );
 
-    background-size: 52px 52px;
+    background-size: 120px 120px;
 
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black 0%,
-            rgba(0,0,0,.7) 45%,
-            transparent 100%
-        );
+    opacity: .35;
 }
 
 body::after {
@@ -91,17 +77,16 @@ body::after {
     position: fixed;
     inset: 0;
 
-    z-index: -9;
-
     pointer-events: none;
 
-    opacity: .35;
+    z-index: 0;
 
     background:
         radial-gradient(
-            ellipse at center,
-            transparent 35%,
-            rgba(0,0,0,.75) 100%
+            circle at 50% 25%,
+            transparent 0%,
+            rgba(0,0,0,.18) 65%,
+            rgba(0,0,0,.55) 100%
         );
 }
 
@@ -112,24 +97,24 @@ a {
 
 button {
     font: inherit;
-    color: inherit;
+    border: 0;
     -webkit-tap-highlight-color: transparent;
 }
 
 
 /* =========================================================
-   GLOBAL ACRYLIC LIGHT
+   PULSAR FIELD
    ========================================================= */
 
 .pulsar-field {
     position: fixed;
     inset: 0;
 
-    z-index: -5;
-
     overflow: hidden;
 
     pointer-events: none;
+
+    z-index: 1;
 }
 
 .pulsar {
@@ -142,44 +127,44 @@ button {
 
     background: #fff;
 
-    opacity: .25;
-
     box-shadow:
-        0 0 8px rgba(255,255,255,.8);
+        0 0 12px rgba(255,255,255,.8);
+
+    opacity: .25;
 
     animation:
         pulsarFloat 5s ease-in-out infinite;
 }
 
 .p1 {
-    top: 15%;
+    top: 18%;
     left: 12%;
 }
 
 .p2 {
-    top: 27%;
+    top: 32%;
     left: 84%;
 
     animation-delay: 1s;
 }
 
 .p3 {
-    top: 58%;
-    left: 20%;
+    top: 63%;
+    left: 22%;
 
     animation-delay: 2s;
 }
 
 .p4 {
-    top: 74%;
+    top: 76%;
     left: 78%;
 
     animation-delay: 3s;
 }
 
 .p5 {
-    top: 42%;
-    left: 52%;
+    top: 45%;
+    left: 51%;
 
     animation-delay: 1.5s;
 }
@@ -195,12 +180,12 @@ button {
 
     0%,
     100% {
-        opacity: .18;
-        transform: scale(.65);
+        opacity: .15;
+        transform: scale(.7);
     }
 
     50% {
-        opacity: .85;
+        opacity: .8;
         transform: scale(2.2);
     }
 }
@@ -214,19 +199,38 @@ button {
     position: fixed;
     inset: 0;
 
-    z-index: -6;
-
     pointer-events: none;
 
-    opacity: .2;
+    z-index: 1;
 
     background:
         linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
             90deg,
-            transparent 49.8%,
-            rgba(255,255,255,.045) 50%,
-            transparent 50.2%
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
         );
+
+    background-size: 44px 44px;
+
+    opacity: .18;
+}
+
+
+/* =========================================================
+   MAIN CONTENT LAYER
+   ========================================================= */
+
+.store-header,
+.store-hero,
+.products-section,
+.contact-section,
+.store-footer {
+    position: relative;
+    z-index: 5;
 }
 
 
@@ -238,9 +242,7 @@ button {
     position: sticky;
     top: 0;
 
-    z-index: 100;
-
-    min-height: 70px;
+    min-height: 72px;
 
     display: flex;
     align-items: center;
@@ -248,45 +250,25 @@ button {
 
     gap: 16px;
 
-    padding: 12px 16px;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.09);
+    padding: 13px 17px;
 
     background:
         linear-gradient(
             180deg,
-            rgba(12,12,12,.88),
-            rgba(5,5,5,.76)
+            rgba(10,10,10,.92),
+            rgba(5,5,5,.78)
         );
 
-    backdrop-filter: blur(24px) saturate(140%);
-    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.09);
 
-    box-shadow:
-        0 10px 50px rgba(0,0,0,.28);
-}
-
-.store-header::after {
-    content: "";
-
-    position: absolute;
-
-    left: 8%;
-    right: 8%;
-    bottom: -1px;
-
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.16),
-            transparent
-        );
-
-    opacity: .6;
+    /*
+       Glass only on the header.
+       It cannot blur the product cards.
+    */
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
 
 
@@ -303,35 +285,43 @@ button {
     flex-shrink: 0;
 }
 
-.voltica-logo-image,
+.voltica-logo-image {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+
+    display: block;
+
+    flex-shrink: 0;
+}
+
 .logo-v {
     width: 38px;
     height: 38px;
 
-    flex-shrink: 0;
-
-    object-fit: contain;
-}
-
-.logo-v {
     display: grid;
     place-items: center;
 
     border:
-        1px solid rgba(255,255,255,.22);
+        1px solid
+        rgba(255,255,255,.18);
 
     border-radius: 12px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.16),
+            rgba(255,255,255,.15),
             rgba(255,255,255,.025)
         );
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.18),
-        0 0 30px rgba(255,255,255,.04);
+        inset 0 1px 0 rgba(255,255,255,.14),
+        0 0 30px rgba(255,255,255,.035);
+
+    font-size: 21px;
+    font-weight: 900;
 }
 
 .logo-text {
@@ -351,18 +341,18 @@ button {
 
 .store-nav {
     display: none;
+
     align-items: center;
 
-    gap: 24px;
+    gap: 25px;
 }
 
 .store-nav a {
-    position: relative;
-
     color:
         rgba(255,255,255,.45);
 
     font-size: 10px;
+
     font-weight: 800;
 
     letter-spacing: .14em;
@@ -371,36 +361,9 @@ button {
         color .25s ease;
 }
 
-.store-nav a::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: -7px;
-
-    height: 1px;
-
-    background: #fff;
-
-    transform:
-        scaleX(0);
-
-    transform-origin: center;
-
-    transition:
-        transform .25s ease;
-}
-
 .store-nav a:hover,
 .store-nav .nav-active {
     color: #fff;
-}
-
-.store-nav a:hover::after,
-.store-nav .nav-active::after {
-    transform: scaleX(1);
 }
 
 
@@ -418,37 +381,32 @@ button {
     place-items: center;
 
     border:
-        1px solid rgba(255,255,255,.13);
+        1px solid
+        rgba(255,255,255,.14);
 
-    border-radius: 14px;
+    border-radius: 13px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.09),
-            rgba(255,255,255,.025)
-        );
+        rgba(255,255,255,.045);
 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.09),
-        0 10px 35px rgba(0,0,0,.25);
+    color: #fff;
 
     cursor: pointer;
 
     transition:
         transform .25s ease,
-        border-color .25s ease,
-        background .25s ease;
+        background .25s ease,
+        border-color .25s ease;
 }
 
 .cart-acrylic:hover {
     transform: translateY(-2px);
 
-    border-color:
-        rgba(255,255,255,.24);
-
     background:
-        rgba(255,255,255,.1);
+        rgba(255,255,255,.09);
+
+    border-color:
+        rgba(255,255,255,.25);
 }
 
 .cart-icon svg {
@@ -458,6 +416,7 @@ button {
     fill: none;
 
     stroke: currentColor;
+
     stroke-width: 1.5;
 
     stroke-linecap: round;
@@ -488,11 +447,12 @@ button {
     color: #000;
 
     font-size: 8px;
+
     font-weight: 900;
 
     opacity: 0;
 
-    transform: scale(.7);
+    transform: scale(.6);
 
     transition:
         opacity .2s ease,
@@ -501,6 +461,7 @@ button {
 
 .cart-count.visible {
     opacity: 1;
+
     transform: scale(1);
 }
 
@@ -510,16 +471,16 @@ button {
    ========================================================= */
 
 .store-hero {
-    position: relative;
-
-    min-height: 440px;
+    min-height: 450px;
 
     display: flex;
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
 
-    padding: 60px 18px 50px;
+    padding:
+        60px 18px 50px;
 
     text-align: center;
 
@@ -534,28 +495,30 @@ button {
     width: 420px;
     height: 420px;
 
-    top: -90px;
+    top: 0;
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(255,255,255,.1),
-            rgba(255,255,255,.025) 35%,
-            transparent 70%
+            rgba(255,255,255,.08),
+            transparent 68%
         );
 
-    filter: blur(12px);
+    filter: blur(4px);
+
+    pointer-events: none;
 
     animation:
-        heroAura 8s ease-in-out infinite;
+        heroAtmosphere 7s ease-in-out infinite;
 }
 
-@keyframes heroAura {
+@keyframes heroAtmosphere {
 
     0%,
     100% {
@@ -563,7 +526,7 @@ button {
             translateX(-50%)
             scale(.92);
 
-        opacity: .65;
+        opacity: .55;
     }
 
     50% {
@@ -583,16 +546,17 @@ button {
 .hero-pulsar {
     position: relative;
 
-    width: 84px;
-    height: 84px;
+    width: 82px;
+    height: 82px;
 
-    margin-bottom: 30px;
+    margin-bottom: 32px;
 
     display: grid;
     place-items: center;
 
     border:
-        1px solid rgba(255,255,255,.13);
+        1px solid
+        rgba(255,255,255,.13);
 
     border-radius: 50%;
 
@@ -600,11 +564,14 @@ button {
         radial-gradient(
             circle,
             rgba(255,255,255,.08),
-            transparent 70%
+            transparent 68%
         );
 
     box-shadow:
-        0 0 70px rgba(255,255,255,.05);
+        0 0 60px rgba(255,255,255,.05);
+
+    animation:
+        heroOrb 4s ease-in-out infinite;
 }
 
 .hero-pulsar::before,
@@ -613,14 +580,13 @@ button {
 
     position: absolute;
 
+    inset: 11px;
+
     border:
-        1px solid rgba(255,255,255,.09);
+        1px solid
+        rgba(255,255,255,.08);
 
     border-radius: 50%;
-}
-
-.hero-pulsar::before {
-    inset: 11px;
 }
 
 .hero-pulsar::after {
@@ -639,18 +605,30 @@ button {
     background: #fff;
 
     box-shadow:
-        0 0 20px rgba(255,255,255,.95);
+        0 0 18px rgba(255,255,255,.95);
 
     animation:
-        heroPulse 2.4s ease-in-out infinite;
+        heroPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes heroOrb {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 @keyframes heroPulse {
 
     0%,
     100% {
-        transform: scale(.65);
-        opacity: .35;
+        transform: scale(.7);
+        opacity: .4;
     }
 
     50% {
@@ -673,26 +651,32 @@ button {
     flex-direction: column;
 
     font-size:
-        clamp(43px, 13vw, 105px);
+        clamp(
+            42px,
+            13vw,
+            105px
+        );
 
     line-height: .88;
 
-    letter-spacing: -.075em;
+    letter-spacing: -.07em;
 
     font-weight: 900;
 }
 
 .future-title span:first-child {
     color: #fff;
-
-    text-shadow:
-        0 0 45px rgba(255,255,255,.07);
 }
 
 .future-second {
     color:
         rgba(255,255,255,.32);
 }
+
+
+/* =========================================================
+   OPENING PILL
+   ========================================================= */
 
 .opening-acrylic {
     position: relative;
@@ -706,23 +690,27 @@ button {
 
     margin-top: 28px;
 
-    padding: 10px 15px;
+    padding:
+        10px 15px;
 
     border:
-        1px solid rgba(255,255,255,.12);
+        1px solid
+        rgba(255,255,255,.12);
 
     border-radius: 999px;
 
     background:
-        rgba(255,255,255,.045);
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.025)
+        );
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 12px 40px rgba(0,0,0,.2);
-
-    backdrop-filter: blur(14px);
+        inset 0 1px 0 rgba(255,255,255,.08);
 
     font-size: 9px;
+
     font-weight: 800;
 
     letter-spacing: .13em;
@@ -741,7 +729,7 @@ button {
     background: #fff;
 
     box-shadow:
-        0 0 14px rgba(255,255,255,.9);
+        0 0 12px rgba(255,255,255,.9);
 
     animation:
         pulseDot 1.8s ease-in-out infinite;
@@ -751,13 +739,13 @@ button {
 
     0%,
     100% {
-        opacity: .35;
-        transform: scale(.75);
+        opacity: .3;
+        transform: scale(.7);
     }
 
     50% {
         opacity: 1;
-        transform: scale(1.25);
+        transform: scale(1.4);
     }
 }
 
@@ -776,13 +764,14 @@ button {
     margin: 0 auto;
 
     padding:
-        15px 0 80px;
+        20px 0 90px;
 }
 
 .product-grid {
     display: grid;
 
-    grid-template-columns: 1fr;
+    grid-template-columns:
+        1fr;
 
     gap: 20px;
 }
@@ -795,100 +784,94 @@ button {
 .store-product {
     position: relative;
 
-    isolation: isolate;
+    z-index: 5;
 
     overflow: hidden;
 
-    border:
-        1px solid rgba(255,255,255,.105);
+    isolation: isolate;
 
-    border-radius: 27px;
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius: 25px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.085),
-            rgba(255,255,255,.025) 55%,
-            rgba(255,255,255,.015)
+            rgba(28,28,28,.96),
+            rgba(8,8,8,.98)
         );
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.09),
-        0 25px 80px rgba(0,0,0,.36);
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 25px 70px rgba(0,0,0,.38);
+
+    opacity: 1;
+
+    visibility: visible;
+
+    filter: none;
+
+    transform:
+        translateZ(0);
 
     transition:
-        transform .35s cubic-bezier(.22,.61,.36,1),
+        transform .35s ease,
         border-color .35s ease,
         box-shadow .35s ease;
 }
 
-.store-product::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: -1;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            125deg,
-            rgba(255,255,255,.055),
-            transparent 25%,
-            transparent 70%,
-            rgba(255,255,255,.025)
-        );
-}
-
 .store-product:hover {
-    transform: translateY(-6px);
+    transform:
+        translateY(-6px)
+        translateZ(0);
 
     border-color:
-        rgba(255,255,255,.19);
+        rgba(255,255,255,.20);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.12),
-        0 38px 100px rgba(0,0,0,.5);
+        inset 0 1px 0 rgba(255,255,255,.1),
+        0 40px 90px rgba(0,0,0,.55);
 }
 
 
 /* =========================================================
    PRODUCT IMAGE
-   IMPORTANT:
-   Image is intentionally kept completely independent
-   from glass overlays.
    ========================================================= */
 
 .product-image {
     position: relative;
+
+    z-index: 1;
 
     aspect-ratio: 1 / 1;
 
     overflow: hidden;
 
     display: grid;
+
     place-items: center;
 
     background:
         radial-gradient(
-            circle at 50% 42%,
-            rgba(255,255,255,.1),
-            transparent 57%
+            circle at 50% 45%,
+            rgba(255,255,255,.09),
+            transparent 58%
         ),
-        linear-gradient(
-            145deg,
-            #0d0d0d,
-            #050505
-        );
+        #080808;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    filter: none;
 }
 
 .product-image img {
     position: relative;
 
-    z-index: 1;
+    z-index: 2;
 
     display: block;
 
@@ -899,14 +882,14 @@ button {
 
     object-fit: contain;
 
-    opacity: 1;
+    opacity: 1 !important;
 
-    visibility: visible;
+    visibility: visible !important;
 
-    filter: none;
+    filter: none !important;
 
     transform:
-        translate3d(0,0,0);
+        translateZ(0);
 
     transition:
         transform .45s cubic-bezier(.22,.61,.36,1);
@@ -916,7 +899,7 @@ button {
 .product-image img {
     transform:
         scale(1.045)
-        translate3d(0,0,0);
+        translateZ(0);
 }
 
 
@@ -929,46 +912,27 @@ button {
 
     inset: 0;
 
-    z-index: 2;
-
-    pointer-events: none;
-
-    opacity: .7;
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(255,255,255,.08),
-            transparent 24%,
-            transparent 70%,
-            rgba(255,255,255,.025)
-        );
-
-    mix-blend-mode: screen;
-}
-
-.product-image::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
     z-index: 3;
 
     pointer-events: none;
 
     background:
         linear-gradient(
-            to bottom,
-            transparent 65%,
-            rgba(0,0,0,.12)
+            125deg,
+            rgba(255,255,255,.09),
+            transparent 23%,
+            transparent 70%,
+            rgba(255,255,255,.025)
         );
+
+    opacity: .75;
+
+    mix-blend-mode: screen;
 }
 
 
 /* =========================================================
-   BADGE
+   PRODUCT BADGE
    ========================================================= */
 
 .product-badge {
@@ -979,43 +943,30 @@ button {
 
     z-index: 6;
 
-    padding: 7px 10px;
+    padding:
+        7px 10px;
 
     border:
-        1px solid rgba(255,255,255,.17);
+        1px solid
+        rgba(255,255,255,.16);
 
     border-radius: 999px;
 
     background:
-        rgba(4,4,4,.62);
+        rgba(0,0,0,.72);
 
-    backdrop-filter: blur(14px);
+    /*
+       Important:
+       No backdrop-filter here.
+    */
 
     color: #fff;
 
     font-size: 8px;
+
     font-weight: 900;
 
     letter-spacing: .14em;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.25);
-}
-
-.product-no-image {
-    width: 100%;
-    height: 100%;
-
-    display: grid;
-    place-items: center;
-
-    color:
-        rgba(255,255,255,.25);
-
-    font-size: 12px;
-    font-weight: 800;
-
-    letter-spacing: .2em;
 }
 
 
@@ -1026,17 +977,23 @@ button {
 .product-info {
     position: relative;
 
-    z-index: 5;
+    z-index: 4;
 
     padding:
-        22px 20px 21px;
+        21px 19px 20px;
 
     background:
         linear-gradient(
             180deg,
-            rgba(8,8,8,.7),
-            rgba(5,5,5,.92)
+            rgba(10,10,10,.98),
+            rgba(6,6,6,1)
         );
+
+    opacity: 1;
+
+    visibility: visible;
+
+    filter: none;
 }
 
 .product-category {
@@ -1045,9 +1002,10 @@ button {
     margin-bottom: 8px;
 
     color:
-        rgba(255,255,255,.36);
+        rgba(255,255,255,.38);
 
     font-size: 9px;
+
     font-weight: 800;
 
     letter-spacing: .17em;
@@ -1055,8 +1013,6 @@ button {
 
 .product-title {
     margin-bottom: 9px;
-
-    color: #fff;
 
     font-size: 25px;
 
@@ -1073,7 +1029,7 @@ button {
     margin-bottom: 17px;
 
     color:
-        rgba(255,255,255,.47);
+        rgba(255,255,255,.48);
 
     font-size: 12px;
 
@@ -1087,6 +1043,7 @@ button {
 
 .product-price-row {
     display: flex;
+
     align-items: baseline;
 
     gap: 10px;
@@ -1095,8 +1052,6 @@ button {
 }
 
 .product-price {
-    color: #fff;
-
     font-size: 22px;
 
     font-weight: 800;
@@ -1106,7 +1061,7 @@ button {
 
 .product-reference-price {
     color:
-        rgba(255,255,255,.27);
+        rgba(255,255,255,.28);
 
     font-size: 11px;
 
@@ -1120,6 +1075,7 @@ button {
 
 .product-colors {
     display: flex;
+
     align-items: center;
 
     gap: 10px;
@@ -1132,6 +1088,7 @@ button {
         rgba(255,255,255,.3);
 
     font-size: 8px;
+
     font-weight: 800;
 
     letter-spacing: .13em;
@@ -1147,10 +1104,11 @@ button {
     width: 16px;
     height: 16px;
 
-    border:
-        1px solid rgba(255,255,255,.38);
-
     border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.35);
 
     background:
         linear-gradient(
@@ -1163,14 +1121,13 @@ button {
 
     transition:
         transform .2s ease,
-        box-shadow .2s ease;
+        border-color .2s ease;
 }
 
 .color-chip:hover {
-    transform: scale(1.2);
+    transform: scale(1.15);
 
-    box-shadow:
-        0 0 14px rgba(255,255,255,.2);
+    border-color: #fff;
 }
 
 
@@ -1181,7 +1138,8 @@ button {
 .product-actions {
     display: grid;
 
-    grid-template-columns: 1fr;
+    grid-template-columns:
+        1fr;
 
     gap: 9px;
 }
@@ -1190,20 +1148,23 @@ button {
     min-height: 49px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    padding: 0 15px;
+    padding:
+        0 14px;
 
     border:
-        1px solid rgba(255,255,255,.13);
+        1px solid
+        rgba(255,255,255,.12);
 
-    border-radius: 14px;
+    border-radius: 13px;
 
     background:
         linear-gradient(
-            145deg,
-            rgba(255,255,255,.075),
+            135deg,
+            rgba(255,255,255,.07),
             rgba(255,255,255,.025)
         );
 
@@ -1212,76 +1173,40 @@ button {
     cursor: pointer;
 
     font-size: 9px;
+
     font-weight: 800;
 
     letter-spacing: .12em;
 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.07);
-
     transition:
-        transform .22s ease,
-        background .22s ease,
-        border-color .22s ease,
-        box-shadow .22s ease;
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
 }
 
 .acrylic-button:hover {
     transform: translateY(-2px);
 
+    background:
+        rgba(255,255,255,.10);
+
     border-color:
         rgba(255,255,255,.25);
-
-    background:
-        rgba(255,255,255,.095);
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.25);
 }
 
 .product-buy-button {
-    position: relative;
-
-    overflow: hidden;
-
-    border-color:
-        rgba(255,255,255,.23);
-
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.19),
+            rgba(255,255,255,.18),
             rgba(255,255,255,.055)
         );
-}
 
-.product-buy-button::after {
-    content: "";
+    border-color:
+        rgba(255,255,255,.24);
 
-    position: absolute;
-
-    top: -60%;
-    left: -80%;
-
-    width: 45%;
-    height: 220%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.25),
-            transparent
-        );
-
-    transform: rotate(18deg);
-
-    transition:
-        left .6s ease;
-}
-
-.product-buy-button:hover::after {
-    left: 140%;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.12);
 }
 
 
@@ -1293,28 +1218,31 @@ button {
     min-height: 260px;
 
     display: grid;
+
     place-items: center;
 
     border:
-        1px solid rgba(255,255,255,.08);
+        1px solid
+        rgba(255,255,255,.07);
 
-    border-radius: 25px;
+    border-radius: 24px;
 
     background:
         rgba(255,255,255,.025);
 }
 
 .loading-pulsar {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
 
     border:
-        1px solid rgba(255,255,255,.2);
+        1px solid
+        rgba(255,255,255,.25);
 
     border-radius: 50%;
 
     box-shadow:
-        0 0 35px rgba(255,255,255,.08);
+        0 0 30px rgba(255,255,255,.08);
 
     animation:
         loadingPulse 1.4s ease-in-out infinite;
@@ -1325,7 +1253,7 @@ button {
     0%,
     100% {
         transform: scale(.65);
-        opacity: .3;
+        opacity: .35;
     }
 
     50% {
@@ -1343,7 +1271,9 @@ button {
     min-height: 300px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
 
@@ -1352,9 +1282,10 @@ button {
     text-align: center;
 
     border:
-        1px solid rgba(255,255,255,.08);
+        1px solid
+        rgba(255,255,255,.08);
 
-    border-radius: 25px;
+    border-radius: 24px;
 
     background:
         rgba(255,255,255,.025);
@@ -1367,29 +1298,13 @@ button {
     margin-bottom: 22px;
 
     border:
-        1px solid rgba(255,255,255,.16);
+        1px solid
+        rgba(255,255,255,.16);
 
     border-radius: 50%;
 
-    box-shadow:
-        0 0 35px rgba(255,255,255,.05);
-
     animation:
-        emptyPulse 2.5s ease-in-out infinite;
-}
-
-@keyframes emptyPulse {
-
-    0%,
-    100% {
-        transform: scale(.9);
-        opacity: .4;
-    }
-
-    50% {
-        transform: scale(1.08);
-        opacity: 1;
-    }
+        heroPulse 2.8s ease-in-out infinite;
 }
 
 .store-empty-state > span {
@@ -1399,6 +1314,7 @@ button {
         rgba(255,255,255,.32);
 
     font-size: 9px;
+
     font-weight: 800;
 
     letter-spacing: .18em;
@@ -1441,55 +1357,30 @@ button {
 
     overflow: hidden;
 
-    padding: 38px 22px;
+    padding:
+        35px 22px;
 
     text-align: center;
 
     border:
-        1px solid rgba(255,255,255,.1);
+        1px solid
+        rgba(255,255,255,.1);
 
-    border-radius: 27px;
+    border-radius: 25px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.075),
+            rgba(255,255,255,.07),
             rgba(255,255,255,.025)
         );
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.08),
-        0 25px 70px rgba(0,0,0,.32);
-}
-
-.contact-acrylic::before {
-    content: "";
-
-    position: absolute;
-
-    width: 220px;
-    height: 220px;
-
-    top: -120px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.08),
-            transparent 70%
-        );
-
-    pointer-events: none;
+        0 25px 70px rgba(0,0,0,.3);
 }
 
 .contact-pulsar {
-    position: relative;
-
     width: 60px;
     height: 60px;
 
@@ -1497,7 +1388,8 @@ button {
         0 auto 20px;
 
     border:
-        1px solid rgba(255,255,255,.1);
+        1px solid
+        rgba(255,255,255,.1);
 
     border-radius: 50%;
 
@@ -1509,19 +1401,7 @@ button {
         );
 
     animation:
-        contactPulse 3s ease-in-out infinite;
-}
-
-@keyframes contactPulse {
-
-    0%,
-    100% {
-        transform: scale(.95);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
+        heroOrb 4s ease-in-out infinite;
 }
 
 .contact-label {
@@ -1533,6 +1413,7 @@ button {
         rgba(255,255,255,.35);
 
     font-size: 9px;
+
     font-weight: 800;
 
     letter-spacing: .18em;
@@ -1556,33 +1437,36 @@ button {
 }
 
 .contact-button {
-    min-height: 49px;
+    min-height: 48px;
 
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
     gap: 18px;
 
-    padding: 0 22px;
+    padding:
+        0 22px;
 
     border:
-        1px solid rgba(255,255,255,.15);
+        1px solid
+        rgba(255,255,255,.15);
 
-    border-radius: 14px;
+    border-radius: 13px;
 
     background:
         rgba(255,255,255,.055);
 
     font-size: 9px;
+
     font-weight: 800;
 
     letter-spacing: .14em;
 
     transition:
         transform .2s ease,
-        background .2s ease,
-        border-color .2s ease;
+        background .2s ease;
 }
 
 .contact-button:hover {
@@ -1590,49 +1474,64 @@ button {
 
     background:
         rgba(255,255,255,.09);
-
-    border-color:
-        rgba(255,255,255,.23);
 }
 
 .contact-button strong {
     font-size: 17px;
+
     font-weight: 400;
 }
 
 
 /* =========================================================
    CART OVERLAY
+   CRITICAL FIX
    ========================================================= */
 
 .cart-overlay {
     position: fixed;
+
     inset: 0;
 
     z-index: 200;
 
+    /*
+       ABSOLUTELY NO BACKDROP BLUR HERE.
+       This layer must NEVER blur the store.
+    */
+
     background:
         rgba(0,0,0,.68);
-
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
 
     opacity: 0;
 
     pointer-events: none;
 
+    visibility: hidden;
+
     transition:
-        opacity .3s ease;
+        opacity .25s ease,
+        visibility .25s ease;
 }
+
+/*
+   Only visible when explicitly opened.
+*/
 
 .cart-overlay:not([hidden]) {
     opacity: 1;
 
     pointer-events: auto;
+
+    visibility: visible;
 }
 
+/*
+   hidden ALWAYS means hidden.
+*/
+
 .cart-overlay[hidden] {
-    display: block;
+    display: none !important;
 }
 
 
@@ -1657,33 +1556,36 @@ button {
     height: 100dvh;
 
     display: flex;
+
     flex-direction: column;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(16,16,16,.97),
-            rgba(5,5,5,.98)
-        );
+        rgba(8,8,8,.97);
 
     border-left:
-        1px solid rgba(255,255,255,.1);
+        1px solid
+        rgba(255,255,255,.1);
 
     box-shadow:
-        -35px 0 100px rgba(0,0,0,.55);
+        -30px 0 100px rgba(0,0,0,.5);
 
     transform:
         translateX(105%);
 
     transition:
-        transform .35s cubic-bezier(.22,.61,.36,1);
+        transform .3s cubic-bezier(.22,.61,.36,1);
 
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    /*
+       Blur ONLY inside the drawer.
+    */
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 .cart-drawer.open {
-    transform: translateX(0);
+    transform:
+        translateX(0);
 }
 
 
@@ -1693,13 +1595,16 @@ button {
 
 .cart-header {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
-    padding: 21px;
+    padding:
+        21px;
 
     border-bottom:
-        1px solid rgba(255,255,255,.08);
+        1px solid
+        rgba(255,255,255,.08);
 }
 
 .cart-small-title {
@@ -1711,6 +1616,7 @@ button {
         rgba(255,255,255,.3);
 
     font-size: 8px;
+
     font-weight: 800;
 
     letter-spacing: .18em;
@@ -1727,31 +1633,23 @@ button {
     height: 40px;
 
     display: grid;
+
     place-items: center;
 
     border:
-        1px solid rgba(255,255,255,.1);
+        1px solid
+        rgba(255,255,255,.1);
 
     border-radius: 50%;
 
     background:
         rgba(255,255,255,.04);
 
+    color: #fff;
+
     cursor: pointer;
 
     font-size: 25px;
-    font-weight: 300;
-
-    transition:
-        transform .2s ease,
-        background .2s ease;
-}
-
-.cart-close:hover {
-    transform: rotate(90deg);
-
-    background:
-        rgba(255,255,255,.09);
 }
 
 
@@ -1777,12 +1675,14 @@ button {
 
     gap: 12px;
 
-    padding: 12px;
+    padding:
+        12px;
 
     margin-bottom: 10px;
 
     border:
-        1px solid rgba(255,255,255,.08);
+        1px solid
+        rgba(255,255,255,.08);
 
     border-radius: 17px;
 
@@ -1795,6 +1695,7 @@ button {
     height: 72px;
 
     display: grid;
+
     place-items: center;
 
     overflow: hidden;
@@ -1816,6 +1717,7 @@ button {
     min-width: 0;
 
     display: flex;
+
     flex-direction: column;
 
     gap: 5px;
@@ -1842,6 +1744,7 @@ button {
 
 .cart-quantity {
     display: flex;
+
     align-items: center;
 
     gap: 10px;
@@ -1854,15 +1757,19 @@ button {
     height: 26px;
 
     display: grid;
+
     place-items: center;
 
     border:
-        1px solid rgba(255,255,255,.1);
+        1px solid
+        rgba(255,255,255,.1);
 
     border-radius: 8px;
 
     background:
         rgba(255,255,255,.04);
+
+    color: #fff;
 
     cursor: pointer;
 }
@@ -1881,8 +1788,6 @@ button {
     width: 28px;
     height: 28px;
 
-    border: 0;
-
     background: transparent;
 
     color:
@@ -1891,9 +1796,6 @@ button {
     cursor: pointer;
 
     font-size: 20px;
-
-    transition:
-        color .2s ease;
 }
 
 .cart-remove:hover {
@@ -1909,7 +1811,9 @@ button {
     min-height: 250px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
 
@@ -1925,12 +1829,13 @@ button {
     margin-bottom: 10px;
 
     border:
-        1px solid rgba(255,255,255,.14);
+        1px solid
+        rgba(255,255,255,.14);
 
     border-radius: 50%;
 
     animation:
-        emptyPulse 2.5s ease-in-out infinite;
+        heroPulse 2.5s ease-in-out infinite;
 }
 
 .cart-empty strong {
@@ -1952,18 +1857,22 @@ button {
    ========================================================= */
 
 .cart-footer {
-    padding: 17px;
+    padding:
+        17px;
 
     border-top:
-        1px solid rgba(255,255,255,.08);
+        1px solid
+        rgba(255,255,255,.08);
 
     background:
-        rgba(0,0,0,.28);
+        rgba(0,0,0,.35);
 }
 
 .cart-total-row {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     margin-bottom: 13px;
@@ -1974,6 +1883,7 @@ button {
         rgba(255,255,255,.35);
 
     font-size: 9px;
+
     font-weight: 800;
 
     letter-spacing: .15em;
@@ -1986,21 +1896,22 @@ button {
 }
 
 .checkout-button {
-    position: relative;
-
     width: 100%;
+
     min-height: 56px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    overflow: hidden;
-
-    padding: 0 18px;
+    padding:
+        0 18px;
 
     border:
-        1px solid rgba(255,255,255,.22);
+        1px solid
+        rgba(255,255,255,.22);
 
     border-radius: 14px;
 
@@ -2011,9 +1922,12 @@ button {
             rgba(255,255,255,.055)
         );
 
+    color: #fff;
+
     cursor: pointer;
 
     font-size: 10px;
+
     font-weight: 900;
 
     letter-spacing: .15em;
@@ -2021,36 +1935,8 @@ button {
 
 .checkout-button span {
     font-size: 20px;
+
     font-weight: 400;
-}
-
-.checkout-button::after {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: -100%;
-
-    width: 60%;
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.15),
-            transparent
-        );
-
-    transform: skewX(-20deg);
-
-    transition:
-        left .65s ease;
-}
-
-.checkout-button:hover::after {
-    left: 140%;
 }
 
 
@@ -2069,24 +1955,26 @@ button {
     max-width:
         calc(100% - 30px);
 
-    padding: 12px 17px;
+    padding:
+        12px 17px;
 
     border:
-        1px solid rgba(255,255,255,.15);
+        1px solid
+        rgba(255,255,255,.15);
 
     border-radius: 999px;
 
     background:
-        rgba(12,12,12,.9);
+        rgba(12,12,12,.94);
 
-    box-shadow:
-        0 15px 50px rgba(0,0,0,.5);
-
-    backdrop-filter: blur(18px);
+    /*
+       No backdrop blur.
+    */
 
     color: #fff;
 
     font-size: 9px;
+
     font-weight: 800;
 
     letter-spacing: .12em;
@@ -2094,7 +1982,7 @@ button {
     opacity: 0;
 
     transform:
-        translate(-50%, 15px);
+        translate(-50%,15px);
 
     pointer-events: none;
 
@@ -2107,7 +1995,7 @@ button {
     opacity: 1;
 
     transform:
-        translate(-50%, 0);
+        translate(-50%,0);
 }
 
 
@@ -2124,15 +2012,19 @@ button {
 
     margin: 0 auto;
 
-    padding: 0 0 35px;
+    padding:
+        0 0 35px;
 }
 
 .footer-acrylic {
     min-height: 70px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 
     gap: 7px;
@@ -2140,12 +2032,14 @@ button {
     padding: 18px;
 
     border-top:
-        1px solid rgba(255,255,255,.07);
+        1px solid
+        rgba(255,255,255,.07);
 
     color:
         rgba(255,255,255,.25);
 
     font-size: 8px;
+
     font-weight: 700;
 
     letter-spacing: .13em;
@@ -2169,20 +2063,20 @@ button {
         display: flex;
     }
 
-    .store-hero {
-        min-height: 510px;
-    }
-
     .product-grid {
         grid-template-columns:
-            repeat(2, minmax(0,1fr));
+            repeat(2,minmax(0,1fr));
 
-        gap: 22px;
+        gap: 20px;
     }
 
     .product-actions {
         grid-template-columns:
-            repeat(2, minmax(0,1fr));
+            repeat(2,minmax(0,1fr));
+    }
+
+    .store-hero {
+        min-height: 500px;
     }
 
     .products-section {
@@ -2221,14 +2115,14 @@ button {
 
     .product-grid {
         grid-template-columns:
-            repeat(3, minmax(0,1fr));
+            repeat(3,minmax(0,1fr));
 
-        gap: 25px;
+        gap: 24px;
     }
 
     .product-info {
         padding:
-            24px 22px 22px;
+            23px 22px 22px;
     }
 
     .contact-acrylic {
@@ -2259,7 +2153,14 @@ button {
             18px 55px;
     }
 
-    .products-section,
+    .products-section {
+        width:
+            min(
+                1280px,
+                calc(100% - 80px)
+            );
+    }
+
     .store-footer {
         width:
             min(
@@ -2275,27 +2176,23 @@ button {
 
 
 /* =========================================================
-   MOBILE IMAGE SAFETY
+   HARD SAFETY — PRODUCT CONTENT
    ========================================================= */
 
-@media (max-width: 599px) {
+.store-product,
+.store-product *,
+.product-image,
+.product-image *,
+.product-info,
+.product-info * {
+    opacity: 1;
+}
 
-    .store-product,
-    .product-image,
-    .product-image img {
-        transform: translateZ(0);
-    }
-
-    .store-product:hover {
-        transform: translateY(-3px);
-    }
-
-    .store-product:hover
-    .product-image img {
-        transform:
-            scale(1.025)
-            translateZ(0);
-    }
+.store-product,
+.product-image,
+.product-info {
+    visibility: visible;
+    filter: none;
 }
 
 

@@ -1851,68 +1851,6 @@ button {
     letter-spacing: 0.22em;
     white-space: nowrap;
 }
- /* =========================================================
-    VOLTICA — PRODUCT VISIBILITY FIX
-    ========================================================= */
-
-.store-product {
-    position: relative;
-    z-index: 10;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(25,25,25,.98),
-            rgba(8,8,8,.98)
-        );
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-
-    opacity: 1;
-    filter: none;
-
-    isolation: isolate;
-}
-
-.product-image {
-    position: relative;
-    z-index: 11;
-
-    background:
-        #0a0a0a;
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-
-    filter: none;
-}
-
-.product-image img {
-    position: relative;
-    z-index: 20;
-
-    opacity: 1;
-    filter: none;
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-}
-
-.product-info {
-    position: relative;
-    z-index: 12;
-
-    background:
-        rgba(8,8,8,.98);
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-}
-
-.image-reflection {
-    z-index: 21;
-}
 /* =========================================================
    VOLTICA STORE — FINAL PRODUCT VISIBILITY PATCH
    Fix: product images disappearing / dark overlay / layering

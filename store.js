@@ -166,18 +166,30 @@ function cacheDOM() {
 
 function loadProducts() {
 
+    /*
+       products.js exposes:
+
+       const volticaProducts = [...]
+
+       IMPORTANT:
+       Because volticaProducts is declared with const,
+       it is NOT automatically available as
+       window.volticaProducts.
+
+       We therefore access the global lexical variable
+       directly.
+    */
+
     if (
-        !Array.isArray(
-            window.volticaProducts
-        )
+        typeof volticaProducts === "undefined" ||
+        !Array.isArray(volticaProducts)
     ) {
 
         console.error(
             "VOLTICA ERROR: products.js was not loaded."
         );
 
-        VolticaStoreState.products =
-            [];
+        VolticaStoreState.products = [];
 
         return;
 
@@ -185,7 +197,7 @@ function loadProducts() {
 
 
     VolticaStoreState.products =
-        window.volticaProducts.filter(
+        volticaProducts.filter(
             product => {
 
                 return (
@@ -216,8 +228,6 @@ function loadProducts() {
     );
 
 }
-
-
 /* =========================================================
    RENDER PRODUCTS
    ========================================================= */

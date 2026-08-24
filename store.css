@@ -1913,3 +1913,147 @@ button {
 .image-reflection {
     z-index: 21;
 }
+/* =========================================================
+   VOLTICA STORE — FINAL PRODUCT VISIBILITY PATCH
+   Fix: product images disappearing / dark overlay / layering
+   ========================================================= */
+
+.store-product {
+    position: relative;
+    z-index: 10;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+
+    isolation: isolate;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,25,25,.98),
+            rgba(7,7,7,.98)
+        );
+
+    overflow: hidden;
+}
+
+.product-image {
+    position: relative;
+    z-index: 1;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,.08),
+            transparent 62%
+        ),
+        #090909;
+}
+
+.product-image img {
+    position: relative;
+    z-index: 2;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+
+    object-fit: contain;
+
+    transform: translateZ(0);
+
+    transition:
+        transform .4s ease;
+}
+
+/* Glass reflection stays ABOVE the image,
+   but can NEVER block interaction */
+
+.image-reflection {
+    position: absolute;
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    opacity: 1;
+
+    background:
+        linear-gradient(
+            125deg,
+            rgba(255,255,255,.08),
+            transparent 25%,
+            transparent 72%,
+            rgba(255,255,255,.02)
+        );
+}
+
+/* Product badges stay above everything */
+
+.product-badge {
+    z-index: 5;
+}
+
+/* Product information always remains visible */
+
+.product-info {
+    position: relative;
+    z-index: 4;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+
+    background:
+        rgba(8,8,8,.98);
+}
+
+/* Prevent accidental transparency from parent effects */
+
+.product-grid,
+.products-section {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Make sure images cannot be hidden by lazy-loading states */
+
+.product-image img[src] {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Mobile stability */
+
+@media (max-width: 599px) {
+
+    .store-product {
+        transform: translateZ(0);
+    }
+
+    .product-image img {
+        transform: translateZ(0);
+    }
+
+}
+
+/* Desktop hover */
+
+@media (min-width: 600px) {
+
+    .store-product:hover .product-image img {
+        transform: scale(1.035) translateZ(0);
+    }
+
+}

@@ -1,11 +1,18 @@
 /* =========================================================
    VOLTICA STORE — STORE.CSS
-   NEXT-GEN GLASS / ACRYLIC
-   CLEAN LAYER ARCHITECTURE
-   NO GLOBAL PAGE BLUR
+   PREMIUM STOREFRONT
+   Glass / Acrylic / Tech / Animated
+   SAFE OVERLAY ARCHITECTURE
    ========================================================= */
 
-* {
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -13,26 +20,14 @@
 
 html {
     scroll-behavior: smooth;
+    background: #030303;
 }
 
 body {
     min-height: 100vh;
     overflow-x: hidden;
 
-    background:
-        radial-gradient(
-            circle at 50% -15%,
-            rgba(255,255,255,.08),
-            transparent 38%
-        ),
-        radial-gradient(
-            circle at 0% 50%,
-            rgba(255,255,255,.025),
-            transparent 32%
-        ),
-        #030303;
-
-    color: #fff;
+    color: #f5f5f5;
 
     font-family:
         Inter,
@@ -40,54 +35,19 @@ body {
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
-}
-
-/* =========================================================
-   GLOBAL ATMOSPHERE
-   IMPORTANT:
-   NO backdrop-filter here.
-   ========================================================= */
-
-body::before {
-    content: "";
-
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent 49.9%,
-            rgba(255,255,255,.018) 50%,
-            transparent 50.1%
-        );
-
-    background-size: 120px 120px;
-
-    opacity: .35;
-}
-
-body::after {
-    content: "";
-
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 0;
 
     background:
         radial-gradient(
-            circle at 50% 25%,
-            transparent 0%,
-            rgba(0,0,0,.18) 65%,
-            rgba(0,0,0,.55) 100%
-        );
+            circle at 50% -15%,
+            rgba(255,255,255,.075),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 0% 50%,
+            rgba(130,130,130,.025),
+            transparent 32%
+        ),
+        #030303;
 }
 
 a {
@@ -97,8 +57,45 @@ a {
 
 button {
     font: inherit;
-    border: 0;
     -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   GLOBAL ATMOSPHERE
+   IMPORTANT:
+   NO GLOBAL BACKDROP FILTER
+   ========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    z-index: -20;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.014) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.014) 1px,
+            transparent 1px
+        );
+
+    background-size: 48px 48px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 85%
+        );
 }
 
 
@@ -110,11 +107,11 @@ button {
     position: fixed;
     inset: 0;
 
+    z-index: -15;
+
     overflow: hidden;
 
     pointer-events: none;
-
-    z-index: 1;
 }
 
 .pulsar {
@@ -127,10 +124,10 @@ button {
 
     background: #fff;
 
-    box-shadow:
-        0 0 12px rgba(255,255,255,.8);
-
     opacity: .25;
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,.8);
 
     animation:
         pulsarFloat 5s ease-in-out infinite;
@@ -138,41 +135,36 @@ button {
 
 .p1 {
     top: 18%;
-    left: 12%;
+    left: 14%;
 }
 
 .p2 {
-    top: 32%;
-    left: 84%;
-
+    top: 31%;
+    left: 82%;
     animation-delay: 1s;
 }
 
 .p3 {
-    top: 63%;
-    left: 22%;
-
+    top: 61%;
+    left: 23%;
     animation-delay: 2s;
 }
 
 .p4 {
-    top: 76%;
-    left: 78%;
-
+    top: 72%;
+    left: 76%;
     animation-delay: 3s;
 }
 
 .p5 {
-    top: 45%;
+    top: 44%;
     left: 51%;
-
     animation-delay: 1.5s;
 }
 
 .p6 {
-    top: 88%;
-    left: 43%;
-
+    top: 87%;
+    left: 42%;
     animation-delay: 2.5s;
 }
 
@@ -185,8 +177,8 @@ button {
     }
 
     50% {
-        opacity: .8;
-        transform: scale(2.2);
+        opacity: .85;
+        transform: scale(2);
     }
 }
 
@@ -199,38 +191,19 @@ button {
     position: fixed;
     inset: 0;
 
+    z-index: -18;
+
     pointer-events: none;
 
-    z-index: 1;
+    opacity: .2;
 
     background:
         linear-gradient(
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
             90deg,
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
+            transparent 49.8%,
+            rgba(255,255,255,.025) 50%,
+            transparent 50.2%
         );
-
-    background-size: 44px 44px;
-
-    opacity: .18;
-}
-
-
-/* =========================================================
-   MAIN CONTENT LAYER
-   ========================================================= */
-
-.store-header,
-.store-hero,
-.products-section,
-.contact-section,
-.store-footer {
-    position: relative;
-    z-index: 5;
 }
 
 
@@ -241,6 +214,8 @@ button {
 .store-header {
     position: sticky;
     top: 0;
+
+    z-index: 100;
 
     min-height: 72px;
 
@@ -253,20 +228,12 @@ button {
     padding: 13px 17px;
 
     background:
-        linear-gradient(
-            180deg,
-            rgba(10,10,10,.92),
-            rgba(5,5,5,.78)
-        );
+        rgba(5,5,5,.84);
 
     border-bottom:
         1px solid
-        rgba(255,255,255,.09);
+        rgba(255,255,255,.08);
 
-    /*
-       Glass only on the header.
-       It cannot blur the product cards.
-    */
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 }
@@ -289,9 +256,9 @@ button {
     width: 38px;
     height: 38px;
 
-    object-fit: contain;
-
     display: block;
+
+    object-fit: contain;
 
     flex-shrink: 0;
 }
@@ -305,20 +272,20 @@ button {
 
     border:
         1px solid
-        rgba(255,255,255,.18);
+        rgba(255,255,255,.2);
 
-    border-radius: 12px;
+    border-radius: 11px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.15),
+            rgba(255,255,255,.14),
             rgba(255,255,255,.025)
         );
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.14),
-        0 0 30px rgba(255,255,255,.035);
+        0 0 25px rgba(255,255,255,.03);
 
     font-size: 21px;
     font-weight: 900;
@@ -326,7 +293,6 @@ button {
 
 .logo-text {
     font-size: .95rem;
-
     font-weight: 800;
 
     letter-spacing: .22em;
@@ -341,10 +307,9 @@ button {
 
 .store-nav {
     display: none;
-
     align-items: center;
 
-    gap: 25px;
+    gap: 24px;
 }
 
 .store-nav a {
@@ -352,13 +317,13 @@ button {
         rgba(255,255,255,.45);
 
     font-size: 10px;
-
     font-weight: 800;
 
     letter-spacing: .14em;
 
     transition:
-        color .25s ease;
+        color .2s ease,
+        opacity .2s ease;
 }
 
 .store-nav a:hover,
@@ -382,7 +347,7 @@ button {
 
     border:
         1px solid
-        rgba(255,255,255,.14);
+        rgba(255,255,255,.13);
 
     border-radius: 13px;
 
@@ -394,19 +359,19 @@ button {
     cursor: pointer;
 
     transition:
-        transform .25s ease,
-        background .25s ease,
-        border-color .25s ease;
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
 }
 
 .cart-acrylic:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 
     background:
-        rgba(255,255,255,.09);
+        rgba(255,255,255,.085);
 
     border-color:
-        rgba(255,255,255,.25);
+        rgba(255,255,255,.22);
 }
 
 .cart-icon svg {
@@ -416,7 +381,6 @@ button {
     fill: none;
 
     stroke: currentColor;
-
     stroke-width: 1.5;
 
     stroke-linecap: round;
@@ -438,21 +402,20 @@ button {
     padding: 0 4px;
 
     border:
-        1px solid #000;
+        1px solid
+        rgba(0,0,0,.8);
 
     border-radius: 50%;
 
     background: #fff;
-
     color: #000;
 
     font-size: 8px;
-
     font-weight: 900;
 
     opacity: 0;
 
-    transform: scale(.6);
+    transform: scale(.7);
 
     transition:
         opacity .2s ease,
@@ -461,7 +424,6 @@ button {
 
 .cart-count.visible {
     opacity: 1;
-
     transform: scale(1);
 }
 
@@ -471,7 +433,9 @@ button {
    ========================================================= */
 
 .store-hero {
-    min-height: 450px;
+    position: relative;
+
+    min-height: 430px;
 
     display: flex;
     flex-direction: column;
@@ -479,12 +443,11 @@ button {
     align-items: center;
     justify-content: center;
 
-    padding:
-        60px 18px 50px;
-
-    text-align: center;
+    padding: 55px 18px 45px;
 
     overflow: hidden;
+
+    text-align: center;
 }
 
 .store-hero::before {
@@ -492,56 +455,27 @@ button {
 
     position: absolute;
 
-    width: 420px;
-    height: 420px;
+    width: 360px;
+    height: 360px;
 
-    top: 0;
+    top: 20px;
     left: 50%;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(255,255,255,.08),
+            rgba(255,255,255,.075),
             transparent 68%
         );
 
-    filter: blur(4px);
+    filter: blur(10px);
 
     pointer-events: none;
-
-    animation:
-        heroAtmosphere 7s ease-in-out infinite;
 }
-
-@keyframes heroAtmosphere {
-
-    0%,
-    100% {
-        transform:
-            translateX(-50%)
-            scale(.92);
-
-        opacity: .55;
-    }
-
-    50% {
-        transform:
-            translateX(-50%)
-            scale(1.08);
-
-        opacity: 1;
-    }
-}
-
-
-/* =========================================================
-   HERO PULSAR
-   ========================================================= */
 
 .hero-pulsar {
     position: relative;
@@ -556,22 +490,22 @@ button {
 
     border:
         1px solid
-        rgba(255,255,255,.13);
+        rgba(255,255,255,.12);
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(255,255,255,.08),
+            rgba(255,255,255,.075),
             transparent 68%
         );
 
     box-shadow:
-        0 0 60px rgba(255,255,255,.05);
+        0 0 55px rgba(255,255,255,.04);
 
     animation:
-        heroOrb 4s ease-in-out infinite;
+        heroOrbit 8s linear infinite;
 }
 
 .hero-pulsar::before,
@@ -580,8 +514,6 @@ button {
 
     position: absolute;
 
-    inset: 11px;
-
     border:
         1px solid
         rgba(255,255,255,.08);
@@ -589,11 +521,15 @@ button {
     border-radius: 50%;
 }
 
+.hero-pulsar::before {
+    inset: 11px;
+}
+
 .hero-pulsar::after {
     inset: 25px;
 
     border-color:
-        rgba(255,255,255,.17);
+        rgba(255,255,255,.16);
 }
 
 .hero-pulsar span {
@@ -605,21 +541,15 @@ button {
     background: #fff;
 
     box-shadow:
-        0 0 18px rgba(255,255,255,.95);
+        0 0 18px rgba(255,255,255,.9);
 
     animation:
         heroPulse 2.5s ease-in-out infinite;
 }
 
-@keyframes heroOrb {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
+@keyframes heroOrbit {
+    to {
+        transform: rotate(360deg);
     }
 }
 
@@ -632,30 +562,20 @@ button {
     }
 
     50% {
-        transform: scale(1.5);
+        transform: scale(1.4);
         opacity: 1;
     }
 }
 
-
-/* =========================================================
-   HERO TITLE
-   ========================================================= */
-
 .future-title {
     position: relative;
-
     z-index: 2;
 
     display: flex;
     flex-direction: column;
 
     font-size:
-        clamp(
-            42px,
-            13vw,
-            105px
-        );
+        clamp(42px, 13vw, 105px);
 
     line-height: .88;
 
@@ -670,17 +590,11 @@ button {
 
 .future-second {
     color:
-        rgba(255,255,255,.32);
+        rgba(255,255,255,.33);
 }
-
-
-/* =========================================================
-   OPENING PILL
-   ========================================================= */
 
 .opening-acrylic {
     position: relative;
-
     z-index: 2;
 
     display: inline-flex;
@@ -690,8 +604,7 @@ button {
 
     margin-top: 28px;
 
-    padding:
-        10px 15px;
+    padding: 10px 14px;
 
     border:
         1px solid
@@ -700,17 +613,12 @@ button {
     border-radius: 999px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.08),
-            rgba(255,255,255,.025)
-        );
+        rgba(255,255,255,.04);
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.08);
 
     font-size: 9px;
-
     font-weight: 800;
 
     letter-spacing: .13em;
@@ -739,13 +647,13 @@ button {
 
     0%,
     100% {
-        opacity: .3;
+        opacity: .35;
         transform: scale(.7);
     }
 
     50% {
         opacity: 1;
-        transform: scale(1.4);
+        transform: scale(1.25);
     }
 }
 
@@ -763,17 +671,15 @@ button {
 
     margin: 0 auto;
 
-    padding:
-        20px 0 90px;
+    padding: 15px 0 80px;
 }
 
 .product-grid {
     display: grid;
 
-    grid-template-columns:
-        1fr;
+    grid-template-columns: 1fr;
 
-    gap: 20px;
+    gap: 18px;
 }
 
 
@@ -784,55 +690,47 @@ button {
 .store-product {
     position: relative;
 
-    z-index: 5;
+    z-index: 1;
 
     overflow: hidden;
 
     isolation: isolate;
 
+    opacity: 1 !important;
+    visibility: visible !important;
+
     border:
         1px solid
-        rgba(255,255,255,.10);
+        rgba(255,255,255,.11);
 
     border-radius: 25px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(28,28,28,.96),
-            rgba(8,8,8,.98)
+            rgba(30,30,30,.96),
+            rgba(8,8,8,.96)
         );
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 25px 70px rgba(0,0,0,.38);
-
-    opacity: 1;
-
-    visibility: visible;
-
-    filter: none;
-
-    transform:
-        translateZ(0);
+        inset 0 1px 0 rgba(255,255,255,.07),
+        0 25px 70px rgba(0,0,0,.3);
 
     transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
 }
 
 .store-product:hover {
-    transform:
-        translateY(-6px)
-        translateZ(0);
+    transform: translateY(-4px);
 
     border-color:
-        rgba(255,255,255,.20);
+        rgba(255,255,255,.2);
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.1),
-        0 40px 90px rgba(0,0,0,.55);
+        0 35px 90px rgba(0,0,0,.42);
 }
 
 
@@ -850,22 +748,18 @@ button {
     overflow: hidden;
 
     display: grid;
-
     place-items: center;
+
+    opacity: 1 !important;
+    visibility: visible !important;
 
     background:
         radial-gradient(
             circle at 50% 45%,
-            rgba(255,255,255,.09),
-            transparent 58%
+            rgba(255,255,255,.08),
+            transparent 62%
         ),
-        #080808;
-
-    opacity: 1;
-
-    visibility: visible;
-
-    filter: none;
+        #090909;
 }
 
 .product-image img {
@@ -883,33 +777,30 @@ button {
     object-fit: contain;
 
     opacity: 1 !important;
-
     visibility: visible !important;
 
     filter: none !important;
 
-    transform:
-        translateZ(0);
+    transform: translateZ(0);
 
     transition:
-        transform .45s cubic-bezier(.22,.61,.36,1);
+        transform .4s ease;
 }
 
 .store-product:hover
 .product-image img {
     transform:
-        scale(1.045)
+        scale(1.035)
         translateZ(0);
 }
 
 
 /* =========================================================
-   IMAGE GLASS REFLECTION
+   IMAGE REFLECTION
    ========================================================= */
 
 .image-reflection {
     position: absolute;
-
     inset: 0;
 
     z-index: 3;
@@ -919,15 +810,11 @@ button {
     background:
         linear-gradient(
             125deg,
-            rgba(255,255,255,.09),
-            transparent 23%,
-            transparent 70%,
-            rgba(255,255,255,.025)
+            rgba(255,255,255,.075),
+            transparent 25%,
+            transparent 72%,
+            rgba(255,255,255,.018)
         );
-
-    opacity: .75;
-
-    mix-blend-mode: screen;
 }
 
 
@@ -941,10 +828,9 @@ button {
     top: 14px;
     left: 14px;
 
-    z-index: 6;
+    z-index: 5;
 
-    padding:
-        7px 10px;
+    padding: 7px 10px;
 
     border:
         1px solid
@@ -953,20 +839,35 @@ button {
     border-radius: 999px;
 
     background:
-        rgba(0,0,0,.72);
-
-    /*
-       Important:
-       No backdrop-filter here.
-    */
+        rgba(0,0,0,.62);
 
     color: #fff;
 
     font-size: 8px;
-
     font-weight: 900;
 
     letter-spacing: .14em;
+}
+
+
+/* =========================================================
+   NO IMAGE
+   ========================================================= */
+
+.product-no-image {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    place-items: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: .2em;
 }
 
 
@@ -979,21 +880,13 @@ button {
 
     z-index: 4;
 
-    padding:
-        21px 19px 20px;
+    padding: 21px 19px 20px;
+
+    opacity: 1 !important;
+    visibility: visible !important;
 
     background:
-        linear-gradient(
-            180deg,
-            rgba(10,10,10,.98),
-            rgba(6,6,6,1)
-        );
-
-    opacity: 1;
-
-    visibility: visible;
-
-    filter: none;
+        rgba(8,8,8,.97);
 }
 
 .product-category {
@@ -1002,10 +895,9 @@ button {
     margin-bottom: 8px;
 
     color:
-        rgba(255,255,255,.38);
+        rgba(255,255,255,.37);
 
     font-size: 9px;
-
     font-weight: 800;
 
     letter-spacing: .17em;
@@ -1043,7 +935,6 @@ button {
 
 .product-price-row {
     display: flex;
-
     align-items: baseline;
 
     gap: 10px;
@@ -1053,7 +944,6 @@ button {
 
 .product-price {
     font-size: 22px;
-
     font-weight: 800;
 
     letter-spacing: -.03em;
@@ -1075,7 +965,6 @@ button {
 
 .product-colors {
     display: flex;
-
     align-items: center;
 
     gap: 10px;
@@ -1088,7 +977,6 @@ button {
         rgba(255,255,255,.3);
 
     font-size: 8px;
-
     font-weight: 800;
 
     letter-spacing: .13em;
@@ -1097,18 +985,18 @@ button {
 .color-list {
     display: flex;
 
-    gap: 7px;
+    gap: 6px;
 }
 
 .color-chip {
-    width: 16px;
-    height: 16px;
-
-    border-radius: 50%;
+    width: 15px;
+    height: 15px;
 
     border:
         1px solid
         rgba(255,255,255,.35);
+
+    border-radius: 50%;
 
     background:
         linear-gradient(
@@ -1132,28 +1020,25 @@ button {
 
 
 /* =========================================================
-   ACTIONS
+   PRODUCT ACTIONS
    ========================================================= */
 
 .product-actions {
     display: grid;
 
-    grid-template-columns:
-        1fr;
+    grid-template-columns: 1fr;
 
-    gap: 9px;
+    gap: 8px;
 }
 
 .acrylic-button {
-    min-height: 49px;
+    min-height: 48px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    padding:
-        0 14px;
+    padding: 0 14px;
 
     border:
         1px solid
@@ -1162,18 +1047,13 @@ button {
     border-radius: 13px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.07),
-            rgba(255,255,255,.025)
-        );
+        rgba(255,255,255,.045);
 
     color: #fff;
 
     cursor: pointer;
 
     font-size: 9px;
-
     font-weight: 800;
 
     letter-spacing: .12em;
@@ -1185,28 +1065,25 @@ button {
 }
 
 .acrylic-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 
     background:
-        rgba(255,255,255,.10);
+        rgba(255,255,255,.09);
 
     border-color:
-        rgba(255,255,255,.25);
+        rgba(255,255,255,.24);
 }
 
 .product-buy-button {
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.18),
+            rgba(255,255,255,.17),
             rgba(255,255,255,.055)
         );
 
     border-color:
-        rgba(255,255,255,.24);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.12);
+        rgba(255,255,255,.23);
 }
 
 
@@ -1218,7 +1095,6 @@ button {
     min-height: 260px;
 
     display: grid;
-
     place-items: center;
 
     border:
@@ -1237,7 +1113,7 @@ button {
 
     border:
         1px solid
-        rgba(255,255,255,.25);
+        rgba(255,255,255,.2);
 
     border-radius: 50%;
 
@@ -1271,7 +1147,6 @@ button {
     min-height: 300px;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
@@ -1303,8 +1178,8 @@ button {
 
     border-radius: 50%;
 
-    animation:
-        heroPulse 2.8s ease-in-out infinite;
+    box-shadow:
+        0 0 35px rgba(255,255,255,.05);
 }
 
 .store-empty-state > span {
@@ -1314,7 +1189,6 @@ button {
         rgba(255,255,255,.32);
 
     font-size: 9px;
-
     font-weight: 800;
 
     letter-spacing: .18em;
@@ -1357,8 +1231,7 @@ button {
 
     overflow: hidden;
 
-    padding:
-        35px 22px;
+    padding: 35px 22px;
 
     text-align: center;
 
@@ -1371,8 +1244,8 @@ button {
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.07),
-            rgba(255,255,255,.025)
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.022)
         );
 
     box-shadow:
@@ -1384,8 +1257,7 @@ button {
     width: 60px;
     height: 60px;
 
-    margin:
-        0 auto 20px;
+    margin: 0 auto 20px;
 
     border:
         1px solid
@@ -1399,9 +1271,6 @@ button {
             rgba(255,255,255,.08),
             transparent 68%
         );
-
-    animation:
-        heroOrb 4s ease-in-out infinite;
 }
 
 .contact-label {
@@ -1413,7 +1282,6 @@ button {
         rgba(255,255,255,.35);
 
     font-size: 9px;
-
     font-weight: 800;
 
     letter-spacing: .18em;
@@ -1440,14 +1308,12 @@ button {
     min-height: 48px;
 
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
 
     gap: 18px;
 
-    padding:
-        0 22px;
+    padding: 0 22px;
 
     border:
         1px solid
@@ -1459,26 +1325,13 @@ button {
         rgba(255,255,255,.055);
 
     font-size: 9px;
-
     font-weight: 800;
 
     letter-spacing: .14em;
-
-    transition:
-        transform .2s ease,
-        background .2s ease;
-}
-
-.contact-button:hover {
-    transform: translateY(-2px);
-
-    background:
-        rgba(255,255,255,.09);
 }
 
 .contact-button strong {
     font-size: 17px;
-
     font-weight: 400;
 }
 
@@ -1489,49 +1342,55 @@ button {
    ========================================================= */
 
 .cart-overlay {
-    position: fixed;
 
+    /*
+       IMPORTANT:
+       The overlay is NEVER visible by default.
+    */
+
+    position: fixed;
     inset: 0;
 
     z-index: 200;
 
+    background:
+        rgba(0,0,0,.64);
+
     /*
-       ABSOLUTELY NO BACKDROP BLUR HERE.
-       This layer must NEVER blur the store.
+       Blur is intentionally limited to the cart state.
+       It cannot affect the page when hidden.
     */
 
-    background:
-        rgba(0,0,0,.68);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 
     opacity: 0;
 
     pointer-events: none;
 
-    visibility: hidden;
-
     transition:
-        opacity .25s ease,
-        visibility .25s ease;
+        opacity .25s ease;
 }
 
+
+/* =========================================================
+   HIDDEN ATTRIBUTE — CRITICAL
+   ========================================================= */
+
+.cart-overlay[hidden] {
+    display: none !important;
+}
+
+
 /*
-   Only visible when explicitly opened.
+   When JS removes [hidden], the overlay becomes available,
+   but remains invisible until its active state is applied.
 */
 
 .cart-overlay:not([hidden]) {
     opacity: 1;
 
     pointer-events: auto;
-
-    visibility: visible;
-}
-
-/*
-   hidden ALWAYS means hidden.
-*/
-
-.cart-overlay[hidden] {
-    display: none !important;
 }
 
 
@@ -1556,7 +1415,6 @@ button {
     height: 100dvh;
 
     display: flex;
-
     flex-direction: column;
 
     background:
@@ -1574,13 +1432,6 @@ button {
 
     transition:
         transform .3s cubic-bezier(.22,.61,.36,1);
-
-    /*
-       Blur ONLY inside the drawer.
-    */
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
 }
 
 .cart-drawer.open {
@@ -1595,12 +1446,10 @@ button {
 
 .cart-header {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 
-    padding:
-        21px;
+    padding: 21px;
 
     border-bottom:
         1px solid
@@ -1616,7 +1465,6 @@ button {
         rgba(255,255,255,.3);
 
     font-size: 8px;
-
     font-weight: 800;
 
     letter-spacing: .18em;
@@ -1633,7 +1481,6 @@ button {
     height: 40px;
 
     display: grid;
-
     place-items: center;
 
     border:
@@ -1650,6 +1497,7 @@ button {
     cursor: pointer;
 
     font-size: 25px;
+    font-weight: 300;
 }
 
 
@@ -1675,8 +1523,7 @@ button {
 
     gap: 12px;
 
-    padding:
-        12px;
+    padding: 12px;
 
     margin-bottom: 10px;
 
@@ -1695,7 +1542,6 @@ button {
     height: 72px;
 
     display: grid;
-
     place-items: center;
 
     overflow: hidden;
@@ -1717,7 +1563,6 @@ button {
     min-width: 0;
 
     display: flex;
-
     flex-direction: column;
 
     gap: 5px;
@@ -1731,7 +1576,6 @@ button {
     font-size: 12px;
 
     white-space: nowrap;
-
     text-overflow: ellipsis;
 }
 
@@ -1744,7 +1588,6 @@ button {
 
 .cart-quantity {
     display: flex;
-
     align-items: center;
 
     gap: 10px;
@@ -1757,7 +1600,6 @@ button {
     height: 26px;
 
     display: grid;
-
     place-items: center;
 
     border:
@@ -1788,6 +1630,8 @@ button {
     width: 28px;
     height: 28px;
 
+    border: 0;
+
     background: transparent;
 
     color:
@@ -1811,7 +1655,6 @@ button {
     min-height: 250px;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
@@ -1833,9 +1676,6 @@ button {
         rgba(255,255,255,.14);
 
     border-radius: 50%;
-
-    animation:
-        heroPulse 2.5s ease-in-out infinite;
 }
 
 .cart-empty strong {
@@ -1857,22 +1697,19 @@ button {
    ========================================================= */
 
 .cart-footer {
-    padding:
-        17px;
+    padding: 17px;
 
     border-top:
         1px solid
         rgba(255,255,255,.08);
 
     background:
-        rgba(0,0,0,.35);
+        rgba(0,0,0,.3);
 }
 
 .cart-total-row {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     margin-bottom: 13px;
@@ -1883,7 +1720,6 @@ button {
         rgba(255,255,255,.35);
 
     font-size: 9px;
-
     font-weight: 800;
 
     letter-spacing: .15em;
@@ -1897,17 +1733,13 @@ button {
 
 .checkout-button {
     width: 100%;
-
     min-height: 56px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
-    padding:
-        0 18px;
+    padding: 0 18px;
 
     border:
         1px solid
@@ -1927,7 +1759,6 @@ button {
     cursor: pointer;
 
     font-size: 10px;
-
     font-weight: 900;
 
     letter-spacing: .15em;
@@ -1935,7 +1766,6 @@ button {
 
 .checkout-button span {
     font-size: 20px;
-
     font-weight: 400;
 }
 
@@ -1955,8 +1785,7 @@ button {
     max-width:
         calc(100% - 30px);
 
-    padding:
-        12px 17px;
+    padding: 12px 17px;
 
     border:
         1px solid
@@ -1965,16 +1794,14 @@ button {
     border-radius: 999px;
 
     background:
-        rgba(12,12,12,.94);
+        rgba(12,12,12,.92);
 
-    /*
-       No backdrop blur.
-    */
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.5);
 
     color: #fff;
 
     font-size: 9px;
-
     font-weight: 800;
 
     letter-spacing: .12em;
@@ -2012,19 +1839,16 @@ button {
 
     margin: 0 auto;
 
-    padding:
-        0 0 35px;
+    padding: 0 0 35px;
 }
 
 .footer-acrylic {
     min-height: 70px;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     gap: 7px;
@@ -2039,7 +1863,6 @@ button {
         rgba(255,255,255,.25);
 
     font-size: 8px;
-
     font-weight: 700;
 
     letter-spacing: .13em;
@@ -2055,8 +1878,7 @@ button {
 @media (min-width: 600px) {
 
     .store-header {
-        padding:
-            15px 26px;
+        padding: 15px 26px;
     }
 
     .store-nav {
@@ -2092,8 +1914,7 @@ button {
 @media (min-width: 900px) {
 
     .store-header {
-        padding:
-            17px 42px;
+        padding: 17px 42px;
     }
 
     .store-nav {
@@ -2106,11 +1927,7 @@ button {
 
     .future-title {
         font-size:
-            clamp(
-                72px,
-                9vw,
-                122px
-            );
+            clamp(72px,9vw,122px);
     }
 
     .product-grid {
@@ -2121,13 +1938,11 @@ button {
     }
 
     .product-info {
-        padding:
-            23px 22px 22px;
+        padding: 23px 22px 22px;
     }
 
     .contact-acrylic {
-        padding:
-            55px 35px;
+        padding: 55px 35px;
     }
 
     .contact-content h2 {
@@ -2149,8 +1964,7 @@ button {
 @media (min-width: 1200px) {
 
     .store-header {
-        padding:
-            18px 55px;
+        padding: 18px 55px;
     }
 
     .products-section {
@@ -2172,27 +1986,6 @@ button {
     .store-hero {
         min-height: 620px;
     }
-}
-
-
-/* =========================================================
-   HARD SAFETY — PRODUCT CONTENT
-   ========================================================= */
-
-.store-product,
-.store-product *,
-.product-image,
-.product-image *,
-.product-info,
-.product-info * {
-    opacity: 1;
-}
-
-.store-product,
-.product-image,
-.product-info {
-    visibility: visible;
-    filter: none;
 }
 
 

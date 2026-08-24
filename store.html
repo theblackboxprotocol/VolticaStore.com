@@ -37,7 +37,10 @@
      PULSAR FIELD
      ===================================================== -->
 
-<div class="pulsar-field" aria-hidden="true">
+<div
+    class="pulsar-field"
+    aria-hidden="true"
+>
 
     <span class="pulsar p1"></span>
     <span class="pulsar p2"></span>
@@ -53,7 +56,10 @@
      BACKGROUND GRID
      ===================================================== -->
 
-<div class="tech-grid" aria-hidden="true"></div>
+<div
+    class="tech-grid"
+    aria-hidden="true"
+></div>
 
 
 <!-- =====================================================
@@ -82,7 +88,7 @@
     </a>
 
 
-    <!-- NAV -->
+    <!-- NAVIGATION -->
 
     <nav class="store-nav">
 
@@ -104,7 +110,7 @@
     </nav>
 
 
-    <!-- CART -->
+    <!-- CART BUTTON -->
 
     <button
         type="button"
@@ -154,157 +160,169 @@
 </header>
 
 
-
 <!-- =====================================================
-     HERO
+     MAIN CONTENT
      ===================================================== -->
 
 <main>
 
 
-<section class="store-hero">
+    <!-- =================================================
+         HERO
+         ================================================= -->
+
+    <section class="store-hero">
 
 
-    <div class="hero-pulsar">
+        <div class="hero-pulsar">
 
-        <span></span>
-
-    </div>
-
-
-    <!-- MAIN TITLE -->
-
-    <h1 class="future-title">
-
-        <span>THE FUTURE</span>
-
-        <span class="future-second">
-            OF EVERYDAY
-        </span>
-
-    </h1>
-
-
-    <!-- OPENING -->
-
-    <div class="opening-acrylic">
-
-        <span class="opening-pulse"></span>
-
-        <span>
-            COLLECTION OPEN
-        </span>
-
-        <strong>
-            SEPT 1
-        </strong>
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     PRODUCTS
-     ===================================================== -->
-
-<section
-    class="products-section"
-    aria-label="Voltica products"
->
-
-
-    <div
-        id="productGrid"
-        class="product-grid"
-    >
-
-        <div class="store-loading">
-
-            <span class="loading-pulsar"></span>
+            <span></span>
 
         </div>
 
-    </div>
 
+        <!-- MAIN TITLE -->
 
-</section>
+        <h1 class="future-title">
 
-
-
-<!-- =====================================================
-     CONTACT
-     ===================================================== -->
-
-<section
-    id="contact"
-    class="contact-section"
->
-
-
-    <div class="contact-acrylic">
-
-
-        <div class="contact-pulsar"></div>
-
-
-        <div class="contact-content">
-
-            <span class="contact-label">
-                VOLTICA SUPPORT
+            <span>
+                THE FUTURE
             </span>
 
+            <span class="future-second">
+                OF EVERYDAY
+            </span>
 
-            <h2>
-                CONTACT US
-            </h2>
-
-
-            <p>
-                Need help with your order?
-            </p>
+        </h1>
 
 
-            <a
-                href="mailto:support@volticastore.com"
-                class="contact-button"
-            >
+        <!-- COLLECTION OPENING -->
 
-                <span>
-                    CONTACT US
-                </span>
+        <div class="opening-acrylic">
 
-                <strong>
-                    →
-                </strong>
+            <span class="opening-pulse"></span>
 
-            </a>
+            <span>
+                COLLECTION OPEN
+            </span>
+
+            <strong>
+                SEPT 1
+            </strong>
 
         </div>
 
 
-    </div>
+    </section>
 
 
-</section>
+    <!-- =================================================
+         PRODUCTS
+         ================================================= -->
+
+    <section
+        class="products-section"
+        aria-label="Voltica products"
+    >
+
+
+        <div
+            id="productGrid"
+            class="product-grid"
+        >
+
+            <div class="store-loading">
+
+                <span class="loading-pulsar"></span>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =================================================
+         CONTACT
+         ================================================= -->
+
+    <section
+        id="contact"
+        class="contact-section"
+    >
+
+
+        <div class="contact-acrylic">
+
+
+            <div class="contact-pulsar"></div>
+
+
+            <div class="contact-content">
+
+                <span class="contact-label">
+                    VOLTICA SUPPORT
+                </span>
+
+
+                <h2>
+                    CONTACT US
+                </h2>
+
+
+                <p>
+                    Need help with your order?
+                </p>
+
+
+                <a
+                    href="mailto:support@volticastore.com"
+                    class="contact-button"
+                >
+
+                    <span>
+                        CONTACT US
+                    </span>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
 
 
 </main>
 
 
-
 <!-- =====================================================
-     CART DRAWER
+     CART OVERLAY
+     
+     IMPORTANT:
+     The hidden attribute keeps the overlay completely
+     removed from the visual layer until JavaScript opens
+     the cart.
      ===================================================== -->
 
 <div
     class="cart-overlay"
     id="cartOverlay"
     aria-hidden="true"
+    hidden
 ></div>
 
+
+<!-- =====================================================
+     CART DRAWER
+     ===================================================== -->
 
 <aside
     class="cart-drawer"
@@ -312,6 +330,8 @@
     aria-label="Shopping cart"
 >
 
+
+    <!-- CART HEADER -->
 
     <div class="cart-header">
 
@@ -340,11 +360,15 @@
     </div>
 
 
+    <!-- CART ITEMS -->
+
     <div
         class="cart-items"
         id="cartItems"
     ></div>
 
+
+    <!-- CART FOOTER -->
 
     <div class="cart-footer">
 
@@ -381,7 +405,6 @@
 </aside>
 
 
-
 <!-- =====================================================
      FOOTER
      ===================================================== -->
@@ -407,7 +430,6 @@
 </footer>
 
 
-
 <!-- =====================================================
      DATABASE
      ===================================================== -->
@@ -420,3 +442,5 @@
 </body>
 
 </html>
+
+Point crucial : le "cart-overlay" est maintenant réellement "hidden" dès le chargement. Il faudra également que ton "store.css" contienne "display: none !important" pour ".cart-overlay[hidden]".

@@ -23,3 +23,38 @@
 </div>
 
 <div class="tech-grid" aria-hidden="true" role="presentation"></div>
+<!-- ░░░ HEADER : LOGO + NAVIGATION + CART BUTTON ░░░ -->
+<header class="store-header">
+
+    <a href="index.html" class="logo-acrylic" aria-label="Voltica">
+        <span class="logo-v">V</span>
+        <span class="logo-text">VOLTICA</span>
+    </a>
+
+    <nav class="store-nav" role="navigation">
+        <a href="index.html">HOME</a>
+        <a href="store.html" class="nav-active">STORE</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+    <button
+        type="button"
+        class="cart-acrylic"
+        id="cartButton"
+        aria-label="Open shopping cart"
+        aria-controls="cartDrawer"
+        aria-expanded="false"
+    >
+        <span class="cart-icon">
+            <!-- SVG ICON -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 7H6"/>
+                <circle cx="10" cy="20" r="1"/>
+                <circle cx="18" cy="20" r="1"/>
+            </svg>
+        </span>
+
+        <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+</header>

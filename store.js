@@ -2023,3 +2023,25 @@ window.VolticaStore = {
 console.log(
     "VOLTICA STORE ENGINE READY"
 );
+/* =========================================================
+   VOLTICA — FINAL RENDER DEBUG
+   ========================================================= */
+
+console.log("=================================");
+console.log("VOLTICA FINAL DEBUG");
+console.log("products.js variable:", typeof volticaProducts);
+console.log(
+    "products count:",
+    Array.isArray(volticaProducts)
+        ? volticaProducts.length
+        : "NOT AN ARRAY"
+);
+console.log(
+    "productGrid:",
+    document.getElementById("productGrid")
+);
+console.log(
+    "store state:",
+    VolticaStoreState
+);
+console.log("=================================");

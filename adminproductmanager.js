@@ -18,6 +18,8 @@ const AdminProductState = {
 
     selectedImages: [],
 
+    existingImages: [],
+
     confirmAction: null
 
 };
@@ -210,7 +212,12 @@ function loadProducts() {
         AdminProductState.products =
             window.volticaProducts.map(
                 product => ({
-                    ...product
+                    ...product,
+
+                    images:
+                        normalizeProductImages(
+                            product.images
+                        )
                 })
             );
 
@@ -368,6 +375,9 @@ function createNewProduct() {
     AdminProductState.selectedImages =
         [];
 
+    AdminProductState.existingImages =
+        [];
+
 
     clearForm();
 
@@ -463,8 +473,10 @@ function closeEditor() {
     AdminProductState.editingIndex =
         null;
 
-
     AdminProductState.selectedImages =
+        [];
+
+    AdminProductState.existingImages =
         [];
 
 }
@@ -567,26 +579,55 @@ function handleImageUpload(event) {
     }
 
 
+    let addedCount =
+        0;
+
+
     files.forEach(
         file => {
 
+            if (
+                !file ||
+                !file.name
+            ) {
+
+                return;
+
+            }
+
+
+            const filename =
+                file.name.trim();
+
+
+            if (!filename) {
+
+                return;
+
+            }
+
+
             const alreadyExists =
-                AdminProductState.selectedImages.some(
-                    existing =>
-                        existing.name ===
-                        file.name
+                imageNameExists(
+                    filename
                 );
 
 
             if (
-                !alreadyExists
+                alreadyExists
             ) {
 
-                AdminProductState.selectedImages.push(
-                    file
-                );
+                return;
 
             }
+
+
+            AdminProductState.selectedImages.push(
+                file
+            );
+
+
+            addedCount++;
 
         }
     );
@@ -595,8 +636,77 @@ function handleImageUpload(event) {
     renderImagePreview();
 
 
-    notify(
-        `${AdminProductState.selectedImages.length} IMAGE(S) SELECTED`
+    /*
+       Reset the input so the SAME filename can be selected
+       again later if the user removes it first.
+    */
+
+    event.target.value =
+        "";
+
+
+    if (
+        addedCount > 0
+    ) {
+
+        notify(
+            `${addedCount} IMAGE(S) ADDED`
+        );
+
+    }
+    else {
+
+        notify(
+            "IMAGE ALREADY SELECTED"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   IMAGE NAME CHECK
+   ========================================================= */
+
+function imageNameExists(
+    filename
+) {
+
+    const normalized =
+        getFilename(
+            filename
+        )
+        .toLowerCase();
+
+
+    const existing =
+        AdminProductState.existingImages.some(
+            image =>
+                getFilename(
+                    image
+                )
+                .toLowerCase() ===
+                normalized
+        );
+
+
+    if (
+        existing
+    ) {
+
+        return true;
+
+    }
+
+
+    return AdminProductState.selectedImages.some(
+        file =>
+            getFilename(
+                file.name
+            )
+            .toLowerCase() ===
+            normalized
     );
 
 }
@@ -621,8 +731,17 @@ function renderImagePreview() {
         "";
 
 
+    const existingImages =
+        AdminProductState.existingImages;
+
+
+    const selectedImages =
+        AdminProductState.selectedImages;
+
+
     if (
-        AdminProductState.selectedImages.length === 0
+        existingImages.length === 0 &&
+        selectedImages.length === 0
     ) {
 
         const empty =
@@ -649,125 +768,308 @@ function renderImagePreview() {
     }
 
 
-    AdminProductState.selectedImages.forEach(
-        (file, index) => {
+    /* =====================================================
+       EXISTING IMAGES
+       ===================================================== */
 
-            const wrapper =
-                document.createElement(
-                    "div"
-                );
+    existingImages.forEach(
+        (
+            imagePath,
+            index
+        ) => {
 
-
-            wrapper.className =
-                "image-preview-item";
-
-
-            const image =
-                document.createElement(
-                    "img"
-                );
-
-
-            image.alt =
-                file.name;
-
-
-            const objectURL =
-                URL.createObjectURL(
-                    file
-                );
-
-
-            image.src =
-                objectURL;
-
-
-            image.onload =
-                () => {
-
-                    URL.revokeObjectURL(
-                        objectURL
-                    );
-
-                };
-
-
-            const filename =
-                document.createElement(
-                    "span"
-                );
-
-
-            filename.className =
-                "image-preview-name";
-
-
-            filename.textContent =
-                file.name;
-
-
-            const remove =
-                document.createElement(
-                    "button"
-                );
-
-
-            remove.type =
-                "button";
-
-
-            remove.className =
-                "image-preview-remove";
-
-
-            remove.textContent =
-                "×";
-
-
-            remove.setAttribute(
-                "aria-label",
-                `Remove ${file.name}`
-            );
-
-
-            remove.addEventListener(
-                "click",
-                () => {
-
-                    AdminProductState
-                        .selectedImages
-                        .splice(
-                            index,
-                            1
-                        );
-
-
-                    renderImagePreview();
-
-                }
-            );
-
-
-            wrapper.appendChild(
-                image
-            );
-
-
-            wrapper.appendChild(
-                filename
-            );
-
-
-            wrapper.appendChild(
-                remove
-            );
-
-
-            AdminDOM.imagePreview.appendChild(
-                wrapper
+            createExistingImagePreview(
+                imagePath,
+                index
             );
 
         }
+    );
+
+
+    /* =====================================================
+       NEWLY SELECTED IMAGES
+       ===================================================== */
+
+    selectedImages.forEach(
+        (
+            file,
+            index
+        ) => {
+
+            createSelectedImagePreview(
+                file,
+                index
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   EXISTING IMAGE PREVIEW
+   ========================================================= */
+
+function createExistingImagePreview(
+    imagePath,
+    index
+) {
+
+    const wrapper =
+        document.createElement(
+            "div"
+        );
+
+
+    wrapper.className =
+        "image-preview-item existing-image";
+
+
+    const image =
+        document.createElement(
+            "img"
+        );
+
+
+    image.src =
+        normalizeImagePath(
+            imagePath
+        );
+
+
+    image.alt =
+        getFilename(
+            imagePath
+        );
+
+
+    image.loading =
+        "lazy";
+
+
+    image.onerror =
+        () => {
+
+            image.style.opacity =
+                "0.35";
+
+        };
+
+
+    const filename =
+        document.createElement(
+            "span"
+        );
+
+
+    filename.className =
+        "image-preview-name";
+
+
+    filename.textContent =
+        getFilename(
+            imagePath
+        );
+
+
+    const remove =
+        document.createElement(
+            "button"
+        );
+
+
+    remove.type =
+        "button";
+
+
+    remove.className =
+        "image-preview-remove";
+
+
+    remove.textContent =
+        "×";
+
+
+    remove.setAttribute(
+        "aria-label",
+        `Remove ${getFilename(imagePath)}`
+    );
+
+
+    remove.addEventListener(
+        "click",
+        () => {
+
+            AdminProductState
+                .existingImages
+                .splice(
+                    index,
+                    1
+                );
+
+
+            renderImagePreview();
+
+
+            notify(
+                "IMAGE REMOVED FROM PRODUCT"
+            );
+
+        }
+    );
+
+
+    wrapper.appendChild(
+        image
+    );
+
+
+    wrapper.appendChild(
+        filename
+    );
+
+
+    wrapper.appendChild(
+        remove
+    );
+
+
+    AdminDOM.imagePreview.appendChild(
+        wrapper
+    );
+
+}
+
+
+/* =========================================================
+   NEW IMAGE PREVIEW
+   ========================================================= */
+
+function createSelectedImagePreview(
+    file,
+    index
+) {
+
+    const wrapper =
+        document.createElement(
+            "div"
+        );
+
+
+    wrapper.className =
+        "image-preview-item new-image";
+
+
+    const image =
+        document.createElement(
+            "img"
+        );
+
+
+    image.alt =
+        file.name;
+
+
+    const objectURL =
+        URL.createObjectURL(
+            file
+        );
+
+
+    image.src =
+        objectURL;
+
+
+    image.onload =
+        () => {
+
+            URL.revokeObjectURL(
+                objectURL
+            );
+
+        };
+
+
+    const filename =
+        document.createElement(
+            "span"
+        );
+
+
+    filename.className =
+        "image-preview-name";
+
+
+    filename.textContent =
+        file.name;
+
+
+    const remove =
+        document.createElement(
+            "button"
+        );
+
+
+    remove.type =
+        "button";
+
+
+    remove.className =
+        "image-preview-remove";
+
+
+    remove.textContent =
+        "×";
+
+
+    remove.setAttribute(
+        "aria-label",
+        `Remove ${file.name}`
+    );
+
+
+    remove.addEventListener(
+        "click",
+        () => {
+
+            AdminProductState
+                .selectedImages
+                .splice(
+                    index,
+                    1
+                );
+
+
+            renderImagePreview();
+
+
+            notify(
+                "IMAGE REMOVED"
+            );
+
+        }
+    );
+
+
+    wrapper.appendChild(
+        image
+    );
+
+
+    wrapper.appendChild(
+        filename
+    );
+
+
+    wrapper.appendChild(
+        remove
+    );
+
+
+    AdminDOM.imagePreview.appendChild(
+        wrapper
     );
 
 }
@@ -829,6 +1131,42 @@ function saveProduct() {
     const productId =
         AdminDOM.productId?.value.trim() ||
         slugify(name);
+
+
+    /*
+       =======================================================
+       IMPORTANT IMAGE LOGIC
+       =======================================================
+
+       Existing filenames are preserved.
+
+       Newly selected files contribute ONLY their filenames.
+
+       The browser does not upload the binary files.
+       The actual images must still be placed manually in:
+
+       assets/images/
+
+       Example:
+
+       Existing:
+       earbuds1-1.webp
+       earbuds1-2.webp
+
+       New:
+       earbuds1-3.webp
+
+       Result:
+       earbuds1-1.webp
+       earbuds1-2.webp
+       earbuds1-3.webp
+       =======================================================
+    */
+
+    const productImages =
+        buildFinalImageList(
+            existingProduct
+        );
 
 
     const product = {
@@ -909,35 +1247,13 @@ function saveProduct() {
             AdminDOM.productActive?.checked !== false,
 
         images:
-            buildImageList(
-                existingProduct
-            )
+            productImages
 
     };
 
 
     /* =====================================================
-       UPDATE IMAGE FILENAMES
-       ===================================================== */
-
-    const newImageNames =
-        AdminProductState.selectedImages.map(
-            file => file.name
-        );
-
-
-    if (
-        newImageNames.length > 0
-    ) {
-
-        product.images =
-            newImageNames;
-
-    }
-
-
-    /* =====================================================
-       SAVE / UPDATE
+       DUPLICATE PRODUCT ID
        ===================================================== */
 
     if (
@@ -966,6 +1282,46 @@ function saveProduct() {
 
         }
 
+    }
+    else {
+
+        const duplicate =
+            AdminProductState.products.some(
+                (
+                    existing,
+                    index
+                ) =>
+                    index !==
+                    AdminProductState.editingIndex &&
+                    String(existing.id) ===
+                    String(product.id)
+            );
+
+
+        if (
+            duplicate
+        ) {
+
+            notify(
+                "PRODUCT ID ALREADY EXISTS"
+            );
+
+            AdminDOM.productId?.focus();
+
+            return;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       SAVE / UPDATE
+       ===================================================== */
+
+    if (
+        AdminProductState.editingIndex === null
+    ) {
 
         AdminProductState.products.push(
             product
@@ -1006,28 +1362,130 @@ function saveProduct() {
 
 
 /* =========================================================
-   BUILD IMAGE LIST
+   BUILD FINAL IMAGE LIST
    ========================================================= */
 
-function buildImageList(
+function buildFinalImageList(
     existingProduct
 ) {
 
+    const result =
+        [];
+
+
+    /*
+       FIRST:
+       Keep the images currently loaded in the editor.
+
+       This allows the user to remove individual existing
+       images before saving.
+    */
+
+    AdminProductState.existingImages.forEach(
+        imagePath => {
+
+            const filename =
+                getFilename(
+                    imagePath
+                );
+
+
+            if (
+                filename &&
+                !result.some(
+                    existing =>
+                        getFilename(
+                            existing
+                        ).toLowerCase() ===
+                        filename.toLowerCase()
+                )
+            ) {
+
+                result.push(
+                    filename
+                );
+
+            }
+
+        }
+    );
+
+
+    /*
+       SECOND:
+       Add the newly selected filenames.
+    */
+
+    AdminProductState.selectedImages.forEach(
+        file => {
+
+            if (
+                !file ||
+                !file.name
+            ) {
+
+                return;
+
+            }
+
+
+            const filename =
+                file.name.trim();
+
+
+            if (
+                !filename
+            ) {
+
+                return;
+
+            }
+
+
+            const alreadyExists =
+                result.some(
+                    existing =>
+                        getFilename(
+                            existing
+                        ).toLowerCase() ===
+                        filename.toLowerCase()
+                );
+
+
+            if (
+                !alreadyExists
+            ) {
+
+                result.push(
+                    filename
+                );
+
+            }
+
+        }
+    );
+
+
+    /*
+       FALLBACK:
+       If editing an old product and for some reason the
+       editor did not populate existingImages, preserve
+       the original product.images array.
+    */
+
     if (
-        existingProduct &&
-        Array.isArray(
-            existingProduct.images
-        )
+        result.length === 0 &&
+        existingProduct
     ) {
 
-        return [
-            ...existingProduct.images
-        ];
+        return normalizeProductImages(
+            existingProduct.images
+        );
 
     }
 
 
-    return [];
+    return result;
 
 }
 
@@ -1055,6 +1513,12 @@ function editProduct(index) {
 
     AdminProductState.selectedImages =
         [];
+
+
+    AdminProductState.existingImages =
+        normalizeProductImages(
+            product.images
+        );
 
 
     clearForm();
@@ -1156,9 +1620,7 @@ function editProduct(index) {
     }
 
 
-    renderExistingImages(
-        product.images
-    );
+    renderImagePreview();
 
 
     openEditor();
@@ -1172,101 +1634,72 @@ function editProduct(index) {
 
 
 /* =========================================================
-   EXISTING IMAGE DISPLAY
+   NORMALIZE PRODUCT IMAGES
    ========================================================= */
 
-function renderExistingImages(
+function normalizeProductImages(
     images
 ) {
 
     if (
-        !AdminDOM.imagePreview
+        !Array.isArray(images)
     ) {
 
-        return;
+        return [];
 
     }
 
 
-    AdminDOM.imagePreview.innerHTML =
-        "";
+    return images
+        .map(
+            image => {
+
+                if (
+                    typeof image === "string"
+                ) {
+
+                    return getFilename(
+                        image
+                    );
+
+                }
 
 
-    if (
-        !Array.isArray(images) ||
-        images.length === 0
-    ) {
+                if (
+                    image &&
+                    typeof image === "object"
+                ) {
 
-        renderImagePreview();
+                    return getFilename(
+                        image.path ||
+                        image.name ||
+                        ""
+                    );
 
-        return;
-
-    }
-
-
-    images.forEach(
-        imagePath => {
-
-            const wrapper =
-                document.createElement(
-                    "div"
-                );
+                }
 
 
-            wrapper.className =
-                "image-preview-item existing-image";
+                return "";
 
-
-            const image =
-                document.createElement(
-                    "img"
-                );
-
-
-            image.src =
-                normalizeImagePath(
-                    imagePath
-                );
-
-
-            image.alt =
-                String(
-                    imagePath
-                );
-
-
-            const filename =
-                document.createElement(
-                    "span"
-                );
-
-
-            filename.className =
-                "image-preview-name";
-
-
-            filename.textContent =
-                getFilename(
-                    imagePath
-                );
-
-
-            wrapper.appendChild(
-                image
-            );
-
-
-            wrapper.appendChild(
-                filename
-            );
-
-
-            AdminDOM.imagePreview.appendChild(
-                wrapper
-            );
-
-        }
-    );
+            }
+        )
+        .map(
+            image =>
+                image.trim()
+        )
+        .filter(Boolean)
+        .filter(
+            (
+                image,
+                index,
+                array
+            ) =>
+                array.findIndex(
+                    item =>
+                        item.toLowerCase() ===
+                        image.toLowerCase()
+                ) === index
+        );
 
 }
 
@@ -1423,6 +1856,12 @@ function createProductListItem(
         "database-product";
 
 
+    const productImage =
+        getProductImage(
+            product
+        );
+
+
     item.innerHTML = `
 
         <div class="database-product-main">
@@ -1430,16 +1869,12 @@ function createProductListItem(
             <div class="database-product-image">
 
                 ${
-                    getProductImage(
-                        product
-                    )
+                    productImage
                         ? `
                             <img
                                 src="${escapeAttribute(
                                     normalizeImagePath(
-                                        getProductImage(
-                                            product
-                                        )
+                                        productImage
                                     )
                                 )}"
                                 alt="${escapeAttribute(
@@ -1785,7 +2220,12 @@ function syncGlobalProducts() {
     window.volticaProducts =
         AdminProductState.products.map(
             product => ({
-                ...product
+                ...product,
+
+                images:
+                    normalizeProductImages(
+                        product.images
+                    )
             })
         );
 
@@ -2243,6 +2683,31 @@ function formatVariants(
 }
 
 
+function formatPrice(
+    value
+) {
+
+    const price =
+        Number(value);
+
+
+    if (
+        !Number.isFinite(price)
+    ) {
+
+        return "$0.00";
+
+    }
+
+
+    return (
+        "$" +
+        price.toFixed(2)
+    );
+
+}
+
+
 function numberOrZero(
     value
 ) {
@@ -2461,8 +2926,7 @@ function executeConfirmation() {
    PUBLIC API
    ========================================================= */
 
-window.VolticaAdmin =
-{
+window.VolticaAdmin = {
 
     getProducts() {
 

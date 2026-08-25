@@ -1,523 +1,640 @@
 /* =========================================================
-   VOLTICA STORE — PRODUCT VIEW.JS
-   Product Detail Engine
-   Compatible with product-view.html
+   VOLTICA STORE
+   ANKER SOUNDCORE SPACE Q45
+   HARD-CODED PRODUCT PAGE
    ========================================================= */
 
-"use strict";
+document.addEventListener("DOMContentLoaded", () => {
 
+    /* =====================================================
+       PRODUCT DATA
+       ===================================================== */
 
-/* =========================================================
-   CONFIG
-   ========================================================= */
+    const product = {
 
-const VOLTICA_PRODUCTS_KEY =
-    "voltica_products_admin";
+        name:
+            "Anker Soundcore Space Q45",
 
-const DEFAULT_STRIPE_LINK =
-    "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j";
+        category:
+            "PREMIUM AUDIO",
 
+        badge:
+            "FEATURED",
 
-/* =========================================================
-   DOM READY
-   ========================================================= */
+        price:
+            189.99,
 
-document.addEventListener(
-    "DOMContentLoaded",
-    initializeProductView
-);
+        referencePrice:
+            null,
 
+        currency:
+            "USD",
 
-/* =========================================================
-   INITIALIZATION
-   ========================================================= */
+        shortDescription:
+            "Industry-leading adaptive active noise cancellation, Hi-Res wireless audio with LDAC, and up to 50 hours of battery life.",
 
-function initializeProductView() {
+        description:
+            "Experience industry-leading adaptive active noise cancellation, stunning Hi-Res wireless audio powered by LDAC, and an exceptional 50-hour battery life. Hand-picked and curated by Voltica Store for ultimate comfort and premium sound performance.",
 
-    const product =
-        getProductFromURL();
+        features: [
 
+            {
+                title:
+                    "Adaptive Active Noise Cancellation",
 
-    if (!product) {
+                description:
+                    "Industry-leading adaptive ANC intelligently reduces surrounding noise for a more immersive listening experience."
+            },
 
-        showProductError();
+            {
+                title:
+                    "Hi-Res Wireless Audio",
 
-        return;
+                description:
+                    "Enjoy detailed wireless sound with LDAC support and customized 40mm double-layer diaphragm drivers."
+            },
 
-    }
+            {
+                title:
+                    "50-Hour Battery Life",
 
+                description:
+                    "Enjoy up to 50 hours of playback with ANC enabled and up to 65 hours with ANC disabled."
+            },
 
-    renderProduct(product);
+            {
+                title:
+                    "Fast Charging",
 
-    initializeGallery();
+                description:
+                    "A quick 5-minute charge provides up to 4 hours of listening time."
+            },
 
-    initializeLightbox();
+            {
+                title:
+                    "Multipoint Connection",
 
-}
+                description:
+                    "Connect to multiple devices and move seamlessly between your everyday devices."
+            },
 
+            {
+                title:
+                    "Customizable Sound & Transparency",
 
-/* =========================================================
-   GET PRODUCT ID FROM URL
-   ========================================================= */
-
-function getProductIdFromURL() {
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    return params.get("id");
-
-}
-
-
-/* =========================================================
-   FIND PRODUCT
-   ========================================================= */
-
-function getProductFromURL() {
-
-    const productId =
-        getProductIdFromURL();
-
-
-    if (!productId) {
-
-        return null;
-
-    }
-
-
-    /* -----------------------------------------------------
-       SOURCE 1 — PRODUCTS.JS
-       ----------------------------------------------------- */
-
-    if (
-        Array.isArray(
-            window.volticaProducts
-        )
-    ) {
-
-        const product =
-            window.volticaProducts.find(
-                item =>
-                    String(item.id).trim().toLowerCase() ===
-                    String(productId).trim().toLowerCase()
-            );
-
-
-        if (product) {
-
-            return product;
-
-        }
-
-    }
-
-
-    /* -----------------------------------------------------
-       SOURCE 2 — ADMIN LOCAL STORAGE
-       ----------------------------------------------------- */
-
-    try {
-
-        const saved =
-            localStorage.getItem(
-                VOLTICA_PRODUCTS_KEY
-            );
-
-
-        if (saved) {
-
-            const products =
-                JSON.parse(saved);
-
-
-            if (
-                Array.isArray(products)
-            ) {
-
-                const product =
-                    products.find(
-                        item =>
-                            String(item.id).trim().toLowerCase() ===
-                            String(productId).trim().toLowerCase()
-                    );
-
-
-                if (product) {
-
-                    return product;
-
-                }
-
+                description:
+                    "Tailor your audio profile using the Soundcore app's 8-band EQ and switch seamlessly between transparency modes to stay connected to the world around you."
             }
 
-        }
+        ],
 
-    } catch (error) {
+        specifications: {
 
-        console.warn(
-            "VOLTICA: local product database unavailable.",
-            error
-        );
+            "Bluetooth Version":
+                "Bluetooth 5.3",
 
-    }
+            "Audio Codecs":
+                "LDAC, AAC, SBC",
 
+            "Playtime":
+                "Up to 50 hours (ANC on) / Up to 65 hours (ANC off)",
 
-    return null;
+            "Fast Charging":
+                "5 minutes charge for 4 hours of playtime",
 
-}
+            "Driver Size":
+                "40mm customized double-layer diaphragm drivers",
 
+            "Frequency Response":
+                "20Hz - 40kHz (Hi-Res Wired & Wireless)",
 
-/* =========================================================
-   RENDER PRODUCT
-   ========================================================= */
+            "Connectivity Range":
+                "Up to 15 meters / 50 feet",
 
-function renderProduct(product) {
+            "Connection":
+                "Multipoint connection supported",
 
-    /* -----------------------------------------------------
-       BASIC INFORMATION
-       ----------------------------------------------------- */
+            "Charging Port":
+                "USB Type-C",
 
-    setText(
-        "productCategory",
-        product.category ||
-        "PREMIUM TECHNOLOGY"
-    );
+            "Weight":
+                "292 g"
 
+        },
 
-    setText(
-        "productName",
-        product.name ||
-        "VOLTICA PRODUCT"
-    );
+        colors: [],
 
+        variants: [],
 
-    setText(
-        "productShortDescription",
-        product.shortDescription ||
-        ""
-    );
+        stripeLink:
+            "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j",
 
+        supplierLink:
+            "https://www.cjdropshipping.com/product/-p-2601110810071616400.html",
 
-    setText(
-        "productBadge",
-        product.badge ||
-        "AVAILABLE"
-    );
+        availability:
+            "PRE-ORDER AVAILABLE"
 
+    };
 
-    setText(
-        "finalProductName",
-        product.name ||
-        "DISCOVER THE FUTURE."
-    );
 
+    /* =====================================================
+       PRODUCT IMAGES
+       ===================================================== */
 
-    /* -----------------------------------------------------
-       PRICE
-       ----------------------------------------------------- */
+    /*
+       IMPORTANT:
+       These filenames must correspond to the actual images
+       placed inside assets/images/.
+    */
 
-    setText(
-        "productPrice",
-        formatPrice(
-            product.price
-        )
-    );
+    const productImages = [
 
+        "assets/images/q45-1.webp",
+        "assets/images/q45-2.webp",
+        "assets/images/q45-3.webp",
+        "assets/images/q45-4.webp",
+        "assets/images/q45-5.webp",
+        "assets/images/q45-6.webp"
 
-    setText(
-        "productCurrency",
-        product.currency ||
-        "USD"
-    );
+    ];
 
 
-    renderReferencePrice(
-        product
-    );
+    /* =====================================================
+       DOM
+       ===================================================== */
 
-
-    /* -----------------------------------------------------
-       PRODUCT CONTENT
-       ----------------------------------------------------- */
-
-    renderMainImage(
-        product
-    );
-
-
-    renderThumbnails(
-        product
-    );
-
-
-    renderDescription(
-        product
-    );
-
-
-    renderFeatures(
-        product
-    );
-
-
-    renderSpecifications(
-        product
-    );
-
-
-    renderVariants(
-        product
-    );
-
-
-    renderCustomCTA(
-        product
-    );
-
-
-    /* -----------------------------------------------------
-       COMMERCE
-       ----------------------------------------------------- */
-
-    setupStripeButtons(
-        product
-    );
-
-
-    renderAvailability(
-        product
-    );
-
-
-    /* -----------------------------------------------------
-       PAGE TITLE
-       ----------------------------------------------------- */
-
-    document.title =
-        `${product.name || "Product"} — Voltica Store`;
-
-}
-
-
-/* =========================================================
-   REFERENCE PRICE
-   ========================================================= */
-
-function renderReferencePrice(product) {
-
-    const element =
-        document.getElementById(
-            "referencePrice"
-        );
-
-
-    if (!element) {
-
-        return;
-
-    }
-
-
-    const referencePrice =
-        Number(
-            product.referencePrice
-        );
-
-
-    const price =
-        Number(
-            product.price
-        );
-
-
-    if (
-        Number.isFinite(referencePrice) &&
-        Number.isFinite(price) &&
-        referencePrice > price
-    ) {
-
-        element.textContent =
-            formatPrice(
-                referencePrice
-            );
-
-
-        element.style.display =
-            "inline-block";
-
-    }
-
-    else {
-
-        element.textContent =
-            "";
-
-
-        element.style.display =
-            "none";
-
-    }
-
-}
-
-
-/* =========================================================
-   MAIN IMAGE
-   ========================================================= */
-
-function renderMainImage(product) {
-
-    const image =
+    const mainImage =
         document.getElementById(
             "mainProductImage"
         );
 
-
-    if (!image) {
-
-        return;
-
-    }
-
-
-    const images =
-        getProductImages(
-            product
-        );
-
-
-    if (!images.length) {
-
-        image.removeAttribute(
-            "src"
-        );
-
-
-        image.alt =
-            product.name ||
-            "Voltica Product";
-
-
-        return;
-
-    }
-
-
-    image.src =
-        images[0];
-
-
-    image.alt =
-        product.name ||
-        "Voltica Product";
-
-}
-
-
-/* =========================================================
-   THUMBNAILS
-   ========================================================= */
-
-function renderThumbnails(product) {
-
-    const container =
+    const thumbnails =
         document.getElementById(
             "productThumbnails"
         );
 
+    const category =
+        document.getElementById(
+            "productCategory"
+        );
 
-    if (!container) {
+    const status =
+        document.getElementById(
+            "productStatus"
+        );
 
-        return;
+    const badge =
+        document.getElementById(
+            "productBadge"
+        );
+
+    const name =
+        document.getElementById(
+            "productName"
+        );
+
+    const shortDescription =
+        document.getElementById(
+            "productShortDescription"
+        );
+
+    const price =
+        document.getElementById(
+            "productPrice"
+        );
+
+    const referencePrice =
+        document.getElementById(
+            "referencePrice"
+        );
+
+    const currency =
+        document.getElementById(
+            "productCurrency"
+        );
+
+    const variants =
+        document.getElementById(
+            "productVariants"
+        );
+
+    const stripeButton =
+        document.getElementById(
+            "stripeButton"
+        );
+
+    const finalStripeButton =
+        document.getElementById(
+            "finalStripeButton"
+        );
+
+    const availability =
+        document.getElementById(
+            "productAvailability"
+        );
+
+    const description =
+        document.getElementById(
+            "productDescription"
+        );
+
+    const features =
+        document.getElementById(
+            "productFeatures"
+        );
+
+    const specifications =
+        document.getElementById(
+            "productSpecifications"
+        );
+
+    const options =
+        document.getElementById(
+            "productOptions"
+        );
+
+    const finalProductName =
+        document.getElementById(
+            "finalProductName"
+        );
+
+
+    /* =====================================================
+       BASIC PRODUCT INFORMATION
+       ===================================================== */
+
+    if (category) {
+
+        category.textContent =
+            product.category;
 
     }
 
 
-    container.innerHTML =
-        "";
+    if (badge) {
+
+        badge.textContent =
+            product.badge;
+
+    }
 
 
-    const images =
-        getProductImages(
-            product
+    if (name) {
+
+        name.textContent =
+            product.name;
+
+    }
+
+
+    if (finalProductName) {
+
+        finalProductName.textContent =
+            product.name;
+
+    }
+
+
+    if (shortDescription) {
+
+        shortDescription.textContent =
+            product.shortDescription;
+
+    }
+
+
+    if (price) {
+
+        price.textContent =
+            "$" +
+            product.price.toFixed(2);
+
+    }
+
+
+    if (currency) {
+
+        currency.textContent =
+            product.currency;
+
+    }
+
+
+    if (availability) {
+
+        availability.textContent =
+            product.availability;
+
+    }
+
+
+    /* =====================================================
+       REFERENCE PRICE
+       ===================================================== */
+
+    if (referencePrice) {
+
+        if (
+            product.referencePrice &&
+            product.referencePrice >
+            product.price
+        ) {
+
+            referencePrice.textContent =
+                "$" +
+                product.referencePrice.toFixed(2);
+
+        } else {
+
+            referencePrice.textContent =
+                "";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       STRIPE
+       ===================================================== */
+
+    if (stripeButton) {
+
+        stripeButton.href =
+            product.stripeLink;
+
+    }
+
+
+    if (finalStripeButton) {
+
+        finalStripeButton.href =
+            product.stripeLink;
+
+    }
+
+
+    /* =====================================================
+       DESCRIPTION
+       ===================================================== */
+
+    if (description) {
+
+        description.innerHTML = "";
+
+        const paragraph =
+            document.createElement("p");
+
+        paragraph.textContent =
+            product.description;
+
+        description.appendChild(
+            paragraph
         );
 
-
-    images.forEach(
-        (
-            image,
-            index
-        ) => {
-
-            const button =
-                document.createElement(
-                    "button"
-                );
+    }
 
 
-            button.type =
-                "button";
+    /* =====================================================
+       FEATURES
+       ===================================================== */
 
+    if (features) {
 
-            button.className =
-                "product-thumbnail";
+        features.innerHTML = "";
 
+        product.features.forEach(
+            feature => {
 
-            if (
-                index === 0
-            ) {
+                const article =
+                    document.createElement(
+                        "article"
+                    );
 
-                button.classList.add(
-                    "active"
+                article.className =
+                    "feature-card";
+
+                article.innerHTML = `
+
+                    <div class="feature-card-inner">
+
+                        <span class="feature-number">
+                            ${String(
+                                product.features.indexOf(feature) + 1
+                            ).padStart(2, "0")}
+                        </span>
+
+                        <h3></h3>
+
+                        <p></p>
+
+                    </div>
+
+                `;
+
+                article
+                    .querySelector("h3")
+                    .textContent =
+                    feature.title;
+
+                article
+                    .querySelector("p")
+                    .textContent =
+                    feature.description;
+
+                features.appendChild(
+                    article
                 );
 
             }
+        );
+
+    }
 
 
-            const img =
-                document.createElement(
-                    "img"
+    /* =====================================================
+       SPECIFICATIONS
+       ===================================================== */
+
+    if (specifications) {
+
+        specifications.innerHTML = "";
+
+        Object.entries(
+            product.specifications
+        ).forEach(
+            ([key, value]) => {
+
+                const row =
+                    document.createElement(
+                        "div"
+                    );
+
+                row.className =
+                    "specification-row";
+
+                const label =
+                    document.createElement(
+                        "span"
+                    );
+
+                label.className =
+                    "specification-label";
+
+                label.textContent =
+                    key;
+
+                const data =
+                    document.createElement(
+                        "strong"
+                    );
+
+                data.className =
+                    "specification-value";
+
+                data.textContent =
+                    value;
+
+                row.appendChild(
+                    label
                 );
 
+                row.appendChild(
+                    data
+                );
 
-            img.src =
-                image;
+                specifications.appendChild(
+                    row
+                );
 
+            }
+        );
 
-            img.alt =
-                `${product.name || "Product"} image ${index + 1}`;
-
-
-            img.loading =
-                index === 0
-                    ? "eager"
-                    : "lazy";
-
-
-            img.onerror =
-                () => {
-
-                    button.style.display =
-                        "none";
-
-                };
+    }
 
 
-            button.appendChild(
-                img
+    /* =====================================================
+       OPTIONS
+       ===================================================== */
+
+    if (options) {
+
+        options.innerHTML = `
+
+            <div class="option-group">
+
+                <span class="option-label">
+                    PRODUCT
+                </span>
+
+                <strong>
+                    ${escapeHtml(product.name)}
+                </strong>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       VARIANTS
+       ===================================================== */
+
+    if (variants) {
+
+        variants.innerHTML = "";
+
+        if (
+            product.colors.length ||
+            product.variants.length
+        ) {
+
+            renderVariants();
+
+        }
+
+    }
+
+
+    function renderVariants() {
+
+        if (product.colors.length) {
+
+            const group =
+                document.createElement(
+                    "div"
+                );
+
+            group.className =
+                "variant-group";
+
+            const label =
+                document.createElement(
+                    "span"
+                );
+
+            label.textContent =
+                "COLOR";
+
+            label.className =
+                "variant-label";
+
+            group.appendChild(
+                label
             );
 
 
-            button.addEventListener(
-                "click",
-                () => {
+            product.colors.forEach(
+                (color, index) => {
 
-                    changeMainImage(
-                        image,
+                    const button =
+                        document.createElement(
+                            "button"
+                        );
+
+                    button.type =
+                        "button";
+
+                    button.className =
+                        "variant-option";
+
+                    if (index === 0) {
+
+                        button.classList.add(
+                            "selected"
+                        );
+
+                    }
+
+                    button.textContent =
+                        color;
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            group
+                                .querySelectorAll(
+                                    ".variant-option"
+                                )
+                                .forEach(
+                                    item =>
+                                        item.classList.remove(
+                                            "selected"
+                                        )
+                                );
+
+                            button.classList.add(
+                                "selected"
+                            );
+
+                        }
+                    );
+
+                    group.appendChild(
                         button
                     );
 
@@ -525,177 +642,333 @@ function renderThumbnails(product) {
             );
 
 
-            container.appendChild(
-                button
+            variants.appendChild(
+                group
             );
 
         }
-    );
-
-}
-
-
-/* =========================================================
-   CHANGE MAIN IMAGE
-   ========================================================= */
-
-function changeMainImage(
-    image,
-    thumbnail
-) {
-
-    const mainImage =
-        document.getElementById(
-            "mainProductImage"
-        );
-
-
-    if (!mainImage) {
-
-        return;
 
     }
 
 
-    mainImage.src =
-        image;
+    /* =====================================================
+       PRODUCT GALLERY
+       ===================================================== */
+
+    function initializeGallery() {
+
+        if (!mainImage) {
+            return;
+        }
 
 
-    document
-        .querySelectorAll(
-            ".product-thumbnail"
-        )
-        .forEach(
-            item => {
+        const validImages = [];
 
-                item.classList.remove(
-                    "active"
-                );
+        let checked =
+            0;
+
+
+        productImages.forEach(
+            imagePath => {
+
+                const image =
+                    new Image();
+
+                image.onload = () => {
+
+                    validImages.push(
+                        imagePath
+                    );
+
+                    checked++;
+
+                    if (
+                        checked ===
+                        productImages.length
+                    ) {
+
+                        finishGallery(
+                            validImages
+                        );
+
+                    }
+
+                };
+
+
+                image.onerror = () => {
+
+                    checked++;
+
+                    if (
+                        checked ===
+                        productImages.length
+                    ) {
+
+                        finishGallery(
+                            validImages
+                        );
+
+                    }
+
+                };
+
+
+                image.src =
+                    imagePath;
 
             }
         );
 
-
-    if (thumbnail) {
-
-        thumbnail.classList.add(
-            "active"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   GALLERY
-   ========================================================= */
-
-function initializeGallery() {
-
-    const mainImage =
-        document.getElementById(
-            "mainProductImage"
-        );
-
-
-    const zoomButton =
-        document.getElementById(
-            "imageZoomButton"
-        );
-
-
-    if (!mainImage) {
-
-        return;
-
     }
 
 
-    mainImage.style.cursor =
-        "zoom-in";
+    function finishGallery(images) {
 
+        if (!images.length) {
 
-    mainImage.addEventListener(
-        "click",
-        () => {
+            mainImage.removeAttribute(
+                "src"
+            );
 
-            if (mainImage.src) {
+            mainImage.alt =
+                product.name;
 
-                openLightbox(
-                    mainImage.src
-                );
+            if (thumbnails) {
+
+                thumbnails.innerHTML = "";
 
             }
+
+            return;
 
         }
-    );
 
 
-    zoomButton?.addEventListener(
-        "click",
-        () => {
+        setMainImage(
+            images[0]
+        );
 
-            if (mainImage.src) {
 
-                openLightbox(
-                    mainImage.src
+        if (!thumbnails) {
+            return;
+        }
+
+
+        thumbnails.innerHTML = "";
+
+
+        images.forEach(
+            (imagePath, index) => {
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+                button.type =
+                    "button";
+
+                button.className =
+                    "product-thumbnail";
+
+
+                if (index === 0) {
+
+                    button.classList.add(
+                        "active"
+                    );
+
+                }
+
+
+                const image =
+                    document.createElement(
+                        "img"
+                    );
+
+                image.src =
+                    imagePath;
+
+                image.alt =
+                    product.name +
+                    " image " +
+                    (index + 1);
+
+                image.loading =
+                    "lazy";
+
+
+                button.appendChild(
+                    image
+                );
+
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        thumbnails
+                            .querySelectorAll(
+                                ".product-thumbnail"
+                            )
+                            .forEach(
+                                item =>
+                                    item.classList.remove(
+                                        "active"
+                                    )
+                            );
+
+                        button.classList.add(
+                            "active"
+                        );
+
+                        setMainImage(
+                            imagePath
+                        );
+
+                    }
+                );
+
+
+                thumbnails.appendChild(
+                    button
                 );
 
             }
+        );
 
+    }
+
+
+    function setMainImage(
+        imagePath
+    ) {
+
+        if (!mainImage) {
+            return;
         }
-    );
-
-}
 
 
-/* =========================================================
-   LIGHTBOX
-   ========================================================= */
+        mainImage.src =
+            imagePath;
 
-function initializeLightbox() {
+        mainImage.alt =
+            product.name;
+
+    }
+
+
+    initializeGallery();
+
+
+    /* =====================================================
+       LIGHTBOX
+       ===================================================== */
 
     const lightbox =
         document.getElementById(
             "productLightbox"
         );
 
+    const lightboxImage =
+        document.getElementById(
+            "lightboxImage"
+        );
 
-    if (!lightbox) {
-
-        return;
-
-    }
-
-
-    const closeButton =
+    const lightboxClose =
         document.getElementById(
             "lightboxClose"
         );
 
+    const imageZoomButton =
+        document.getElementById(
+            "imageZoomButton"
+        );
 
-    closeButton?.addEventListener(
-        "click",
-        closeLightbox
-    );
+
+    if (
+        imageZoomButton &&
+        lightbox &&
+        lightboxImage
+    ) {
+
+        imageZoomButton.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    !mainImage ||
+                    !mainImage.src
+                ) {
+
+                    return;
+
+                }
 
 
-    lightbox.addEventListener(
-        "click",
-        event => {
+                lightboxImage.src =
+                    mainImage.src;
 
-            if (
-                event.target ===
-                lightbox
-            ) {
+                lightboxImage.alt =
+                    product.name;
 
-                closeLightbox();
+                lightbox.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
+
+                lightbox.classList.add(
+                    "active"
+                );
 
             }
+        );
 
+    }
+
+
+    function closeLightbox() {
+
+        if (!lightbox) {
+            return;
         }
-    );
+
+        lightbox.classList.remove(
+            "active"
+        );
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+    }
+
+
+    lightboxClose
+        ?.addEventListener(
+            "click",
+            closeLightbox
+        );
+
+
+    lightbox
+        ?.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    event.target ===
+                    lightbox
+                ) {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
 
 
     document.addEventListener(
@@ -714,1107 +987,55 @@ function initializeLightbox() {
         }
     );
 
-}
 
+    /* =====================================================
+       REMOVE LOADING STATE
+       ===================================================== */
 
-/* =========================================================
-   OPEN LIGHTBOX
-   ========================================================= */
-
-function openLightbox(image) {
-
-    const lightbox =
-        document.getElementById(
-            "productLightbox"
-        );
-
-
-    const lightboxImage =
-        document.getElementById(
-            "lightboxImage"
-        );
-
-
-    if (
-        !lightbox ||
-        !lightboxImage ||
-        !image
-    ) {
-
-        return;
-
-    }
-
-
-    lightboxImage.src =
-        image;
-
-
-    lightbox.classList.add(
-        "active"
+    document.body.classList.add(
+        "product-loaded"
     );
 
 
-    lightbox.setAttribute(
-        "aria-hidden",
-        "false"
+    /* =====================================================
+       HARD-CODED PRODUCT READY
+       ===================================================== */
+
+    console.log(
+        "VOLTICA: Anker Soundcore Space Q45 loaded successfully."
     );
 
-
-    document.body.style.overflow =
-        "hidden";
-
-}
+});
 
 
 /* =========================================================
-   CLOSE LIGHTBOX
+   HTML ESCAPE
    ========================================================= */
 
-function closeLightbox() {
-
-    const lightbox =
-        document.getElementById(
-            "productLightbox"
-        );
-
-
-    if (!lightbox) {
-
-        return;
-
-    }
-
-
-    lightbox.classList.remove(
-        "active"
-    );
-
-
-    lightbox.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-/* =========================================================
-   FULL DESCRIPTION
-   ========================================================= */
-
-function renderDescription(product) {
-
-    const container =
-        document.getElementById(
-            "productDescription"
-        );
-
-
-    if (!container) {
-
-        return;
-
-    }
-
-
-    const description =
-        product.fullDescription ||
-        product.longDescription ||
-        product.description ||
-        "";
-
-
-    container.innerHTML =
-        "";
-
-
-    if (!description) {
-
-        return;
-
-    }
-
-
-    if (
-        /<[a-z][\s\S]*>/i.test(
-            description
-        )
-    ) {
-
-        container.innerHTML =
-            description;
-
-        return;
-
-    }
-
-
-    const paragraphs =
-        String(description)
-            .split(
-                /\n\s*\n/
-            )
-            .map(
-                paragraph =>
-                    paragraph.trim()
-            )
-            .filter(Boolean);
-
-
-    container.innerHTML =
-        paragraphs
-            .map(
-                paragraph => `
-
-                    <p>
-                        ${escapeHTML(
-                            paragraph
-                        ).replace(
-                            /\n/g,
-                            "<br>"
-                        )}
-                    </p>
-
-                `
-            )
-            .join("");
-
-}
-/* =========================================================
-   FEATURES
-   ========================================================= */
-
-function renderFeatures(product) {
-
-    const container =
-        document.getElementById(
-            "productFeatures"
-        );
-
-
-    if (!container) {
-
-        return;
-
-    }
-
-
-    const features =
-        product.features ||
-        product.keyFeatures ||
-        [];
-
-
-    container.innerHTML =
-        "";
-
-
-    if (
-        !Array.isArray(features) ||
-        !features.length
-    ) {
-
-        return;
-
-    }
-
-
-    features.forEach(
-        feature => {
-
-            const parsed =
-                parseFeature(
-                    feature
-                );
-
-
-            if (!parsed.title) {
-
-                return;
-
-            }
-
-
-            const card =
-                document.createElement(
-                    "article"
-                );
-
-
-            card.className =
-                "feature-card";
-
-
-            card.innerHTML = `
-
-                <h3>
-                    ${escapeHTML(
-                        parsed.title
-                    )}
-                </h3>
-
-                ${
-                    parsed.description
-                        ? `
-
-                            <p>
-                                ${escapeHTML(
-                                    parsed.description
-                                )}
-                            </p>
-
-                        `
-                        : ""
-                }
-
-            `;
-
-
-            container.appendChild(
-                card
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   PARSE FEATURE
-   ========================================================= */
-
-function parseFeature(feature) {
-
-    if (
-        feature &&
-        typeof feature ===
-        "object"
-    ) {
-
-        return {
-
-            title:
-                feature.title ||
-                feature.name ||
-                feature.label ||
-                feature.feature ||
-                "",
-
-            description:
-                feature.description ||
-                feature.value ||
-                ""
-
-        };
-
-    }
-
-
-    const text =
-        String(
-            feature ?? ""
-        ).trim();
-
-
-    if (!text) {
-
-        return {
-
-            title: "",
-            description: ""
-
-        };
-
-    }
-
-
-    const separator =
-        text.indexOf(":");
-
-
-    if (
-        separator === -1
-    ) {
-
-        return {
-
-            title: text,
-            description: ""
-
-        };
-
-    }
-
-
-    return {
-
-        title:
-            text
-                .slice(
-                    0,
-                    separator
-                )
-                .trim(),
-
-        description:
-            text
-                .slice(
-                    separator + 1
-                )
-                .trim()
-
-    };
-
-}
-
-
-/* =========================================================
-   SPECIFICATIONS
-   ========================================================= */
-
-function renderSpecifications(product) {
-
-    const container =
-        document.getElementById(
-            "productSpecifications"
-        );
-
-
-    if (!container) {
-
-        return;
-
-    }
-
-
-    const specifications =
-        product.specifications ||
-        product.specs ||
-        {};
-
-
-    container.innerHTML =
-        "";
-
-
-    if (
-        Array.isArray(
-            specifications
-        )
-    ) {
-
-        specifications.forEach(
-            item => {
-
-                if (!item) {
-
-                    return;
-
-                }
-
-
-                addSpecification(
-                    container,
-                    item.label ||
-                    item.name ||
-                    item.title ||
-                    "SPECIFICATION",
-                    item.value ||
-                    ""
-                );
-
-            }
-        );
-
-
-        return;
-
-    }
-
-
-    if (
-        specifications &&
-        typeof specifications ===
-        "object"
-    ) {
-
-        Object.entries(
-            specifications
-        ).forEach(
-            (
-                [label, value]
-            ) => {
-
-                addSpecification(
-                    container,
-                    label,
-                    value
-                );
-
-            }
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   ADD SPECIFICATION
-   ========================================================= */
-
-function addSpecification(
-    container,
-    label,
-    value
-) {
-
-    const row =
-        document.createElement(
-            "div"
-        );
-
-
-    row.className =
-        "specification-row";
-
-
-    row.innerHTML = `
-
-        <span class="specification-label">
-            ${escapeHTML(
-                label
-            )}
-        </span>
-
-        <span class="specification-value">
-            ${escapeHTML(
-                formatSpecificationValue(
-                    value
-                )
-            )}
-        </span>
-
-    `;
-
-
-    container.appendChild(
-        row
-    );
-
-}
-
-
-/* =========================================================
-   SPECIFICATION VALUE
-   ========================================================= */
-
-function formatSpecificationValue(value) {
-
-    if (
-        Array.isArray(value)
-    ) {
-
-        return value.join(
-            ", "
-        );
-
-    }
-
-
-    if (
-        value &&
-        typeof value ===
-        "object"
-    ) {
-
-        return Object.entries(
-            value
-        )
-        .map(
-            (
-                [key, val]
-            ) =>
-                `${key}: ${val}`
-        )
-        .join(
-            " • "
-        );
-
-    }
-
+function escapeHtml(value) {
 
     return String(
         value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
     );
 
 }
-
-
-/* =========================================================
-   VARIANTS / OPTIONS
-   ========================================================= */
-
-function renderVariants(product) {
-
-    const container =
-        document.getElementById(
-            "productOptions"
-        );
-
-
-    if (!container) {
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-        "";
-
-
-    const variants =
-        Array.isArray(
-            product.variants
-        )
-            ? product.variants
-            : [];
-
-
-    const colors =
-        Array.isArray(
-            product.colors
-        )
-            ? product.colors
-            : [];
-
-
-    const options =
-        variants.length
-            ? variants
-            : colors;
-
-
-    if (!options.length) {
-
-        container.style.display =
-            "none";
-
-        return;
-
-    }
-
-
-    container.style.display =
-        "";
-
-
-    const heading =
-        document.createElement(
-            "div"
-        );
-
-
-    heading.className =
-        "variant-selector";
-
-
-    heading.innerHTML = `
-
-        <div class="selected-option-row">
-
-            <span>
-                SELECT OPTION
-            </span>
-
-            <strong id="selectedOption">
-                ${escapeHTML(
-                    getVariantName(
-                        options[0],
-                        0
-                    )
-                )}
-            </strong>
-
-        </div>
-
-        <div class="color-options">
-        </div>
-
-    `;
-
-
-    container.appendChild(
-        heading
-    );
-
-
-    const optionsContainer =
-        heading.querySelector(
-            ".color-options"
-        );
-
-
-    options.forEach(
-        (
-            option,
-            index
-        ) => {
-
-            const data =
-                parseVariant(
-                    option,
-                    index
-                );
-
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.type =
-                "button";
-
-
-            button.className =
-                "color-option";
-
-
-            button.textContent =
-                data.name;
-
-
-            button.dataset.variantName =
-                data.name;
-
-
-            if (data.sku) {
-
-                button.dataset.sku =
-                    data.sku;
-
-            }
-
-
-            if (
-                index === 0
-            ) {
-
-                button.classList.add(
-                    "active"
-                );
-
-                optionsContainer.dataset.selectedVariant =
-                    data.name;
-
-                optionsContainer.dataset.selectedSku =
-                    data.sku || "";
-
-            }
-
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    optionsContainer
-                        .querySelectorAll(
-                            ".color-option"
-                        )
-                        .forEach(
-                            item => {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            }
-                        );
-
-
-                    button.classList.add(
-                        "active"
-                    );
-
-
-                    const selected =
-                        document.getElementById(
-                            "selectedOption"
-                        );
-
-
-                    if (selected) {
-
-                        selected.textContent =
-                            data.name;
-
-                    }
-
-
-                    optionsContainer.dataset.selectedVariant =
-                        data.name;
-
-
-                    optionsContainer.dataset.selectedSku =
-                        data.sku || "";
-
-                }
-            );
-
-
-            optionsContainer.appendChild(
-                button
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   GET VARIANT NAME
-   ========================================================= */
-
-function getVariantName(
-    variant,
-    index
-) {
-
-    if (
-        variant &&
-        typeof variant ===
-        "object"
-    ) {
-
-        return String(
-            variant.name ||
-            variant.color ||
-            variant.label ||
-            `OPTION ${index + 1}`
-        ).trim();
-
-    }
-
-
-    const text =
-        String(
-            variant ?? ""
-        ).trim();
-
-
-    return (
-        text ||
-        `OPTION ${index + 1}`
-    );
-
-}
-
-
-/* =========================================================
-   PARSE VARIANT
-   ========================================================= */
-
-function parseVariant(
-    variant,
-    index
-) {
-
-    if (
-        variant &&
-        typeof variant ===
-        "object"
-    ) {
-
-        return {
-
-            name:
-                String(
-                    variant.name ||
-                    variant.color ||
-                    variant.label ||
-                    `OPTION ${index + 1}`
-                ).trim(),
-
-            sku:
-                String(
-                    variant.sku ||
-                    variant.SKU ||
-                    ""
-                ).trim()
-
-        };
-
-    }
-
-
-    const text =
-        String(
-            variant ?? ""
-        ).trim();
-
-
-    const separator =
-        text.indexOf("—");
-
-
-    if (
-        separator !== -1
-    ) {
-
-        return {
-
-            name:
-                text
-                    .slice(
-                        0,
-                        separator
-                    )
-                    .trim(),
-
-            sku:
-                text
-                    .slice(
-                        separator + 1
-                    )
-                    .trim()
-
-        };
-
-    }
-
-
-    return {
-
-        name:
-            text ||
-            `OPTION ${index + 1}`,
-
-        sku: ""
-
-    };
-
-}
-
-
-/* =========================================================
-   CUSTOM CTA
-   ========================================================= */
-
-function renderCustomCTA(product) {
-
-    document
-        .querySelectorAll(
-            ".voltica-custom-product-cta"
-        )
-        .forEach(
-            element =>
-                element.remove()
-        );
-
-
-    const customCTA =
-        product.customCTA ||
-        product.customCta ||
-        product.cta;
-
-
-    if (!customCTA) {
-
-        return;
-
-    }
-
-
-    let title = "";
-    let lines = [];
-
-
-    if (
-        typeof customCTA === "object" &&
-        !Array.isArray(customCTA)
-    ) {
-
-        title =
-            customCTA.title ||
-            customCTA.heading ||
-            customCTA.name ||
-            "WHY SHOP WITH US?";
-
-
-        if (
-            Array.isArray(
-                customCTA.lines
-            )
-        ) {
-
-            lines =
-                customCTA.lines;
-
-        }
-
-        else if (
-            Array.isArray(
-                customCTA.items
-            )
-        ) {
-
-            lines =
-                customCTA.items;
-
-        }
-
-        else if (
-            typeof customCTA.text ===
-            "string"
-        ) {
-
-            lines =
-                customCTA.text
-                    .split(/\n+/)
-                    .filter(Boolean);
-
-        }
-
-    }
-
-    else if (
-        Array.isArray(customCTA)
-    ) {
-
-        title =
-            "WHY SHOP WITH US?";
-
-        lines =
-            customCTA;
-
-    }
-
-    else if (
-        typeof customCTA ===
-        "string"
-    ) {
-
-        title =
-            "WHY SHOP WITH US?";
-
-        lines =
-            customCTA
-                .split(/\n+/)
-                .filter(Boolean);
-
-    }
-
-
-    title =
-        String(
-            title
-        ).trim();
-
-
-    lines =
-        lines
-            .map(
-                line =>
-                    String(
-                        line ?? ""
-                    ).trim()
-            )
-            .filter(Boolean);
-
-
-    if (
-        !title &&
-        !lines.length
-    ) {
-
-        return;
-
-    }
-
-
-    const finalCTA =
-        document.querySelector(
-            ".product-final-cta"
-        );
-
-
-    const section =
-        document.createElement(
-            "section"
-        );
-
-
-    section.className =
-        "voltica-custom-product-cta";
-
-
-    section.innerHTML = `
-
-        <div class="acrylic-panel custom-cta-panel">
-
-            <span class="section-kicker">
-                VOLTICA STORE
-            </span>
-
-            <h2>
-                ${escapeHTML(title)}
-            </h2>
-
-            <div class="custom-cta-content">
-
-                ${lines
-                    .map(
-                        line => `
-
-                            <p>
-                                ${escapeHTML(
-                                    line
-                                )}
-                            </p>
-
-                        `
-                    )
-                    .join("")
-                }
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    if (
-        finalCTA &&
-        finalCTA.parentNode
-    ) {
-
-        finalCTA.before(
-            section
-        );
-
-    }
-
-    else {
-
-        document
-            .getElementById(
-                "productPage"
-            )
-            ?.appendChild(
-                section
-            );
-
-    }
-
-       }

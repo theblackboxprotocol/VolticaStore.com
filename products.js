@@ -189,13 +189,14 @@ window.volticaProducts = [
             "â€‹Body Material": "Durable high-grade plastic"
         },
         "images": [
-            "assets/images/1000052402.jpg",
-            "assets/images/1000052390.jpg",
-            "assets/images/1000052400.jpg",
-            "assets/images/1000052396.jpg",
-            "assets/images/1000052392.jpg",
-            "assets/images/1000052394.jpg",
-            "assets/images/1000052398.jpg"
+            "assets/images/Screenshot_20260825_184613.jpg",
+            "assets/images/Screenshot_20260825_183622.jpg",
+            "assets/images/Screenshot_20260825_183350.jpg",
+            "assets/images/Screenshot_20260825_184427.jpg",
+            "assets/images/Screenshot_20260825_184213.jpg",
+            "assets/images/Screenshot_20260825_184032.jpg",
+            "assets/images/Screenshot_20260825_183123.jpg",
+            "assets/images/Screenshot_20260825_183843.jpg"
         ],
         "colors": [
             "Dark Blue"

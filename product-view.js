@@ -313,17 +313,12 @@
            ================================================= */
 
         const productImages = [
-
-            "assets/images/q45-1.webp",
-            "assets/images/q45-2.webp",
-            "assets/images/q45-3.webp",
-            "assets/images/q45-4.webp",
-            "assets/images/q45-5.webp",
-            "assets/images/q45-6.webp"
-
-        ];
-
-
+    "assets/images/Q45.1.jpeg",
+    "assets/images/Q45.2.jpeg",
+    "assets/images/Q45.3.jpeg",
+    "assets/images/Q45.4.jpeg",
+    "assets/images/Q45.6.jpeg"
+];
         /* =================================================
            DOM HELPERS
            ================================================= */

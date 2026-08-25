@@ -15,6 +15,11 @@
         content="noindex, nofollow"
     >
 
+    <meta
+        name="theme-color"
+        content="#030303"
+    >
+
     <title>Voltica — Admin Product Manager</title>
 
     <link
@@ -92,7 +97,6 @@
 
     <section class="admin-dashboard">
 
-
         <div class="dashboard-title">
 
             <span>
@@ -104,7 +108,7 @@
             </h1>
 
             <p>
-                Manage your product catalog.
+                Manage your Voltica product catalog.
             </p>
 
         </div>
@@ -140,7 +144,6 @@
 
         </div>
 
-
     </section>
 
 
@@ -150,7 +153,6 @@
          ===================================================== -->
 
     <section class="admin-stats">
-
 
         <div class="stat-panel">
 
@@ -190,7 +192,6 @@
 
         </div>
 
-
     </section>
 
 
@@ -205,6 +206,10 @@
         hidden
     >
 
+
+        <!-- =================================================
+             EDITOR HEADER
+             ================================================= -->
 
         <div class="editor-header">
 
@@ -234,9 +239,9 @@
 
 
 
-        <!-- ================================================
-             BASIC INFORMATION
-             ================================================ -->
+        <!-- =================================================
+             01 — IDENTITY
+             ================================================= -->
 
         <div class="editor-section">
 
@@ -249,11 +254,11 @@
                 <div>
 
                     <h3>
-                        BASIC INFORMATION
+                        PRODUCT IDENTITY
                     </h3>
 
                     <p>
-                        Product identity and classification.
+                        Product name, category and catalog information.
                     </p>
 
                 </div>
@@ -264,6 +269,8 @@
             <div class="form-grid">
 
 
+                <!-- PRODUCT ID -->
+
                 <div class="form-field">
 
                     <label for="productId">
@@ -273,16 +280,18 @@
                     <input
                         type="text"
                         id="productId"
-                        placeholder="q45-anc-wireless-headphones"
+                        placeholder="q45"
                         autocomplete="off"
                     >
 
                     <small>
-                        Automatically generated from the product name.
+                        Unique internal product identifier.
                     </small>
 
                 </div>
 
+
+                <!-- PRODUCT NAME -->
 
                 <div class="form-field">
 
@@ -293,12 +302,14 @@
                     <input
                         type="text"
                         id="productName"
-                        placeholder="Q45 ANC Wireless Headphones"
+                        placeholder="VOLTICA Q45"
                         autocomplete="off"
                     >
 
                 </div>
 
+
+                <!-- CATEGORY -->
 
                 <div class="form-field">
 
@@ -309,17 +320,19 @@
                     <input
                         type="text"
                         id="productCategory"
-                        placeholder="AUDIO & HEADPHONES"
+                        placeholder="PREMIUM AUDIO"
                         autocomplete="off"
                     >
 
                 </div>
 
 
+                <!-- BADGE -->
+
                 <div class="form-field">
 
                     <label for="productBadge">
-                        BADGE
+                        PRODUCT BADGE
                     </label>
 
                     <select id="productBadge">
@@ -348,10 +361,16 @@
                             BEST SELLER
                         </option>
 
+                        <option value="PRE-ORDER">
+                            PRE-ORDER
+                        </option>
+
                     </select>
 
                 </div>
 
+
+                <!-- SKU -->
 
                 <div class="form-field">
 
@@ -362,12 +381,11 @@
                     <input
                         type="text"
                         id="productSku"
-                        placeholder="Supplier SKU / SKU"
+                        placeholder="VLT-AUD-Q45-001"
                         autocomplete="off"
                     >
 
                 </div>
-
 
             </div>
 
@@ -375,9 +393,9 @@
 
 
 
-        <!-- ================================================
-             PRICING
-             ================================================ -->
+        <!-- =================================================
+             02 — PRICING
+             ================================================= -->
 
         <div class="editor-section">
 
@@ -394,7 +412,7 @@
                     </h3>
 
                     <p>
-                        Product cost and Voltica retail pricing.
+                        Supplier cost, shipping and Voltica retail pricing.
                     </p>
 
                 </div>
@@ -405,10 +423,12 @@
             <div class="form-grid four-columns">
 
 
+                <!-- COST -->
+
                 <div class="form-field">
 
                     <label for="productCost">
-                        COST
+                        PRODUCT COST
                     </label>
 
                     <input
@@ -426,10 +446,12 @@
                 </div>
 
 
+                <!-- SHIPPING -->
+
                 <div class="form-field">
 
                     <label for="productShipping">
-                        SHIPPING
+                        SHIPPING COST
                     </label>
 
                     <input
@@ -446,6 +468,8 @@
 
                 </div>
 
+
+                <!-- VOLTICA PRICE -->
 
                 <div class="form-field highlight-field">
 
@@ -468,6 +492,8 @@
                 </div>
 
 
+                <!-- REFERENCE PRICE -->
+
                 <div class="form-field">
 
                     <label for="productReferencePrice">
@@ -488,16 +514,15 @@
 
                 </div>
 
-
             </div>
 
         </div>
 
 
 
-        <!-- ================================================
-             DESCRIPTION
-             ================================================ -->
+        <!-- =================================================
+             03 — PRODUCT CONTENT
+             ================================================= -->
 
         <div class="editor-section">
 
@@ -514,13 +539,15 @@
                     </h3>
 
                     <p>
-                        Customer-facing product information.
+                        Customer-facing content displayed throughout Voltica.
                     </p>
 
                 </div>
 
             </div>
 
+
+            <!-- SHORT DESCRIPTION -->
 
             <div class="form-field">
 
@@ -530,12 +557,18 @@
 
                 <textarea
                     id="shortDescription"
-                    rows="3"
-                    placeholder="Short product description..."
+                    rows="4"
+                    placeholder="A concise description used on the Store and product header..."
                 ></textarea>
+
+                <small>
+                    Keep this short and focused on the main product value.
+                </small>
 
             </div>
 
+
+            <!-- FULL DESCRIPTION -->
 
             <div class="form-field">
 
@@ -545,49 +578,13 @@
 
                 <textarea
                     id="fullDescription"
-                    rows="8"
-                    placeholder="Complete product description..."
+                    rows="10"
+                    placeholder="Write the complete customer-facing product description..."
                 ></textarea>
 
-            </div>
-
-
-            <div class="form-grid">
-
-
-                <div class="form-field">
-
-                    <label for="keyFeatures">
-                        KEY FEATURES
-                    </label>
-
-                    <textarea
-                        id="keyFeatures"
-                        rows="8"
-                        placeholder="One feature per line..."
-                    ></textarea>
-
-                </div>
-
-
-                <div class="form-field">
-
-                    <label for="technicalSpecifications">
-                        KEY SPECIFICATIONS
-                    </label>
-
-                    <textarea
-                        id="technicalSpecifications"
-                        rows="8"
-                        placeholder="Specification: Value&#10;Specification: Value"
-                    ></textarea>
-
-                    <small>
-                        One specification per line.
-                    </small>
-
-                </div>
-
+                <small>
+                    This becomes the main product description on product-view.html.
+                </small>
 
             </div>
 
@@ -595,9 +592,9 @@
 
 
 
-        <!-- ================================================
-             IMAGE MANAGER
-             ================================================ -->
+        <!-- =================================================
+             04 — FEATURES
+             ================================================= -->
 
         <div class="editor-section">
 
@@ -610,11 +607,11 @@
                 <div>
 
                     <h3>
-                        PRODUCT IMAGES
+                        PRODUCT FEATURES
                     </h3>
 
                     <p>
-                        Select your product images. The original filenames are preserved.
+                        Each feature uses a title followed by a description.
                     </p>
 
                 </div>
@@ -622,12 +619,108 @@
             </div>
 
 
-        <div class="image-manager">
+            <div class="form-field">
+
+                <label for="keyFeatures">
+                    FEATURES
+                </label>
+
+                <textarea
+                    id="keyFeatures"
+                    rows="10"
+                    placeholder="Premium Wireless Audio: High-quality wireless sound for immersive everyday listening.&#10;Comfort-Focused Design: Built for extended listening sessions.&#10;Long Battery Life: Designed for uninterrupted daily use."
+                ></textarea>
+
+                <small>
+                    One feature per line. Format: <strong>Feature Title: Description</strong>
+                </small>
+
+            </div>
+
+        </div>
 
 
-                <!-- ========================================
-                     UPLOAD SQUARE
-                     ======================================== -->
+
+        <!-- =================================================
+             05 — SPECIFICATIONS
+             ================================================= -->
+
+        <div class="editor-section">
+
+            <div class="section-heading">
+
+                <span>
+                    05
+                </span>
+
+                <div>
+
+                    <h3>
+                        TECHNICAL SPECIFICATIONS
+                    </h3>
+
+                    <p>
+                        Technical product information displayed as a specification table.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="technicalSpecifications">
+                    SPECIFICATIONS
+                </label>
+
+                <textarea
+                    id="technicalSpecifications"
+                    rows="12"
+                    placeholder="Connectivity: Bluetooth 5.4&#10;Design: Over-ear&#10;Battery Life: Up to 50 hours&#10;Noise Cancellation: Active Noise Cancellation&#10;Charging: USB-C&#10;Color: Black"
+                ></textarea>
+
+                <small>
+                    One specification per line. Format: <strong>Specification: Value</strong>
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             06 — PRODUCT IMAGES
+             ================================================= -->
+
+        <div class="editor-section">
+
+            <div class="section-heading">
+
+                <span>
+                    06
+                </span>
+
+                <div>
+
+                    <h3>
+                        PRODUCT IMAGES
+                    </h3>
+
+                    <p>
+                        Upload and manage the images used by the product gallery.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="image-manager">
+
+
+                <!-- UPLOAD -->
 
                 <label
                     for="productImageUpload"
@@ -665,10 +758,7 @@
                 </label>
 
 
-
-                <!-- ========================================
-                     IMAGE PREVIEW
-                     ======================================== -->
+                <!-- PREVIEW -->
 
                 <div
                     id="imagePreview"
@@ -676,9 +766,7 @@
                 >
 
                     <div class="image-preview-empty">
-
                         NO IMAGES SELECTED
-
                     </div>
 
                 </div>
@@ -690,16 +778,16 @@
 
 
 
-        <!-- ================================================
-             OPTIONS
-             ================================================ -->
+        <!-- =================================================
+             07 — VARIANTS
+             ================================================= -->
 
         <div class="editor-section">
 
             <div class="section-heading">
 
                 <span>
-                    05
+                    07
                 </span>
 
                 <div>
@@ -709,7 +797,7 @@
                     </h3>
 
                     <p>
-                        Colors and product variants.
+                        Product colors and purchasable variants.
                     </p>
 
                 </div>
@@ -719,6 +807,8 @@
 
             <div class="form-grid">
 
+
+                <!-- COLORS -->
 
                 <div class="form-field">
 
@@ -730,14 +820,17 @@
                         type="text"
                         id="productColors"
                         placeholder="Black, White, Beige"
+                        autocomplete="off"
                     >
 
                     <small>
-                        Separate colors with commas.
+                        Separate colors with commas. These appear as selectable options.
                     </small>
 
                 </div>
 
+
+                <!-- VARIANTS -->
 
                 <div class="form-field">
 
@@ -747,30 +840,101 @@
 
                     <textarea
                         id="productVariants"
-                        rows="5"
-                        placeholder="Black — SKU-001&#10;White — SKU-002"
+                        rows="7"
+                        placeholder="Black — SKU-001&#10;White — SKU-002&#10;Beige — SKU-003"
                     ></textarea>
 
                     <small>
-                        One variant per line.
+                        One variant per line. Variant names and SKU information are preserved.
                     </small>
 
                 </div>
 
-
             </div>
 
         </div>
-        <!-- ================================================
-             LINKS
-             ================================================ -->
+
+
+
+        <!-- =================================================
+             08 — CUSTOM CTA
+             ================================================= -->
 
         <div class="editor-section">
 
             <div class="section-heading">
 
                 <span>
-                    06
+                    08
+                </span>
+
+                <div>
+
+                    <h3>
+                        CUSTOM PRODUCT CTA
+                    </h3>
+
+                    <p>
+                        Optional product-specific message displayed after the options section.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CTA TITLE -->
+
+            <div class="form-field">
+
+                <label for="customCtaTitle">
+                    CTA TITLE
+                </label>
+
+                <input
+                    type="text"
+                    id="customCtaTitle"
+                    placeholder="WHY SHOP WITH US?"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- CTA CONTENT -->
+
+            <div class="form-field">
+
+                <label for="customCtaLines">
+                    CTA CONTENT
+                </label>
+
+                <textarea
+                    id="customCtaLines"
+                    rows="6"
+                    placeholder="Premium high-tech gear selected for innovators and technology enthusiasts.&#10;Dedicated customer support.&#10;Secure checkout through Stripe."
+                ></textarea>
+
+                <small>
+                    One message per line.
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             09 — COMMERCE LINKS
+             ================================================= -->
+
+        <div class="editor-section">
+
+            <div class="section-heading">
+
+                <span>
+                    09
                 </span>
 
                 <div>
@@ -791,6 +955,8 @@
             <div class="form-grid">
 
 
+                <!-- STRIPE -->
+
                 <div class="form-field">
 
                     <label for="stripeLink">
@@ -801,10 +967,17 @@
                         type="url"
                         id="stripeLink"
                         placeholder="https://buy.stripe.com/..."
+                        autocomplete="off"
                     >
+
+                    <small>
+                        Used by the product purchase buttons.
+                    </small>
 
                 </div>
 
+
+                <!-- SUPPLIER -->
 
                 <div class="form-field">
 
@@ -815,11 +988,15 @@
                     <input
                         type="url"
                         id="supplierLink"
-                        placeholder="https://www.alibaba.com/..."
+                        placeholder="https://www.cjdropshipping.com/..."
+                        autocomplete="off"
                     >
 
-                </div>
+                    <small>
+                        Internal supplier reference.
+                    </small>
 
+                </div>
 
             </div>
 
@@ -827,16 +1004,16 @@
 
 
 
-        <!-- ================================================
-             STATUS
-             ================================================ -->
+        <!-- =================================================
+             10 — STORE STATUS
+             ================================================= -->
 
         <div class="editor-section status-editor-section">
 
             <div class="section-heading">
 
                 <span>
-                    07
+                    10
                 </span>
 
                 <div>
@@ -846,7 +1023,7 @@
                     </h3>
 
                     <p>
-                        Control whether this product appears in the Store.
+                        Control whether this product is visible in the public Store.
                     </p>
 
                 </div>
@@ -874,21 +1051,20 @@
                     </strong>
 
                     <small>
-                        Active products are displayed in the public Store.
+                        Active products appear in the public Voltica Store.
                     </small>
 
                 </div>
 
             </label>
 
-
         </div>
 
 
 
-        <!-- ================================================
+        <!-- =================================================
              EDITOR ACTIONS
-             ================================================ -->
+             ================================================= -->
 
         <div class="editor-actions">
 
@@ -941,6 +1117,8 @@
             <div class="database-controls">
 
 
+                <!-- SEARCH -->
+
                 <div class="search-box">
 
                     <span>
@@ -957,6 +1135,8 @@
                 </div>
 
 
+                <!-- CATEGORY -->
+
                 <select
                     id="categoryFilter"
                     aria-label="Filter by category"
@@ -968,6 +1148,8 @@
 
                 </select>
 
+
+                <!-- STATUS -->
 
                 <select
                     id="statusFilter"
@@ -988,7 +1170,6 @@
 
                 </select>
 
-
             </div>
 
         </div>
@@ -1002,13 +1183,17 @@
         <div
             id="productList"
             class="product-list"
-        >
-        </div>
+        ></div>
 
+
+        <!-- =================================================
+             EMPTY STATE
+             ================================================= -->
 
         <div
             id="emptyState"
             class="empty-state"
+            hidden
         >
 
             <div class="empty-pulsar"></div>

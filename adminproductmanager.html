@@ -1,1073 +1,1121 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
 
-<head>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <meta charset="UTF-8">
+<meta
+    name="robots"
+    content="noindex, nofollow"
+>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<title>Voltica — Admin Product Manager</title>
 
-    <meta
-        name="robots"
-        content="noindex, nofollow"
-    >
+<link
+    rel="stylesheet"
+    href="adminproductmanager.css"
+>
 
-    <title>Voltica — Admin Product Manager</title>
-
-    <link
-        rel="stylesheet"
-        href="adminproductmanager.css"
-    >
-
-</head>
-
-
-<body>
-
-
-<!-- =========================================================
+</head><body><!-- =========================================================
      BACKGROUND
-     ========================================================= -->
+     ========================================================= --><div class="admin-background"><div class="ambient ambient-one"></div>
+<div class="ambient ambient-two"></div>
+<div class="ambient ambient-three"></div>
 
-<div class="admin-background">
+</div><!-- =========================================================
+     HEADER
+     ========================================================= --><header class="admin-header"><div class="admin-brand">
 
-    <div class="ambient ambient-one"></div>
-    <div class="ambient ambient-two"></div>
-    <div class="ambient ambient-three"></div>
+    <span class="brand-pulse"></span>
+
+    <div>
+
+        <small>
+            VOLTICA
+        </small>
+
+        <strong>
+            PRODUCT SYSTEM
+        </strong>
+
+    </div>
 
 </div>
 
 
+<div class="admin-header-status">
 
-<!-- =========================================================
-     HEADER
-     ========================================================= -->
+    <span class="status-pulse"></span>
 
-<header class="admin-header">
+    SYSTEM ONLINE
 
-    <div class="admin-brand">
+</div>
 
-        <span class="brand-pulse"></span>
+</header><!-- =========================================================
+     MAIN
+     ========================================================= --><main class="admin-container"><!-- =====================================================
+     DASHBOARD
+     ===================================================== -->
+
+<section class="admin-dashboard">
+
+
+    <div class="dashboard-title">
+
+        <span>
+            VOLTICA
+        </span>
+
+        <h1>
+            ADMIN PRODUCT MANAGER
+        </h1>
+
+        <p>
+            Manage your product catalog.
+        </p>
+
+    </div>
+
+
+    <div class="dashboard-actions">
+
+        <button
+            type="button"
+            id="backupProductsButton"
+            class="acrylic-button"
+        >
+            BACKUP DATABASE
+        </button>
+
+
+        <button
+            type="button"
+            id="exportProductsButton"
+            class="acrylic-button primary"
+        >
+            EXPORT PRODUCTS.JS
+        </button>
+
+
+        <button
+            type="button"
+            id="newProductButton"
+            class="acrylic-button create"
+        >
+            + NEW PRODUCT
+        </button>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     STATISTICS
+     ===================================================== -->
+
+<section class="admin-stats">
+
+
+    <div class="stat-panel">
+
+        <span>
+            PRODUCTS
+        </span>
+
+        <strong id="totalProducts">
+            0
+        </strong>
+
+    </div>
+
+
+    <div class="stat-panel">
+
+        <span>
+            ACTIVE
+        </span>
+
+        <strong id="activeProducts">
+            0
+        </strong>
+
+    </div>
+
+
+    <div class="stat-panel">
+
+        <span>
+            CATEGORIES
+        </span>
+
+        <strong id="totalCategories">
+            0
+        </strong>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PRODUCT EDITOR
+     ===================================================== -->
+
+<section
+    id="productEditor"
+    class="product-editor"
+    hidden
+>
+
+
+    <div class="editor-header">
 
         <div>
-
-            <small>
-                VOLTICA
-            </small>
-
-            <strong>
-                PRODUCT SYSTEM
-            </strong>
-
-        </div>
-
-    </div>
-
-
-    <div class="admin-header-status">
-
-        <span class="status-pulse"></span>
-
-        SYSTEM ONLINE
-
-    </div>
-
-</header>
-
-
-
-<!-- =========================================================
-     MAIN
-     ========================================================= -->
-
-<main class="admin-container">
-
-
-    <!-- =====================================================
-         DASHBOARD
-         ===================================================== -->
-
-    <section class="admin-dashboard">
-
-
-        <div class="dashboard-title">
-
-            <span>
-                VOLTICA
-            </span>
-
-            <h1>
-                ADMIN PRODUCT MANAGER
-            </h1>
-
-            <p>
-                Manage your product catalog.
-            </p>
-
-        </div>
-
-
-        <div class="dashboard-actions">
-
-            <button
-                type="button"
-                id="backupProductsButton"
-                class="acrylic-button"
-            >
-                BACKUP DATABASE
-            </button>
-
-
-            <button
-                type="button"
-                id="exportProductsButton"
-                class="acrylic-button primary"
-            >
-                EXPORT PRODUCTS.JS
-            </button>
-
-
-            <button
-                type="button"
-                id="newProductButton"
-                class="acrylic-button create"
-            >
-                + NEW PRODUCT
-            </button>
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- =====================================================
-         STATISTICS
-         ===================================================== -->
-
-    <section class="admin-stats">
-
-
-        <div class="stat-panel">
-
-            <span>
-                PRODUCTS
-            </span>
-
-            <strong id="totalProducts">
-                0
-            </strong>
-
-        </div>
-
-
-        <div class="stat-panel">
-
-            <span>
-                ACTIVE
-            </span>
-
-            <strong id="activeProducts">
-                0
-            </strong>
-
-        </div>
-
-
-        <div class="stat-panel">
-
-            <span>
-                CATEGORIES
-            </span>
-
-            <strong id="totalCategories">
-                0
-            </strong>
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- =====================================================
-         PRODUCT EDITOR
-         ===================================================== -->
-
-    <section
-        id="productEditor"
-        class="product-editor"
-        hidden
-    >
-
-
-        <div class="editor-header">
-
-            <div>
-
-                <span>
-                    PRODUCT DATABASE
-                </span>
-
-                <h2 id="editorTitle">
-                    NEW PRODUCT
-                </h2>
-
-            </div>
-
-
-            <button
-                type="button"
-                id="closeEditorButton"
-                class="icon-button"
-                aria-label="Close editor"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-
-        <!-- ================================================
-             BASIC INFORMATION
-             ================================================ -->
-
-        <div class="editor-section">
-
-            <div class="section-heading">
-
-                <span>
-                    01
-                </span>
-
-                <div>
-
-                    <h3>
-                        BASIC INFORMATION
-                    </h3>
-
-                    <p>
-                        Product identity and classification.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-grid">
-
-
-                <div class="form-field">
-
-                    <label for="productId">
-                        PRODUCT ID
-                    </label>
-
-                    <input
-                        type="text"
-                        id="productId"
-                        placeholder="q45-anc-wireless-headphones"
-                        autocomplete="off"
-                    >
-
-                    <small>
-                        Automatically generated from the product name.
-                    </small>
-
-                </div>
-
-
-                <div class="form-field">
-
-                    <label for="productName">
-                        PRODUCT NAME *
-                    </label>
-
-                    <input
-                        type="text"
-                        id="productName"
-                        placeholder="Q45 ANC Wireless Headphones"
-                        autocomplete="off"
-                    >
-
-                </div>
-
-
-                <div class="form-field">
-
-                    <label for="productCategory">
-                        CATEGORY
-                    </label>
-
-                    <input
-                        type="text"
-                        id="productCategory"
-                        placeholder="AUDIO & HEADPHONES"
-                        autocomplete="off"
-                    >
-
-                </div>
-
-
-                <div class="form-field">
-
-                    <label for="productBadge">
-                        BADGE
-                    </label>
-
-                    <select id="productBadge">
-
-                        <option value="">
-                            NONE
-                        </option>
-
-                        <option value="NEW">
-                            NEW
-                        </option>
-
-                        <option value="FEATURED">
-                            FEATURED
-                        </option>
-
-                        <option value="LIMITED">
-                            LIMITED
-                        </option>
-
-                        <option value="PREMIUM">
-                            PREMIUM
-                        </option>
-
-                        <option value="BEST SELLER">
-                            BEST SELLER
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-field">
-
-                    <label for="productSku">
-                        SKU
-                    </label>
-
-                    <input
-                        type="text"
-                        id="productSku"
-                        placeholder="Supplier SKU / SKU"
-                        autocomplete="off"
-                    >
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================================================
-             PRICING
-             ================================================ -->
-
-        <div class="editor-section">
-
-            <div class="section-heading">
-
-                <span>
-                    02
-                </span>
-
-                <div>
-
-                    <h3>
-                        PRICING
-                    </h3>
-
-                    <p>
-                        Product cost and Voltica retail pricing.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-grid four-columns">
-
-
-                <div class="form-field">
-
-                    <label for="productCost">
-                        COST
-                    </label>
-
-                    <input
-                        type="number"
-                        id="productCost"
-                        min="0"
-                        step="0.01"
-                        placeholder="0.00"
-                    >
-
-                    <small>
-                        USD
-                    </small>
-
-                </div>
-
-
-                <div class="form-field">
-
-                    <label for="productShipping">
-                        SHIPPING
-                    </label>
-
-                    <input
-                        type="number"
-                        id="productShipping"
-                        min="0"
-                        step="0.01"
-                        placeholder="0.00"
-                    >
-
-                    <small>
-                        USD
-                    </small>
-
-                </div>
-
-
-                <div class="form-field highlight-field">
-
-                    <label for="productPrice">
-                        VOLTICA PRICE *
-                    </label>
-
-                    <input
-                        type="number"
-                        id="productPrice"
-                        min="0"
-                        step="0.01"
-                        placeholder="0.00"
-                    >
-
-                    <small>
-                        USD
-                    </small>
-
-                </div>
-
-
-                <div class="form-field">
-
-                    <label for="productReferencePrice">
-                        REFERENCE PRICE
-                    </label>
-
-                    <input
-                        type="number"
-                        id="productReferencePrice"
-                        min="0"
-                        step="0.01"
-                        placeholder="0.00"
-                    >
-
-                    <small>
-                        Optional crossed price.
-                    </small>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================================================
-             DESCRIPTION
-             ================================================ -->
-
-        <div class="editor-section">
-
-            <div class="section-heading">
-
-                <span>
-                    03
-                </span>
-
-                <div>
-
-                    <h3>
-                        PRODUCT CONTENT
-                    </h3>
-
-                    <p>
-                        Customer-facing product information.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-field">
-
-                <label for="shortDescription">
-                    SHORT DESCRIPTION
-                </label>
-
-                <textarea
-                    id="shortDescription"
-                    rows="3"
-                    placeholder="Short product description..."
-                ></textarea>
-
-            </div>
-
-
-            <div class="form-field">
-
-                <label for="fullDescription">
-                    FULL DESCRIPTION
-                </label>
-
-                <textarea
-                    id="fullDescription"
-                    rows="8"
-                    placeholder="Complete product description..."
-                ></textarea>
-
-            </div>
-
-
-            <div class="form-grid">
-
-
-                <div class="form-field">
-
-                    <label for="keyFeatures">
-                        KEY FEATURES
-                    </label>
-
-                    <textarea
-                        id="keyFeatures"
-                        rows="8"
-                        placeholder="One feature per line..."
-                    ></textarea>
-
-                    <small>
-                        One feature per line.
-                    </small>
-
-                </div>
-
-
-                <div class="form-field">
-
-                    <label for="technicalSpecifications">
-                        KEY SPECIFICATIONS
-                    </label>
-
-                    <textarea
-                        id="technicalSpecifications"
-                        rows="8"
-                        placeholder="Specification: Value&#10;Specification: Value"
-                    ></textarea>
-
-                    <small>
-                        One specification per line.
-                    </small>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================================================
-             IMAGE MANAGER
-             ================================================ -->
-
-        <div class="editor-section">
-
-            <div class="section-heading">
-
-                <span>
-                    04
-                </span>
-
-                <div>
-
-                    <h3>
-                        PRODUCT IMAGES
-                    </h3>
-
-                    <p>
-                        Select your product images. The original filenames are preserved.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="image-manager">
-
-
-                <!-- ========================================
-                     UPLOAD SQUARE
-                     ======================================== -->
-
-                <label
-                    for="productImageUpload"
-                    class="image-upload-square"
-                    id="imageUploadSquare"
-                >
-
-                    <input
-                        type="file"
-                        id="productImageUpload"
-                        accept="image/*"
-                        multiple
-                    >
-
-
-                    <div class="upload-icon">
-                        +
-                    </div>
-
-
-                    <strong>
-                        UPLOAD PRODUCT IMAGES
-                    </strong>
-
-
-                    <span>
-                        JPG · JPEG · PNG · WEBP
-                    </span>
-
-
-                    <small>
-                        Multiple images supported
-                    </small>
-
-                </label>
-
-
-
-                <!-- ========================================
-                     IMAGE PREVIEW
-                     ======================================== -->
-
-                <div
-                    id="imagePreview"
-                    class="image-preview"
-                >
-
-                    <div class="image-preview-empty">
-
-                        NO IMAGES SELECTED
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="image-manager-note">
-
-                <span class="note-pulse"></span>
-
-                <p>
-                    Files are not uploaded to your website from this panel.
-                    Keep the same filenames and place the images manually inside
-                    <strong>assets/images/</strong>.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- ================================================
-             OPTIONS
-             ================================================ -->
-
-        <div class="editor-section">
-
-            <div class="section-heading">
-
-                <span>
-                    05
-                </span>
-
-                <div>
-
-                    <h3>
-                        OPTIONS & VARIANTS
-                    </h3>
-
-                    <p>
-                        Colors and product variants.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-grid">
-
-
-                <div class="form-field">
-
-                    <label for="productColors">
-                        COLORS
-                    </label>
-
-                    <input
-                        type="text"
-                        id="productColors"
-                        placeholder="Black, White, Beige"
-                    >
-
-                    <small>
-                        Separate colors with commas.
-                    </small>
-
-                </div>
-
-
-                <div class="form-field">
-
-                    <label for="productVariants">
-                        VARIANTS
-                    </label>
-
-                    <textarea
-                        id="productVariants"
-                        rows="5"
-                        placeholder="Black — SKU-001&#10;White — SKU-002"
-                    ></textarea>
-
-                    <small>
-                        One variant per line.
-                    </small>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================================================
-             LINKS
-             ================================================ -->
-
-        <div class="editor-section">
-
-            <div class="section-heading">
-
-                <span>
-                    06
-                </span>
-
-                <div>
-
-                    <h3>
-                        COMMERCE LINKS
-                    </h3>
-
-                    <p>
-                        Payment and supplier information.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-grid">
-
-
-                <div class="form-field">
-
-                    <label for="stripeLink">
-                        STRIPE PAYMENT LINK
-                    </label>
-
-                    <input
-                        type="url"
-                        id="stripeLink"
-                        placeholder="https://buy.stripe.com/..."
-                    >
-
-                </div>
-
-
-                <div class="form-field">
-
-                    <label for="supplierLink">
-                        SUPPLIER LINK
-                    </label>
-
-                    <input
-                        type="url"
-                        id="supplierLink"
-                        placeholder="https://www.alibaba.com/..."
-                    >
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================================================
-             STATUS
-             ================================================ -->
-
-        <div class="editor-section status-editor-section">
-
-            <div class="section-heading">
-
-                <span>
-                    07
-                </span>
-
-                <div>
-
-                    <h3>
-                        STORE STATUS
-                    </h3>
-
-                    <p>
-                        Control whether this product appears in the Store.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <label
-                class="toggle-control"
-                for="productActive"
-            >
-
-                <input
-                    type="checkbox"
-                    id="productActive"
-                    checked
-                >
-
-                <span class="toggle-slider"></span>
-
-                <div>
-
-                    <strong>
-                        PRODUCT ACTIVE
-                    </strong>
-
-                    <small>
-                        Active products are displayed in the public Store.
-                    </small>
-
-                </div>
-
-            </label>
-
-
-        </div>
-
-
-
-        <!-- ================================================
-             EDITOR ACTIONS
-             ================================================ -->
-
-        <div class="editor-actions">
-
-            <button
-                type="button"
-                id="cancelProductButton"
-                class="acrylic-button"
-            >
-                CANCEL
-            </button>
-
-
-            <button
-                type="button"
-                id="saveProductButton"
-                class="acrylic-button primary save-button"
-            >
-                SAVE PRODUCT
-            </button>
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- =====================================================
-         PRODUCT DATABASE
-         ===================================================== -->
-
-    <section class="database-section">
-
-
-        <div class="database-header">
-
-            <div>
-
-                <span>
-                    CATALOG
-                </span>
-
-                <h2>
-                    PRODUCT DATABASE
-                </h2>
-
-            </div>
-
-
-            <div class="database-controls">
-
-
-                <div class="search-box">
-
-                    <span>
-                        ⌕
-                    </span>
-
-                    <input
-                        type="search"
-                        id="productSearch"
-                        placeholder="SEARCH PRODUCTS..."
-                        autocomplete="off"
-                    >
-
-                </div>
-
-
-                <select
-                    id="categoryFilter"
-                    aria-label="Filter by category"
-                >
-
-                    <option value="all">
-                        ALL CATEGORIES
-                    </option>
-
-                </select>
-
-
-                <select
-                    id="statusFilter"
-                    aria-label="Filter by status"
-                >
-
-                    <option value="all">
-                        ALL STATUS
-                    </option>
-
-                    <option value="active">
-                        ACTIVE
-                    </option>
-
-                    <option value="inactive">
-                        INACTIVE
-                    </option>
-
-                </select>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =================================================
-             PRODUCT LIST
-             ================================================= -->
-
-        <div
-            id="productList"
-            class="product-list"
-        >
-        </div>
-
-
-        <div
-            id="emptyState"
-            class="empty-state"
-        >
-
-            <div class="empty-pulsar"></div>
 
             <span>
                 PRODUCT DATABASE
             </span>
 
-            <strong>
-                NO PRODUCTS YET
-            </strong>
-
-            <p>
-                Your Voltica catalog is ready for its first product.
-            </p>
-
-
-            <button
-                type="button"
-                id="emptyCreateButton"
-                class="acrylic-button primary"
-            >
-                + CREATE FIRST PRODUCT
-            </button>
+            <h2 id="editorTitle">
+                NEW PRODUCT
+            </h2>
 
         </div>
 
 
-    </section>
+        <button
+            type="button"
+            id="closeEditorButton"
+            class="icon-button"
+            aria-label="Close editor"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+
+    <!-- ================================================
+         BASIC INFORMATION
+         ================================================ -->
+
+    <div class="editor-section">
+
+        <div class="section-heading">
+
+            <span>
+                01
+            </span>
+
+            <div>
+
+                <h3>
+                    BASIC INFORMATION
+                </h3>
+
+                <p>
+                    Product identity and classification.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-field">
+
+                <label for="productId">
+                    PRODUCT ID
+                </label>
+
+                <input
+                    type="text"
+                    id="productId"
+                    placeholder="q45-anc-wireless-headphones"
+                    autocomplete="off"
+                >
+
+                <small>
+                    Automatically generated from the product name.
+                </small>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="productName">
+                    PRODUCT NAME *
+                </label>
+
+                <input
+                    type="text"
+                    id="productName"
+                    placeholder="Q45 ANC Wireless Headphones"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="productCategory">
+                    CATEGORY
+                </label>
+
+                <input
+                    type="text"
+                    id="productCategory"
+                    placeholder="AUDIO & HEADPHONES"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="productBadge">
+                    BADGE
+                </label>
+
+                <select id="productBadge">
+
+                    <option value="">
+                        NONE
+                    </option>
+
+                    <option value="NEW">
+                        NEW
+                    </option>
+
+                    <option value="FEATURED">
+                        FEATURED
+                    </option>
+
+                    <option value="LIMITED">
+                        LIMITED
+                    </option>
+
+                    <option value="PREMIUM">
+                        PREMIUM
+                    </option>
+
+                    <option value="BEST SELLER">
+                        BEST SELLER
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="productSku">
+                    SKU
+                </label>
+
+                <input
+                    type="text"
+                    id="productSku"
+                    placeholder="Supplier SKU / SKU"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================
+         PRICING
+         ================================================ -->
+
+    <div class="editor-section">
+
+        <div class="section-heading">
+
+            <span>
+                02
+            </span>
+
+            <div>
+
+                <h3>
+                    PRICING
+                </h3>
+
+                <p>
+                    Product cost and Voltica retail pricing.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid four-columns">
+
+
+            <div class="form-field">
+
+                <label for="productCost">
+                    COST
+                </label>
+
+                <input
+                    type="number"
+                    id="productCost"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                >
+
+                <small>
+                    USD
+                </small>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="productShipping">
+                    SHIPPING
+                </label>
+
+                <input
+                    type="number"
+                    id="productShipping"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                >
+
+                <small>
+                    USD
+                </small>
+
+            </div>
+
+
+            <div class="form-field highlight-field">
+
+                <label for="productPrice">
+                    VOLTICA PRICE *
+                </label>
+
+                <input
+                    type="number"
+                    id="productPrice"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                >
+
+                <small>
+                    USD
+                </small>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="productReferencePrice">
+                    REFERENCE PRICE
+                </label>
+
+                <input
+                    type="number"
+                    id="productReferencePrice"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                >
+
+                <small>
+                    Optional crossed price.
+                </small>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================
+         DESCRIPTION
+         ================================================ -->
+
+    <div class="editor-section">
+
+        <div class="section-heading">
+
+            <span>
+                03
+            </span>
+
+            <div>
+
+                <h3>
+                    PRODUCT CONTENT
+                </h3>
+
+                <p>
+                    Customer-facing product information.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label for="shortDescription">
+                SHORT DESCRIPTION
+            </label>
+
+            <textarea
+                id="shortDescription"
+                rows="3"
+                placeholder="Short product description..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label for="fullDescription">
+                FULL DESCRIPTION
+            </label>
+
+            <textarea
+                id="fullDescription"
+                rows="8"
+                placeholder="Complete product description..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-field">
+
+                <label for="keyFeatures">
+                    KEY FEATURES
+                </label>
+
+                <textarea
+                    id="keyFeatures"
+                    rows="8"
+                    placeholder="One feature per line..."
+                ></textarea>
+
+                <small>
+                    One feature per line.
+                </small>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="technicalSpecifications">
+                    KEY SPECIFICATIONS
+                </label>
+
+                <textarea
+                    id="technicalSpecifications"
+                    rows="8"
+                    placeholder="Specification: Value&#10;Specification: Value"
+                ></textarea>
+
+                <small>
+                    One specification per line.
+                </small>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================
+         IMAGE MANAGER
+         ================================================ -->
+
+    <div class="editor-section">
+
+        <div class="section-heading">
+
+            <span>
+                04
+            </span>
+
+            <div>
+
+                <h3>
+                    PRODUCT IMAGES
+                </h3>
+
+                <p>
+                    Select your product images. The original filenames are preserved.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="image-manager">
+
+
+            <!-- ========================================
+                 UPLOAD SQUARE
+                 ======================================== -->
+
+            <label
+                for="productImageUpload"
+                class="image-upload-square"
+                id="imageUploadSquare"
+            >
+
+                <input
+                    type="file"
+                    id="productImageUpload"
+                    accept="image/*"
+                    multiple
+                >
+
+
+                <div class="upload-icon">
+                    +
+                </div>
+
+
+                <strong>
+                    UPLOAD PRODUCT IMAGES
+                </strong>
+
+
+                <span>
+                    JPG · JPEG · PNG · WEBP
+                </span>
+
+
+                <small>
+                    Multiple images supported
+                </small>
+
+            </label>
+
+
+
+            <!-- ========================================
+                 IMAGE PREVIEW
+                 ======================================== -->
+
+            <div
+                id="imagePreview"
+                class="image-preview"
+            >
+
+                <div class="image-preview-empty">
+
+                    NO IMAGES SELECTED
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================
+         OPTIONS
+         ================================================ -->
+
+    <div class="editor-section">
+
+        <div class="section-heading">
+
+            <span>
+                05
+            </span>
+
+            <div>
+
+                <h3>
+                    OPTIONS & VARIANTS
+                </h3>
+
+                <p>
+                    Colors and product variants.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-field">
+
+                <label for="productColors">
+                    COLORS
+                </label>
+
+                <input
+                    type="text"
+                    id="productColors"
+                    placeholder="Black, White, Beige"
+                >
+
+                <small>
+                    Separate colors with commas.
+                </small>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="productVariants">
+                    VARIANTS
+                </label>
+
+                <textarea
+                    id="productVariants"
+                    rows="5"
+                    placeholder="Black — SKU-001&#10;White — SKU-002"
+                ></textarea>
+
+                <small>
+                    One variant per line.
+                </small>
+
+            </div>
+
+
+        </div>
+
+    </div>
+<!-- ================================================================
+     IMAGE PREVIEW
+     ================================================================ -->
+
+<div
+    id="imagePreview"
+    class="image-preview"
+>
+
+    <div class="image-preview-empty">
+        NO IMAGES SELECTED
+    </div>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ================================================================
+     OPTIONS
+     ================================================================ -->
+
+<div class="editor-section">
+
+    <div class="section-heading">
+
+        <span>
+            05
+        </span>
+
+        <div>
+
+            <h3>
+                OPTIONS & VARIANTS
+            </h3>
+
+            <p>
+                Colors and product variants.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+
+        <div class="form-field">
+
+            <label for="productColors">
+                COLORS
+            </label>
+
+            <input
+                type="text"
+                id="productColors"
+                placeholder="Black, White, Beige"
+            >
+
+            <small>
+                Separate colors with commas.
+            </small>
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label for="productVariants">
+                VARIANTS
+            </label>
+
+            <textarea
+                id="productVariants"
+                rows="5"
+                placeholder="Black — SKU-001&#10;White — SKU-002"
+            ></textarea>
+
+            <small>
+                One variant per line.
+            </small>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================================
+     LINKS
+     ================================================================ -->
+
+<div class="editor-section">
+
+    <div class="section-heading">
+
+        <span>
+            06
+        </span>
+
+        <div>
+
+            <h3>
+                COMMERCE LINKS
+            </h3>
+
+            <p>
+                Payment and supplier information.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+
+        <div class="form-field">
+
+            <label for="stripeLink">
+                STRIPE PAYMENT LINK
+            </label>
+
+            <input
+                type="url"
+                id="stripeLink"
+                placeholder="https://buy.stripe.com/..."
+            >
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label for="supplierLink">
+                SUPPLIER LINK
+            </label>
+
+            <input
+                type="url"
+                id="supplierLink"
+                placeholder="https://www.alibaba.com/..."
+            >
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================================
+     STATUS
+     ================================================================ -->
+
+<div class="editor-section status-editor-section">
+
+    <div class="section-heading">
+
+        <span>
+            07
+        </span>
+
+        <div>
+
+            <h3>
+                STORE STATUS
+            </h3>
+
+            <p>
+                Control whether this product appears in the Store.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <label
+        class="toggle-control"
+        for="productActive"
+    >
+
+        <input
+            type="checkbox"
+            id="productActive"
+            checked
+        >
+
+        <span class="toggle-slider"></span>
+
+        <div>
+
+            <strong>
+                PRODUCT ACTIVE
+            </strong>
+
+            <small>
+                Active products are displayed in the public Store.
+            </small>
+
+        </div>
+
+    </label>
+
+
+</div>
+
+
+
+<!-- ================================================================
+     EDITOR ACTIONS
+     ================================================================ -->
+
+<div class="editor-actions">
+
+    <button
+        type="button"
+        id="cancelProductButton"
+        class="acrylic-button"
+    >
+        CANCEL
+    </button>
+
+
+    <button
+        type="button"
+        id="saveProductButton"
+        class="acrylic-button primary save-button"
+    >
+        SAVE PRODUCT
+    </button>
+
+</div>
+
+
+</section>
+
+
+
+<!-- ================================================================
+     PRODUCT DATABASE
+     ================================================================ -->
+
+<section class="database-section">
+
+
+    <div class="database-header">
+
+        <div>
+
+            <span>
+                CATALOG
+            </span>
+
+            <h2>
+                PRODUCT DATABASE
+            </h2>
+
+        </div>
+
+
+        <div class="database-controls">
+
+
+            <div class="search-box">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    id="productSearch"
+                    placeholder="SEARCH PRODUCTS..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <select
+                id="categoryFilter"
+                aria-label="Filter by category"
+            >
+
+                <option value="all">
+                    ALL CATEGORIES
+                </option>
+
+            </select>
+
+
+            <select
+                id="statusFilter"
+                aria-label="Filter by status"
+            >
+
+                <option value="all">
+                    ALL STATUS
+                </option>
+
+                <option value="active">
+                    ACTIVE
+                </option>
+
+                <option value="inactive">
+                    INACTIVE
+                </option>
+
+            </select>
+
+
+        </div>
+
+    </div>
+
+
+
+<!-- ================================================================
+     PRODUCT LIST
+     ================================================================ -->
+
+<div
+    id="productList"
+    class="product-list"
+>
+</div>
+
+
+<div
+    id="emptyState"
+    class="empty-state"
+>
+
+    <div class="empty-pulsar"></div>
+
+    <span>
+        PRODUCT DATABASE
+    </span>
+
+    <strong>
+        NO PRODUCTS YET
+    </strong>
+
+    <p>
+        Your Voltica catalog is ready for its first product.
+    </p>
+
+
+    <button
+        type="button"
+        id="emptyCreateButton"
+        class="acrylic-button primary"
+    >
+        + CREATE FIRST PRODUCT
+    </button>
+
+</div>
+
+
+</section>
 
 
 </main>
 
 
 
-<!-- =========================================================
-     CART / SYSTEM NOTIFICATION
-     ========================================================= -->
+<!-- ================================================================
+     SYSTEM NOTIFICATION
+     ================================================================ -->
 
 <div
     id="adminNotification"
@@ -1085,9 +1133,9 @@
 
 
 
-<!-- =========================================================
+<!-- ================================================================
      CONFIRMATION
-     ========================================================= -->
+     ================================================================ -->
 
 <div
     id="confirmOverlay"
@@ -1139,9 +1187,9 @@
 
 
 
-<!-- =========================================================
+<!-- ================================================================
      SCRIPTS
-     ========================================================= -->
+     ================================================================ -->
 
 <script src="products.js"></script>
 
@@ -1151,5 +1199,3 @@
 </body>
 
 </html>
-
-⚠️ Important : avec ce nouveau HTML, le "adminproductmanager.js" qu'on vient d'avoir doit aussi être ajusté pour gérer "productImageUpload" et conserver automatiquement les noms des fichiers. Le prochain changement doit donc être "adminproductmanager.js", pas "store.js", sinon le carré d'upload ne sera pas réellement fonctionnel.

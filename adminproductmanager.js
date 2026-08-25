@@ -15,6 +15,21 @@ let editingProductId = null;
 
 let selectedImages = [];
 
+/*
+   Stores temporary browser previews.
+
+   Key:
+       assets/images/example.webp
+
+   Value:
+       data:image/webp;base64,...
+
+   IMPORTANT:
+   This is only used for the current browser session.
+   The original filename is always preserved.
+*/
+const imagePreviewSources = new Map();
+
 let confirmCallback = null;
 
 let notificationTimer = null;
@@ -175,12 +190,11 @@ function initializeAdmin() {
 function loadProducts() {
 
     /*
-       products.js normally exposes:
+       products.js exposes:
 
        volticaProducts
 
-       We clone the data so the admin editor can
-       safely modify its own working copy.
+       The admin receives its own working copy.
     */
 
     if (
@@ -190,7 +204,9 @@ function loadProducts() {
 
         adminProducts =
             JSON.parse(
-                JSON.stringify(volticaProducts)
+                JSON.stringify(
+                    volticaProducts
+                )
             );
 
     } else {
@@ -318,7 +334,7 @@ function bindEvents() {
 
 
     /*
-       Drag & drop
+       Drag & drop support.
     */
 
     if (imageUploadSquare) {
@@ -370,16 +386,15 @@ function bindEvents() {
 function handleProductNameInput() {
 
     /*
-       Only automatically update the ID when creating
-       a new product.
-
-       Existing product IDs are preserved.
+       Existing product IDs are never changed.
     */
 
     if (
         editingProductId !== null
     ) {
+
         return;
+
     }
 
 
@@ -408,6 +423,7 @@ function slugify(value) {
         .replace(
             /^-+|-+$/g,
             "");
+
 }
 
 
@@ -421,6 +437,8 @@ function createNewProduct() {
 
     selectedImages = [];
 
+    imagePreviewSources.clear();
+
     clearEditor();
 
     editorTitle.textContent =
@@ -428,12 +446,12 @@ function createNewProduct() {
 
     productEditor.hidden = false;
 
+    renderImagePreview();
+
     productEditor.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
-
-    renderImagePreview();
 
     setTimeout(
         () => productName?.focus(),
@@ -451,7 +469,9 @@ function editProduct(id) {
 
     const product =
         adminProducts.find(
-            item => String(item.id) === String(id)
+            item =>
+                String(item.id) ===
+                String(id)
         );
 
 
@@ -471,14 +491,20 @@ function editProduct(id) {
 
 
     /*
-       Preserve the exact existing image filenames.
+       Existing filenames are preserved exactly.
+
+       We normalize only the path prefix.
+       The filename itself is untouched.
     */
 
     selectedImages =
         Array.isArray(product.images)
-            ? product.images.map(
-                image => normalizeImagePath(image)
-            )
+            ? product.images
+                .map(
+                    image =>
+                        normalizeImagePath(image)
+                )
+                .filter(Boolean)
             : [];
 
 
@@ -494,13 +520,13 @@ function editProduct(id) {
     productEditor.hidden = false;
 
 
+    renderImagePreview();
+
+
     productEditor.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
-
-
-    renderImagePreview();
 
 }
 
@@ -678,11 +704,19 @@ function clearEditor() {
 
 function closeEditor() {
 
-    productEditor.hidden = true;
+    if (productEditor) {
+
+        productEditor.hidden = true;
+
+    }
+
 
     editingProductId = null;
 
     selectedImages = [];
+
+    imagePreviewSources.clear();
+
 
     if (productImageUpload) {
 
@@ -710,13 +744,22 @@ function handleImageSelection(event) {
 }
 
 
+/* =========================================================
+   IMAGE DROP
+   ========================================================= */
+
 function handleImageDrop(event) {
 
     event.preventDefault();
 
+    imageUploadSquare?.classList.remove(
+        "drag-over"
+    );
+
+
     const files =
         Array.from(
-            event.dataTransfer.files || []
+            event.dataTransfer?.files || []
         );
 
 
@@ -724,6 +767,10 @@ function handleImageDrop(event) {
 
 }
 
+
+/* =========================================================
+   DRAG ENTER
+   ========================================================= */
 
 function handleDragEnter(event) {
 
@@ -735,6 +782,10 @@ function handleDragEnter(event) {
 
 }
 
+
+/* =========================================================
+   DRAG LEAVE
+   ========================================================= */
 
 function handleDragLeave(event) {
 
@@ -753,17 +804,31 @@ function handleDragLeave(event) {
 
 function addImageFiles(files) {
 
-    if (!files.length) {
+    if (!Array.isArray(files)) {
+
         return;
+
+    }
+
+
+    if (!files.length) {
+
+        return;
+
     }
 
 
     const imageFiles =
         files.filter(
-            file =>
-                file.type.startsWith(
-                    "image/"
-                )
+            file => {
+
+                return (
+                    file &&
+                    typeof file.type === "string" &&
+                    file.type.startsWith("image/")
+                );
+
+            }
         );
 
 
@@ -785,15 +850,30 @@ function addImageFiles(files) {
         file => {
 
             /*
-               IMPORTANT:
+               CRITICAL:
 
-               file.name is the ORIGINAL filename.
+               We NEVER rename the original file.
 
-               We deliberately do NOT rename it.
+               Example:
+
+               1000041113.webp
+
+               remains:
+
+               1000041113.webp
             */
 
             const originalName =
-                file.name;
+                String(
+                    file.name || ""
+                ).trim();
+
+
+            if (!originalName) {
+
+                return;
+
+            }
 
 
             const imagePath =
@@ -802,22 +882,24 @@ function addImageFiles(files) {
 
 
             /*
-               Prevent duplicates by filename.
+               Duplicate detection is based on
+               filename, not browser File object.
             */
 
             const alreadyExists =
                 selectedImages.some(
-                    existing =>
-                        getFilename(existing)
-                        .toLowerCase() ===
+                    existingPath =>
+                        getFilename(
+                            existingPath
+                        ).toLowerCase() ===
                         originalName.toLowerCase()
                 );
 
 
-            if (
-                alreadyExists
-            ) {
+            if (alreadyExists) {
+
                 return;
+
             }
 
 
@@ -830,10 +912,11 @@ function addImageFiles(files) {
 
 
             /*
-               Read the file locally so the admin
-               can preview it immediately.
+               Generate a temporary local preview.
 
-               This does NOT upload it.
+               This lets the user immediately see
+               the selected image even before the file
+               has been manually copied to assets/images/.
             */
 
             const reader =
@@ -841,11 +924,25 @@ function addImageFiles(files) {
 
 
             reader.onload =
-                function(readerEvent) {
+                event => {
 
-                    updatePreviewImage(
+                    imagePreviewSources.set(
                         imagePath,
-                        readerEvent.target.result
+                        event.target.result
+                    );
+
+
+                    renderImagePreview();
+
+                };
+
+
+            reader.onerror =
+                () => {
+
+                    console.warn(
+                        "VOLTICA: Unable to preview image:",
+                        originalName
                     );
 
                 };
@@ -874,8 +971,10 @@ function addImageFiles(files) {
 
 
     /*
-       Allow selecting the same filename again
-       after removal.
+       Reset the input.
+
+       This allows the exact same filename to be
+       selected again after it has been removed.
     */
 
     if (productImageUpload) {
@@ -896,9 +995,26 @@ function updatePreviewImage(
     dataUrl
 ) {
 
+    if (!imagePath || !dataUrl) {
+
+        return;
+
+    }
+
+
+    imagePreviewSources.set(
+        imagePath,
+        dataUrl
+    );
+
+
+    const selector =
+        `[data-image-path="${escapeSelector(imagePath)}"] img`;
+
+
     const imageElement =
-        imagePreview.querySelector(
-            `[data-image-path="${escapeSelector(imagePath)}"] img`
+        imagePreview?.querySelector(
+            selector
         );
 
 
@@ -919,7 +1035,9 @@ function updatePreviewImage(
 function renderImagePreview() {
 
     if (!imagePreview) {
+
         return;
+
     }
 
 
@@ -947,6 +1065,20 @@ function renderImagePreview() {
                         );
 
 
+                    /*
+                       If the image was selected during
+                       this session, use its local DataURL.
+
+                       Otherwise use the actual website path.
+                    */
+
+                    const previewSource =
+                        imagePreviewSources.get(
+                            imagePath
+                        ) ||
+                        imagePath;
+
+
                     return `
                         <div
                             class="image-preview-item"
@@ -954,7 +1086,7 @@ function renderImagePreview() {
                         >
 
                             <img
-                                src="${escapeHtmlAttribute(imagePath)}"
+                                src="${escapeHtmlAttribute(previewSource)}"
                                 alt="${escapeHtmlAttribute(filename)}"
                                 loading="lazy"
                                 onerror="this.style.opacity='0.18'"
@@ -992,6 +1124,24 @@ function renderImagePreview() {
             .join("");
 
 
+    bindImagePreviewActions();
+
+}
+
+
+/* =========================================================
+   IMAGE PREVIEW ACTIONS
+   ========================================================= */
+
+function bindImagePreviewActions() {
+
+    if (!imagePreview) {
+
+        return;
+
+    }
+
+
     imagePreview
         .querySelectorAll(
             "[data-remove-image]"
@@ -1004,6 +1154,9 @@ function renderImagePreview() {
                     event => {
 
                         event.preventDefault();
+
+                        event.stopPropagation();
+
 
                         const imagePath =
                             button.dataset.removeImage;
@@ -1037,6 +1190,11 @@ function removeImage(
         );
 
 
+    imagePreviewSources.delete(
+        imagePath
+    );
+
+
     renderImagePreview();
 
 
@@ -1056,13 +1214,26 @@ function normalizeImagePath(
 ) {
 
     if (!image) {
+
         return "";
+
     }
 
 
     const value =
         String(image).trim();
 
+
+    if (!value) {
+
+        return "";
+
+    }
+
+
+    /*
+       Preserve complete assets/images/ path.
+    */
 
     if (
         value.startsWith(
@@ -1076,12 +1247,31 @@ function normalizeImagePath(
 
 
     /*
-       Existing products may contain only:
+       Preserve root-relative paths.
+    */
 
-       q451-1.webp
+    if (
+        value.startsWith(
+            "/assets/images/"
+        )
+    ) {
 
-       Convert it to the format expected
-       by the public Store.
+        return value.substring(1);
+
+    }
+
+
+    /*
+       Existing product databases may contain
+       only the filename.
+
+       Convert:
+
+       q45-1.webp
+
+       to:
+
+       assets/images/q45-1.webp
     */
 
     return (
@@ -1158,14 +1348,16 @@ function saveProduct() {
 
 
     /*
-       Prevent duplicate IDs when creating.
+       Prevent duplicate IDs.
     */
 
     const duplicate =
         adminProducts.find(
             product =>
-                String(product.id) === String(id) &&
-                String(product.id) !== String(editingProductId)
+                String(product.id) ===
+                    String(id) &&
+                String(product.id) !==
+                    String(editingProductId)
         );
 
 
@@ -1258,7 +1450,7 @@ function buildProductObject(
     price
 ) {
 
-    const product = {
+    return {
 
         id: id,
 
@@ -1306,10 +1498,22 @@ function buildProductObject(
                 technicalSpecifications.value
             ),
 
+        /*
+           IMPORTANT:
+
+           selectedImages contains the exact original
+           filenames selected by the user.
+
+           Example:
+           assets/images/1000041113.webp
+        */
+
         images:
             selectedImages.map(
                 image =>
-                    normalizeImagePath(image)
+                    normalizeImagePath(
+                        image
+                    )
             ),
 
         colors:
@@ -1332,9 +1536,6 @@ function buildProductObject(
             productActive.checked
 
     };
-
-
-    return product;
 
 }
 
@@ -1559,8 +1760,11 @@ function linesToVariants(
                 ) {
 
                     return {
+
                         name: line,
+
                         sku: ""
+
                     };
 
                 }
@@ -1613,8 +1817,10 @@ function variantsToLines(
                 }
 
 
-                return `${variant.name || ""} — ${variant.sku || ""}`
-                    .trim();
+                return (
+                    `${variant.name || ""} — ` +
+                    `${variant.sku || ""}`
+                ).trim();
 
             }
         )
@@ -1622,8 +1828,6 @@ function variantsToLines(
         .join("\n");
 
 }
-
-
 /* =========================================================
    SORT
    ========================================================= */
@@ -1648,7 +1852,9 @@ function sortProducts() {
 function renderProducts() {
 
     if (!productList) {
+
         return;
+
     }
 
 
@@ -1793,7 +1999,10 @@ function renderProductRow(
             ? `
                 <img
                     src="${escapeHtmlAttribute(image)}"
-                    alt="${escapeHtmlAttribute(product.name || "Product")}"
+                    alt="${escapeHtmlAttribute(
+                        product.name ||
+                        "Product"
+                    )}"
                     loading="lazy"
                 >
             `
@@ -1817,7 +2026,9 @@ function renderProductRow(
     return `
         <article
             class="product-list-item"
-            data-product-id="${escapeHtmlAttribute(product.id)}"
+            data-product-id="${escapeHtmlAttribute(
+                product.id
+            )}"
         >
 
             <div class="product-list-image">
@@ -1835,12 +2046,19 @@ function renderProductRow(
 
 
                 <h3>
-                    ${escapeHtml(product.name || "Untitled Product")}
+                    ${escapeHtml(
+                        product.name ||
+                        "Untitled Product"
+                    )}
                 </h3>
 
 
                 <p>
-                    ${escapeHtml(product.sku || product.id || "NO SKU")}
+                    ${escapeHtml(
+                        product.sku ||
+                        product.id ||
+                        "NO SKU"
+                    )}
                 </p>
 
 
@@ -1850,7 +2068,9 @@ function renderProductRow(
 
 
                 <div
-                    class="product-status ${active ? "active" : ""}"
+                    class="product-status ${
+                        active ? "active" : ""
+                    }"
                 >
                     ${active ? "ACTIVE" : "INACTIVE"}
                 </div>
@@ -1863,7 +2083,9 @@ function renderProductRow(
                 <button
                     type="button"
                     data-action="edit"
-                    data-id="${escapeHtmlAttribute(product.id)}"
+                    data-id="${escapeHtmlAttribute(
+                        product.id
+                    )}"
                 >
                     EDIT
                 </button>
@@ -1872,9 +2094,15 @@ function renderProductRow(
                 <button
                     type="button"
                     data-action="toggle"
-                    data-id="${escapeHtmlAttribute(product.id)}"
+                    data-id="${escapeHtmlAttribute(
+                        product.id
+                    )}"
                 >
-                    ${active ? "DISABLE" : "ACTIVATE"}
+                    ${
+                        active
+                            ? "DISABLE"
+                            : "ACTIVATE"
+                    }
                 </button>
 
 
@@ -1882,7 +2110,9 @@ function renderProductRow(
                     type="button"
                     class="delete-product"
                     data-action="delete"
-                    data-id="${escapeHtmlAttribute(product.id)}"
+                    data-id="${escapeHtmlAttribute(
+                        product.id
+                    )}"
                 >
                     DELETE
                 </button>
@@ -1900,6 +2130,13 @@ function renderProductRow(
    ========================================================= */
 
 function bindProductRowActions() {
+
+    if (!productList) {
+
+        return;
+
+    }
+
 
     productList
         .querySelectorAll(
@@ -1942,7 +2179,9 @@ function bindProductRowActions() {
                             action === "delete"
                         ) {
 
-                            confirmDeleteProduct(id);
+                            confirmDeleteProduct(
+                                id
+                            );
 
                         }
 
@@ -1966,12 +2205,15 @@ function toggleProduct(
     const product =
         adminProducts.find(
             item =>
-                String(item.id) === String(id)
+                String(item.id) ===
+                String(id)
         );
 
 
     if (!product) {
+
         return;
+
     }
 
 
@@ -2004,12 +2246,15 @@ function confirmDeleteProduct(
     const product =
         adminProducts.find(
             item =>
-                String(item.id) === String(id)
+                String(item.id) ===
+                String(id)
         );
 
 
     if (!product) {
+
         return;
+
     }
 
 
@@ -2050,7 +2295,9 @@ function confirmDeleteProduct(
 function populateCategoryFilter() {
 
     if (!categoryFilter) {
+
         return;
+
     }
 
 
@@ -2066,7 +2313,8 @@ function populateCategoryFilter() {
                     .map(
                         product =>
                             String(
-                                product.category || ""
+                                product.category ||
+                                ""
                             ).trim()
                     )
                     .filter(Boolean)
@@ -2146,7 +2394,8 @@ function updateStatistics() {
                 .map(
                     product =>
                         String(
-                            product.category || ""
+                            product.category ||
+                            ""
                         ).trim()
                 )
                 .filter(Boolean)
@@ -2263,6 +2512,7 @@ function buildProductsJS() {
 
 const volticaProducts = ${json};
 `;
+
 }
 
 
@@ -2299,7 +2549,9 @@ function downloadFile(
         );
 
 
-    anchor.href = url;
+    anchor.href =
+        url;
+
 
     anchor.download =
         filename;
@@ -2340,12 +2592,27 @@ function openConfirmation(
     callback
 ) {
 
-    confirmTitle.textContent =
-        title;
+    if (!confirmOverlay) {
+
+        return;
+
+    }
 
 
-    confirmMessage.textContent =
-        message;
+    if (confirmTitle) {
+
+        confirmTitle.textContent =
+            title;
+
+    }
+
+
+    if (confirmMessage) {
+
+        confirmMessage.textContent =
+            message;
+
+    }
 
 
     confirmCallback =
@@ -2360,8 +2627,12 @@ function openConfirmation(
 
 function closeConfirmation() {
 
-    confirmOverlay.hidden =
-        true;
+    if (confirmOverlay) {
+
+        confirmOverlay.hidden =
+            true;
+
+    }
 
 
     confirmCallback =
@@ -2549,34 +2820,41 @@ document.addEventListener(
     "keydown",
     event => {
 
+        if (
+            event.key !== "Escape"
+        ) {
+
+            return;
+
+        }
+
+
         /*
-           ESC closes the editor.
+           Close confirmation first.
         */
 
         if (
-            event.key === "Escape"
+            confirmOverlay &&
+            !confirmOverlay.hidden
         ) {
 
-            if (
-                confirmOverlay &&
-                !confirmOverlay.hidden
-            ) {
+            closeConfirmation();
 
-                closeConfirmation();
+            return;
 
-                return;
-
-            }
+        }
 
 
-            if (
-                productEditor &&
-                !productEditor.hidden
-            ) {
+        /*
+           Otherwise close the editor.
+        */
 
-                closeEditor();
+        if (
+            productEditor &&
+            !productEditor.hidden
+        ) {
 
-            }
+            closeEditor();
 
         }
 
@@ -2590,14 +2868,15 @@ document.addEventListener(
 
 window.addEventListener(
     "beforeunload",
-    event => {
+    () => {
 
         /*
            No browser persistence is forced here.
 
-           The source of truth remains products.js.
-           The admin exports the updated file when
-           changes are ready.
+           products.js remains the source of truth.
+
+           Use EXPORT PRODUCTS.JS after making
+           product changes.
         */
 
     }

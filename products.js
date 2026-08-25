@@ -43,11 +43,11 @@ const volticaProducts = [
             "â€‹Weight": "292 g"
         },
         "images": [
-            "assets/images/1000051068.jpg",
-            "assets/images/1000051072.jpg",
-            "assets/images/1000051069.jpg",
-            "assets/images/1000051073.jpg",
-            "assets/images/1000050255.jpg"
+            "assets/images/Q45.1.jpg",
+            "assets/images/Q45.2.jpg",
+            "assets/images/Q45.3.jpg",
+            "assets/images/Q45.4.jpg",
+            "assets/images/Q45.6.jpg"
         ],
         "colors": [
             "Light Blue"

@@ -105,6 +105,53 @@ window.volticaProducts = [
 
     }
 
+    /* =========================================================
+       Product name : XReal Air 1S AI Augmented Reality Smart Glasses | Selected by Voltica Store
+       ========================================================= */
+
+{
+        "id": "xreal-air-1s-ai-augmented-reality-smart-glasses-selected-by-voltica-store",
+        "sku": "VLT-XREAL-1S",
+        "name": "XReal Air 1S AI Augmented Reality Smart Glasses | Selected by Voltica Store",
+        "category": "Lifestyle",
+        "badge": "PREMIUM",
+        "price": 579.99,
+        "referencePrice": 599.99,
+        "cost": 464.26,
+        "shipping": 30.5,
+        "shortDescription": "Step into a new dimension of portable display with the XReal Air 1S AI Augmented Reality Smart Glasses, expertly curated by Voltica Store. These cutting-edge AR glasses project a massive, ultra-bright virtual screen directly into your field of vision, transforming your gaming, movies, and mobile productivity on the go.",
+        "description": "Redefine your digital workspace and entertainment setup with the XReal Air 1S AI Augmented Reality Smart Glasses, meticulously hand-picked and curated by Voltica Store for tech enthusiasts and modern innovators. Whether you are gaming on the go, streaming cinematic content, or expanding your mobile workstation, these glasses bridge the gap between the physical and virtual worlds with breathtaking clarity.\nâ€‹Engineered with advanced micro-OLED projection technology, the XReal Air 1S creates a massive, ultra-bright virtual screen with an immersive 52Â° field of view (FOV) that scales effortlessly to match your viewing preferences. Experience stunning visual fidelity featuring automatic electrochromic lenses that intelligently adapt to your lighting environment, ensuring optimal contrast and visibility whether you are indoors or outside in bright daylight.\nâ€‹Equipped with smart AI capabilities, these AR glasses support voice-activated commands for hands-free operation, real-time object recognition, and instant image text translation. Combined with certified TÃœV Rheinland eye comfort features to eliminate fatigue during extended sessions and a universal USB-CDP plug-and-play architecture, the XReal Air 1S delivers seamless, next-level immersion wherever your day takes you.",
+        "features": [
+            "â€‹Massive Virtual Cinematic Display : Experience an immersive viewing setup with a wide 52Â° field of view (FOV) and an adjustable virtual screen ranging from 31 to 500 inches.",
+            "â€‹Automatic Electrochromic Lenses : Built-in smart lenses that automatically adapt to your surrounding environment and clear up seamlessly when you turn your head.",
+            "â€‹Advanced AI Capabilities : Integrates voice wake-up commands for hands-free operation, real-time object recognition from photos, and instant text-to-image translation.",
+            "â€‹Certified Eye Comfort : Backed by TÃœV Rheinland certifications including 5-star eye comfort, low blue light emissions, and flicker-free technology to reduce strain during long sessions.",
+            "â€‹Universal Plug & Play Connectivity : Features seamless USB-CDP connectivity for instant compatibility with smartphones, portable gaming handhelds, tablets, and laptops."
+        ],
+        "specifications": {
+            "â€‹Model": "XREAL Air 1S",
+            "â€‹Display Tech": "Advanced Micro-OLED projection",
+            "â€‹Field of View (FOV)": "52Â° immersive wide view",
+            "â€‹Lens Technology": "Automatic electrochromic adaptive smart lenses",
+            "â€‹Chipset": "Advanced X1 chipset (<1% TV distortion)",
+            "â€‹Controls": "Intuitive tactile buttons + AI voice assistant wake-up",
+            "â€‹Connectivity": "Universal USB-CDP Plug & Play",
+            "â€‹Eye Safety & Comfort": "TÃœV Rheinland 5-star certified (Low blue light, flicker-free, anti-fatigue)"
+        },
+        "images": [
+            "assets/images/1000051092.jpg",
+            "assets/images/1000051096.jpg",
+            "assets/images/1000051094.jpg",
+            "assets/images/1000051093.jpg",
+            "assets/images/1000051097.jpg",
+            "assets/images/1000051095.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "stripeLink": "https://buy.stripe.com/14A28se0v78bauk4ym2Ji0o",
+        "supplierLink": "https://www.alibaba.com/x/B2MGgw?ck=pdp",
+        "active": true
+           }
 ];
 
 

@@ -1668,3 +1668,24 @@ button:focus-visible {
     }
 
        }
+/* =========================================================
+   VOLTICA LOGO — FORCE SIZE
+   ========================================================= */
+
+.product-header .voltica-logo {
+    display: flex !important;
+    align-items: center !important;
+    width: 90px !important;
+    max-width: 90px !important;
+    height: auto !important;
+    flex: 0 0 90px !important;
+}
+
+.product-header .voltica-logo img {
+    display: block !important;
+    width: 90px !important;
+    max-width: 90px !important;
+    height: auto !important;
+    max-height: 45px !important;
+    object-fit: contain !important;
+}

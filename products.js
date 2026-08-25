@@ -139,12 +139,12 @@ window.volticaProducts = [
             "â€‹Eye Safety & Comfort": "TÃœV Rheinland 5-star certified (Low blue light, flicker-free, anti-fatigue)"
         },
         "images": [
-            "assets/images/1000051092.jpg",
-            "assets/images/1000051096.jpg",
-            "assets/images/1000051094.jpg",
-            "assets/images/1000051093.jpg",
-            "assets/images/1000051097.jpg",
-            "assets/images/1000051095.jpg"
+            "assets/images/glass1-1.jpg",
+            "assets/images/glass1-2.jpg",
+            "assets/images/glass1-3.jpg",
+            "assets/images/glass1-4.jpg",
+            "assets/images/glass1-5.jpg",
+            "assets/images/glass1-6.jpg"
         ],
         "colors": [],
         "variants": [],

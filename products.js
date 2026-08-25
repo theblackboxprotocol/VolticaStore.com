@@ -6,6 +6,7 @@
 
 "use strict";
 
+
 window.volticaProducts = [
 
     {
@@ -29,19 +30,19 @@ window.volticaProducts = [
 
         "shortDescription": "Experience industry-leading adaptive active noise cancellation, stunning Hi-Res wireless audio powered by LDAC, and an exceptional 50-hour battery life. Hand-picked and curated by Voltica Store for ultimate comfort and premium sound performance.",
 
-        "description": "Step into your own private acoustic sanctuary with the Anker Soundcore Space Q45, expertly curated and selected by Voltica Store for discerning audiophiles and modern creators. Whether you are navigating a bustling downtown commute, locking in for a deep-work session, or unwinding with your favorite tracks, these headphones redefine what it means to truly listen.\n\nEngineered with a next-generation adaptive active noise-cancelling (ANC) system, the Space Q45 intelligently targets and blocks out up to 98% of ambient noise — from the rumble of airplane engines to the chatter of a busy coffee shop. Prefer to stay aware of your surroundings? Switch effortlessly between multiple transparency modes tailored to your environment without ever needing to take your headphones off.\n\nBeneath the sleek exterior lies certified Hi-Res Audio Wireless support powered by LDAC technology, transmitting three times more data than standard Bluetooth codecs to deliver breathtaking, studio-quality sound with rich detail and deep bass. Combined with an industry-leading 50-hour battery life with ANC turned on and up to 65 hours in standard mode, the Space Q45 ensures your listening experience remains uninterrupted.\n\nWith ergonomic memory foam earcups, a refined over-ear design and premium materials, the Space Q45 delivers the comfort required for long listening sessions. Elevate your daily soundtrack with a carefully selected technology essential from Voltica Store.",
+        "description": "Step into your own private acoustic sanctuary with the Anker Soundcore Space Q45, expertly curated and selected by Voltica Store for discerning audiophiles and modern creators. Whether you are navigating a bustling downtown commute, locking in for a deep-work session, or unwinding with your favorite tracks, these headphones redefine what it means to truly listen.\n\nEngineered with a next-generation adaptive active noise-cancelling (ANC) system, the Space Q45 intelligently targets and blocks out up to 98% of ambient noise — from the rumble of airplane engines to the chatter of a busy coffee shop. Prefer to stay aware of your surroundings? Switch effortlessly between multiple transparency modes tailored to your environment without ever needing to take your headphones off.\n\nBeneath the sleek exterior lies certified Hi-Res Audio Wireless support powered by LDAC technology, transmitting three times more data than standard Bluetooth codecs to deliver breathtaking, studio-quality sound with rich detail and deep bass. Combined with an industry-leading 50-hour battery life with ANC turned on and ultra-comfortable ergonomic memory foam earcups wrapped in soft leatherette, the Space Q45 ensures your listening experience remains uninterrupted, luxurious, and fatigue-free from morning until night. Elevate your daily soundtrack with a curated tech essential designed for unmatched performance.",
 
         "features": [
 
-            "Adaptive Active Noise Cancelling (ANC): Intelligently targets and blocks up to 98% of external sounds, with customized modes optimized for indoor, outdoor and travel environments.",
+            "Adaptive Active Noise Cancelling (ANC): Intelligently targets and blocks up to 98% of external sounds, featuring customized modes optimized for indoor, outdoor, and travel environments.",
 
-            "Hi-Res Audio Wireless via LDAC: Transmits significantly more data than standard Bluetooth codecs to deliver detailed, high-quality wireless audio with rich instrumentation and deep bass.",
+            "Hi-Res Audio Wireless via LDAC: Transmits three times more data than standard Bluetooth connections to deliver pristine, high-resolution audio with rich instrumentation and deep bass.",
 
-            "50-Hour Extended Battery Life: Provides up to 50 hours of playtime with ANC enabled and up to 65 hours with ANC disabled.",
+            "50-Hour Extended Battery Life: Provides up to 50 hours of continuous playtime with ANC turned on, and up to 65 hours in standard mode to keep you powered through days of use.",
 
-            "Ergonomic & Lightweight Design: Designed with a pressure-relieving headband and soft memory foam earcups for extended listening comfort.",
+            "Ergonomic & Lightweight Design: Built with a refined aesthetic, a comfortable pressure-relieving headband, and ultra-soft memory foam earcups for all-day listening comfort.",
 
-            "Customizable Sound & Transparency: Fine-tune your listening experience with the Soundcore app and switch between transparency modes when you need to stay aware of your surroundings."
+            "Customizable Sound & Transparency: Tailor your audio profile using the Soundcore app's 8-band EQ and switch seamlessly between transparency modes to stay connected to the world around you."
 
         ],
 
@@ -51,17 +52,15 @@ window.volticaProducts = [
 
             "Audio Codecs": "LDAC, AAC, SBC",
 
-            "Playtime": "Up to 50 hours with ANC / Up to 65 hours without ANC",
+            "Playtime": "Up to 50 hours (ANC on) / Up to 65 hours (ANC off)",
 
-            "Fast Charging": "5 minutes of charging provides up to 4 hours of playtime",
+            "Fast Charging": "5 minutes charge for 4 hours of playtime",
 
             "Driver Size": "40mm customized double-layer diaphragm drivers",
 
-            "Frequency Response": "20Hz - 40kHz",
+            "Frequency Response": "20Hz - 40kHz (Hi-Res Wired & Wireless)",
 
-            "Connectivity Range": "Up to 15 meters / 50 feet",
-
-            "Multipoint Connection": "Supported",
+            "Connectivity Range": "Up to 15 meters / 50 feet (Multipoint connection supported)",
 
             "Charging Port": "USB Type-C",
 
@@ -93,7 +92,7 @@ window.volticaProducts = [
 
             {
                 "name": "Light Blue",
-                "sku": "VLT-AUD-Q45-001"
+                "sku": "VLT-AUD-Q45-LBL"
             }
 
         ],
@@ -110,10 +109,11 @@ window.volticaProducts = [
 
 
 /* =========================================================
-   DATABASE STATUS
+   VOLTICA PRODUCT DATABASE — READY
    ========================================================= */
 
 console.log(
-    "VOLTICA PRODUCTS.JS — ONLINE",
-    window.volticaProducts
+    "VOLTICA: PRODUCTS DATABASE LOADED",
+    window.volticaProducts.length,
+    "product(s)"
 );

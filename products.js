@@ -151,7 +151,61 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/14A28se0v78bauk4ym2Ji0o",
         "supplierLink": "https://www.alibaba.com/x/B2MGgw?ck=pdp",
         "active": true
-           }
+           }, 
+   /* =========================================================
+       Product name : New Wireless Bluetooth Earbuds Neckband Design Noise-canceling Perfect For Workouts
+       ========================================================= */
+
+{
+        "id": "new-wireless-bluetooth-earbuds-neckband-design-noise-canceling-perfect-for-workouts",
+        "sku": "VLT-AUD-Q17-001",
+        "name": "New Wireless Bluetooth Earbuds Neckband Design Noise-canceling Perfect For Workouts",
+        "category": "Audio",
+        "badge": "BEST SELLER",
+        "price": 69.97,
+        "referencePrice": 74.97,
+        "cost": 30.81,
+        "shipping": 6.03,
+        "shortDescription": "Experience open-ear comfort and rich spatial sound with the Q17 Open-Ear Wireless Earbuds, hand-picked and curated by Voltica Store. Featuring a sleek electroplated Gem Blue finish, secure ear-hook design, advanced directional audio transmission, and an incredible 45-hour total battery life, these earbuds are built to keep up with your active lifestyle and daily workouts.",
+        "description": "â€‹Stay aware of your surroundings while fueling your active lifestyle with the Q17 Open-Ear Wireless Earbuds, expertly curated by Voltica Store. Designed for ultimate versatility, these earbuds combine a striking electroplated Gem Blue finish with an innovative ear-hook design that guarantees a secure, comfortable fit during intense workouts, runs, or all-day work sessions.\nâ€‹Powered by advanced Zhongke Bluetrum chip technology and Bluetooth 5.4 performance, the Q17 utilizes precision directional sound transmission to focus audio directly into your ear canal. This intelligent architectural design minimizes sound leakage while ensuring crisp clarity and deep response through an AI Adaptive Bass Enhancement Algorithm.\nâ€‹Say goodbye to charging anxiety with an impressive total battery life of up to 45 hours supported by a smart digital display charging case. Featuring fast-charging capabilities that give you hours of playback from just a quick charge, intuitive voice control, and crystal-clear call functionality, the Q17 delivers the ultimate balance of style, safety, and audio performance.",
+        "features": [
+            "â€‹Open-Ear Comfort & Security : Designed with a secure ear-hook style that keeps the earbuds comfortably in place during intense workouts, runs, and daily activities.",
+            "â€‹Precision Directional Sound : Features advanced directional audio transmission technology that focuses sound cleanly into the ear canal while minimizing sound leakage.",
+            "â€‹AI Bass Enhancement : Equipped with an AI Adaptive Bass Enhancement Algorithm to deliver rich layering and powerful bass response in open sports settings.",
+            "â€‹45-Hour Long-Lasting Battery : Delivers up to 45 hours of total playback time with the smart digital display charging case, backed by fast-charging capabilities to eliminate battery anxiety.",
+            "â€‹Striking Gem Blue Finish : Styled with a creative, premium electroplated Gem Blue colorway and an intuitive smart charging display case."
+        ],
+        "specifications": {
+            "Product Name": "Q17 Open-Ear Wireless Earbuds (Selected by Voltica Store)",
+            "â€‹Colorway": "Gem Blue (Electroplated finish)",
+            "â€‹Chip Type": "Zhongke Bluetrum",
+            "â€‹Bluetooth Version": "Bluetooth 5.4",
+            "â€‹Wearing Style": "Secure ear-hook design (Open-ear / Air conduction)",
+            "â€‹Transmission Distance": "Up to 10 meters / 33 feet",
+            "â€‹Battery Life": "Up to 45 hours total playback (with digital display charging case)",
+            "â€‹Fast Charging": "10 minutes of charge for up to 2 hours of playback",
+            "â€‹Audio Technologies": "Directional sound transmission, AI Adaptive Bass Enhancement Algorithm",
+            "â€‹Core Functions": "Call functionality, voice control, music playback, digital battery display",
+            "â€‹Body Material": "Durable high-grade plastic"
+        },
+        "images": [
+            "assets/images/1000052402.jpg",
+            "assets/images/1000052390.jpg",
+            "assets/images/1000052400.jpg",
+            "assets/images/1000052396.jpg",
+            "assets/images/1000052392.jpg",
+            "assets/images/1000052394.jpg",
+            "assets/images/1000052398.jpg"
+        ],
+        "colors": [
+            "Dark Blue"
+        ],
+        "variants": [],
+        "stripeLink": "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-2512210524261601400.html",
+        "active": true
+    }
+
 ];
 
 

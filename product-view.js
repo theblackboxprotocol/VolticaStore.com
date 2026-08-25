@@ -313,11 +313,11 @@
            ================================================= */
 
         const productImages = [
-    "assets/images/Q45.1.jpeg",
-    "assets/images/Q45.2.jpeg",
-    "assets/images/Q45.3.jpeg",
-    "assets/images/Q45.4.jpeg",
-    "assets/images/Q45.6.jpeg"
+    "assets/images/Q45.1.jpg",
+    "assets/images/Q45.2.jpg",
+    "assets/images/Q45.3.jpg",
+    "assets/images/Q45.4.jpg",
+    "assets/images/Q45.6.jpg"
 ];
         /* =================================================
            DOM HELPERS

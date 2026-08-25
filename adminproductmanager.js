@@ -10,148 +10,134 @@
    ========================================================= */
 
 let adminProducts = [];
-
 let editingProductId = null;
-
 let selectedImages = [];
 
-/*
-   Stores temporary browser previews.
-
-   Key:
-       assets/images/example.webp
-
-   Value:
-       data:image/webp;base64,...
-
-   IMPORTANT:
-   This is only used for the current browser session.
-   The original filename is always preserved.
-*/
 const imagePreviewSources = new Map();
 
 let confirmCallback = null;
-
 let notificationTimer = null;
 
 
 /* =========================================================
-   DOM
+   DOM REFERENCES
    ========================================================= */
 
+const $ = id => document.getElementById(id);
+
 const productEditor =
-    document.getElementById("productEditor");
+    $("productEditor");
 
 const editorTitle =
-    document.getElementById("editorTitle");
+    $("editorTitle");
 
 const productId =
-    document.getElementById("productId");
+    $("productId");
 
 const productName =
-    document.getElementById("productName");
+    $("productName");
 
 const productCategory =
-    document.getElementById("productCategory");
+    $("productCategory");
 
 const productBadge =
-    document.getElementById("productBadge");
+    $("productBadge");
 
 const productSku =
-    document.getElementById("productSku");
+    $("productSku");
 
 const productCost =
-    document.getElementById("productCost");
+    $("productCost");
 
 const productShipping =
-    document.getElementById("productShipping");
+    $("productShipping");
 
 const productPrice =
-    document.getElementById("productPrice");
+    $("productPrice");
 
 const productReferencePrice =
-    document.getElementById("productReferencePrice");
+    $("productReferencePrice");
 
 const shortDescription =
-    document.getElementById("shortDescription");
+    $("shortDescription");
 
 const fullDescription =
-    document.getElementById("fullDescription");
+    $("fullDescription");
 
 const keyFeatures =
-    document.getElementById("keyFeatures");
+    $("keyFeatures");
 
 const technicalSpecifications =
-    document.getElementById("technicalSpecifications");
+    $("technicalSpecifications");
 
 const productImageUpload =
-    document.getElementById("productImageUpload");
+    $("productImageUpload");
 
 const imageUploadSquare =
-    document.getElementById("imageUploadSquare");
+    $("imageUploadSquare");
 
 const imagePreview =
-    document.getElementById("imagePreview");
+    $("imagePreview");
 
 const productColors =
-    document.getElementById("productColors");
+    $("productColors");
 
 const productVariants =
-    document.getElementById("productVariants");
+    $("productVariants");
 
 const stripeLink =
-    document.getElementById("stripeLink");
+    $("stripeLink");
 
 const supplierLink =
-    document.getElementById("supplierLink");
+    $("supplierLink");
 
 const productActive =
-    document.getElementById("productActive");
+    $("productActive");
 
 const productList =
-    document.getElementById("productList");
+    $("productList");
 
 const emptyState =
-    document.getElementById("emptyState");
+    $("emptyState");
 
 const productSearch =
-    document.getElementById("productSearch");
+    $("productSearch");
 
 const categoryFilter =
-    document.getElementById("categoryFilter");
+    $("categoryFilter");
 
 const statusFilter =
-    document.getElementById("statusFilter");
+    $("statusFilter");
 
 const totalProducts =
-    document.getElementById("totalProducts");
+    $("totalProducts");
 
 const activeProducts =
-    document.getElementById("activeProducts");
+    $("activeProducts");
 
 const totalCategories =
-    document.getElementById("totalCategories");
+    $("totalCategories");
 
 const adminNotification =
-    document.getElementById("adminNotification");
+    $("adminNotification");
 
 const notificationText =
-    document.getElementById("notificationText");
+    $("notificationText");
 
 const confirmOverlay =
-    document.getElementById("confirmOverlay");
+    $("confirmOverlay");
 
 const confirmTitle =
-    document.getElementById("confirmTitle");
+    $("confirmTitle");
 
 const confirmMessage =
-    document.getElementById("confirmMessage");
+    $("confirmMessage");
 
 const confirmCancel =
-    document.getElementById("confirmCancel");
+    $("confirmCancel");
 
 const confirmProceed =
-    document.getElementById("confirmProceed");
+    $("confirmProceed");
 
 
 /* =========================================================
@@ -184,30 +170,35 @@ function initializeAdmin() {
 
 
 /* =========================================================
-   LOAD PRODUCTS
+   LOAD DATABASE
    ========================================================= */
 
 function loadProducts() {
-
-    /*
-       products.js exposes:
-
-       volticaProducts
-
-       The admin receives its own working copy.
-    */
 
     if (
         typeof volticaProducts !== "undefined" &&
         Array.isArray(volticaProducts)
     ) {
 
-        adminProducts =
-            JSON.parse(
-                JSON.stringify(
-                    volticaProducts
-                )
+        try {
+
+            adminProducts =
+                JSON.parse(
+                    JSON.stringify(
+                        volticaProducts
+                    )
+                );
+
+        } catch (error) {
+
+            console.error(
+                "VOLTICA: Unable to clone product database.",
+                error
             );
+
+            adminProducts = [];
+
+        }
 
     } else {
 
@@ -228,56 +219,49 @@ function loadProducts() {
 
 function bindEvents() {
 
-    document
-        .getElementById("newProductButton")
+    $("newProductButton")
         ?.addEventListener(
             "click",
             createNewProduct
         );
 
 
-    document
-        .getElementById("emptyCreateButton")
+    $("emptyCreateButton")
         ?.addEventListener(
             "click",
             createNewProduct
         );
 
 
-    document
-        .getElementById("closeEditorButton")
+    $("closeEditorButton")
         ?.addEventListener(
             "click",
             closeEditor
         );
 
 
-    document
-        .getElementById("cancelProductButton")
+    $("cancelProductButton")
         ?.addEventListener(
             "click",
             closeEditor
         );
 
 
-    document
-        .getElementById("saveProductButton")
+    $("saveProductButton")
         ?.addEventListener(
             "click",
             saveProduct
         );
 
 
-    document
-        .getElementById("backupProductsButton")
+    $("backupProductsButton")
         ?.addEventListener(
             "click",
             backupDatabase
         );
 
 
-    document
-        .getElementById("exportProductsButton")
+    $("exportProductsButton")
         ?.addEventListener(
             "click",
             exportProductsJS
@@ -333,48 +317,86 @@ function bindEvents() {
         );
 
 
-    /*
-       Drag & drop support.
-    */
+    bindDragAndDrop();
 
-    if (imageUploadSquare) {
-
-        [
-            "dragenter",
-            "dragover"
-        ].forEach(
-            eventName => {
-
-                imageUploadSquare.addEventListener(
-                    eventName,
-                    handleDragEnter
-                );
-
-            }
-        );
+}
 
 
-        [
-            "dragleave",
-            "drop"
-        ].forEach(
-            eventName => {
+/* =========================================================
+   DRAG & DROP
+   ========================================================= */
 
-                imageUploadSquare.addEventListener(
-                    eventName,
-                    handleDragLeave
-                );
+function bindDragAndDrop() {
 
-            }
-        );
-
-
-        imageUploadSquare.addEventListener(
-            "drop",
-            handleImageDrop
-        );
-
+    if (!imageUploadSquare) {
+        return;
     }
+
+
+    imageUploadSquare.addEventListener(
+        "dragenter",
+        handleDragEnter
+    );
+
+
+    imageUploadSquare.addEventListener(
+        "dragover",
+        handleDragEnter
+    );
+
+
+    imageUploadSquare.addEventListener(
+        "dragleave",
+        handleDragLeave
+    );
+
+
+    imageUploadSquare.addEventListener(
+        "drop",
+        handleImageDrop
+    );
+
+}
+
+
+function handleDragEnter(event) {
+
+    event.preventDefault();
+
+    imageUploadSquare?.classList.add(
+        "drag-over"
+    );
+
+}
+
+
+function handleDragLeave(event) {
+
+    event.preventDefault();
+
+    imageUploadSquare?.classList.remove(
+        "drag-over"
+    );
+
+}
+
+
+function handleImageDrop(event) {
+
+    event.preventDefault();
+
+    imageUploadSquare?.classList.remove(
+        "drag-over"
+    );
+
+
+    const files =
+        Array.from(
+            event.dataTransfer?.files || []
+        );
+
+
+    addImageFiles(files);
 
 }
 
@@ -386,7 +408,7 @@ function bindEvents() {
 function handleProductNameInput() {
 
     /*
-       Existing product IDs are never changed.
+       Never change the ID of an existing product.
     */
 
     if (
@@ -428,7 +450,7 @@ function slugify(value) {
 
 
 /* =========================================================
-   CREATE PRODUCT
+   CREATE NEW PRODUCT
    ========================================================= */
 
 function createNewProduct() {
@@ -448,15 +470,22 @@ function createNewProduct() {
 
     renderImagePreview();
 
-    productEditor.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+    scrollToEditor();
 
     setTimeout(
         () => productName?.focus(),
         250
     );
+
+}
+
+
+function scrollToEditor() {
+
+    productEditor?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 
 }
 
@@ -468,11 +497,7 @@ function createNewProduct() {
 function editProduct(id) {
 
     const product =
-        adminProducts.find(
-            item =>
-                String(item.id) ===
-                String(id)
-        );
+        findProduct(id);
 
 
     if (!product) {
@@ -490,43 +515,39 @@ function editProduct(id) {
         product.id;
 
 
-    /*
-       Existing filenames are preserved exactly.
-
-       We normalize only the path prefix.
-       The filename itself is untouched.
-    */
-
     selectedImages =
         Array.isArray(product.images)
             ? product.images
-                .map(
-                    image =>
-                        normalizeImagePath(image)
-                )
+                .map(normalizeImagePath)
                 .filter(Boolean)
             : [];
 
 
-    populateEditor(
-        product
-    );
-
+    populateEditor(product);
 
     editorTitle.textContent =
         "EDIT PRODUCT";
 
-
     productEditor.hidden = false;
-
 
     renderImagePreview();
 
+    scrollToEditor();
 
-    productEditor.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+}
+
+
+/* =========================================================
+   FIND PRODUCT
+   ========================================================= */
+
+function findProduct(id) {
+
+    return adminProducts.find(
+        product =>
+            String(product.id) ===
+            String(id)
+    );
 
 }
 
@@ -540,18 +561,14 @@ function populateEditor(product) {
     productId.value =
         product.id || "";
 
-
     productName.value =
         product.name || "";
-
 
     productCategory.value =
         product.category || "";
 
-
     productBadge.value =
         product.badge || "";
-
 
     productSku.value =
         product.sku || "";
@@ -582,8 +599,7 @@ function populateEditor(product) {
 
 
     shortDescription.value =
-        product.shortDescription ||
-        "";
+        product.shortDescription || "";
 
 
     fullDescription.value =
@@ -619,13 +635,11 @@ function populateEditor(product) {
 
 
     stripeLink.value =
-        product.stripeLink ||
-        "";
+        product.stripeLink || "";
 
 
     supplierLink.value =
-        product.supplierLink ||
-        "";
+        product.supplierLink || "";
 
 
     productActive.checked =
@@ -653,46 +667,32 @@ function valueOrEmpty(value) {
 function clearEditor() {
 
     productId.value = "";
-
     productName.value = "";
-
     productCategory.value = "";
-
     productBadge.value = "";
-
     productSku.value = "";
 
     productCost.value = "";
-
     productShipping.value = "";
-
     productPrice.value = "";
-
     productReferencePrice.value = "";
 
     shortDescription.value = "";
-
     fullDescription.value = "";
-
     keyFeatures.value = "";
-
     technicalSpecifications.value = "";
 
     productColors.value = "";
-
     productVariants.value = "";
 
     stripeLink.value = "";
-
     supplierLink.value = "";
 
     productActive.checked = true;
 
 
     if (productImageUpload) {
-
         productImageUpload.value = "";
-
     }
 
 }
@@ -704,12 +704,7 @@ function clearEditor() {
 
 function closeEditor() {
 
-    if (productEditor) {
-
-        productEditor.hidden = true;
-
-    }
-
+    productEditor.hidden = true;
 
     editingProductId = null;
 
@@ -719,16 +714,14 @@ function closeEditor() {
 
 
     if (productImageUpload) {
-
         productImageUpload.value = "";
-
     }
 
 }
 
 
 /* =========================================================
-   IMAGE SELECTION
+   IMAGE INPUT
    ========================================================= */
 
 function handleImageSelection(event) {
@@ -745,94 +738,26 @@ function handleImageSelection(event) {
 
 
 /* =========================================================
-   IMAGE DROP
-   ========================================================= */
-
-function handleImageDrop(event) {
-
-    event.preventDefault();
-
-    imageUploadSquare?.classList.remove(
-        "drag-over"
-    );
-
-
-    const files =
-        Array.from(
-            event.dataTransfer?.files || []
-        );
-
-
-    addImageFiles(files);
-
-}
-
-
-/* =========================================================
-   DRAG ENTER
-   ========================================================= */
-
-function handleDragEnter(event) {
-
-    event.preventDefault();
-
-    imageUploadSquare?.classList.add(
-        "drag-over"
-    );
-
-}
-
-
-/* =========================================================
-   DRAG LEAVE
-   ========================================================= */
-
-function handleDragLeave(event) {
-
-    event.preventDefault();
-
-    imageUploadSquare?.classList.remove(
-        "drag-over"
-    );
-
-}
-
-
-/* =========================================================
    ADD IMAGE FILES
    ========================================================= */
 
 function addImageFiles(files) {
 
-    if (!Array.isArray(files)) {
-
-        return;
-
-    }
-
-
     if (!files.length) {
-
         return;
-
     }
 
 
-    const imageFiles =
+    const validImages =
         files.filter(
-            file => {
-
-                return (
-                    file &&
-                    typeof file.type === "string" &&
-                    file.type.startsWith("image/")
-                );
-
-            }
+            file =>
+                file &&
+                typeof file.type === "string" &&
+                file.type.startsWith("image/")
         );
 
 
-    if (!imageFiles.length) {
+    if (!validImages.length) {
 
         showNotification(
             "NO VALID IMAGE FILES"
@@ -846,22 +771,8 @@ function addImageFiles(files) {
     let addedCount = 0;
 
 
-    imageFiles.forEach(
+    validImages.forEach(
         file => {
-
-            /*
-               CRITICAL:
-
-               We NEVER rename the original file.
-
-               Example:
-
-               1000041113.webp
-
-               remains:
-
-               1000041113.webp
-            */
 
             const originalName =
                 String(
@@ -870,9 +781,7 @@ function addImageFiles(files) {
 
 
             if (!originalName) {
-
                 return;
-
             }
 
 
@@ -881,25 +790,17 @@ function addImageFiles(files) {
                 originalName;
 
 
-            /*
-               Duplicate detection is based on
-               filename, not browser File object.
-            */
-
-            const alreadyExists =
+            const duplicate =
                 selectedImages.some(
-                    existingPath =>
-                        getFilename(
-                            existingPath
-                        ).toLowerCase() ===
+                    existing =>
+                        getFilename(existing)
+                            .toLowerCase() ===
                         originalName.toLowerCase()
                 );
 
 
-            if (alreadyExists) {
-
+            if (duplicate) {
                 return;
-
             }
 
 
@@ -911,44 +812,8 @@ function addImageFiles(files) {
             addedCount++;
 
 
-            /*
-               Generate a temporary local preview.
-
-               This lets the user immediately see
-               the selected image even before the file
-               has been manually copied to assets/images/.
-            */
-
-            const reader =
-                new FileReader();
-
-
-            reader.onload =
-                event => {
-
-                    imagePreviewSources.set(
-                        imagePath,
-                        event.target.result
-                    );
-
-
-                    renderImagePreview();
-
-                };
-
-
-            reader.onerror =
-                () => {
-
-                    console.warn(
-                        "VOLTICA: Unable to preview image:",
-                        originalName
-                    );
-
-                };
-
-
-            reader.readAsDataURL(
+            createTemporaryPreview(
+                imagePath,
                 file
             );
 
@@ -959,7 +824,7 @@ function addImageFiles(files) {
     renderImagePreview();
 
 
-    if (addedCount > 0) {
+    if (addedCount) {
 
         showNotification(
             addedCount === 1
@@ -970,74 +835,69 @@ function addImageFiles(files) {
     }
 
 
-    /*
-       Reset the input.
-
-       This allows the exact same filename to be
-       selected again after it has been removed.
-    */
-
     if (productImageUpload) {
-
         productImageUpload.value = "";
-
     }
 
 }
 
 
 /* =========================================================
-   UPDATE PREVIEW IMAGE
+   TEMPORARY IMAGE PREVIEW
    ========================================================= */
 
-function updatePreviewImage(
+function createTemporaryPreview(
     imagePath,
-    dataUrl
+    file
 ) {
 
-    if (!imagePath || !dataUrl) {
-
-        return;
-
-    }
+    const reader =
+        new FileReader();
 
 
-    imagePreviewSources.set(
-        imagePath,
-        dataUrl
-    );
+    reader.onload =
+        event => {
+
+            if (
+                event.target?.result
+            ) {
+
+                imagePreviewSources.set(
+                    imagePath,
+                    event.target.result
+                );
+
+                renderImagePreview();
+
+            }
+
+        };
 
 
-    const selector =
-        `[data-image-path="${escapeSelector(imagePath)}"] img`;
+    reader.onerror =
+        () => {
+
+            console.warn(
+                "VOLTICA: Preview failed:",
+                file.name
+            );
+
+        };
 
 
-    const imageElement =
-        imagePreview?.querySelector(
-            selector
-        );
-
-
-    if (imageElement) {
-
-        imageElement.src =
-            dataUrl;
-
-    }
+    reader.readAsDataURL(file);
 
 }
 
 
 /* =========================================================
-   RENDER IMAGE PREVIEW
+   IMAGE PREVIEW
    ========================================================= */
 
 function renderImagePreview() {
 
     if (!imagePreview) {
-
         return;
-
     }
 
 
@@ -1057,74 +917,71 @@ function renderImagePreview() {
     imagePreview.innerHTML =
         selectedImages
             .map(
-                (imagePath, index) => {
-
-                    const filename =
-                        getFilename(
-                            imagePath
-                        );
-
-
-                    /*
-                       If the image was selected during
-                       this session, use its local DataURL.
-
-                       Otherwise use the actual website path.
-                    */
-
-                    const previewSource =
-                        imagePreviewSources.get(
-                            imagePath
-                        ) ||
-                        imagePath;
-
-
-                    return `
-                        <div
-                            class="image-preview-item"
-                            data-image-path="${escapeHtmlAttribute(imagePath)}"
-                        >
-
-                            <img
-                                src="${escapeHtmlAttribute(previewSource)}"
-                                alt="${escapeHtmlAttribute(filename)}"
-                                loading="lazy"
-                                onerror="this.style.opacity='0.18'"
-                            >
-
-                            <span
-                                class="image-preview-index"
-                            >
-                                ${index + 1}
-                            </span>
-
-
-                            <button
-                                type="button"
-                                class="image-preview-remove"
-                                data-remove-image="${escapeHtmlAttribute(imagePath)}"
-                                aria-label="Remove ${escapeHtmlAttribute(filename)}"
-                            >
-                                ×
-                            </button>
-
-
-                            <span
-                                class="image-preview-name"
-                                title="${escapeHtmlAttribute(filename)}"
-                            >
-                                ${escapeHtml(filename)}
-                            </span>
-
-                        </div>
-                    `;
-
-                }
+                (imagePath, index) =>
+                    createImagePreviewMarkup(
+                        imagePath,
+                        index
+                    )
             )
             .join("");
 
 
     bindImagePreviewActions();
+
+}
+
+
+function createImagePreviewMarkup(
+    imagePath,
+    index
+) {
+
+    const filename =
+        getFilename(imagePath);
+
+
+    const previewSource =
+        imagePreviewSources.get(
+            imagePath
+        ) ||
+        imagePath;
+
+
+    return `
+        <div
+            class="image-preview-item"
+            data-image-path="${escapeHtmlAttribute(imagePath)}"
+        >
+
+            <img
+                src="${escapeHtmlAttribute(previewSource)}"
+                alt="${escapeHtmlAttribute(filename)}"
+                loading="lazy"
+                onerror="this.style.opacity='0.18'"
+            >
+
+            <span class="image-preview-index">
+                ${index + 1}
+            </span>
+
+            <button
+                type="button"
+                class="image-preview-remove"
+                data-remove-image="${escapeHtmlAttribute(imagePath)}"
+                aria-label="Remove ${escapeHtmlAttribute(filename)}"
+            >
+                ×
+            </button>
+
+            <span
+                class="image-preview-name"
+                title="${escapeHtmlAttribute(filename)}"
+            >
+                ${escapeHtml(filename)}
+            </span>
+
+        </div>
+    `;
 
 }
 
@@ -1135,15 +992,8 @@ function renderImagePreview() {
 
 function bindImagePreviewActions() {
 
-    if (!imagePreview) {
-
-        return;
-
-    }
-
-
     imagePreview
-        .querySelectorAll(
+        ?.querySelectorAll(
             "[data-remove-image]"
         )
         .forEach(
@@ -1154,16 +1004,11 @@ function bindImagePreviewActions() {
                     event => {
 
                         event.preventDefault();
-
                         event.stopPropagation();
 
 
-                        const imagePath =
-                            button.dataset.removeImage;
-
-
                         removeImage(
-                            imagePath
+                            button.dataset.removeImage
                         );
 
                     }
@@ -1179,9 +1024,7 @@ function bindImagePreviewActions() {
    REMOVE IMAGE
    ========================================================= */
 
-function removeImage(
-    imagePath
-) {
+function removeImage(imagePath) {
 
     selectedImages =
         selectedImages.filter(
@@ -1197,7 +1040,6 @@ function removeImage(
 
     renderImagePreview();
 
-
     showNotification(
         "IMAGE REMOVED"
     );
@@ -1206,17 +1048,13 @@ function removeImage(
 
 
 /* =========================================================
-   NORMALIZE IMAGE PATH
+   IMAGE PATH
    ========================================================= */
 
-function normalizeImagePath(
-    image
-) {
+function normalizeImagePath(image) {
 
     if (!image) {
-
         return "";
-
     }
 
 
@@ -1225,15 +1063,9 @@ function normalizeImagePath(
 
 
     if (!value) {
-
         return "";
-
     }
 
-
-    /*
-       Preserve complete assets/images/ path.
-    */
 
     if (
         value.startsWith(
@@ -1246,10 +1078,6 @@ function normalizeImagePath(
     }
 
 
-    /*
-       Preserve root-relative paths.
-    */
-
     if (
         value.startsWith(
             "/assets/images/"
@@ -1261,19 +1089,6 @@ function normalizeImagePath(
     }
 
 
-    /*
-       Existing product databases may contain
-       only the filename.
-
-       Convert:
-
-       q45-1.webp
-
-       to:
-
-       assets/images/q45-1.webp
-    */
-
     return (
         "assets/images/" +
         getFilename(value)
@@ -1282,13 +1097,7 @@ function normalizeImagePath(
 }
 
 
-/* =========================================================
-   FILENAME
-   ========================================================= */
-
-function getFilename(
-    path
-) {
+function getFilename(path) {
 
     return String(path || "")
         .split("/")
@@ -1347,12 +1156,8 @@ function saveProduct() {
         slugify(name);
 
 
-    /*
-       Prevent duplicate IDs.
-    */
-
     const duplicate =
-        adminProducts.find(
+        adminProducts.some(
             product =>
                 String(product.id) ===
                     String(id) &&
@@ -1386,31 +1191,8 @@ function saveProduct() {
         editingProductId !== null
     ) {
 
-        const index =
-            adminProducts.findIndex(
-                product =>
-                    String(product.id) ===
-                    String(editingProductId)
-            );
-
-
-        if (index === -1) {
-
-            showNotification(
-                "PRODUCT NOT FOUND"
-            );
-
-            return;
-
-        }
-
-
-        adminProducts[index] =
-            productData;
-
-
-        showNotification(
-            "PRODUCT UPDATED"
+        updateExistingProduct(
+            productData
         );
 
     } else {
@@ -1418,7 +1200,6 @@ function saveProduct() {
         adminProducts.push(
             productData
         );
-
 
         showNotification(
             "PRODUCT CREATED"
@@ -1441,6 +1222,44 @@ function saveProduct() {
 
 
 /* =========================================================
+   UPDATE EXISTING PRODUCT
+   ========================================================= */
+
+function updateExistingProduct(
+    productData
+) {
+
+    const index =
+        adminProducts.findIndex(
+            product =>
+                String(product.id) ===
+                String(editingProductId)
+        );
+
+
+    if (index === -1) {
+
+        showNotification(
+            "PRODUCT NOT FOUND"
+        );
+
+        return;
+
+    }
+
+
+    adminProducts[index] =
+        productData;
+
+
+    showNotification(
+        "PRODUCT UPDATED"
+    );
+
+}
+
+
+/* =========================================================
    BUILD PRODUCT OBJECT
    ========================================================= */
 
@@ -1452,12 +1271,12 @@ function buildProductObject(
 
     return {
 
-        id: id,
+        id,
 
         sku:
             productSku.value.trim(),
 
-        name: name,
+        name,
 
         category:
             productCategory.value.trim(),
@@ -1465,7 +1284,7 @@ function buildProductObject(
         badge:
             productBadge.value.trim(),
 
-        price: price,
+        price,
 
         referencePrice:
             parseOptionalNumber(
@@ -1498,22 +1317,9 @@ function buildProductObject(
                 technicalSpecifications.value
             ),
 
-        /*
-           IMPORTANT:
-
-           selectedImages contains the exact original
-           filenames selected by the user.
-
-           Example:
-           assets/images/1000041113.webp
-        */
-
         images:
             selectedImages.map(
-                image =>
-                    normalizeImagePath(
-                        image
-                    )
+                normalizeImagePath
             ),
 
         colors:
@@ -1544,9 +1350,7 @@ function buildProductObject(
    OPTIONAL NUMBER
    ========================================================= */
 
-function parseOptionalNumber(
-    value
-) {
+function parseOptionalNumber(value) {
 
     if (
         value === "" ||
@@ -1574,12 +1378,10 @@ function parseOptionalNumber(
    TEXT → ARRAY
    ========================================================= */
 
-function linesToArray(
-    value
-) {
+function linesToArray(value) {
 
     return String(value || "")
-        .split("\n")
+        .split(/\r?\n/)
         .map(
             line =>
                 line.trim()
@@ -1593,16 +1395,10 @@ function linesToArray(
    ARRAY → TEXT
    ========================================================= */
 
-function arrayToLines(
-    value
-) {
+function arrayToLines(value) {
 
-    if (
-        !Array.isArray(value)
-    ) {
-
+    if (!Array.isArray(value)) {
         return "";
-
     }
 
 
@@ -1612,14 +1408,12 @@ function arrayToLines(
 
 
 /* =========================================================
-   TEXT → SPECIFICATIONS
+   TEXT → OBJECT
    ========================================================= */
 
-function linesToObject(
-    value
-) {
+function linesToObject(value) {
 
-    const object = {};
+    const result = {};
 
 
     linesToArray(value)
@@ -1630,11 +1424,9 @@ function linesToObject(
                     line.indexOf(":");
 
 
-                if (
-                    separator === -1
-                ) {
+                if (separator === -1) {
 
-                    object[line] = "";
+                    result[line] = "";
 
                     return;
 
@@ -1659,27 +1451,23 @@ function linesToObject(
 
 
                 if (key) {
-
-                    object[key] = val;
-
+                    result[key] = val;
                 }
 
             }
         );
 
 
-    return object;
+    return result;
 
 }
 
 
 /* =========================================================
-   SPECIFICATIONS → TEXT
+   OBJECT → TEXT
    ========================================================= */
 
-function objectToLines(
-    value
-) {
+function objectToLines(value) {
 
     if (
         !value ||
@@ -1694,8 +1482,8 @@ function objectToLines(
 
     return Object.entries(value)
         .map(
-            ([key, val]) =>
-                `${key}: ${val}`
+            ([key, value]) =>
+                `${key}: ${value}`
         )
         .join("\n");
 
@@ -1706,9 +1494,7 @@ function objectToLines(
    COLORS
    ========================================================= */
 
-function commaToArray(
-    value
-) {
+function commaToArray(value) {
 
     return String(value || "")
         .split(",")
@@ -1721,16 +1507,10 @@ function commaToArray(
 }
 
 
-function arrayToCommaList(
-    value
-) {
+function arrayToCommaList(value) {
 
-    if (
-        !Array.isArray(value)
-    ) {
-
+    if (!Array.isArray(value)) {
         return "";
-
     }
 
 
@@ -1743,9 +1523,7 @@ function arrayToCommaList(
    VARIANTS
    ========================================================= */
 
-function linesToVariants(
-    value
-) {
+function linesToVariants(value) {
 
     return linesToArray(value)
         .map(
@@ -1760,11 +1538,8 @@ function linesToVariants(
                 ) {
 
                     return {
-
                         name: line,
-
                         sku: ""
-
                     };
 
                 }
@@ -1791,16 +1566,10 @@ function linesToVariants(
 }
 
 
-function variantsToLines(
-    variants
-) {
+function variantsToLines(variants) {
 
-    if (
-        !Array.isArray(variants)
-    ) {
-
+    if (!Array.isArray(variants)) {
         return "";
-
     }
 
 
@@ -1809,7 +1578,8 @@ function variantsToLines(
             variant => {
 
                 if (
-                    typeof variant === "string"
+                    typeof variant ===
+                    "string"
                 ) {
 
                     return variant;
@@ -1817,10 +1587,16 @@ function variantsToLines(
                 }
 
 
-                return (
-                    `${variant.name || ""} — ` +
-                    `${variant.sku || ""}`
-                ).trim();
+                const name =
+                    variant.name || "";
+
+                const sku =
+                    variant.sku || "";
+
+
+                return sku
+                    ? `${name} — ${sku}`
+                    : name;
 
             }
         )
@@ -1828,8 +1604,10 @@ function variantsToLines(
         .join("\n");
 
 }
+
+
 /* =========================================================
-   SORT
+   SORT PRODUCTS
    ========================================================= */
 
 function sortProducts() {
@@ -1846,15 +1624,13 @@ function sortProducts() {
 
 
 /* =========================================================
-   RENDER PRODUCTS
+   RENDER PRODUCT DATABASE
    ========================================================= */
 
 function renderProducts() {
 
     if (!productList) {
-
         return;
-
     }
 
 
@@ -1906,7 +1682,7 @@ function renderProducts() {
                     ) === category;
 
 
-                const isActive =
+                const active =
                     product.active !== false;
 
 
@@ -1914,11 +1690,11 @@ function renderProducts() {
                     status === "all" ||
                     (
                         status === "active" &&
-                        isActive
+                        active
                     ) ||
                     (
                         status === "inactive" &&
-                        !isActive
+                        !active
                     );
 
 
@@ -1953,12 +1729,7 @@ function renderProducts() {
 
     productList.innerHTML =
         filtered
-            .map(
-                product =>
-                    renderProductRow(
-                        product
-                    )
-            )
+            .map(renderProductRow)
             .join("");
 
 
@@ -1971,9 +1742,7 @@ function renderProducts() {
    PRODUCT ROW
    ========================================================= */
 
-function renderProductRow(
-    product
-) {
+function renderProductRow(product) {
 
     const image =
         Array.isArray(product.images) &&
@@ -2026,15 +1795,11 @@ function renderProductRow(
     return `
         <article
             class="product-list-item"
-            data-product-id="${escapeHtmlAttribute(
-                product.id
-            )}"
+            data-product-id="${escapeHtmlAttribute(product.id)}"
         >
 
             <div class="product-list-image">
-
                 ${imageMarkup}
-
             </div>
 
 
@@ -2044,14 +1809,12 @@ function renderProductRow(
                     ${escapeHtml(badge)}
                 </small>
 
-
                 <h3>
                     ${escapeHtml(
                         product.name ||
                         "Untitled Product"
                     )}
                 </h3>
-
 
                 <p>
                     ${escapeHtml(
@@ -2061,18 +1824,22 @@ function renderProductRow(
                     )}
                 </p>
 
-
                 <div class="product-list-price">
                     ${formatPrice(product.price)}
                 </div>
 
-
                 <div
                     class="product-status ${
-                        active ? "active" : ""
+                        active
+                            ? "active"
+                            : ""
                     }"
                 >
-                    ${active ? "ACTIVE" : "INACTIVE"}
+                    ${
+                        active
+                            ? "ACTIVE"
+                            : "INACTIVE"
+                    }
                 </div>
 
             </div>
@@ -2083,9 +1850,7 @@ function renderProductRow(
                 <button
                     type="button"
                     data-action="edit"
-                    data-id="${escapeHtmlAttribute(
-                        product.id
-                    )}"
+                    data-id="${escapeHtmlAttribute(product.id)}"
                 >
                     EDIT
                 </button>
@@ -2094,9 +1859,7 @@ function renderProductRow(
                 <button
                     type="button"
                     data-action="toggle"
-                    data-id="${escapeHtmlAttribute(
-                        product.id
-                    )}"
+                    data-id="${escapeHtmlAttribute(product.id)}"
                 >
                     ${
                         active
@@ -2110,9 +1873,7 @@ function renderProductRow(
                     type="button"
                     class="delete-product"
                     data-action="delete"
-                    data-id="${escapeHtmlAttribute(
-                        product.id
-                    )}"
+                    data-id="${escapeHtmlAttribute(product.id)}"
                 >
                     DELETE
                 </button>
@@ -2131,15 +1892,8 @@ function renderProductRow(
 
 function bindProductRowActions() {
 
-    if (!productList) {
-
-        return;
-
-    }
-
-
     productList
-        .querySelectorAll(
+        ?.querySelectorAll(
             "[data-action]"
         )
         .forEach(
@@ -2152,36 +1906,23 @@ function bindProductRowActions() {
                         const action =
                             button.dataset.action;
 
-
                         const id =
                             button.dataset.id;
 
 
-                        if (
-                            action === "edit"
-                        ) {
+                        switch (action) {
 
-                            editProduct(id);
+                            case "edit":
+                                editProduct(id);
+                                break;
 
-                        }
+                            case "toggle":
+                                toggleProduct(id);
+                                break;
 
-
-                        if (
-                            action === "toggle"
-                        ) {
-
-                            toggleProduct(id);
-
-                        }
-
-
-                        if (
-                            action === "delete"
-                        ) {
-
-                            confirmDeleteProduct(
-                                id
-                            );
+                            case "delete":
+                                confirmDeleteProduct(id);
+                                break;
 
                         }
 
@@ -2198,22 +1939,14 @@ function bindProductRowActions() {
    TOGGLE PRODUCT
    ========================================================= */
 
-function toggleProduct(
-    id
-) {
+function toggleProduct(id) {
 
     const product =
-        adminProducts.find(
-            item =>
-                String(item.id) ===
-                String(id)
-        );
+        findProduct(id);
 
 
     if (!product) {
-
         return;
-
     }
 
 
@@ -2239,22 +1972,14 @@ function toggleProduct(
    DELETE PRODUCT
    ========================================================= */
 
-function confirmDeleteProduct(
-    id
-) {
+function confirmDeleteProduct(id) {
 
     const product =
-        adminProducts.find(
-            item =>
-                String(item.id) ===
-                String(id)
-        );
+        findProduct(id);
 
 
     if (!product) {
-
         return;
-
     }
 
 
@@ -2295,9 +2020,7 @@ function confirmDeleteProduct(
 function populateCategoryFilter() {
 
     if (!categoryFilter) {
-
         return;
-
     }
 
 
@@ -2345,7 +2068,6 @@ function populateCategoryFilter() {
             option.value =
                 category;
 
-
             option.textContent =
                 category;
 
@@ -2358,19 +2080,10 @@ function populateCategoryFilter() {
     );
 
 
-    if (
+    categoryFilter.value =
         categories.includes(current)
-    ) {
-
-        categoryFilter.value =
-            current;
-
-    } else {
-
-        categoryFilter.value =
-            "all";
-
-    }
+            ? current
+            : "all";
 
 }
 
@@ -2538,20 +2251,14 @@ function downloadFile(
 
 
     const url =
-        URL.createObjectURL(
-            blob
-        );
+        URL.createObjectURL(blob);
 
 
     const anchor =
-        document.createElement(
-            "a"
-        );
+        document.createElement("a");
 
 
-    anchor.href =
-        url;
-
+    anchor.href = url;
 
     anchor.download =
         filename;
@@ -2564,18 +2271,11 @@ function downloadFile(
 
     anchor.click();
 
-
     anchor.remove();
 
 
     setTimeout(
-        () => {
-
-            URL.revokeObjectURL(
-                url
-            );
-
-        },
+        () => URL.revokeObjectURL(url),
         1000
     );
 
@@ -2583,7 +2283,7 @@ function downloadFile(
 
 
 /* =========================================================
-   CONFIRMATION
+   CONFIRMATION SYSTEM
    ========================================================= */
 
 function openConfirmation(
@@ -2593,26 +2293,16 @@ function openConfirmation(
 ) {
 
     if (!confirmOverlay) {
-
         return;
-
     }
 
 
-    if (confirmTitle) {
-
-        confirmTitle.textContent =
-            title;
-
-    }
+    confirmTitle.textContent =
+        title;
 
 
-    if (confirmMessage) {
-
-        confirmMessage.textContent =
-            message;
-
-    }
+    confirmMessage.textContent =
+        message;
 
 
     confirmCallback =
@@ -2628,15 +2318,11 @@ function openConfirmation(
 function closeConfirmation() {
 
     if (confirmOverlay) {
-
-        confirmOverlay.hidden =
-            true;
-
+        confirmOverlay.hidden = true;
     }
 
 
-    confirmCallback =
-        null;
+    confirmCallback = null;
 
 }
 
@@ -2644,35 +2330,33 @@ function closeConfirmation() {
 function executeConfirmation() {
 
     if (
-        typeof confirmCallback ===
+        typeof confirmCallback !==
         "function"
     ) {
 
-        const callback =
-            confirmCallback;
-
-
         closeConfirmation();
 
-
-        callback();
-
-    } else {
-
-        closeConfirmation();
+        return;
 
     }
+
+
+    const callback =
+        confirmCallback;
+
+
+    closeConfirmation();
+
+    callback();
 
 }
 
 
 /* =========================================================
-   NOTIFICATION
+   NOTIFICATIONS
    ========================================================= */
 
-function showNotification(
-    message
-) {
+function showNotification(message) {
 
     if (
         !adminNotification ||
@@ -2717,20 +2401,14 @@ function showNotification(
    PRICE FORMAT
    ========================================================= */
 
-function formatPrice(
-    value
-) {
+function formatPrice(value) {
 
     const number =
         parseFloat(value);
 
 
-    if (
-        Number.isNaN(number)
-    ) {
-
+    if (Number.isNaN(number)) {
         return "$0.00 USD";
-
     }
 
 
@@ -2747,9 +2425,7 @@ function formatPrice(
    HTML ESCAPING
    ========================================================= */
 
-function escapeHtml(
-    value
-) {
+function escapeHtml(value) {
 
     return String(value ?? "")
         .replace(
@@ -2776,44 +2452,15 @@ function escapeHtml(
 }
 
 
-function escapeHtmlAttribute(
-    value
-) {
+function escapeHtmlAttribute(value) {
 
-    return escapeHtml(
-        value
-    );
-
-}
-
-
-function escapeSelector(
-    value
-) {
-
-    if (
-        typeof CSS !== "undefined" &&
-        typeof CSS.escape === "function"
-    ) {
-
-        return CSS.escape(
-            value
-        );
-
-    }
-
-
-    return String(value)
-        .replace(
-            /([!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~])/g,
-            "\\$1"
-        );
+    return escapeHtml(value);
 
 }
 
 
 /* =========================================================
-   KEYBOARD SHORTCUT
+   KEYBOARD SHORTCUTS
    ========================================================= */
 
 document.addEventListener(
@@ -2829,10 +2476,6 @@ document.addEventListener(
         }
 
 
-        /*
-           Close confirmation first.
-        */
-
         if (
             confirmOverlay &&
             !confirmOverlay.hidden
@@ -2844,10 +2487,6 @@ document.addEventListener(
 
         }
 
-
-        /*
-           Otherwise close the editor.
-        */
 
         if (
             productEditor &&
@@ -2863,7 +2502,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   BEFORE LEAVING PAGE
+   PAGE EXIT
    ========================================================= */
 
 window.addEventListener(
@@ -2871,12 +2510,15 @@ window.addEventListener(
     () => {
 
         /*
-           No browser persistence is forced here.
+           The admin manager intentionally does not
+           overwrite products.js automatically.
 
-           products.js remains the source of truth.
+           Workflow:
 
-           Use EXPORT PRODUCTS.JS after making
-           product changes.
+           1. Edit products.
+           2. SAVE PRODUCT.
+           3. EXPORT PRODUCTS.JS.
+           4. Replace the website products.js.
         */
 
     }

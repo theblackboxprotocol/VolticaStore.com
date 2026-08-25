@@ -1,966 +1,1356 @@
 /* =========================================================
    VOLTICA STORE
    ANKER SOUNDCORE SPACE Q45
-   HARD-CODED PRODUCT PAGE
+   HARD-CODED PRODUCT VIEW ENGINE
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+/*
+   IMPORTANT
+   ---------------------------------------------------------
+   This page is intentionally HARD-CODED for the
+   Anker Soundcore Space Q45.
 
-    /* =====================================================
-       PRODUCT DATA
-       ===================================================== */
+   It does NOT read product data from products.js.
 
-    const product = {
-
-        name:
-            "Anker Soundcore Space Q45",
-
-        category:
-            "PREMIUM AUDIO",
-
-        badge:
-            "FEATURED",
-
-        price:
-            189.99,
-
-        referencePrice:
-            null,
-
-        currency:
-            "USD",
-
-        shortDescription:
-            "Industry-leading adaptive active noise cancellation, Hi-Res wireless audio with LDAC, and up to 50 hours of battery life.",
-
-        description:
-            "Experience industry-leading adaptive active noise cancellation, stunning Hi-Res wireless audio powered by LDAC, and an exceptional 50-hour battery life. Hand-picked and curated by Voltica Store for ultimate comfort and premium sound performance.",
-
-        features: [
-
-            {
-                title:
-                    "Adaptive Active Noise Cancellation",
-
-                description:
-                    "Industry-leading adaptive ANC intelligently reduces surrounding noise for a more immersive listening experience."
-            },
-
-            {
-                title:
-                    "Hi-Res Wireless Audio",
-
-                description:
-                    "Enjoy detailed wireless sound with LDAC support and customized 40mm double-layer diaphragm drivers."
-            },
-
-            {
-                title:
-                    "50-Hour Battery Life",
-
-                description:
-                    "Enjoy up to 50 hours of playback with ANC enabled and up to 65 hours with ANC disabled."
-            },
-
-            {
-                title:
-                    "Fast Charging",
-
-                description:
-                    "A quick 5-minute charge provides up to 4 hours of listening time."
-            },
-
-            {
-                title:
-                    "Multipoint Connection",
-
-                description:
-                    "Connect to multiple devices and move seamlessly between your everyday devices."
-            },
-
-            {
-                title:
-                    "Customizable Sound & Transparency",
-
-                description:
-                    "Tailor your audio profile using the Soundcore app's 8-band EQ and switch seamlessly between transparency modes to stay connected to the world around you."
-            }
-
-        ],
-
-        specifications: {
-
-            "Bluetooth Version":
-                "Bluetooth 5.3",
-
-            "Audio Codecs":
-                "LDAC, AAC, SBC",
-
-            "Playtime":
-                "Up to 50 hours (ANC on) / Up to 65 hours (ANC off)",
-
-            "Fast Charging":
-                "5 minutes charge for 4 hours of playtime",
-
-            "Driver Size":
-                "40mm customized double-layer diaphragm drivers",
-
-            "Frequency Response":
-                "20Hz - 40kHz (Hi-Res Wired & Wireless)",
-
-            "Connectivity Range":
-                "Up to 15 meters / 50 feet",
-
-            "Connection":
-                "Multipoint connection supported",
-
-            "Charging Port":
-                "USB Type-C",
-
-            "Weight":
-                "292 g"
-
-        },
-
-        colors: [],
-
-        variants: [],
-
-        stripeLink:
-            "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j",
-
-        supplierLink:
-            "https://www.cjdropshipping.com/product/-p-2601110810071616400.html",
-
-        availability:
-            "PRE-ORDER AVAILABLE"
-
-    };
+   products.js can therefore remain completely untouched.
+*/
 
 
-    /* =====================================================
-       PRODUCT IMAGES
-       ===================================================== */
+/* =========================================================
+   GLOBAL ERROR PROTECTION
+   ========================================================= */
+
+(function () {
+
+    "use strict";
+
 
     /*
-       IMPORTANT:
-       These filenames must correspond to the actual images
-       placed inside assets/images/.
+       If anything unexpected happens during initialization,
+       ALWAYS remove the loading state.
     */
 
-    const productImages = [
+    function forceProductLoaded() {
 
-        "assets/images/q45-1.webp",
-        "assets/images/q45-2.webp",
-        "assets/images/q45-3.webp",
-        "assets/images/q45-4.webp",
-        "assets/images/q45-5.webp",
-        "assets/images/q45-6.webp"
+        try {
 
-    ];
+            document.body.classList.add(
+                "product-loaded"
+            );
+
+            document.documentElement.classList.add(
+                "product-loaded"
+            );
+
+        } catch (error) {
+
+            console.error(
+                "VOLTICA: Unable to remove loading state.",
+                error
+            );
+
+        }
+
+    }
+
+
+    /*
+       Global safety net.
+    */
+
+    window.addEventListener(
+        "error",
+        function (event) {
+
+            console.error(
+                "VOLTICA PRODUCT ERROR:",
+                event.error || event.message
+            );
+
+            forceProductLoaded();
+
+        }
+    );
+
+
+    window.addEventListener(
+        "unhandledrejection",
+        function (event) {
+
+            console.error(
+                "VOLTICA PRODUCT PROMISE ERROR:",
+                event.reason
+            );
+
+            forceProductLoaded();
+
+        }
+    );
 
 
     /* =====================================================
-       DOM
+       WAIT FOR DOM
        ===================================================== */
 
-    const mainImage =
-        document.getElementById(
-            "mainProductImage"
-        );
+    function initializeProductPage() {
 
-    const thumbnails =
-        document.getElementById(
-            "productThumbnails"
-        );
+        /*
+           Safety:
+           Never allow the page to remain in a loading state
+           simply because an optional element is missing.
+        */
 
-    const category =
-        document.getElementById(
-            "productCategory"
-        );
+        try {
 
-    const status =
-        document.getElementById(
-            "productStatus"
-        );
+            initializeQ45();
 
-    const badge =
-        document.getElementById(
-            "productBadge"
-        );
+        } catch (error) {
 
-    const name =
-        document.getElementById(
-            "productName"
-        );
+            console.error(
+                "VOLTICA: Q45 initialization failed.",
+                error
+            );
 
-    const shortDescription =
-        document.getElementById(
-            "productShortDescription"
-        );
+        } finally {
 
-    const price =
-        document.getElementById(
-            "productPrice"
-        );
+            /*
+               THIS IS THE MOST IMPORTANT PART.
 
-    const referencePrice =
-        document.getElementById(
-            "referencePrice"
-        );
+               Even if something above fails,
+               the page leaves the loading state.
+            */
 
-    const currency =
-        document.getElementById(
-            "productCurrency"
-        );
+            forceProductLoaded();
 
-    const variants =
-        document.getElementById(
-            "productVariants"
-        );
-
-    const stripeButton =
-        document.getElementById(
-            "stripeButton"
-        );
-
-    const finalStripeButton =
-        document.getElementById(
-            "finalStripeButton"
-        );
-
-    const availability =
-        document.getElementById(
-            "productAvailability"
-        );
-
-    const description =
-        document.getElementById(
-            "productDescription"
-        );
-
-    const features =
-        document.getElementById(
-            "productFeatures"
-        );
-
-    const specifications =
-        document.getElementById(
-            "productSpecifications"
-        );
-
-    const options =
-        document.getElementById(
-            "productOptions"
-        );
-
-    const finalProductName =
-        document.getElementById(
-            "finalProductName"
-        );
-
-
-    /* =====================================================
-       BASIC PRODUCT INFORMATION
-       ===================================================== */
-
-    if (category) {
-
-        category.textContent =
-            product.category;
+        }
 
     }
 
 
-    if (badge) {
+    if (
+        document.readyState ===
+        "loading"
+    ) {
 
-        badge.textContent =
-            product.badge;
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeProductPage,
+            {
+                once: true
+            }
+        );
 
-    }
+    } else {
 
-
-    if (name) {
-
-        name.textContent =
-            product.name;
-
-    }
-
-
-    if (finalProductName) {
-
-        finalProductName.textContent =
-            product.name;
-
-    }
-
-
-    if (shortDescription) {
-
-        shortDescription.textContent =
-            product.shortDescription;
-
-    }
-
-
-    if (price) {
-
-        price.textContent =
-            "$" +
-            product.price.toFixed(2);
-
-    }
-
-
-    if (currency) {
-
-        currency.textContent =
-            product.currency;
-
-    }
-
-
-    if (availability) {
-
-        availability.textContent =
-            product.availability;
+        initializeProductPage();
 
     }
 
 
     /* =====================================================
-       REFERENCE PRICE
+       Q45 PRODUCT
        ===================================================== */
 
-    if (referencePrice) {
+    function initializeQ45() {
 
-        if (
-            product.referencePrice &&
-            product.referencePrice >
-            product.price
-        ) {
 
-            referencePrice.textContent =
+        /* =================================================
+           PRODUCT DATA
+           ================================================= */
+
+        const product = {
+
+            id:
+                "anker-soundcore-space-q45-wireless-headphones-selected-by-voltica-store",
+
+            name:
+                "Anker Soundcore Space Q45",
+
+            category:
+                "PREMIUM AUDIO",
+
+            badge:
+                "FEATURED",
+
+            price:
+                189.99,
+
+            referencePrice:
+                null,
+
+            currency:
+                "USD",
+
+            shortDescription:
+                "Industry-leading adaptive active noise cancellation, Hi-Res wireless audio with LDAC, and up to 50 hours of battery life.",
+
+            description:
+                "Experience industry-leading adaptive active noise cancellation, stunning Hi-Res wireless audio powered by LDAC, and an exceptional 50-hour battery life. Hand-picked and curated by Voltica Store for ultimate comfort and premium sound performance.",
+
+            offerTitle:
+                "15% OFF FOR LIFE",
+
+            offerDescription:
+                "Pre-order today and receive your exclusive lifetime 15% discount with the Voltica Elite Pass.",
+
+            availability:
+                "PRE-ORDER AVAILABLE",
+
+            stripeLink:
+                "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j",
+
+            supplierLink:
+                "https://www.cjdropshipping.com/product/-p-2601110810071616400.html",
+
+
+            /* =============================================
+               FEATURES
+               ============================================= */
+
+            features: [
+
+                {
+                    title:
+                        "Adaptive Active Noise Cancellation",
+
+                    description:
+                        "Industry-leading adaptive ANC intelligently reduces surrounding noise for a more immersive listening experience."
+                },
+
+                {
+                    title:
+                        "Hi-Res Wireless Audio",
+
+                    description:
+                        "Enjoy detailed wireless sound with LDAC support and customized 40mm double-layer diaphragm drivers."
+                },
+
+                {
+                    title:
+                        "50-Hour Battery Life",
+
+                    description:
+                        "Enjoy up to 50 hours of playback with ANC enabled and up to 65 hours with ANC disabled."
+                },
+
+                {
+                    title:
+                        "Fast Charging",
+
+                    description:
+                        "A quick 5-minute charge provides up to 4 hours of listening time."
+                },
+
+                {
+                    title:
+                        "Multipoint Connection",
+
+                    description:
+                        "Connect to multiple devices and move seamlessly between your everyday devices."
+                },
+
+                {
+                    title:
+                        "Customizable Sound & Transparency",
+
+                    description:
+                        "Tailor your audio profile using the Soundcore app's 8-band EQ and switch seamlessly between transparency modes to stay connected to the world around you."
+                }
+
+            ],
+
+
+            /* =============================================
+               SPECIFICATIONS
+               ============================================= */
+
+            specifications: {
+
+                "Bluetooth Version":
+                    "Bluetooth 5.3",
+
+                "Audio Codecs":
+                    "LDAC, AAC, SBC",
+
+                "Playtime":
+                    "Up to 50 hours (ANC on) / Up to 65 hours (ANC off)",
+
+                "Fast Charging":
+                    "5 minutes charge for 4 hours of playtime",
+
+                "Driver Size":
+                    "40mm customized double-layer diaphragm drivers",
+
+                "Frequency Response":
+                    "20Hz - 40kHz (Hi-Res Wired & Wireless)",
+
+                "Connectivity Range":
+                    "Up to 15 meters / 50 feet",
+
+                "Connection":
+                    "Multipoint connection supported",
+
+                "Charging Port":
+                    "USB Type-C",
+
+                "Weight":
+                    "292 g"
+
+            },
+
+
+            colors:
+                [],
+
+            variants:
+                []
+
+        };
+
+
+        /* =================================================
+           PRODUCT IMAGES
+           ================================================= */
+
+        const productImages = [
+
+            "assets/images/q45-1.webp",
+            "assets/images/q45-2.webp",
+            "assets/images/q45-3.webp",
+            "assets/images/q45-4.webp",
+            "assets/images/q45-5.webp",
+            "assets/images/q45-6.webp"
+
+        ];
+
+
+        /* =================================================
+           DOM HELPERS
+           ================================================= */
+
+        const $ =
+            id =>
+                document.getElementById(id);
+
+
+        /* =================================================
+           DOM REFERENCES
+           ================================================= */
+
+        const mainImage =
+            $("mainProductImage");
+
+        const thumbnails =
+            $("productThumbnails");
+
+        const category =
+            $("productCategory");
+
+        const status =
+            $("productStatus");
+
+        const badge =
+            $("productBadge");
+
+        const name =
+            $("productName");
+
+        const shortDescription =
+            $("productShortDescription");
+
+        const price =
+            $("productPrice");
+
+        const referencePrice =
+            $("referencePrice");
+
+        const currency =
+            $("productCurrency");
+
+        const variants =
+            $("productVariants");
+
+        const stripeButton =
+            $("stripeButton");
+
+        const finalStripeButton =
+            $("finalStripeButton");
+
+        const availability =
+            $("productAvailability");
+
+        const description =
+            $("productDescription");
+
+        const features =
+            $("productFeatures");
+
+        const specifications =
+            $("productSpecifications");
+
+        const options =
+            $("productOptions");
+
+        const finalProductName =
+            $("finalProductName");
+
+        const lightbox =
+            $("productLightbox");
+
+        const lightboxImage =
+            $("lightboxImage");
+
+        const lightboxClose =
+            $("lightboxClose");
+
+        const imageZoomButton =
+            $("imageZoomButton");
+
+
+        /* =================================================
+           BASIC INFORMATION
+           ================================================= */
+
+        if (category) {
+
+            category.textContent =
+                product.category;
+
+        }
+
+
+        if (badge) {
+
+            badge.textContent =
+                product.badge;
+
+        }
+
+
+        if (name) {
+
+            name.textContent =
+                product.name;
+
+        }
+
+
+        if (finalProductName) {
+
+            finalProductName.textContent =
+                product.name;
+
+        }
+
+
+        if (shortDescription) {
+
+            shortDescription.textContent =
+                product.shortDescription;
+
+        }
+
+
+        if (price) {
+
+            price.textContent =
                 "$" +
-                product.referencePrice.toFixed(2);
-
-        } else {
-
-            referencePrice.textContent =
-                "";
+                product.price.toFixed(2);
 
         }
 
-    }
 
+        if (currency) {
 
-    /* =====================================================
-       STRIPE
-       ===================================================== */
-
-    if (stripeButton) {
-
-        stripeButton.href =
-            product.stripeLink;
-
-    }
-
-
-    if (finalStripeButton) {
-
-        finalStripeButton.href =
-            product.stripeLink;
-
-    }
-
-
-    /* =====================================================
-       DESCRIPTION
-       ===================================================== */
-
-    if (description) {
-
-        description.innerHTML = "";
-
-        const paragraph =
-            document.createElement("p");
-
-        paragraph.textContent =
-            product.description;
-
-        description.appendChild(
-            paragraph
-        );
-
-    }
-
-
-    /* =====================================================
-       FEATURES
-       ===================================================== */
-
-    if (features) {
-
-        features.innerHTML = "";
-
-        product.features.forEach(
-            feature => {
-
-                const article =
-                    document.createElement(
-                        "article"
-                    );
-
-                article.className =
-                    "feature-card";
-
-                article.innerHTML = `
-
-                    <div class="feature-card-inner">
-
-                        <span class="feature-number">
-                            ${String(
-                                product.features.indexOf(feature) + 1
-                            ).padStart(2, "0")}
-                        </span>
-
-                        <h3></h3>
-
-                        <p></p>
-
-                    </div>
-
-                `;
-
-                article
-                    .querySelector("h3")
-                    .textContent =
-                    feature.title;
-
-                article
-                    .querySelector("p")
-                    .textContent =
-                    feature.description;
-
-                features.appendChild(
-                    article
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       SPECIFICATIONS
-       ===================================================== */
-
-    if (specifications) {
-
-        specifications.innerHTML = "";
-
-        Object.entries(
-            product.specifications
-        ).forEach(
-            ([key, value]) => {
-
-                const row =
-                    document.createElement(
-                        "div"
-                    );
-
-                row.className =
-                    "specification-row";
-
-                const label =
-                    document.createElement(
-                        "span"
-                    );
-
-                label.className =
-                    "specification-label";
-
-                label.textContent =
-                    key;
-
-                const data =
-                    document.createElement(
-                        "strong"
-                    );
-
-                data.className =
-                    "specification-value";
-
-                data.textContent =
-                    value;
-
-                row.appendChild(
-                    label
-                );
-
-                row.appendChild(
-                    data
-                );
-
-                specifications.appendChild(
-                    row
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       OPTIONS
-       ===================================================== */
-
-    if (options) {
-
-        options.innerHTML = `
-
-            <div class="option-group">
-
-                <span class="option-label">
-                    PRODUCT
-                </span>
-
-                <strong>
-                    ${escapeHtml(product.name)}
-                </strong>
-
-            </div>
-
-        `;
-
-    }
-
-
-    /* =====================================================
-       VARIANTS
-       ===================================================== */
-
-    if (variants) {
-
-        variants.innerHTML = "";
-
-        if (
-            product.colors.length ||
-            product.variants.length
-        ) {
-
-            renderVariants();
+            currency.textContent =
+                product.currency;
 
         }
 
-    }
+
+        if (availability) {
+
+            availability.textContent =
+                product.availability;
+
+        }
 
 
-    function renderVariants() {
+        /* =================================================
+           STATUS
+           ================================================= */
 
-        if (product.colors.length) {
+        if (status) {
 
-            const group =
+            status.classList.add(
+                "available"
+            );
+
+        }
+
+
+        /* =================================================
+           STRIPE
+           ================================================= */
+
+        if (stripeButton) {
+
+            stripeButton.href =
+                product.stripeLink;
+
+            stripeButton.target =
+                "_blank";
+
+            stripeButton.rel =
+                "noopener noreferrer";
+
+        }
+
+
+        if (finalStripeButton) {
+
+            finalStripeButton.href =
+                product.stripeLink;
+
+            finalStripeButton.target =
+                "_blank";
+
+            finalStripeButton.rel =
+                "noopener noreferrer";
+
+        }
+
+
+        /* =================================================
+           DESCRIPTION
+           ================================================= */
+
+        if (description) {
+
+            description.innerHTML = "";
+
+            const paragraph =
+                document.createElement(
+                    "p"
+                );
+
+            paragraph.textContent =
+                product.description;
+
+            description.appendChild(
+                paragraph
+            );
+
+        }
+
+
+        /* =================================================
+           FEATURES
+           ================================================= */
+
+        renderFeatures();
+
+
+        function renderFeatures() {
+
+            if (!features) {
+                return;
+            }
+
+
+            features.innerHTML = "";
+
+
+            product.features.forEach(
+                (feature, index) => {
+
+                    const article =
+                        document.createElement(
+                            "article"
+                        );
+
+
+                    article.className =
+                        "feature-card";
+
+
+                    const inner =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    inner.className =
+                        "feature-card-inner";
+
+
+                    const number =
+                        document.createElement(
+                            "span"
+                        );
+
+
+                    number.className =
+                        "feature-number";
+
+
+                    number.textContent =
+                        String(
+                            index + 1
+                        ).padStart(
+                            2,
+                            "0"
+                        );
+
+
+                    const title =
+                        document.createElement(
+                            "h3"
+                        );
+
+
+                    title.textContent =
+                        feature.title;
+
+
+                    const text =
+                        document.createElement(
+                            "p"
+                        );
+
+
+                    text.textContent =
+                        feature.description;
+
+
+                    inner.appendChild(
+                        number
+                    );
+
+                    inner.appendChild(
+                        title
+                    );
+
+                    inner.appendChild(
+                        text
+                    );
+
+
+                    article.appendChild(
+                        inner
+                    );
+
+
+                    features.appendChild(
+                        article
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           SPECIFICATIONS
+           ================================================= */
+
+        renderSpecifications();
+
+
+        function renderSpecifications() {
+
+            if (!specifications) {
+                return;
+            }
+
+
+            specifications.innerHTML = "";
+
+
+            Object.entries(
+                product.specifications
+            )
+            .forEach(
+                ([key, value]) => {
+
+                    const row =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    row.className =
+                        "specification-row";
+
+
+                    const label =
+                        document.createElement(
+                            "span"
+                        );
+
+
+                    label.className =
+                        "specification-label";
+
+
+                    label.textContent =
+                        key;
+
+
+                    const data =
+                        document.createElement(
+                            "strong"
+                        );
+
+
+                    data.className =
+                        "specification-value";
+
+
+                    data.textContent =
+                        value;
+
+
+                    row.appendChild(
+                        label
+                    );
+
+
+                    row.appendChild(
+                        data
+                    );
+
+
+                    specifications.appendChild(
+                        row
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           OPTIONS
+           ================================================= */
+
+        renderOptions();
+
+
+        function renderOptions() {
+
+            if (!options) {
+                return;
+            }
+
+
+            options.innerHTML = "";
+
+
+            const productGroup =
                 document.createElement(
                     "div"
                 );
 
-            group.className =
-                "variant-group";
+
+            productGroup.className =
+                "option-group";
+
 
             const label =
                 document.createElement(
                     "span"
                 );
 
-            label.textContent =
-                "COLOR";
 
             label.className =
-                "variant-label";
+                "option-label";
 
-            group.appendChild(
+
+            label.textContent =
+                "PRODUCT";
+
+
+            const value =
+                document.createElement(
+                    "strong"
+                );
+
+
+            value.textContent =
+                product.name;
+
+
+            productGroup.appendChild(
                 label
             );
 
 
-            product.colors.forEach(
-                (color, index) => {
+            productGroup.appendChild(
+                value
+            );
 
-                    const button =
-                        document.createElement(
-                            "button"
-                        );
 
-                    button.type =
-                        "button";
+            options.appendChild(
+                productGroup
+            );
 
-                    button.className =
-                        "variant-option";
 
-                    if (index === 0) {
+            /*
+               Lifetime offer option.
+            */
 
-                        button.classList.add(
-                            "selected"
-                        );
+            const offerGroup =
+                document.createElement(
+                    "div"
+                );
 
-                    }
 
-                    button.textContent =
-                        color;
+            offerGroup.className =
+                "option-group";
 
-                    button.addEventListener(
-                        "click",
-                        () => {
 
-                            group
-                                .querySelectorAll(
-                                    ".variant-option"
-                                )
-                                .forEach(
-                                    item =>
-                                        item.classList.remove(
-                                            "selected"
-                                        )
-                                );
+            const offerLabel =
+                document.createElement(
+                    "span"
+                );
+
+
+            offerLabel.className =
+                "option-label";
+
+
+            offerLabel.textContent =
+                "VOLTiCA ELITE PASS";
+
+
+            const offerValue =
+                document.createElement(
+                    "strong"
+                );
+
+
+            offerValue.textContent =
+                "15% OFF FOR LIFE";
+
+
+            offerGroup.appendChild(
+                offerLabel
+            );
+
+
+            offerGroup.appendChild(
+                offerValue
+            );
+
+
+            options.appendChild(
+                offerGroup
+            );
+
+        }
+
+
+        /* =================================================
+           VARIANTS
+           ================================================= */
+
+        renderVariants();
+
+
+        function renderVariants() {
+
+            if (!variants) {
+                return;
+            }
+
+
+            variants.innerHTML = "";
+
+
+            /*
+               Q45 currently has no selectable color/SKU
+               variants supplied for this hard-coded page.
+
+               Therefore we intentionally do not display
+               an empty variant selector.
+            */
+
+            if (
+                !product.colors.length &&
+                !product.variants.length
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                product.colors.length
+            ) {
+
+                const group =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                group.className =
+                    "variant-group";
+
+
+                const label =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                label.className =
+                    "variant-label";
+
+
+                label.textContent =
+                    "COLOR";
+
+
+                group.appendChild(
+                    label
+                );
+
+
+                product.colors.forEach(
+                    (color, index) => {
+
+                        const button =
+                            document.createElement(
+                                "button"
+                            );
+
+
+                        button.type =
+                            "button";
+
+
+                        button.className =
+                            "variant-option";
+
+
+                        button.textContent =
+                            color;
+
+
+                        if (
+                            index === 0
+                        ) {
 
                             button.classList.add(
                                 "selected"
                             );
 
                         }
-                    );
 
-                    group.appendChild(
-                        button
+
+                        button.addEventListener(
+                            "click",
+                            () => {
+
+                                group
+                                    .querySelectorAll(
+                                        ".variant-option"
+                                    )
+                                    .forEach(
+                                        item =>
+                                            item.classList.remove(
+                                                "selected"
+                                            )
+                                    );
+
+
+                                button.classList.add(
+                                    "selected"
+                                );
+
+                            }
+                        );
+
+
+                        group.appendChild(
+                            button
+                        );
+
+                    }
+                );
+
+
+                variants.appendChild(
+                    group
+                );
+
+            }
+
+        }
+
+
+        /* =================================================
+           GALLERY
+           ================================================= */
+
+        initializeGallery();
+
+
+        function initializeGallery() {
+
+            if (!mainImage) {
+
+                console.warn(
+                    "VOLTICA: mainProductImage not found."
+                );
+
+                return;
+
+            }
+
+
+            /*
+               Display the first image immediately.
+
+               We do NOT wait for all images to load.
+               This prevents the page from getting stuck.
+            */
+
+            if (
+                productImages.length
+            ) {
+
+                setMainImage(
+                    productImages[0]
+                );
+
+            }
+
+
+            if (!thumbnails) {
+                return;
+            }
+
+
+            thumbnails.innerHTML = "";
+
+
+            productImages.forEach(
+                (imagePath, index) => {
+
+                    createThumbnail(
+                        imagePath,
+                        index
                     );
 
                 }
             );
 
-
-            variants.appendChild(
-                group
-            );
-
-        }
-
-    }
-
-
-    /* =====================================================
-       PRODUCT GALLERY
-       ===================================================== */
-
-    function initializeGallery() {
-
-        if (!mainImage) {
-            return;
         }
 
 
-        const validImages = [];
+        /* =================================================
+           CREATE THUMBNAIL
+           ================================================= */
 
-        let checked =
-            0;
+        function createThumbnail(
+            imagePath,
+            index
+        ) {
+
+            if (!thumbnails) {
+                return;
+            }
 
 
-        productImages.forEach(
-            imagePath => {
+            const button =
+                document.createElement(
+                    "button"
+                );
 
-                const image =
-                    new Image();
 
-                image.onload = () => {
+            button.type =
+                "button";
 
-                    validImages.push(
-                        imagePath
+
+            button.className =
+                "product-thumbnail";
+
+
+            button.dataset.image =
+                imagePath;
+
+
+            if (
+                index === 0
+            ) {
+
+                button.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            const image =
+                document.createElement(
+                    "img"
+                );
+
+
+            image.src =
+                imagePath;
+
+
+            image.alt =
+                product.name +
+                " image " +
+                (index + 1);
+
+
+            image.loading =
+                "lazy";
+
+
+            /*
+               Missing thumbnails should not
+               break the rest of the page.
+            */
+
+            image.onerror =
+                function () {
+
+                    button.classList.add(
+                        "image-missing"
                     );
 
-                    checked++;
-
-                    if (
-                        checked ===
-                        productImages.length
-                    ) {
-
-                        finishGallery(
-                            validImages
-                        );
-
-                    }
+                    this.style.opacity =
+                        "0.18";
 
                 };
 
 
-                image.onerror = () => {
-
-                    checked++;
-
-                    if (
-                        checked ===
-                        productImages.length
-                    ) {
-
-                        finishGallery(
-                            validImages
-                        );
-
-                    }
-
-                };
-
-
-                image.src =
-                    imagePath;
-
-            }
-        );
-
-    }
-
-
-    function finishGallery(images) {
-
-        if (!images.length) {
-
-            mainImage.removeAttribute(
-                "src"
+            button.appendChild(
+                image
             );
 
-            mainImage.alt =
-                product.name;
 
-            if (thumbnails) {
+            button.addEventListener(
+                "click",
+                function () {
 
-                thumbnails.innerHTML = "";
+                    thumbnails
+                        .querySelectorAll(
+                            ".product-thumbnail"
+                        )
+                        .forEach(
+                            item =>
+                                item.classList.remove(
+                                    "active"
+                                )
+                        );
 
-            }
-
-            return;
-
-        }
-
-
-        setMainImage(
-            images[0]
-        );
-
-
-        if (!thumbnails) {
-            return;
-        }
-
-
-        thumbnails.innerHTML = "";
-
-
-        images.forEach(
-            (imagePath, index) => {
-
-                const button =
-                    document.createElement(
-                        "button"
-                    );
-
-                button.type =
-                    "button";
-
-                button.className =
-                    "product-thumbnail";
-
-
-                if (index === 0) {
 
                     button.classList.add(
                         "active"
                     );
 
-                }
 
-
-                const image =
-                    document.createElement(
-                        "img"
+                    setMainImage(
+                        imagePath
                     );
 
-                image.src =
-                    imagePath;
-
-                image.alt =
-                    product.name +
-                    " image " +
-                    (index + 1);
-
-                image.loading =
-                    "lazy";
+                }
+            );
 
 
-                button.appendChild(
-                    image
+            thumbnails.appendChild(
+                button
+            );
+
+        }
+
+
+        /* =================================================
+           SET MAIN IMAGE
+           ================================================= */
+
+        function setMainImage(
+            imagePath
+        ) {
+
+            if (!mainImage) {
+                return;
+            }
+
+
+            mainImage.src =
+                imagePath;
+
+
+            mainImage.alt =
+                product.name;
+
+
+            mainImage.onerror =
+                function () {
+
+                    console.warn(
+                        "VOLTICA: Image unavailable:",
+                        imagePath
+                    );
+
+
+                    this.style.opacity =
+                        "0.18";
+
+                };
+
+
+            mainImage.onload =
+                function () {
+
+                    this.style.opacity =
+                        "1";
+
+                };
+
+        }
+
+
+        /* =================================================
+           LIGHTBOX
+           ================================================= */
+
+        initializeLightbox();
+
+
+        function initializeLightbox() {
+
+            if (
+                !lightbox ||
+                !lightboxImage
+            ) {
+
+                return;
+
+            }
+
+
+            if (imageZoomButton) {
+
+                imageZoomButton.addEventListener(
+                    "click",
+                    openLightbox
                 );
 
+            }
 
-                button.addEventListener(
+
+            if (lightboxClose) {
+
+                lightboxClose.addEventListener(
                     "click",
-                    () => {
+                    closeLightbox
+                );
 
-                        thumbnails
-                            .querySelectorAll(
-                                ".product-thumbnail"
-                            )
-                            .forEach(
-                                item =>
-                                    item.classList.remove(
-                                        "active"
-                                    )
-                            );
+            }
 
-                        button.classList.add(
-                            "active"
-                        );
 
-                        setMainImage(
-                            imagePath
-                        );
+            lightbox.addEventListener(
+                "click",
+                event => {
+
+                    if (
+                        event.target ===
+                        lightbox
+                    ) {
+
+                        closeLightbox();
 
                     }
-                );
-
-
-                thumbnails.appendChild(
-                    button
-                );
-
-            }
-        );
-
-    }
-
-
-    function setMainImage(
-        imagePath
-    ) {
-
-        if (!mainImage) {
-            return;
-        }
-
-
-        mainImage.src =
-            imagePath;
-
-        mainImage.alt =
-            product.name;
-
-    }
-
-
-    initializeGallery();
-
-
-    /* =====================================================
-       LIGHTBOX
-       ===================================================== */
-
-    const lightbox =
-        document.getElementById(
-            "productLightbox"
-        );
-
-    const lightboxImage =
-        document.getElementById(
-            "lightboxImage"
-        );
-
-    const lightboxClose =
-        document.getElementById(
-            "lightboxClose"
-        );
-
-    const imageZoomButton =
-        document.getElementById(
-            "imageZoomButton"
-        );
-
-
-    if (
-        imageZoomButton &&
-        lightbox &&
-        lightboxImage
-    ) {
-
-        imageZoomButton.addEventListener(
-            "click",
-            () => {
-
-                if (
-                    !mainImage ||
-                    !mainImage.src
-                ) {
-
-                    return;
 
                 }
+            );
 
-
-                lightboxImage.src =
-                    mainImage.src;
-
-                lightboxImage.alt =
-                    product.name;
-
-                lightbox.setAttribute(
-                    "aria-hidden",
-                    "false"
-                );
-
-                lightbox.classList.add(
-                    "active"
-                );
-
-            }
-        );
-
-    }
-
-
-    function closeLightbox() {
-
-        if (!lightbox) {
-            return;
         }
 
-        lightbox.classList.remove(
-            "active"
-        );
 
-        lightbox.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+        function openLightbox() {
 
-    }
+            if (
+                !mainImage ||
+                !mainImage.src
+            ) {
 
+                return;
 
-    lightboxClose
-        ?.addEventListener(
-            "click",
-            closeLightbox
-        );
+            }
 
 
-    lightbox
-        ?.addEventListener(
-            "click",
+            lightboxImage.src =
+                mainImage.src;
+
+
+            lightboxImage.alt =
+                product.name;
+
+
+            lightbox.classList.add(
+                "active"
+            );
+
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            document.body.classList.add(
+                "lightbox-open"
+            );
+
+        }
+
+
+        function closeLightbox() {
+
+            if (!lightbox) {
+                return;
+            }
+
+
+            lightbox.classList.remove(
+                "active"
+            );
+
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            document.body.classList.remove(
+                "lightbox-open"
+            );
+
+        }
+
+
+        document.addEventListener(
+            "keydown",
             event => {
 
                 if (
-                    event.target ===
-                    lightbox
+                    event.key ===
+                    "Escape"
                 ) {
 
                     closeLightbox();
@@ -971,71 +1361,140 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    document.addEventListener(
-        "keydown",
-        event => {
+        /* =================================================
+           IMAGE KEYBOARD / ACCESSIBILITY
+           ================================================= */
 
-            if (
-                event.key ===
-                "Escape"
-            ) {
+        if (mainImage) {
 
-                closeLightbox();
+            mainImage.setAttribute(
+                "draggable",
+                "false"
+            );
+
+        }
+
+
+        /* =================================================
+           LIFETIME OFFER
+           ================================================= */
+
+        const lifetimeOffer =
+            document.querySelector(
+                ".lifetime-offer"
+            );
+
+
+        if (lifetimeOffer) {
+
+            const offerTitle =
+                lifetimeOffer.querySelector(
+                    "strong"
+                );
+
+
+            const offerText =
+                lifetimeOffer.querySelector(
+                    "p"
+                );
+
+
+            if (offerTitle) {
+
+                offerTitle.textContent =
+                    product.offerTitle;
+
+            }
+
+
+            if (offerText) {
+
+                offerText.textContent =
+                    product.offerDescription;
 
             }
 
         }
-    );
 
 
-    /* =====================================================
-       REMOVE LOADING STATE
-       ===================================================== */
+        /* =================================================
+           FINAL PRODUCT STATE
+           ================================================= */
 
-    document.body.classList.add(
-        "product-loaded"
-    );
-
-
-    /* =====================================================
-       HARD-CODED PRODUCT READY
-       ===================================================== */
-
-    console.log(
-        "VOLTICA: Anker Soundcore Space Q45 loaded successfully."
-    );
-
-});
+        document.body.dataset.product =
+            product.id;
 
 
-/* =========================================================
-   HTML ESCAPE
-   ========================================================= */
+        document.body.dataset.productReady =
+            "true";
 
-function escapeHtml(value) {
 
-    return String(
-        value ?? ""
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
-    );
+        /*
+           Explicitly remove common loading classes.
+        */
 
-}
+        document.body.classList.remove(
+            "product-loading"
+        );
+
+
+        document.documentElement.classList.remove(
+            "product-loading"
+        );
+
+
+        document.body.classList.add(
+            "product-loaded"
+        );
+
+
+        document.documentElement.classList.add(
+            "product-loaded"
+        );
+
+
+        /* =================================================
+           DEBUG
+           ================================================= */
+
+        console.log(
+            "----------------------------------------"
+        );
+
+        console.log(
+            "VOLTICA PRODUCT PAGE"
+        );
+
+        console.log(
+            "Product:",
+            product.name
+        );
+
+        console.log(
+            "Price:",
+            product.price,
+            product.currency
+        );
+
+        console.log(
+            "Images:",
+            productImages.length
+        );
+
+        console.log(
+            "Stripe:",
+            product.stripeLink
+        );
+
+        console.log(
+            "STATUS: READY"
+        );
+
+        console.log(
+            "----------------------------------------"
+        );
+
+    }
+
+
+})();

@@ -103,7 +103,7 @@ window.volticaProducts = [
 
         "active": true
 
-    }
+    },
 
     /* =========================================================
        Product name : XReal Air 1S AI Augmented Reality Smart Glasses | Selected by Voltica Store

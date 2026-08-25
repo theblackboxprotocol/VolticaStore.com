@@ -159,7 +159,7 @@ window.volticaProducts = [
 {
         "id": "new-wireless-bluetooth-earbuds-neckband-design-noise-canceling-perfect-for-workouts",
         "sku": "VLT-AUD-Q17-001",
-        "name": "New Wireless Bluetooth Earbuds Neckband Design Noise-canceling Perfect For Workouts",
+        "name": "Q17 Open-Ear Wireless Earbuds | Selected by Voltica Store",
         "category": "Audio",
         "badge": "BEST SELLER",
         "price": 69.97,

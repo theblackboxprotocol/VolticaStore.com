@@ -57,7 +57,7 @@ function initializeProductView() {
 
 
 /* =========================================================
-   GET PRODUCT ID
+   GET PRODUCT ID FROM URL
    ========================================================= */
 
 function getProductIdFromURL() {
@@ -66,7 +66,6 @@ function getProductIdFromURL() {
         new URLSearchParams(
             window.location.search
         );
-
 
     return params.get("id");
 
@@ -90,9 +89,9 @@ function getProductFromURL() {
     }
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
        SOURCE 1 — PRODUCTS.JS
-       ===================================================== */
+       ----------------------------------------------------- */
 
     if (
         Array.isArray(
@@ -103,8 +102,8 @@ function getProductFromURL() {
         const product =
             window.volticaProducts.find(
                 item =>
-                    String(item.id) ===
-                    String(productId)
+                    String(item.id).trim().toLowerCase() ===
+                    String(productId).trim().toLowerCase()
             );
 
 
@@ -117,9 +116,9 @@ function getProductFromURL() {
     }
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
        SOURCE 2 — ADMIN LOCAL STORAGE
-       ===================================================== */
+       ----------------------------------------------------- */
 
     try {
 
@@ -142,8 +141,8 @@ function getProductFromURL() {
                 const product =
                     products.find(
                         item =>
-                            String(item.id) ===
-                            String(productId)
+                            String(item.id).trim().toLowerCase() ===
+                            String(productId).trim().toLowerCase()
                     );
 
 
@@ -190,15 +189,7 @@ function renderProduct(product) {
 
 
     setText(
-        "productNumber",
-        product.productNumber
-            ? `PRODUCT ${product.productNumber}`
-            : ""
-    );
-
-
-    setText(
-        "productTitle",
+        "productName",
         product.name ||
         "VOLTICA PRODUCT"
     );
@@ -214,7 +205,7 @@ function renderProduct(product) {
     setText(
         "productBadge",
         product.badge ||
-        "VOLTI​CA"
+        "AVAILABLE"
     );
 
 
@@ -250,7 +241,7 @@ function renderProduct(product) {
 
 
     /* -----------------------------------------------------
-       MAIN CONTENT
+       PRODUCT CONTENT
        ----------------------------------------------------- */
 
     renderMainImage(
@@ -278,7 +269,12 @@ function renderProduct(product) {
     );
 
 
-    renderColors(
+    renderVariants(
+        product
+    );
+
+
+    renderCustomCTA(
         product
     );
 
@@ -311,9 +307,7 @@ function renderProduct(product) {
    REFERENCE PRICE
    ========================================================= */
 
-function renderReferencePrice(
-    product
-) {
+function renderReferencePrice(product) {
 
     const element =
         document.getElementById(
@@ -355,7 +349,9 @@ function renderReferencePrice(
         element.style.display =
             "inline-block";
 
-    } else {
+    }
+
+    else {
 
         element.textContent =
             "";
@@ -373,9 +369,7 @@ function renderReferencePrice(
    MAIN IMAGE
    ========================================================= */
 
-function renderMainImage(
-    product
-) {
+function renderMainImage(product) {
 
     const image =
         document.getElementById(
@@ -428,9 +422,7 @@ function renderMainImage(
    THUMBNAILS
    ========================================================= */
 
-function renderThumbnails(
-    product
-) {
+function renderThumbnails(product) {
 
     const container =
         document.getElementById(
@@ -584,9 +576,13 @@ function changeMainImage(
         );
 
 
-    thumbnail?.classList.add(
-        "active"
-    );
+    if (thumbnail) {
+
+        thumbnail.classList.add(
+            "active"
+        );
+
+    }
 
 }
 
@@ -600,6 +596,12 @@ function initializeGallery() {
     const mainImage =
         document.getElementById(
             "mainProductImage"
+        );
+
+
+    const zoomButton =
+        document.getElementById(
+            "imageZoomButton"
         );
 
 
@@ -618,9 +620,29 @@ function initializeGallery() {
         "click",
         () => {
 
-            openLightbox(
-                mainImage.src
-            );
+            if (mainImage.src) {
+
+                openLightbox(
+                    mainImage.src
+                );
+
+            }
+
+        }
+    );
+
+
+    zoomButton?.addEventListener(
+        "click",
+        () => {
+
+            if (mainImage.src) {
+
+                openLightbox(
+                    mainImage.src
+                );
+
+            }
 
         }
     );
@@ -635,8 +657,8 @@ function initializeGallery() {
 function initializeLightbox() {
 
     const lightbox =
-        document.querySelector(
-            ".product-lightbox"
+        document.getElementById(
+            "productLightbox"
         );
 
 
@@ -648,8 +670,8 @@ function initializeLightbox() {
 
 
     const closeButton =
-        lightbox.querySelector(
-            ".lightbox-close"
+        document.getElementById(
+            "lightboxClose"
         );
 
 
@@ -699,19 +721,17 @@ function initializeLightbox() {
    OPEN LIGHTBOX
    ========================================================= */
 
-function openLightbox(
-    image
-) {
+function openLightbox(image) {
 
     const lightbox =
-        document.querySelector(
-            ".product-lightbox"
+        document.getElementById(
+            "productLightbox"
         );
 
 
     const lightboxImage =
-        lightbox?.querySelector(
-            "img"
+        document.getElementById(
+            "lightboxImage"
         );
 
 
@@ -754,8 +774,8 @@ function openLightbox(
 function closeLightbox() {
 
     const lightbox =
-        document.querySelector(
-            ".product-lightbox"
+        document.getElementById(
+            "productLightbox"
         );
 
 
@@ -787,9 +807,7 @@ function closeLightbox() {
    FULL DESCRIPTION
    ========================================================= */
 
-function renderDescription(
-    product
-) {
+function renderDescription(product) {
 
     const container =
         document.getElementById(
@@ -803,19 +821,6 @@ function renderDescription(
 
     }
 
-
-    /*
-       IMPORTANT:
-
-       Full Description is intentionally separate
-       from shortDescription.
-
-       Store page:
-       shortDescription
-
-       Product page:
-       description / fullDescription
-    */
 
     const description =
         product.fullDescription ||
@@ -835,10 +840,6 @@ function renderDescription(
     }
 
 
-    /*
-       Allow intentionally supplied HTML.
-    */
-
     if (
         /<[a-z][\s\S]*>/i.test(
             description
@@ -852,12 +853,6 @@ function renderDescription(
 
     }
 
-
-    /*
-       Plain text storytelling.
-
-       Empty lines create paragraphs.
-    */
 
     const paragraphs =
         String(description)
@@ -890,19 +885,15 @@ function renderDescription(
             .join("");
 
 }
-
-
 /* =========================================================
    FEATURES
    ========================================================= */
 
-function renderFeatures(
-    product
-) {
+function renderFeatures(product) {
 
     const container =
         document.getElementById(
-            "featureList"
+            "productFeatures"
         );
 
 
@@ -998,25 +989,7 @@ function renderFeatures(
    PARSE FEATURE
    ========================================================= */
 
-function parseFeature(
-    feature
-) {
-
-    /*
-       SUPPORTED ADMIN FORMAT:
-
-       Bluetooth Audio:
-       Powerful wireless audio for everyday listening.
-
-       OR:
-
-       {
-           title: "Bluetooth Audio",
-           description:
-               "Powerful wireless audio..."
-       }
-    */
-
+function parseFeature(feature) {
 
     if (
         feature &&
@@ -1105,13 +1078,11 @@ function parseFeature(
    SPECIFICATIONS
    ========================================================= */
 
-function renderSpecifications(
-    product
-) {
+function renderSpecifications(product) {
 
     const container =
         document.getElementById(
-            "specificationTable"
+            "productSpecifications"
         );
 
 
@@ -1131,10 +1102,6 @@ function renderSpecifications(
     container.innerHTML =
         "";
 
-
-    /*
-       Array format
-    */
 
     if (
         Array.isArray(
@@ -1170,10 +1137,6 @@ function renderSpecifications(
 
     }
 
-
-    /*
-       Object format
-    */
 
     if (
         specifications &&
@@ -1252,9 +1215,7 @@ function addSpecification(
    SPECIFICATION VALUE
    ========================================================= */
 
-function formatSpecificationValue(
-    value
-) {
+function formatSpecificationValue(value) {
 
     if (
         Array.isArray(value)
@@ -1297,16 +1258,14 @@ function formatSpecificationValue(
 
 
 /* =========================================================
-   COLOR / VARIANT BUTTONS
+   VARIANTS / OPTIONS
    ========================================================= */
 
-function renderColors(
-    product
-) {
+function renderVariants(product) {
 
     const container =
         document.getElementById(
-            "colorOptions"
+            "productOptions"
         );
 
 
@@ -1320,13 +1279,6 @@ function renderColors(
     container.innerHTML =
         "";
 
-
-    /*
-       Prefer variants because they can contain
-       individual SKU information.
-
-       Fall back to colors.
-    */
 
     const variants =
         Array.isArray(
@@ -1352,28 +1304,61 @@ function renderColors(
 
     if (!options.length) {
 
-        const selected =
-            document.querySelector(
-                ".selected-option-row"
-            );
-
-
-        if (selected) {
-
-            selected.style.display =
-                "none";
-
-        }
-
+        container.style.display =
+            "none";
 
         return;
 
     }
 
 
-    const selectedOption =
-        document.getElementById(
-            "selectedOption"
+    container.style.display =
+        "";
+
+
+    const heading =
+        document.createElement(
+            "div"
+        );
+
+
+    heading.className =
+        "variant-selector";
+
+
+    heading.innerHTML = `
+
+        <div class="selected-option-row">
+
+            <span>
+                SELECT OPTION
+            </span>
+
+            <strong id="selectedOption">
+                ${escapeHTML(
+                    getVariantName(
+                        options[0],
+                        0
+                    )
+                )}
+            </strong>
+
+        </div>
+
+        <div class="color-options">
+        </div>
+
+    `;
+
+
+    container.appendChild(
+        heading
+    );
+
+
+    const optionsContainer =
+        heading.querySelector(
+            ".color-options"
         );
 
 
@@ -1399,13 +1384,6 @@ function renderColors(
             button.type =
                 "button";
 
-
-            /*
-               IMPORTANT:
-
-               Text buttons only.
-               No color swatches.
-            */
 
             button.className =
                 "color-option";
@@ -1435,15 +1413,11 @@ function renderColors(
                     "active"
                 );
 
+                optionsContainer.dataset.selectedVariant =
+                    data.name;
 
-                if (
-                    selectedOption
-                ) {
-
-                    selectedOption.textContent =
-                        data.name;
-
-                }
+                optionsContainer.dataset.selectedSku =
+                    data.sku || "";
 
             }
 
@@ -1452,14 +1426,14 @@ function renderColors(
                 "click",
                 () => {
 
-                    container
+                    optionsContainer
                         .querySelectorAll(
                             ".color-option"
                         )
                         .forEach(
-                            optionButton => {
+                            item => {
 
-                                optionButton.classList.remove(
+                                item.classList.remove(
                                     "active"
                                 );
 
@@ -1472,37 +1446,75 @@ function renderColors(
                     );
 
 
-                    if (
-                        selectedOption
-                    ) {
+                    const selected =
+                        document.getElementById(
+                            "selectedOption"
+                        );
 
-                        selectedOption.textContent =
+
+                    if (selected) {
+
+                        selected.textContent =
                             data.name;
 
                     }
 
 
-                    /*
-                       Keep the selected SKU available
-                       for future checkout integration.
-                    */
-
-                    container.dataset.selectedVariant =
+                    optionsContainer.dataset.selectedVariant =
                         data.name;
 
 
-                    container.dataset.selectedSku =
+                    optionsContainer.dataset.selectedSku =
                         data.sku || "";
 
                 }
             );
 
 
-            container.appendChild(
+            optionsContainer.appendChild(
                 button
             );
 
         }
+    );
+
+}
+
+
+/* =========================================================
+   GET VARIANT NAME
+   ========================================================= */
+
+function getVariantName(
+    variant,
+    index
+) {
+
+    if (
+        variant &&
+        typeof variant ===
+        "object"
+    ) {
+
+        return String(
+            variant.name ||
+            variant.color ||
+            variant.label ||
+            `OPTION ${index + 1}`
+        ).trim();
+
+    }
+
+
+    const text =
+        String(
+            variant ?? ""
+        ).trim();
+
+
+    return (
+        text ||
+        `OPTION ${index + 1}`
     );
 
 }
@@ -1551,12 +1563,6 @@ function parseVariant(
         ).trim();
 
 
-    /*
-       Admin format:
-
-       Black — SKU-001
-    */
-
     const separator =
         text.indexOf("—");
 
@@ -1587,12 +1593,6 @@ function parseVariant(
     }
 
 
-    /*
-       Simple color:
-
-       Black
-    */
-
     return {
 
         name:
@@ -1604,9 +1604,7 @@ function parseVariant(
     };
 
 }
-/* =========================================================
-   CONTINUATION — PRODUCT VIEW.JS
-   ========================================================= */
+
 
 /* =========================================================
    CUSTOM CTA
@@ -1615,20 +1613,31 @@ function parseVariant(
 function renderCustomCTA(product) {
 
     document
-        .querySelectorAll(".voltica-custom-product-cta")
-        .forEach(element => element.remove());
+        .querySelectorAll(
+            ".voltica-custom-product-cta"
+        )
+        .forEach(
+            element =>
+                element.remove()
+        );
+
 
     const customCTA =
         product.customCTA ||
         product.customCta ||
         product.cta;
 
+
     if (!customCTA) {
+
         return;
+
     }
+
 
     let title = "";
     let lines = [];
+
 
     if (
         typeof customCTA === "object" &&
@@ -1641,58 +1650,113 @@ function renderCustomCTA(product) {
             customCTA.name ||
             "WHY SHOP WITH US?";
 
-        if (Array.isArray(customCTA.lines)) {
-            lines = customCTA.lines;
+
+        if (
+            Array.isArray(
+                customCTA.lines
+            )
+        ) {
+
+            lines =
+                customCTA.lines;
+
         }
 
-        else if (Array.isArray(customCTA.items)) {
-            lines = customCTA.items;
+        else if (
+            Array.isArray(
+                customCTA.items
+            )
+        ) {
+
+            lines =
+                customCTA.items;
+
         }
 
-        else if (typeof customCTA.text === "string") {
-            lines = customCTA.text
+        else if (
+            typeof customCTA.text ===
+            "string"
+        ) {
+
+            lines =
+                customCTA.text
+                    .split(/\n+/)
+                    .filter(Boolean);
+
+        }
+
+    }
+
+    else if (
+        Array.isArray(customCTA)
+    ) {
+
+        title =
+            "WHY SHOP WITH US?";
+
+        lines =
+            customCTA;
+
+    }
+
+    else if (
+        typeof customCTA ===
+        "string"
+    ) {
+
+        title =
+            "WHY SHOP WITH US?";
+
+        lines =
+            customCTA
                 .split(/\n+/)
                 .filter(Boolean);
-        }
 
     }
 
-    else if (Array.isArray(customCTA)) {
-
-        title = "WHY SHOP WITH US?";
-        lines = customCTA;
-
-    }
-
-    else if (typeof customCTA === "string") {
-
-        title = "WHY SHOP WITH US?";
-        lines = customCTA
-            .split(/\n+/)
-            .filter(Boolean);
-
-    }
 
     title =
-        String(title).trim();
+        String(
+            title
+        ).trim();
+
 
     lines =
         lines
-            .map(line => String(line ?? "").trim())
+            .map(
+                line =>
+                    String(
+                        line ?? ""
+                    ).trim()
+            )
             .filter(Boolean);
 
-    if (!title && !lines.length) {
+
+    if (
+        !title &&
+        !lines.length
+    ) {
+
         return;
+
     }
 
+
     const finalCTA =
-        document.querySelector(".product-final-cta");
+        document.querySelector(
+            ".product-final-cta"
+        );
+
 
     const section =
-        document.createElement("section");
+        document.createElement(
+            "section"
+        );
+
 
     section.className =
         "voltica-custom-product-cta";
+
 
     section.innerHTML = `
 
@@ -1711,9 +1775,13 @@ function renderCustomCTA(product) {
                 ${lines
                     .map(
                         line => `
+
                             <p>
-                                ${escapeHTML(line)}
+                                ${escapeHTML(
+                                    line
+                                )}
                             </p>
+
                         `
                     )
                     .join("")
@@ -1725,410 +1793,28 @@ function renderCustomCTA(product) {
 
     `;
 
+
     if (
         finalCTA &&
         finalCTA.parentNode
     ) {
 
-        finalCTA.before(section);
+        finalCTA.before(
+            section
+        );
 
     }
 
     else {
 
         document
-            .getElementById("productPage")
-            ?.appendChild(section);
-
-    }
-
-}
-
-
-/* =========================================================
-   LIFETIME OFFER
-   ========================================================= */
-
-function renderLifetimeOffer() {
-
-    if (
-        document.querySelector(".lifetime-offer")
-    ) {
-        return;
-    }
-
-    const pricePanel =
-        document.querySelector(
-            ".product-price-panel"
-        );
-
-    if (!pricePanel) {
-        return;
-    }
-
-    const offer =
-        document.createElement("div");
-
-    offer.className =
-        "lifetime-offer";
-
-    offer.innerHTML = `
-
-        <span class="offer-pulse"></span>
-
-        <div>
-
-            <strong>
-                15% OFF FOR LIFE
-            </strong>
-
-            <p>
-                Your exclusive Voltica customer
-                benefit — 15% off future purchases
-                for life.
-            </p>
-
-        </div>
-
-    `;
-
-    pricePanel.after(offer);
-
-}
-
-
-/* =========================================================
-   STRIPE
-   ========================================================= */
-
-function setupStripeButtons(product) {
-
-    const stripeLink =
-        product.stripeLink ||
-        product.stripe ||
-        product.stripeUrl ||
-        DEFAULT_STRIPE_LINK;
-
-    const buyNowButton =
-        document.getElementById(
-            "buyNowButton"
-        );
-
-    const finalStripeButton =
-        document.getElementById(
-            "finalStripeButton"
-        );
-
-    [
-        buyNowButton,
-        finalStripeButton
-    ]
-        .filter(Boolean)
-        .forEach(button => {
-
-            button.href =
-                stripeLink;
-
-            button.target =
-                "_blank";
-
-            button.rel =
-                "noopener noreferrer";
-
-            button.style.display =
-                "flex";
-
-        });
-
-}
-
-
-/* =========================================================
-   AVAILABILITY
-   ========================================================= */
-
-function renderAvailability(product) {
-
-    const element =
-        document.getElementById(
-            "productAvailability"
-        );
-
-    if (!element) {
-        return;
-    }
-
-    element.innerHTML = `
-
-        <span class="pulse-dot"></span>
-
-        PRE-ORDER AVAILABLE
-
-    `;
-
-}
-
-
-/* =========================================================
-   IMAGES
-   ========================================================= */
-
-function getProductImages(product) {
-
-    if (
-        Array.isArray(product.images)
-    ) {
-
-        return product.images
-            .map(normalizeImagePath)
-            .filter(Boolean);
-
-    }
-
-    if (
-        typeof product.image === "string"
-    ) {
-
-        return [
-            normalizeImagePath(
-                product.image
+            .getElementById(
+                "productPage"
             )
-        ];
+            ?.appendChild(
+                section
+            );
 
     }
 
-    if (
-        typeof product.thumbnail === "string"
-    ) {
-
-        return [
-            normalizeImagePath(
-                product.thumbnail
-            )
-        ];
-
-    }
-
-    return [];
-
-}
-
-
-function normalizeImagePath(image) {
-
-    if (
-        typeof image === "object" &&
-        image
-    ) {
-
-        image =
-            image.path ||
-            image.src ||
-            image.url ||
-            image.name ||
-            "";
-
-    }
-
-    if (!image) {
-        return "";
-    }
-
-    image =
-        String(image).trim();
-
-    if (
-        /^https?:\/\//i.test(image)
-    ) {
-
-        return image;
-
-    }
-
-    if (
-        image.startsWith("assets/")
-    ) {
-
-        return image;
-
-    }
-
-    if (
-        image.startsWith("./assets/")
-    ) {
-
-        return image.substring(2);
-
-    }
-
-    if (
-        !image.includes("/")
-    ) {
-
-        return (
-            "assets/images/" +
-            image
-        );
-
-    }
-
-    return image;
-
-}
-
-
-/* =========================================================
-   ERROR
-   ========================================================= */
-
-function showProductError() {
-
-    const page =
-        document.querySelector(
-            ".product-page"
-        );
-
-    if (!page) {
-        return;
-    }
-
-    page.innerHTML = `
-
-        <section class="acrylic-panel product-error">
-
-            <span class="section-kicker">
-                VOLTICA STORE
-            </span>
-
-            <h1>
-                PRODUCT NOT FOUND
-            </h1>
-
-            <p>
-                This product could not be found
-                in the current collection.
-            </p>
-
-            <a
-                href="store.html"
-                class="back-store-button"
-            >
-                RETURN TO STORE
-            </a>
-
-        </section>
-
-    `;
-
-}
-
-
-/* =========================================================
-   PRICE
-   ========================================================= */
-
-function formatPrice(value) {
-
-    if (
-        value === undefined ||
-        value === null ||
-        value === ""
-    ) {
-
-        return "—";
-
-    }
-
-    const number =
-        Number(value);
-
-    if (
-        Number.isNaN(number)
-    ) {
-
-        return String(value);
-
-    }
-
-    return new Intl.NumberFormat(
-        "en-US",
-        {
-            style: "currency",
-            currency: "USD",
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        }
-    ).format(number);
-
-}
-
-
-/* =========================================================
-   TEXT
-   ========================================================= */
-
-function setText(id, value) {
-
-    const element =
-        document.getElementById(id);
-
-    if (!element) {
-        return;
-    }
-
-    element.textContent =
-        value ?? "";
-
-}
-
-
-/* =========================================================
-   HTML ESCAPE
-   ========================================================= */
-
-function escapeHTML(value) {
-
-    return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-}
-
-
-/* =========================================================
-   PUBLIC API
-   ========================================================= */
-
-window.VolticaProductView = {
-
-    reload() {
-
-        initializeProductView();
-
-    },
-
-    getCurrentProduct() {
-
-        return getProductFromURL();
-
-    },
-
-    getProductImages,
-
-    formatPrice,
-
-    parseFeature
-
-};
-
-
-/* =========================================================
-   ONLINE
-   ========================================================= */
-
-console.log(
-    "VOLTICA PRODUCT VIEW — ONLINE"
-);
+       }

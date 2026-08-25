@@ -1,7 +1,8 @@
 /* =========================================================
    VOLTICA STORE — PRODUCT VIEW.JS
-   Q45 Product Detail Engine
+   Product Detail Engine
    Robust / Mobile / Stripe Ready
+   Features + Custom CTA Support
    ========================================================= */
 
 "use strict";
@@ -57,7 +58,7 @@ function initializeProductView() {
 
 
 /* =========================================================
-   GET ID
+   GET PRODUCT ID
    ========================================================= */
 
 function getProductIdFromURL() {
@@ -86,10 +87,9 @@ function getProductFromURL() {
     }
 
 
-    /*
-     * First source:
-     * products.js
-     */
+    /* -----------------------------------------------------
+       SOURCE 1 — products.js
+       ----------------------------------------------------- */
 
     if (
         Array.isArray(
@@ -111,10 +111,9 @@ function getProductFromURL() {
     }
 
 
-    /*
-     * Second source:
-     * admin localStorage
-     */
+    /* -----------------------------------------------------
+       SOURCE 2 — ADMIN LOCAL STORAGE
+       ----------------------------------------------------- */
 
     try {
 
@@ -157,23 +156,19 @@ function getProductFromURL() {
     }
 
 
-    /*
-     * Q45 emergency fallback.
-     *
-     * This prevents the product page
-     * from breaking if the database
-     * has not synchronized yet.
-     */
+    /* -----------------------------------------------------
+       Q45 EMERGENCY FALLBACK
+       ----------------------------------------------------- */
+
+    const normalizedId =
+        String(productId)
+            .toLowerCase();
+
 
     if (
-        String(productId).toLowerCase()
-            === "q45"
-        ||
-        String(productId).toLowerCase()
-            === "headphones"
-        ||
-        String(productId).toLowerCase()
-            === "voltca-q45"
+        normalizedId === "q45" ||
+        normalizedId === "headphones" ||
+        normalizedId === "voltca-q45"
     ) {
 
         return createQ45Fallback();
@@ -229,17 +224,17 @@ function createQ45Fallback() {
 
         features: [
 
-            "Premium wireless audio",
+            "Premium Wireless Audio: High-quality wireless sound engineered for immersive everyday listening.",
 
-            "Immersive listening experience",
+            "Immersive Listening Experience: Designed to deliver a rich and engaging audio experience.",
 
-            "Comfort-focused over-ear design",
+            "Comfort-Focused Over-Ear Design: Built for extended listening sessions with a comfortable over-ear construction.",
 
-            "Modern premium construction",
+            "Modern Premium Construction: Refined materials and a premium technology-focused aesthetic.",
 
-            "Designed for everyday use",
+            "Designed for Everyday Use: Suitable for music, gaming, entertainment and everyday listening.",
 
-            "Voltica premium audio collection"
+            "Voltica Premium Audio Collection: Part of the Voltica premium audio lineup."
 
         ],
 
@@ -266,6 +261,20 @@ function createQ45Fallback() {
             "Black"
 
         ],
+
+        customCTA: {
+
+            title: "Why Shop with Us?",
+
+            lines: [
+
+                "Premium high-tech gear selected for innovators and tech enthusiasts.",
+
+                "Dedicated customer support."
+
+            ]
+
+        },
 
         stripeLink:
             DEFAULT_STRIPE_LINK
@@ -332,6 +341,8 @@ function renderProduct(product) {
     );
 
 
+    renderReferencePrice(product);
+
     renderMainImage(product);
 
     renderThumbnails(product);
@@ -346,6 +357,8 @@ function renderProduct(product) {
 
     renderLifetimeOffer();
 
+    renderCustomCTA(product);
+
     setupStripeButtons(product);
 
     renderAvailability(product);
@@ -353,6 +366,49 @@ function renderProduct(product) {
 
     document.title =
         `${product.name || "Product"} — Voltica Store`;
+
+}
+
+
+/* =========================================================
+   REFERENCE PRICE
+   ========================================================= */
+
+function renderReferencePrice(product) {
+
+    const element =
+        document.getElementById(
+            "referencePrice"
+        );
+
+
+    if (!element) {
+        return;
+    }
+
+
+    if (
+        product.referencePrice &&
+        Number(product.referencePrice) >
+        Number(product.price || 0)
+    ) {
+
+        element.textContent =
+            formatPrice(
+                product.referencePrice
+            );
+
+        element.style.display =
+            "inline-block";
+
+    } else {
+
+        element.textContent = "";
+
+        element.style.display =
+            "none";
+
+    }
 
 }
 
@@ -367,6 +423,7 @@ function renderMainImage(product) {
         document.getElementById(
             "mainProductImage"
         );
+
 
     if (!image) {
         return;
@@ -412,6 +469,7 @@ function renderThumbnails(product) {
         document.getElementById(
             "productThumbnails"
         );
+
 
     if (!container) {
         return;
@@ -521,6 +579,7 @@ function changeMainImage(
             "mainProductImage"
         );
 
+
     if (!mainImage) {
         return;
     }
@@ -576,6 +635,26 @@ function initializeGallery() {
     mainImage.addEventListener(
         "click",
         () => {
+
+            openLightbox(
+                mainImage.src
+            );
+
+        }
+    );
+
+
+    const zoomButton =
+        document.getElementById(
+            "imageZoomButton"
+        );
+
+
+    zoomButton?.addEventListener(
+        "click",
+        event => {
+
+            event.stopPropagation();
 
             openLightbox(
                 mainImage.src
@@ -688,6 +767,12 @@ function openLightbox(
     );
 
 
+    lightbox.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
     document.body.style.overflow =
         "hidden";
 
@@ -709,6 +794,12 @@ function closeLightbox() {
 
     lightbox.classList.remove(
         "active"
+    );
+
+
+    lightbox.setAttribute(
+        "aria-hidden",
+        "true"
     );
 
 
@@ -788,6 +879,23 @@ function renderDescription(
 
 /* =========================================================
    FEATURES
+   =========================================================
+   
+   SUPPORTED FORMAT:
+
+   "Feature Title: Feature description."
+
+   Example:
+
+   "Massive Virtual Cinematic Display: Experience immersive
+   viewing with a 52° field of view..."
+
+   The engine automatically separates:
+
+   TITLE
+   DESCRIPTION
+
+   Old simple features without ":" still work.
    ========================================================= */
 
 function renderFeatures(
@@ -828,6 +936,17 @@ function renderFeatures(
     features.forEach(
         feature => {
 
+            const parsed =
+                parseFeature(
+                    feature
+                );
+
+
+            if (!parsed.title) {
+                return;
+            }
+
+
             const card =
                 document.createElement(
                     "article"
@@ -838,35 +957,20 @@ function renderFeatures(
                 "feature-card";
 
 
-            const title =
-                typeof feature === "object"
-                    ? feature.title ||
-                      feature.name ||
-                      feature.label ||
-                      "FEATURE"
-                    : String(feature);
-
-
-            const description =
-                typeof feature === "object"
-                    ? feature.description ||
-                      feature.value ||
-                      ""
-                    : "";
-
-
             card.innerHTML = `
 
                 <h3>
-                    ${escapeHTML(title)}
+                    ${escapeHTML(
+                        parsed.title
+                    )}
                 </h3>
 
                 ${
-                    description
+                    parsed.description
                         ? `
                             <p>
                                 ${escapeHTML(
-                                    description
+                                    parsed.description
                                 )}
                             </p>
                         `
@@ -882,6 +986,125 @@ function renderFeatures(
 
         }
     );
+
+}
+
+
+/* =========================================================
+   PARSE FEATURE
+   ========================================================= */
+
+function parseFeature(
+    feature
+) {
+
+    /*
+     * Object format:
+     *
+     * {
+     *     title: "...",
+     *     description: "..."
+     * }
+     */
+
+    if (
+        feature &&
+        typeof feature ===
+        "object"
+    ) {
+
+        return {
+
+            title:
+                feature.title ||
+                feature.name ||
+                feature.label ||
+                feature.feature ||
+                "FEATURE",
+
+            description:
+                feature.description ||
+                feature.value ||
+                ""
+
+        };
+
+    }
+
+
+    /*
+     * String format:
+     *
+     * "Title: Description"
+     */
+
+    const text =
+        String(
+            feature ?? ""
+        ).trim();
+
+
+    if (!text) {
+
+        return {
+
+            title: "",
+            description: ""
+
+        };
+
+    }
+
+
+    const separator =
+        text.indexOf(":");
+
+
+    /*
+     * No colon:
+     * keep the entire string
+     * as the feature title.
+     */
+
+    if (
+        separator === -1
+    ) {
+
+        return {
+
+            title: text,
+            description: ""
+
+        };
+
+    }
+
+
+    const title =
+        text
+            .slice(
+                0,
+                separator
+            )
+            .trim();
+
+
+    const description =
+        text
+            .slice(
+                separator + 1
+            )
+            .trim();
+
+
+    return {
+
+        title:
+            title || "FEATURE",
+
+        description
+
+    };
 
 }
 
@@ -1276,6 +1499,278 @@ function initializeVariants(
 
 
 /* =========================================================
+   CUSTOM CTA
+   =========================================================
+
+   Product format:
+
+   customCTA: {
+
+       title: "Why Shop with Us?",
+
+       lines: [
+           "Premium high-tech gear selected for innovators and tech enthusiasts.",
+           "Dedicated customer support."
+       ]
+
+   }
+
+   The section is created automatically.
+   ========================================================= */
+
+function renderCustomCTA(
+    product
+) {
+
+    /*
+     * Remove an old dynamically-created CTA
+     * before rendering.
+     */
+
+    document
+        .querySelectorAll(
+            ".voltica-custom-product-cta"
+        )
+        .forEach(
+            element =>
+                element.remove()
+        );
+
+
+    const customCTA =
+        product.customCTA ||
+        product.customCta ||
+        product.cta;
+
+
+    if (!customCTA) {
+        return;
+    }
+
+
+    let title =
+        "";
+
+    let lines =
+        [];
+
+
+    /*
+     * Object format.
+     */
+
+    if (
+        typeof customCTA ===
+        "object" &&
+        !Array.isArray(customCTA)
+    ) {
+
+        title =
+            customCTA.title ||
+            customCTA.heading ||
+            customCTA.name ||
+            "WHY SHOP WITH US?";
+
+
+        if (
+            Array.isArray(
+                customCTA.lines
+            )
+        ) {
+
+            lines =
+                customCTA.lines;
+
+        } else if (
+            Array.isArray(
+                customCTA.items
+            )
+        ) {
+
+            lines =
+                customCTA.items;
+
+        } else if (
+            typeof customCTA.text ===
+            "string"
+        ) {
+
+            lines =
+                customCTA.text
+                    .split(/\n+/)
+                    .filter(Boolean);
+
+        }
+
+    }
+
+
+    /*
+     * Array format.
+     */
+
+    else if (
+        Array.isArray(
+            customCTA
+        )
+    ) {
+
+        title =
+            "WHY SHOP WITH US?";
+
+        lines =
+            customCTA;
+
+    }
+
+
+    /*
+     * String format.
+     */
+
+    else if (
+        typeof customCTA ===
+        "string"
+    ) {
+
+        title =
+            "WHY SHOP WITH US?";
+
+        lines =
+            customCTA
+                .split(/\n+/)
+                .filter(Boolean);
+
+    }
+
+
+    title =
+        String(title)
+            .trim();
+
+
+    lines =
+        lines
+            .map(
+                line =>
+                    String(
+                        line ?? ""
+                    ).trim()
+            )
+            .filter(Boolean);
+
+
+    if (
+        !title &&
+        !lines.length
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+     * Find the best insertion point.
+     *
+     * The CTA goes after OPTIONS.
+     * If options are unavailable,
+     * it goes before the final CTA.
+     */
+
+    const optionsSection =
+        document.getElementById(
+            "optionsSection"
+        );
+
+
+    const finalCTA =
+        document.querySelector(
+            ".product-final-cta"
+        );
+
+
+    const section =
+        document.createElement(
+            "section"
+        );
+
+
+    section.className =
+        "voltica-custom-product-cta";
+
+
+    section.innerHTML = `
+
+        <div class="acrylic-panel custom-cta-panel">
+
+            <span class="section-kicker">
+                VOLTICA STORE
+            </span>
+
+            <h2>
+                ${escapeHTML(
+                    title
+                )}
+            </h2>
+
+            <div class="custom-cta-content">
+
+                ${lines
+                    .map(
+                        line => `
+                            <p>
+                                ${escapeHTML(
+                                    line
+                                )}
+                            </p>
+                        `
+                    )
+                    .join("")
+                }
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    if (
+        optionsSection &&
+        optionsSection.parentNode
+    ) {
+
+        optionsSection.after(
+            section
+        );
+
+    } else if (
+        finalCTA &&
+        finalCTA.parentNode
+    ) {
+
+        finalCTA.before(
+            section
+        );
+
+    } else {
+
+        const page =
+            document.getElementById(
+                "productPage"
+            );
+
+        page?.appendChild(
+            section
+        );
+
+    }
+
+}
+
+
+/* =========================================================
    LIFETIME OFFER
    ========================================================= */
 
@@ -1450,9 +1945,11 @@ function getProductImages(
     ) {
 
         return [
+
             normalizeImagePath(
                 product.image
             )
+
         ];
 
     }
@@ -1464,9 +1961,11 @@ function getProductImages(
     ) {
 
         return [
+
             normalizeImagePath(
                 product.thumbnail
             )
+
         ];
 
     }
@@ -1551,9 +2050,7 @@ function normalizeImagePath(
 
 
     /*
-     * If only the filename is
-     * stored, point to the image
-     * directory.
+     * If only filename is stored.
      */
 
     if (
@@ -1749,7 +2246,9 @@ window.VolticaProductView = {
 
     getProductImages,
 
-    formatPrice
+    formatPrice,
+
+    parseFeature
 
 };
 

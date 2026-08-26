@@ -85,6 +85,18 @@ const productColors =
 const productVariants =
     $("productVariants");
 
+
+/* =========================================================
+   CUSTOM CTA REFERENCES
+   ========================================================= */
+
+const customCtaTitle =
+    $("customCtaTitle");
+
+const customCtaLines =
+    $("customCtaLines");
+
+
 const stripeLink =
     $("stripeLink");
 
@@ -644,6 +656,21 @@ function populateEditor(product) {
         );
 
 
+    /* =====================================================
+       CUSTOM CTA
+       ===================================================== */
+
+    customCtaTitle.value =
+        product.customCtaTitle ||
+        "";
+
+
+    customCtaLines.value =
+        arrayToLines(
+            product.customCtaLines
+        );
+
+
     stripeLink.value =
         product.stripeLink || "";
 
@@ -694,6 +721,15 @@ function clearEditor() {
 
     productColors.value = "";
     productVariants.value = "";
+
+
+    /* =====================================================
+       CLEAR CUSTOM CTA
+       ===================================================== */
+
+    customCtaTitle.value = "";
+    customCtaLines.value = "";
+
 
     stripeLink.value = "";
     supplierLink.value = "";
@@ -941,6 +977,10 @@ function renderImagePreview() {
 }
 
 
+/* =========================================================
+   IMAGE PREVIEW MARKUP
+   ========================================================= */
+
 function createImagePreviewMarkup(
     imagePath,
     index
@@ -1114,6 +1154,719 @@ function getFilename(path) {
         .pop();
 
 }
+/* =========================================================
+   POPULATE EDITOR
+   ========================================================= */
+
+function populateEditor(product) {
+
+    productId.value =
+        product.id || "";
+
+    productName.value =
+        product.name || "";
+
+    productCategory.value =
+        product.category || "";
+
+    productBadge.value =
+        product.badge || "";
+
+    productSku.value =
+        product.sku || "";
+
+
+    productCost.value =
+        valueOrEmpty(
+            product.cost
+        );
+
+
+    productShipping.value =
+        valueOrEmpty(
+            product.shipping
+        );
+
+
+    productPrice.value =
+        valueOrEmpty(
+            product.price
+        );
+
+
+    productReferencePrice.value =
+        valueOrEmpty(
+            product.referencePrice
+        );
+
+
+    shortDescription.value =
+        product.shortDescription || "";
+
+
+    fullDescription.value =
+        product.description ||
+        product.fullDescription ||
+        "";
+
+
+    keyFeatures.value =
+        arrayToLines(
+            product.features ||
+            product.keyFeatures
+        );
+
+
+    technicalSpecifications.value =
+        objectToLines(
+            product.specifications ||
+            product.technicalSpecifications
+        );
+
+
+    productColors.value =
+        arrayToCommaList(
+            product.colors
+        );
+
+
+    productVariants.value =
+        variantsToLines(
+            product.variants
+        );
+
+
+    /*
+       =====================================================
+       CUSTOM CTA
+       =====================================================
+
+       IMPORTANT:
+
+       The CTA fields must be loaded from products.js
+       when an existing product is edited.
+
+       Supported database structure:
+
+       customCta: {
+           title: "...",
+           lines: [
+               "...",
+               "..."
+           ]
+       }
+
+       The loader also supports the individual legacy
+       properties customCtaTitle and customCtaLines.
+    */
+
+    if (customCtaTitle) {
+
+        customCtaTitle.value =
+            (
+                product.customCta &&
+                typeof product.customCta === "object"
+            )
+                ? (
+                    product.customCta.title ||
+                    ""
+                )
+                : (
+                    product.customCtaTitle ||
+                    ""
+                );
+
+    }
+
+
+    if (customCtaLines) {
+
+        customCtaLines.value =
+            (
+                product.customCta &&
+                typeof product.customCta === "object"
+            )
+                ? arrayToLines(
+                    product.customCta.lines
+                )
+                : (
+                    Array.isArray(
+                        product.customCtaLines
+                    )
+                        ? arrayToLines(
+                            product.customCtaLines
+                        )
+                        : (
+                            product.customCtaLines ||
+                            ""
+                        )
+                );
+
+    }
+
+
+    stripeLink.value =
+        product.stripeLink || "";
+
+
+    supplierLink.value =
+        product.supplierLink || "";
+
+
+    productActive.checked =
+        product.active !== false;
+
+}
+
+
+/* =========================================================
+   VALUE OR EMPTY
+   ========================================================= */
+
+function valueOrEmpty(value) {
+
+    return (
+        value === undefined ||
+        value === null
+    )
+        ? ""
+        : value;
+
+}
+
+
+/* =========================================================
+   CLEAR EDITOR
+   ========================================================= */
+
+function clearEditor() {
+
+    productId.value = "";
+
+    productName.value = "";
+
+    productCategory.value = "";
+
+    productBadge.value = "";
+
+    productSku.value = "";
+
+
+    productCost.value = "";
+
+    productShipping.value = "";
+
+    productPrice.value = "";
+
+    productReferencePrice.value = "";
+
+
+    shortDescription.value = "";
+
+    fullDescription.value = "";
+
+    keyFeatures.value = "";
+
+    technicalSpecifications.value = "";
+
+
+    productColors.value = "";
+
+    productVariants.value = "";
+
+
+    /*
+       =====================================================
+       CLEAR CUSTOM CTA
+       =====================================================
+
+       This is important when clicking "+ NEW PRODUCT".
+
+       Without this reset, CTA information from the
+       previously edited product could remain visible.
+    */
+
+    if (customCtaTitle) {
+
+        customCtaTitle.value = "";
+
+    }
+
+
+    if (customCtaLines) {
+
+        customCtaLines.value = "";
+
+    }
+
+
+    stripeLink.value = "";
+
+    supplierLink.value = "";
+
+
+    productActive.checked = true;
+
+
+    if (productImageUpload) {
+
+        productImageUpload.value = "";
+
+    }
+
+}
+
+
+/* =========================================================
+   CLOSE EDITOR
+   ========================================================= */
+
+function closeEditor() {
+
+    productEditor.hidden = true;
+
+    editingProductId = null;
+
+    selectedImages = [];
+
+    imagePreviewSources.clear();
+
+
+    if (productImageUpload) {
+
+        productImageUpload.value = "";
+
+    }
+
+}
+
+
+/* =========================================================
+   IMAGE INPUT
+   ========================================================= */
+
+function handleImageSelection(event) {
+
+    const files =
+        Array.from(
+            event.target.files || []
+        );
+
+
+    addImageFiles(files);
+
+}
+
+
+/* =========================================================
+   ADD IMAGE FILES
+   ========================================================= */
+
+function addImageFiles(files) {
+
+    if (!files.length) {
+
+        return;
+
+    }
+
+
+    const validImages =
+        files.filter(
+            file =>
+                file &&
+                typeof file.type === "string" &&
+                file.type.startsWith("image/")
+        );
+
+
+    if (!validImages.length) {
+
+        showNotification(
+            "NO VALID IMAGE FILES"
+        );
+
+        return;
+
+    }
+
+
+    let addedCount = 0;
+
+
+    validImages.forEach(
+        file => {
+
+            const originalName =
+                String(
+                    file.name || ""
+                ).trim();
+
+
+            if (!originalName) {
+
+                return;
+
+            }
+
+
+            const imagePath =
+                "assets/images/" +
+                originalName;
+
+
+            const duplicate =
+                selectedImages.some(
+                    existing =>
+                        getFilename(existing)
+                            .toLowerCase() ===
+                        originalName.toLowerCase()
+                );
+
+
+            if (duplicate) {
+
+                return;
+
+            }
+
+
+            selectedImages.push(
+                imagePath
+            );
+
+
+            addedCount++;
+
+
+            createTemporaryPreview(
+                imagePath,
+                file
+            );
+
+        }
+    );
+
+
+    renderImagePreview();
+
+
+    if (addedCount) {
+
+        showNotification(
+            addedCount === 1
+                ? "IMAGE ADDED"
+                : `${addedCount} IMAGES ADDED`
+        );
+
+    }
+
+
+    if (productImageUpload) {
+
+        productImageUpload.value = "";
+
+    }
+
+}
+
+
+/* =========================================================
+   TEMPORARY IMAGE PREVIEW
+   ========================================================= */
+
+function createTemporaryPreview(
+    imagePath,
+    file
+) {
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        event => {
+
+            if (
+                event.target?.result
+            ) {
+
+                imagePreviewSources.set(
+                    imagePath,
+                    event.target.result
+                );
+
+                renderImagePreview();
+
+            }
+
+        };
+
+
+    reader.onerror =
+        () => {
+
+            console.warn(
+                "VOLTICA: Preview failed:",
+                file.name
+            );
+
+        };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =========================================================
+   IMAGE PREVIEW
+   ========================================================= */
+
+function renderImagePreview() {
+
+    if (!imagePreview) {
+
+        return;
+
+    }
+
+
+    if (!selectedImages.length) {
+
+        imagePreview.innerHTML = `
+            <div class="image-preview-empty">
+                NO IMAGES SELECTED
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    imagePreview.innerHTML =
+        selectedImages
+            .map(
+                (imagePath, index) =>
+                    createImagePreviewMarkup(
+                        imagePath,
+                        index
+                    )
+            )
+            .join("");
+
+
+    bindImagePreviewActions();
+
+}
+
+
+/* =========================================================
+   CREATE IMAGE PREVIEW MARKUP
+   ========================================================= */
+
+function createImagePreviewMarkup(
+    imagePath,
+    index
+) {
+
+    const filename =
+        getFilename(imagePath);
+
+
+    const previewSource =
+        imagePreviewSources.get(
+            imagePath
+        ) ||
+        imagePath;
+
+
+    return `
+        <div
+            class="image-preview-item"
+            data-image-path="${escapeHtmlAttribute(imagePath)}"
+        >
+
+            <img
+                src="${escapeHtmlAttribute(previewSource)}"
+                alt="${escapeHtmlAttribute(filename)}"
+                loading="lazy"
+                onerror="this.style.opacity='0.18'"
+            >
+
+            <span class="image-preview-index">
+                ${index + 1}
+            </span>
+
+            <button
+                type="button"
+                class="image-preview-remove"
+                data-remove-image="${escapeHtmlAttribute(imagePath)}"
+                aria-label="Remove ${escapeHtmlAttribute(filename)}"
+            >
+                ×
+            </button>
+
+            <span
+                class="image-preview-name"
+                title="${escapeHtmlAttribute(filename)}"
+            >
+                ${escapeHtml(filename)}
+            </span>
+
+        </div>
+    `;
+
+}
+
+
+/* =========================================================
+   IMAGE PREVIEW ACTIONS
+   ========================================================= */
+
+function bindImagePreviewActions() {
+
+    imagePreview
+        ?.querySelectorAll(
+            "[data-remove-image]"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    event => {
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+
+                        removeImage(
+                            button.dataset.removeImage
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   REMOVE IMAGE
+   ========================================================= */
+
+function removeImage(imagePath) {
+
+    selectedImages =
+        selectedImages.filter(
+            image =>
+                image !== imagePath
+        );
+
+
+    imagePreviewSources.delete(
+        imagePath
+    );
+
+
+    renderImagePreview();
+
+
+    showNotification(
+        "IMAGE REMOVED"
+    );
+
+}
+
+
+/* =========================================================
+   IMAGE PATH NORMALIZATION
+   ========================================================= */
+
+function normalizeImagePath(image) {
+
+    if (!image) {
+
+        return "";
+
+    }
+
+
+    const value =
+        String(image).trim();
+
+
+    if (!value) {
+
+        return "";
+
+    }
+
+
+    if (
+        value.startsWith(
+            "assets/images/"
+        )
+    ) {
+
+        return value;
+
+    }
+
+
+    if (
+        value.startsWith(
+            "/assets/images/"
+        )
+    ) {
+
+        return value.substring(1);
+
+    }
+
+
+    return (
+        "assets/images/" +
+        getFilename(value)
+    );
+
+}
+
+
+/* =========================================================
+   GET IMAGE FILENAME
+   ========================================================= */
+
+function getFilename(path) {
+
+    return String(path || "")
+        .split("/")
+        .pop();
+
+}
+
+
+/* =========================================================
+   IMAGE FILENAME SANITIZER
+   ========================================================= */
+
+function sanitizeImageFilename(filename) {
+
+    return String(
+        filename || ""
+    )
+        .trim()
+        .replace(
+            /[<>:"/\\|?*\x00-\x1F]/g,
+            ""
+        );
+
+}
 
 
 /* =========================================================
@@ -1279,6 +2032,45 @@ function buildProductObject(
     price
 ) {
 
+    /*
+       =====================================================
+       CUSTOM CTA DATA
+       =====================================================
+
+       This is the critical correction.
+
+       The previous version of the manager displayed the
+       CTA fields in adminproductmanager.html but NEVER
+       placed them inside the object exported to products.js.
+
+       Therefore the admin showed the green saved state,
+       but EXPORT PRODUCTS.JS had nothing to export.
+
+       We now explicitly create:
+
+       customCta: {
+           title: "...",
+           lines: [...]
+       }
+
+       This keeps the CTA attached to the product and
+       available to the public product engine.
+    */
+
+    const ctaTitle =
+        customCtaTitle
+            ? customCtaTitle.value.trim()
+            : "";
+
+
+    const ctaLines =
+        customCtaLines
+            ? linesToArray(
+                customCtaLines.value
+            )
+            : [];
+
+
     return {
 
         id,
@@ -1328,9 +2120,11 @@ function buildProductObject(
             ),
 
         images:
-            selectedImages.map(
-                normalizeImagePath
-            ),
+            selectedImages
+                .map(
+                    normalizeImagePath
+                )
+                .filter(Boolean),
 
         colors:
             commaToArray(
@@ -1341,6 +2135,22 @@ function buildProductObject(
             linesToVariants(
                 productVariants.value
             ),
+
+        /*
+           =================================================
+           CUSTOM PRODUCT CTA
+           =================================================
+        */
+
+        customCta: {
+
+            title:
+                ctaTitle,
+
+            lines:
+                ctaLines
+
+        },
 
         stripeLink:
             stripeLink.value.trim(),
@@ -1408,7 +2218,9 @@ function linesToArray(value) {
 function arrayToLines(value) {
 
     if (!Array.isArray(value)) {
+
         return "";
+
     }
 
 
@@ -1461,7 +2273,9 @@ function linesToObject(value) {
 
 
                 if (key) {
+
                     result[key] = val;
+
                 }
 
             }
@@ -1517,10 +2331,16 @@ function commaToArray(value) {
 }
 
 
+/* =========================================================
+   ARRAY → COLOR LIST
+   ========================================================= */
+
 function arrayToCommaList(value) {
 
     if (!Array.isArray(value)) {
+
         return "";
+
     }
 
 
@@ -1548,8 +2368,13 @@ function linesToVariants(value) {
                 ) {
 
                     return {
-                        name: line,
-                        sku: ""
+
+                        name:
+                            line,
+
+                        sku:
+                            ""
+
                     };
 
                 }
@@ -1576,10 +2401,16 @@ function linesToVariants(value) {
 }
 
 
+/* =========================================================
+   VARIANTS → TEXT
+   ========================================================= */
+
 function variantsToLines(variants) {
 
     if (!Array.isArray(variants)) {
+
         return "";
+
     }
 
 
@@ -1614,8 +2445,6 @@ function variantsToLines(variants) {
         .join("\n");
 
 }
-
-
 /* =========================================================
    SORT PRODUCTS
    ========================================================= */
@@ -1923,15 +2752,23 @@ function bindProductRowActions() {
                         switch (action) {
 
                             case "edit":
+
                                 editProduct(id);
+
                                 break;
+
 
                             case "toggle":
+
                                 toggleProduct(id);
+
                                 break;
 
+
                             case "delete":
+
                                 confirmDeleteProduct(id);
+
                                 break;
 
                         }
@@ -1956,7 +2793,9 @@ function toggleProduct(id) {
 
 
     if (!product) {
+
         return;
+
     }
 
 
@@ -1989,7 +2828,9 @@ function confirmDeleteProduct(id) {
 
 
     if (!product) {
+
         return;
+
     }
 
 
@@ -2030,7 +2871,9 @@ function confirmDeleteProduct(id) {
 function populateCategoryFilter() {
 
     if (!categoryFilter) {
+
         return;
+
     }
 
 
@@ -2077,6 +2920,7 @@ function populateCategoryFilter() {
 
             option.value =
                 category;
+
 
             option.textContent =
                 category;
@@ -2268,9 +3112,119 @@ ${productBlocks}
 
 function createProductBlock(product) {
 
+    /*
+       =====================================================
+       CTA EXPORT SAFETY
+       =====================================================
+
+       The CTA is stored as part of the product object.
+
+       We deliberately normalize it here before
+       JSON.stringify so even older products that may
+       have been saved with the legacy fields are exported
+       correctly.
+    */
+
+    const exportProduct = {
+
+        ...product
+
+    };
+
+
+    /*
+       If the current product already has the new structure,
+       preserve it exactly.
+
+       Otherwise rebuild customCta from the legacy fields.
+    */
+
+    if (
+        !exportProduct.customCta ||
+        typeof exportProduct.customCta !== "object" ||
+        Array.isArray(exportProduct.customCta)
+    ) {
+
+        exportProduct.customCta = {
+
+            title:
+                String(
+                    exportProduct.customCtaTitle ||
+                    ""
+                ).trim(),
+
+            lines:
+                Array.isArray(
+                    exportProduct.customCtaLines
+                )
+                    ? exportProduct.customCtaLines
+                        .map(
+                            line =>
+                                String(line || "").trim()
+                        )
+                        .filter(Boolean)
+                    : (
+                        String(
+                            exportProduct.customCtaLines ||
+                            ""
+                        )
+                        .split(/\r?\n/)
+                        .map(
+                            line =>
+                                line.trim()
+                        )
+                        .filter(Boolean)
+                    )
+
+        };
+
+    } else {
+
+        /*
+           Make sure the nested CTA structure itself
+           contains clean exportable values.
+        */
+
+        exportProduct.customCta = {
+
+            title:
+                String(
+                    exportProduct.customCta.title ||
+                    ""
+                ).trim(),
+
+            lines:
+                Array.isArray(
+                    exportProduct.customCta.lines
+                )
+                    ? exportProduct.customCta.lines
+                        .map(
+                            line =>
+                                String(line || "").trim()
+                        )
+                        .filter(Boolean)
+                    : []
+
+        };
+
+    }
+
+
+    /*
+       Remove legacy duplicate CTA properties.
+
+       The public database should have one clean CTA
+       structure instead of multiple competing fields.
+    */
+
+    delete exportProduct.customCtaTitle;
+
+    delete exportProduct.customCtaLines;
+
+
     const productJson =
         JSON.stringify(
-            product,
+            exportProduct,
             null,
             4
         );
@@ -2356,7 +3310,9 @@ function downloadFile(
         document.createElement("a");
 
 
-    anchor.href = url;
+    anchor.href =
+        url;
+
 
     anchor.download =
         filename;
@@ -2369,11 +3325,13 @@ function downloadFile(
 
     anchor.click();
 
+
     anchor.remove();
 
 
     setTimeout(
-        () => URL.revokeObjectURL(url),
+        () =>
+            URL.revokeObjectURL(url),
         1000
     );
 
@@ -2391,7 +3349,9 @@ function openConfirmation(
 ) {
 
     if (!confirmOverlay) {
+
         return;
+
     }
 
 
@@ -2413,14 +3373,169 @@ function openConfirmation(
 }
 
 
+/* =========================================================
+   CLOSE CONFIRMATION
+   ========================================================= */
+
 function closeConfirmation() {
 
     if (confirmOverlay) {
-        confirmOverlay.hidden = true;
+
+        confirmOverlay.hidden =
+            true;
+
     }
 
 
-    confirmCallback = null;
+    confirmCallback =
+        null;
+
+}
+
+
+/* =========================================================
+   EXECUTE CONFIRMATION
+   ========================================================= */
+
+function executeConfirmation() {
+
+    if (
+        typeof confirmCallback !==
+        "function"
+    ) {
+
+        closeConfirmation();
+
+        return;
+
+    }
+
+
+    const callback =
+        confirmCallback;
+
+
+    closeConfirmation();
+
+    callback();
+
+           }
+/* =========================================================
+   DOWNLOAD FILE
+   ========================================================= */
+
+function downloadFile(
+    filename,
+    content,
+    mimeType
+) {
+
+    const blob =
+        new Blob(
+            [content],
+            {
+                type:
+                    mimeType +
+                    ";charset=utf-8"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const anchor =
+        document.createElement("a");
+
+
+    anchor.href =
+        url;
+
+    anchor.download =
+        filename;
+
+
+    document.body.appendChild(
+        anchor
+    );
+
+
+    anchor.click();
+
+
+    anchor.remove();
+
+
+    setTimeout(
+        () => {
+
+            URL.revokeObjectURL(
+                url
+            );
+
+        },
+        1000
+    );
+
+}
+
+
+/* =========================================================
+   CONFIRMATION SYSTEM
+   ========================================================= */
+
+function openConfirmation(
+    title,
+    message,
+    callback
+) {
+
+    if (!confirmOverlay) {
+
+        return;
+
+    }
+
+
+    if (confirmTitle) {
+
+        confirmTitle.textContent =
+            title;
+
+    }
+
+
+    if (confirmMessage) {
+
+        confirmMessage.textContent =
+            message;
+
+    }
+
+
+    confirmCallback =
+        callback;
+
+
+    confirmOverlay.hidden =
+        false;
+
+}
+
+
+function closeConfirmation() {
+
+    if (confirmOverlay) {
+
+        confirmOverlay.hidden =
+            true;
+
+    }
+
+
+    confirmCallback =
+        null;
 
 }
 
@@ -2444,6 +3559,7 @@ function executeConfirmation() {
 
 
     closeConfirmation();
+
 
     callback();
 
@@ -2505,8 +3621,12 @@ function formatPrice(value) {
         parseFloat(value);
 
 
-    if (Number.isNaN(number)) {
+    if (
+        Number.isNaN(number)
+    ) {
+
         return "$0.00 USD";
+
     }
 
 
@@ -2525,7 +3645,9 @@ function formatPrice(value) {
 
 function escapeHtml(value) {
 
-    return String(value ?? "")
+    return String(
+        value ?? ""
+    )
         .replace(
             /&/g,
             "&amp;"
@@ -2552,7 +3674,9 @@ function escapeHtml(value) {
 
 function escapeHtmlAttribute(value) {
 
-    return escapeHtml(value);
+    return escapeHtml(
+        value
+    );
 
 }
 
@@ -2566,13 +3690,18 @@ document.addEventListener(
     event => {
 
         if (
-            event.key !== "Escape"
+            event.key !==
+            "Escape"
         ) {
 
             return;
 
         }
 
+
+        /*
+           ESC first closes confirmation.
+        */
 
         if (
             confirmOverlay &&
@@ -2585,6 +3714,10 @@ document.addEventListener(
 
         }
 
+
+        /*
+           ESC then closes product editor.
+        */
 
         if (
             productEditor &&
@@ -2608,16 +3741,26 @@ window.addEventListener(
     () => {
 
         /*
-           The admin manager intentionally does not
+           The admin manager intentionally does NOT
            overwrite products.js automatically.
 
-           Workflow:
+           Correct workflow:
 
-           1. Edit products.
+           1. Edit the product.
            2. SAVE PRODUCT.
            3. EXPORT PRODUCTS.JS.
-           4. Replace the website products.js.
+           4. Replace the website products.js
+              with the exported file.
+
+           This prevents accidental database
+           overwrites while editing products.
         */
 
     }
 );
+
+
+/* =========================================================
+   VOLTICA ADMIN PRODUCT MANAGER
+   END OF SCRIPT
+   ========================================================= */

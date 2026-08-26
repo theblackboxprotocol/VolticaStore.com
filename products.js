@@ -248,13 +248,13 @@ window.volticaProducts = [
             "â€‹Charging Dock Weight": "48g / 0.11 lbs"
         },
         "images": [
-            "assets/images/1000052411.webp",
-            "assets/images/1000052408.webp",
-            "assets/images/1000052410.webp",
-            "assets/images/1000052409.webp",
-            "assets/images/1000052415.webp",
-            "assets/images/1000052412.webp",
-            "assets/images/1000052414.webp"
+            "assets/images/earbuds2-1.webp",
+            "assets/images/earbuds2-2.webp",
+            "assets/images/earbuds2-3.webp",
+            "assets/images/earbuds2-4.webp",
+            "assets/images/earbuds2-5.webp",
+            "assets/images/earbuds2-6.webp",
+            "assets/images/earbuds2-7.webp"
         ],
         "colors": [
             "Back"

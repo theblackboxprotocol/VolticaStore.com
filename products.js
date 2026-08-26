@@ -205,7 +205,65 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2512210524261601400.html",
         "active": true
-    }
+    },
+   /* =========================================================
+       Product name : Voltica Store Selected - TWS In-Ear Noise Canceling Earbuds with Mic
+       ========================================================= */
+
+{
+        "id": "voltica-store-selected-tws-in-ear-noise-canceling-earbuds-with-mic",
+        "sku": "VLT-AUD-TWS-001",
+        "name": "Voltica Store Selected - TWS In-Ear Noise Canceling Earbuds with Mic",
+        "category": "Audio",
+        "badge": "FEATURED",
+        "price": 59.97,
+        "referencePrice": 65.99,
+        "cost": 36.08,
+        "shipping": null,
+        "shortDescription": "Immerse yourself in crystal-clear audio and total freedom with the Voltica Store Selected Premium TWS Wireless 5.0 Earbuds. Designed for ultimate versatility, these ultra-lightweight in-ear headphones feature Bluetooth 5.0 multi-point connectivity, smart touch controls, and high-sensitivity microphones with CVC noise cancellation for flawless calls. Whether you are working out, commuting, or relaxing, enjoy up to 24 hours of total playtime supported by a convenient 500mAh magnetic charging dock and customizable ergonomic ear-hooks.",
+        "description": "Elevate your daily audio experience with the Voltica Store Selected Premium TWS Wireless Earbuds, meticulously curated for effortless mobility, active lifestyles, and crystal-clear communication. Featuring the latest Wireless 5.0 technology with multi-point connectivity, these earbuds let you effortlessly pair with up to two mobile devices simultaneously, delivering a high-speed, stable transmission range of up to 32.8 feet.\nâ€‹Engineered for absolute comfort and secure stability, the ultra-mini design boasts a compact 10mm diameter complemented by ergonomic ear-hooks and three interchangeable sizes of S/M/L replacement ear tips to ensure a snug, fatigue-free fit for any activity. Whether used in Stereo Mode for immersive music or as a Single Track Mode mono headset for safe driving and calling, the built-in high-sensitive microphone equipped with CVC noise cancellation actively suppresses ambient noise to guarantee pristine voice clarity.\nâ€‹Manage your entire audio journey seamlessly using the intuitive interactive touch control panel: a simple 2-second long press activates your voice assistant, while single-touch commands handle calls, track navigation, and power. Never worry about running out of power thanks to the compact 500mAh magnetic charging dock, which delivers a total of up to 24 hours of combined playback. Complete with an IPX4 water-resistant rating to withstand sweat and outdoor elements, these versatile earbuds are ready to perform wherever your day leads.",
+        "features": [
+            "â€‹True Wireless Versatility : Features a dual-ear stereo design where the left and right earbuds can be used independently in Single Track Mode or paired together in Stereo Mode.",
+            "â€‹Crystal Clear Stereo & CVC Noise Cancellation : Equipped with a high-sensitive microphone and CVC noise cancellation technology to reduce ambient sounds and deliver pristine call quality.",
+            "â€‹Intuitive Touch Controls : Built with an interactive biosensor and a multi-functional touch panel for effortless management of calls, music playback, and voice assistants.",
+            "â€‹Magnetic Charging Dock : Comes with a compact 500mAh magnetic charging case that charges the earbuds in just 30 minutes and provides up to 24 hours of total playback time.",
+            "â€‹Ergonomic Secure Fit & IPX4 Protection : Designed with a mini size, optional ear-hooks, and S/M/L replacement ear tips for stability during workouts, complemented by an IPX4 water-resistant build."
+        ],
+        "specifications": {
+            "â€‹Product Type": "Wireless 5.0 Earbuds",
+            "â€‹Bluetooth Version": "Wireless 5.0 with multi-point technology",
+            "â€‹Transmission Range": "Up to 10m / 32.8ft (Without barriers)",
+            "â€‹Transmission Frequency": "2.4GHz-2.48GHz",
+            "â€‹Signal to Noise Ratio (SNR)": "-90dB",
+            "â€‹Battery Capacities": "65mAh per earphone / 500mAh rechargeable built-in charging dock",
+            "â€‹Playback & Talk Time": "4 hours of music play/talk time per charge (up to 24 hours total with the charging dock)",
+            "â€‹Charging Times": "30 minutes for earbuds / 2.5 hours for the charging dock",
+            "â€‹Standby Time": "300 hours",
+            "â€‹Waterproof Performance": "IPX4 rating",
+            "â€‹Materials": "Durable ABS materials",
+            "â€‹Dimensions & Weights": "",
+            "â€‹Per Earbud Size (with earhook)": "5.5 \\times 4 \\times 1.5 cm (2.17 \\times 1.58 \\times 0.60 inches)",
+            "â€‹Per Earphone Weight (with earhook)": "6g / 0.013 lbs",
+            "â€‹Charging Dock Size": "8 \\times 5 \\times 3.2 cm (3.15 \\times 1.97 \\times 1.26 inches)",
+            "â€‹Charging Dock Weight": "48g / 0.11 lbs"
+        },
+        "images": [
+            "assets/images/1000052411.webp",
+            "assets/images/1000052408.webp",
+            "assets/images/1000052410.webp",
+            "assets/images/1000052409.webp",
+            "assets/images/1000052415.webp",
+            "assets/images/1000052412.webp",
+            "assets/images/1000052414.webp"
+        ],
+        "colors": [
+            "Back"
+        ],
+        "variants": [],
+        "stripeLink": "https://buy.stripe.com/7sY28s5tZ78bbyo9SG2Ji02",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-1996427591927648257.html",
+        "active": true
+}
 
 ];
 

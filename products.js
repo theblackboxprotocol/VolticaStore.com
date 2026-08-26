@@ -263,6 +263,63 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/7sY28s5tZ78bbyo9SG2Ji02",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1996427591927648257.html",
         "active": true
+},
+   /* =========================================================
+       Product name : Voltica Store Selected FA-5370 Planar Magnetic Hi-Fi Audiophile Headphones - Brazilian Rosewood & 106mm Driver
+       ========================================================= */
+
+{
+        "id": "voltica-store-selected-fa-5370-planar-magnetic-hi-fi-audiophile-headphones-brazilian-rosewood-106mm-driver",
+        "sku": "VLT-AUD-FA5370-001",
+        "name": "Voltica Store Selected FA-5370 Planar Magnetic Hi-Fi Audiophile Headphones - Brazilian Rosewood & 106mm Driver",
+        "category": "AUDIO",
+        "badge": "PREMIUM",
+        "price": 469.99,
+        "referencePrice": 499.99,
+        "cost": 400,
+        "shipping": 30.5,
+        "shortDescription": "Immerse yourself in breathtaking, audiophile-grade sound with the Voltica Store Selected FA-5370 Planar Magnetic Headphones. Hand-crafted for true sound purists, these open-back isodynamic headphones feature massive 106mm planar magnetic drivers housed in exquisite, hand-carved and polished Brazilian rosewood earcups. Engineered with a classical 8-sided stainless steel mesh for crystal-clear acoustics, a lightweight hybrid ergonomic head beam, and ultra-soft leather cushions, the FA-5370 delivers sublime, distortion-free sound reproduction for all-day listening sessions.",
+        "description": "Experience the pinnacle of acoustic engineering with the Voltica Store Selected FA-5370 Planar Magnetic Audiophile Headphones. Built on over 20 years of expert craftsmanship, this high-end open-back masterpiece redefines standard listening by utilizing advanced isodynamic planar technology. At its heart lies a colossal 106mm planar driver paired with a low 50\\Omega impedance, producing ultra-low distortion (THD 0.2\\% @ 1kHz) and an expansive frequency response ranging from 10Hz to 20kHz for deep, rich bass and pristine highs.\nâ€‹The striking acoustic chamber frames are meticulously carved from natural Brazilian rosewood, polished, and oiled to showcase each piece's unique wood grain and rich natural color. Combined with classical 8-sided stainless steel outer mesh grilles, the open-back design optimizes airflow to create a wide, natural soundstage. Designed for long studio or home listening sessions, the headset features a new hybrid structure head beam that maximizes weight reduction and an ergonomic leather cushion system that distributes weight evenly with zero pressure points. Complete with detachable gold-plated dual audio connectors and a premium 1.5m detachable cable, the FA-5370 is certified for exceptional fidelity and unmatched long-term comfort.",
+        "features": [
+            "106mm Planar Magnetic Drivers : Engineered with large-format isodynamic planar drivers that deliver ultra-low harmonic distortion and exceptional transient response across a 10Hzâ€“20kHz frequency range.",
+            "â€‹Hand-Crafted Brazilian Rosewood Frames : Each earcup is carved from genuine Brazilian rosewood, meticulously polished, and oiled to reveal its natural wood texture and enhance acoustic resonance.",
+            "â€‹Classical 8-Side Stainless Steel Mesh : Features a refined open-back stainless steel grille design that improves sound clarity, air permeability, and spatial imaging.",
+            "â€‹Ergonomic Hybrid Head Beam Design : Built with a lightweight, comfortable structural frame and a soft cortical leather headband designed for fatigue-free, all-day wearing.",
+            "â€‹Detachable Premium Cabling : Equipped with gold-plated dual audio connectors and a high-purity 1.5m detachable cable for reliable signal transmission and easy maintenance."
+        ],
+        "specifications": {
+            "Product Type": "Open-Back Planar Magnetic (Isodynamic) Audiophile Headphone",
+            "â€‹Model": "FA-5370",
+            "â€‹Driver Unit": "\\Phi 106mm Planar Magnetic Driver",
+            "â€‹Unit Impedance": "50\\Omega",
+            "â€‹Sensitivity": "100 dB/mW at 1kHz",
+            "â€‹Total Harmonic Distortion (THD)": "SPL 0.2\\% @ 1kHz / 100dB",
+            "â€‹Frequency Response": "10Hz - 20kHz",
+            "â€‹Audio Jack / Connectors": "\\Phi 3.5mm (Detachable dual-sided connection)",
+            "â€‹Cord Length": "1.5m",
+            "â€‹Weight": "475g / 1.05 lbs",
+            "â€‹Vocalism Principle": "Isodynamic / Planar Magnetic",
+            "â€‹Materials": "Brazilian Rosewood, Stainless Steel Mesh, Soft Leather Cushions, Durable ABS/Metal Structure"
+        },
+        "images": [
+            "assets/images/1000050387.jpg",
+            "assets/images/1000050389.jpg",
+            "assets/images/1000050391.jpg",
+            "assets/images/1000050393.jpg",
+            "assets/images/1000050395.jpg",
+            "assets/images/1000052637.jpg",
+            "assets/images/1000052639.jpg",
+            "assets/images/1000052635.jpg",
+            "assets/images/1000052633.jpg",
+            "assets/images/1000052641.jpg"
+        ],
+        "colors": [
+            "Wood"
+        ],
+        "variants": [],
+        "stripeLink": "https://buy.stripe.com/3cI5kE3lRgIL31Sc0O2Ji0m",
+        "supplierLink": "https://www.alibaba.com/x/B2MSRf?ck=pdp",
+        "active": true
 }
 
 ];

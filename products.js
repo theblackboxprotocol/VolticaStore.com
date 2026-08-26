@@ -320,7 +320,63 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/3cI5kE3lRgIL31Sc0O2Ji0m",
         "supplierLink": "https://www.alibaba.com/x/B2MSRf?ck=pdp",
         "active": true
-}
+},
+       /* =========================================================
+       Product name : Levitating Wireless Bluetooth Speaker
+       ========================================================= */
+
+{
+        "id": "levitating-wireless-bluetooth-speaker",
+        "sku": "VLT-TCH-001",
+        "name": "Levitating Wireless Bluetooth Speaker",
+        "category": "TECH",
+        "badge": "BEST SELLER",
+        "price": 98.99,
+        "referencePrice": 119.99,
+        "cost": 42,
+        "shipping": 14.98,
+        "shortDescription": "Defy gravity and elevate your audio experience with the Voltica Store Selected M005B-23 Magnetic Levitation Bluetooth Speaker. This futuristic masterpiece features a sleek, floating orb that spins continuously 360 degrees in mid-air above an ABS UFO-style base. Equipped with vibrant RGB color-changing LED lighting, quick Bluetooth pairing, built-in microphone controls, and a portable wireless speaker design, it delivers crystal-clear sound wrapped in an eye-catching sci-fi spectacle that is guaranteed to be a conversation starter.",
+        "description": "Transform your living space or desk setup into a futuristic sci-fi showcase with the Voltica Store Selected M005B-23 Magnetic Levitation Bluetooth Speaker. Utilizing advanced magnetic field technology, the stylish acoustic orb floats and rotates smoothly 360 degrees in mid-air above its sleek, saucer-shaped ABS base. Designed to captivate both the eyes and ears, this versatile device merges visual wonder with high-performance wireless audio.\nâ€‹The portable speaker core features a fine metallic mesh exterior housing vibrant, color-changing RGB LED illumination, while the base projects a continuous ambient blue glow. With quick Bluetooth pairing in just three seconds, built-in volume and microphone controls, and a detachable design that allows you to use the speaker independently, convenience meets cutting-edge style. Powered by wireless induction charging from the base to keep the floating orb energized, the M005B-23 is the ultimate conversation piece and a must-have addition to any modern tech collection.",
+        "features": [
+            "Mesmerizing Magnetic Levitation: The acoustic orb floats effortlessly in mid-air, utilizing advanced magnetic induction technology to create a stunning visual spectacle.",
+            "â€‹Continuous 360Â° Rotation: The speaker body smoothly rotates automatically while suspended, ensuring dynamic aesthetic appeal from every angle.",
+            "â€‹Vibrant RGB & LED Lighting: Features color-changing RGB LED lights on the speaker mesh and a stylish blue ambient light ring on the ABS UFO base, which can be controlled independently.",
+            "â€‹Quick & Reliable Bluetooth Connectivity: Pairs effortlessly with smartphones, tablets, and other Bluetooth-enabled devices in just 3 seconds.",
+            "â€‹Versatile 2-in-1 Design: The floating speaker core can be easily detached from the base to serve as a standalone, portable wireless speaker on the go.",
+            "â€‹Integrated Controls: Built-in buttons for direct management of audio volume, LED lighting modes, and microphone functions."
+        ],
+        "specifications": {
+            "Product Type": "Magnetic Levitation Floating Bluetooth Speaker",
+            "â€‹Model Number": "M005B-23",
+            "â€‹Connectivity": "Bluetooth (Supports MP3, WMA, WAV formats)",
+            "â€‹Speaker Dimensions": "73 \\times 73 \\times 96 mm",
+            "â€‹Base Dimensions": "150 mm (diameter) \\times 50 mm (height)",
+            "â€‹Levitation Air Gap": "Approx. 20 mm",
+            "â€‹Rotation": "360 degree auto-rotating suspension",
+            "â€‹Lighting": "RGB color-changing LED lighting on the speaker / Blue lights on the ABS UFO base",
+            "â€‹Power & Charging": "Wireless induction charger (base to speaker) / Micro USB charging port",
+            "â€‹Materials": "ABS UFO Base, durable metallic speaker mesh"
+        },
+        "images": [
+            "assets/images/1000052646.webp",
+            "assets/images/1000052648.webp",
+            "assets/images/1000052649.webp",
+            "assets/images/1000052650.webp",
+            "assets/images/1000052651.webp"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Elevate Your Space with Futuristic Sound",
+            "lines": [
+                "Defy gravity and turn heads with the Voltica Store Selected M005B-23 Magnetic Levitation Bluetooth Speaker. Add this stunning, 360-degree rotating conversation piece to your cart today and experience audio in a whole new dimension!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/4gM4gA09F0JNfOE3ui2Ji0d",
+        "supplierLink": "https://www.alibaba.com/x/B2MZ0n?ck=pdp",
+        "active": true
+    }
+
 
 ];
 

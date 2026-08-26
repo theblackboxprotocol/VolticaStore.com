@@ -271,7 +271,7 @@ window.volticaProducts = [
 {
         "id": "voltica-store-selected-fa-5370-planar-magnetic-hi-fi-audiophile-headphones-brazilian-rosewood-106mm-driver",
         "sku": "VLT-AUD-FA5370-001",
-        "name": "Voltica Store Selected FA-5370 Planar Magnetic Hi-Fi Audiophile Headphones - Brazilian Rosewood & 106mm Driver",
+        "name": "Voltica Store Selected FA-5370",
         "category": "AUDIO",
         "badge": "PREMIUM",
         "price": 469.99,

@@ -302,16 +302,16 @@ window.volticaProducts = [
             "â€‹Materials": "Brazilian Rosewood, Stainless Steel Mesh, Soft Leather Cushions, Durable ABS/Metal Structure"
         },
         "images": [
-            "assets/images/1000050387.jpg",
-            "assets/images/1000050389.jpg",
-            "assets/images/1000050391.jpg",
-            "assets/images/1000050393.jpg",
-            "assets/images/1000050395.jpg",
-            "assets/images/1000052637.jpg",
-            "assets/images/1000052639.jpg",
-            "assets/images/1000052635.jpg",
-            "assets/images/1000052633.jpg",
-            "assets/images/1000052641.jpg"
+            "assets/images/wood1.jpg",
+            "assets/images/wood2.jpg",
+            "assets/images/wood3.jpg",
+            "assets/images/wood4.jpg",
+            "assets/images/wood5.jpg",
+            "assets/images/wood6.jpg",
+            "assets/images/wood7.jpg",
+            "assets/images/wood8.jpg",
+            "assets/images/wood9.jpg",
+            "assets/images/wood10.jpg"
         ],
         "colors": [
             "Wood"

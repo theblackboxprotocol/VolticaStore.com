@@ -549,14 +549,14 @@ window.volticaProducts = [
             "â€‹Plugs Included": "Interchangeable 3.5mm Single-Ended and 4.4mm Balanced plugs"
         },
         "images": [
-            "assets/images/1000052950.jpg",
-            "assets/images/1000052948.jpg",
-            "assets/images/1000052935.jpg",
-            "assets/images/1000052933.jpg",
-            "assets/images/1000052946.jpg",
-            "assets/images/1000052939.jpg",
-            "assets/images/1000052937.jpg",
-            "assets/images/1000052941.jpg"
+            "assets/images/orchestra1.jpg",
+            "assets/images/orchestra2.jpg",
+            "assets/images/orchestra3.jpg",
+            "assets/images/orchestra4.jpg",
+            "assets/images/orchestra5.jpg",
+            "assets/images/orchestra6.jpg",
+            "assets/images/orchestra7.jpg",
+            "assets/images/orchestra8.jpg"
         ],
         "colors": [],
         "variants": [],

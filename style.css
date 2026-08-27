@@ -2752,3 +2752,152 @@ body::after {
     }
 
 }
+/* =========================================================
+   VOLTICA — ACRYLIC WHITE LED STRIPS
+   Premium illuminated acrylic panels
+   ========================================================= */
+
+.acrylic-led {
+    position: relative;
+    isolation: isolate;
+}
+
+
+/* ---------------------------------------------------------
+   OUTER LED STRIP
+   --------------------------------------------------------- */
+
+.acrylic-led::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -1px;
+
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    z-index: 5;
+
+    border: 1px solid rgba(255,255,255,0.42);
+
+    box-shadow:
+        0 0 4px rgba(255,255,255,0.55),
+        0 0 12px rgba(255,255,255,0.32),
+        0 0 28px rgba(255,255,255,0.16);
+
+    opacity: 0.72;
+
+    animation:
+        acrylicLedPulse 4s ease-in-out infinite;
+}
+
+
+/* ---------------------------------------------------------
+   INNER ACRYLIC REFLECTION
+   --------------------------------------------------------- */
+
+.acrylic-led::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    z-index: 4;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        inset 0 0 18px rgba(255,255,255,0.035),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+
+}
+
+
+/* ---------------------------------------------------------
+   LED PULSE
+   --------------------------------------------------------- */
+
+@keyframes acrylicLedPulse {
+
+    0% {
+
+        opacity: 0.42;
+
+        box-shadow:
+            0 0 3px rgba(255,255,255,0.35),
+            0 0 10px rgba(255,255,255,0.18),
+            0 0 22px rgba(255,255,255,0.08);
+
+    }
+
+    50% {
+
+        opacity: 0.92;
+
+        box-shadow:
+            0 0 5px rgba(255,255,255,0.75),
+            0 0 16px rgba(255,255,255,0.42),
+            0 0 38px rgba(255,255,255,0.20);
+
+    }
+
+    100% {
+
+        opacity: 0.48;
+
+        box-shadow:
+            0 0 3px rgba(255,255,255,0.38),
+            0 0 11px rgba(255,255,255,0.20),
+            0 0 25px rgba(255,255,255,0.09);
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   STRONGER LED EFFECT ON HOVER
+   --------------------------------------------------------- */
+
+.acrylic-led:hover::before {
+
+    opacity: 1;
+
+    box-shadow:
+        0 0 5px rgba(255,255,255,0.9),
+        0 0 18px rgba(255,255,255,0.55),
+        0 0 42px rgba(255,255,255,0.24);
+
+}
+
+
+/* ---------------------------------------------------------
+   OPTIONAL — PREMIUM GLASS DEPTH
+   --------------------------------------------------------- */
+
+.acrylic-led {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.075),
+            rgba(255,255,255,0.018)
+        );
+
+    backdrop-filter: blur(26px);
+    -webkit-backdrop-filter: blur(26px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.42),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+
+}

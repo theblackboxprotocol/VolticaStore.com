@@ -509,6 +509,66 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/7sY4gAaOj6476e47Ky2Ji0f",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2408290911051600500.html",
         "active": true
+}, 
+   }
+
+    /* =========================================================
+       Product name : Kiwi Ears Orchestra II - 10BA Professional In-Ear Monitors | Voltica Store Canada
+       ========================================================= */
+
+{
+        "id": "kiwi-ears-orchestra-ii-10ba-professional-in-ear-monitors-voltica-store-canada",
+        "sku": "VLT-AUD-OCH-200",
+        "name": "Kiwi Ears Orchestra II - 10BA Professional In-Ear Monitors | Voltica Store Canada",
+        "category": "Premium audio",
+        "badge": "NEW",
+        "price": 349.99,
+        "referencePrice": 349.99,
+        "cost": 219.99,
+        "shipping": null,
+        "shortDescription": "Discover the Kiwi Ears Orchestra II, the pinnacle of precision acoustic engineering. Featuring an impressive configuration of 10 balanced armature (10BA) drivers per earpiece and a 4-way crossover, these in-ear monitors (IEMs) deliver a balanced U-shaped signature, studio-grade clarity, and reference-level imaging. Available now at Voltica Store, official distributor in Canada.",
+        "description": "The Kiwi Ears Orchestra II push the boundaries of portable high fidelity. Built for professional musicians, sound engineers, and the most demanding audiophiles, these IEMs combine exceptional craftsmanship with cutting-edge sound architecture. Whether you are performing on stage or listening to your favorite high-res tracks, the Orchestra II guarantees total immersion and surgical precision.\nâ€‹Advanced Architecture: 10BA Configuration & 4-Way Crossover\nâ€‹At the core of each earpiece are 10 balanced armature drivers managed by a 4-way acoustic crossover system.\nâ€‹Sub-bass and Bass: Delivers impactful deep rumbles, supported by a relaxed 300Hz shelf that adds body to bass guitars and synths.\nâ€‹Mids: A linear response offering true-to-life sound, reference-like layering, and imaging.\nâ€‹Treble: An eased mid-treble transition ensuring naturally balanced vocals and strings, eliminating artificial harmonic presence and brilliance.\nâ€‹Ergonomic Comfort and Handcrafted Acrylic Build\nâ€‹Weighing only 7.71 g per earbud, the Orchestra II benefits from an ergonomic contour ensuring a snug, fatigue-free fit for long listening sessions or live performances. Its high-clarity transparent acrylic shell reveals the precision-balanced drivers while minimizing resonance, complemented by a stunning hexagon grid faceplate with an iridescent finish.",
+        "features": [
+            "10BA Driver Configuration: Features 10 balanced armature drivers per side for high-resolution audio reproduction.",
+            "â€‹Balanced U-Shaped Tuning: Delivers deep sub-bass rumbles, a linear true-to-life midrange, and a crisp treble that eliminates artificial harshness.",
+            "â€‹4-Way Crossover: Manages multi-driver allocation for exceptional separation, imaging, and layered soundstages.",
+            "â€‹Acoustic Gel Isolation & Acrylic Build: Transparent high-clarity shell engineered to minimize resonance and provide comfortable noise isolation.",
+            "â€‹Ergonomic Lightweight Fit: Weighs only 7.71g per earbud for a secure, fatigue-free fit during long listening sessions.",
+            "â€‹Premium SP-OCC Modular Cable: Equipped with a 4-core OCC cable (122 cm) supporting interchangeable 3.5mm and 4.4mm plugs."
+        ],
+        "specifications": {
+            "â€‹Driver Configuration": "10 Balanced Armature drivers per side",
+            "â€‹Sound Signature": "Balanced U-shaped tuning",
+            "â€‹Frequency Range": "20Hz - 20KHz",
+            "â€‹Impedance": "15 \\Omega",
+            "â€‹Sensitivity": "110dB",
+            "â€‹Crossover": "4-way acoustic crossover system",
+            "â€‹Build & Materials": "High-clarity transparent acrylic shell with a hexagonal grid nacre faceplate",
+            "â€‹Weight": "7.71g per earbud",
+            "â€‹Cable": "4-core SP-OCC (Single Crystal Copper) modular cable (122 cm length)",
+            "â€‹Plugs Included": "Interchangeable 3.5mm Single-Ended and 4.4mm Balanced plugs"
+        },
+        "images": [
+            "assets/images/1000052950.jpg",
+            "assets/images/1000052948.jpg",
+            "assets/images/1000052935.jpg",
+            "assets/images/1000052933.jpg",
+            "assets/images/1000052946.jpg",
+            "assets/images/1000052939.jpg",
+            "assets/images/1000052937.jpg",
+            "assets/images/1000052941.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Experience Studio-Grade Sound",
+            "lines": [
+                "Unlock the full potential of your music and elevate your listening sessions with the Kiwi Ears Orchestra II. As the official Canadian distributor, Voltica Store brings you professional 10BA multi-driver performance straight to your setup. Order yours today and hear every detail the way the artist intended!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/9B628saOjbor6e4fd02Ji0p",
+        "supplierLink": "business@kiwiears.com",
+        "active": true
 }
 
 ];

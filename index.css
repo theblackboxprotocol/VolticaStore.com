@@ -87,6 +87,13 @@ body::before {
             black,
             transparent 90%
         );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
 }
 
 
@@ -97,11 +104,13 @@ body::before {
 body::after {
     content: "";
     position: fixed;
+
     width: 500px;
     height: 500px;
 
     top: -220px;
     left: 50%;
+
     transform: translateX(-50%);
 
     background:
@@ -112,6 +121,7 @@ body::after {
         );
 
     filter: blur(35px);
+
     pointer-events: none;
     z-index: -1;
 }
@@ -202,8 +212,11 @@ body::after {
 .store-nav a {
     font-size: 10px;
     font-weight: 700;
+
     letter-spacing: 0.16em;
-    color: rgba(255,255,255,0.55);
+
+    color:
+        rgba(255,255,255,0.55);
 
     transition:
         color 0.25s ease,
@@ -306,7 +319,8 @@ body::after {
 }
 
 .future-second {
-    color: rgba(255,255,255,0.48);
+    color:
+        rgba(255,255,255,0.48);
 }
 
 
@@ -387,7 +401,6 @@ body::after {
         opacity: 1;
         transform: scale(1.2);
     }
-
 }
 
 
@@ -429,6 +442,7 @@ body::after {
 
 .store-product {
     position: relative;
+    isolation: isolate;
 
     overflow: hidden;
 
@@ -477,6 +491,7 @@ body::after {
     position: relative;
 
     width: 100%;
+
     aspect-ratio: 1 / 1;
 
     overflow: hidden;
@@ -751,7 +766,6 @@ body::after {
         box-shadow:
             0 0 28px rgba(255,255,255,0.12);
     }
-
 }
 
 @keyframes buttonSweep {
@@ -764,7 +778,6 @@ body::after {
     100% {
         left: 150%;
     }
-
 }
 
 
@@ -1203,6 +1216,7 @@ body::after {
 
 .contact-acrylic {
     position: relative;
+    isolation: isolate;
 
     overflow: hidden;
 
@@ -1223,6 +1237,7 @@ body::after {
         1px solid rgba(255,255,255,0.10);
 
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 .contact-label {
@@ -1310,6 +1325,195 @@ body::after {
 
 
 /* =========================================================
+   ACRYLIC LED STRIPS
+   ========================================================= */
+
+.store-product,
+.contact-acrylic,
+.opening-acrylic {
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   LED FRAME
+   ========================================================= */
+
+.store-product::after,
+.contact-acrylic::after,
+.opening-acrylic::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,0.72),
+            rgba(255,255,255,0.10) 22%,
+            rgba(255,255,255,0.025) 50%,
+            rgba(255,255,255,0.10) 78%,
+            rgba(255,255,255,0.72)
+        );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    mask-composite: exclude;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    opacity: 0.38;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(255,255,255,0.32)
+        )
+        drop-shadow(
+            0 0 18px
+            rgba(255,255,255,0.12)
+        );
+
+    animation:
+        indexLedPulse 4.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PRODUCT LED
+   ========================================================= */
+
+.store-product::after {
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.08),
+        0 0 50px rgba(255,255,255,0.035);
+}
+
+
+/* =========================================================
+   CONTACT LED
+   ========================================================= */
+
+.contact-acrylic::after {
+    opacity: 0.46;
+
+    box-shadow:
+        0 0 22px rgba(255,255,255,0.12),
+        0 0 55px rgba(255,255,255,0.05);
+}
+
+
+/* =========================================================
+   OPENING BADGE LED
+   ========================================================= */
+
+.opening-acrylic::after {
+    opacity: 0.52;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(255,255,255,0.55)
+        )
+        drop-shadow(
+            0 0 18px
+            rgba(255,255,255,0.20)
+        );
+}
+
+
+/* =========================================================
+   LED PULSE
+   ========================================================= */
+
+@keyframes indexLedPulse {
+
+    0%,
+    100% {
+        opacity: 0.28;
+
+        filter:
+            drop-shadow(
+                0 0 4px
+                rgba(255,255,255,0.25)
+            )
+            drop-shadow(
+                0 0 13px
+                rgba(255,255,255,0.08)
+            );
+    }
+
+    50% {
+        opacity: 0.66;
+
+        filter:
+            drop-shadow(
+                0 0 8px
+                rgba(255,255,255,0.68)
+            )
+            drop-shadow(
+                0 0 28px
+                rgba(255,255,255,0.25)
+            );
+    }
+}
+
+
+/* =========================================================
+   PRODUCT HOVER — LED BOOST
+   ========================================================= */
+
+.store-product:hover::after {
+    opacity: 0.90;
+
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(255,255,255,0.85)
+        )
+        drop-shadow(
+            0 0 30px
+            rgba(255,255,255,0.32)
+        );
+}
+
+
+/* =========================================================
+   CONTACT HOVER
+   ========================================================= */
+
+.contact-acrylic:hover::after {
+    opacity: 0.82;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255,255,255,0.75)
+        )
+        drop-shadow(
+            0 0 26px
+            rgba(255,255,255,0.25)
+        );
+}
+
+
+/* =========================================================
    MOBILE
    ========================================================= */
 
@@ -1388,7 +1592,6 @@ body::after {
 
     .product-modal {
         align-items: flex-end;
-
         padding: 0;
     }
 
@@ -1419,6 +1622,21 @@ body::after {
             1fr 1fr;
     }
 
+    .store-product::after,
+    .contact-acrylic::after,
+    .opening-acrylic::after {
+        opacity: 0.34;
+
+        filter:
+            drop-shadow(
+                0 0 4px
+                rgba(255,255,255,0.30)
+            )
+            drop-shadow(
+                0 0 13px
+                rgba(255,255,255,0.10)
+            );
+    }
 }
 
 
@@ -1448,7 +1666,6 @@ body::after {
         grid-template-columns:
             1fr;
     }
-
 }
 
 
@@ -1466,237 +1683,4 @@ body::after {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
     }
-
-}
-/* =========================================================
-   VOLTICA STORE — ACRYLIC LED STRIPS
-   Homepage architectural lighting
-   ========================================================= */
-
-.store-product,
-.contact-acrylic,
-.opening-acrylic {
-
-    position: relative;
-
-    isolation: isolate;
-
-}
-
-
-/* =========================================================
-   LED FRAME
-   ========================================================= */
-
-.store-product::after,
-.contact-acrylic::after,
-.opening-acrylic::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    border-radius: inherit;
-
-    padding: 1px;
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(255,255,255,0.72),
-            rgba(255,255,255,0.10) 22%,
-            rgba(255,255,255,0.025) 50%,
-            rgba(255,255,255,0.10) 78%,
-            rgba(255,255,255,0.72)
-        );
-
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-
-    -webkit-mask-composite: xor;
-
-    mask-composite: exclude;
-
-    pointer-events: none;
-
-    z-index: 20;
-
-    opacity: 0.38;
-
-    filter:
-        drop-shadow(
-            0 0 5px
-            rgba(255,255,255,0.32)
-        )
-        drop-shadow(
-            0 0 18px
-            rgba(255,255,255,0.12)
-        );
-
-    animation:
-        indexLedPulse 4.5s ease-in-out infinite;
-
-}
-
-
-/* =========================================================
-   PRODUCT LED
-   ========================================================= */
-
-.store-product::after {
-
-    box-shadow:
-        0 0 20px rgba(255,255,255,0.08),
-        0 0 50px rgba(255,255,255,0.035);
-
-}
-
-
-/* =========================================================
-   CONTACT LED
-   ========================================================= */
-
-.contact-acrylic::after {
-
-    opacity: 0.46;
-
-    box-shadow:
-        0 0 22px rgba(255,255,255,0.12),
-        0 0 55px rgba(255,255,255,0.05);
-
-}
-
-
-/* =========================================================
-   OPENING BADGE LED
-   ========================================================= */
-
-.opening-acrylic::after {
-
-    opacity: 0.52;
-
-    filter:
-        drop-shadow(
-            0 0 6px
-            rgba(255,255,255,0.55)
-        )
-        drop-shadow(
-            0 0 18px
-            rgba(255,255,255,0.20)
-        );
-
-}
-
-
-/* =========================================================
-   PULSE
-   ========================================================= */
-
-@keyframes indexLedPulse {
-
-    0%,
-    100% {
-
-        opacity: 0.28;
-
-        filter:
-            drop-shadow(
-                0 0 4px
-                rgba(255,255,255,0.25)
-            )
-            drop-shadow(
-                0 0 13px
-                rgba(255,255,255,0.08)
-            );
-
-    }
-
-    50% {
-
-        opacity: 0.66;
-
-        filter:
-            drop-shadow(
-                0 0 8px
-                rgba(255,255,255,0.68)
-            )
-            drop-shadow(
-                0 0 28px
-                rgba(255,255,255,0.25)
-            );
-
-    }
-
-}
-
-
-/* =========================================================
-   PRODUCT HOVER — LED BOOST
-   ========================================================= */
-
-.store-product:hover::after {
-
-    opacity: 0.90;
-
-    filter:
-        drop-shadow(
-            0 0 9px
-            rgba(255,255,255,0.85)
-        )
-        drop-shadow(
-            0 0 30px
-            rgba(255,255,255,0.32)
-        );
-
-}
-
-
-/* =========================================================
-   CONTACT HOVER
-   ========================================================= */
-
-.contact-acrylic:hover::after {
-
-    opacity: 0.82;
-
-    filter:
-        drop-shadow(
-            0 0 8px
-            rgba(255,255,255,0.75)
-        )
-        drop-shadow(
-            0 0 26px
-            rgba(255,255,255,0.25)
-        );
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 650px) {
-
-    .store-product::after,
-    .contact-acrylic::after,
-    .opening-acrylic::after {
-
-        opacity: 0.34;
-
-        filter:
-            drop-shadow(
-                0 0 4px
-                rgba(255,255,255,0.30)
-            )
-            drop-shadow(
-                0 0 13px
-                rgba(255,255,255,0.10)
-            );
-
-    }
-
 }

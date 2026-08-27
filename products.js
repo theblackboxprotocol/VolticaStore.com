@@ -493,10 +493,10 @@ window.volticaProducts = [
             "â€‹Packing List": "1 * Projection lamp, 1 * USB cable, 10 * Projection discs"
         },
         "images": [
-            "assets/images/1000052849.webp",
-            "assets/images/1000052847.jpg",
-            "assets/images/1000052850.webp",
-            "assets/images/1000052848.webp"
+            "assets/images/projector2.webp",
+            "assets/images/projector1.jpg",
+            "assets/images/projector3.webp",
+            "assets/images/projector4.webp"
         ],
         "colors": [],
         "variants": [],

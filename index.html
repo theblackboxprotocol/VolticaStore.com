@@ -24,22 +24,2086 @@
     href="store.css"
 >
 
+
+<!-- =====================================================
+     VOLTICA HOMEPAGE PREMIUM LAYER
+     ===================================================== -->
+
+<style>
+
+    :root {
+
+        --black:#030303;
+        --glass:rgba(255,255,255,.045);
+        --glass-strong:rgba(255,255,255,.075);
+        --border:rgba(255,255,255,.12);
+        --white:#ffffff;
+        --muted:rgba(255,255,255,.58);
+        --soft:rgba(255,255,255,.32);
+
+    }
+
+
+    * {
+        box-sizing:border-box;
+    }
+
+
+    html {
+        scroll-behavior:smooth;
+    }
+
+
+    body {
+
+        margin:0;
+
+        background:#030303;
+
+        color:#fff;
+
+        overflow-x:hidden;
+
+    }
+
+
+    /* =================================================
+       AMBIENT SYSTEM
+       ================================================= */
+
+    .voltica-ambient {
+
+        position:fixed;
+
+        inset:0;
+
+        pointer-events:none;
+
+        z-index:0;
+
+        overflow:hidden;
+
+    }
+
+
+    .ambient-orb {
+
+        position:absolute;
+
+        width:420px;
+        height:420px;
+
+        border-radius:50%;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(255,255,255,.08),
+                transparent 68%
+            );
+
+        filter:blur(25px);
+
+        animation:
+            ambientFloat 12s ease-in-out infinite;
+
+    }
+
+
+    .ambient-orb.one {
+
+        top:8%;
+        left:-180px;
+
+    }
+
+
+    .ambient-orb.two {
+
+        top:48%;
+        right:-180px;
+
+        animation-delay:-4s;
+
+    }
+
+
+    .ambient-orb.three {
+
+        bottom:-200px;
+        left:35%;
+
+        animation-delay:-8s;
+
+    }
+
+
+    @keyframes ambientFloat {
+
+        0%,100% {
+
+            transform:
+                translate3d(0,0,0);
+
+            opacity:.45;
+
+        }
+
+        50% {
+
+            transform:
+                translate3d(50px,-35px,0);
+
+            opacity:.8;
+
+        }
+
+    }
+
+
+    /* =================================================
+       PULSE NETWORK
+       ================================================= */
+
+    .pulse-network {
+
+        position:absolute;
+
+        inset:0;
+
+        pointer-events:none;
+
+    }
+
+
+    .pulse-point {
+
+        position:absolute;
+
+        width:5px;
+        height:5px;
+
+        border-radius:50%;
+
+        background:#fff;
+
+        box-shadow:
+            0 0 8px rgba(255,255,255,.9),
+            0 0 28px rgba(255,255,255,.45);
+
+        animation:
+            pulsePoint 3s ease-in-out infinite;
+
+    }
+
+
+    .pulse-point::after {
+
+        content:"";
+
+        position:absolute;
+
+        inset:-9px;
+
+        border:
+            1px solid rgba(255,255,255,.18);
+
+        border-radius:50%;
+
+        animation:
+            pulseRing 3s ease-out infinite;
+
+    }
+
+
+    .pp1 {
+
+        top:17%;
+        left:12%;
+
+    }
+
+
+    .pp2 {
+
+        top:31%;
+        right:15%;
+
+        animation-delay:-.8s;
+
+    }
+
+
+    .pp3 {
+
+        top:58%;
+        left:8%;
+
+        animation-delay:-1.6s;
+
+    }
+
+
+    .pp4 {
+
+        top:72%;
+        right:11%;
+
+        animation-delay:-2.3s;
+
+    }
+
+
+    .pp5 {
+
+        top:89%;
+        left:44%;
+
+        animation-delay:-1.1s;
+
+    }
+
+
+    @keyframes pulsePoint {
+
+        0%,100% {
+
+            transform:scale(.75);
+
+            opacity:.35;
+
+        }
+
+        50% {
+
+            transform:scale(1.45);
+
+            opacity:1;
+
+        }
+
+    }
+
+
+    @keyframes pulseRing {
+
+        0% {
+
+            transform:scale(.4);
+
+            opacity:.8;
+
+        }
+
+        100% {
+
+            transform:scale(2.5);
+
+            opacity:0;
+
+        }
+
+    }
+
+
+    /* =================================================
+       HERO
+       ================================================= */
+
+    .premium-home {
+
+        position:relative;
+
+        z-index:2;
+
+        min-height:760px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        padding:
+            150px 24px 100px;
+
+        overflow:hidden;
+
+    }
+
+
+    .hero-glass {
+
+        position:relative;
+
+        width:min(1180px,100%);
+
+        min-height:600px;
+
+        display:grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        align-items:center;
+
+        gap:50px;
+
+        padding:70px;
+
+        border:
+            1px solid var(--border);
+
+        border-radius:42px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,255,255,.075),
+                rgba(255,255,255,.018)
+            );
+
+        backdrop-filter:blur(35px);
+
+        -webkit-backdrop-filter:blur(35px);
+
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.1),
+            0 40px 120px rgba(0,0,0,.65);
+
+        overflow:hidden;
+
+    }
+
+
+    .hero-glass::before {
+
+        content:"";
+
+        position:absolute;
+
+        inset:0;
+
+        background:
+            linear-gradient(
+                120deg,
+                transparent 20%,
+                rgba(255,255,255,.08),
+                transparent 45%
+            );
+
+        transform:
+            translateX(-120%);
+
+        animation:
+            glassSweep 8s ease-in-out infinite;
+
+        pointer-events:none;
+
+    }
+
+
+    @keyframes glassSweep {
+
+        0%,55% {
+
+            transform:
+                translateX(-120%);
+
+        }
+
+        75%,100% {
+
+            transform:
+                translateX(120%);
+
+        }
+
+    }
+
+
+    .hero-copy {
+
+        position:relative;
+
+        z-index:3;
+
+    }
+
+
+    .hero-kicker {
+
+        display:inline-flex;
+
+        align-items:center;
+
+        gap:10px;
+
+        padding:
+            9px 15px;
+
+        border:
+            1px solid rgba(255,255,255,.13);
+
+        border-radius:999px;
+
+        background:
+            rgba(255,255,255,.045);
+
+        color:
+            rgba(255,255,255,.7);
+
+        font-size:10px;
+
+        letter-spacing:.22em;
+
+    }
+
+
+    .hero-kicker-dot {
+
+        width:6px;
+        height:6px;
+
+        border-radius:50%;
+
+        background:#fff;
+
+        box-shadow:
+            0 0 14px #fff;
+
+        animation:
+            pulsePoint 2s infinite;
+
+    }
+
+
+    .hero-copy h1 {
+
+        margin:
+            25px 0 0;
+
+        font-size:
+            clamp(52px,7vw,100px);
+
+        line-height:.86;
+
+        letter-spacing:-.07em;
+
+        font-weight:800;
+
+    }
+
+
+    .hero-copy h1 span {
+
+        display:block;
+
+    }
+
+
+    .hero-copy h1 span:last-child {
+
+        color:
+            rgba(255,255,255,.35);
+
+    }
+
+
+    .hero-copy p {
+
+        max-width:540px;
+
+        margin:30px 0;
+
+        color:var(--muted);
+
+        font-size:16px;
+
+        line-height:1.8;
+
+    }
+
+
+    .hero-actions {
+
+        display:flex;
+
+        flex-wrap:wrap;
+
+        gap:12px;
+
+    }
+
+
+    .hero-button {
+
+        display:inline-flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        min-height:52px;
+
+        padding:
+            0 24px;
+
+        border:
+            1px solid rgba(255,255,255,.16);
+
+        border-radius:16px;
+
+        text-decoration:none;
+
+        color:#fff;
+
+        background:
+            rgba(255,255,255,.07);
+
+        backdrop-filter:blur(15px);
+
+        transition:.35s ease;
+
+    }
+
+
+    .hero-button:hover {
+
+        transform:
+            translateY(-4px);
+
+        background:
+            rgba(255,255,255,.14);
+
+        box-shadow:
+            0 15px 40px rgba(255,255,255,.08);
+
+    }
+
+
+    .hero-button.primary {
+
+        background:#fff;
+
+        color:#050505;
+
+        font-weight:700;
+
+    }
+
+
+    /* =================================================
+       HERO VIDEO — 15.MP4
+       ================================================= */
+
+    .hero-product {
+
+        position:relative;
+
+        min-height:470px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        perspective:1400px;
+
+    }
+
+
+    .product-orbit {
+
+        position:absolute;
+
+        width:430px;
+        height:430px;
+
+        border:
+            1px solid rgba(255,255,255,.09);
+
+        border-radius:50%;
+
+        animation:
+            orbitSpin 20s linear infinite;
+
+    }
+
+
+    .product-orbit::before,
+    .product-orbit::after {
+
+        content:"";
+
+        position:absolute;
+
+        border-radius:50%;
+
+    }
+
+
+    .product-orbit::before {
+
+        width:9px;
+        height:9px;
+
+        top:20px;
+        left:50%;
+
+        background:#fff;
+
+        box-shadow:
+            0 0 25px #fff;
+
+    }
+
+
+    .product-orbit::after {
+
+        width:6px;
+        height:6px;
+
+        bottom:35px;
+        right:30px;
+
+        background:#fff;
+
+        box-shadow:
+            0 0 20px #fff;
+
+    }
+
+
+    @keyframes orbitSpin {
+
+        to {
+
+            transform:
+                rotate(360deg);
+
+        }
+
+    }
+
+
+    /*
+     * 3D GLASS VIDEO FRAME
+     */
+
+    .hero-video-card {
+
+        position:relative;
+
+        z-index:3;
+
+        width:min(470px,100%);
+
+        padding:14px;
+
+        border:
+            1px solid rgba(255,255,255,.2);
+
+        border-radius:34px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.13),
+                rgba(255,255,255,.025)
+            );
+
+        backdrop-filter:
+            blur(28px);
+
+        -webkit-backdrop-filter:
+            blur(28px);
+
+        box-shadow:
+
+            inset 0 1px 0
+                rgba(255,255,255,.2),
+
+            inset 0 -1px 0
+                rgba(255,255,255,.04),
+
+            0 35px 80px
+                rgba(0,0,0,.75),
+
+            0 0 80px
+                rgba(255,255,255,.05);
+
+        transform:
+            rotateY(-8deg)
+            rotateX(4deg);
+
+        animation:
+            videoFloat 5s ease-in-out infinite;
+
+        transition:
+            transform .6s ease,
+            box-shadow .6s ease;
+
+    }
+
+
+    .hero-video-card::before {
+
+        content:"";
+
+        position:absolute;
+
+        inset:-2px;
+
+        border-radius:36px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,255,255,.25),
+                transparent 30%,
+                transparent 70%,
+                rgba(255,255,255,.08)
+            );
+
+        opacity:.7;
+
+        pointer-events:none;
+
+        z-index:-1;
+
+    }
+
+
+    .hero-video-card::after {
+
+        content:"";
+
+        position:absolute;
+
+        width:65%;
+
+        height:35%;
+
+        top:-25%;
+
+        left:10%;
+
+        background:
+            radial-gradient(
+                ellipse,
+                rgba(255,255,255,.18),
+                transparent 70%
+            );
+
+        filter:blur(20px);
+
+        transform:
+            rotate(-12deg);
+
+        pointer-events:none;
+
+    }
+
+
+    @keyframes videoFloat {
+
+        0%,100% {
+
+            transform:
+                translateY(0)
+                rotateY(-8deg)
+                rotateX(4deg);
+
+        }
+
+        50% {
+
+            transform:
+                translateY(-13px)
+                rotateY(-5deg)
+                rotateX(2deg);
+
+        }
+
+    }
+
+
+    .hero-video-screen {
+
+        position:relative;
+
+        overflow:hidden;
+
+        display:block;
+
+        width:100%;
+
+        aspect-ratio:
+            16 / 10;
+
+        border:
+            1px solid rgba(255,255,255,.12);
+
+        border-radius:25px;
+
+        background:#000;
+
+        box-shadow:
+            inset 0 0 35px rgba(0,0,0,.8);
+
+    }
+
+
+    .hero-video-screen video {
+
+        display:block;
+
+        width:100%;
+
+        height:100%;
+
+        object-fit:cover;
+
+        background:#000;
+
+        filter:
+            contrast(1.04)
+            saturate(.92)
+            brightness(.9);
+
+    }
+
+
+    .video-glass-reflection {
+
+        position:absolute;
+
+        inset:0;
+
+        pointer-events:none;
+
+        background:
+            linear-gradient(
+                125deg,
+                rgba(255,255,255,.13),
+                transparent 24%,
+                transparent 72%,
+                rgba(255,255,255,.04)
+            );
+
+        mix-blend-mode:
+            screen;
+
+    }
+
+
+    .video-edge-glow {
+
+        position:absolute;
+
+        inset:8px;
+
+        border:
+            1px solid rgba(255,255,255,.08);
+
+        border-radius:20px;
+
+        pointer-events:none;
+
+    }
+
+
+    .hero-video-meta {
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+        gap:15px;
+
+        padding:
+            16px 7px 5px;
+
+    }
+
+
+    .hero-video-meta-left span {
+
+        display:block;
+
+        color:
+            rgba(255,255,255,.4);
+
+        font-size:9px;
+
+        letter-spacing:.2em;
+
+    }
+
+
+    .hero-video-meta-left strong {
+
+        display:block;
+
+        margin-top:5px;
+
+        font-size:15px;
+
+        letter-spacing:.02em;
+
+    }
+
+
+    .hero-video-status {
+
+        display:flex;
+
+        align-items:center;
+
+        gap:7px;
+
+        color:
+            rgba(255,255,255,.45);
+
+        font-size:8px;
+
+        letter-spacing:.15em;
+
+    }
+
+
+    .hero-video-status-dot {
+
+        width:6px;
+        height:6px;
+
+        border-radius:50%;
+
+        background:#fff;
+
+        box-shadow:
+            0 0 12px #fff;
+
+        animation:
+            pulsePoint 2s infinite;
+
+    }
+
+
+    /* =================================================
+       15% FOR LIFE
+       ================================================= */
+
+    .lifetime-section {
+
+        position:relative;
+
+        z-index:3;
+
+        padding:
+            40px 24px 100px;
+
+    }
+
+
+    .lifetime-card {
+
+        position:relative;
+
+        width:min(1050px,100%);
+
+        margin:auto;
+
+        padding:45px;
+
+        display:grid;
+
+        grid-template-columns:
+            110px 1fr auto;
+
+        align-items:center;
+
+        gap:28px;
+
+        border:
+            1px solid rgba(255,255,255,.2);
+
+        border-radius:30px;
+
+        background:
+            linear-gradient(
+                120deg,
+                rgba(255,255,255,.1),
+                rgba(255,255,255,.025)
+            );
+
+        backdrop-filter:blur(30px);
+
+        -webkit-backdrop-filter:blur(30px);
+
+        box-shadow:
+            0 25px 90px rgba(0,0,0,.55),
+            inset 0 1px 0 rgba(255,255,255,.12);
+
+        overflow:hidden;
+
+    }
+
+
+    .lifetime-card::after {
+
+        content:"";
+
+        position:absolute;
+
+        width:220px;
+        height:220px;
+
+        right:-100px;
+        top:-100px;
+
+        border-radius:50%;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(255,255,255,.18),
+                transparent 70%
+            );
+
+        filter:blur(12px);
+
+    }
+
+
+    .lifetime-card-icon {
+
+        width:90px;
+        height:90px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        border:
+            1px solid rgba(255,255,255,.2);
+
+        border-radius:22px;
+
+        background:
+            rgba(255,255,255,.07);
+
+        font-size:38px;
+
+        animation:
+            cardPulse 3s ease-in-out infinite;
+
+    }
+
+
+    @keyframes cardPulse {
+
+        0%,100% {
+
+            box-shadow:
+                0 0 20px
+                rgba(255,255,255,.04);
+
+        }
+
+        50% {
+
+            box-shadow:
+                0 0 45px
+                rgba(255,255,255,.16);
+
+        }
+
+    }
+
+
+    .lifetime-copy span {
+
+        display:block;
+
+        margin-bottom:8px;
+
+        color:
+            rgba(255,255,255,.45);
+
+        font-size:10px;
+
+        letter-spacing:.2em;
+
+    }
+
+
+    .lifetime-copy h2 {
+
+        margin:0;
+
+        font-size:
+            clamp(25px,4vw,44px);
+
+        letter-spacing:-.04em;
+
+    }
+
+
+    .lifetime-copy p {
+
+        margin:
+            10px 0 0;
+
+        color:
+            var(--muted);
+
+        line-height:1.6;
+
+    }
+
+
+    .lifetime-number {
+
+        position:relative;
+
+        z-index:2;
+
+        text-align:center;
+
+    }
+
+
+    .lifetime-number strong {
+
+        display:block;
+
+        font-size:
+            clamp(36px,5vw,62px);
+
+        line-height:1;
+
+    }
+
+
+    .lifetime-number span {
+
+        color:
+            rgba(255,255,255,.45);
+
+        font-size:9px;
+
+        letter-spacing:.18em;
+
+    }
+
+
+    /* =================================================
+       COLLECTION
+       ================================================= */
+
+    .collection-section {
+
+        position:relative;
+
+        z-index:3;
+
+        padding:
+            100px 24px;
+
+    }
+
+
+    .collection-container {
+
+        width:min(1180px,100%);
+
+        margin:auto;
+
+    }
+
+
+    .collection-heading {
+
+        max-width:700px;
+
+        margin-bottom:55px;
+
+    }
+
+
+    .collection-heading span {
+
+        color:
+            rgba(255,255,255,.4);
+
+        font-size:10px;
+
+        letter-spacing:.22em;
+
+    }
+
+
+    .collection-heading h2 {
+
+        margin:
+            14px 0 0;
+
+        font-size:
+            clamp(38px,6vw,72px);
+
+        letter-spacing:-.06em;
+
+    }
+
+
+    .collection-heading p {
+
+        color:
+            var(--muted);
+
+        line-height:1.8;
+
+    }
+
+
+    .collection-grid {
+
+        display:grid;
+
+        grid-template-columns:
+            1.35fr .65fr;
+
+        gap:20px;
+
+    }
+
+
+    .collection-card {
+
+        position:relative;
+
+        min-height:360px;
+
+        overflow:hidden;
+
+        border:
+            1px solid rgba(255,255,255,.1);
+
+        border-radius:30px;
+
+        background:
+            rgba(255,255,255,.035);
+
+        backdrop-filter:blur(20px);
+
+        text-decoration:none;
+
+        color:#fff;
+
+    }
+
+
+    .collection-card.large {
+
+        min-height:560px;
+
+    }
+
+
+    .collection-card img {
+
+        width:100%;
+
+        height:100%;
+
+        object-fit:cover;
+
+        transition:
+            transform .8s
+            cubic-bezier(.2,.8,.2,1);
+
+    }
+
+
+    .collection-card:hover img {
+
+        transform:scale(1.06);
+
+    }
+
+
+    .collection-overlay {
+
+        position:absolute;
+
+        inset:auto 0 0;
+
+        padding:30px;
+
+        background:
+            linear-gradient(
+                transparent,
+                rgba(0,0,0,.9)
+            );
+
+    }
+
+
+    .collection-overlay span {
+
+        color:
+            rgba(255,255,255,.5);
+
+        font-size:9px;
+
+        letter-spacing:.2em;
+
+    }
+
+
+    .collection-overlay h3 {
+
+        margin:
+            8px 0 0;
+
+        font-size:28px;
+
+    }
+
+
+    .collection-side {
+
+        display:grid;
+
+        grid-template-rows:
+            1fr 1fr;
+
+        gap:20px;
+
+    }
+
+
+    /* =================================================
+       FINAL CTA
+       ================================================= */
+
+    .final-section {
+
+        position:relative;
+
+        z-index:3;
+
+        padding:
+            80px 24px 120px;
+
+    }
+
+
+    .final-glass {
+
+        width:min(1000px,100%);
+
+        margin:auto;
+
+        padding:
+            80px 30px;
+
+        text-align:center;
+
+        border:
+            1px solid rgba(255,255,255,.13);
+
+        border-radius:38px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.08),
+                rgba(255,255,255,.02)
+            );
+
+        backdrop-filter:blur(30px);
+
+        -webkit-backdrop-filter:blur(30px);
+
+        box-shadow:
+            0 40px 100px rgba(0,0,0,.55);
+
+    }
+
+
+    .final-status {
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        gap:9px;
+
+        color:
+            rgba(255,255,255,.42);
+
+        font-size:9px;
+
+        letter-spacing:.2em;
+
+    }
+
+
+    .final-glass .pulse-dot {
+
+        display:inline-block;
+
+        width:8px;
+        height:8px;
+
+        border-radius:50%;
+
+        background:#fff;
+
+        box-shadow:
+            0 0 25px #fff;
+
+        animation:
+            pulsePoint 2s infinite;
+
+    }
+
+
+    .final-label {
+
+        display:block;
+
+        margin-top:28px;
+
+        color:
+            rgba(255,255,255,.38);
+
+        font-size:9px;
+
+        letter-spacing:.25em;
+
+    }
+
+
+    .final-glass h2 {
+
+        margin:
+            18px 0 14px;
+
+        font-size:
+            clamp(35px,6vw,65px);
+
+        letter-spacing:-.06em;
+
+    }
+
+
+    .final-glass p {
+
+        max-width:560px;
+
+        margin:
+            0 auto 30px;
+
+        color:
+            var(--muted);
+
+        line-height:1.7;
+
+    }
+
+
+    .final-actions {
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+    }
+
+
+    /* =================================================
+       CART DRAWER
+       ================================================= */
+
+    .voltica-cart-overlay {
+
+        position:fixed;
+
+        inset:0;
+
+        background:
+            rgba(0,0,0,.72);
+
+        backdrop-filter:
+            blur(10px);
+
+        -webkit-backdrop-filter:
+            blur(10px);
+
+        opacity:0;
+
+        visibility:hidden;
+
+        transition:
+            opacity .35s ease,
+            visibility .35s ease;
+
+        z-index:9998;
+
+    }
+
+
+    .voltica-cart-overlay.active {
+
+        opacity:1;
+
+        visibility:visible;
+
+    }
+
+
+    .voltica-cart-drawer {
+
+        position:fixed;
+
+        top:0;
+        right:0;
+        bottom:0;
+
+        width:
+            min(430px,92vw);
+
+        z-index:9999;
+
+        display:flex;
+
+        flex-direction:column;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(25,25,25,.96),
+                rgba(5,5,5,.98)
+            );
+
+        border-left:
+            1px solid rgba(255,255,255,.14);
+
+        box-shadow:
+            -30px 0 100px rgba(0,0,0,.7);
+
+        backdrop-filter:
+            blur(30px);
+
+        -webkit-backdrop-filter:
+            blur(30px);
+
+        transform:
+            translateX(105%);
+
+        transition:
+            transform .45s
+            cubic-bezier(.2,.8,.2,1);
+
+    }
+
+
+    .voltica-cart-drawer.active {
+
+        transform:
+            translateX(0);
+
+    }
+
+
+    .voltica-cart-header {
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+        padding:
+            28px 24px;
+
+        border-bottom:
+            1px solid rgba(255,255,255,.09);
+
+    }
+
+
+    .voltica-cart-brand {
+
+        display:block;
+
+        color:
+            rgba(255,255,255,.4);
+
+        font-size:9px;
+
+        letter-spacing:.2em;
+
+    }
+
+
+    .voltica-cart-header h2 {
+
+        margin:
+            5px 0 0;
+
+        font-size:28px;
+
+        letter-spacing:-.04em;
+
+    }
+
+
+    .voltica-cart-close {
+
+        width:44px;
+        height:44px;
+
+        border:
+            1px solid rgba(255,255,255,.12);
+
+        border-radius:14px;
+
+        background:
+            rgba(255,255,255,.05);
+
+        color:#fff;
+
+        font-size:26px;
+
+        cursor:pointer;
+
+    }
+
+
+    .voltica-cart-items {
+
+        flex:1;
+
+        overflow-y:auto;
+
+        padding:20px;
+
+    }
+
+
+    .voltica-cart-empty {
+
+        min-height:100%;
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        justify-content:center;
+
+        text-align:center;
+
+        color:
+            rgba(255,255,255,.45);
+
+    }
+
+
+    .voltica-cart-empty strong {
+
+        margin-top:10px;
+
+        color:#fff;
+
+    }
+
+
+    .voltica-cart-item {
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+        gap:15px;
+
+        padding:
+            18px 0;
+
+        border-bottom:
+            1px solid rgba(255,255,255,.07);
+
+    }
+
+
+    .voltica-cart-item-info {
+
+        min-width:0;
+
+    }
+
+
+    .voltica-cart-item-info strong {
+
+        display:block;
+
+        color:#fff;
+
+        font-size:14px;
+
+    }
+
+
+    .voltica-cart-item-info span {
+
+        display:block;
+
+        margin-top:5px;
+
+        color:
+            rgba(255,255,255,.45);
+
+        font-size:12px;
+
+    }
+
+
+    .voltica-cart-controls {
+
+        display:flex;
+
+        align-items:center;
+
+        gap:7px;
+
+    }
+
+
+    .voltica-cart-controls button {
+
+        width:32px;
+        height:32px;
+
+        border:
+            1px solid rgba(255,255,255,.12);
+
+        border-radius:9px;
+
+        background:
+            rgba(255,255,255,.05);
+
+        color:#fff;
+
+        cursor:pointer;
+
+    }
+
+
+    .voltica-cart-controls span {
+
+        min-width:20px;
+
+        text-align:center;
+
+        font-size:12px;
+
+    }
+
+
+    .voltica-cart-footer {
+
+        padding:
+            24px;
+
+        border-top:
+            1px solid rgba(255,255,255,.09);
+
+    }
+
+
+    .voltica-cart-total {
+
+        display:flex;
+
+        justify-content:space-between;
+
+        margin-bottom:18px;
+
+        font-size:14px;
+
+    }
+
+
+    .voltica-cart-total strong {
+
+        font-size:18px;
+
+    }
+
+
+    .voltica-cart-checkout {
+
+        width:100%;
+
+        min-height:55px;
+
+        border:0;
+
+        border-radius:16px;
+
+        background:#fff;
+
+        color:#050505;
+
+        font-weight:800;
+
+        cursor:pointer;
+
+        transition:.3s ease;
+
+    }
+
+
+    .voltica-cart-checkout:hover {
+
+        transform:
+            translateY(-2px);
+
+        box-shadow:
+            0 15px 35px
+            rgba(255,255,255,.12);
+
+    }
+
+
+    /* =================================================
+       MOBILE
+       ================================================= */
+
+    @media (max-width:850px) {
+
+        .hero-glass {
+
+            grid-template-columns:1fr;
+
+            padding:
+                40px 25px;
+
+        }
+
+
+        .premium-home {
+
+            padding-top:120px;
+
+        }
+
+
+        .hero-product {
+
+            min-height:420px;
+
+        }
+
+
+        .product-orbit {
+
+            width:320px;
+            height:320px;
+
+        }
+
+
+        .hero-video-card {
+
+            transform:
+                rotateY(0deg)
+                rotateX(2deg);
+
+        }
+
+
+        .lifetime-card {
+
+            grid-template-columns:1fr;
+
+            text-align:center;
+
+            justify-items:center;
+
+            padding:
+                35px 25px;
+
+        }
+
+
+        .collection-grid {
+
+            grid-template-columns:1fr;
+
+        }
+
+
+        .collection-card.large {
+
+            min-height:430px;
+
+        }
+
+
+        .collection-side {
+
+            grid-template-columns:
+                1fr 1fr;
+
+            grid-template-rows:
+                1fr;
+
+        }
+
+    }
+
+
+    @media (max-width:560px) {
+
+        .hero-copy h1 {
+
+            font-size:54px;
+
+        }
+
+
+        .hero-actions {
+
+            flex-direction:column;
+
+        }
+
+
+        .hero-button {
+
+            width:100%;
+
+        }
+
+
+        .hero-product {
+
+            min-height:360px;
+
+        }
+
+
+        .hero-video-card {
+
+            width:100%;
+
+            padding:10px;
+
+            border-radius:28px;
+
+        }
+
+
+        .hero-video-screen {
+
+            border-radius:21px;
+
+        }
+
+
+        .hero-video-meta {
+
+            padding:
+                13px 5px 3px;
+
+        }
+
+
+        .hero-video-meta-left strong {
+
+            font-size:14px;
+
+        }
+
+
+        .collection-side {
+
+            grid-template-columns:1fr;
+
+        }
+
+
+        .collection-card {
+
+            min-height:300px;
+
+        }
+
+    }
+
+
+    /* =================================================
+       REDUCED MOTION
+       ================================================= */
+
+    @media (prefers-reduced-motion:reduce) {
+
+        *,
+        *::before,
+        *::after {
+
+            animation-duration:.01ms !important;
+
+            animation-iteration-count:1 !important;
+
+            scroll-behavior:auto !important;
+
+        }
+
+    }
+
+</style>
+
 </head><body><!-- =====================================================
      AMBIENT SYSTEM
      ===================================================== --><div
     class="voltica-ambient"
     aria-hidden="true"
 ><span class="ambient-orb one"></span>
+
 <span class="ambient-orb two"></span>
+
 <span class="ambient-orb three"></span>
 
 
 <div class="pulse-network">
 
     <span class="pulse-point pp1"></span>
+
     <span class="pulse-point pp2"></span>
+
     <span class="pulse-point pp3"></span>
+
     <span class="pulse-point pp4"></span>
+
     <span class="pulse-point pp5"></span>
 
 </div>
@@ -228,7 +2292,7 @@
 
 
     <!-- =============================================
-         3D VIDEO EXPERIENCE
+         15.MP4 — 3D GLASS HERO
          ============================================= -->
 
     <div class="hero-product">
@@ -240,75 +2304,71 @@
         ></div>
 
 
-        <div class="hero-video-stage">
+        <div class="hero-video-card">
 
 
-            <div
-                class="hero-video-glass"
-                id="heroVideoGlass"
-            >
+            <div class="hero-video-screen">
+
+
+                <video
+                    id="heroVideo"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                    poster=""
+                >
+
+                    <source
+                        src="15.mp4"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support
+                    HTML5 video.
+
+                </video>
 
 
                 <div
-                    class="hero-video-frame"
-                >
+                    class="video-glass-reflection"
+                    aria-hidden="true"
+                ></div>
 
 
-                    <video
-                        id="heroVideo"
-                        class="hero-video"
-                        autoplay
-                        muted
-                        playsinline
-                        preload="auto"
-                        poster=""
-                    >
-
-                        <source
-                            src="15.mp4"
-                            type="video/mp4"
-                        >
-
-                        Your browser does not support
-                        HTML5 video.
-
-                    </video>
+                <div
+                    class="video-edge-glow"
+                    aria-hidden="true"
+                ></div>
 
 
-                    <div
-                        class="hero-video-reflection"
-                        aria-hidden="true"
-                    ></div>
+            </div>
 
 
-                    <div
-                        class="hero-video-glow"
-                        aria-hidden="true"
-                    ></div>
+            <div class="hero-video-meta">
 
+
+                <div class="hero-video-meta-left">
+
+                    <span>
+                        VOLTICA VISUAL
+                    </span>
+
+                    <strong>
+                        THE FUTURE IS HERE.
+                    </strong>
 
                 </div>
 
 
-                <div class="hero-video-controls">
-
-
-                    <span class="hero-video-label">
-
-                        VOLTICA
-
-                    </span>
-
+                <div class="hero-video-status">
 
                     <span
-                        class="hero-video-status"
-                        id="heroVideoStatus"
-                    >
+                        class="hero-video-status-dot"
+                    ></span>
 
-                        PLAYING
-
-                    </span>
-
+                    LIVE
 
                 </div>
 
@@ -420,7 +2480,7 @@
 
             <img
                 src="assets/images/q451-2.webp"
-                alt="Voltica premium audio collection"
+                alt="Premium Voltica technology collection"
                 loading="lazy"
             >
 
@@ -428,12 +2488,12 @@
             <div class="collection-overlay">
 
                 <span>
-                    PREMIUM AUDIO
+                    PREMIUM TECHNOLOGY
                 </span>
 
 
                 <h3>
-                    EXPLORE AUDIO
+                    EXPLORE VOLTICA
                 </h3>
 
             </div>
@@ -509,41 +2569,65 @@
 
 </section><!-- =====================================================
      FINAL CTA
-     ===================================================== --><section class="final-section"><div class="final-glass">
+     ===================================================== --><section
+    class="final-section"
+    aria-labelledby="final-cta-title"
+><div class="final-glass">
 
 
-    <span class="pulse-dot"></span>
+    <div class="final-status">
+
+        <span class="pulse-dot"></span>
+
+        <span>
+            VOLTICA STORE
+        </span>
+
+    </div>
 
 
     <span class="final-label">
-
-        VOLTICA STORE
-
+        THE NEXT SELECTION
     </span>
 
 
-    <h2>
+    <h2 id="final-cta-title">
 
-        EXPERIENCE
-        THE DIFFERENCE.
+        DISCOVER
+        WHAT'S NEXT.
 
     </h2>
 
 
     <p>
 
-        Premium technology.
-        Designed for everyday life.
+        Explore premium technology,
+        immersive audio, gaming gear
+        and carefully selected products
+        designed for the future of everyday life.
 
     </p>
 
 
-    <a
-        href="store.html"
-        class="hero-button primary"
-    >
-        EXPLORE STORE →
-    </a>
+    <div class="final-actions">
+
+
+        <a
+            href="store.html"
+            class="hero-button primary"
+            aria-label="Explore the Voltica Store"
+        >
+
+            EXPLORE THE STORE
+
+            <span aria-hidden="true">
+                →
+            </span>
+
+        </a>
+
+
+    </div>
 
 
 </div>
@@ -651,6 +2735,7 @@
     id="indexCartItems"
 >
 
+
     <div class="voltica-cart-empty">
 
         <span>
@@ -668,6 +2753,7 @@
         </p>
 
     </div>
+
 
 </div>
 
@@ -704,6 +2790,7 @@
 
     </button>
 
+
 </div>
 
 </aside><!-- =====================================================
@@ -729,282 +2816,149 @@
 </footer><!-- =====================================================
      STORE ENGINE
      ===================================================== --><script src="products.js"></script><script src="store.js"></script><!-- =====================================================
-     HERO VIDEO CONTROLLER
+     HOMEPAGE VIDEO + CART CONTROLLER
      ===================================================== --><script>
 
 "use strict";
+
 
 document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-        const video =
+
+        /* =================================================
+           HERO VIDEO
+           ================================================= */
+
+        const heroVideo =
             document.getElementById(
                 "heroVideo"
             );
 
-        const status =
-            document.getElementById(
-                "heroVideoStatus"
+
+        if (heroVideo) {
+
+
+            /*
+             * Start muted so mobile browsers allow
+             * autoplay immediately.
+             */
+
+            heroVideo.muted = true;
+
+
+            const startVideo =
+                function () {
+
+                    const playPromise =
+                        heroVideo.play();
+
+
+                    if (
+                        playPromise &&
+                        typeof playPromise.catch ===
+                        "function"
+                    ) {
+
+                        playPromise.catch(
+                            function () {
+
+                                /*
+                                 * Browser blocked autoplay.
+                                 * First user interaction will retry.
+                                 */
+
+                            }
+                        );
+
+                    }
+
+                };
+
+
+            startVideo();
+
+
+            /*
+             * First interaction:
+             * retry playback and attempt to restore sound.
+             */
+
+            const enableVideoSound =
+                function () {
+
+                    heroVideo.muted = false;
+
+                    heroVideo.volume = 1;
+
+
+                    const playPromise =
+                        heroVideo.play();
+
+
+                    if (
+                        playPromise &&
+                        typeof playPromise.catch ===
+                        "function"
+                    ) {
+
+                        playPromise.catch(
+                            function () {
+
+                                /*
+                                 * If browser still blocks
+                                 * sound autoplay, video remains
+                                 * available in muted mode.
+                                 */
+
+                                heroVideo.muted = true;
+
+                            }
+                        );
+
+                    }
+
+
+                    document.removeEventListener(
+                        "pointerdown",
+                        enableVideoSound
+                    );
+
+
+                    document.removeEventListener(
+                        "keydown",
+                        enableVideoSound
+                    );
+
+                };
+
+
+            document.addEventListener(
+                "pointerdown",
+                enableVideoSound,
+                {
+                    once:true,
+                    passive:true
+                }
             );
 
 
-        if (!video) {
-            return;
+            document.addEventListener(
+                "keydown",
+                enableVideoSound,
+                {
+                    once:true
+                }
+            );
+
         }
 
 
-        /*
-         * -------------------------------------------------
-         * AUTOPLAY
-         * -------------------------------------------------
-         *
-         * The video starts muted because modern browsers
-         * normally block autoplay with sound.
-         */
 
-        video.muted = true;
-
-
-        const startVideo =
-            function () {
-
-                const promise =
-                    video.play();
-
-
-                if (
-                    promise &&
-                    typeof promise.catch ===
-                    "function"
-                ) {
-
-                    promise.catch(
-                        function () {
-
-                            if (status) {
-
-                                status.textContent =
-                                    "READY";
-
-                            }
-
-                        }
-                    );
-
-                }
-
-            };
-
-
-        startVideo();
-
-
-
-        /*
-         * -------------------------------------------------
-         * UNMUTE AFTER USER INTERACTION
-         * -------------------------------------------------
-         *
-         * First tap/click anywhere on the page attempts
-         * to enable sound.
-         */
-
-        const enableSound =
-            function () {
-
-                if (
-                    video.paused
-                ) {
-
-                    video.play()
-                        .catch(
-                            function () {}
-                        );
-
-                }
-
-
-                video.muted = false;
-
-
-                if (status) {
-
-                    status.textContent =
-                        "SOUND ON";
-
-                }
-
-
-                document.removeEventListener(
-                    "click",
-                    enableSound
-                );
-
-
-                document.removeEventListener(
-                    "touchstart",
-                    enableSound
-                );
-
-
-                document.removeEventListener(
-                    "keydown",
-                    enableSound
-                );
-
-            };
-
-
-        document.addEventListener(
-            "click",
-            enableSound,
-            {
-                once:true,
-                passive:true
-            }
-        );
-
-
-        document.addEventListener(
-            "touchstart",
-            enableSound,
-            {
-                once:true,
-                passive:true
-            }
-        );
-
-
-        document.addEventListener(
-            "keydown",
-            enableSound,
-            {
-                once:true
-            }
-        );
-
-
-
-        /*
-         * -------------------------------------------------
-         * VIDEO STATUS
-         * -------------------------------------------------
-         */
-
-        video.addEventListener(
-            "play",
-            function () {
-
-                if (
-                    status &&
-                    video.muted
-                ) {
-
-                    status.textContent =
-                        "PLAYING";
-
-                }
-
-            }
-        );
-
-
-        video.addEventListener(
-            "ended",
-            function () {
-
-                if (status) {
-
-                    status.textContent =
-                        "COMPLETE";
-
-                }
-
-            }
-        );
-
-
-        video.addEventListener(
-            "error",
-            function () {
-
-                if (status) {
-
-                    status.textContent =
-                        "VIDEO ERROR";
-
-                }
-
-            }
-        );
-
-
-
-        /*
-         * -------------------------------------------------
-         * VISIBILITY
-         * -------------------------------------------------
-         *
-         * Pause when the video leaves the viewport and
-         * resume when it returns.
-         */
-
-        if (
-            "IntersectionObserver" in window
-        ) {
-
-            const observer =
-                new IntersectionObserver(
-                    function (entries) {
-
-                        entries.forEach(
-                            function (entry) {
-
-                                if (
-                                    entry.isIntersecting
-                                ) {
-
-                                    video.play()
-                                        .catch(
-                                            function () {}
-                                        );
-
-                                }
-                                else {
-
-                                    video.pause();
-
-                                }
-
-                            }
-                        );
-
-                    },
-                    {
-                        threshold:0.35
-                    }
-                );
-
-
-            observer.observe(video);
-
-        }
-
-    }
-);
-
-</script><!-- =====================================================
-     INDEX CART CONTROLLER
-     ===================================================== --><script>
-
-"use strict";
-
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
+        /* =================================================
+           CART
+           ================================================= */
 
         const cartButton =
             document.getElementById(
@@ -1177,6 +3131,7 @@ document.addEventListener(
             cart.forEach(
                 item => {
 
+
                     const quantity =
                         Number(
                             item.quantity || 1
@@ -1267,9 +3222,11 @@ document.addEventListener(
                         .forEach(
                             button => {
 
+
                                 button.addEventListener(
                                     "click",
                                     function () {
+
 
                                         const action =
                                             this.dataset.action;
@@ -1436,16 +3393,24 @@ document.addEventListener(
         );
 
 
-        cartClose.addEventListener(
-            "click",
-            closeIndexCart
-        );
+        if (cartClose) {
+
+            cartClose.addEventListener(
+                "click",
+                closeIndexCart
+            );
+
+        }
 
 
-        cartOverlay.addEventListener(
-            "click",
-            closeIndexCart
-        );
+        if (cartOverlay) {
+
+            cartOverlay.addEventListener(
+                "click",
+                closeIndexCart
+            );
+
+        }
 
 
         document.addEventListener(
@@ -1465,18 +3430,22 @@ document.addEventListener(
         );
 
 
-        checkoutButton.addEventListener(
-            "click",
-            function () {
+        if (checkoutButton) {
 
-                window.open(
-                    "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j",
-                    "_blank",
-                    "noopener,noreferrer"
-                );
+            checkoutButton.addEventListener(
+                "click",
+                function () {
 
-            }
-        );
+                    window.open(
+                        "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j",
+                        "_blank",
+                        "noopener,noreferrer"
+                    );
+
+                }
+            );
+
+        }
 
 
         window.addEventListener(

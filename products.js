@@ -375,7 +375,70 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/4gM4gA09F0JNfOE3ui2Ji0d",
         "supplierLink": "https://www.alibaba.com/x/B2MZ0n?ck=pdp",
         "active": true
-    }
+    },
+     }
+
+    /* =========================================================
+       Product name : Smart Gesture Control Auto-Tracking Phone Gimbal & Tripod Mount | Voltica Store
+       ========================================================= */
+
+{
+        "id": "smart-gesture-control-auto-tracking-phone-gimbal-tripod-mount-voltica-store",
+        "sku": "VLT-VLG-001",
+        "name": "Smart Gesture Control Auto-Tracking Phone Gimbal & Tripod Mount | Voltica Store",
+        "category": "Vlogging & Streaming Gear",
+        "badge": "NEW",
+        "price": 39.99,
+        "referencePrice": 49.99,
+        "cost": 11.85,
+        "shipping": 8.42,
+        "shortDescription": "Elevate your content creation with the Voltica Store 360Â° Auto Face Tracking Smart Gimbal. Featuring advanced AI facial tracking, intuitive hand gesture controls (OK to track, palm to pause), and a versatile app-free design, this portable smartphone holder ensures you never miss an angle. Perfect for TikTok lives, VLOGs, and hands-free streaming across all your favorite platforms.",
+        "description": "Take your videos, live streams, and content creation to the next level with the Voltica Store 360Â° Auto Face Tracking Smart Gimbal. Designed for creators, influencers, and professionals, this intelligent phone holder combines cutting-edge AI technology with effortless portability to ensure you stay perfectly framed at all times.\nâ€‹Transform how you film your TikTok dances, cooking tutorials, or live broadcasts with a true 360-degree auto-tracking system that leaves no dead angles. Thanks to innovative smart gesture recognition, you can control your shots completely hands-free: simply show an \"OK\" gesture to start tracking, or a \"Palm\" gesture to pause shooting instantly. Best of all, it requires no complicated setup or app downloadsâ€”just power it on and start streaming immediately across platforms like Instagram, Facebook, TikTok, and YouTube.\nâ€‹Compact, versatile, and built for multi-scene use, this mini gimbal features a flexible 180-degree adjustable lens, seamless switching between landscape and portrait modes, and standard tripod compatibility. Backed by a reliable 1200mAh built-in battery delivering up to 8 hours of continuous operation, it is the ultimate accessory for creators on the move.",
+        "features": [
+            "â€‹360Â° Smart Face Tracking: Features an advanced AI intelligent algorithm that tracks your face smoothly with no dead angles.",
+            "â€‹Smart Gesture Recognition: Control filming hands-free with simple hand signalsâ€”flash an \"OK\" gesture to start tracking or a \"Palm\" gesture to pause shooting.",
+            "â€‹App-Free Convenience: Open and use instantly without needing to download any third-party applications or configure complicated Bluetooth setups.",
+            "â€‹Flexible Multi-Angle Design: Seamlessly switch between horizontal (landscape) and vertical (portrait) modes, alongside a 180-degree adjustable lens.",
+            "â€‹Long-Lasting Battery: Equipped with a built-in 1200mAh lithium battery delivering up to 8 hours of continuous operation for extended streaming sessions.",
+            "â€‹Universal Multi-Scene Compatibility: Compact mini-body design built for TikTok live broadcasts, VLOGs, and everyday content creation, with full support for standard tripod mounting."
+        ],
+        "specifications": {
+            "Product Type": "360Â° Auto Face Tracking Smart Gimbal / Phone Holder",
+            "â€‹Tracking Technology": "AI Intelligent Face & Motion Tracking System",
+            "â€‹Gesture Control": "Supported (OK gesture to start tracking, Palm gesture to pause)",
+            "â€‹Rotation Angle": "360-degree horizontal rotation / 180-degree tilt/relax flip lens adjustment",
+            "â€‹Orientation Modes": "Easily switchable between Landscape (horizontal) and Portrait (vertical)",
+            "â€‹App Requirement": "None (Plug-and-play, works directly with camera apps, TikTok, Instagram, and live streaming platforms)",
+            "â€‹Battery Capacity": "1200mAh built-in lithium battery",
+            "â€‹Battery Life": "Up to 8 hours of long-lasting operation",
+            "â€‹Mounting": "Compatible with standard tripods (screw thread base)",
+            "â€‹Design": "Mini body portable design for multi-scene usage (Vlogging, live streaming, video calls)"
+        },
+        "images": [
+            "assets/images/1000052833.jpg",
+            "assets/images/1000052831.webp",
+            "assets/images/1000052830.webp",
+            "assets/images/1000052827.webp",
+            "assets/images/1000052828.webp",
+            "assets/images/1000052824.webp",
+            "assets/images/1000052829.webp",
+            "assets/images/1000052825.webp",
+            "assets/images/1000052826.webp",
+            "assets/images/1000052823.webp",
+            "assets/images/1000052832.webp"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Stream Like a Pro, Hands-Free",
+            "lines": [
+                "Defy limits and capture every angle effortlessly with the Voltica Store 360Â° Auto Face Tracking Smart Gimbal. Featuring smart gesture controls, app-free setup, and an 8-hour battery life, itâ€™s the ultimate companion for TikTok live streams, VLOGs, and content creation. Add it to your cart today and take your videos to the next level!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/6oUbJ2cWrdwzbyo4ym2Ji08",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-1597165945188405248.html",
+        "active": true
+}
 
 
 ];

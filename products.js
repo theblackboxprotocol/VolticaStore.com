@@ -1,7 +1,7 @@
 /* =========================================================
    VOLTICA STORE
    PRODUCT DATABASE
-   7 ACTIVE PRODUCTS
+   8 ACTIVE PRODUCTS
    ========================================================= */
 
 "use strict";
@@ -462,11 +462,13 @@ window.volticaProducts = [
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1597165945188405248.html",
         "active": true
     },
-   /* =========================================================
-       Product name : Voltica Store Black Star Projector & Ambience Night Lamp
+
+
+    /* =========================================================
+       PRODUCT 08 — BLACK STAR PROJECTOR
        ========================================================= */
 
-{
+    {
         "id": "voltica-store-black-star-projector-ambience-night-lamp",
         "sku": "VLT-LFT-002",
         "name": "Voltica Store Black Star Projector & Ambience Night Lamp",
@@ -476,47 +478,55 @@ window.volticaProducts = [
         "referencePrice": 93.99,
         "cost": 55.56,
         "shipping": 12.05,
-        "shortDescription": "Transform your bedroom into a breathtaking cosmic observatory with the Voltica Store Black Star Projector & Ambience Night Lamp. Featuring 10 interchangeable projection discsâ€”including Star Saturn, Northern Lights, Manta rays, and deep space galaxiesâ€”this sleek, UFO-inspired ambiance lamp projects crystal-clear constellations and planets right onto your ceiling and walls. USB-powered and effortlessly versatile, itâ€™s the ultimate romantic night light and mood creator for any room.",
-        "description": "â€‹Turn your ceiling into a mesmerizing canvas of the universe with the Voltica Store Black Star Projector & Ambience Night Lamp. Designed to spark wonder and set the ultimate mood, this sleek black projection lamp lets you explore the cosmos without ever leaving your bed.\nâ€‹Featuring 10 unique slide discs, you can instantly switch your room's atmosphere from a majestic starlit galaxy (Star Saturn, Star Planet, Dark Cloud Planet) to surreal deep-sea vistas (Manta, Black whale), natural wonders (Northern Lights), or prehistoric worlds (Dinosaur World). Whether you are looking to create a romantic ambiance for date night, a calming sleep environment for a childâ€™s room, or an aesthetic background for your evening relaxation, this lamp delivers stunning, high-definition clarity.\nâ€‹Compact, USB-powered, and engineered with a modern matte black aesthetic that blends seamlessly into any room decor, it is the ultimate ambient lighting accessory for dreamers, stargazers, and modern interior stylists.",
+
+        "shortDescription": "Transform your bedroom into a breathtaking cosmic observatory with the Voltica Store Black Star Projector & Ambience Night Lamp. Featuring 10 interchangeable projection discs—including Star Saturn, Northern Lights, Manta rays, and deep space galaxies—this sleek, UFO-inspired ambiance lamp projects crystal-clear constellations and planets right onto your ceiling and walls. USB-powered and effortlessly versatile, it’s the ultimate romantic night light and mood creator for any room.",
+
+        "description": "Turn your ceiling into a mesmerizing canvas of the universe with the Voltica Store Black Star Projector & Ambience Night Lamp. Designed to spark wonder and set the ultimate mood, this sleek black projection lamp lets you explore the cosmos without ever leaving your bed.\n\nFeaturing 10 unique slide discs, you can instantly switch your room's atmosphere from a majestic starlit galaxy (Star Saturn, Star Planet, Dark Cloud Planet) to surreal deep-sea vistas (Manta, Black whale), natural wonders (Northern Lights), or prehistoric worlds (Dinosaur World). Whether you are looking to create a romantic ambiance for date night, a calming sleep environment for a child’s room, or an aesthetic background for your evening relaxation, this lamp delivers stunning, high-definition clarity.\n\nCompact, USB-powered, and engineered with a modern matte black aesthetic that blends seamlessly into any room decor, it is the ultimate ambient lighting accessory for dreamers, stargazers, and modern interior stylists.",
+
         "features": [
             "10 Interchangeable Discs: Comes with ten distinct projection themes including Star Saturn, Northern Lights, Manta, Dinosaur World, Zodiac, and deep space galaxies.",
-            "â€‹Immersive Ceiling & Wall Projection: Transforms ordinary rooms into breathtaking celestial or aquatic environments with crisp visual clarity.",
-            "â€‹Sleek UFO-Inspired Design: Features a modern, matte-black minimalist housing that looks great on any desk, nightstand, or shelf.",
-            "â€‹Versatile Ambience Creator: Perfect for romantic evenings, relaxing sleep routines, meditation, bedroom decor, or creative background lighting.",
-            "â€‹Convenient USB Powered: Easy to plug-and-play using standard USB connectivity for hassle-free placement anywhere in your home."
+            "Immersive Ceiling & Wall Projection: Transforms ordinary rooms into breathtaking celestial or aquatic environments with crisp visual clarity.",
+            "Sleek UFO-Inspired Design: Features a modern, matte-black minimalist housing that looks great on any desk, nightstand, or shelf.",
+            "Versatile Ambience Creator: Perfect for romantic evenings, relaxing sleep routines, meditation, bedroom decor, or creative background lighting.",
+            "Convenient USB Powered: Easy to plug-and-play using standard USB connectivity for hassle-free placement anywhere in your home."
         ],
+
         "specifications": {
             "Product Type": "Star Projector & Ambience Night Lamp",
-            "â€‹Color": "Matte Black",
-            "â€‹Projection Discs Included": "10 films (Manta, Northern Lights, Star Saturn, Dinosaur World, Dark Cloud Planet, Star Planet, Starship, Space Warship, Black Whale, Zodiac)",
-            "â€‹Power Source": "USB Powered (Cable included)",
-            "â€‹Packing List": "1 * Projection lamp, 1 * USB cable, 10 * Projection discs"
+            "Color": "Matte Black",
+            "Projection Discs Included": "10 films (Manta, Northern Lights, Star Saturn, Dinosaur World, Dark Cloud Planet, Star Planet, Starship, Space Warship, Black Whale, Zodiac)",
+            "Power Source": "USB Powered (Cable included)",
+            "Packing List": "1 * Projection lamp, 1 * USB cable, 10 * Projection discs"
         },
+
         "images": [
             "assets/images/projector2.webp",
             "assets/images/projector1.jpg",
             "assets/images/projector3.webp",
             "assets/images/projector4.webp"
         ],
+
         "colors": [],
         "variants": [],
+
         "customCta": {
             "title": "Bring the Galaxy Into Your Bedroom",
             "lines": [
                 "Escape into the cosmos and transform your space into a dreamlike sanctuary with the Voltica Store Black Star Projector. With 10 interchangeable scenes, sleek design, and effortless USB power, it's time to redefine your room's ambiance. Add yours to the cart today and sleep under the stars!"
             ]
         },
+
         "stripeLink": "https://buy.stripe.com/7sY4gAaOj6476e47Ky2Ji0f",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2408290911051600500.html",
         "active": true
-}, 
-   }
+    },
+
 
     /* =========================================================
-       Product name : Kiwi Ears Orchestra II - 10BA Professional In-Ear Monitors | Voltica Store Canada
+       PRODUCT 09 — KIWI EARS ORCHESTRA II
        ========================================================= */
 
-{
+    {
         "id": "kiwi-ears-orchestra-ii-10ba-professional-in-ear-monitors-voltica-store-canada",
         "sku": "VLT-AUD-OCH-200",
         "name": "Kiwi Ears Orchestra II - 10BA Professional In-Ear Monitors | Voltica Store Canada",
@@ -526,28 +536,33 @@ window.volticaProducts = [
         "referencePrice": 349.99,
         "cost": 219.99,
         "shipping": null,
+
         "shortDescription": "Discover the Kiwi Ears Orchestra II, the pinnacle of precision acoustic engineering. Featuring an impressive configuration of 10 balanced armature (10BA) drivers per earpiece and a 4-way crossover, these in-ear monitors (IEMs) deliver a balanced U-shaped signature, studio-grade clarity, and reference-level imaging. Available now at Voltica Store, official distributor in Canada.",
-        "description": "The Kiwi Ears Orchestra II push the boundaries of portable high fidelity. Built for professional musicians, sound engineers, and the most demanding audiophiles, these IEMs combine exceptional craftsmanship with cutting-edge sound architecture. Whether you are performing on stage or listening to your favorite high-res tracks, the Orchestra II guarantees total immersion and surgical precision.\nâ€‹Advanced Architecture: 10BA Configuration & 4-Way Crossover\nâ€‹At the core of each earpiece are 10 balanced armature drivers managed by a 4-way acoustic crossover system.\nâ€‹Sub-bass and Bass: Delivers impactful deep rumbles, supported by a relaxed 300Hz shelf that adds body to bass guitars and synths.\nâ€‹Mids: A linear response offering true-to-life sound, reference-like layering, and imaging.\nâ€‹Treble: An eased mid-treble transition ensuring naturally balanced vocals and strings, eliminating artificial harmonic presence and brilliance.\nâ€‹Ergonomic Comfort and Handcrafted Acrylic Build\nâ€‹Weighing only 7.71 g per earbud, the Orchestra II benefits from an ergonomic contour ensuring a snug, fatigue-free fit for long listening sessions or live performances. Its high-clarity transparent acrylic shell reveals the precision-balanced drivers while minimizing resonance, complemented by a stunning hexagon grid faceplate with an iridescent finish.",
+
+        "description": "The Kiwi Ears Orchestra II push the boundaries of portable high fidelity. Built for professional musicians, sound engineers, and the most demanding audiophiles, these IEMs combine exceptional craftsmanship with cutting-edge sound architecture. Whether you are performing on stage or listening to your favorite high-res tracks, the Orchestra II guarantees total immersion and surgical precision.\n\nAdvanced Architecture: 10BA Configuration & 4-Way Crossover\n\nAt the core of each earpiece are 10 balanced armature drivers managed by a 4-way acoustic crossover system.\n\nSub-bass and Bass: Delivers impactful deep rumbles, supported by a relaxed 300Hz shelf that adds body to bass guitars and synths.\n\nMids: A linear response offering true-to-life sound, reference-like layering, and imaging.\n\nTreble: An eased mid-treble transition ensuring naturally balanced vocals and strings, eliminating artificial harmonic presence and brilliance.\n\nErgonomic Comfort and Handcrafted Acrylic Build\n\nWeighing only 7.71 g per earbud, the Orchestra II benefits from an ergonomic contour ensuring a snug, fatigue-free fit for long listening sessions or live performances. Its high-clarity transparent acrylic shell reveals the precision-balanced drivers while minimizing resonance, complemented by a stunning hexagon grid faceplate with an iridescent finish.",
+
         "features": [
             "10BA Driver Configuration: Features 10 balanced armature drivers per side for high-resolution audio reproduction.",
-            "â€‹Balanced U-Shaped Tuning: Delivers deep sub-bass rumbles, a linear true-to-life midrange, and a crisp treble that eliminates artificial harshness.",
-            "â€‹4-Way Crossover: Manages multi-driver allocation for exceptional separation, imaging, and layered soundstages.",
-            "â€‹Acoustic Gel Isolation & Acrylic Build: Transparent high-clarity shell engineered to minimize resonance and provide comfortable noise isolation.",
-            "â€‹Ergonomic Lightweight Fit: Weighs only 7.71g per earbud for a secure, fatigue-free fit during long listening sessions.",
-            "â€‹Premium SP-OCC Modular Cable: Equipped with a 4-core OCC cable (122 cm) supporting interchangeable 3.5mm and 4.4mm plugs."
+            "Balanced U-Shaped Tuning: Delivers deep sub-bass rumbles, a linear true-to-life midrange, and a crisp treble that eliminates artificial harshness.",
+            "4-Way Crossover: Manages multi-driver allocation for exceptional separation, imaging, and layered soundstages.",
+            "Acoustic Gel Isolation & Acrylic Build: Transparent high-clarity shell engineered to minimize resonance and provide comfortable noise isolation.",
+            "Ergonomic Lightweight Fit: Weighs only 7.71g per earbud for a secure, fatigue-free fit during long listening sessions.",
+            "Premium SP-OCC Modular Cable: Equipped with a 4-core OCC cable (122 cm) supporting interchangeable 3.5mm and 4.4mm plugs."
         ],
+
         "specifications": {
-            "â€‹Driver Configuration": "10 Balanced Armature drivers per side",
-            "â€‹Sound Signature": "Balanced U-shaped tuning",
-            "â€‹Frequency Range": "20Hz - 20KHz",
-            "â€‹Impedance": "15 \\Omega",
-            "â€‹Sensitivity": "110dB",
-            "â€‹Crossover": "4-way acoustic crossover system",
-            "â€‹Build & Materials": "High-clarity transparent acrylic shell with a hexagonal grid nacre faceplate",
-            "â€‹Weight": "7.71g per earbud",
-            "â€‹Cable": "4-core SP-OCC (Single Crystal Copper) modular cable (122 cm length)",
-            "â€‹Plugs Included": "Interchangeable 3.5mm Single-Ended and 4.4mm Balanced plugs"
+            "Driver Configuration": "10 Balanced Armature drivers per side",
+            "Sound Signature": "Balanced U-shaped tuning",
+            "Frequency Range": "20Hz - 20KHz",
+            "Impedance": "15 Ω",
+            "Sensitivity": "110dB",
+            "Crossover": "4-way acoustic crossover system",
+            "Build & Materials": "High-clarity transparent acrylic shell with a hexagonal grid nacre faceplate",
+            "Weight": "7.71g per earbud",
+            "Cable": "4-core SP-OCC (Single Crystal Copper) modular cable (122 cm length)",
+            "Plugs Included": "Interchangeable 3.5mm Single-Ended and 4.4mm Balanced plugs"
         },
+
         "images": [
             "assets/images/orchestra1.jpg",
             "assets/images/orchestra2.jpg",
@@ -558,18 +573,23 @@ window.volticaProducts = [
             "assets/images/orchestra7.jpg",
             "assets/images/orchestra8.jpg"
         ],
+
         "colors": [],
         "variants": [],
+
         "customCta": {
             "title": "Experience Studio-Grade Sound",
+            "image": "assets/images/orchestra1.jpg",
+            "imageAlt": "Kiwi Ears Orchestra II - 10BA Professional In-Ear Monitors",
             "lines": [
                 "Unlock the full potential of your music and elevate your listening sessions with the Kiwi Ears Orchestra II. As the official Canadian distributor, Voltica Store brings you professional 10BA multi-driver performance straight to your setup. Order yours today and hear every detail the way the artist intended!"
             ]
         },
+
         "stripeLink": "https://buy.stripe.com/9B628saOjbor6e4fd02Ji0p",
         "supplierLink": "business@kiwiears.com",
         "active": true
-}
+    }
 
 ];
 

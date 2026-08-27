@@ -7,34 +7,13 @@
     <meta name="theme-color" content="#030303">
     <title>Voltica Store — The Future of Everyday</title>
 
+    <!-- Styles externes -->
     <link rel="stylesheet" href="store.css">
-    <link rel="stylesheet" href="index.css">
 
     <style>
-        :root {
-            --black: #030303;
-            --glass: rgba(255, 255, 255, 0.045);
-            --glass-strong: rgba(255, 255, 255, 0.075);
-            --border: rgba(255, 255, 255, 0.12);
-            --white: #ffffff;
-            --muted: rgba(255, 255, 255, 0.58);
-            --soft: rgba(255, 255, 255, 0.32);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            background: #030303;
-            color: #fff;
-            overflow-x: hidden;
-        }
+        /* =====================================================
+           STYLES SPÉCIFIQUES À L'INDEX
+           ===================================================== */
 
         /* =================================================
            AMBIENT SYSTEM
@@ -118,25 +97,21 @@
             top: 17%;
             left: 12%;
         }
-
         .pp2 {
             top: 31%;
             right: 15%;
             animation-delay: -0.8s;
         }
-
         .pp3 {
             top: 58%;
             left: 8%;
             animation-delay: -1.6s;
         }
-
         .pp4 {
             top: 72%;
             right: 11%;
             animation-delay: -2.3s;
         }
-
         .pp5 {
             top: 89%;
             left: 44%;
@@ -172,23 +147,23 @@
         .premium-home {
             position: relative;
             z-index: 2;
-            min-height: 480px;
+            min-height: 460px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 100px 24px 50px;
+            padding: 90px 24px 40px;
             overflow: hidden;
         }
 
         .hero-glass {
             position: relative;
             width: min(1180px, 100%);
-            min-height: 360px;
+            min-height: 340px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px 50px;
-            border: 1px solid var(--border);
+            padding: 38px 45px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 42px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.018));
             backdrop-filter: blur(35px);
@@ -230,7 +205,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 7px 14px;
+            padding: 6px 13px;
             border: 1px solid rgba(255, 255, 255, 0.13);
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.045);
@@ -249,8 +224,8 @@
         }
 
         .hero-copy h1 {
-            margin: 12px 0 0;
-            font-size: clamp(38px, 6vw, 72px);
+            margin: 10px 0 0;
+            font-size: clamp(34px, 5.5vw, 66px);
             line-height: 0.86;
             letter-spacing: -0.07em;
             font-weight: 800;
@@ -265,10 +240,10 @@
         }
 
         .hero-copy p {
-            max-width: 600px;
-            margin: 14px auto 0;
-            color: var(--muted);
-            font-size: 14px;
+            max-width: 560px;
+            margin: 12px auto 0;
+            color: rgba(255, 255, 255, 0.58);
+            font-size: 13px;
             line-height: 1.7;
         }
 
@@ -277,23 +252,24 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 18px;
         }
 
         .hero-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 44px;
-            padding: 0 20px;
+            min-height: 42px;
+            padding: 0 18px;
             border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 16px;
+            border-radius: 14px;
             text-decoration: none;
             color: #fff;
             background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             transition: 0.35s ease;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             letter-spacing: 0.04em;
         }
@@ -316,7 +292,7 @@
         .index-video-section {
             position: relative;
             z-index: 3;
-            padding: 10px 24px 40px;
+            padding: 10px 24px 35px;
         }
 
         .index-video-container {
@@ -358,13 +334,13 @@
         .q45-promo-section {
             position: relative;
             z-index: 3;
-            padding: 10px 24px 60px;
+            padding: 10px 24px 50px;
         }
 
         .q45-promo-card {
             position: relative;
             width: min(1080px, 100%);
-            min-height: 300px;
+            min-height: 280px;
             margin: auto;
             display: flex;
             align-items: center;
@@ -384,7 +360,6 @@
             inset: 7px;
             border-radius: 28px;
             border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.04), inset 0 0 8px rgba(255, 255, 255, 0.025);
             pointer-events: none;
             z-index: 5;
         }
@@ -426,7 +401,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 40px;
+            padding: 35px 35px;
         }
 
         .q45-promo-label {
@@ -434,16 +409,16 @@
             align-items: center;
             gap: 9px;
             width: max-content;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: rgba(255, 255, 255, 0.52);
-            font-size: 9px;
+            font-size: 8px;
             letter-spacing: 0.22em;
         }
 
         .q45-promo-label::before {
             content: "";
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
             background: #fff;
             box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
@@ -451,7 +426,7 @@
 
         .q45-promo-copy h2 {
             margin: 0;
-            font-size: clamp(36px, 5vw, 60px);
+            font-size: clamp(32px, 4.5vw, 52px);
             line-height: 0.92;
             letter-spacing: -0.06em;
         }
@@ -462,10 +437,10 @@
         }
 
         .q45-promo-description {
-            max-width: 560px;
-            margin: 14px auto 18px;
-            color: var(--muted);
-            font-size: 13px;
+            max-width: 520px;
+            margin: 12px auto 16px;
+            color: rgba(255, 255, 255, 0.58);
+            font-size: 12px;
             line-height: 1.7;
         }
 
@@ -474,34 +449,33 @@
             align-items: flex-end;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 18px;
+            gap: 10px;
+            margin-bottom: 16px;
         }
 
         .q45-price {
-            font-size: clamp(32px, 4.5vw, 48px);
+            font-size: clamp(28px, 4vw, 42px);
             line-height: 0.9;
             font-weight: 800;
             letter-spacing: -0.06em;
         }
 
         .q45-price small {
-            font-size: 11px;
+            font-size: 10px;
             color: rgba(255, 255, 255, 0.42);
             letter-spacing: 0.08em;
-            margin-left: 5px;
+            margin-left: 4px;
         }
 
         .q45-lifetime-badge {
-            padding: 6px 12px;
+            padding: 5px 11px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.06);
             color: #fff;
-            font-size: 8px;
+            font-size: 7px;
             font-weight: 700;
             letter-spacing: 0.14em;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
         }
 
         .q45-promo-button {
@@ -509,13 +483,13 @@
             align-items: center;
             justify-content: center;
             width: max-content;
-            min-height: 48px;
-            padding: 0 24px;
-            border-radius: 16px;
+            min-height: 44px;
+            padding: 0 22px;
+            border-radius: 14px;
             background: #fff;
             color: #050505;
             text-decoration: none;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
             letter-spacing: 0.08em;
             transition: 0.35s ease;
@@ -532,20 +506,20 @@
         .lifetime-section {
             position: relative;
             z-index: 3;
-            padding: 10px 24px 80px;
+            padding: 10px 24px 70px;
         }
 
         .lifetime-card {
             position: relative;
             width: min(1050px, 100%);
             margin: auto;
-            padding: 38px 45px;
+            padding: 32px 40px;
             display: grid;
-            grid-template-columns: 100px 1fr auto;
+            grid-template-columns: 90px 1fr auto;
             align-items: center;
-            gap: 24px;
+            gap: 22px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
+            border-radius: 28px;
             background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025));
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
@@ -556,25 +530,25 @@
         .lifetime-card::after {
             content: "";
             position: absolute;
-            width: 220px;
-            height: 220px;
-            right: -100px;
-            top: -100px;
+            width: 200px;
+            height: 200px;
+            right: -90px;
+            top: -90px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 70%);
             filter: blur(12px);
         }
 
         .lifetime-card-icon {
-            width: 80px;
-            height: 80px;
+            width: 72px;
+            height: 72px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 22px;
+            border-radius: 20px;
             background: rgba(255, 255, 255, 0.07);
-            font-size: 32px;
+            font-size: 28px;
             animation: cardPulse 3s ease-in-out infinite;
         }
 
@@ -590,23 +564,23 @@
 
         .lifetime-copy span {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             color: rgba(255, 255, 255, 0.45);
-            font-size: 9px;
+            font-size: 8px;
             letter-spacing: 0.2em;
         }
 
         .lifetime-copy h2 {
             margin: 0;
-            font-size: clamp(22px, 3.5vw, 38px);
+            font-size: clamp(20px, 3vw, 34px);
             letter-spacing: -0.04em;
         }
 
         .lifetime-copy p {
-            margin: 8px 0 0;
-            color: var(--muted);
+            margin: 6px 0 0;
+            color: rgba(255, 255, 255, 0.58);
             line-height: 1.6;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .lifetime-number {
@@ -617,13 +591,13 @@
 
         .lifetime-number strong {
             display: block;
-            font-size: clamp(32px, 4.5vw, 52px);
+            font-size: clamp(28px, 4vw, 46px);
             line-height: 1;
         }
 
         .lifetime-number span {
             color: rgba(255, 255, 255, 0.45);
-            font-size: 8px;
+            font-size: 7px;
             letter-spacing: 0.18em;
         }
 
@@ -633,7 +607,7 @@
         .collection-section {
             position: relative;
             z-index: 3;
-            padding: 80px 24px;
+            padding: 70px 24px;
         }
 
         .collection-container {
@@ -643,7 +617,7 @@
 
         .collection-heading {
             max-width: 700px;
-            margin-bottom: 45px;
+            margin-bottom: 40px;
         }
 
         .collection-heading span {
@@ -653,36 +627,36 @@
         }
 
         .collection-heading h2 {
-            margin: 12px 0 0;
-            font-size: clamp(32px, 5vw, 60px);
+            margin: 10px 0 0;
+            font-size: clamp(30px, 4.5vw, 56px);
             letter-spacing: -0.06em;
         }
 
         .collection-heading p {
-            color: var(--muted);
+            color: rgba(255, 255, 255, 0.58);
             line-height: 1.8;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .collection-grid {
             display: grid;
             grid-template-columns: 1.35fr 0.65fr;
-            gap: 18px;
+            gap: 16px;
         }
 
         .collection-card {
             position: relative;
-            min-height: 320px;
+            min-height: 300px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
+            border-radius: 28px;
             background: rgba(255, 255, 255, 0.035);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
 
         .collection-card.large {
-            min-height: 480px;
+            min-height: 440px;
         }
 
         .collection-card img {
@@ -699,7 +673,7 @@
         .collection-overlay {
             position: absolute;
             inset: auto 0 0;
-            padding: 24px 28px;
+            padding: 22px 24px;
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
         }
 
@@ -710,14 +684,14 @@
         }
 
         .collection-overlay h3 {
-            margin: 6px 0 0;
-            font-size: 24px;
+            margin: 5px 0 0;
+            font-size: 22px;
         }
 
         .collection-side {
             display: grid;
             grid-template-rows: 1fr 1fr;
-            gap: 18px;
+            gap: 16px;
         }
 
         /* =================================================
@@ -726,16 +700,16 @@
         .final-section {
             position: relative;
             z-index: 3;
-            padding: 60px 24px 100px;
+            padding: 50px 24px 90px;
         }
 
         .final-glass {
             width: min(1000px, 100%);
             margin: auto;
-            padding: 60px 30px;
+            padding: 50px 30px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.13);
-            border-radius: 38px;
+            border-radius: 36px;
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
@@ -753,36 +727,36 @@
         }
 
         .final-glass h2 {
-            margin: 18px 0 12px;
-            font-size: clamp(30px, 5vw, 55px);
+            margin: 16px 0 10px;
+            font-size: clamp(28px, 4.5vw, 50px);
             letter-spacing: -0.06em;
         }
 
         .final-glass p {
-            max-width: 520px;
-            margin: 0 auto 24px;
-            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 22px;
+            color: rgba(255, 255, 255, 0.58);
             line-height: 1.7;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         /* =================================================
-           CONTACT SECTION
+           CONTACT
            ================================================= */
         .contact-section {
             position: relative;
             z-index: 3;
-            padding: 20px 24px 80px;
+            padding: 20px 24px 70px;
         }
 
         .contact-acrylic {
             position: relative;
             width: min(900px, 100%);
             margin: auto;
-            padding: 50px 40px;
+            padding: 45px 35px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
+            border-radius: 28px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
@@ -791,10 +765,10 @@
 
         .contact-pulsar {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            top: -150px;
-            right: -150px;
+            width: 280px;
+            height: 280px;
+            top: -140px;
+            right: -140px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
             pointer-events: none;
@@ -802,7 +776,7 @@
 
         .contact-label {
             display: inline-block;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 999px;
             color: rgba(255, 255, 255, 0.5);
@@ -811,26 +785,26 @@
         }
 
         .contact-content h2 {
-            margin: 14px 0 6px;
-            font-size: clamp(28px, 4vw, 44px);
+            margin: 12px 0 5px;
+            font-size: clamp(26px, 3.5vw, 40px);
             letter-spacing: -0.04em;
         }
 
         .contact-content p {
             color: rgba(255, 255, 255, 0.5);
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .contact-button {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            margin-top: 18px;
-            padding: 12px 24px;
+            gap: 10px;
+            margin-top: 16px;
+            padding: 10px 22px;
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
+            border-radius: 14px;
             color: #fff;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 600;
             letter-spacing: 0.08em;
             transition: 0.3s ease;
@@ -843,202 +817,16 @@
         }
 
         .contact-button strong {
-            font-size: 16px;
-        }
-
-        /* =================================================
-           CART DRAWER
-           ================================================= */
-        .voltica-cart-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.72);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.35s ease, visibility 0.35s ease;
-            z-index: 9998;
-        }
-
-        .voltica-cart-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .voltica-cart-drawer {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: min(430px, 92vw);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            background: linear-gradient(145deg, rgba(25, 25, 25, 0.96), rgba(5, 5, 5, 0.98));
-            border-left: 1px solid rgba(255, 255, 255, 0.14);
-            box-shadow: -30px 0 100px rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            transform: translateX(105%);
-            transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .voltica-cart-drawer.active {
-            transform: translateX(0);
-        }
-
-        .voltica-cart-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 24px 24px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-        }
-
-        .voltica-cart-brand {
-            display: block;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 8px;
-            letter-spacing: 0.2em;
-        }
-
-        .voltica-cart-header h2 {
-            margin: 4px 0 0;
-            font-size: 24px;
-            letter-spacing: -0.04em;
-        }
-
-        .voltica-cart-close {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .voltica-cart-close:hover {
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .voltica-cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .voltica-cart-empty {
-            min-height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.45);
-        }
-
-        .voltica-cart-empty strong {
-            margin-top: 10px;
-            color: #fff;
-        }
-
-        .voltica-cart-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-        }
-
-        .voltica-cart-item-info {
-            min-width: 0;
-        }
-
-        .voltica-cart-item-info strong {
-            display: block;
-            color: #fff;
             font-size: 14px;
         }
 
-        .voltica-cart-item-info span {
-            display: block;
-            margin-top: 5px;
-            color: rgba(255, 255, 255, 0.45);
-            font-size: 12px;
-        }
-
-        .voltica-cart-controls {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-        }
-
-        .voltica-cart-controls button {
-            width: 32px;
-            height: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 9px;
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-        .voltica-cart-controls button:hover {
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .voltica-cart-controls span {
-            min-width: 20px;
-            text-align: center;
-            font-size: 12px;
-        }
-
-        .voltica-cart-footer {
-            padding: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.09);
-        }
-
-        .voltica-cart-total {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 18px;
-            font-size: 14px;
-        }
-
-        .voltica-cart-total strong {
-            font-size: 18px;
-        }
-
-        .voltica-cart-checkout {
-            width: 100%;
-            min-height: 52px;
-            border: 0;
-            border-radius: 16px;
-            background: #fff;
-            color: #050505;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .voltica-cart-checkout:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.12);
-        }
-
         /* =================================================
-           MOBILE
+           RESPONSIVE
            ================================================= */
         @media (max-width: 850px) {
             .hero-glass {
-                padding: 35px 25px;
-                min-height: 300px;
+                padding: 32px 24px;
+                min-height: 280px;
             }
 
             .premium-home {
@@ -1046,19 +834,23 @@
                 min-height: 380px;
             }
 
+            .hero-copy h1 {
+                font-size: clamp(30px, 6vw, 48px);
+            }
+
             .q45-promo-card {
                 min-height: 0;
             }
 
             .q45-promo-copy {
-                padding: 35px 25px;
+                padding: 30px 22px;
             }
 
             .lifetime-card {
                 grid-template-columns: 1fr;
                 text-align: center;
                 justify-items: center;
-                padding: 30px 25px;
+                padding: 28px 22px;
             }
 
             .collection-grid {
@@ -1066,7 +858,7 @@
             }
 
             .collection-card.large {
-                min-height: 380px;
+                min-height: 360px;
             }
 
             .collection-side {
@@ -1077,7 +869,7 @@
 
         @media (max-width: 560px) {
             .hero-copy h1 {
-                font-size: 44px;
+                font-size: 38px;
             }
 
             .hero-actions {
@@ -1091,11 +883,11 @@
             .index-video-section {
                 padding-left: 16px;
                 padding-right: 16px;
-                padding-bottom: 25px;
+                padding-bottom: 20px;
             }
 
             .index-video-frame {
-                border-radius: 22px;
+                border-radius: 20px;
             }
 
             .q45-promo-section {
@@ -1104,19 +896,19 @@
             }
 
             .q45-promo-card {
-                border-radius: 25px;
+                border-radius: 22px;
             }
 
             .q45-promo-copy {
-                padding: 30px 20px 35px;
+                padding: 25px 18px 30px;
             }
 
             .q45-promo-copy h2 {
-                font-size: 32px;
+                font-size: 28px;
             }
 
             .q45-price {
-                font-size: 38px;
+                font-size: 34px;
             }
 
             .q45-promo-button {
@@ -1128,18 +920,22 @@
             }
 
             .collection-card {
-                min-height: 260px;
+                min-height: 240px;
             }
 
             .hero-glass {
-                padding: 30px 20px;
-                min-height: 280px;
-                border-radius: 28px;
+                padding: 25px 18px;
+                min-height: 260px;
+                border-radius: 24px;
             }
 
             .premium-home {
-                padding: 70px 16px 40px;
-                min-height: 320px;
+                padding: 65px 16px 30px;
+                min-height: 300px;
+            }
+
+            .final-glass {
+                padding: 35px 20px;
             }
         }
     </style>
@@ -1147,3 +943,163 @@
 <body>
     <!-- =====================================================
          AMBIENT SYSTEM
+         ===================================================== -->
+    <div class="voltica-ambient" aria-hidden="true">
+        <span class="ambient-orb one"></span>
+        <span class="ambient-orb two"></span>
+        <span class="ambient-orb three"></span>
+
+        <div class="pulse-network">
+            <span class="pulse-point pp1"></span>
+            <span class="pulse-point pp2"></span>
+            <span class="pulse-point pp3"></span>
+            <span class="pulse-point pp4"></span>
+            <span class="pulse-point pp5"></span>
+        </div>
+    </div>
+
+    <div class="tech-grid" aria-hidden="true"></div>
+    <div class="pulsar-field" aria-hidden="true">
+        <span class="pulsar p1"></span>
+        <span class="pulsar p2"></span>
+        <span class="pulsar p3"></span>
+        <span class="pulsar p4"></span>
+        <span class="pulsar p5"></span>
+        <span class="pulsar p6"></span>
+    </div>
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+    <header class="store-header">
+        <a href="index.html" class="logo-acrylic" aria-label="Voltica Home">
+            <span class="logo-v">V</span>
+            <span class="logo-text">VOLTICA</span>
+        </a>
+
+        <nav class="store-nav">
+            <a href="index.html" class="nav-active">HOME</a>
+            <a href="store.html">STORE</a>
+            <a href="#contact">CONTACT</a>
+        </nav>
+
+        <button type="button" class="cart-acrylic" id="cartButton" aria-label="Open shopping cart" aria-controls="indexCartDrawer" aria-expanded="false">
+            <span class="cart-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 7H6"/>
+                    <circle cx="10" cy="20" r="1"/>
+                    <circle cx="18" cy="20" r="1"/>
+                </svg>
+            </span>
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+    </header>
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+    <main>
+        <!-- =====================================================
+             HERO — RÉDUIT
+             ===================================================== -->
+        <section class="premium-home">
+            <div class="hero-glass">
+                <div class="hero-copy">
+                    <div class="hero-kicker">
+                        <span class="hero-kicker-dot"></span>
+                        VOLTICA STORE
+                    </div>
+
+                    <h1>
+                        <span>THE FUTURE</span>
+                        <span>OF EVERYDAY</span>
+                    </h1>
+
+                    <p>
+                        Premium technology. Carefully selected products.
+                        Designed around the way the next generation lives, works, plays and listens.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="store.html" class="hero-button primary">EXPLORE STORE →</a>
+                        <a href="#q45-promo" class="hero-button">15% OFF FOR LIFE</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             FEATURE VIDEO
+             ===================================================== -->
+        <section class="index-video-section" aria-label="Voltica featured video">
+            <div class="index-video-container">
+                <div class="index-video-frame">
+                    <video src="15.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture controlslist="nodownload noplaybackrate" aria-label="Voltica featured technology video"></video>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             Q45 PROMOTIONAL CTA
+             ===================================================== -->
+        <section id="q45-promo" class="q45-promo-section">
+            <div class="q45-promo-card">
+                <div class="q45-promo-copy">
+                    <div class="q45-promo-label">VOLTICA ELITE PASS EDITION</div>
+
+                    <h2>
+                        Q45.
+                        <span>ELITE AUDIO.</span>
+                    </h2>
+
+                    <p class="q45-promo-description">
+                        Premium over-ear audio with an exclusive Voltica Elite Pass.
+                        Get the Q45 for $189.99 and unlock 15% OFF FOR LIFE.
+                    </p>
+
+                    <div class="q45-price-row">
+                        <div class="q45-price">
+                            $189.99
+                            <small>USD</small>
+                        </div>
+                        <div class="q45-lifetime-badge">+ 15% OFF FOR LIFE</div>
+                    </div>
+
+                    <a href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j" target="_blank" rel="noopener noreferrer" class="q45-promo-button">
+                        GET THE ELITE PASS →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             15% OFF FOR LIFE
+             ===================================================== -->
+        <section id="lifetime" class="lifetime-section">
+            <div class="lifetime-card">
+                <div class="lifetime-card-icon">💳</div>
+
+                <div class="lifetime-copy">
+                    <span>VOLTICA FOUNDING CUSTOMER BENEFIT</span>
+                    <h2>15% OFF FOR LIFE.</h2>
+                    <p>
+                        Order a qualifying Voltica product during the launch period and receive
+                        an exclusive metal card with your personal lifetime discount code.
+                    </p>
+                </div>
+
+                <div class="lifetime-number">
+                    <strong>200</strong>
+                    <span>FIRST CUSTOMERS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             COLLECTION
+             ===================================================== -->
+        <section class="collection-section">
+            <div class="collection-container">
+                <div class="collection-heading">
+                    <span>THE VOLTICA COLLECTION</span>
+                    <h2>TECHN

@@ -1014,10 +1014,6 @@ function renderProductOptions(
         );
 
 
-    /*
-     * Build one unified list of selectable options.
-     */
-
     const options = [];
 
 
@@ -1091,10 +1087,6 @@ function renderProductOptions(
     );
 
 
-    /*
-     * Remove duplicate options.
-     */
-
     const uniqueOptions =
         options.filter(
             (option, index, array) =>
@@ -1105,10 +1097,6 @@ function renderProductOptions(
                 ) === index
         );
 
-
-    /*
-     * No options.
-     */
 
     if (!uniqueOptions.length) {
 
@@ -1649,11 +1637,6 @@ function initializeLightbox(
     }
 
 
-    /*
-     * Allow clicking the main image itself
-     * to open the lightbox.
-     */
-
     mainImage.style.cursor =
         "zoom-in";
 
@@ -1720,7 +1703,6 @@ function renderCustomCTA(
 
     /*
      * Find the existing final CTA.
-     * No HTML rewrite is required.
      */
 
     const cta =
@@ -1748,21 +1730,37 @@ function renderCustomCTA(
 
     if (!glass) {
 
+        console.warn(
+            "VOLTICA: CTA glass container not found."
+        );
+
         return;
 
     }
 
 
+    /* =====================================================
+       READ CUSTOM CTA DATA
+       ===================================================== */
+
+    const customCta =
+        product.customCta &&
+        typeof product.customCta ===
+        "object"
+            ? product.customCta
+            : {};
+
+
     const title =
-        product.customCtaTitle
+        customCta.title
             ? String(
-                product.customCtaTitle
+                customCta.title
             ).trim()
             : "";
 
 
     const rawLines =
-        product.customCtaLines;
+        customCta.lines;
 
 
     let lines = [];
@@ -1799,26 +1797,18 @@ function renderCustomCTA(
     }
 
 
-    /*
-     * Remove the old generic CTA paragraph.
-     */
-
-    const genericParagraph =
-        glass.querySelector(
-            "p"
-        );
-
-
-    if (genericParagraph) {
-
-        genericParagraph.remove();
-
-    }
+    console.log(
+        "VOLTICA: CUSTOM CTA =",
+        {
+            title,
+            lines
+        }
+    );
 
 
-    /*
-     * Find the CTA title.
-     */
+    /* =====================================================
+       FIND CTA ELEMENTS
+       ===================================================== */
 
     const ctaTitle =
         glass.querySelector(
@@ -1826,27 +1816,68 @@ function renderCustomCTA(
         );
 
 
+    const finalButton =
+        glass.querySelector(
+            "#finalStripeButton"
+        );
+
+
+    /* =====================================================
+       REMOVE PREVIOUS DYNAMIC CONTENT
+       ===================================================== */
+
+    glass
+        .querySelectorAll(
+            ".custom-cta-content"
+        )
+        .forEach(
+            element =>
+                element.remove()
+        );
+
+
+    /*
+     * Remove the original generic paragraph.
+     */
+
+    glass
+        .querySelectorAll(
+            "p"
+        )
+        .forEach(
+            paragraph => {
+
+                if (
+                    !paragraph.closest(
+                        ".custom-cta-content"
+                    )
+                ) {
+
+                    paragraph.remove();
+
+                }
+
+            }
+        );
+
+
+    /* =====================================================
+       CTA TITLE
+       ===================================================== */
+
     if (ctaTitle) {
 
-        if (title) {
-
-            ctaTitle.textContent =
-                title;
-
-        } else {
-
-            ctaTitle.textContent =
-                product.name ||
-                "DISCOVER THE FUTURE.";
-
-        }
+        ctaTitle.textContent =
+            title ||
+            product.name ||
+            "DISCOVER THE FUTURE.";
 
     }
 
 
-    /*
-     * Render custom CTA lines.
-     */
+    /* =====================================================
+       CUSTOM CTA CONTENT
+       ===================================================== */
 
     if (lines.length) {
 
@@ -1881,17 +1912,6 @@ function renderCustomCTA(
         );
 
 
-        /*
-         * Insert the custom content
-         * immediately before BUY NOW.
-         */
-
-        const finalButton =
-            glass.querySelector(
-                "#finalStripeButton"
-            );
-
-
         if (finalButton) {
 
             glass.insertBefore(
@@ -1910,10 +1930,9 @@ function renderCustomCTA(
     }
 
 
-    /*
-     * If neither a custom title nor custom
-     * content exists, retain the default CTA.
-     */
+    /* =====================================================
+       FALLBACK
+       ===================================================== */
 
     if (
         !title &&
@@ -1935,6 +1954,13 @@ function renderCustomCTA(
             ctaTitle.insertAdjacentElement(
                 "afterend",
                 fallback
+            );
+
+        } else if (finalButton) {
+
+            glass.insertBefore(
+                fallback,
+                finalButton
             );
 
         } else {

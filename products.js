@@ -461,7 +461,55 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/6oUbJ2cWrdwzbyo4ym2Ji08",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1597165945188405248.html",
         "active": true
-    }
+    },
+   /* =========================================================
+       Product name : Voltica Store Black Star Projector & Ambience Night Lamp
+       ========================================================= */
+
+{
+        "id": "voltica-store-black-star-projector-ambience-night-lamp",
+        "sku": "VLT-LFT-002",
+        "name": "Voltica Store Black Star Projector & Ambience Night Lamp",
+        "category": "Lifestyle",
+        "badge": "FEATURED",
+        "price": 83.74,
+        "referencePrice": 93.99,
+        "cost": 55.56,
+        "shipping": 12.05,
+        "shortDescription": "Transform your bedroom into a breathtaking cosmic observatory with the Voltica Store Black Star Projector & Ambience Night Lamp. Featuring 10 interchangeable projection discsâ€”including Star Saturn, Northern Lights, Manta rays, and deep space galaxiesâ€”this sleek, UFO-inspired ambiance lamp projects crystal-clear constellations and planets right onto your ceiling and walls. USB-powered and effortlessly versatile, itâ€™s the ultimate romantic night light and mood creator for any room.",
+        "description": "â€‹Turn your ceiling into a mesmerizing canvas of the universe with the Voltica Store Black Star Projector & Ambience Night Lamp. Designed to spark wonder and set the ultimate mood, this sleek black projection lamp lets you explore the cosmos without ever leaving your bed.\nâ€‹Featuring 10 unique slide discs, you can instantly switch your room's atmosphere from a majestic starlit galaxy (Star Saturn, Star Planet, Dark Cloud Planet) to surreal deep-sea vistas (Manta, Black whale), natural wonders (Northern Lights), or prehistoric worlds (Dinosaur World). Whether you are looking to create a romantic ambiance for date night, a calming sleep environment for a childâ€™s room, or an aesthetic background for your evening relaxation, this lamp delivers stunning, high-definition clarity.\nâ€‹Compact, USB-powered, and engineered with a modern matte black aesthetic that blends seamlessly into any room decor, it is the ultimate ambient lighting accessory for dreamers, stargazers, and modern interior stylists.",
+        "features": [
+            "10 Interchangeable Discs: Comes with ten distinct projection themes including Star Saturn, Northern Lights, Manta, Dinosaur World, Zodiac, and deep space galaxies.",
+            "â€‹Immersive Ceiling & Wall Projection: Transforms ordinary rooms into breathtaking celestial or aquatic environments with crisp visual clarity.",
+            "â€‹Sleek UFO-Inspired Design: Features a modern, matte-black minimalist housing that looks great on any desk, nightstand, or shelf.",
+            "â€‹Versatile Ambience Creator: Perfect for romantic evenings, relaxing sleep routines, meditation, bedroom decor, or creative background lighting.",
+            "â€‹Convenient USB Powered: Easy to plug-and-play using standard USB connectivity for hassle-free placement anywhere in your home."
+        ],
+        "specifications": {
+            "Product Type": "Star Projector & Ambience Night Lamp",
+            "â€‹Color": "Matte Black",
+            "â€‹Projection Discs Included": "10 films (Manta, Northern Lights, Star Saturn, Dinosaur World, Dark Cloud Planet, Star Planet, Starship, Space Warship, Black Whale, Zodiac)",
+            "â€‹Power Source": "USB Powered (Cable included)",
+            "â€‹Packing List": "1 * Projection lamp, 1 * USB cable, 10 * Projection discs"
+        },
+        "images": [
+            "assets/images/1000052849.webp",
+            "assets/images/1000052847.jpg",
+            "assets/images/1000052850.webp",
+            "assets/images/1000052848.webp"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Bring the Galaxy Into Your Bedroom",
+            "lines": [
+                "Escape into the cosmos and transform your space into a dreamlike sanctuary with the Voltica Store Black Star Projector. With 10 interchangeable scenes, sleek design, and effortless USB power, it's time to redefine your room's ambiance. Add yours to the cart today and sleep under the stars!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/7sY4gAaOj6476e47Ky2Ji0f",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-2408290911051600500.html",
+        "active": true
+}
 
 ];
 

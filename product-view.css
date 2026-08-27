@@ -1689,3 +1689,518 @@ button:focus-visible {
     max-height: 45px !important;
     object-fit: contain !important;
 }
+/* =========================================================
+   VOLTICA — AMBIENT PULSE FIELD
+   Moving light pulses around product detail page
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   GLOBAL AMBIENT PULSES
+   --------------------------------------------------------- */
+
+.product-page {
+    position: relative;
+    isolation: isolate;
+}
+
+.product-page::before,
+.product-page::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.9);
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.9),
+        0 0 22px rgba(255,255,255,.45),
+        0 0 45px rgba(255,255,255,.18);
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    animation:
+        volticaAmbientPulse
+        7s
+        infinite
+        ease-in-out;
+}
+
+
+/* ---------------------------------------------------------
+   PULSE #1
+   --------------------------------------------------------- */
+
+.product-page::before {
+
+    top: 12%;
+
+    left: -4px;
+
+    animation-delay: -1.5s;
+
+}
+
+
+/* ---------------------------------------------------------
+   PULSE #2
+   --------------------------------------------------------- */
+
+.product-page::after {
+
+    top: 48%;
+
+    right: -4px;
+
+    width: 4px;
+    height: 4px;
+
+    animation-delay: -4s;
+
+}
+
+
+/* ---------------------------------------------------------
+   HERO AMBIENT LIGHT
+   --------------------------------------------------------- */
+
+.product-hero {
+    position: relative;
+}
+
+.product-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    top: 12%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.035),
+            transparent 68%
+        );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+
+    animation:
+        volticaAmbientGlow
+        9s
+        infinite
+        ease-in-out;
+
+}
+
+
+/* ---------------------------------------------------------
+   DARK AREA PULSE — DESCRIPTION
+   --------------------------------------------------------- */
+
+.product-description-section,
+.product-features-section,
+.product-specifications-section {
+
+    position: relative;
+
+}
+
+
+.product-description-section::after,
+.product-features-section::after,
+.product-specifications-section::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 9px rgba(255,255,255,.95),
+        0 0 25px rgba(255,255,255,.55),
+        0 0 55px rgba(255,255,255,.22);
+
+    pointer-events: none;
+
+    animation:
+        volticaSectionPulse
+        8s
+        infinite
+        ease-in-out;
+
+}
+
+
+/* ---------------------------------------------------------
+   DESCRIPTION PULSE
+   --------------------------------------------------------- */
+
+.product-description-section::after {
+
+    top: 22px;
+    right: 7%;
+
+    animation-delay: -2s;
+
+}
+
+
+/* ---------------------------------------------------------
+   FEATURES PULSE
+   --------------------------------------------------------- */
+
+.product-features-section::after {
+
+    bottom: 18px;
+    left: 4%;
+
+    width: 3px;
+    height: 3px;
+
+    animation-delay: -5s;
+
+}
+
+
+/* ---------------------------------------------------------
+   SPECIFICATIONS PULSE
+   --------------------------------------------------------- */
+
+.product-specifications-section::after {
+
+    top: 45%;
+    right: 3%;
+
+    width: 3px;
+    height: 3px;
+
+    animation-delay: -6.5s;
+
+}
+
+
+/* ---------------------------------------------------------
+   CTA PULSES
+   --------------------------------------------------------- */
+
+.product-final-cta {
+
+    position: relative;
+
+}
+
+
+.product-final-cta::before,
+.product-final-cta::after {
+
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    pointer-events: none;
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,.95),
+        0 0 28px rgba(255,255,255,.5),
+        0 0 65px rgba(255,255,255,.2);
+
+    animation:
+        volticaCtaPulse
+        6s
+        infinite
+        ease-in-out;
+
+}
+
+
+.product-final-cta::before {
+
+    width: 5px;
+    height: 5px;
+
+    left: 3%;
+
+    top: 30%;
+
+    animation-delay: -1s;
+
+}
+
+
+.product-final-cta::after {
+
+    width: 3px;
+    height: 3px;
+
+    right: 5%;
+
+    bottom: 25%;
+
+    animation-delay: -3.5s;
+
+}
+
+
+/* ---------------------------------------------------------
+   CONTACT AREA
+   --------------------------------------------------------- */
+
+.product-contact-section {
+
+    position: relative;
+
+}
+
+
+.product-contact-section::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    left: 8%;
+
+    top: 50%;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 9px rgba(255,255,255,.9),
+        0 0 24px rgba(255,255,255,.4);
+
+    pointer-events: none;
+
+    animation:
+        volticaAmbientPulse
+        7s
+        infinite
+        ease-in-out;
+
+    animation-delay: -3s;
+
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes volticaAmbientPulse {
+
+    0%,
+    100% {
+
+        opacity: .15;
+
+        transform:
+            translateY(0)
+            scale(.65);
+
+    }
+
+    25% {
+
+        opacity: .55;
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            translateY(-18px)
+            scale(1.25);
+
+    }
+
+    75% {
+
+        opacity: .45;
+
+        transform:
+            translateY(10px)
+            scale(.8);
+
+    }
+
+}
+
+
+@keyframes volticaAmbientGlow {
+
+    0%,
+    100% {
+
+        opacity: .25;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.8);
+
+    }
+
+    50% {
+
+        opacity: .8;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.25);
+
+    }
+
+}
+
+
+@keyframes volticaSectionPulse {
+
+    0%,
+    100% {
+
+        opacity: .12;
+
+        transform:
+            translate(0, 0)
+            scale(.6);
+
+    }
+
+    35% {
+
+        opacity: .8;
+
+    }
+
+    65% {
+
+        opacity: 1;
+
+        transform:
+            translate(-12px, 16px)
+            scale(1.35);
+
+    }
+
+}
+
+
+@keyframes volticaCtaPulse {
+
+    0%,
+    100% {
+
+        opacity: .12;
+
+        transform:
+            translate(0, 0)
+            scale(.5);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            translate(14px, -20px)
+            scale(1.35);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE — SUBTLE VERSION
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .product-page::before,
+    .product-page::after {
+
+        width: 3px;
+        height: 3px;
+
+        box-shadow:
+            0 0 7px rgba(255,255,255,.8),
+            0 0 18px rgba(255,255,255,.35);
+
+    }
+
+    .product-hero::before {
+
+        width: 180px;
+        height: 180px;
+
+        filter: blur(18px);
+
+    }
+
+    .product-description-section::after,
+    .product-features-section::after,
+    .product-specifications-section::after {
+
+        width: 3px;
+        height: 3px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .product-page::before,
+    .product-page::after,
+    .product-hero::before,
+    .product-description-section::after,
+    .product-features-section::after,
+    .product-specifications-section::after,
+    .product-final-cta::before,
+    .product-final-cta::after,
+    .product-contact-section::before {
+
+        animation: none !important;
+
+    }
+
+}

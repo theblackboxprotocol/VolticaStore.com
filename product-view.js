@@ -59,7 +59,7 @@ function initializeProductPage() {
 
     const name =
         document.getElementById(
-            "productName"
+            "productTitle"
         );
 
     const shortDescription =
@@ -84,12 +84,17 @@ function initializeProductPage() {
 
     const variantsContainer =
         document.getElementById(
-            "productVariants"
+            "colorOptions"
+        );
+
+    const selectedOption =
+        document.getElementById(
+            "selectedOption"
         );
 
     const stripeButton =
         document.getElementById(
-            "stripeButton"
+            "buyNowButton"
         );
 
     const finalStripeButton =
@@ -109,17 +114,12 @@ function initializeProductPage() {
 
     const features =
         document.getElementById(
-            "productFeatures"
+            "featureList"
         );
 
     const specifications =
         document.getElementById(
-            "productSpecifications"
-        );
-
-    const options =
-        document.getElementById(
-            "productOptions"
+            "specificationTable"
         );
 
     const finalProductName =
@@ -127,14 +127,9 @@ function initializeProductPage() {
             "finalProductName"
         );
 
-    const status =
-        document.getElementById(
-            "productStatus"
-        );
-
 
     /* =====================================================
-       REMOVE LOADING STATE — ALWAYS
+       LOADING FINISH
        ===================================================== */
 
     function finishLoading() {
@@ -209,7 +204,7 @@ function initializeProductPage() {
 
 
     /* =====================================================
-       READ PRODUCT ID FROM URL
+       READ PRODUCT ID
        ===================================================== */
 
     const params =
@@ -219,7 +214,9 @@ function initializeProductPage() {
 
 
     const requestedId =
-        params.get("id");
+        params.get(
+            "id"
+        );
 
 
     console.log(
@@ -229,10 +226,6 @@ function initializeProductPage() {
 
 
     if (!requestedId) {
-
-        console.error(
-            "VOLTICA: No product ID supplied."
-        );
 
         showProductError(
             "PRODUCT NOT SPECIFIED",
@@ -348,14 +341,19 @@ function initializeProductPage() {
        ===================================================== */
 
     const productPrice =
-        Number(product.price);
+        Number(
+            product.price
+        );
 
 
     if (price) {
 
         price.textContent =
-            Number.isFinite(productPrice)
-                ? "$" + productPrice.toFixed(2)
+            Number.isFinite(
+                productPrice
+            )
+                ? "$" +
+                  productPrice.toFixed(2)
                 : "$0.00";
 
     }
@@ -413,33 +411,8 @@ function initializeProductPage() {
             (
                 product.active === false
                     ? "CURRENTLY UNAVAILABLE"
-                    : "PRE-ORDER AVAILABLE"
+                    : "AVAILABLE NOW"
             );
-
-    }
-
-
-    /* =====================================================
-       PRODUCT STATUS
-       ===================================================== */
-
-    if (status) {
-
-        if (
-            product.active === false
-        ) {
-
-            status.classList.add(
-                "inactive"
-            );
-
-        } else {
-
-            status.classList.remove(
-                "inactive"
-            );
-
-        }
 
     }
 
@@ -448,52 +421,16 @@ function initializeProductPage() {
        STRIPE
        ===================================================== */
 
-    if (stripeButton) {
-
-        if (product.stripeLink) {
-
-            stripeButton.href =
-                product.stripeLink;
-
-            stripeButton.style.display =
-                "";
-
-        } else {
-
-            stripeButton.removeAttribute(
-                "href"
-            );
-
-            stripeButton.style.display =
-                "none";
-
-        }
-
-    }
+    configureStripeButton(
+        stripeButton,
+        product.stripeLink
+    );
 
 
-    if (finalStripeButton) {
-
-        if (product.stripeLink) {
-
-            finalStripeButton.href =
-                product.stripeLink;
-
-            finalStripeButton.style.display =
-                "";
-
-        } else {
-
-            finalStripeButton.removeAttribute(
-                "href"
-            );
-
-            finalStripeButton.style.display =
-                "none";
-
-        }
-
-    }
+    configureStripeButton(
+        finalStripeButton,
+        product.stripeLink
+    );
 
 
     /* =====================================================
@@ -503,6 +440,7 @@ function initializeProductPage() {
     renderDescription(
         description,
         product.description ||
+        product.fullDescription ||
         product.shortDescription ||
         ""
     );
@@ -528,26 +466,17 @@ function initializeProductPage() {
         specifications,
         product.specifications ||
         product.technicalSpecifications ||
-        {}
+        []
     );
 
 
     /* =====================================================
-       OPTIONS
+       OPTIONS + VARIANTS
        ===================================================== */
 
-    renderOptions(
-        options,
-        product
-    );
-
-
-    /* =====================================================
-       VARIANTS
-       ===================================================== */
-
-    renderVariants(
+    renderProductOptions(
         variantsContainer,
+        selectedOption,
         product
     );
 
@@ -574,6 +503,15 @@ function initializeProductPage() {
 
 
     /* =====================================================
+       CUSTOM CTA
+       ===================================================== */
+
+    renderCustomCTA(
+        product
+    );
+
+
+    /* =====================================================
        FINALIZE
        ===================================================== */
 
@@ -584,6 +522,45 @@ function initializeProductPage() {
         "VOLTICA: PRODUCT READY —",
         product.name
     );
+
+}
+
+
+/* =========================================================
+   STRIPE BUTTON
+   ========================================================= */
+
+function configureStripeButton(
+    button,
+    link
+) {
+
+    if (!button) {
+        return;
+    }
+
+
+    if (
+        typeof link === "string" &&
+        link.trim()
+    ) {
+
+        button.href =
+            link.trim();
+
+        button.style.display =
+            "";
+
+    } else {
+
+        button.removeAttribute(
+            "href"
+        );
+
+        button.style.display =
+            "none";
+
+    }
 
 }
 
@@ -612,7 +589,9 @@ function renderDescription(
 
     const paragraphs =
         String(text)
-            .split(/\n\s*\n/)
+            .split(
+                /\n\s*\n/
+            )
             .map(
                 paragraph =>
                     paragraph.trim()
@@ -660,21 +639,32 @@ function renderFeatures(
     container.innerHTML = "";
 
 
+    if (
+        typeof featureData === "string"
+    ) {
+
+        featureData =
+            featureData
+                .split("\n")
+                .map(
+                    item =>
+                        item.trim()
+                )
+                .filter(Boolean);
+
+    }
+
+
     if (!Array.isArray(featureData)) {
-
         return;
-
     }
 
 
     featureData.forEach(
         (feature, index) => {
 
-            let title =
-                "";
-
-            let text =
-                "";
+            let title = "";
+            let text = "";
 
 
             if (
@@ -682,28 +672,33 @@ function renderFeatures(
                 "string"
             ) {
 
-                const parts =
-                    feature.split(
-                        ":"
-                    );
+                const separator =
+                    feature.indexOf(":");
 
 
-                if (parts.length > 1) {
+                if (
+                    separator !== -1
+                ) {
 
                     title =
-                        parts
-                            .shift()
+                        feature
+                            .slice(
+                                0,
+                                separator
+                            )
                             .trim();
 
                     text =
-                        parts
-                            .join(":")
+                        feature
+                            .slice(
+                                separator + 1
+                            )
                             .trim();
 
                 } else {
 
                     title =
-                        feature;
+                        feature.trim();
 
                 }
 
@@ -723,6 +718,11 @@ function renderFeatures(
                     feature.text ||
                     "";
 
+            }
+
+
+            if (!title && !text) {
+                return;
             }
 
 
@@ -828,9 +828,78 @@ function renderSpecifications(
 
 
     if (
+        typeof data === "string"
+    ) {
+
+        data =
+            data
+                .split("\n")
+                .map(
+                    item =>
+                        item.trim()
+                )
+                .filter(Boolean);
+
+    }
+
+
+    if (Array.isArray(data)) {
+
+        data.forEach(
+            item => {
+
+                if (
+                    typeof item !==
+                    "string"
+                ) {
+
+                    return;
+
+                }
+
+
+                const separator =
+                    item.indexOf(":");
+
+
+                let key =
+                    separator !== -1
+                        ? item
+                            .slice(
+                                0,
+                                separator
+                            )
+                            .trim()
+                        : "SPECIFICATION";
+
+
+                let value =
+                    separator !== -1
+                        ? item
+                            .slice(
+                                separator + 1
+                            )
+                            .trim()
+                        : item;
+
+
+                appendSpecification(
+                    container,
+                    key,
+                    value
+                );
+
+            }
+        );
+
+        return;
+
+    }
+
+
+    if (
         !data ||
-        typeof data !== "object" ||
-        Array.isArray(data)
+        typeof data !== "object"
     ) {
 
         return;
@@ -842,284 +911,84 @@ function renderSpecifications(
         .forEach(
             ([key, value]) => {
 
-                const row =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                row.className =
-                    "specification-row";
-
-
-                const label =
-                    document.createElement(
-                        "span"
-                    );
-
-
-                label.className =
-                    "specification-label";
-
-
-                label.textContent =
-                    key;
-
-
-                const content =
-                    document.createElement(
-                        "strong"
-                    );
-
-
-                content.className =
-                    "specification-value";
-
-
-                content.textContent =
-                    value;
-
-
-                row.appendChild(
-                    label
-                );
-
-
-                row.appendChild(
-                    content
-                );
-
-
-                container.appendChild(
-                    row
-                );
-
-            }
-        );
-
-}
-
-
-/* =========================================================
-   OPTIONS
-   ========================================================= */
-
-function renderOptions(
-    container,
-    product
-) {
-
-    if (!container) {
-        return;
-    }
-
-
-    container.innerHTML = "";
-
-
-    const hasColors =
-        Array.isArray(product.colors) &&
-        product.colors.length > 0;
-
-
-    const hasVariants =
-        Array.isArray(product.variants) &&
-        product.variants.length > 0;
-
-
-    if (
-        !hasColors &&
-        !hasVariants
-    ) {
-
-        const group =
-            document.createElement(
-                "div"
-            );
-
-
-        group.className =
-            "option-group";
-
-
-        const label =
-            document.createElement(
-                "span"
-            );
-
-
-        label.className =
-            "option-label";
-
-
-        label.textContent =
-            "PRODUCT";
-
-
-        const value =
-            document.createElement(
-                "strong"
-            );
-
-
-        value.textContent =
-            product.name ||
-            "Voltica Product";
-
-
-        group.appendChild(
-            label
-        );
-
-        group.appendChild(
-            value
-        );
-
-
-        container.appendChild(
-            group
-        );
-
-
-        return;
-
-    }
-
-
-    if (hasColors) {
-
-        const group =
-            document.createElement(
-                "div"
-            );
-
-
-        group.className =
-            "option-group";
-
-
-        const label =
-            document.createElement(
-                "span"
-            );
-
-
-        label.className =
-            "option-label";
-
-
-        label.textContent =
-            "COLOR";
-
-
-        const value =
-            document.createElement(
-                "strong"
-            );
-
-
-        value.textContent =
-            product.colors.join(
-                " / "
-            );
-
-
-        group.appendChild(
-            label
-        );
-
-        group.appendChild(
-            value
-        );
-
-
-        container.appendChild(
-            group
-        );
-
-    }
-
-
-    if (hasVariants) {
-
-        product.variants.forEach(
-            variant => {
-
-                const group =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                group.className =
-                    "option-group";
-
-
-                const label =
-                    document.createElement(
-                        "span"
-                    );
-
-
-                label.className =
-                    "option-label";
-
-
-                label.textContent =
-                    "VARIANT";
-
-
-                const value =
-                    document.createElement(
-                        "strong"
-                    );
-
-
-                if (
-                    typeof variant ===
-                    "string"
-                ) {
-
-                    value.textContent =
-                        variant;
-
-                } else {
-
-                    value.textContent =
-                        variant.name ||
-                        variant.sku ||
-                        "";
-
-                }
-
-
-                group.appendChild(
-                    label
-                );
-
-                group.appendChild(
+                appendSpecification(
+                    container,
+                    key,
                     value
                 );
 
-
-                container.appendChild(
-                    group
-                );
-
             }
         );
-
-    }
 
 }
 
 
+function appendSpecification(
+    container,
+    key,
+    value
+) {
+
+    const row =
+        document.createElement(
+            "div"
+        );
+
+
+    row.className =
+        "specification-row";
+
+
+    const label =
+        document.createElement(
+            "span"
+        );
+
+
+    label.className =
+        "specification-label";
+
+
+    label.textContent =
+        key;
+
+
+    const content =
+        document.createElement(
+            "strong"
+        );
+
+
+    content.className =
+        "specification-value";
+
+
+    content.textContent =
+        value;
+
+
+    row.appendChild(
+        label
+    );
+
+
+    row.appendChild(
+        content
+    );
+
+
+    container.appendChild(
+        row
+    );
+
+}
 /* =========================================================
-   VARIANTS
+   PRODUCT OPTIONS
    ========================================================= */
 
-function renderVariants(
+function renderProductOptions(
     container,
+    selectedOption,
     product
 ) {
 
@@ -1132,217 +1001,279 @@ function renderVariants(
 
 
     const colors =
-        Array.isArray(product.colors)
-            ? product.colors
-            : [];
+        normalizeArray(
+            product.colors
+        );
 
 
     const variants =
-        Array.isArray(product.variants)
-            ? product.variants
-            : [];
+        normalizeArray(
+            product.variants
+        );
 
 
-    if (
-        !colors.length &&
-        !variants.length
-    ) {
+    /*
+     * Build one unified list of selectable options.
+     */
+
+    const options = [];
+
+
+    colors.forEach(
+        color => {
+
+            const value =
+                typeof color === "string"
+                    ? color.trim()
+                    : "";
+
+
+            if (value) {
+
+                options.push({
+                    type: "COLOR",
+                    name: value
+                });
+
+            }
+
+        }
+    );
+
+
+    variants.forEach(
+        variant => {
+
+            let variantName = "";
+
+
+            if (
+                typeof variant ===
+                "string"
+            ) {
+
+                variantName =
+                    variant
+                        .split("—")[0]
+                        .split("-")[0]
+                        .trim();
+
+            } else if (
+                variant &&
+                typeof variant ===
+                "object"
+            ) {
+
+                variantName =
+                    variant.name ||
+                    variant.title ||
+                    variant.color ||
+                    variant.sku ||
+                    "";
+
+            }
+
+
+            if (variantName) {
+
+                options.push({
+                    type: "VARIANT",
+                    name: String(
+                        variantName
+                    ).trim()
+                });
+
+            }
+
+        }
+    );
+
+
+    /*
+     * Remove duplicate options.
+     */
+
+    const uniqueOptions =
+        options.filter(
+            (option, index, array) =>
+                array.findIndex(
+                    item =>
+                        item.name.toLowerCase() ===
+                        option.name.toLowerCase()
+                ) === index
+        );
+
+
+    /*
+     * No options.
+     */
+
+    if (!uniqueOptions.length) {
+
+        if (selectedOption) {
+
+            selectedOption.textContent =
+                product.name ||
+                "—";
+
+        }
 
         return;
 
     }
 
 
-    if (colors.length) {
-
-        const group =
-            document.createElement(
-                "div"
-            );
-
-
-        group.className =
-            "variant-group";
-
-
-        const label =
-            document.createElement(
-                "span"
-            );
-
-
-        label.className =
-            "variant-label";
-
-
-        label.textContent =
-            "COLOR";
-
-
-        group.appendChild(
-            label
+    const group =
+        document.createElement(
+            "div"
         );
 
 
-        colors.forEach(
-            (color, index) => {
-
-                const button =
-                    document.createElement(
-                        "button"
-                    );
+    group.className =
+        "variant-group";
 
 
-                button.type =
-                    "button";
+    const label =
+        document.createElement(
+            "span"
+        );
 
 
-                button.className =
-                    "variant-option";
+    label.className =
+        "variant-label";
 
 
-                if (
-                    index === 0
-                ) {
+    label.textContent =
+        colors.length
+            ? "COLOR"
+            : "OPTIONS";
+
+
+    group.appendChild(
+        label
+    );
+
+
+    uniqueOptions.forEach(
+        (option, index) => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.type =
+                "button";
+
+
+            button.className =
+                "variant-option";
+
+
+            button.textContent =
+                option.name;
+
+
+            if (
+                index === 0
+            ) {
+
+                button.classList.add(
+                    "selected"
+                );
+
+                if (selectedOption) {
+
+                    selectedOption.textContent =
+                        option.name;
+
+                }
+
+            }
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    group
+                        .querySelectorAll(
+                            ".variant-option"
+                        )
+                        .forEach(
+                            item =>
+                                item.classList.remove(
+                                    "selected"
+                                )
+                        );
+
 
                     button.classList.add(
                         "selected"
                     );
 
-                }
 
+                    if (selectedOption) {
 
-                button.textContent =
-                    color;
-
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        group
-                            .querySelectorAll(
-                                ".variant-option"
-                            )
-                            .forEach(
-                                item =>
-                                    item.classList.remove(
-                                        "selected"
-                                    )
-                            );
-
-
-                        button.classList.add(
-                            "selected"
-                        );
+                        selectedOption.textContent =
+                            option.name;
 
                     }
-                );
-
-
-                group.appendChild(
-                    button
-                );
-
-            }
-        );
-
-
-        container.appendChild(
-            group
-        );
-
-    }
-
-
-    if (variants.length) {
-
-        const group =
-            document.createElement(
-                "div"
-            );
-
-
-        group.className =
-            "variant-group";
-
-
-        const label =
-            document.createElement(
-                "span"
-            );
-
-
-        label.className =
-            "variant-label";
-
-
-        label.textContent =
-            "OPTIONS";
-
-
-        group.appendChild(
-            label
-        );
-
-
-        variants.forEach(
-            (variant, index) => {
-
-                const button =
-                    document.createElement(
-                        "button"
-                    );
-
-
-                button.type =
-                    "button";
-
-
-                button.className =
-                    "variant-option";
-
-
-                if (
-                    !colors.length &&
-                    index === 0
-                ) {
-
-                    button.classList.add(
-                        "selected"
-                    );
 
                 }
+            );
 
 
-                const variantName =
-                    typeof variant ===
-                    "string"
-                        ? variant
-                        : (
-                            variant.name ||
-                            variant.sku ||
-                            "OPTION"
-                        );
+            group.appendChild(
+                button
+            );
+
+        }
+    );
 
 
-                button.textContent =
-                    variantName;
+    container.appendChild(
+        group
+    );
+
+}
 
 
-                group.appendChild(
-                    button
-                );
+/* =========================================================
+   ARRAY NORMALIZATION
+   ========================================================= */
 
-            }
-        );
+function normalizeArray(
+    value
+) {
 
+    if (
+        Array.isArray(value)
+    ) {
 
-        container.appendChild(
-            group
-        );
+        return value;
 
     }
+
+
+    if (
+        typeof value ===
+        "string"
+    ) {
+
+        return value
+            .split(/\n|,/)
+            .map(
+                item =>
+                    item.trim()
+            )
+            .filter(Boolean);
+
+    }
+
+
+    return [];
 
 }
 
@@ -1363,16 +1294,17 @@ function initializeGallery(
 
 
     const images =
-        Array.isArray(product.images)
-            ? product.images
-                .filter(Boolean)
-                .map(
-                    image =>
-                        normalizeImagePath(
-                            image
-                        )
-                )
-            : [];
+        normalizeArray(
+            product.images
+        )
+            .filter(Boolean)
+            .map(
+                image =>
+                    normalizeImagePath(
+                        image
+                    )
+            )
+            .filter(Boolean);
 
 
     if (!images.length) {
@@ -1381,6 +1313,7 @@ function initializeGallery(
             "src"
         );
 
+
         mainImage.alt =
             product.name ||
             "Voltica Product";
@@ -1388,7 +1321,8 @@ function initializeGallery(
 
         if (thumbnails) {
 
-            thumbnails.innerHTML = "";
+            thumbnails.innerHTML =
+                "";
 
         }
 
@@ -1410,6 +1344,7 @@ function initializeGallery(
         mainImage.src =
             imagePath;
 
+
         mainImage.alt =
             product.name ||
             "Voltica Product";
@@ -1426,7 +1361,10 @@ function initializeGallery(
                     ".product-thumbnail"
                 )
                 .forEach(
-                    (button, buttonIndex) => {
+                    (
+                        button,
+                        buttonIndex
+                    ) => {
 
                         button.classList.toggle(
                             "active",
@@ -1442,19 +1380,6 @@ function initializeGallery(
     }
 
 
-    mainImage.addEventListener(
-        "error",
-        function () {
-
-            console.warn(
-                "VOLTICA: Image failed:",
-                mainImage.src
-            );
-
-        }
-    );
-
-
     setMainImage(
         images[0],
         0
@@ -1466,11 +1391,15 @@ function initializeGallery(
     }
 
 
-    thumbnails.innerHTML = "";
+    thumbnails.innerHTML =
+        "";
 
 
     images.forEach(
-        (imagePath, index) => {
+        (
+            imagePath,
+            index
+        ) => {
 
             const button =
                 document.createElement(
@@ -1516,7 +1445,7 @@ function initializeGallery(
 
 
             image.onerror =
-                function () {
+                () => {
 
                     button.style.display =
                         "none";
@@ -1531,7 +1460,7 @@ function initializeGallery(
 
             button.addEventListener(
                 "click",
-                function () {
+                () => {
 
                     setMainImage(
                         imagePath,
@@ -1573,7 +1502,16 @@ function normalizeImagePath(
 
     if (
         value.startsWith(
-            "assets/images/"
+            "http://"
+        ) ||
+        value.startsWith(
+            "https://"
+        ) ||
+        value.startsWith(
+            "data:"
+        ) ||
+        value.startsWith(
+            "blob:"
         )
     ) {
 
@@ -1597,13 +1535,7 @@ function normalizeImagePath(
 
     if (
         value.startsWith(
-            "http://"
-        ) ||
-        value.startsWith(
-            "https://"
-        ) ||
-        value.startsWith(
-            "data:"
+            "assets/images/"
         )
     ) {
 
@@ -1630,37 +1562,30 @@ function initializeLightbox(
 ) {
 
     const lightbox =
-        document.getElementById(
-            "productLightbox"
+        document.querySelector(
+            ".product-lightbox"
         );
 
 
+    if (!lightbox || !mainImage) {
+        return;
+    }
+
+
     const lightboxImage =
-        document.getElementById(
-            "lightboxImage"
+        lightbox.querySelector(
+            "img"
         );
 
 
     const lightboxClose =
-        document.getElementById(
-            "lightboxClose"
+        lightbox.querySelector(
+            ".lightbox-close"
         );
 
 
-    const zoomButton =
-        document.getElementById(
-            "imageZoomButton"
-        );
-
-
-    if (
-        !lightbox ||
-        !lightboxImage ||
-        !mainImage
-    ) {
-
+    if (!lightboxImage) {
         return;
-
     }
 
 
@@ -1722,14 +1647,19 @@ function initializeLightbox(
     }
 
 
-    if (zoomButton) {
+    /*
+     * Allow clicking the main image itself
+     * to open the lightbox.
+     */
 
-        zoomButton.addEventListener(
-            "click",
-            openLightbox
-        );
+    mainImage.style.cursor =
+        "zoom-in";
 
-    }
+
+    mainImage.addEventListener(
+        "click",
+        openLightbox
+    );
 
 
     if (lightboxClose) {
@@ -1779,6 +1709,246 @@ function initializeLightbox(
 
 
 /* =========================================================
+   CUSTOM CTA
+   ========================================================= */
+
+function renderCustomCTA(
+    product
+) {
+
+    /*
+     * Find the existing final CTA.
+     * No HTML rewrite is required.
+     */
+
+    const cta =
+        document.querySelector(
+            ".product-final-cta"
+        );
+
+
+    if (!cta) {
+
+        console.warn(
+            "VOLTICA: Final CTA container not found."
+        );
+
+        return;
+
+    }
+
+
+    const glass =
+        cta.querySelector(
+            ".cta-glass"
+        );
+
+
+    if (!glass) {
+
+        return;
+
+    }
+
+
+    const title =
+        product.customCtaTitle
+            ? String(
+                product.customCtaTitle
+            ).trim()
+            : "";
+
+
+    const rawLines =
+        product.customCtaLines;
+
+
+    let lines = [];
+
+
+    if (
+        Array.isArray(rawLines)
+    ) {
+
+        lines =
+            rawLines
+                .map(
+                    line =>
+                        String(
+                            line
+                        ).trim()
+                )
+                .filter(Boolean);
+
+    } else if (
+        typeof rawLines ===
+        "string"
+    ) {
+
+        lines =
+            rawLines
+                .split("\n")
+                .map(
+                    line =>
+                        line.trim()
+                )
+                .filter(Boolean);
+
+    }
+
+
+    /*
+     * Remove the old generic CTA paragraph.
+     */
+
+    const genericParagraph =
+        glass.querySelector(
+            "p"
+        );
+
+
+    if (genericParagraph) {
+
+        genericParagraph.remove();
+
+    }
+
+
+    /*
+     * Find the CTA title.
+     */
+
+    const ctaTitle =
+        glass.querySelector(
+            "#finalProductName"
+        );
+
+
+    if (ctaTitle) {
+
+        if (title) {
+
+            ctaTitle.textContent =
+                title;
+
+        } else {
+
+            ctaTitle.textContent =
+                product.name ||
+                "DISCOVER THE FUTURE.";
+
+        }
+
+    }
+
+
+    /*
+     * Render custom CTA lines.
+     */
+
+    if (lines.length) {
+
+        const content =
+            document.createElement(
+                "div"
+            );
+
+
+        content.className =
+            "custom-cta-content";
+
+
+        lines.forEach(
+            line => {
+
+                const paragraph =
+                    document.createElement(
+                        "p"
+                    );
+
+
+                paragraph.textContent =
+                    line;
+
+
+                content.appendChild(
+                    paragraph
+                );
+
+            }
+        );
+
+
+        /*
+         * Insert the custom content
+         * immediately before BUY NOW.
+         */
+
+        const finalButton =
+            glass.querySelector(
+                "#finalStripeButton"
+            );
+
+
+        if (finalButton) {
+
+            glass.insertBefore(
+                content,
+                finalButton
+            );
+
+        } else {
+
+            glass.appendChild(
+                content
+            );
+
+        }
+
+    }
+
+
+    /*
+     * If neither a custom title nor custom
+     * content exists, retain the default CTA.
+     */
+
+    if (
+        !title &&
+        !lines.length
+    ) {
+
+        const fallback =
+            document.createElement(
+                "p"
+            );
+
+
+        fallback.textContent =
+            "Premium technology selected for the next generation.";
+
+
+        if (ctaTitle) {
+
+            ctaTitle.insertAdjacentElement(
+                "afterend",
+                fallback
+            );
+
+        } else {
+
+            glass.appendChild(
+                fallback
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
    ERROR PAGE
    ========================================================= */
 
@@ -1794,9 +1964,7 @@ function showProductError(
 
 
     if (!productPage) {
-
         return;
-
     }
 
 
@@ -1813,7 +1981,7 @@ function showProductError(
 
             <div
                 style="
-                    width:min(700px, 100%);
+                    width:min(700px,100%);
                     padding:50px;
                     text-align:center;
                     border:1px solid rgba(255,255,255,.12);
@@ -1835,15 +2003,17 @@ function showProductError(
                     VOLTICA STORE
                 </span>
 
+
                 <h1
                     style="
                         margin:0 0 16px;
                         color:#fff;
-                        font-size:clamp(30px, 6vw, 56px);
+                        font-size:clamp(30px,6vw,56px);
                     "
                 >
                     ${escapeHtml(title)}
                 </h1>
+
 
                 <p
                     style="
@@ -1855,6 +2025,7 @@ function showProductError(
                 >
                     ${escapeHtml(message)}
                 </p>
+
 
                 <a
                     href="store.html"
@@ -1924,11 +2095,12 @@ function escapeHtml(
 
 window.addEventListener(
     "error",
-    function (event) {
+    event => {
 
         console.error(
             "VOLTICA PRODUCT VIEW ERROR:",
-            event.error || event.message
+            event.error ||
+            event.message
         );
 
     }
@@ -1937,7 +2109,7 @@ window.addEventListener(
 
 window.addEventListener(
     "unhandledrejection",
-    function (event) {
+    event => {
 
         console.error(
             "VOLTICA PRODUCT VIEW PROMISE ERROR:",

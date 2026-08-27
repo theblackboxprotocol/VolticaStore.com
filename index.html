@@ -96,14 +96,21 @@
             width:420px;
             height:420px;
             border-radius:50%;
+
             background:
                 radial-gradient(
                     circle,
                     rgba(255,255,255,.08),
                     transparent 68%
                 );
+
             filter:blur(25px);
-            animation:ambientFloat 12s ease-in-out infinite;
+
+            animation:
+                ambientFloat
+                12s
+                ease-in-out
+                infinite;
         }
 
 
@@ -152,24 +159,42 @@
 
         .pulse-point {
             position:absolute;
+
             width:5px;
             height:5px;
+
             border-radius:50%;
+
             background:#fff;
+
             box-shadow:
                 0 0 8px rgba(255,255,255,.9),
                 0 0 28px rgba(255,255,255,.45);
-            animation:pulsePoint 3s ease-in-out infinite;
+
+            animation:
+                pulsePoint
+                3s
+                ease-in-out
+                infinite;
         }
 
 
         .pulse-point::after {
             content:"";
+
             position:absolute;
             inset:-9px;
-            border:1px solid rgba(255,255,255,.18);
+
+            border:1px solid
+                rgba(255,255,255,.18);
+
             border-radius:50%;
-            animation:pulseRing 3s ease-out infinite;
+
+            animation:
+                pulseRing
+                3s
+                ease-out
+                infinite;
         }
 
 
@@ -239,13 +264,15 @@
 
 
         /* =================================================
-           CART ICON
+           CART ICON — ICON ONLY
            ================================================= */
 
         #cartButton {
             position:fixed;
+
             top:24px;
             right:24px;
+
             z-index:1000;
 
             width:54px;
@@ -257,7 +284,10 @@
 
             padding:0;
 
-            border:1px solid rgba(255,255,255,.18);
+            border:
+                1px solid
+                rgba(255,255,255,.18);
+
             border-radius:17px;
 
             background:
@@ -273,8 +303,11 @@
             -webkit-backdrop-filter:blur(22px);
 
             box-shadow:
-                inset 0 1px 0 rgba(255,255,255,.1),
-                0 12px 35px rgba(0,0,0,.45);
+                inset 0 1px 0
+                rgba(255,255,255,.1),
+
+                0 12px 35px
+                rgba(0,0,0,.45);
 
             cursor:pointer;
 
@@ -287,17 +320,24 @@
 
         #cartButton:hover {
             transform:translateY(-3px);
-            background:rgba(255,255,255,.14);
-            border-color:rgba(255,255,255,.3);
+
+            background:
+                rgba(255,255,255,.14);
+
+            border-color:
+                rgba(255,255,255,.3);
         }
 
 
         #cartButton svg {
             width:23px;
             height:23px;
+
             stroke:currentColor;
             fill:none;
+
             stroke-width:1.7;
+
             stroke-linecap:round;
             stroke-linejoin:round;
         }
@@ -317,7 +357,10 @@
             align-items:center;
             justify-content:center;
 
-            padding:150px 24px 100px;
+            padding:
+                150px
+                24px
+                100px;
 
             overflow:hidden;
         }
@@ -335,7 +378,10 @@
 
             padding:70px;
 
-            border:1px solid var(--border);
+            border:
+                1px solid
+                var(--border);
+
             border-radius:42px;
 
             background:
@@ -349,8 +395,11 @@
             -webkit-backdrop-filter:blur(35px);
 
             box-shadow:
-                inset 0 1px 0 rgba(255,255,255,.1),
-                0 40px 120px rgba(0,0,0,.65);
+                inset 0 1px 0
+                rgba(255,255,255,.1),
+
+                0 40px 120px
+                rgba(0,0,0,.65);
 
             overflow:hidden;
         }
@@ -415,14 +464,20 @@
 
             padding:9px 15px;
 
-            border:1px solid rgba(255,255,255,.13);
+            border:
+                1px solid
+                rgba(255,255,255,.13);
+
             border-radius:999px;
 
-            background:rgba(255,255,255,.045);
+            background:
+                rgba(255,255,255,.045);
 
-            color:rgba(255,255,255,.7);
+            color:
+                rgba(255,255,255,.7);
 
             font-size:10px;
+
             letter-spacing:.22em;
         }
 
@@ -435,9 +490,13 @@
 
             background:#fff;
 
-            box-shadow:0 0 14px #fff;
+            box-shadow:
+                0 0 14px #fff;
 
-            animation:pulsePoint 2s infinite;
+            animation:
+                pulsePoint
+                2s
+                infinite;
         }
 
 
@@ -452,7 +511,9 @@
                 );
 
             line-height:.86;
+
             letter-spacing:-.07em;
+
             font-weight:800;
         }
 
@@ -463,7 +524,8 @@
 
 
         .hero-copy h1 span:last-child {
-            color:rgba(255,255,255,.35);
+            color:
+                rgba(255,255,255,.35);
         }
 
 
@@ -475,12 +537,14 @@
             color:var(--muted);
 
             font-size:16px;
+
             line-height:1.8;
         }
 
 
         .hero-actions {
             display:flex;
+
             flex-wrap:wrap;
 
             justify-content:center;
@@ -491,6 +555,7 @@
 
         .hero-button {
             display:inline-flex;
+
             align-items:center;
             justify-content:center;
 
@@ -498,14 +563,18 @@
 
             padding:0 24px;
 
-            border:1px solid rgba(255,255,255,.16);
+            border:
+                1px solid
+                rgba(255,255,255,.16);
+
             border-radius:16px;
 
             text-decoration:none;
 
             color:#fff;
 
-            background:rgba(255,255,255,.07);
+            background:
+                rgba(255,255,255,.07);
 
             backdrop-filter:blur(15px);
 
@@ -516,7 +585,8 @@
         .hero-button:hover {
             transform:translateY(-4px);
 
-            background:rgba(255,255,255,.14);
+            background:
+                rgba(255,255,255,.14);
 
             box-shadow:
                 0 15px 40px
@@ -539,13 +609,16 @@
             position:relative;
             z-index:3;
 
-            padding:10px 24px 45px;
+            padding:
+                10px
+                24px
+                45px;
         }
 
 
         .index-video-container {
             width:min(1100px,100%);
-            margin:auto;
+            margin:0 auto;
         }
 
 
@@ -558,7 +631,10 @@
 
             overflow:hidden;
 
-            border:1px solid rgba(255,255,255,.14);
+            border:
+                1px solid
+                rgba(255,255,255,.14);
+
             border-radius:32px;
 
             background:#000;
@@ -569,10 +645,56 @@
         }
 
 
+        /*
+         * IMPORTANT:
+         *
+         * The video itself is kept completely native.
+         *
+         * No transform.
+         * No filter.
+         * No opacity.
+         * No visibility manipulation.
+         * No canvas.
+         *
+         * This is intentional for PC compatibility.
+         */
+
+        #kiwiFeaturedVideo {
+            position:absolute;
+
+            inset:0;
+
+            z-index:1;
+
+            display:block;
+
+            width:100%;
+            height:100%;
+
+            margin:0;
+            padding:0;
+
+            object-fit:cover;
+
+            background:#000;
+
+            border:0;
+
+            transform:none;
+
+            filter:none;
+
+            opacity:1;
+
+            visibility:visible;
+        }
+
+
         .index-video-frame::before {
             content:"";
 
             position:absolute;
+
             inset:0;
 
             z-index:2;
@@ -587,43 +709,6 @@
         }
 
 
-        /*
-         * IMPORTANT:
-         * Do not transform, filter or hide the video.
-         * This prevents the black-video problem on PC.
-         */
-
-        #kiwiFeaturedVideo {
-            position:relative;
-
-            z-index:1;
-
-            display:block;
-
-            width:100%;
-            height:100%;
-
-            min-width:100%;
-            min-height:100%;
-
-            object-fit:cover;
-
-            background:#000;
-
-            transform:none !important;
-            filter:none !important;
-
-            opacity:1 !important;
-
-            visibility:visible !important;
-        }
-
-
-        #kiwiFeaturedVideo::-webkit-media-controls {
-            z-index:5;
-        }
-
-
         /* =================================================
            KIWI PROMO
            ================================================= */
@@ -632,7 +717,10 @@
             position:relative;
             z-index:3;
 
-            padding:10px 24px 45px;
+            padding:
+                10px
+                24px
+                45px;
         }
 
 
@@ -643,9 +731,10 @@
 
             min-height:430px;
 
-            margin:auto;
+            margin:0 auto;
 
             display:flex;
+
             align-items:center;
             justify-content:center;
 
@@ -660,7 +749,9 @@
                     rgba(255,255,255,.025)
                 );
 
-            border:1px solid rgba(255,255,255,.16);
+            border:
+                1px solid
+                rgba(255,255,255,.16);
 
             backdrop-filter:blur(30px);
             -webkit-backdrop-filter:blur(30px);
@@ -678,11 +769,13 @@
             content:"";
 
             position:absolute;
+
             inset:7px;
 
             border-radius:28px;
 
-            border:1px solid
+            border:
+                1px solid
                 rgba(255,255,255,.11);
 
             pointer-events:none;
@@ -742,6 +835,7 @@
 
         .kiwi-promo-copy {
             position:relative;
+
             z-index:6;
 
             width:100%;
@@ -749,20 +843,26 @@
 
             text-align:center;
 
-            padding:62px 45px;
+            padding:
+                62px
+                45px;
         }
 
 
         .kiwi-promo-label {
             display:inline-flex;
+
             align-items:center;
+
             gap:9px;
 
             margin-bottom:18px;
 
-            color:rgba(255,255,255,.55);
+            color:
+                rgba(255,255,255,.55);
 
             font-size:9px;
+
             letter-spacing:.24em;
         }
 
@@ -799,24 +899,31 @@
                 );
 
             line-height:.9;
+
             letter-spacing:-.065em;
         }
 
 
         .kiwi-promo-copy h2 span {
             display:block;
-            color:rgba(255,255,255,.36);
+
+            color:
+                rgba(255,255,255,.36);
         }
 
 
         .kiwi-promo-description {
             max-width:680px;
 
-            margin:22px auto 28px;
+            margin:
+                22px
+                auto
+                28px;
 
             color:var(--muted);
 
             font-size:15px;
+
             line-height:1.75;
         }
 
@@ -838,9 +945,12 @@
         .kiwi-offer {
             min-width:220px;
 
-            padding:18px 22px;
+            padding:
+                18px
+                22px;
 
-            border:1px solid
+            border:
+                1px solid
                 rgba(255,255,255,.13);
 
             border-radius:18px;
@@ -896,7 +1006,9 @@
 
             min-height:55px;
 
-            padding:0 30px;
+            padding:
+                0
+                30px;
 
             border-radius:16px;
 
@@ -958,7 +1070,9 @@
                 min-height:680px;
 
                 padding:
-                    110px 16px 70px;
+                    110px
+                    16px
+                    70px;
             }
 
 
@@ -966,7 +1080,8 @@
                 min-height:560px;
 
                 padding:
-                    45px 22px;
+                    45px
+                    22px;
 
                 border-radius:30px;
             }
@@ -1001,7 +1116,8 @@
 
             .kiwi-promo-copy {
                 padding:
-                    50px 22px;
+                    50px
+                    22px;
             }
 
 
@@ -1072,11 +1188,13 @@
             r="1.4"
         ></circle>
 
+
         <circle
             cx="18"
             cy="20"
             r="1.4"
         ></circle>
+
 
         <path
             d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 8H6"
@@ -1174,13 +1292,11 @@
                 playsinline
                 preload="auto"
                 controls
-                disablepictureinpicture
-                controlslist="nodownload noplaybackrate"
                 aria-label="Kiwi Ears featured video"
             >
 
                 <source
-                    src="./kiwi.mp4"
+                    src="kiwi.mp4"
                     type="video/mp4"
                 >
 
@@ -1291,6 +1407,132 @@
     </div>
 
 </section>
+    <!-- =====================================================
+     KIWI EARS FEATURE VIDEO
+     ===================================================== -->
+
+<section
+    class="index-video-section"
+    aria-label="Kiwi Ears featured video"
+>
+
+    <div class="index-video-container">
+
+        <div class="index-video-frame">
+
+            <video
+                id="kiwiFeaturedVideo"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                controls
+                aria-label="Kiwi Ears featured video"
+            >
+
+                <source
+                    src="kiwi.mp4"
+                    type="video/mp4"
+                >
+
+                Your browser does not support HTML5 video.
+
+            </video>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     KIWI EARS PROMOTIONAL CTA
+     ===================================================== -->
+
+<section
+    id="kiwi-promo"
+    class="kiwi-promo-section"
+>
+
+    <div class="kiwi-promo-card">
+
+        <div class="kiwi-promo-copy">
+
+            <div class="kiwi-promo-label">
+                OFFICIAL KIWI EARS DISTRIBUTOR — CANADA
+            </div>
+
+
+            <h2>
+                KIWI EARS.
+                <span>NOW AT VOLTICA.</span>
+            </h2>
+
+
+            <p class="kiwi-promo-description">
+
+                Discover Kiwi Ears at Voltica Store.
+                For the launch, the first 100 customers
+                who purchase a Kiwi Ears product receive
+                10% OFF plus an exclusive VIP card
+                granting 15% OFF for life.
+
+            </p>
+
+
+            <div class="kiwi-offer-grid">
+
+                <div class="kiwi-offer">
+
+                    <strong>
+                        10% OFF
+                    </strong>
+
+                    <span>
+                        FIRST 100 KIWI EARS CUSTOMERS
+                    </span>
+
+                </div>
+
+
+                <div class="kiwi-offer vip">
+
+                    <strong>
+                        15% OFF
+                    </strong>
+
+                    <span>
+                        VIP DISCOUNT FOR LIFE
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="store.html"
+                class="kiwi-promo-button"
+            >
+                SHOP KIWI EARS →
+            </a>
+
+
+            <div class="kiwi-small-print">
+
+                FIRST 100 QUALIFYING PURCHASES
+                • VIP CARD PROVIDES 15% OFF FOR LIFE
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 
@@ -1313,21 +1555,16 @@
 
 
             <h2>
-
                 Q45.
-
-                <span>
-                    ELITE AUDIO.
-                </span>
-
+                <span>ELITE AUDIO.</span>
             </h2>
 
 
             <p class="q45-promo-description">
 
                 Premium over-ear audio with
-                an exclusive Voltica Elite Pass.
-                Get the Q45 for $189.99 and unlock
+                the exclusive Voltica Elite Pass.
+                Get the Q45 for $189.99 and receive
                 15% OFF FOR LIFE.
 
             </p>
@@ -1347,9 +1584,7 @@
 
 
                 <div class="q45-lifetime-badge">
-
                     + 15% OFF FOR LIFE
-
                 </div>
 
             </div>
@@ -1402,10 +1637,9 @@
 
             <p>
 
-                Order a qualifying Voltica product
-                during the launch period and receive
-                an exclusive metal card with your
-                personal lifetime discount code.
+                Receive an exclusive metal card
+                with your personal lifetime discount
+                code.
 
             </p>
 
@@ -1464,7 +1698,6 @@
 
         <div class="collection-grid">
 
-
             <a
                 href="store.html"
                 class="collection-card large"
@@ -1494,7 +1727,6 @@
 
 
             <div class="collection-side">
-
 
                 <a
                     href="store.html"
@@ -1700,7 +1932,6 @@
     aria-hidden="true"
 >
 
-
     <div class="voltica-cart-header">
 
         <div>
@@ -1778,13 +2009,8 @@
             class="voltica-cart-checkout"
             id="indexCheckoutButton"
         >
-
             CHECKOUT
-
-            <span>
-                →
-            </span>
-
+            <span>→</span>
         </button>
 
     </div>
@@ -1826,13 +2052,12 @@
      ===================================================== -->
 
 <script src="products.js"></script>
-
 <script src="store.js"></script>
 
 
 
 <!-- =====================================================
-     KIWI VIDEO PC INITIALIZATION
+     KIWI VIDEO INITIALIZATION
      ===================================================== -->
 
 <script>
@@ -1854,40 +2079,40 @@ document.addEventListener(
 
 
         /*
-         * Force the browser to load kiwi.mp4.
-         * No transforms, filters or canvas are used.
-         */
-
-        video.load();
-
-
-        /*
-         * Autoplay is attempted only after
-         * the video has been muted.
+         * kiwi.mp4 is located beside index.html.
          */
 
         video.muted = true;
 
 
-        const playVideo =
+        /*
+         * Explicitly reload the native
+         * HTML5 video source.
+         */
+
+        video.load();
+
+
+        const startVideo =
             function () {
 
-                const promise =
+                const playPromise =
                     video.play();
 
                 if (
-                    promise &&
-                    typeof promise.catch ===
+                    playPromise &&
+                    typeof playPromise.catch ===
                     "function"
                 ) {
 
-                    promise.catch(
+                    playPromise.catch(
                         function () {
+
                             /*
-                             * Browser autoplay policy
-                             * may require manual play.
-                             * Controls remain available.
+                             * Controls remain enabled
+                             * if autoplay is blocked.
                              */
+
                         }
                     );
 
@@ -1900,13 +2125,14 @@ document.addEventListener(
             video.readyState >= 2
         ) {
 
-            playVideo();
+            startVideo();
 
-        } else {
+        }
+        else {
 
             video.addEventListener(
                 "loadeddata",
-                playVideo,
+                startVideo,
                 {
                     once:true
                 }
@@ -1915,7 +2141,6 @@ document.addEventListener(
         }
 
     }
-
 );
 
 </script>
@@ -1930,47 +2155,39 @@ document.addEventListener(
 
 "use strict";
 
-
 document.addEventListener(
     "DOMContentLoaded",
     function () {
-
 
         const cartButton =
             document.getElementById(
                 "cartButton"
             );
 
-
         const cartDrawer =
             document.getElementById(
                 "indexCartDrawer"
             );
-
 
         const cartOverlay =
             document.getElementById(
                 "indexCartOverlay"
             );
 
-
         const cartClose =
             document.getElementById(
                 "indexCartClose"
             );
-
 
         const cartItems =
             document.getElementById(
                 "indexCartItems"
             );
 
-
         const cartTotal =
             document.getElementById(
                 "indexCartTotal"
             );
-
 
         const checkoutButton =
             document.getElementById(
@@ -1997,14 +2214,13 @@ document.addEventListener(
             if (
                 window.VolticaStore &&
                 typeof
-                    window.VolticaStore.getCart ===
-                    "function"
+                window.VolticaStore.getCart ===
+                "function"
             ) {
 
                 return window.VolticaStore.getCart();
 
             }
-
 
             return [];
 
@@ -2016,13 +2232,13 @@ document.addEventListener(
             const price =
                 Number(value);
 
-
-            if (!Number.isFinite(price)) {
+            if (
+                !Number.isFinite(price)
+            ) {
 
                 return "$0.00 USD";
 
             }
-
 
             return (
                 "$" +
@@ -2038,26 +2254,11 @@ document.addEventListener(
             return String(
                 value ?? ""
             )
-            .replace(
-                /&/g,
-                "&amp;"
-            )
-            .replace(
-                /</g,
-                "&lt;"
-            )
-            .replace(
-                />/g,
-                "&gt;"
-            )
-            .replace(
-                /"/g,
-                "&quot;"
-            )
-            .replace(
-                /'/g,
-                "&#039;"
-            );
+            .replace(/&/g,"&amp;")
+            .replace(/</g,"&lt;")
+            .replace(/>/g,"&gt;")
+            .replace(/"/g,"&quot;")
+            .replace(/'/g,"&#039;");
 
         }
 
@@ -2097,7 +2298,6 @@ document.addEventListener(
                 cartTotal.textContent =
                     "$0.00 USD";
 
-
                 return;
 
             }
@@ -2107,13 +2307,12 @@ document.addEventListener(
 
 
             cart.forEach(
-                item => {
+                function (item) {
 
                     const quantity =
                         Number(
                             item.quantity || 1
                         );
-
 
                     const price =
                         Number(
@@ -2122,8 +2321,7 @@ document.addEventListener(
 
 
                     total +=
-                        price *
-                        quantity;
+                        price * quantity;
 
 
                     const element =
@@ -2160,7 +2358,6 @@ document.addEventListener(
                                 type="button"
                                 data-action="decrease"
                                 data-id="${escapeHTML(item.id)}"
-                                aria-label="Decrease quantity"
                             >
                                 −
                             </button>
@@ -2175,7 +2372,6 @@ document.addEventListener(
                                 type="button"
                                 data-action="increase"
                                 data-id="${escapeHTML(item.id)}"
-                                aria-label="Increase quantity"
                             >
                                 +
                             </button>
@@ -2185,7 +2381,6 @@ document.addEventListener(
                                 type="button"
                                 data-action="remove"
                                 data-id="${escapeHTML(item.id)}"
-                                aria-label="Remove item"
                             >
                                 ×
                             </button>
@@ -2200,19 +2395,11 @@ document.addEventListener(
                             "[data-action]"
                         )
                         .forEach(
-                            button => {
+                            function (button) {
 
                                 button.addEventListener(
                                     "click",
                                     function () {
-
-                                        const action =
-                                            this.dataset.action;
-
-
-                                        const id =
-                                            this.dataset.id;
-
 
                                         if (
                                             !window.VolticaStore
@@ -2221,6 +2408,13 @@ document.addEventListener(
                                             return;
 
                                         }
+
+
+                                        const action =
+                                            this.dataset.action;
+
+                                        const id =
+                                            this.dataset.id;
 
 
                                         if (
@@ -2287,45 +2481,37 @@ document.addEventListener(
         }
 
 
-
         function openIndexCart() {
 
             renderIndexCart();
-
 
             cartDrawer.classList.add(
                 "active"
             );
 
-
             cartOverlay.classList.add(
                 "active"
             );
-
 
             cartDrawer.setAttribute(
                 "aria-hidden",
                 "false"
             );
 
-
             cartOverlay.setAttribute(
                 "aria-hidden",
                 "false"
             );
-
 
             cartButton.setAttribute(
                 "aria-expanded",
                 "true"
             );
 
-
             document.body.style.overflow =
                 "hidden";
 
         }
-
 
 
         function closeIndexCart() {
@@ -2334,35 +2520,29 @@ document.addEventListener(
                 "active"
             );
 
-
             cartOverlay.classList.remove(
                 "active"
             );
-
 
             cartDrawer.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
-
             cartOverlay.setAttribute(
                 "aria-hidden",
                 "true"
             );
-
 
             cartButton.setAttribute(
                 "aria-expanded",
                 "false"
             );
 
-
             document.body.style.overflow =
                 "";
 
         }
-
 
 
         cartButton.addEventListener(
@@ -2426,9 +2606,7 @@ document.addEventListener(
 
         renderIndexCart();
 
-
     }
-
 );
 
 </script>

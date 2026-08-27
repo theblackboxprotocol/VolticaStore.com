@@ -1797,11 +1797,59 @@ function renderCustomCTA(
     }
 
 
+    /* =====================================================
+       CTA IMAGE
+       ===================================================== */
+
+    let ctaImage =
+        customCta.image
+            ? String(
+                customCta.image
+            ).trim()
+            : "";
+
+
+    /*
+     * Automatic Orchestra II image.
+     *
+     * This keeps the CTA working immediately with the
+     * current products.js without requiring another
+     * database modification.
+     */
+
+    if (
+        !ctaImage &&
+        String(
+            product.id || ""
+        )
+            .toLowerCase()
+            .includes(
+                "orchestra-ii"
+            )
+    ) {
+
+        ctaImage =
+            "assets/images/orchestra1.jpg";
+
+    }
+
+
+    if (ctaImage) {
+
+        ctaImage =
+            normalizeImagePath(
+                ctaImage
+            );
+
+    }
+
+
     console.log(
         "VOLTICA: CUSTOM CTA =",
         {
             title,
-            lines
+            lines,
+            image: ctaImage
         }
     );
 
@@ -1829,6 +1877,16 @@ function renderCustomCTA(
     glass
         .querySelectorAll(
             ".custom-cta-content"
+        )
+        .forEach(
+            element =>
+                element.remove()
+        );
+
+
+    glass
+        .querySelectorAll(
+            ".custom-cta-image"
         )
         .forEach(
             element =>
@@ -1871,6 +1929,115 @@ function renderCustomCTA(
             title ||
             product.name ||
             "DISCOVER THE FUTURE.";
+
+    }
+
+
+    /* =====================================================
+       CTA IMAGE
+       ===================================================== */
+
+    if (ctaImage) {
+
+        const imageWrapper =
+            document.createElement(
+                "div"
+            );
+
+
+        imageWrapper.className =
+            "custom-cta-image";
+
+
+        imageWrapper.style.cssText = `
+            width:100%;
+            aspect-ratio:16 / 9;
+            margin:0 auto 30px;
+            overflow:hidden;
+            border-radius:20px;
+            border:1px solid rgba(255,255,255,.12);
+            background:rgba(0,0,0,.25);
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.35),
+                inset 0 0 0 1px rgba(255,255,255,.025);
+        `;
+
+
+        const image =
+            document.createElement(
+                "img"
+            );
+
+
+        image.src =
+            ctaImage;
+
+
+        image.alt =
+            `${product.name || "Voltica Product"} — Voltica Store`;
+
+
+        image.loading =
+            "lazy";
+
+
+        image.decoding =
+            "async";
+
+
+        image.style.cssText = `
+            display:block;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            object-position:center;
+        `;
+
+
+        image.onerror =
+            () => {
+
+                console.warn(
+                    "VOLTICA: CTA image could not be loaded:",
+                    ctaImage
+                );
+
+                imageWrapper.remove();
+
+            };
+
+
+        imageWrapper.appendChild(
+            image
+        );
+
+
+        /*
+         * Insert the 16:9 image immediately before
+         * the CTA title.
+         */
+
+        if (ctaTitle) {
+
+            glass.insertBefore(
+                imageWrapper,
+                ctaTitle
+            );
+
+        } else if (finalButton) {
+
+            glass.insertBefore(
+                imageWrapper,
+                finalButton
+            );
+
+        } else {
+
+            glass.appendChild(
+                imageWrapper
+            );
+
+        }
 
     }
 

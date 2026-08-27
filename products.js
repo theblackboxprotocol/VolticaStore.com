@@ -415,17 +415,17 @@ window.volticaProducts = [
             "â€‹Design": "Mini body portable design for multi-scene usage (Vlogging, live streaming, video calls)"
         },
         "images": [
-            "assets/images/1000052833.jpg",
-            "assets/images/1000052831.webp",
-            "assets/images/1000052830.webp",
-            "assets/images/1000052827.webp",
-            "assets/images/1000052828.webp",
-            "assets/images/1000052824.webp",
-            "assets/images/1000052829.webp",
-            "assets/images/1000052825.webp",
-            "assets/images/1000052826.webp",
-            "assets/images/1000052823.webp",
-            "assets/images/1000052832.webp"
+            "assets/images/gimbal1-1.webp",
+            "assets/images/gimbal1-2.webp",
+            "assets/images/gimbal1-3.webp",
+            "assets/images/gimbal1-4.webp",
+            "assets/images/gimbal1-5.webp",
+            "assets/images/gimbal1-7.webp",
+            "assets/images/gimbal1-8.webp",
+            "assets/images/gimbal1-9.webp",
+            "assets/images/gimbal1-10.webp",
+            "assets/images/gimbal1-11.webp",
+            "assets/images/gimbal1-12.webp"
         ],
         "colors": [],
         "variants": [],

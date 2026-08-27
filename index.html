@@ -1,3 +1,5 @@
+index.html
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +35,6 @@
         rel="stylesheet"
         href="index.css"
     >
-
 
     <!-- =====================================================
          VOLTICA HOMEPAGE PREMIUM LAYER
@@ -73,6 +74,167 @@
             color:#fff;
 
             overflow-x:hidden;
+
+        }
+
+
+        /* =================================================
+           HEADER MOBILE PROTECTION
+           Keeps HOME / STORE / CONTACT visible
+           ================================================= */
+
+        @media (max-width:850px) {
+
+            .store-header {
+
+                position:relative;
+
+                z-index:1000;
+
+                display:flex !important;
+
+                align-items:center;
+
+                gap:10px;
+
+                width:100%;
+
+                min-width:0;
+
+            }
+
+
+            .store-header .logo-acrylic {
+
+                flex:0 0 auto;
+
+                min-width:0;
+
+            }
+
+
+            .store-header .store-nav {
+
+                display:flex !important;
+
+                flex:1 1 auto;
+
+                min-width:0;
+
+                width:auto;
+
+                max-width:none;
+
+                overflow-x:auto;
+
+                overflow-y:hidden;
+
+                justify-content:flex-start;
+
+                align-items:center;
+
+                gap:14px;
+
+                white-space:nowrap;
+
+                scrollbar-width:none;
+
+                -webkit-overflow-scrolling:touch;
+
+            }
+
+
+            .store-header .store-nav::-webkit-scrollbar {
+
+                display:none;
+
+            }
+
+
+            .store-header .store-nav a {
+
+                display:inline-flex !important;
+
+                align-items:center;
+
+                justify-content:center;
+
+                flex:0 0 auto;
+
+                white-space:nowrap;
+
+                visibility:visible !important;
+
+                opacity:1 !important;
+
+            }
+
+
+            .store-header .cart-acrylic {
+
+                flex:0 0 auto;
+
+                position:relative;
+
+                z-index:1001;
+
+            }
+
+        }
+
+
+        @media (max-width:560px) {
+
+            .store-header {
+
+                gap:7px;
+
+            }
+
+
+            .store-header .logo-acrylic {
+
+                padding-left:8px;
+
+                padding-right:8px;
+
+            }
+
+
+            .store-header .logo-text {
+
+                display:none;
+
+            }
+
+
+            .store-header .store-nav {
+
+                gap:9px;
+
+            }
+
+
+            .store-header .store-nav a {
+
+                padding-left:7px;
+
+                padding-right:7px;
+
+                font-size:9px;
+
+                letter-spacing:.12em;
+
+            }
+
+
+            .store-header .cart-acrylic {
+
+                padding-left:10px;
+
+                padding-right:10px;
+
+            }
 
         }
 
@@ -747,8 +909,6 @@
 
         }
 
-
-        /* subtle white LED strip */
 
         .q45-promo-card::before {
 
@@ -2217,7 +2377,10 @@
     </a>
 
 
-    <nav class="store-nav">
+    <nav
+        class="store-nav"
+        aria-label="Main navigation"
+    >
 
         <a
             href="index.html"
@@ -2684,10 +2847,10 @@
                 >
 
                     <img
-                    src="assets/images/q451-4.webp"
-                    alt="Voltica future technology"
-                    loading="lazy"
-                >
+                        src="assets/images/q451-4.webp"
+                        alt="Voltica future technology"
+                        loading="lazy"
+                    >
 
 
                     <div class="collection-overlay">
@@ -2997,7 +3160,6 @@
      ===================================================== -->
 
 <script src="products.js"></script>
-
 
 <script src="store.js"></script>
 

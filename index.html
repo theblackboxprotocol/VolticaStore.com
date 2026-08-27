@@ -692,7 +692,368 @@
 
         /* =================================================
            KIWI EARS PROMOTIONAL CTA
-           DIRECTLY UNDER FEATURE VIDEO
+           ================================================= */
+
+        .kiwi-promo-section {
+
+            position:relative;
+
+            z-index:3;
+
+            padding:
+                10px 24px 45px;
+
+        }
+
+
+        .kiwi-promo-card {
+
+            position:relative;
+
+            width:min(1080px,100%);
+
+            min-height:430px;
+
+            margin:auto;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            overflow:hidden;
+
+            border-radius:34px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.09),
+                    rgba(255,255,255,.025)
+                );
+
+            border:
+                1px solid rgba(255,255,255,.16);
+
+            backdrop-filter:blur(30px);
+
+            -webkit-backdrop-filter:blur(30px);
+
+            box-shadow:
+                0 35px 100px rgba(0,0,0,.65),
+                inset 0 1px 0 rgba(255,255,255,.1);
+
+        }
+
+
+        .kiwi-promo-card::before {
+
+            content:"";
+
+            position:absolute;
+
+            inset:7px;
+
+            border-radius:28px;
+
+            border:
+                1px solid rgba(255,255,255,.11);
+
+            pointer-events:none;
+
+            z-index:5;
+
+        }
+
+
+        .kiwi-promo-card::after {
+
+            content:"";
+
+            position:absolute;
+
+            top:0;
+            left:15%;
+
+            width:70%;
+            height:1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.8),
+                    transparent
+                );
+
+            box-shadow:
+                0 0 18px rgba(255,255,255,.3);
+
+            animation:
+                kiwiLight 4s ease-in-out infinite;
+
+            pointer-events:none;
+
+        }
+
+
+        @keyframes kiwiLight {
+
+            0%,100% {
+
+                opacity:.2;
+
+                transform:scaleX(.65);
+
+            }
+
+            50% {
+
+                opacity:.9;
+
+                transform:scaleX(1);
+
+            }
+
+        }
+
+
+        .kiwi-promo-copy {
+
+            position:relative;
+
+            z-index:6;
+
+            width:100%;
+
+            max-width:850px;
+
+            text-align:center;
+
+            padding:
+                62px 45px;
+
+        }
+
+
+        .kiwi-promo-label {
+
+            display:inline-flex;
+
+            align-items:center;
+
+            gap:9px;
+
+            margin-bottom:18px;
+
+            color:
+                rgba(255,255,255,.55);
+
+            font-size:9px;
+
+            letter-spacing:.24em;
+
+        }
+
+
+        .kiwi-promo-label::before {
+
+            content:"";
+
+            width:6px;
+            height:6px;
+
+            border-radius:50%;
+
+            background:#fff;
+
+            box-shadow:
+                0 0 15px rgba(255,255,255,.9);
+
+            animation:
+                pulsePoint 2s infinite;
+
+        }
+
+
+        .kiwi-promo-copy h2 {
+
+            margin:0;
+
+            font-size:
+                clamp(44px,6vw,76px);
+
+            line-height:.9;
+
+            letter-spacing:-.065em;
+
+        }
+
+
+        .kiwi-promo-copy h2 span {
+
+            display:block;
+
+            color:
+                rgba(255,255,255,.36);
+
+        }
+
+
+        .kiwi-promo-description {
+
+            max-width:680px;
+
+            margin:
+                22px auto 28px;
+
+            color:
+                var(--muted);
+
+            font-size:15px;
+
+            line-height:1.75;
+
+        }
+
+
+        .kiwi-offer-grid {
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:stretch;
+
+            flex-wrap:wrap;
+
+            gap:12px;
+
+            margin-bottom:28px;
+
+        }
+
+
+        .kiwi-offer {
+
+            min-width:220px;
+
+            padding:
+                18px 22px;
+
+            border:
+                1px solid rgba(255,255,255,.13);
+
+            border-radius:18px;
+
+            background:
+                rgba(255,255,255,.045);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,.07);
+
+        }
+
+
+        .kiwi-offer strong {
+
+            display:block;
+
+            font-size:28px;
+
+            line-height:1;
+
+            letter-spacing:-.04em;
+
+        }
+
+
+        .kiwi-offer span {
+
+            display:block;
+
+            margin-top:8px;
+
+            color:
+                rgba(255,255,255,.45);
+
+            font-size:9px;
+
+            letter-spacing:.15em;
+
+        }
+
+
+        .kiwi-offer.vip {
+
+            border-color:
+                rgba(255,255,255,.24);
+
+            background:
+                rgba(255,255,255,.075);
+
+        }
+
+
+        .kiwi-promo-button {
+
+            display:inline-flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            min-height:55px;
+
+            padding:
+                0 30px;
+
+            border-radius:16px;
+
+            background:#fff;
+
+            color:#050505;
+
+            text-decoration:none;
+
+            font-size:12px;
+
+            font-weight:800;
+
+            letter-spacing:.09em;
+
+            transition:.35s ease;
+
+        }
+
+
+        .kiwi-promo-button:hover {
+
+            transform:translateY(-4px);
+
+            box-shadow:
+                0 18px 45px rgba(255,255,255,.16);
+
+        }
+
+
+        .kiwi-small-print {
+
+            margin-top:15px;
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size:9px;
+
+            letter-spacing:.08em;
+
+        }
+
+
+        /* =================================================
+           Q45 PROMOTIONAL CTA
            ================================================= */
 
         .q45-promo-section {
@@ -921,7 +1282,7 @@
 
         .q45-promo-description {
 
-            max-width:650px;
+            max-width:600px;
 
             margin:
                 20px auto 24px;
@@ -1527,7 +1888,7 @@
 
         .final-glass p {
 
-            max-width:600px;
+            max-width:560px;
 
             margin:
                 0 auto 30px;
@@ -1918,6 +2279,21 @@
             }
 
 
+            .kiwi-promo-card {
+
+                min-height:0;
+
+            }
+
+
+            .kiwi-promo-copy {
+
+                padding:
+                    48px 28px;
+
+            }
+
+
             .q45-promo-card {
 
                 min-height:0;
@@ -2010,6 +2386,57 @@
             .index-video-frame {
 
                 border-radius:22px;
+
+            }
+
+
+            .kiwi-promo-section {
+
+                padding-left:16px;
+                padding-right:16px;
+
+            }
+
+
+            .kiwi-promo-card {
+
+                border-radius:25px;
+
+            }
+
+
+            .kiwi-promo-copy {
+
+                padding:
+                    40px 22px 44px;
+
+            }
+
+
+            .kiwi-promo-copy h2 {
+
+                font-size:41px;
+
+            }
+
+
+            .kiwi-offer-grid {
+
+                flex-direction:column;
+
+            }
+
+
+            .kiwi-offer {
+
+                width:100%;
+
+            }
+
+
+            .kiwi-promo-button {
+
+                width:100%;
 
             }
 
@@ -2304,7 +2731,7 @@
                     href="#kiwi-promo"
                     class="hero-button"
                 >
-                    KIWI EARS — 10% OFF
+                    KIWI EARS OFFER
                 </a>
 
 
@@ -2321,12 +2748,12 @@
 
 
 <!-- =====================================================
-     FEATURE VIDEO
+     KIWI EARS FEATURE VIDEO
      ===================================================== -->
 
 <section
     class="index-video-section"
-    aria-label="Voltica Kiwi Ears featured video"
+    aria-label="Kiwi Ears featured video"
 >
 
 
@@ -2337,16 +2764,25 @@
 
 
             <video
-                src="kiwi.mp4"
                 autoplay
                 muted
                 loop
                 playsinline
                 preload="auto"
+                controls
                 disablepictureinpicture
                 controlslist="nodownload noplaybackrate"
-                aria-label="Voltica Store Kiwi Ears featured video"
-            ></video>
+                aria-label="Kiwi Ears featured video"
+            >
+
+                <source
+                    src="kiwi.mp4"
+                    type="video/mp4"
+                >
+
+                Your browser does not support HTML5 video.
+
+            </video>
 
 
         </div>
@@ -2360,11 +2796,115 @@
 
 <!-- =====================================================
      KIWI EARS PROMOTIONAL CTA
-     DIRECTLY UNDER FEATURE VIDEO
      ===================================================== -->
 
 <section
     id="kiwi-promo"
+    class="kiwi-promo-section"
+>
+
+
+    <div class="kiwi-promo-card">
+
+
+        <div class="kiwi-promo-copy">
+
+
+            <div class="kiwi-promo-label">
+
+                OFFICIAL KIWI EARS DISTRIBUTOR
+                — CANADA
+
+            </div>
+
+
+            <h2>
+
+                KIWI EARS.
+
+                <span>
+                    NOW AT VOLTICA.
+                </span>
+
+            </h2>
+
+
+            <p class="kiwi-promo-description">
+
+                Voltica Store is now an official
+                Kiwi Ears distributor in Canada.
+                To celebrate the launch, the first
+                100 customers who purchase a Kiwi Ears
+                product from Voltica receive an exclusive
+                launch offer.
+
+            </p>
+
+
+            <div class="kiwi-offer-grid">
+
+
+                <div class="kiwi-offer">
+
+                    <strong>
+                        10% OFF
+                    </strong>
+
+                    <span>
+                        FIRST 100 KIWI EARS CUSTOMERS
+                    </span>
+
+                </div>
+
+
+                <div class="kiwi-offer vip">
+
+                    <strong>
+                        15% OFF
+                    </strong>
+
+                    <span>
+                        VIP DISCOUNT FOR LIFE
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <a
+                href="store.html"
+                class="kiwi-promo-button"
+            >
+                SHOP KIWI EARS →
+            </a>
+
+
+            <div class="kiwi-small-print">
+
+                FIRST 100 QUALIFYING KIWI EARS PURCHASES
+                • VIP CARD APPLIES TO FUTURE VOLTICA ORDERS
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     Q45 PROMOTIONAL CTA
+     DIRECTLY AFTER KIWI PROMO
+     ===================================================== -->
+
+<section
+    id="q45-promo"
     class="q45-promo-section"
 >
 
@@ -2376,16 +2916,16 @@
 
 
             <div class="q45-promo-label">
-                VOLTICA STORE × KIWI EARS
+                VOLTICA ELITE PASS EDITION
             </div>
 
 
             <h2>
 
-                KIWI EARS.
+                Q45.
 
                 <span>
-                    NOW IN CANADA.
+                    ELITE AUDIO.
                 </span>
 
             </h2>
@@ -2393,14 +2933,10 @@
 
             <p class="q45-promo-description">
 
-                Voltica Store is now an official
-                Kiwi Ears distributor in Canada.
-
-                Be among the first 100 customers
-                to purchase Kiwi Ears and receive
-                10% OFF your order plus an exclusive
-                VIP card granting 15% OFF FOR LIFE
-                on your future Voltica Store orders.
+                Premium over-ear audio with
+                an exclusive Voltica Elite Pass.
+                Get the Q45 for $189.99 and unlock
+                15% OFF FOR LIFE.
 
             </p>
 
@@ -2410,10 +2946,10 @@
 
                 <div class="q45-price">
 
-                    10%
+                    $189.99
 
                     <small>
-                        OFF
+                        USD
                     </small>
 
                 </div>
@@ -2430,10 +2966,12 @@
 
 
             <a
-                href="store.html"
+                href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="q45-promo-button"
             >
-                SHOP KIWI EARS →
+                GET THE ELITE PASS →
             </a>
 
 
@@ -2443,7 +2981,6 @@
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -2468,7 +3005,7 @@
 
 
             <span>
-                KIWI EARS × VOLTICA VIP
+                VOLTICA FOUNDING CUSTOMER BENEFIT
             </span>
 
 
@@ -2479,10 +3016,10 @@
 
             <p>
 
-                The first 100 customers who purchase
-                Kiwi Ears through Voltica Store receive
-                an exclusive VIP card with 15% OFF FOR LIFE
-                on their future Voltica Store orders.
+                Order a qualifying Voltica product
+                during the launch period and receive
+                an exclusive metal card with your
+                personal lifetime discount code.
 
             </p>
 
@@ -2493,7 +3030,7 @@
         <div class="lifetime-number">
 
             <strong>
-                100
+                200
             </strong>
 
             <span>
@@ -2669,25 +3206,24 @@
                 letter-spacing:.2em;
             "
         >
-            VOLTICA STORE × KIWI EARS
+            VOLTICA STORE
         </span>
 
 
         <h2>
-            YOUR NEXT
-            LISTENING EXPERIENCE.
+            DISCOVER
+            WHAT'S NEXT.
         </h2>
 
 
         <p>
 
-            Be one of the first 100 customers
-            to discover Kiwi Ears at Voltica Store.
-
-            Get 10% OFF your Kiwi Ears purchase
-            and unlock your exclusive VIP card
-            with 15% OFF FOR LIFE on future
-            Voltica Store orders.
+            Kiwi Ears.
+            Premium audio.
+            Gaming gear.
+            Smart technology.
+            Explore the complete Voltica collection
+            and discover what comes next.
 
         </p>
 
@@ -2696,7 +3232,7 @@
             href="store.html"
             class="hero-button primary"
         >
-            SHOP KIWI EARS →
+            EXPLORE THE STORE →
         </a>
 
 
@@ -3435,4 +3971,4 @@ document.addEventListener(
 
 </body>
 
-</html>
+    </html>

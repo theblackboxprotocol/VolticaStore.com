@@ -358,10 +358,11 @@ window.volticaProducts = [
             "â€‹Materials": "ABS UFO Base, durable metallic speaker mesh"
         },
         "images": [
-            "assets/images/lifestyle1.1.webp",
-            "assets/images/lifestyle1.2.webp",
-            "assets/images/lifestyle1.3.webp",
-            "assets/images/lifestyle1.4.webp"
+            "assets/images/lifestyle1.1.jpg",
+            "assets/images/lifestyle1.2.jpg",
+            "assets/images/lifestyle1.3.jpg",
+            "assets/images/lifestyle1.4.jpg",
+            "assets/images/lifestyle1.5.jpg"
         ],
         "colors": [],
         "variants": [],

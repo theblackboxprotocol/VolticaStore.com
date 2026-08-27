@@ -2901,3 +2901,231 @@ body::after {
         inset 0 1px 0 rgba(255,255,255,0.08);
 
 }
+/* =========================================================
+   VOLTICA — ACRYLIC LED STRIP SYSTEM
+   White architectural edge lighting
+   ========================================================= */
+
+.glass-card,
+.featured,
+.product-card,
+.main-image,
+.contact-acrylic,
+.product-modal-content,
+.q45-hero-button {
+
+    position: relative;
+
+    isolation: isolate;
+
+}
+
+
+/* ---------------------------------------------------------
+   LED EDGE
+   --------------------------------------------------------- */
+
+.glass-card::after,
+.featured::after,
+.product-card::after,
+.main-image::after,
+.contact-acrylic::after,
+.product-modal-content::after,
+.q45-hero-button::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.75),
+            rgba(255,255,255,0.08) 25%,
+            rgba(255,255,255,0.02) 50%,
+            rgba(255,255,255,0.08) 75%,
+            rgba(255,255,255,0.65)
+        );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+
+    mask-composite: exclude;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+    opacity: 0.42;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(255,255,255,0.35)
+        )
+        drop-shadow(
+            0 0 16px
+            rgba(255,255,255,0.14)
+        );
+
+    animation:
+        acrylicLedPulse 4s ease-in-out infinite;
+
+}
+
+
+/* ---------------------------------------------------------
+   SOFT LIGHT BEHIND THE ACRYLIC
+   --------------------------------------------------------- */
+
+.glass-card::after,
+.featured::after,
+.product-card::after,
+.contact-acrylic::after {
+
+    box-shadow:
+        0 0 18px rgba(255,255,255,0.10),
+        0 0 45px rgba(255,255,255,0.045);
+
+}
+
+
+/* ---------------------------------------------------------
+   PRODUCT / HERO PANELS
+   --------------------------------------------------------- */
+
+.product-card::after,
+.main-image::after,
+.q45-hero-button::after {
+
+    opacity: 0.34;
+
+}
+
+
+/* ---------------------------------------------------------
+   LED ANIMATION
+   --------------------------------------------------------- */
+
+@keyframes acrylicLedPulse {
+
+    0%,
+    100% {
+
+        opacity: 0.28;
+
+        filter:
+            drop-shadow(
+                0 0 4px
+                rgba(255,255,255,0.25)
+            )
+            drop-shadow(
+                0 0 12px
+                rgba(255,255,255,0.08)
+            );
+
+    }
+
+    50% {
+
+        opacity: 0.62;
+
+        filter:
+            drop-shadow(
+                0 0 7px
+                rgba(255,255,255,0.60)
+            )
+            drop-shadow(
+                0 0 24px
+                rgba(255,255,255,0.22)
+            );
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   PREMIUM HOVER BOOST
+   --------------------------------------------------------- */
+
+.glass-card:hover::after,
+.featured:hover::after,
+.product-card:hover::after,
+.main-image:hover::after,
+.contact-acrylic:hover::after,
+.q45-hero-button:hover::after {
+
+    opacity: 0.82;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255,255,255,0.75)
+        )
+        drop-shadow(
+            0 0 28px
+            rgba(255,255,255,0.30)
+        );
+
+    transition:
+        opacity 0.35s ease,
+        filter 0.35s ease;
+
+}
+
+
+/* ---------------------------------------------------------
+   INNER ACRYLIC LIGHT
+   --------------------------------------------------------- */
+
+.glass-card,
+.featured,
+.product-card,
+.contact-acrylic {
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,0.42),
+        inset 0 1px 0 rgba(255,255,255,0.09),
+        inset 0 0 35px rgba(255,255,255,0.018);
+
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE — SUBTLE LED
+   --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+
+    .glass-card::after,
+    .featured::after,
+    .product-card::after,
+    .main-image::after,
+    .contact-acrylic::after,
+    .q45-hero-button::after {
+
+        opacity: 0.32;
+
+        filter:
+            drop-shadow(
+                0 0 4px
+                rgba(255,255,255,0.28)
+            )
+            drop-shadow(
+                0 0 12px
+                rgba(255,255,255,0.10)
+            );
+
+    }
+
+}

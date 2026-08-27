@@ -34,65 +34,98 @@ function initializeProductPage() {
 
 
     /* =====================================================
-       DOM REFERENCES — BASED ON product-view.html
+       DOM REFERENCES
        ===================================================== */
 
     const mainImage =
-        document.getElementById("mainProductImage");
+        document.getElementById(
+            "mainProductImage"
+        );
 
     const thumbnails =
-        document.getElementById("productThumbnails");
+        document.getElementById(
+            "productThumbnails"
+        );
 
     const category =
-        document.getElementById("productCategory");
+        document.getElementById(
+            "productCategory"
+        );
 
     const badge =
-        document.getElementById("productBadge");
+        document.getElementById(
+            "productBadge"
+        );
 
     const name =
-        document.getElementById("productTitle");
-
-    const productNumber =
-        document.getElementById("productNumber");
+        document.getElementById(
+            "productTitle"
+        );
 
     const shortDescription =
-        document.getElementById("productShortDescription");
+        document.getElementById(
+            "productShortDescription"
+        );
 
     const price =
-        document.getElementById("productPrice");
+        document.getElementById(
+            "productPrice"
+        );
 
     const referencePrice =
-        document.getElementById("referencePrice");
+        document.getElementById(
+            "referencePrice"
+        );
 
     const currency =
-        document.getElementById("productCurrency");
+        document.getElementById(
+            "productCurrency"
+        );
 
     const variantsContainer =
-        document.getElementById("colorOptions");
+        document.getElementById(
+            "colorOptions"
+        );
 
     const selectedOption =
-        document.getElementById("selectedOption");
+        document.getElementById(
+            "selectedOption"
+        );
 
     const stripeButton =
-        document.getElementById("buyNowButton");
+        document.getElementById(
+            "buyNowButton"
+        );
 
     const finalStripeButton =
-        document.getElementById("finalStripeButton");
+        document.getElementById(
+            "finalStripeButton"
+        );
 
     const availability =
-        document.getElementById("productAvailability");
+        document.getElementById(
+            "productAvailability"
+        );
 
     const description =
-        document.getElementById("productDescription");
+        document.getElementById(
+            "productDescription"
+        );
 
     const features =
-        document.getElementById("featureList");
+        document.getElementById(
+            "featureList"
+        );
 
     const specifications =
-        document.getElementById("specificationTable");
+        document.getElementById(
+            "specificationTable"
+        );
 
     const finalProductName =
-        document.getElementById("finalProductName");
+        document.getElementById(
+            "finalProductName"
+        );
 
 
     /* =====================================================
@@ -181,7 +214,9 @@ function initializeProductPage() {
 
 
     const requestedId =
-        params.get("id");
+        params.get(
+            "id"
+        );
 
 
     console.log(
@@ -274,22 +309,6 @@ function initializeProductPage() {
     }
 
 
-    if (productNumber) {
-
-        const productIndex =
-            window.volticaProducts.indexOf(
-                product
-            );
-
-
-        productNumber.textContent =
-            productIndex >= 0
-                ? `PRODUCT ${String(productIndex + 1).padStart(2, "0")}`
-                : "VOLTICA PRODUCT";
-
-    }
-
-
     if (name) {
 
         name.textContent =
@@ -322,14 +341,19 @@ function initializeProductPage() {
        ===================================================== */
 
     const productPrice =
-        Number(product.price);
+        Number(
+            product.price
+        );
 
 
     if (price) {
 
         price.textContent =
-            Number.isFinite(productPrice)
-                ? "$" + productPrice.toFixed(2)
+            Number.isFinite(
+                productPrice
+            )
+                ? "$" +
+                  productPrice.toFixed(2)
                 : "$0.00";
 
     }
@@ -349,7 +373,9 @@ function initializeProductPage() {
        ===================================================== */
 
     const reference =
-        Number(product.referencePrice);
+        Number(
+            product.referencePrice
+        );
 
 
     if (referencePrice) {
@@ -361,7 +387,8 @@ function initializeProductPage() {
         ) {
 
             referencePrice.textContent =
-                "$" + reference.toFixed(2);
+                "$" +
+                reference.toFixed(2);
 
         } else {
 
@@ -396,15 +423,13 @@ function initializeProductPage() {
 
     configureStripeButton(
         stripeButton,
-        product.stripeLink,
-        product.active !== false
+        product.stripeLink
     );
 
 
     configureStripeButton(
         finalStripeButton,
-        product.stripeLink,
-        product.active !== false
+        product.stripeLink
     );
 
 
@@ -482,8 +507,7 @@ function initializeProductPage() {
        ===================================================== */
 
     renderCustomCTA(
-        product,
-        finalStripeButton
+        product
     );
 
 
@@ -508,8 +532,7 @@ function initializeProductPage() {
 
 function configureStripeButton(
     button,
-    link,
-    active = true
+    link
 ) {
 
     if (!button) {
@@ -519,8 +542,7 @@ function configureStripeButton(
 
     if (
         typeof link === "string" &&
-        link.trim() &&
-        active
+        link.trim()
     ) {
 
         button.href =
@@ -528,10 +550,6 @@ function configureStripeButton(
 
         button.style.display =
             "";
-
-        button.removeAttribute(
-            "aria-disabled"
-        );
 
     } else {
 
@@ -541,11 +559,6 @@ function configureStripeButton(
 
         button.style.display =
             "none";
-
-        button.setAttribute(
-            "aria-disabled",
-            "true"
-        );
 
     }
 
@@ -576,7 +589,9 @@ function renderDescription(
 
     const paragraphs =
         String(text)
-            .split(/\n\s*\n/)
+            .split(
+                /\n\s*\n/
+            )
             .map(
                 paragraph =>
                     paragraph.trim()
@@ -588,7 +603,9 @@ function renderDescription(
         paragraph => {
 
             const element =
-                document.createElement("p");
+                document.createElement(
+                    "p"
+                );
 
 
             element.textContent =
@@ -651,14 +668,17 @@ function renderFeatures(
 
 
             if (
-                typeof feature === "string"
+                typeof feature ===
+                "string"
             ) {
 
                 const separator =
                     feature.indexOf(":");
 
 
-                if (separator !== -1) {
+                if (
+                    separator !== -1
+                ) {
 
                     title =
                         feature
@@ -684,7 +704,8 @@ function renderFeatures(
 
             } else if (
                 feature &&
-                typeof feature === "object"
+                typeof feature ===
+                "object"
             ) {
 
                 title =
@@ -706,7 +727,9 @@ function renderFeatures(
 
 
             const article =
-                document.createElement("article");
+                document.createElement(
+                    "article"
+                );
 
 
             article.className =
@@ -714,7 +737,9 @@ function renderFeatures(
 
 
             const inner =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             inner.className =
@@ -722,7 +747,9 @@ function renderFeatures(
 
 
             const number =
-                document.createElement("span");
+                document.createElement(
+                    "span"
+                );
 
 
             number.className =
@@ -731,11 +758,16 @@ function renderFeatures(
 
             number.textContent =
                 String(index + 1)
-                    .padStart(2, "0");
+                    .padStart(
+                        2,
+                        "0"
+                    );
 
 
             const heading =
-                document.createElement("h3");
+                document.createElement(
+                    "h3"
+                );
 
 
             heading.textContent =
@@ -743,20 +775,34 @@ function renderFeatures(
 
 
             const paragraph =
-                document.createElement("p");
+                document.createElement(
+                    "p"
+                );
 
 
             paragraph.textContent =
                 text;
 
 
-            inner.appendChild(number);
-            inner.appendChild(heading);
-            inner.appendChild(paragraph);
+            inner.appendChild(
+                number
+            );
 
-            article.appendChild(inner);
+            inner.appendChild(
+                heading
+            );
 
-            container.appendChild(article);
+            inner.appendChild(
+                paragraph
+            );
+
+            article.appendChild(
+                inner
+            );
+
+            container.appendChild(
+                article
+            );
 
         }
     );
@@ -803,7 +849,8 @@ function renderSpecifications(
             item => {
 
                 if (
-                    typeof item !== "string"
+                    typeof item !==
+                    "string"
                 ) {
 
                     return;
@@ -815,7 +862,7 @@ function renderSpecifications(
                     item.indexOf(":");
 
 
-                const key =
+                let key =
                     separator !== -1
                         ? item
                             .slice(
@@ -826,7 +873,7 @@ function renderSpecifications(
                         : "SPECIFICATION";
 
 
-                const value =
+                let value =
                     separator !== -1
                         ? item
                             .slice(
@@ -883,7 +930,9 @@ function appendSpecification(
 ) {
 
     const row =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     row.className =
@@ -891,7 +940,9 @@ function appendSpecification(
 
 
     const label =
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
 
     label.className =
@@ -903,7 +954,9 @@ function appendSpecification(
 
 
     const content =
-        document.createElement("strong");
+        document.createElement(
+            "strong"
+        );
 
 
     content.className =
@@ -911,16 +964,22 @@ function appendSpecification(
 
 
     content.textContent =
-        value === null ||
-        value === undefined
-            ? ""
-            : String(value);
+        value;
 
 
-    row.appendChild(label);
-    row.appendChild(content);
+    row.appendChild(
+        label
+    );
 
-    container.appendChild(row);
+
+    row.appendChild(
+        content
+    );
+
+
+    container.appendChild(
+        row
+    );
 
 }
 
@@ -944,19 +1003,23 @@ function renderProductOptions(
 
 
     const colors =
-        normalizeArray(product.colors);
+        normalizeArray(
+            product.colors
+        );
 
 
     const variants =
-        normalizeArray(product.variants);
+        normalizeArray(
+            product.variants
+        );
 
+
+    /*
+     * Build one unified list of selectable options.
+     */
 
     const options = [];
 
-
-    /* =====================================================
-       COLORS
-       ===================================================== */
 
     colors.forEach(
         color => {
@@ -980,10 +1043,6 @@ function renderProductOptions(
     );
 
 
-    /* =====================================================
-       VARIANTS
-       ===================================================== */
-
     variants.forEach(
         variant => {
 
@@ -991,7 +1050,8 @@ function renderProductOptions(
 
 
             if (
-                typeof variant === "string"
+                typeof variant ===
+                "string"
             ) {
 
                 variantName =
@@ -1002,7 +1062,8 @@ function renderProductOptions(
 
             } else if (
                 variant &&
-                typeof variant === "object"
+                typeof variant ===
+                "object"
             ) {
 
                 variantName =
@@ -1030,9 +1091,9 @@ function renderProductOptions(
     );
 
 
-    /* =====================================================
-       REMOVE DUPLICATES
-       ===================================================== */
+    /*
+     * Remove duplicate options.
+     */
 
     const uniqueOptions =
         options.filter(
@@ -1045,15 +1106,16 @@ function renderProductOptions(
         );
 
 
-    /* =====================================================
-       NO OPTIONS
-       ===================================================== */
+    /*
+     * No options.
+     */
 
     if (!uniqueOptions.length) {
 
         if (selectedOption) {
 
             selectedOption.textContent =
+                product.name ||
                 "—";
 
         }
@@ -1064,7 +1126,9 @@ function renderProductOptions(
 
 
     const group =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     group.className =
@@ -1072,7 +1136,9 @@ function renderProductOptions(
 
 
     const label =
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
 
     label.className =
@@ -1085,14 +1151,18 @@ function renderProductOptions(
             : "OPTIONS";
 
 
-    group.appendChild(label);
+    group.appendChild(
+        label
+    );
 
 
     uniqueOptions.forEach(
         (option, index) => {
 
             const button =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
 
             button.type =
@@ -1107,7 +1177,9 @@ function renderProductOptions(
                 option.name;
 
 
-            if (index === 0) {
+            if (
+                index === 0
+            ) {
 
                 button.classList.add(
                     "selected"
@@ -1155,13 +1227,17 @@ function renderProductOptions(
             );
 
 
-            group.appendChild(button);
+            group.appendChild(
+                button
+            );
 
         }
     );
 
 
-    container.appendChild(group);
+    container.appendChild(
+        group
+    );
 
 }
 
@@ -1174,14 +1250,19 @@ function normalizeArray(
     value
 ) {
 
-    if (Array.isArray(value)) {
+    if (
+        Array.isArray(value)
+    ) {
 
         return value;
 
     }
 
 
-    if (typeof value === "string") {
+    if (
+        typeof value ===
+        "string"
+    ) {
 
         return value
             .split(/\n|,/)
@@ -1215,18 +1296,25 @@ function initializeGallery(
 
 
     const images =
-        normalizeArray(product.images)
+        normalizeArray(
+            product.images
+        )
             .filter(Boolean)
             .map(
                 image =>
-                    normalizeImagePath(image)
+                    normalizeImagePath(
+                        image
+                    )
             )
             .filter(Boolean);
 
 
     if (!images.length) {
 
-        mainImage.removeAttribute("src");
+        mainImage.removeAttribute(
+            "src"
+        );
+
 
         mainImage.alt =
             product.name ||
@@ -1246,7 +1334,8 @@ function initializeGallery(
     }
 
 
-    let currentIndex = 0;
+    let currentIndex =
+        0;
 
 
     function setMainImage(
@@ -1315,7 +1404,9 @@ function initializeGallery(
         ) => {
 
             const button =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
 
             button.type =
@@ -1326,7 +1417,9 @@ function initializeGallery(
                 "product-thumbnail";
 
 
-            if (index === 0) {
+            if (
+                index === 0
+            ) {
 
                 button.classList.add(
                     "active"
@@ -1336,7 +1429,9 @@ function initializeGallery(
 
 
             const image =
-                document.createElement("img");
+                document.createElement(
+                    "img"
+                );
 
 
             image.src =
@@ -1360,7 +1455,9 @@ function initializeGallery(
                 };
 
 
-            button.appendChild(image);
+            button.appendChild(
+                image
+            );
 
 
             button.addEventListener(
@@ -1376,7 +1473,9 @@ function initializeGallery(
             );
 
 
-            thumbnails.appendChild(button);
+            thumbnails.appendChild(
+                button
+            );
 
         }
     );
@@ -1393,7 +1492,9 @@ function normalizeImagePath(
 ) {
 
     const value =
-        String(image || "").trim();
+        String(
+            image || ""
+        ).trim();
 
 
     if (!value) {
@@ -1402,10 +1503,18 @@ function normalizeImagePath(
 
 
     if (
-        value.startsWith("http://") ||
-        value.startsWith("https://") ||
-        value.startsWith("data:") ||
-        value.startsWith("blob:")
+        value.startsWith(
+            "http://"
+        ) ||
+        value.startsWith(
+            "https://"
+        ) ||
+        value.startsWith(
+            "data:"
+        ) ||
+        value.startsWith(
+            "blob:"
+        )
     ) {
 
         return value;
@@ -1414,16 +1523,22 @@ function normalizeImagePath(
 
 
     if (
-        value.startsWith("/assets/images/")
+        value.startsWith(
+            "/assets/images/"
+        )
     ) {
 
-        return value.substring(1);
+        return value.substring(
+            1
+        );
 
     }
 
 
     if (
-        value.startsWith("assets/images/")
+        value.startsWith(
+            "assets/images/"
+        )
     ) {
 
         return value;
@@ -1460,7 +1575,9 @@ function initializeLightbox(
 
 
     const lightboxImage =
-        lightbox.querySelector("img");
+        lightbox.querySelector(
+            "img"
+        );
 
 
     const lightboxClose =
@@ -1476,8 +1593,12 @@ function initializeLightbox(
 
     function openLightbox() {
 
-        if (!mainImage.src) {
+        if (
+            !mainImage.src
+        ) {
+
             return;
+
         }
 
 
@@ -1527,6 +1648,11 @@ function initializeLightbox(
 
     }
 
+
+    /*
+     * Allow clicking the main image itself
+     * to open the lightbox.
+     */
 
     mainImage.style.cursor =
         "zoom-in";
@@ -1589,9 +1715,13 @@ function initializeLightbox(
    ========================================================= */
 
 function renderCustomCTA(
-    product,
-    finalStripeButton
+    product
 ) {
+
+    /*
+     * Find the existing final CTA.
+     * No HTML rewrite is required.
+     */
 
     const cta =
         document.querySelector(
@@ -1617,57 +1747,44 @@ function renderCustomCTA(
 
 
     if (!glass) {
+
         return;
+
     }
 
 
-    /*
-     * IMPORTANT:
-     * products.js uses:
-     *
-     * customCta: {
-     *     title: "...",
-     *     lines: [...]
-     * }
-     *
-     * Therefore the engine reads product.customCta.
-     */
-
-    const customCTA =
-        product.customCta &&
-        typeof product.customCta === "object"
-            ? product.customCta
-            : null;
-
-
     const title =
-        customCTA &&
-        typeof customCTA.title === "string"
-            ? customCTA.title.trim()
+        product.customCtaTitle
+            ? String(
+                product.customCtaTitle
+            ).trim()
             : "";
 
 
     const rawLines =
-        customCTA
-            ? customCTA.lines
-            : [];
+        product.customCtaLines;
 
 
     let lines = [];
 
 
-    if (Array.isArray(rawLines)) {
+    if (
+        Array.isArray(rawLines)
+    ) {
 
         lines =
             rawLines
                 .map(
                     line =>
-                        String(line).trim()
+                        String(
+                            line
+                        ).trim()
                 )
                 .filter(Boolean);
 
     } else if (
-        typeof rawLines === "string"
+        typeof rawLines ===
+        "string"
     ) {
 
         lines =
@@ -1682,19 +1799,9 @@ function renderCustomCTA(
     }
 
 
-    /* =====================================================
-       REMOVE PREVIOUS DYNAMIC CTA CONTENT
-       ===================================================== */
-
-    glass
-        .querySelectorAll(
-            ".custom-cta-content"
-        )
-        .forEach(
-            element =>
-                element.remove()
-        );
-
+    /*
+     * Remove the old generic CTA paragraph.
+     */
 
     const genericParagraph =
         glass.querySelector(
@@ -1709,9 +1816,9 @@ function renderCustomCTA(
     }
 
 
-    /* =====================================================
-       CTA TITLE
-       ===================================================== */
+    /*
+     * Find the CTA title.
+     */
 
     const ctaTitle =
         glass.querySelector(
@@ -1721,22 +1828,32 @@ function renderCustomCTA(
 
     if (ctaTitle) {
 
-        ctaTitle.textContent =
-            title ||
-            product.name ||
-            "DISCOVER THE FUTURE.";
+        if (title) {
+
+            ctaTitle.textContent =
+                title;
+
+        } else {
+
+            ctaTitle.textContent =
+                product.name ||
+                "DISCOVER THE FUTURE.";
+
+        }
 
     }
 
 
-    /* =====================================================
-       CUSTOM CTA CONTENT
-       ===================================================== */
+    /*
+     * Render custom CTA lines.
+     */
 
     if (lines.length) {
 
         const content =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         content.className =
@@ -1747,7 +1864,9 @@ function renderCustomCTA(
             line => {
 
                 const paragraph =
-                    document.createElement("p");
+                    document.createElement(
+                        "p"
+                    );
 
 
                 paragraph.textContent =
@@ -1762,8 +1881,12 @@ function renderCustomCTA(
         );
 
 
+        /*
+         * Insert the custom content
+         * immediately before BUY NOW.
+         */
+
         const finalButton =
-            finalStripeButton ||
             glass.querySelector(
                 "#finalStripeButton"
             );
@@ -1784,35 +1907,43 @@ function renderCustomCTA(
 
         }
 
-        return;
-
     }
 
 
-    /* =====================================================
-       DEFAULT CTA
-       ===================================================== */
+    /*
+     * If neither a custom title nor custom
+     * content exists, retain the default CTA.
+     */
 
-    const fallback =
-        document.createElement("p");
+    if (
+        !title &&
+        !lines.length
+    ) {
+
+        const fallback =
+            document.createElement(
+                "p"
+            );
 
 
-    fallback.textContent =
-        "Premium technology selected for the next generation.";
+        fallback.textContent =
+            "Premium technology selected for the next generation.";
 
 
-    if (ctaTitle) {
+        if (ctaTitle) {
 
-        ctaTitle.insertAdjacentElement(
-            "afterend",
-            fallback
-        );
+            ctaTitle.insertAdjacentElement(
+                "afterend",
+                fallback
+            );
 
-    } else {
+        } else {
 
-        glass.appendChild(
-            fallback
-        );
+            glass.appendChild(
+                fallback
+            );
+
+        }
 
     }
 
@@ -1933,7 +2064,9 @@ function escapeHtml(
     value
 ) {
 
-    return String(value ?? "")
+    return String(
+        value ?? ""
+    )
         .replace(
             /&/g,
             "&amp;"

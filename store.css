@@ -1,24 +1,126 @@
 /* =========================================================
    VOLTICA STORE — STORE.CSS
    =========================================================
-   PREMIUM STOREFRONT
+   PREMIUM STOREFRONT SYSTEM
    Glass / Acrylic / Tech / Luxury / Starfield
-   =========================================================
-   VISUAL SYSTEM
+
+   DESIGN PRINCIPLES
    ---------------------------------------------------------
    • Deep black foundation
    • Silver / white luminous accents
-   • Multi-layer starfield
-   • Acrylic surfaces
-   • Atmospheric glow
-   • Micro-reflections
-   • Subtle orbital motion
-   • Premium responsive layout
+   • Premium acrylic surfaces
+   • Controlled glassmorphism
+   • Atmospheric depth
+   • Subtle starfield
+   • Strong product hierarchy
+   • Mobile-first commerce UX
+   • Accessible interaction states
+   • Reduced-motion support
    ========================================================= */
 
 
 /* =========================================================
-   RESET
+   01 — DESIGN TOKENS
+   ========================================================= */
+
+:root {
+
+    /* ---------- COLORS ---------- */
+
+    --v-black-0: #000;
+    --v-black-1: #020202;
+    --v-black-2: #050505;
+    --v-black-3: #080808;
+    --v-black-4: #0b0b0b;
+    --v-black-5: #101010;
+
+    --v-white: #fff;
+    --v-text: rgba(255,255,255,.94);
+    --v-text-soft: rgba(255,255,255,.62);
+    --v-text-muted: rgba(255,255,255,.42);
+    --v-text-faint: rgba(255,255,255,.27);
+
+    --v-line-soft: rgba(255,255,255,.07);
+    --v-line: rgba(255,255,255,.11);
+    --v-line-strong: rgba(255,255,255,.18);
+
+    --v-glass-light: rgba(255,255,255,.065);
+    --v-glass: rgba(255,255,255,.045);
+    --v-glass-dark: rgba(255,255,255,.025);
+
+    /* ---------- GLASS ---------- */
+
+    --glass-border:
+        1px solid rgba(255,255,255,.10);
+
+    --glass-surface:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.022)
+        );
+
+    --glass-highlight:
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    --glass-shadow:
+        0 25px 70px rgba(0,0,0,.30);
+
+    /* ---------- RADIUS ---------- */
+
+    --radius-sm: 10px;
+    --radius-md: 13px;
+    --radius-lg: 17px;
+    --radius-xl: 24px;
+    --radius-xxl: 28px;
+    --radius-pill: 999px;
+
+    /* ---------- MOTION ---------- */
+
+    --ease-standard:
+        cubic-bezier(.22,.61,.36,1);
+
+    --ease-soft:
+        cubic-bezier(.16,1,.3,1);
+
+    --transition-fast:
+        .18s var(--ease-standard);
+
+    --transition:
+        .25s var(--ease-standard);
+
+    --transition-slow:
+        .4s var(--ease-soft);
+
+    /* ---------- SHADOWS ---------- */
+
+    --shadow-card:
+        0 25px 70px rgba(0,0,0,.30);
+
+    --shadow-card-hover:
+        0 35px 90px rgba(0,0,0,.42);
+
+    --shadow-button:
+        0 0 25px rgba(255,255,255,.025);
+
+    /* ---------- LAYOUT ---------- */
+
+    --content-width:
+        1200px;
+
+    --wide-content-width:
+        1280px;
+
+    --ultra-content-width:
+        1360px;
+
+    --page-gutter:
+        28px;
+}
+
+
+/* =========================================================
+   02 — RESET
    ========================================================= */
 
 *,
@@ -30,22 +132,32 @@
 }
 
 html {
+    min-height: 100%;
     scroll-behavior: smooth;
-    background: #020202;
+    background: var(--v-black-1);
+    color-scheme: dark;
 }
 
 body {
     min-height: 100vh;
     overflow-x: hidden;
 
-    color: #f5f5f5;
+    color: var(--v-text);
 
     font-family:
         Inter,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
         sans-serif;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
     background:
         radial-gradient(
@@ -63,7 +175,27 @@ body {
             rgba(255,255,255,.02),
             transparent 30%
         ),
-        #020202;
+        var(--v-black-1);
+}
+
+img {
+    max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+    touch-action: manipulation;
 }
 
 a {
@@ -71,14 +203,15 @@ a {
     text-decoration: none;
 }
 
-button {
-    font: inherit;
-    -webkit-tap-highlight-color: transparent;
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid rgba(255,255,255,.8);
+    outline-offset: 3px;
 }
 
 
 /* =========================================================
-   GLOBAL ATMOSPHERE
+   03 — GLOBAL ATMOSPHERE
    ========================================================= */
 
 body::before {
@@ -114,11 +247,6 @@ body::before {
 
     opacity: .75;
 }
-
-
-/* =========================================================
-   ATMOSPHERIC LIGHT
-   ========================================================= */
 
 body::after {
     content: "";
@@ -156,21 +284,27 @@ body::after {
 @keyframes atmosphereDrift {
 
     0% {
-        transform: translate3d(-1%,0,0) scale(1);
+        transform:
+            translate3d(-1%,0,0)
+            scale(1);
     }
 
     50% {
-        transform: translate3d(1%,1%,0) scale(1.03);
+        transform:
+            translate3d(1%,1%,0)
+            scale(1.03);
     }
 
     100% {
-        transform: translate3d(-1%,-1%,0) scale(1);
+        transform:
+            translate3d(-1%,-1%,0)
+            scale(1);
     }
 }
 
 
 /* =========================================================
-   STARFIELD — BASE
+   04 — STARFIELD
    ========================================================= */
 
 .pulsar-field {
@@ -182,12 +316,22 @@ body::after {
     overflow: hidden;
 
     pointer-events: none;
+
+    contain: strict;
+}
+
+.pulsar-field::before,
+.pulsar-field::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
 }
 
 
-/* =========================================================
-   STAR — GENERAL
-   ========================================================= */
+/* ---------- PRIMARY STARS ---------- */
 
 .pulsar {
     position: absolute;
@@ -197,13 +341,13 @@ body::after {
 
     border-radius: 50%;
 
-    background: #fff;
+    background: var(--v-white);
 
     opacity: .25;
 
     box-shadow:
         0 0 6px rgba(255,255,255,.65),
-        0 0 14px rgba(255,255,255,.2);
+        0 0 14px rgba(255,255,255,.20);
 
     animation:
         pulsarFloat 5s ease-in-out infinite,
@@ -211,86 +355,86 @@ body::after {
 }
 
 
-/* =========================================================
-   STAR POSITIONS
-   ========================================================= */
+/* ---------- STAR POSITIONS ---------- */
 
 .p1 {
     top: 8%;
     left: 8%;
-    animation-delay: 0s, .3s;
+    animation-delay: 0s,.3s;
 }
 
 .p2 {
     top: 16%;
     left: 82%;
-    animation-delay: 1s, 1.4s;
+    animation-delay: 1s,1.4s;
 }
 
 .p3 {
     top: 27%;
     left: 23%;
-    animation-delay: 2s, .8s;
+    animation-delay: 2s,.8s;
 }
 
 .p4 {
     top: 34%;
     left: 76%;
-    animation-delay: 3s, 2s;
+    animation-delay: 3s,2s;
 }
 
 .p5 {
     top: 44%;
     left: 51%;
-    animation-delay: 1.5s, .5s;
+    animation-delay: 1.5s,.5s;
 }
 
 .p6 {
     top: 56%;
     left: 13%;
-    animation-delay: 2.5s, 1.8s;
+    animation-delay: 2.5s,1.8s;
 }
 
 .p7 {
     top: 63%;
     left: 88%;
-    animation-delay: .8s, 2.7s;
+    animation-delay: .8s,2.7s;
 }
 
 .p8 {
     top: 72%;
     left: 37%;
-    animation-delay: 3.5s, .9s;
+    animation-delay: 3.5s,.9s;
 }
 
 .p9 {
     top: 81%;
     left: 69%;
-    animation-delay: 1.8s, 1.2s;
+    animation-delay: 1.8s,1.2s;
 }
 
 .p10 {
     top: 91%;
     left: 19%;
-    animation-delay: 2.8s, 2.2s;
+    animation-delay: 2.8s,2.2s;
 }
 
 
-/* =========================================================
-   STAR MOTION
-   ========================================================= */
+/* ---------- STAR MOTION ---------- */
 
 @keyframes pulsarFloat {
 
     0%,
     100% {
         opacity: .15;
-        transform: scale(.65) translate3d(0,0,0);
+        transform:
+            scale(.65)
+            translate3d(0,0,0);
     }
 
     50% {
         opacity: .8;
-        transform: scale(1.9) translate3d(0,-3px,0);
+        transform:
+            scale(1.9)
+            translate3d(0,-3px,0);
     }
 }
 
@@ -307,25 +451,7 @@ body::after {
 }
 
 
-/* =========================================================
-   STARFIELD — LARGE STARS
-   ========================================================= */
-
-.pulsar-field::before,
-.pulsar-field::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   SECONDARY STAR LAYER
-   ========================================================= */
+/* ---------- SECONDARY STARS ---------- */
 
 .pulsar-field::before {
     background-image:
@@ -395,9 +521,7 @@ body::after {
 }
 
 
-/* =========================================================
-   THIRD STAR LAYER
-   ========================================================= */
+/* ---------- DISTANT STARS ---------- */
 
 .pulsar-field::after {
     background-image:
@@ -446,7 +570,7 @@ body::after {
 
 
 /* =========================================================
-   TECH GRID
+   05 — TECH GRID
    ========================================================= */
 
 .tech-grid {
@@ -473,8 +597,7 @@ body::after {
             transparent 50.2%
         );
 
-    background-size:
-        120px 120px;
+    background-size: 120px 120px;
 
     mask-image:
         radial-gradient(
@@ -486,7 +609,7 @@ body::after {
 
 
 /* =========================================================
-   HEADER
+   06 — HEADER
    ========================================================= */
 
 .store-header {
@@ -503,13 +626,13 @@ body::after {
 
     gap: 16px;
 
-    padding: 13px 17px;
+    padding: 12px 17px;
 
     background:
         linear-gradient(
             180deg,
-            rgba(7,7,7,.92),
-            rgba(5,5,5,.78)
+            rgba(7,7,7,.94),
+            rgba(5,5,5,.80)
         );
 
     border-bottom:
@@ -520,14 +643,9 @@ body::after {
         0 10px 45px rgba(0,0,0,.28),
         inset 0 1px 0 rgba(255,255,255,.035);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px) saturate(125%);
+    -webkit-backdrop-filter: blur(18px) saturate(125%);
 }
-
-
-/* =========================================================
-   HEADER LIGHT LINE
-   ========================================================= */
 
 .store-header::after {
     content: "";
@@ -555,7 +673,7 @@ body::after {
 
 
 /* =========================================================
-   LOGO
+   07 — LOGO
    ========================================================= */
 
 .logo-acrylic {
@@ -627,7 +745,7 @@ body::after {
 
 
 /* =========================================================
-   NAVIGATION
+   08 — NAVIGATION
    ========================================================= */
 
 .store-nav {
@@ -649,8 +767,8 @@ body::after {
     letter-spacing: .14em;
 
     transition:
-        color .2s ease,
-        opacity .2s ease;
+        color var(--transition-fast),
+        opacity var(--transition-fast);
 }
 
 .store-nav a::after {
@@ -664,19 +782,19 @@ body::after {
 
     height: 1px;
 
-    background: #fff;
+    background: var(--v-white);
 
     opacity: 0;
 
     transition:
-        left .25s ease,
-        right .25s ease,
-        opacity .25s ease;
+        left var(--transition),
+        right var(--transition),
+        opacity var(--transition);
 }
 
 .store-nav a:hover,
 .store-nav .nav-active {
-    color: #fff;
+    color: var(--v-white);
 
     text-shadow:
         0 0 14px rgba(255,255,255,.15);
@@ -692,23 +810,25 @@ body::after {
 
 
 /* =========================================================
-   CART BUTTON
+   09 — CART BUTTON
    ========================================================= */
 
 .cart-acrylic {
     position: relative;
 
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
 
     display: grid;
     place-items: center;
+
+    flex-shrink: 0;
 
     border:
         1px solid
         rgba(255,255,255,.13);
 
-    border-radius: 13px;
+    border-radius: var(--radius-md);
 
     background:
         linear-gradient(
@@ -717,19 +837,19 @@ body::after {
             rgba(255,255,255,.025)
         );
 
-    color: #fff;
+    color: var(--v-white);
 
     cursor: pointer;
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.08),
-        0 5px 25px rgba(0,0,0,.2);
+        0 5px 25px rgba(0,0,0,.20);
 
     transition:
-        transform .2s ease,
-        background .2s ease,
-        border-color .2s ease,
-        box-shadow .2s ease;
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
 .cart-acrylic:hover {
@@ -744,6 +864,15 @@ body::after {
     box-shadow:
         0 0 25px rgba(255,255,255,.05),
         inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.cart-acrylic:active {
+    transform: translateY(0) scale(.97);
+}
+
+.cart-icon {
+    display: grid;
+    place-items: center;
 }
 
 .cart-icon svg {
@@ -767,7 +896,7 @@ body::after {
 
 
 /* =========================================================
-   CART COUNT
+   10 — CART COUNT
    ========================================================= */
 
 .cart-count {
@@ -776,8 +905,8 @@ body::after {
     top: -5px;
     right: -5px;
 
-    min-width: 18px;
-    height: 18px;
+    min-width: 19px;
+    height: 19px;
 
     display: grid;
     place-items: center;
@@ -790,8 +919,8 @@ body::after {
 
     border-radius: 50%;
 
-    background: #fff;
-    color: #000;
+    background: var(--v-white);
+    color: var(--v-black-0);
 
     font-size: 8px;
     font-weight: 900;
@@ -804,8 +933,8 @@ body::after {
         0 0 12px rgba(255,255,255,.5);
 
     transition:
-        opacity .2s ease,
-        transform .2s ease;
+        opacity var(--transition),
+        transform var(--transition);
 }
 
 .cart-count.visible {
@@ -833,7 +962,7 @@ body::after {
 
 
 /* =========================================================
-   HERO
+   11 — HERO
    ========================================================= */
 
 .store-hero {
@@ -847,17 +976,13 @@ body::after {
     align-items: center;
     justify-content: center;
 
-    padding: 55px 18px 45px;
+    padding:
+        55px 18px 45px;
 
     overflow: hidden;
 
     text-align: center;
 }
-
-
-/* =========================================================
-   HERO ATMOSPHERE
-   ========================================================= */
 
 .store-hero::before {
     content: "";
@@ -906,11 +1031,6 @@ body::after {
     }
 }
 
-
-/* =========================================================
-   HERO STAR GLOW
-   ========================================================= */
-
 .store-hero::after {
     content: "";
 
@@ -924,7 +1044,7 @@ body::after {
 
     border-radius: 50%;
 
-    background: #fff;
+    background: var(--v-white);
 
     box-shadow:
         0 0 7px #fff,
@@ -957,7 +1077,7 @@ body::after {
 
 
 /* =========================================================
-   HERO PULSAR
+   12 — HERO PULSAR
    ========================================================= */
 
 .hero-pulsar {
@@ -1022,7 +1142,7 @@ body::after {
 
     border-radius: 50%;
 
-    background: #fff;
+    background: var(--v-white);
 
     box-shadow:
         0 0 10px #fff,
@@ -1056,7 +1176,7 @@ body::after {
 
 
 /* =========================================================
-   HERO TITLE
+   13 — HERO TITLE
    ========================================================= */
 
 .future-title {
@@ -1068,7 +1188,7 @@ body::after {
     flex-direction: column;
 
     font-size:
-        clamp(42px, 13vw, 105px);
+        clamp(42px,13vw,105px);
 
     line-height: .88;
 
@@ -1081,18 +1201,13 @@ body::after {
 }
 
 .future-title span:first-child {
-    color: #fff;
+    color: var(--v-white);
 }
 
 .future-second {
     color:
         rgba(255,255,255,.33);
 }
-
-
-/* =========================================================
-   HERO TITLE LIGHT
-   ========================================================= */
 
 .future-title::after {
     content: "";
@@ -1113,15 +1228,12 @@ body::after {
             transparent
         );
 
-    filter:
-        blur(.2px);
-
     opacity: .65;
 }
 
 
 /* =========================================================
-   OPENING PILL
+   14 — OPENING PILL
    ========================================================= */
 
 .opening-acrylic {
@@ -1142,7 +1254,7 @@ body::after {
         1px solid
         rgba(255,255,255,.12);
 
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
 
     background:
         linear-gradient(
@@ -1162,7 +1274,7 @@ body::after {
 }
 
 .opening-acrylic strong {
-    color: #fff;
+    color: var(--v-white);
 
     text-shadow:
         0 0 12px rgba(255,255,255,.1);
@@ -1172,9 +1284,11 @@ body::after {
     width: 6px;
     height: 6px;
 
+    flex-shrink: 0;
+
     border-radius: 50%;
 
-    background: #fff;
+    background: var(--v-white);
 
     box-shadow:
         0 0 7px #fff,
@@ -1200,27 +1314,23 @@ body::after {
 
 
 /* =========================================================
-   PRODUCTS
+   15 — PRODUCTS SECTION
    ========================================================= */
 
 .products-section {
+    position: relative;
+
     width:
         min(
-            1200px,
-            calc(100% - 28px)
+            var(--content-width),
+            calc(100% - var(--page-gutter))
         );
 
     margin: 0 auto;
 
-    padding: 15px 0 80px;
-
-    position: relative;
+    padding:
+        15px 0 80px;
 }
-
-
-/* =========================================================
-   PRODUCT SECTION ATMOSPHERE
-   ========================================================= */
 
 .products-section::before {
     content: "";
@@ -1249,24 +1359,24 @@ body::after {
 
 
 /* =========================================================
-   PRODUCT GRID
+   16 — PRODUCT GRID
    ========================================================= */
 
 .product-grid {
+    position: relative;
+    z-index: 2;
+
     display: grid;
 
-    grid-template-columns: 1fr;
+    grid-template-columns:
+        minmax(0,1fr);
 
     gap: 18px;
-
-    position: relative;
-
-    z-index: 2;
 }
 
 
 /* =========================================================
-   PRODUCT CARD
+   17 — PRODUCT CARD
    ========================================================= */
 
 .store-product {
@@ -1274,41 +1384,38 @@ body::after {
 
     z-index: 1;
 
+    display: flex;
+    flex-direction: column;
+
     overflow: hidden;
 
     isolation: isolate;
 
-    opacity: 1 !important;
-    visibility: visible !important;
+    min-width: 0;
 
     border:
         1px solid
         rgba(255,255,255,.11);
 
-    border-radius: 25px;
+    border-radius: var(--radius-xl);
 
     background:
         linear-gradient(
             145deg,
             rgba(30,30,30,.96),
-            rgba(8,8,8,.96)
+            rgba(8,8,8,.97)
         );
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.07),
         inset 0 -1px 0 rgba(255,255,255,.015),
-        0 25px 70px rgba(0,0,0,.3);
+        var(--shadow-card);
 
     transition:
-        transform .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
+        transform var(--transition-slow),
+        border-color var(--transition),
+        box-shadow var(--transition-slow);
 }
-
-
-/* =========================================================
-   PRODUCT CARD LIGHT
-   ========================================================= */
 
 .store-product::before {
     content: "";
@@ -1366,17 +1473,17 @@ body::after {
     transform: translateY(-4px);
 
     border-color:
-        rgba(255,255,255,.2);
+        rgba(255,255,255,.20);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.1),
-        0 35px 90px rgba(0,0,0,.42),
+        inset 0 1px 0 rgba(255,255,255,.10),
+        var(--shadow-card-hover),
         0 0 35px rgba(255,255,255,.025);
 }
 
 
 /* =========================================================
-   PRODUCT IMAGE
+   18 — PRODUCT IMAGE
    ========================================================= */
 
 .product-image {
@@ -1390,9 +1497,6 @@ body::after {
 
     display: grid;
     place-items: center;
-
-    opacity: 1 !important;
-    visibility: visible !important;
 
     background:
         radial-gradient(
@@ -1408,11 +1512,6 @@ body::after {
         #090909;
 }
 
-
-/* =========================================================
-   IMAGE STAR REFLECTION
-   ========================================================= */
-
 .product-image::before {
     content: "";
 
@@ -1426,7 +1525,7 @@ body::after {
 
     border-radius: 50%;
 
-    background: #fff;
+    background: var(--v-white);
 
     box-shadow:
         0 0 7px #fff,
@@ -1440,11 +1539,6 @@ body::after {
 
     z-index: 2;
 }
-
-
-/* =========================================================
-   PRODUCT IMAGE
-   ========================================================= */
 
 .product-image img {
     position: relative;
@@ -1460,20 +1554,18 @@ body::after {
 
     object-fit: contain;
 
-    opacity: 1 !important;
-    visibility: visible !important;
-
     filter:
         drop-shadow(
             0 12px 22px
             rgba(0,0,0,.28)
-        ) !important;
+        );
 
-    transform: translateZ(0);
+    transform:
+        translateZ(0);
 
     transition:
-        transform .4s ease,
-        filter .4s ease;
+        transform var(--transition-slow),
+        filter var(--transition-slow);
 }
 
 .store-product:hover
@@ -1485,13 +1577,13 @@ body::after {
     filter:
         drop-shadow(
             0 16px 28px
-            rgba(0,0,0,.4)
-        ) !important;
+            rgba(0,0,0,.40)
+        );
 }
 
 
 /* =========================================================
-   IMAGE REFLECTION
+   19 — IMAGE REFLECTION
    ========================================================= */
 
 .image-reflection {
@@ -1514,7 +1606,7 @@ body::after {
 
 
 /* =========================================================
-   PRODUCT BADGE
+   20 — PRODUCT BADGE
    ========================================================= */
 
 .product-badge {
@@ -1531,12 +1623,12 @@ body::after {
         1px solid
         rgba(255,255,255,.16);
 
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
 
     background:
         rgba(0,0,0,.62);
 
-    color: #fff;
+    color: var(--v-white);
 
     font-size: 8px;
     font-weight: 900;
@@ -1544,13 +1636,16 @@ body::after {
     letter-spacing: .14em;
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,.2),
+        0 8px 20px rgba(0,0,0,.20),
         inset 0 1px 0 rgba(255,255,255,.06);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 
 /* =========================================================
-   NO IMAGE
+   21 — NO IMAGE
    ========================================================= */
 
 .product-no-image {
@@ -1571,7 +1666,7 @@ body::after {
 
 
 /* =========================================================
-   PRODUCT INFO
+   22 — PRODUCT INFO
    ========================================================= */
 
 .product-info {
@@ -1579,10 +1674,13 @@ body::after {
 
     z-index: 4;
 
-    padding: 21px 19px 20px;
+    display: flex;
+    flex-direction: column;
 
-    opacity: 1 !important;
-    visibility: visible !important;
+    flex: 1;
+
+    padding:
+        21px 19px 20px;
 
     background:
         linear-gradient(
@@ -1595,11 +1693,6 @@ body::after {
         1px solid
         rgba(255,255,255,.025);
 }
-
-
-/* =========================================================
-   PRODUCT INFO LIGHT
-   ========================================================= */
 
 .product-info::before {
     content: "";
@@ -1616,7 +1709,7 @@ body::after {
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.1),
+            rgba(255,255,255,.10),
             transparent
         );
 
@@ -1625,7 +1718,7 @@ body::after {
 
 
 /* =========================================================
-   CATEGORY
+   23 — PRODUCT CATEGORY
    ========================================================= */
 
 .product-category {
@@ -1640,15 +1733,19 @@ body::after {
     font-weight: 800;
 
     letter-spacing: .17em;
+
+    text-transform: uppercase;
 }
 
 
 /* =========================================================
-   PRODUCT TITLE
+   24 — PRODUCT TITLE
    ========================================================= */
 
 .product-title {
     margin-bottom: 9px;
+
+    color: var(--v-white);
 
     font-size: 25px;
 
@@ -1664,7 +1761,7 @@ body::after {
 
 
 /* =========================================================
-   DESCRIPTION
+   25 — PRODUCT DESCRIPTION
    ========================================================= */
 
 .product-description {
@@ -1682,12 +1779,13 @@ body::after {
 
 
 /* =========================================================
-   PRICE
+   26 — PRODUCT PRICE
    ========================================================= */
 
 .product-price-row {
     display: flex;
     align-items: baseline;
+    flex-wrap: wrap;
 
     gap: 10px;
 
@@ -1695,6 +1793,8 @@ body::after {
 }
 
 .product-price {
+    color: var(--v-white);
+
     font-size: 22px;
     font-weight: 800;
 
@@ -1715,12 +1815,13 @@ body::after {
 
 
 /* =========================================================
-   COLORS
+   27 — PRODUCT COLORS
    ========================================================= */
 
 .product-colors {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     gap: 10px;
 
@@ -1729,7 +1830,7 @@ body::after {
 
 .product-colors > span {
     color:
-        rgba(255,255,255,.3);
+        rgba(255,255,255,.30);
 
     font-size: 8px;
     font-weight: 800;
@@ -1739,13 +1840,16 @@ body::after {
 
 .color-list {
     display: flex;
+    align-items: center;
 
-    gap: 6px;
+    gap: 7px;
 }
 
 .color-chip {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
+
+    flex-shrink: 0;
 
     border:
         1px solid
@@ -1766,36 +1870,43 @@ body::after {
         0 0 8px rgba(255,255,255,.025);
 
     transition:
-        transform .2s ease,
-        border-color .2s ease,
-        box-shadow .2s ease;
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
 .color-chip:hover {
     transform: scale(1.15);
 
-    border-color: #fff;
+    border-color: var(--v-white);
 
     box-shadow:
-        0 0 12px rgba(255,255,255,.2);
+        0 0 12px rgba(255,255,255,.20);
+}
+
+.color-chip:active {
+    transform: scale(.96);
 }
 
 
 /* =========================================================
-   PRODUCT ACTIONS
+   28 — PRODUCT ACTIONS
    ========================================================= */
 
 .product-actions {
     display: grid;
 
-    grid-template-columns: 1fr;
+    grid-template-columns:
+        1fr;
 
     gap: 8px;
+
+    margin-top: auto;
 }
 
 
 /* =========================================================
-   ACRYLIC BUTTON
+   29 — ACRYLIC BUTTON
    ========================================================= */
 
 .acrylic-button {
@@ -1803,19 +1914,20 @@ body::after {
 
     overflow: hidden;
 
-    min-height: 48px;
+    min-height: 50px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 0 14px;
+    padding:
+        0 14px;
 
     border:
         1px solid
         rgba(255,255,255,.12);
 
-    border-radius: 13px;
+    border-radius: var(--radius-md);
 
     background:
         linear-gradient(
@@ -1824,7 +1936,7 @@ body::after {
             rgba(255,255,255,.025)
         );
 
-    color: #fff;
+    color: var(--v-white);
 
     cursor: pointer;
 
@@ -1837,16 +1949,11 @@ body::after {
         inset 0 1px 0 rgba(255,255,255,.06);
 
     transition:
-        transform .2s ease,
-        background .2s ease,
-        border-color .2s ease,
-        box-shadow .2s ease;
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
-
-
-/* =========================================================
-   BUTTON REFLECTION
-   ========================================================= */
 
 .acrylic-button::before {
     content: "";
@@ -1890,12 +1997,16 @@ body::after {
 
     box-shadow:
         0 0 25px rgba(255,255,255,.025),
-        inset 0 1px 0 rgba(255,255,255,.1);
+        inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+.acrylic-button:active {
+    transform: translateY(0) scale(.985);
 }
 
 
 /* =========================================================
-   BUY BUTTON
+   30 — PRIMARY BUY BUTTON
    ========================================================= */
 
 .product-buy-button {
@@ -1910,7 +2021,7 @@ body::after {
         rgba(255,255,255,.23);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.1),
+        inset 0 1px 0 rgba(255,255,255,.10),
         0 0 20px rgba(255,255,255,.015);
 }
 
@@ -1922,7 +2033,7 @@ body::after {
 
 
 /* =========================================================
-   LOADING
+   31 — LOADING STATE
    ========================================================= */
 
 .store-loading {
@@ -1939,7 +2050,7 @@ body::after {
         1px solid
         rgba(255,255,255,.07);
 
-    border-radius: 24px;
+    border-radius: var(--radius-xl);
 
     background:
         rgba(255,255,255,.025);
@@ -2004,7 +2115,7 @@ body::after {
 
 
 /* =========================================================
-   EMPTY STATE
+   32 — EMPTY STATE
    ========================================================= */
 
 .store-empty-state {
@@ -2028,7 +2139,7 @@ body::after {
         1px solid
         rgba(255,255,255,.08);
 
-    border-radius: 24px;
+    border-radius: var(--radius-xl);
 
     background:
         rgba(255,255,255,.025);
@@ -2110,6 +2221,8 @@ body::after {
 .store-empty-state h2 {
     margin-bottom: 10px;
 
+    color: var(--v-white);
+
     font-size: 27px;
 
     letter-spacing: -.04em;
@@ -2117,28 +2230,30 @@ body::after {
 
 .store-empty-state p {
     color:
-        rgba(255,255,255,.4);
+        rgba(255,255,255,.40);
 
     font-size: 13px;
+
+    line-height: 1.6;
 }
 
 
 /* =========================================================
-   CONTACT
+   33 — CONTACT SECTION
    ========================================================= */
 
 .contact-section {
+    position: relative;
+
     width:
         min(
             1000px,
-            calc(100% - 28px)
+            calc(100% - var(--page-gutter))
         );
 
     margin: 0 auto;
 
     padding-bottom: 75px;
-
-    position: relative;
 }
 
 .contact-section::before {
@@ -2168,7 +2283,7 @@ body::after {
 
 
 /* =========================================================
-   CONTACT ACRYLIC
+   34 — CONTACT ACRYLIC
    ========================================================= */
 
 .contact-acrylic {
@@ -2182,9 +2297,9 @@ body::after {
 
     border:
         1px solid
-        rgba(255,255,255,.1);
+        rgba(255,255,255,.10);
 
-    border-radius: 25px;
+    border-radius: var(--radius-xl);
 
     background:
         linear-gradient(
@@ -2196,13 +2311,11 @@ body::after {
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.08),
         inset 0 -1px 0 rgba(255,255,255,.02),
-        0 25px 70px rgba(0,0,0,.3);
+        var(--shadow-card);
+
+    backdrop-filter: blur(12px) saturate(115%);
+    -webkit-backdrop-filter: blur(12px) saturate(115%);
 }
-
-
-/* =========================================================
-   CONTACT STAR
-   ========================================================= */
 
 .contact-acrylic::before {
     content: "";
@@ -2217,7 +2330,7 @@ body::after {
 
     border-radius: 50%;
 
-    background: #fff;
+    background: var(--v-white);
 
     box-shadow:
         0 0 8px #fff,
@@ -2242,15 +2355,21 @@ body::after {
     }
 }
 
+
+/* =========================================================
+   35 — CONTACT CONTENT
+   ========================================================= */
+
 .contact-pulsar {
     width: 60px;
     height: 60px;
 
-    margin: 0 auto 20px;
+    margin:
+        0 auto 20px;
 
     border:
         1px solid
-        rgba(255,255,255,.1);
+        rgba(255,255,255,.10);
 
     border-radius: 50%;
 
@@ -2282,7 +2401,11 @@ body::after {
 .contact-content h2 {
     margin-bottom: 10px;
 
+    color: var(--v-white);
+
     font-size: 32px;
+
+    line-height: 1.05;
 
     letter-spacing: -.05em;
 
@@ -2297,11 +2420,13 @@ body::after {
         rgba(255,255,255,.42);
 
     font-size: 13px;
+
+    line-height: 1.6;
 }
 
 
 /* =========================================================
-   CONTACT BUTTON
+   36 — CONTACT BUTTON
    ========================================================= */
 
 .contact-button {
@@ -2309,7 +2434,7 @@ body::after {
 
     overflow: hidden;
 
-    min-height: 48px;
+    min-height: 50px;
 
     display: inline-flex;
     align-items: center;
@@ -2317,16 +2442,19 @@ body::after {
 
     gap: 18px;
 
-    padding: 0 22px;
+    padding:
+        0 22px;
 
     border:
         1px solid
         rgba(255,255,255,.15);
 
-    border-radius: 13px;
+    border-radius: var(--radius-md);
 
     background:
         rgba(255,255,255,.055);
+
+    color: var(--v-white);
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.07);
@@ -2337,10 +2465,10 @@ body::after {
     letter-spacing: .14em;
 
     transition:
-        transform .2s ease,
-        background .2s ease,
-        border-color .2s ease,
-        box-shadow .2s ease;
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
 .contact-button::before {
@@ -2366,6 +2494,8 @@ body::after {
 
     transition:
         left .55s ease;
+
+    pointer-events: none;
 }
 
 .contact-button:hover::before {
@@ -2383,7 +2513,11 @@ body::after {
 
     box-shadow:
         0 0 25px rgba(255,255,255,.04),
-        inset 0 1px 0 rgba(255,255,255,.1);
+        inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+.contact-button:active {
+    transform: scale(.985);
 }
 
 .contact-button strong {
@@ -2393,8 +2527,7 @@ body::after {
 
 
 /* =========================================================
-   CART OVERLAY
-   CRITICAL FIX
+   37 — CART OVERLAY
    ========================================================= */
 
 .cart-overlay {
@@ -2414,13 +2547,8 @@ body::after {
     pointer-events: none;
 
     transition:
-        opacity .25s ease;
+        opacity var(--transition);
 }
-
-
-/* =========================================================
-   CART OVERLAY LIGHT
-   ========================================================= */
 
 .cart-overlay::before {
     content: "";
@@ -2447,24 +2575,18 @@ body::after {
     pointer-events: none;
 }
 
-
-/* =========================================================
-   HIDDEN ATTRIBUTE
-   ========================================================= */
-
 .cart-overlay[hidden] {
     display: none !important;
 }
 
 .cart-overlay:not([hidden]) {
     opacity: 1;
-
     pointer-events: auto;
 }
 
 
 /* =========================================================
-   CART DRAWER
+   38 — CART DRAWER
    ========================================================= */
 
 .cart-drawer {
@@ -2495,17 +2617,19 @@ body::after {
 
     border-left:
         1px solid
-        rgba(255,255,255,.1);
+        rgba(255,255,255,.10);
 
     box-shadow:
-        -30px 0 100px rgba(0,0,0,.5),
+        -30px 0 100px rgba(0,0,0,.50),
         -5px 0 35px rgba(255,255,255,.015);
 
     transform:
         translateX(105%);
 
     transition:
-        transform .3s cubic-bezier(.22,.61,.36,1);
+        transform .3s var(--ease-standard);
+
+    overscroll-behavior: contain;
 }
 
 .cart-drawer.open {
@@ -2515,13 +2639,15 @@ body::after {
 
 
 /* =========================================================
-   CART HEADER
+   39 — CART HEADER
    ========================================================= */
 
 .cart-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 15px;
 
     padding: 21px;
 
@@ -2539,7 +2665,7 @@ body::after {
     margin-bottom: 5px;
 
     color:
-        rgba(255,255,255,.3);
+        rgba(255,255,255,.30);
 
     font-size: 8px;
     font-weight: 800;
@@ -2548,28 +2674,34 @@ body::after {
 }
 
 .cart-header h2 {
+    color: var(--v-white);
+
     font-size: 27px;
+
+    line-height: 1;
 
     letter-spacing: -.04em;
 }
 
 .cart-close {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
 
     display: grid;
     place-items: center;
 
+    flex-shrink: 0;
+
     border:
         1px solid
-        rgba(255,255,255,.1);
+        rgba(255,255,255,.10);
 
     border-radius: 50%;
 
     background:
         rgba(255,255,255,.04);
 
-    color: #fff;
+    color: var(--v-white);
 
     cursor: pointer;
 
@@ -2577,9 +2709,9 @@ body::after {
     font-weight: 300;
 
     transition:
-        background .2s ease,
-        border-color .2s ease,
-        transform .2s ease;
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
 }
 
 .cart-close:hover {
@@ -2589,26 +2721,56 @@ body::after {
         rgba(255,255,255,.08);
 
     border-color:
-        rgba(255,255,255,.2);
+        rgba(255,255,255,.20);
+}
+
+.cart-close:active {
+    transform:
+        rotate(90deg)
+        scale(.94);
 }
 
 
 /* =========================================================
-   CART ITEMS
+   40 — CART ITEMS
    ========================================================= */
 
 .cart-items {
     flex: 1;
 
+    min-height: 0;
+
     overflow-y: auto;
+    overflow-x: hidden;
 
     padding: 15px;
 
     scrollbar-width: thin;
+
     scrollbar-color:
         rgba(255,255,255,.15)
         transparent;
+
+    overscroll-behavior: contain;
 }
+
+.cart-items::-webkit-scrollbar {
+    width: 5px;
+}
+
+.cart-items::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cart-items::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255,255,255,.14);
+}
+
+
+/* =========================================================
+   41 — CART ITEM
+   ========================================================= */
 
 .cart-item {
     position: relative;
@@ -2628,7 +2790,7 @@ body::after {
         1px solid
         rgba(255,255,255,.08);
 
-    border-radius: 17px;
+    border-radius: var(--radius-lg);
 
     background:
         rgba(255,255,255,.035);
@@ -2637,8 +2799,8 @@ body::after {
         inset 0 1px 0 rgba(255,255,255,.04);
 
     transition:
-        border-color .2s ease,
-        background .2s ease;
+        border-color var(--transition),
+        background var(--transition);
 }
 
 .cart-item:hover {
@@ -2651,7 +2813,7 @@ body::after {
 
 
 /* =========================================================
-   CART ITEM IMAGE
+   42 — CART ITEM IMAGE
    ========================================================= */
 
 .cart-item-image {
@@ -2681,7 +2843,7 @@ body::after {
 
 
 /* =========================================================
-   CART ITEM INFO
+   43 — CART ITEM INFO
    ========================================================= */
 
 .cart-item-info {
@@ -2696,7 +2858,7 @@ body::after {
 .cart-item-info strong {
     overflow: hidden;
 
-    color: #fff;
+    color: var(--v-white);
 
     font-size: 12px;
 
@@ -2706,14 +2868,14 @@ body::after {
 
 .cart-item-info > span {
     color:
-        rgba(255,255,255,.4);
+        rgba(255,255,255,.40);
 
     font-size: 10px;
 }
 
 
 /* =========================================================
-   CART QUANTITY
+   44 — CART QUANTITY
    ========================================================= */
 
 .cart-quantity {
@@ -2726,28 +2888,29 @@ body::after {
 }
 
 .cart-quantity button {
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
 
     display: grid;
     place-items: center;
 
     border:
         1px solid
-        rgba(255,255,255,.1);
+        rgba(255,255,255,.10);
 
     border-radius: 8px;
 
     background:
         rgba(255,255,255,.04);
 
-    color: #fff;
+    color: var(--v-white);
 
     cursor: pointer;
 
     transition:
-        background .2s ease,
-        border-color .2s ease;
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
 }
 
 .cart-quantity button:hover {
@@ -2755,7 +2918,11 @@ body::after {
         rgba(255,255,255,.09);
 
     border-color:
-        rgba(255,255,255,.2);
+        rgba(255,255,255,.20);
+}
+
+.cart-quantity button:active {
+    transform: scale(.93);
 }
 
 .cart-quantity span {
@@ -2763,19 +2930,25 @@ body::after {
 
     text-align: center;
 
+    color: var(--v-white);
+
     font-size: 11px;
+    font-weight: 700;
 }
 
 
 /* =========================================================
-   CART REMOVE
+   45 — CART REMOVE
    ========================================================= */
 
 .cart-remove {
     align-self: start;
 
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
 
     border: 0;
 
@@ -2789,19 +2962,23 @@ body::after {
     font-size: 20px;
 
     transition:
-        color .2s ease,
-        transform .2s ease;
+        color var(--transition),
+        transform var(--transition);
 }
 
 .cart-remove:hover {
-    color: #fff;
+    color: var(--v-white);
 
     transform: scale(1.08);
 }
 
+.cart-remove:active {
+    transform: scale(.92);
+}
+
 
 /* =========================================================
-   CART EMPTY
+   46 — CART EMPTY
    ========================================================= */
 
 .cart-empty {
@@ -2814,6 +2991,8 @@ body::after {
     justify-content: center;
 
     gap: 10px;
+
+    padding: 25px;
 
     text-align: center;
 }
@@ -2835,6 +3014,8 @@ body::after {
 }
 
 .cart-empty strong {
+    color: var(--v-white);
+
     font-size: 11px;
 
     letter-spacing: .12em;
@@ -2845,14 +3026,18 @@ body::after {
         rgba(255,255,255,.35);
 
     font-size: 11px;
+
+    line-height: 1.5;
 }
 
 
 /* =========================================================
-   CART FOOTER
+   47 — CART FOOTER
    ========================================================= */
 
 .cart-footer {
+    flex-shrink: 0;
+
     padding: 17px;
 
     border-top:
@@ -2860,16 +3045,24 @@ body::after {
         rgba(255,255,255,.08);
 
     background:
-        rgba(0,0,0,.3);
+        rgba(0,0,0,.30);
 
     box-shadow:
-        0 -12px 30px rgba(0,0,0,.2);
+        0 -12px 30px rgba(0,0,0,.20);
+
+    padding-bottom:
+        max(
+            17px,
+            env(safe-area-inset-bottom)
+        );
 }
 
 .cart-total-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 15px;
 
     margin-bottom: 13px;
 }
@@ -2885,6 +3078,8 @@ body::after {
 }
 
 .cart-total-row strong {
+    color: var(--v-white);
+
     font-size: 22px;
 
     letter-spacing: -.03em;
@@ -2895,7 +3090,7 @@ body::after {
 
 
 /* =========================================================
-   CHECKOUT BUTTON
+   48 — CHECKOUT BUTTON
    ========================================================= */
 
 .checkout-button {
@@ -2904,19 +3099,22 @@ body::after {
     overflow: hidden;
 
     width: 100%;
-    min-height: 56px;
+    min-height: 58px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 18px;
+    gap: 15px;
+
+    padding:
+        0 18px;
 
     border:
         1px solid
         rgba(255,255,255,.22);
 
-    border-radius: 14px;
+    border-radius: var(--radius-md);
 
     background:
         linear-gradient(
@@ -2925,7 +3123,7 @@ body::after {
             rgba(255,255,255,.055)
         );
 
-    color: #fff;
+    color: var(--v-white);
 
     cursor: pointer;
 
@@ -2935,13 +3133,13 @@ body::after {
     letter-spacing: .15em;
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.1),
+        inset 0 1px 0 rgba(255,255,255,.10),
         0 0 25px rgba(255,255,255,.015);
 
     transition:
-        transform .2s ease,
-        box-shadow .2s ease,
-        border-color .2s ease;
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
 }
 
 .checkout-button::before {
@@ -2961,7 +3159,7 @@ body::after {
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.1),
+            rgba(255,255,255,.10),
             transparent
         );
 
@@ -2984,6 +3182,10 @@ body::after {
         inset 0 1px 0 rgba(255,255,255,.13);
 }
 
+.checkout-button:active {
+    transform: scale(.985);
+}
+
 .checkout-button span {
     font-size: 20px;
     font-weight: 400;
@@ -2991,7 +3193,7 @@ body::after {
 
 
 /* =========================================================
-   NOTIFICATION
+   49 — NOTIFICATION
    ========================================================= */
 
 .store-notification {
@@ -3005,27 +3207,30 @@ body::after {
     max-width:
         calc(100% - 30px);
 
-    padding: 12px 17px;
+    padding:
+        12px 17px;
 
     border:
         1px solid
         rgba(255,255,255,.15);
 
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
 
     background:
         rgba(12,12,12,.92);
 
     box-shadow:
-        0 15px 50px rgba(0,0,0,.5),
+        0 15px 50px rgba(0,0,0,.50),
         0 0 25px rgba(255,255,255,.025);
 
-    color: #fff;
+    color: var(--v-white);
 
     font-size: 9px;
     font-weight: 800;
 
     letter-spacing: .12em;
+
+    text-align: center;
 
     opacity: 0;
 
@@ -3035,8 +3240,11 @@ body::after {
     pointer-events: none;
 
     transition:
-        opacity .25s ease,
-        transform .25s ease;
+        opacity var(--transition),
+        transform var(--transition);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .store-notification.show {
@@ -3048,21 +3256,22 @@ body::after {
 
 
 /* =========================================================
-   FOOTER
+   50 — FOOTER
    ========================================================= */
 
 .store-footer {
+    position: relative;
+
     width:
         min(
-            1200px,
-            calc(100% - 28px)
+            var(--content-width),
+            calc(100% - var(--page-gutter))
         );
 
     margin: 0 auto;
 
-    padding: 0 0 35px;
-
-    position: relative;
+    padding:
+        0 0 35px;
 }
 
 .footer-acrylic {
@@ -3092,13 +3301,10 @@ body::after {
 
     letter-spacing: .13em;
 
+    line-height: 1.5;
+
     text-align: center;
 }
-
-
-/* =========================================================
-   FOOTER STAR LINE
-   ========================================================= */
 
 .footer-acrylic::before {
     content: "";
@@ -3122,13 +3328,18 @@ body::after {
 
 
 /* =========================================================
-   TABLET
+   51 — TABLET
    ========================================================= */
 
 @media (min-width: 600px) {
 
+    :root {
+        --page-gutter: 40px;
+    }
+
     .store-header {
-        padding: 15px 26px;
+        padding:
+            15px 26px;
     }
 
     .store-nav {
@@ -3162,13 +3373,14 @@ body::after {
 
 
 /* =========================================================
-   DESKTOP
+   52 — DESKTOP
    ========================================================= */
 
 @media (min-width: 900px) {
 
     .store-header {
-        padding: 17px 42px;
+        padding:
+            17px 42px;
     }
 
     .store-nav {
@@ -3192,11 +3404,13 @@ body::after {
     }
 
     .product-info {
-        padding: 23px 22px 22px;
+        padding:
+            23px 22px 22px;
     }
 
     .contact-acrylic {
-        padding: 55px 35px;
+        padding:
+            55px 35px;
     }
 
     .contact-content h2 {
@@ -3208,36 +3422,29 @@ body::after {
 
         justify-content: space-between;
     }
-
-    .pulsar {
-        width: 2px;
-        height: 2px;
-    }
 }
 
 
 /* =========================================================
-   LARGE DESKTOP
+   53 — LARGE DESKTOP
    ========================================================= */
 
 @media (min-width: 1200px) {
 
+    :root {
+        --page-gutter: 80px;
+    }
+
     .store-header {
-        padding: 18px 55px;
+        padding:
+            18px 55px;
     }
 
-    .products-section {
-        width:
-            min(
-                1280px,
-                calc(100% - 80px)
-            );
-    }
-
+    .products-section,
     .store-footer {
         width:
             min(
-                1280px,
+                var(--wide-content-width),
                 calc(100% - 80px)
             );
     }
@@ -3257,7 +3464,7 @@ body::after {
 
 
 /* =========================================================
-   ULTRA LARGE
+   54 — ULTRA LARGE
    ========================================================= */
 
 @media (min-width: 1600px) {
@@ -3270,18 +3477,121 @@ body::after {
         font-size: 132px;
     }
 
-    .products-section {
-        width: 1360px;
-    }
-
+    .products-section,
     .store-footer {
-        width: 1360px;
+        width:
+            var(--ultra-content-width);
     }
 }
 
 
 /* =========================================================
-   REDUCED MOTION
+   55 — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .store-header {
+        gap: 10px;
+        padding:
+            11px 13px;
+    }
+
+    .logo-text {
+        font-size: .82rem;
+        letter-spacing: .16em;
+    }
+
+    .voltica-logo-image,
+    .logo-v {
+        width: 35px;
+        height: 35px;
+    }
+
+    .cart-acrylic {
+        width: 44px;
+        height: 44px;
+    }
+
+    .store-hero {
+        min-height: 400px;
+
+        padding:
+            45px 15px 40px;
+    }
+
+    .hero-pulsar {
+        width: 70px;
+        height: 70px;
+
+        margin-bottom: 27px;
+    }
+
+    .future-title {
+        font-size:
+            clamp(38px,12vw,60px);
+    }
+
+    .product-title {
+        font-size: 23px;
+    }
+
+    .product-description {
+        font-size: 11.5px;
+    }
+
+    .cart-item {
+        grid-template-columns:
+            64px minmax(0,1fr) 26px;
+
+        gap: 9px;
+    }
+
+    .cart-item-image {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+
+/* =========================================================
+   56 — TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+
+    .store-product:hover {
+        transform: none;
+
+        border-color:
+            rgba(255,255,255,.11);
+
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.07),
+            inset 0 -1px 0 rgba(255,255,255,.015),
+            var(--shadow-card);
+    }
+
+    .store-product:hover
+    .product-image img {
+        transform:
+            translateZ(0);
+    }
+
+    .acrylic-button:hover,
+    .contact-button:hover,
+    .checkout-button:hover {
+        transform: none;
+    }
+
+    .cart-acrylic:hover {
+        transform: none;
+    }
+}
+
+
+/* =========================================================
+   57 — REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -3296,5 +3606,42 @@ body::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .store-product:hover,
+    .acrylic-button:hover,
+    .contact-button:hover,
+    .checkout-button:hover {
+        transform: none;
     }
 }
+
+
+/* =========================================================
+   58 — SAFE AREA / MOBILE BROWSER SUPPORT
+   ========================================================= */
+
+@supports (padding: max(0px)) {
+
+    .store-header {
+        padding-top:
+            max(
+                12px,
+                env(safe-area-inset-top)
+            );
+    }
+
+    .store-footer {
+        padding-bottom:
+            max(
+                35px,
+                env(safe-area-inset-bottom)
+            );
+    }
+}
+
+
+/* =========================================================
+   END — VOLTICA STORE.CSS
+   ========================================================= */

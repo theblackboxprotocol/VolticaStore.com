@@ -1,6 +1,7 @@
 /* =========================================================
    VOLTICA STORE — STORE.JS
    Product Render + Shopping Cart Engine
+   Corrected + Optimized
    ========================================================= */
 
 "use strict";
@@ -19,18 +20,29 @@ document.addEventListener("DOMContentLoaded", function () {
        ELEMENTS
        ===================================================== */
 
-    const grid = document.getElementById("productGrid");
+    const grid =
+        document.getElementById("productGrid");
 
-    const cartButton = document.getElementById("cartButton");
-    const cartCount = document.getElementById("cartCount");
+    const cartButton =
+        document.getElementById("cartButton");
 
-    const cartOverlay = document.getElementById("cartOverlay");
-    const cartDrawer = document.getElementById("cartDrawer");
+    const cartCount =
+        document.getElementById("cartCount");
 
-    const cartClose = document.getElementById("cartClose");
+    const cartOverlay =
+        document.getElementById("cartOverlay");
 
-    const cartItems = document.getElementById("cartItems");
-    const cartTotal = document.getElementById("cartTotal");
+    const cartDrawer =
+        document.getElementById("cartDrawer");
+
+    const cartClose =
+        document.getElementById("cartClose");
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    const cartTotal =
+        document.getElementById("cartTotal");
 
     const checkoutButton =
         document.getElementById("checkoutButton");
@@ -40,31 +52,33 @@ document.addEventListener("DOMContentLoaded", function () {
        PRODUCT DATABASE CHECK
        ===================================================== */
 
-    console.log(
-        "VOLTICA: PRODUCTS =",
-        typeof volticaProducts !== "undefined"
-            ? volticaProducts
-            : "UNDEFINED"
-    );
-
-
-    if (!grid) {
+    if (
+        typeof window.volticaProducts === "undefined" ||
+        !Array.isArray(window.volticaProducts)
+    ) {
 
         console.error(
-            "VOLTICA: productGrid introuvable."
+            "VOLTICA: products.js introuvable ou invalide."
         );
 
         return;
     }
 
 
-    if (
-        typeof volticaProducts === "undefined" ||
-        !Array.isArray(volticaProducts)
-    ) {
+    const products =
+        window.volticaProducts;
+
+
+    console.log(
+        "VOLTICA: PRODUCTS =",
+        products.length
+    );
+
+
+    if (!grid) {
 
         console.error(
-            "VOLTICA: products.js introuvable ou invalide."
+            "VOLTICA: #productGrid introuvable."
         );
 
         return;
@@ -77,18 +91,60 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let cart = [];
 
+
     try {
 
         const savedCart =
             localStorage.getItem("volticaCart");
+
 
         if (savedCart) {
 
             const parsed =
                 JSON.parse(savedCart);
 
+
             if (Array.isArray(parsed)) {
-                cart = parsed;
+
+                cart =
+                    parsed
+                        .filter(
+                            item =>
+                                item &&
+                                item.id
+                        )
+                        .map(
+                            item => ({
+
+                                id:
+                                    String(item.id),
+
+                                name:
+                                    String(
+                                        item.name || ""
+                                    ),
+
+                                price:
+                                    Number(
+                                        item.price || 0
+                                    ),
+
+                                image:
+                                    String(
+                                        item.image || ""
+                                    ),
+
+                                quantity:
+                                    Math.max(
+                                        1,
+                                        Number(
+                                            item.quantity || 1
+                                        )
+                                    )
+
+                            })
+                        );
+
             }
 
         }
@@ -137,11 +193,14 @@ document.addEventListener("DOMContentLoaded", function () {
     function openCart() {
 
         if (!cartDrawer) {
+
             console.error(
-                "VOLTICA: cartDrawer introuvable."
+                "VOLTICA: #cartDrawer introuvable."
             );
+
             return;
         }
+
 
         if (cartOverlay) {
 
@@ -154,13 +213,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        cartDrawer.classList.add("open");
+
+        cartDrawer.classList.add(
+            "open"
+        );
+
 
         document.body.classList.add(
             "cart-is-open"
         );
 
+
         renderCart();
+
 
         console.log(
             "VOLTICA: CART OPEN"
@@ -183,6 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+
         if (cartOverlay) {
 
             cartOverlay.hidden = true;
@@ -194,12 +260,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+
         document.body.classList.remove(
             "cart-is-open"
-        );
-
-        console.log(
-            "VOLTICA: CART CLOSED"
         );
 
     }
@@ -220,12 +283,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 openCart();
 
             }
-        );
-
-    } else {
-
-        console.error(
-            "VOLTICA: #cartButton introuvable."
         );
 
     }
@@ -259,11 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         cartOverlay.addEventListener(
             "click",
-            function () {
-
-                closeCart();
-
-            }
+            closeCart
         );
 
     }
@@ -277,7 +330,11 @@ document.addEventListener("DOMContentLoaded", function () {
         "keydown",
         function (event) {
 
-            if (event.key === "Escape") {
+            if (
+                event.key === "Escape" &&
+                cartDrawer &&
+                cartDrawer.classList.contains("open")
+            ) {
 
                 closeCart();
 
@@ -297,7 +354,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         const activeProducts =
-            volticaProducts.filter(
+            products.filter(
                 product =>
                     product &&
                     product.active !== false
@@ -361,13 +418,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     );
 
 
+                /* =========================================
+                   COLORS
+                   ========================================= */
+
                 let colorsHTML = "";
 
 
                 if (
-                    Array.isArray(
-                        product.colors
-                    ) &&
+                    Array.isArray(product.colors) &&
                     product.colors.length
                 ) {
 
@@ -381,17 +440,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             <div class="color-list">
 
-                                ${product.colors.map(
-                                    color => `
+                                ${product.colors
+                                    .map(
+                                        color => `
 
-                                    <span
-                                        class="color-chip"
-                                        title="${color}"
-                                        aria-label="${color}"
-                                    ></span>
+                                            <span
+                                                class="color-chip"
+                                                title="${escapeHTML(color)}"
+                                                aria-label="${escapeHTML(color)}"
+                                            ></span>
 
-                                `
-                                ).join("")}
+                                        `
+                                    )
+                                    .join("")}
 
                             </div>
 
@@ -401,6 +462,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
+
+                /* =========================================
+                   REFERENCE PRICE
+                   ========================================= */
 
                 let referenceHTML = "";
 
@@ -420,13 +485,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
+                /* =========================================
+                   PRODUCT CARD
+                   ========================================= */
+
                 card.innerHTML = `
 
                     <div class="product-image">
 
                         <img
-                            src="${image}"
-                            alt="${product.name || "Voltica Product"}"
+                            src="${escapeHTML(image)}"
+                            alt="${escapeHTML(
+                                product.name ||
+                                "Voltica Product"
+                            )}"
                             loading="lazy"
                         >
 
@@ -441,17 +513,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="product-info">
 
                         <span class="product-category">
-                            ${product.category || "VOLTICA COLLECTION"}
+                            ${escapeHTML(
+                                product.category ||
+                                "VOLTICA COLLECTION"
+                            )}
                         </span>
 
 
                         <h2 class="product-title">
-                            ${product.name || "VOLTICA PRODUCT"}
+                            ${escapeHTML(
+                                product.name ||
+                                "VOLTICA PRODUCT"
+                            )}
                         </h2>
 
 
                         <p class="product-description">
-                            ${product.shortDescription || ""}
+                            ${escapeHTML(
+                                product.shortDescription ||
+                                ""
+                            )}
                         </p>
 
 
@@ -471,8 +552,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         <div class="product-actions">
 
+                            <!-- IMPORTANT:
+                                 The product page is
+                                 product-view.html
+                            -->
+
                             <a
-                                href="product.html?id=${encodeURIComponent(product.id)}"
+                                href="product-view.html?id=${encodeURIComponent(
+                                    product.id
+                                )}"
                                 class="acrylic-button product-view-button"
                             >
                                 VIEW PRODUCT
@@ -482,7 +570,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <button
                                 type="button"
                                 class="acrylic-button product-buy-button"
-                                data-product-id="${product.id}"
+                                data-product-id="${escapeHTML(
+                                    product.id
+                                )}"
                             >
                                 ADD TO CART
                             </button>
@@ -515,7 +605,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function addToCart(productId) {
 
         const product =
-            volticaProducts.find(
+            products.find(
                 item =>
                     item &&
                     String(item.id) ===
@@ -551,18 +641,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
             cart.push({
 
-                id: product.id,
+                id:
+                    String(product.id),
 
-                name: product.name,
+                name:
+                    product.name || "Voltica Product",
 
-                price: Number(
-                    product.price || 0
-                ),
+                price:
+                    Number(product.price || 0),
 
                 image:
                     product.images?.[0] || "",
 
-                quantity: 1
+                quantity:
+                    1
 
             });
 
@@ -665,7 +757,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        item.quantity += amount;
+        item.quantity =
+            Number(item.quantity || 1) +
+            Number(amount || 0);
 
 
         if (item.quantity <= 0) {
@@ -715,19 +809,10 @@ document.addEventListener("DOMContentLoaded", function () {
             totalQuantity;
 
 
-        if (totalQuantity > 0) {
-
-            cartCount.classList.add(
-                "visible"
-            );
-
-        } else {
-
-            cartCount.classList.remove(
-                "visible"
-            );
-
-        }
+        cartCount.classList.toggle(
+            "visible",
+            totalQuantity > 0
+        );
 
     }
 
@@ -787,8 +872,11 @@ document.addEventListener("DOMContentLoaded", function () {
             function (item) {
 
                 const quantity =
-                    Number(
-                        item.quantity || 1
+                    Math.max(
+                        1,
+                        Number(
+                            item.quantity || 1
+                        )
                     );
 
 
@@ -817,8 +905,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="cart-item-image">
 
                         <img
-                            src="${item.image || ""}"
-                            alt="${item.name || "Product"}"
+                            src="${escapeHTML(
+                                item.image || ""
+                            )}"
+                            alt="${escapeHTML(
+                                item.name ||
+                                "Product"
+                            )}"
                         >
 
                     </div>
@@ -827,7 +920,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="cart-item-info">
 
                         <strong>
-                            ${item.name || "Voltica Product"}
+                            ${escapeHTML(
+                                item.name ||
+                                "Voltica Product"
+                            )}
                         </strong>
 
                         <span>
@@ -840,7 +936,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <button
                                 type="button"
                                 data-action="decrease"
-                                data-id="${item.id}"
+                                data-id="${escapeHTML(
+                                    item.id
+                                )}"
                             >
                                 −
                             </button>
@@ -852,7 +950,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <button
                                 type="button"
                                 data-action="increase"
-                                data-id="${item.id}"
+                                data-id="${escapeHTML(
+                                    item.id
+                                )}"
                             >
                                 +
                             </button>
@@ -866,8 +966,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         type="button"
                         class="cart-remove"
                         data-action="remove"
-                        data-id="${item.id}"
-                        aria-label="Remove ${item.name || "product"}"
+                        data-id="${escapeHTML(
+                            item.id
+                        )}"
+                        aria-label="Remove ${escapeHTML(
+                            item.name ||
+                            "product"
+                        )}"
                     >
                         ×
                     </button>
@@ -922,7 +1027,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     button.dataset.id;
 
 
-                if (action === "increase") {
+                if (!productId) {
+                    return;
+                }
+
+
+                if (
+                    action === "increase"
+                ) {
 
                     changeQuantity(
                         productId,
@@ -932,7 +1044,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                if (action === "decrease") {
+                if (
+                    action === "decrease"
+                ) {
 
                     changeQuantity(
                         productId,
@@ -942,7 +1056,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                if (action === "remove") {
+                if (
+                    action === "remove"
+                ) {
 
                     removeFromCart(
                         productId
@@ -982,6 +1098,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     cart
                 );
 
+
                 /*
                  * Stripe checkout logic
                  * can be connected here.
@@ -989,6 +1106,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
         );
+
+    }
+
+
+    /* =====================================================
+       HTML ESCAPE
+       ===================================================== */
+
+    function escapeHTML(value) {
+
+        return String(
+            value ?? ""
+        )
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
 
     }
 

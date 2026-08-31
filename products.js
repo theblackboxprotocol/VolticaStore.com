@@ -589,7 +589,61 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/9B628saOjbor6e4fd02Ji0p",
         "supplierLink": "business@kiwiears.com",
         "active": true
-    }
+    },
+   }
+
+    /* =========================================================
+       Product name : Kiwi Ears Ardor â€“ Audiophile Bluetooth Dual-Driver Headphones with ANC
+       ========================================================= */
+
+{
+        "id": "kiwi-ears-ardor-audiophile-bluetooth-dual-driver-headphones-with-anc",
+        "sku": "VLT-AUD-ARD-001",
+        "name": "Kiwi Ears Ardor",
+        "category": "Audio",
+        "badge": "PREMIUM",
+        "price": 84.99,
+        "referencePrice": 89.99,
+        "cost": 62.99,
+        "shipping": null,
+        "shortDescription": "The Kiwi Ears Ardor combines high-fidelity sound with cutting-edge wireless technology, making it the ideal choice for audiophiles on the go. Featuring a coaxial dual dynamic driver setup (40mm and 10mm drivers), advanced hybrid active noise cancellation (ANC) reducing up to 35dB of external noise, and an extraordinary battery life of up to 140 hours, these headphones deliver an immersive, interruption-free experience. Available now at Voltica Store, official distributor in Canada.",
+        "description": "â€‹Cutting-Edge Wireless Connectivity & Dual-Device Pairing\nâ€‹Equipped with advanced Bluetrum Bluetooth 5.4 technology, the Ardor introduces high-fidelity wireless audio offering ultra-low latency, making it perfect for seamless video and gaming experiences. With an impressive 8-10m signal range, you can enjoy high-quality audio without interruption, while simultaneous connections to two devices simplify multitasking and streamline your workflow.\nâ€‹Coaxial Dual Dynamic Driver Performance\nâ€‹Engineered for acoustic excellence, the Ardor features a coaxial dual dynamic driver setup. A large 40mm driver delivers deep bass, natural mids, and crisp treble, while a dedicated 10mm driver enhances clarity and broadens the soundstage. This design brings your music to life with rich detail and immersive precision, making every note and nuance feel more dynamic and vibrant.\nâ€‹Audiophile Tuning Standards\nâ€‹Crafted with audiophile tuning standards in mind, the Ardor follows the renowned Harman target reference for optimal sound. Its bass is deep and powerful, carefully controlled before the midrange to avoid bloat, while the treble aligns with the perceived human hearing curve for a comfortable, precise, and natural sound signature.\nâ€‹Advanced Hybrid ANC & Extended Playback Time\nâ€‹The custom hybrid ANC system utilizes a precise 5-microphone array to efficiently detect and neutralize ambient sounds, reducing unwanted noise by up to 35dB. Powered by a high-capacity 1100mAh battery, it offers up to 140 hours of playback with ANC off and 72 hours with ANC on. For users in a rush, a quick 10-minute charge delivers 8 hours of continuous music.\nâ€‹Versatile Wired Mode & Ergonomic Design\nâ€‹In addition to wireless freedom, the Ardor supports USB audio playback via its built-in DAC/AMP chipset, ensuring seamless, high-resolution sound quality across Apple, Android, and Windows devices. Designed for portability, its lightweight, foldable structure and soft vegan-leather ear pads provide long-lasting comfort whether you are traveling, working, or gaming.",
+        "features": [
+            "Driver Setup: Coaxial dual dynamic drivers (40mm driver + 10mm driver)",
+            "â€‹Wireless Technology: Bluetrum Bluetooth 5.4 (ultra-low latency, 8-10m range, dual-device pairing)",
+            "â€‹Active Noise Cancellation: Custom hybrid ANC with 5-microphone array (reduces up to 35dB)",
+            "â€‹Battery Life: Up to 140 hours (ANC off) / Up to 72 hours (ANC on) via a 1100mAh battery",
+            "â€‹Fast Charging: 10-minute charge for 8 hours of playback",
+            "â€‹Wired Audio Mode: USB playback via built-in high-resolution DAC/AMP chipset for Apple, Android, and Windows",
+            "â€‹Sound Tuning: Audiophile tuning with Harman target reference, powerful bass, natural midrange, and accurate treble",
+            "â€‹Build & Comfort: Foldable, lightweight frame with soft vegan-leather ear pads"
+        ],
+        "specifications": {
+            "Inside the Box": "",
+            "1 x Kiwi Ears Ardor Headphones": "",
+            "User Manual": "",
+            "1 Year Warranty (Includes 1 year warranty on the headphones)": ""
+        },
+        "images": [
+            "assets/images/1000053100.jpg",
+            "assets/images/1000053102.jpg",
+            "assets/images/1000053094.jpg",
+            "assets/images/1000053096.jpg",
+            "assets/images/1000053104.jpg",
+            "assets/images/1000053098.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Elevate Your Audio Journey",
+            "lines": [
+                "Order your Kiwi Ears Ardor today at Voltica Store, your official Canadian distributor, and experience studio-grade wireless sound anywhere your music takes you!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/14AbJ2aOjdwz8mc7Ky2Ji0q",
+        "supplierLink": "business@kiwiears.com",
+        "active": true
+}
 
 ];
 

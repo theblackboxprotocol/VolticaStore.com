@@ -1,431 +1,669 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
 
-<head>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <meta charset="UTF-8">
+<meta
+    name="description"
+    content="Voltica Store — The future of everyday."
+>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="theme-color"
+    content="#030303"
+>
 
-    <meta
-        name="description"
-        content="Voltica Store — The future of everyday."
-    >
+<title>Voltica — The Future of Everyday</title>
 
-    <meta
-        name="theme-color"
-        content="#030303"
-    >
+<link
+    rel="stylesheet"
+    href="store.css"
+>
 
-    <title>Voltica — The Future of Everyday</title>
-
-    <link
-        rel="stylesheet"
-        href="store.css"
-    >
-
-</head>
-
-
-<body>
-
-
-<!-- =====================================================
+</head><body><!-- =====================================================
      PULSAR FIELD
-     ===================================================== -->
-
-<div
+     ===================================================== --><div
     class="pulsar-field"
     aria-hidden="true"
->
+><span class="pulsar p1"></span>
+<span class="pulsar p2"></span>
+<span class="pulsar p3"></span>
+<span class="pulsar p4"></span>
+<span class="pulsar p5"></span>
+<span class="pulsar p6"></span>
 
-    <span class="pulsar p1"></span>
-    <span class="pulsar p2"></span>
-    <span class="pulsar p3"></span>
-    <span class="pulsar p4"></span>
-    <span class="pulsar p5"></span>
-    <span class="pulsar p6"></span>
-
-</div>
-
-
-<!-- =====================================================
+</div><!-- =====================================================
      BACKGROUND GRID
-     ===================================================== -->
-
-<div
+     ===================================================== --><div
     class="tech-grid"
     aria-hidden="true"
-></div>
-
-
-<!-- =====================================================
+></div><!-- =====================================================
      HEADER
-     ===================================================== -->
+     ===================================================== --><header class="store-header"><!-- LOGO -->
 
-<header class="store-header">
+<a
+    href="index.html"
+    class="logo-acrylic"
+    aria-label="Voltica"
+>
+
+    <span class="logo-v">
+        V
+    </span>
+
+    <span class="logo-text">
+        VOLTICA
+    </span>
+
+</a>
 
 
-    <!-- LOGO -->
+<!-- NAVIGATION -->
 
-    <a
-        href="index.html"
-        class="logo-acrylic"
-        aria-label="Voltica"
-    >
+<nav class="store-nav">
 
-        <span class="logo-v">
-            V
-        </span>
-
-        <span class="logo-text">
-            VOLTICA
-        </span>
-
+    <a href="index.html">
+        HOME
     </a>
 
+    <a
+        href="store.html"
+        class="nav-active"
+    >
+        STORE
+    </a>
 
-    <!-- NAVIGATION -->
+    <a href="#contact">
+        CONTACT
+    </a>
 
-    <nav class="store-nav">
+</nav>
 
-        <a href="index.html">
-            HOME
-        </a>
+
+<!-- CART BUTTON -->
+
+<button
+    type="button"
+    class="cart-acrylic"
+    id="cartButton"
+    aria-label="Open shopping cart"
+>
+
+    <span class="cart-icon">
+
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+
+            <path
+                d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 7H6"
+            />
+
+            <circle
+                cx="10"
+                cy="20"
+                r="1"
+            />
+
+            <circle
+                cx="18"
+                cy="20"
+                r="1"
+            />
+
+        </svg>
+
+    </span>
+
+
+    <span
+        class="cart-count"
+        id="cartCount"
+    >
+        0
+    </span>
+
+</button>
+
+</header><!-- =====================================================
+     MAIN CONTENT
+     ===================================================== --><main><!-- =================================================
+     HERO
+     ================================================= -->
+
+<section class="store-hero">
+
+
+    <div class="hero-pulsar">
+
+        <span></span>
+
+    </div>
+
+
+    <h1 class="future-title">
+
+        <span>
+            THE FUTURE
+        </span>
+
+        <span class="future-second">
+            OF EVERYDAY
+        </span>
+
+    </h1>
+
+
+    <div class="opening-acrylic">
+
+        <span class="opening-pulse"></span>
+
+        <span>
+            COLLECTION OPEN
+        </span>
+
+        <strong>
+            SEPT 1
+        </strong>
+
+    </div>
+
+
+</section>
+
+
+<!-- =================================================
+     CATEGORY NAVIGATION
+     ================================================= -->
+
+<section
+    class="category-section"
+    aria-label="Voltica product categories"
+>
+
+    <div class="category-header">
+
+        <span class="category-label">
+            EXPLORE
+        </span>
+
+        <h2>
+            COLLECTIONS
+        </h2>
+
+        <p>
+            Discover the Voltica collection.
+        </p>
+
+    </div>
+
+
+    <div class="category-grid">
+
 
         <a
-            href="store.html"
-            class="nav-active"
+            href="#audio"
+            class="category-card"
         >
-            STORE
+
+            <span class="category-icon">
+                🎧
+            </span>
+
+            <span class="category-name">
+                AUDIO
+            </span>
+
         </a>
 
-        <a href="#contact">
-            CONTACT
+
+        <a
+            href="#lifestyle"
+            class="category-card"
+        >
+
+            <span class="category-icon">
+                🏠
+            </span>
+
+            <span class="category-name">
+                LIFESTYLE
+            </span>
+
         </a>
 
-    </nav>
 
-
-    <!-- CART BUTTON -->
-
-    <button
-        type="button"
-        class="cart-acrylic"
-        id="cartButton"
-        aria-label="Open shopping cart"
-    >
-
-        <span class="cart-icon">
-
-            <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
-
-                <path
-                    d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 7H6"
-                />
-
-                <circle
-                    cx="10"
-                    cy="20"
-                    r="1"
-                />
-
-                <circle
-                    cx="18"
-                    cy="20"
-                    r="1"
-                />
-
-            </svg>
-
-        </span>
-
-
-        <span
-            class="cart-count"
-            id="cartCount"
-        >
-            0
-        </span>
-
-    </button>
-
-
-</header>
-
-
-<!-- =====================================================
-     MAIN CONTENT
-     ===================================================== -->
-
-<main>
-
-
-    <!-- =================================================
-         HERO
-         ================================================= -->
-
-    <section class="store-hero">
-
-
-        <div class="hero-pulsar">
-
-            <span></span>
-
-        </div>
-
-
-        <!-- MAIN TITLE -->
-
-        <h1 class="future-title">
-
-            <span>
-                THE FUTURE
-            </span>
-
-            <span class="future-second">
-                OF EVERYDAY
-            </span>
-
-        </h1>
-
-
-        <!-- COLLECTION OPENING -->
-
-        <div class="opening-acrylic">
-
-            <span class="opening-pulse"></span>
-
-            <span>
-                COLLECTION OPEN
-            </span>
-
-            <strong>
-                SEPT 1
-            </strong>
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =================================================
-         PRODUCTS
-         ================================================= -->
-
-    <section
-        class="products-section"
-        aria-label="Voltica products"
-    >
-
-        <div
-            id="productGrid"
-            class="product-grid"
+        <a
+            href="#tech"
+            class="category-card"
         >
 
-            <!--
-                Products are injected dynamically
-                by store.js from products.js.
-            -->
+            <span class="category-icon">
+                ⚡
+            </span>
 
-            <div class="store-loading">
+            <span class="category-name">
+                TECH
+            </span>
 
-                <span class="loading-pulsar"></span>
-
-            </div>
-
-        </div>
-
-    </section>
+        </a>
 
 
-    <!-- =================================================
-         CONTACT
-         ================================================= -->
+        <a
+            href="#vlogging"
+            class="category-card"
+        >
 
-    <section
-        id="contact"
-        class="contact-section"
-    >
+            <span class="category-icon">
+                🎥
+            </span>
 
-        <div class="contact-acrylic">
+            <span class="category-name">
+                VLOGGING &amp; STREAMING GEAR
+            </span>
 
-
-            <div class="contact-pulsar"></div>
-
-
-            <div class="contact-content">
-
-                <span class="contact-label">
-                    VOLTICA SUPPORT
-                </span>
+        </a>
 
 
-                <h2>
-                    CONTACT US
-                </h2>
+        <a
+            href="#gaming"
+            class="category-card"
+        >
+
+            <span class="category-icon">
+                🎮
+            </span>
+
+            <span class="category-name">
+                GAMING GEAR
+            </span>
+
+        </a>
 
 
-                <p>
-                    Need help with your order?
-                </p>
+        <a
+            href="#smart-home"
+            class="category-card"
+        >
+
+            <span class="category-icon">
+                🏡
+            </span>
+
+            <span class="category-name">
+                SMART HOME
+            </span>
+
+        </a>
 
 
-                <a
-                    href="mailto:support@volticastore.com"
-                    class="contact-button"
-                >
+    </div>
 
-                    <span>
-                        CONTACT US
-                    </span>
-
-                    <strong>
-                        →
-                    </strong>
-
-                </a>
-
-            </div>
+</section>
 
 
-        </div>
+<!-- =================================================
+     PRODUCTS
+     ================================================= -->
 
-
-    </section>
-
-
-</main>
-
-
-<!-- =====================================================
-     CART OVERLAY
-     ===================================================== -->
-
-<div
-    class="cart-overlay"
-    id="cartOverlay"
-    aria-hidden="true"
-    hidden
-></div>
-
-
-<!-- =====================================================
-     CART DRAWER
-     ===================================================== -->
-
-<aside
-    class="cart-drawer"
-    id="cartDrawer"
-    aria-label="Shopping cart"
+<section
+    class="products-section"
+    aria-label="Voltica products"
 >
 
 
-    <div class="cart-header">
+    <!-- =================================================
+         AUDIO
+         ================================================= -->
 
-        <div>
+    <section
+        id="audio"
+        class="product-category-section"
+        data-category="Audio"
+    >
 
-            <span class="cart-small-title">
-                VOLTICA
+        <div class="category-section-heading">
+
+            <span>
+                🎧 AUDIO
             </span>
 
             <h2>
-                CART
+                AUDIO
             </h2>
 
         </div>
 
 
-        <button
-            type="button"
-            class="cart-close"
-            id="cartClose"
-            aria-label="Close cart"
-        >
-            ×
-        </button>
+        <div
+            id="productGridAudio"
+            class="product-grid"
+            data-category="Audio"
+        ></div>
 
-    </div>
+    </section>
 
 
-    <div
-        class="cart-items"
-        id="cartItems"
-    ></div>
+    <!-- =================================================
+         LIFESTYLE
+         ================================================= -->
 
+    <section
+        id="lifestyle"
+        class="product-category-section"
+        data-category="Lifestyle"
+    >
 
-    <div class="cart-footer">
-
-        <div class="cart-total-row">
+        <div class="category-section-heading">
 
             <span>
-                TOTAL
+                🏠 LIFESTYLE
             </span>
 
-            <strong id="cartTotal">
-                $0.00
-            </strong>
+            <h2>
+                LIFESTYLE
+            </h2>
 
         </div>
 
 
-        <button
-            type="button"
-            class="checkout-button"
-            id="checkoutButton"
-        >
+        <div
+            id="productGridLifestyle"
+            class="product-grid"
+            data-category="Lifestyle"
+        ></div>
 
-            CHECKOUT
+    </section>
+
+
+    <!-- =================================================
+         TECH
+         ================================================= -->
+
+    <section
+        id="tech"
+        class="product-category-section"
+        data-category="Tech"
+    >
+
+        <div class="category-section-heading">
 
             <span>
-                →
+                ⚡ TECH
             </span>
 
-        </button>
+            <h2>
+                TECH
+            </h2>
+
+        </div>
+
+
+        <div
+            id="productGridTech"
+            class="product-grid"
+            data-category="Tech"
+        ></div>
+
+    </section>
+
+
+    <!-- =================================================
+         VLOGGING & STREAMING GEAR
+         ================================================= -->
+
+    <section
+        id="vlogging"
+        class="product-category-section"
+        data-category="Vlogging & Streaming Gear"
+    >
+
+        <div class="category-section-heading">
+
+            <span>
+                🎥 VLOGGING &amp; STREAMING GEAR
+            </span>
+
+            <h2>
+                VLOGGING &amp; STREAMING GEAR
+            </h2>
+
+        </div>
+
+
+        <div
+            id="productGridVlogging"
+            class="product-grid"
+            data-category="Vlogging & Streaming Gear"
+        ></div>
+
+    </section>
+
+
+    <!-- =================================================
+         GAMING GEAR
+         ================================================= -->
+
+    <section
+        id="gaming"
+        class="product-category-section"
+        data-category="Gaming Gear"
+    >
+
+        <div class="category-section-heading">
+
+            <span>
+                🎮 GAMING GEAR
+            </span>
+
+            <h2>
+                GAMING GEAR
+            </h2>
+
+        </div>
+
+
+        <div
+            id="productGridGaming"
+            class="product-grid"
+            data-category="Gaming Gear"
+        ></div>
+
+    </section>
+
+
+    <!-- =================================================
+         SMART HOME
+         ================================================= -->
+
+    <section
+        id="smart-home"
+        class="product-category-section"
+        data-category="Smart Home"
+    >
+
+        <div class="category-section-heading">
+
+            <span>
+                🏡 SMART HOME
+            </span>
+
+            <h2>
+                SMART HOME
+            </h2>
+
+        </div>
+
+
+        <div
+            id="productGridSmartHome"
+            class="product-grid"
+            data-category="Smart Home"
+        ></div>
+
+    </section>
+
+
+</section>
+
+
+<!-- =================================================
+     CONTACT
+     ================================================= -->
+
+<section
+    id="contact"
+    class="contact-section"
+>
+
+    <div class="contact-acrylic">
+
+
+        <div class="contact-pulsar"></div>
+
+
+        <div class="contact-content">
+
+            <span class="contact-label">
+                VOLTICA SUPPORT
+            </span>
+
+
+            <h2>
+                CONTACT US
+            </h2>
+
+
+            <p>
+                Need help with your order?
+            </p>
+
+
+            <a
+                href="mailto:support@volticastore.com"
+                class="contact-button"
+            >
+
+                <span>
+                    CONTACT US
+                </span>
+
+                <strong>
+                    →
+                </strong>
+
+            </a>
+
+        </div>
+
 
     </div>
 
 
-</aside>
+</section>
 
+</main><!-- =====================================================
+     CART OVERLAY
+     ===================================================== --><div
+    class="cart-overlay"
+    id="cartOverlay"
+    aria-hidden="true"
+    hidden
+></div><!-- =====================================================
+     CART DRAWER
+     ===================================================== --><aside
+    class="cart-drawer"
+    id="cartDrawer"
+    aria-label="Shopping cart"
+><div class="cart-header">
 
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
+    <div>
 
-<footer class="store-footer">
-
-    <div class="footer-acrylic">
-
-        <span>
+        <span class="cart-small-title">
             VOLTICA
         </span>
 
-        <span>
-            THE FUTURE OF EVERYDAY
-        </span>
-
-        <span>
-            © 2026
-        </span>
+        <h2>
+            CART
+        </h2>
 
     </div>
 
-</footer>
+
+    <button
+        type="button"
+        class="cart-close"
+        id="cartClose"
+        aria-label="Close cart"
+    >
+        ×
+    </button>
+
+</div>
 
 
-<!-- =====================================================
+<div
+    class="cart-items"
+    id="cartItems"
+></div>
+
+
+<div class="cart-footer">
+
+    <div class="cart-total-row">
+
+        <span>
+            TOTAL
+        </span>
+
+        <strong id="cartTotal">
+            $0.00
+        </strong>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="checkout-button"
+        id="checkoutButton"
+    >
+
+        CHECKOUT
+
+        <span>
+            →
+        </span>
+
+    </button>
+
+</div>
+
+</aside><!-- =====================================================
+     FOOTER
+     ===================================================== --><footer class="store-footer"><div class="footer-acrylic">
+
+    <span>
+        VOLTICA
+    </span>
+
+    <span>
+        THE FUTURE OF EVERYDAY
+    </span>
+
+    <span>
+        © 2026
+    </span>
+
+</div>
+
+</footer><!-- =====================================================
      DATABASE
      ===================================================== -->
-<script src="products.js?v=7"></script>
-<script src="store.js?v=7"></script>
+    <script src="products.js?v=7"></script>
+    <script src="store.js?v=7"></script>
 </body>
-
 </html>

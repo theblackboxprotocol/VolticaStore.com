@@ -651,7 +651,62 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/14AbJ2aOjdwz8mc7Ky2Ji0q",
         "supplierLink": "business@kiwiears.com",
         "active": true
+    },
+   /* =========================================================
+       Product name : Hexagonal Smart RGB Sound-Activated Quantum Light Panels
+       ========================================================= */
+
+{
+        "id": "hexagonal-smart-rgb-sound-activated-quantum-light-panels",
+        "sku": "VLT-GAM-HEX-001",
+        "name": "Hexagonal Smart RGB Sound-Activated Quantum Light Panels",
+        "category": "Gaming Gear",
+        "badge": "FEATURED",
+        "price": 47.99,
+        "referencePrice": 54.99,
+        "cost": 14.01,
+        "shipping": 17.39,
+        "shortDescription": "Upgrade your gaming setup or workspace with the Hexagonal Smart RGB Sound-Activated Quantum Light Panels. Featuring real-time music synchronization, 16 million color combinations, and customizable modular layouts, these lights create an immersive atmospheric experience. Control your vibe effortlessly via smartphone app or the included remote. Available now at Voltica Store.",
+        "description": "Immersive Music Sync & Sound-Activated Rhythm\nâ€‹Bring your favorite tracks, movies, and games to life with zero-delay sound pickup technology. Built-in microphones and external playback recording functions automatically recognize your music rhythm, pulsing and changing colors in real-time to match the beat for a truly dynamic visual experience.\nâ€‹Modular Design & Free Splicing\nâ€‹Craft your own custom aesthetic. The individual hexagonal panels feature a modular design that allows for free splicing, letting you arrange them in unique patterns on your walls or position them stably on your desktop to match your exact room layout.\nâ€‹Vibrant 16 Million Colors & Dynamic Modes\nâ€‹Customize your atmosphere with 16 million color changes and hundreds of dynamic modes, including static, gradient, strobe, and jump modes. Easily adjust brightness, color tones, and speed to suit your mood, whether you are streaming, gaming, or relaxing.\nâ€‹Dual Control: Smart App & Remote\nâ€‹Take complete command of your lighting setup using either the user-friendly smartphone application or the included 2.4G RF remote control. Set schedules with the built-in timing function and switch between modes instantly from anywhere in the room.",
+        "features": [
+            "Sound-Activated Music Sync: Features zero-delay sound pickup that automatically synchronizes lighting rhythms with your music, games, or movies in real-time.",
+            "â€‹Modular Free Splicing: Allows you to freely connect and arrange the hexagonal panels into custom patterns for both wall-mounted and desktop displays.",
+            "â€‹16 Million Colors & Dynamic Modes: Offers endless color customization alongside hundreds of dynamic lighting modes including static, gradient, strobe, and jump.",
+            "â€‹Smart Dual Control: Easily manage your lighting, adjust brightness, change speeds, or set timing schedules using the smartphone app or included remote."
+        ],
+        "specifications": {
+            "Product Type": "Smart Quantum Atmosphere Light / Hexagonal Breathing Light",
+            "â€‹Power Rating": "12W",
+            "â€‹Input Voltage": "\\le 36V",
+            "â€‹Panel Dimensions": "103 \\times 89 \\times 28\\text{ mm} per panel",
+            "â€‹Housing Material": "High-grade Polycarbonate (PC)",
+            "â€‹Protection Rating": "IP43",
+            "â€‹Control Methods": "Bluetooth Mobile App, 2.4G RF Remote Control"
+        },
+        "images": [
+            "assets/images/1000053127.jpg",
+            "assets/images/1000053128.jpg",
+            "assets/images/1000053129.jpg",
+            "assets/images/1000053130.jpg",
+            "assets/images/1000053131.jpg",
+            "assets/images/1000053132.jpg",
+            "assets/images/1000053133.jpg",
+            "assets/images/1000053135.jpg",
+            "assets/images/1000053134.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Illuminate Your Space",
+            "lines": [
+                "â€‹Ready to level up your gaming setup or room decor with dynamic, rhythm-synced lighting? Grab your Hexagonal Smart RGB Sound-Activated Quantum Light Panels today from Voltica Store and create the ultimate immersive atmosphere!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/5kQdRa7C70JN45W3ui2Ji0c",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-2601211009261604500.html",
+        "active": true
     }
+
 
 ];
 

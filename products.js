@@ -1,11 +1,10 @@
 /* =========================================================
    VOLTICA STORE
    PRODUCT DATABASE
-   10 ACTIVE PRODUCTS
+   13 ACTIVE PRODUCTS
    ========================================================= */
 
 "use strict";
-
 
 window.volticaProducts = [
 
@@ -72,7 +71,6 @@ window.volticaProducts = [
         "active": true
     },
 
-
     /* =========================================================
        PRODUCT 02 — XREAL AIR 1S
        ========================================================= */
@@ -128,7 +126,6 @@ window.volticaProducts = [
         "active": true
     },
 
-
     /* =========================================================
        PRODUCT 03 — Q17 OPEN-EAR WIRELESS EARBUDS
        ========================================================= */
@@ -181,16 +178,13 @@ window.volticaProducts = [
             "assets/images/Screenshot_20260825_183843.jpg"
         ],
 
-        "colors": [
-        ],
-
+        "colors": [],
         "variants": [],
 
         "stripeLink": "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2512210524261601400.html",
         "active": true
     },
-
 
     /* =========================================================
        PRODUCT 04 — VOLTICA TWS
@@ -248,16 +242,13 @@ window.volticaProducts = [
             "assets/images/earbuds2-7.webp"
         ],
 
-        "colors": [
-        ],
-
+        "colors": [],
         "variants": [],
 
         "stripeLink": "https://buy.stripe.com/7sY28s5tZ78bbyo9SG2Ji02",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1996427591927648257.html",
         "active": true
     },
-
 
     /* =========================================================
        PRODUCT 05 — FA-5370 PLANAR MAGNETIC
@@ -314,17 +305,13 @@ window.volticaProducts = [
             "assets/images/wood10.jpg"
         ],
 
-        "colors": [
-            
-        ],
-
+        "colors": [],
         "variants": [],
 
         "stripeLink": "https://buy.stripe.com/3cI5kE3lRgIL31Sc0O2Ji0m",
         "supplierLink": "https://www.alibaba.com/x/B2MSRf?ck=pdp",
         "active": true
     },
-
 
     /* =========================================================
        PRODUCT 06 — LEVITATING WIRELESS BLUETOOTH SPEAKER
@@ -389,7 +376,6 @@ window.volticaProducts = [
         "active": true
     },
 
-
     /* =========================================================
        PRODUCT 07 — SMART AUTO-TRACKING PHONE GIMBAL
        ========================================================= */
@@ -446,7 +432,6 @@ window.volticaProducts = [
         ],
 
         "colors": [],
-
         "variants": [],
 
         "customCta": {
@@ -460,7 +445,6 @@ window.volticaProducts = [
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1597165945188405248.html",
         "active": true
     },
-
 
     /* =========================================================
        PRODUCT 08 — BLACK STAR PROJECTOR
@@ -518,7 +502,6 @@ window.volticaProducts = [
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2408290911051600500.html",
         "active": true
     },
-
 
     /* =========================================================
        PRODUCT 09 — KIWI EARS ORCHESTRA II
@@ -589,7 +572,6 @@ window.volticaProducts = [
         "active": true
     },
 
-
     /* =========================================================
        PRODUCT 10 — KIWI EARS ARDOR
        ========================================================= */
@@ -650,11 +632,12 @@ window.volticaProducts = [
         "supplierLink": "business@kiwiears.com",
         "active": true
     },
-   /* =========================================================
-       Product name : Hexagonal Smart RGB Sound-Activated Quantum Light Panels
+
+    /* =========================================================
+       PRODUCT 11 — HEXAGONAL SMART RGB QUANTUM LIGHT PANELS
        ========================================================= */
 
-{
+    {
         "id": "hexagonal-smart-rgb-sound-activated-quantum-light-panels",
         "sku": "VLT-GAM-HEX-001",
         "name": "Hexagonal Smart RGB Sound-Activated Quantum Light Panels",
@@ -664,14 +647,18 @@ window.volticaProducts = [
         "referencePrice": 54.99,
         "cost": 14.01,
         "shipping": 17.39,
+
         "shortDescription": "Upgrade your gaming setup or workspace with the Hexagonal Smart RGB Sound-Activated Quantum Light Panels. Featuring real-time music synchronization, 16 million color combinations, and customizable modular layouts, these lights create an immersive atmospheric experience. Control your vibe effortlessly via smartphone app or the included remote. Available now at Voltica Store.",
-        "description": "Immersive Music Sync & Sound-Activated Rhythm\nâ€‹Bring your favorite tracks, movies, and games to life with zero-delay sound pickup technology. Built-in microphones and external playback recording functions automatically recognize your music rhythm, pulsing and changing colors in real-time to match the beat for a truly dynamic visual experience.\nâ€‹Modular Design & Free Splicing\nâ€‹Craft your own custom aesthetic. The individual hexagonal panels feature a modular design that allows for free splicing, letting you arrange them in unique patterns on your walls or position them stably on your desktop to match your exact room layout.\nâ€‹Vibrant 16 Million Colors & Dynamic Modes\nâ€‹Customize your atmosphere with 16 million color changes and hundreds of dynamic modes, including static, gradient, strobe, and jump modes. Easily adjust brightness, color tones, and speed to suit your mood, whether you are streaming, gaming, or relaxing.\nâ€‹Dual Control: Smart App & Remote\nâ€‹Take complete command of your lighting setup using either the user-friendly smartphone application or the included 2.4G RF remote control. Set schedules with the built-in timing function and switch between modes instantly from anywhere in the room.",
+
+        "description": "Immersive Music Sync & Sound-Activated Rhythm\n\nBring your favorite tracks, movies, and games to life with zero-delay sound pickup technology. Built-in microphones and external playback recording functions automatically recognize your music rhythm, pulsing and changing colors in real-time to match the beat for a truly dynamic visual experience.\n\nModular Design & Free Splicing\n\nCraft your own custom aesthetic. The individual hexagonal panels feature a modular design that allows for free splicing, letting you arrange them in unique patterns on your walls or position them stably on your desktop to match your exact room layout.\n\nVibrant 16 Million Colors & Dynamic Modes\n\nCustomize your atmosphere with 16 million color changes and hundreds of dynamic modes, including static, gradient, strobe, and jump modes. Easily adjust brightness, color tones, and speed to suit your mood, whether you are streaming, gaming, or relaxing.\n\nDual Control: Smart App & Remote\n\nTake complete command of your lighting setup using either the user-friendly smartphone application or the included 2.4G RF remote control. Set schedules with the built-in timing function and switch between modes instantly from anywhere in the room.",
+
         "features": [
             "Sound-Activated Music Sync: Features zero-delay sound pickup that automatically synchronizes lighting rhythms with your music, games, or movies in real-time.",
             "Modular Free Splicing: Allows you to freely connect and arrange the hexagonal panels into custom patterns for both wall-mounted and desktop displays.",
             "16 Million Colors & Dynamic Modes: Offers endless color customization alongside hundreds of dynamic lighting modes including static, gradient, strobe, and jump.",
             "Smart Dual Control: Easily manage your lighting, adjust brightness, change speeds, or set timing schedules using the smartphone app or included remote."
         ],
+
         "specifications": {
             "Product Type": "Smart Quantum Atmosphere Light / Hexagonal Breathing Light",
             "Power Rating": "12W",
@@ -681,6 +668,7 @@ window.volticaProducts = [
             "Protection Rating": "IP43",
             "Control Methods": "Bluetooth Mobile App, 2.4G RF Remote Control"
         },
+
         "images": [
             "assets/images/hex1.jpg",
             "assets/images/hex2.jpg",
@@ -692,23 +680,27 @@ window.volticaProducts = [
             "assets/images/hex8.jpg",
             "assets/images/hex9.jpg"
         ],
+
         "colors": [],
         "variants": [],
+
         "customCta": {
             "title": "Illuminate Your Space",
             "lines": [
                 "Ready to level up your gaming setup or room decor with dynamic, rhythm-synced lighting? Grab your Hexagonal Smart RGB Sound-Activated Quantum Light Panels today from Voltica Store and create the ultimate immersive atmosphere!"
             ]
         },
+
         "stripeLink": "https://buy.stripe.com/5kQdRa7C70JN45W3ui2Ji0c",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2601211009261604500.html",
         "active": true
     },
-     /* =========================================================
-       Product name : RGB Colorful Branches Ambience Light
+
+    /* =========================================================
+       PRODUCT 12 — RGB COLORFUL BRANCHES AMBIENCE LIGHT
        ========================================================= */
 
-{
+    {
         "id": "rgb-colorful-branches-ambience-light",
         "sku": "CJYD197940402BY",
         "name": "RGB Colorful Branches Ambience Light",
@@ -718,14 +710,18 @@ window.volticaProducts = [
         "referencePrice": 99.99,
         "cost": 55.72,
         "shipping": 21.85,
+
         "shortDescription": "Elevate your home environment with the RGB Colorful Branches Ambience Light 12-Piece Kit. Designed with a modern minimalist style, these smart LED branch lights feature intelligent music sync pickup rhythm, smartphone app integration, and a handy remote control. Create a dynamic visual atmosphere for your gaming station, living room, or studio. Available now at Voltica Store!",
-        "description": "Modern Minimalist Aesthetic & Branch Design\nâ€‹Redefine your interior dÃ©cor with an artistic, structural layout. Crafted from durable, high-quality PVC lamp shades, the RGB Colorful Branches Ambience Light adds a sleek, futuristic, yet minimalist visual flair to any blank wall or studio background.\nâ€‹Sound-Activated Music Sync & Rhythm Mode\nâ€‹Bring your entertainment space to life. Equipped with an advanced pickup rhythm feature, these smart lights synchronize dynamically with your favorite music, movies, or gaming audio, pulsing and shifting colors in real-time to match the beat.\nâ€‹Smart App Control & RF Remote\nâ€‹Take full command of your lighting experience. Seamlessly switch colors, adjust brightness, or cycle through dynamic modes using either the intuitive smartphone app or the included multi-function remote control, putting total ambiance management right at your fingertips.",
+
+        "description": "Modern Minimalist Aesthetic & Branch Design\n\nRedefine your interior decor with an artistic, structural layout. Crafted from durable, high-quality PVC lamp shades, the RGB Colorful Branches Ambience Light adds a sleek, futuristic, yet minimalist visual flair to any blank wall or studio background.\n\nSound-Activated Music Sync & Rhythm Mode\n\nBring your entertainment space to life. Equipped with an advanced pickup rhythm feature, these smart lights synchronize dynamically with your favorite music, movies, or gaming audio, pulsing and shifting colors in real-time to match the beat.\n\nSmart App Control & RF Remote\n\nTake full command of your lighting experience. Seamlessly switch colors, adjust brightness, or cycle through dynamic modes using either the intuitive smartphone app or the included multi-function remote control, putting total ambiance management right at your fingertips.",
+
         "features": [
             "12-Piece Complete Kit: Supplied as a comprehensive 12-set configuration for expansive wall layouts and custom designs.",
             "Music Sync Pickup Rhythm: Built-in audio response technology that moves and pulses dynamically with environmental sound and music.",
             "Smart App & Remote Control: Dual control functionality via mobile application and a dedicated wireless remote.",
             "Modern Minimalist Style: Clean geometric branch structure that blends seamlessly into modern gaming setups, bedrooms, and living spaces."
         ],
+
         "specifications": {
             "Product Type": "RGB Colorful Branches Ambience Light",
             "Pack Size": "12-Piece Set (12 sets configuration)",
@@ -742,30 +738,34 @@ window.volticaProducts = [
             "1 x Adapter & Power Adapter": "",
             "1 x USB Cable": ""
         },
+
         "images": [
             "assets/images/light1.webp",
             "assets/images/light2.webp",
             "assets/images/light3.webp",
             "assets/images/light4.jpg"
         ],
+
         "colors": [],
         "variants": [],
+
         "customCta": {
             "title": "Illuminate Your Space in Style",
             "lines": [
                 "Ready to transform your room with dynamic lighting and futuristic design? Get your RGB Colorful Branches Ambience Light today from Voltica Store and create the ultimate immersive atmosphere!"
             ]
         },
+
         "stripeLink": "https://buy.stripe.com/cNi28s5tZ3VZgSIgh42Ji0h",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1763544551962189824.html",
         "active": true
-},
-   
-       /* =========================================================
-       Product name : XXL World Map Gaming Mouse Pad - 900x400x4mm Large Desk Mat | Voltica Store
+    },
+
+    /* =========================================================
+       PRODUCT 13 — XXL WORLD MAP GAMING MOUSE PAD
        ========================================================= */
 
-{
+    {
         "id": "xxl-world-map-gaming-mouse-pad-900x400x4mm-large-desk-mat-voltica-store",
         "sku": "CJJT106172401AZ",
         "name": "XXL World Map Gaming Mouse Pad - 900x400x4mm Large Desk Mat | Voltica Store",
@@ -775,8 +775,11 @@ window.volticaProducts = [
         "referencePrice": 34.99,
         "cost": 8.39,
         "shipping": 9.02,
+
         "shortDescription": "Transform your workspace with the XXL World Map Gaming Mouse Pad (900 x 400 x 4 mm). Combining an ultra-precise gliding surface, detailed high-definition printing, and superior ergonomic comfort thanks to its 4mm thickness, this oversized desk mat is ideal for gaming, remote work, and upgrading your setup. Anti-slip and durable, it protects your desk while enhancing your room aesthetics. Available now at Voltica Store.",
-        "description": "An Oversized Gaming and Work Space\nâ€‹With generous dimensions of 900 x 400 mm, this giant mouse pad provides ample room to comfortably accommodate your keyboard, gaming mouse, and other desk accessories simultaneously. Enjoy complete freedom of movement without restrictions, whether you are in an intense competitive gaming match or multitasking on daily projects.\nâ€‹Ergonomic Comfort & Optimized 4mm Thickness\nâ€‹Designed to protect your wrists and hands, this pad features a robust 4mm thickness. This premium construction absorbs micro-shocks, reduces fatigue during long hours of gaming or intensive work, and creates a stable, cushioned feel across any desktop surface.\nâ€‹High-Precision Gliding & HD World Map\nâ€‹The low-friction, high-density fabric surface ensures laser-sharp tracking accuracy, guaranteeing smooth and fast mouse movements. Enhanced by a stylish and detailed world map design, it adds a sophisticated and inspiring touch to your station.",
+
+        "description": "An Oversized Gaming and Work Space\n\nWith generous dimensions of 900 x 400 mm, this giant mouse pad provides ample room to comfortably accommodate your keyboard, gaming mouse, and other desk accessories simultaneously. Enjoy complete freedom of movement without restrictions, whether you are in an intense competitive gaming match or multitasking on daily projects.\n\nErgonomic Comfort & Optimized 4mm Thickness\n\nDesigned to protect your wrists and hands, this pad features a robust 4mm thickness. This premium construction absorbs micro-shocks, reduces fatigue during long hours of gaming or intensive work, and creates a stable, cushioned feel across any desktop surface.\n\nHigh-Precision Gliding & HD World Map\n\nThe low-friction, high-density fabric surface ensures laser-sharp tracking accuracy, guaranteeing smooth and fast mouse movements. Enhanced by a stylish and detailed world map design, it adds a sophisticated and inspiring touch to your station.",
+
         "features": [
             "Non-Slip Rubber Base: Firmly grips your desk to prevent sliding, even during rapid, high-intensity mouse movements.",
             "Stitched Reinforced Edges: Prevents fraying, peeling, and premature wear for long-lasting durability.",
@@ -787,6 +790,7 @@ window.volticaProducts = [
             "HD World Map Design: Elegant, modern, and detailed aesthetic tailored for gamers and travel enthusiasts.",
             "Non-Slip Base & Stitched Edges: Ensures a secure desk grip and prevents edge fraying."
         ],
+
         "specifications": {
             "Product Type": "Gaming Mouse Pad / Desk Mat / Mouse Mat",
             "Design": "World Map",
@@ -799,24 +803,28 @@ window.volticaProducts = [
             "Inside the Box": "",
             "1 x XXL World Map Gaming Mouse Pad (900x400x4mm)": ""
         },
+
         "images": [
             "assets/images/desk1.webp",
             "assets/images/desk2.webp",
             "assets/images/desk3.webp",
             "assets/images/desk4.webp"
         ],
+
         "colors": [],
         "variants": [],
+
         "customCta": {
             "title": "Upgrade Your Desk with Style",
             "lines": [
                 "Ready to transform your workspace with unmatched comfort and precision? Order your XXL World Map Gaming Mouse Pad today from Voltica Store and elevate your setup!"
             ]
         },
+
         "stripeLink": "https://buy.stripe.com/14AaEY8Gbakn6e4e8W2Ji0i",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1377449685635174400.html",
         "active": true
-}
+    }
 
 ];
 

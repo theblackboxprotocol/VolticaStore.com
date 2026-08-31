@@ -760,6 +760,7 @@ window.volticaProducts = [
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1763544551962189824.html",
         "active": true
 },
+   
        /* =========================================================
        Product name : XXL World Map Gaming Mouse Pad - 900x400x4mm Large Desk Mat | Voltica Store
        ========================================================= */
@@ -815,8 +816,7 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/14AaEY8Gbakn6e4e8W2Ji0i",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1377449685635174400.html",
         "active": true
-},
-
+}
 
 ];
 

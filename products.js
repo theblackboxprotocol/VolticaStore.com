@@ -824,7 +824,63 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/14AaEY8Gbakn6e4e8W2Ji0i",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1377449685635174400.html",
         "active": true
-    }
+    },
+       /* =========================================================
+       Product name : Smart Android 15 Bathroom Mirror - Touch Screen AI Health Mirror | Voltica Store
+       ========================================================= */
+
+{
+        "id": "smart-android-15-bathroom-mirror-touch-screen-ai-health-mirror-voltica-store",
+        "sku": "VLT-HOM-001",
+        "name": "Smart Android 15 Bathroom Mirror - Touch Screen AI Health Mirror | Voltica Store",
+        "category": "Smart Home",
+        "badge": "PREMIUM",
+        "price": 999.99,
+        "referencePrice": 1399.99,
+        "cost": 399,
+        "shipping": 130,
+        "shortDescription": "Upgrade your bathroom with the Voltica Smart Android 15 Mirror . This luxury smart mirror combines a sleek design with cutting-edge technology: an HD touch screen, a high-performance Android 15 interface (8GB RAM + 128GB ROM), an AI health-monitoring camera, adjustable 3-color LED lighting, and anti-fog functionality. Enjoy seamless app streaming and daily wellness tracking directly from your mirror. Available now at Voltica Store.",
+        "description": "The Voltica Smart Mirror redefines contemporary living. Blending exquisite luxury craftsmanship with cutting-edge technology, this IP65 waterproof smart mirror features precise dimensions of 1000 x 500 x 30 mm, making it the ultimate centerpiece for modern homes, luxury hotels, upscale apartments, and executive salons.\nâ€‹Endless Entertainment and Seamless Connectivity: Enjoy lightning-fast navigation, smooth multitasking, and top-tier app compatibility powered by 8GB of RAM and 128GB of internal storage. Features a responsive HD touch screen seamlessly embedded into the reflective glass. Download and stream your favorite content directlyâ€”watch videos on YouTube, listen to music on Spotify, or manage your schedule effortlessly. Built-in Wi-Fi and Bluetooth ensure you stay effortlessly connected.\nâ€‹Advanced AI Health and Wellness Monitoring: Equipped with a high-definition camera utilizing state-of-the-art AI algorithms to scan and evaluate your face and eyes. Monitor vital personal metrics including skin condition, daily mood fluctuations, and heart rate (BPM). Receive tailor-made wellness recommendations based on real-time diagnostic results. All health data can be tracked, recorded, and reviewed on daily, weekly, and monthly timelines.\nâ€‹Designed for Daily Comfort and Durability: Create the perfect ambiance with adjustable brightness and 3 distinct lighting colors ranging from bright white to warm white tones. Check the real-time weather, temperature, date, and clock layout at a glance. IP65 waterproof rating paired with advanced defogging technology ensures a crystal-clear reflection even after hot showers.\nâ€‹Smart Control and Customization: Operate hands-free via the built-in microphone or use the included multi-function remote control for volume adjustment and cursor simulation. Fully available for OEM/ODM orders with customizable logo integration.",
+        "features": [
+            "Android 15 System: High-performance interface with 8GB RAM and 128GB ROM.",
+            "AI Health Analysis Camera: Real-time metrics for skin health, mood, and BPM.",
+            "App Store Integration: Stream video, music, and check news instantly.",
+            "IP65 Waterproof & Anti-Fog: Built specifically to withstand humid bathroom environments.",
+            "Adjustable 3-Color LED Lighting: Premium customizable illumination with dimming support.",
+            "Dual Control Options: Integrated voice control and wireless remote mouse simulation."
+        ],
+        "specifications": {
+            "Product Name": "Smart Mirror / Touch Screen Bathroom TV Mirror with AI Health & Android 15",
+            "Dimensions (W x H x D)": "L 1000 x W 500 x D 30 mm",
+            "Operating System": "Android 15",
+            "Memory (RAM + ROM)": "8GB RAM + 128GB ROM",
+            "Touch Screen": "FHD Touch Display",
+            "Camera": "HD Camera with AI Tracking",
+            "Core Functions": "Wi-Fi, Bluetooth Speaker, Weather & Temperature Display, Health Monitoring, Anti-Fog, Waterproof, App Store, AI Face Scan",
+            "Lighting Colors": "Triple-color touch adjustment (6000-6500K White, 3000-3200K Warm White)",
+            "Voltage": "AC 100-240V, 50/60Hz",
+            "Interfaces": "USB x1, LAN x1, Type-C x1",
+            "Certifications": "CE, ETL/CETL, UKCA, RCM, FCC/IC, SVHC 211, PAHS",
+            "Application": "Luxury Hotels, Bathrooms, Salons, Barbershops, Smart Homes"
+        },
+        "images": [
+            "assets/images/mirror1.jpg",
+            "assets/images/mirror2.jpg",
+            "assets/images/mirror3.jpg",
+            "assets/images/mirror4.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Upgrade Your Smart Space",
+            "lines": [
+                "Ready to experience the future of smart bathrooms and wellness tracking? Order your Smart Android Mirror (1000x500mm) today from Voltica Store!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/3cI28saOj6475a01ma2Ji0r",
+        "supplierLink": "https://www.alibaba.com/x/B2NhlS?ck=pdp",
+        "active": true
+}
 
 ];
 

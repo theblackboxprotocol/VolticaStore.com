@@ -1,7 +1,7 @@
 /* =========================================================
    VOLTICA STORE — STORE.JS
    Product Render + Shopping Cart Engine
-   Corrected + Optimized
+   Sectioned Collection System
    ========================================================= */
 
 "use strict";
@@ -82,6 +82,181 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         return;
+    }
+
+
+    /* =====================================================
+       COLLECTION SECTIONS
+       ===================================================== */
+
+    const collectionSections = [
+
+        {
+            id: "audio",
+            title: "AUDIO",
+            icon: "🎧",
+            keywords: [
+                "audio",
+                "sport audio",
+                "earbuds",
+                "earbud",
+                "headphones",
+                "headphone",
+                "speaker",
+                "speakers",
+                "sound",
+                "tws"
+            ]
+        },
+
+        {
+            id: "lifestyle",
+            title: "LIFESTYLE",
+            icon: "🏠",
+            keywords: [
+                "lifestyle",
+                "life style",
+                "decoration",
+                "decor",
+                "accessories",
+                "accessory",
+                "fashion",
+                "clothing",
+                "pet",
+                "costume"
+            ]
+        },
+
+        {
+            id: "tech",
+            title: "TECH",
+            icon: "⚡",
+            keywords: [
+                "tech",
+                "technology",
+                "electronics",
+                "electronic",
+                "charger",
+                "charging",
+                "cable",
+                "projector",
+                "mobile",
+                "phone",
+                "computer"
+            ]
+        },
+
+        {
+            id: "vlogging",
+            title: "VLOGGING & STREAMING GEAR",
+            icon: "🎥",
+            keywords: [
+                "vlogging",
+                "vlog",
+                "streaming",
+                "streamer",
+                "creator",
+                "creator gear",
+                "camera",
+                "microphone",
+                "microphone gear",
+                "content creator"
+            ]
+        },
+
+        {
+            id: "gaming",
+            title: "GAMING GEAR",
+            icon: "🎮",
+            keywords: [
+                "gaming",
+                "gamer",
+                "gaming gear",
+                "keyboard",
+                "mouse",
+                "controller",
+                "console",
+                "pc gaming"
+            ]
+        },
+
+        {
+            id: "smart-home",
+            title: "SMART HOME",
+            icon: "🏡",
+            keywords: [
+                "smart home",
+                "smart-home",
+                "smart",
+                "door lock",
+                "lock",
+                "home automation",
+                "security",
+                "smart device"
+            ]
+        }
+
+    ];
+
+
+    /* =====================================================
+       GET PRODUCT SECTION
+       ===================================================== */
+
+    function getProductSection(product) {
+
+        const category =
+            String(
+                product?.category || ""
+            )
+                .toLowerCase()
+                .trim();
+
+
+        const name =
+            String(
+                product?.name || ""
+            )
+                .toLowerCase()
+                .trim();
+
+
+        const description =
+            String(
+                product?.shortDescription || ""
+            )
+                .toLowerCase()
+                .trim();
+
+
+        const searchText =
+            `${category} ${name} ${description}`;
+
+
+        for (
+            const section of collectionSections
+        ) {
+
+            const match =
+                section.keywords.some(
+                    keyword =>
+                        searchText.includes(
+                            keyword.toLowerCase()
+                        )
+                );
+
+
+            if (match) {
+
+                return section;
+
+            }
+
+        }
+
+
+        return null;
+
     }
 
 
@@ -345,6 +520,204 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
+       CREATE PRODUCT CARD
+       ===================================================== */
+
+    function createProductCard(product) {
+
+        const card =
+            document.createElement(
+                "article"
+            );
+
+
+        card.className =
+            "store-product";
+
+
+        const image =
+            product.images?.[0] || "";
+
+
+        const price =
+            Number(
+                product.price || 0
+            );
+
+
+        const referencePrice =
+            Number(
+                product.referencePrice || 0
+            );
+
+
+        /* ================================================
+           COLORS
+           ================================================ */
+
+        let colorsHTML = "";
+
+
+        if (
+            Array.isArray(product.colors) &&
+            product.colors.length
+        ) {
+
+            colorsHTML = `
+
+                <div class="product-colors">
+
+                    <span>
+                        COLORS
+                    </span>
+
+                    <div class="color-list">
+
+                        ${product.colors
+                            .map(
+                                color => `
+
+                                    <span
+                                        class="color-chip"
+                                        title="${escapeHTML(color)}"
+                                        aria-label="${escapeHTML(color)}"
+                                    ></span>
+
+                                `
+                            )
+                            .join("")}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* ================================================
+           REFERENCE PRICE
+           ================================================ */
+
+        let referenceHTML = "";
+
+
+        if (
+            referencePrice > price
+        ) {
+
+            referenceHTML = `
+
+                <span class="product-reference-price">
+                    $${referencePrice.toFixed(2)}
+                </span>
+
+            `;
+
+        }
+
+
+        /* ================================================
+           PRODUCT CARD
+           ================================================ */
+
+        card.innerHTML = `
+
+            <div class="product-image">
+
+                <img
+                    src="${escapeHTML(image)}"
+                    alt="${escapeHTML(
+                        product.name ||
+                        "Voltica Product"
+                    )}"
+                    loading="lazy"
+                >
+
+                <div
+                    class="image-reflection"
+                    aria-hidden="true"
+                ></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    ${escapeHTML(
+                        product.category ||
+                        "VOLTICA COLLECTION"
+                    )}
+                </span>
+
+
+                <h2 class="product-title">
+                    ${escapeHTML(
+                        product.name ||
+                        "VOLTICA PRODUCT"
+                    )}
+                </h2>
+
+
+                <p class="product-description">
+                    ${escapeHTML(
+                        product.shortDescription ||
+                        ""
+                    )}
+                </p>
+
+
+                <div class="product-price-row">
+
+                    <strong class="product-price">
+                        $${price.toFixed(2)}
+                    </strong>
+
+                    ${referenceHTML}
+
+                </div>
+
+
+                ${colorsHTML}
+
+
+                <div class="product-actions">
+
+                    <a
+                        href="product-view.html?id=${encodeURIComponent(
+                            product.id
+                        )}"
+                        class="acrylic-button product-view-button"
+                    >
+                        VIEW PRODUCT
+                    </a>
+
+
+                    <button
+                        type="button"
+                        class="acrylic-button product-buy-button"
+                        data-product-id="${escapeHTML(
+                            product.id
+                        )}"
+                    >
+                        ADD TO CART
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        return card;
+
+    }
+
+
+    /* =====================================================
        PRODUCT RENDER
        ===================================================== */
 
@@ -389,210 +762,228 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        activeProducts.forEach(
-            function (product) {
+        /* =================================================
+           CREATE SECTION CONTAINERS
+           ================================================= */
 
-                const card =
+        const sectionContainers = new Map();
+
+
+        collectionSections.forEach(
+            function (section) {
+
+                const productsForSection =
+                    activeProducts.filter(
+                        product =>
+                            getProductSection(product)?.id ===
+                            section.id
+                    );
+
+
+                if (!productsForSection.length) {
+                    return;
+                }
+
+
+                const sectionElement =
                     document.createElement(
-                        "article"
+                        "section"
                     );
 
 
-                card.className =
-                    "store-product";
+                sectionElement.className =
+                    "product-category-section";
 
 
-                const image =
-                    product.images?.[0] || "";
+                sectionElement.dataset.section =
+                    section.id;
 
 
-                const price =
-                    Number(
-                        product.price || 0
-                    );
+                sectionElement.innerHTML = `
 
+                    <div class="product-section-header">
 
-                const referencePrice =
-                    Number(
-                        product.referencePrice || 0
-                    );
+                        <div class="product-section-title">
 
-
-                /* =========================================
-                   COLORS
-                   ========================================= */
-
-                let colorsHTML = "";
-
-
-                if (
-                    Array.isArray(product.colors) &&
-                    product.colors.length
-                ) {
-
-                    colorsHTML = `
-
-                        <div class="product-colors">
-
-                            <span>
-                                COLORS
+                            <span class="product-section-icon">
+                                ${section.icon}
                             </span>
 
-                            <div class="color-list">
+                            <div>
 
-                                ${product.colors
-                                    .map(
-                                        color => `
+                                <span class="product-section-label">
+                                    VOLTICA COLLECTION
+                                </span>
 
-                                            <span
-                                                class="color-chip"
-                                                title="${escapeHTML(color)}"
-                                                aria-label="${escapeHTML(color)}"
-                                            ></span>
-
-                                        `
-                                    )
-                                    .join("")}
+                                <h2>
+                                    ${escapeHTML(section.title)}
+                                </h2>
 
                             </div>
 
                         </div>
 
-                    `;
-
-                }
-
-
-                /* =========================================
-                   REFERENCE PRICE
-                   ========================================= */
-
-                let referenceHTML = "";
-
-
-                if (
-                    referencePrice > price
-                ) {
-
-                    referenceHTML = `
-
-                        <span class="product-reference-price">
-                            $${referencePrice.toFixed(2)}
+                        <span class="product-section-count">
+                            ${productsForSection.length}
+                            ${
+                                productsForSection.length === 1
+                                    ? "PRODUCT"
+                                    : "PRODUCTS"
+                            }
                         </span>
-
-                    `;
-
-                }
-
-
-                /* =========================================
-                   PRODUCT CARD
-                   ========================================= */
-
-                card.innerHTML = `
-
-                    <div class="product-image">
-
-                        <img
-                            src="${escapeHTML(image)}"
-                            alt="${escapeHTML(
-                                product.name ||
-                                "Voltica Product"
-                            )}"
-                            loading="lazy"
-                        >
-
-                        <div
-                            class="image-reflection"
-                            aria-hidden="true"
-                        ></div>
 
                     </div>
 
 
-                    <div class="product-info">
-
-                        <span class="product-category">
-                            ${escapeHTML(
-                                product.category ||
-                                "VOLTICA COLLECTION"
-                            )}
-                        </span>
-
-
-                        <h2 class="product-title">
-                            ${escapeHTML(
-                                product.name ||
-                                "VOLTICA PRODUCT"
-                            )}
-                        </h2>
-
-
-                        <p class="product-description">
-                            ${escapeHTML(
-                                product.shortDescription ||
-                                ""
-                            )}
-                        </p>
-
-
-                        <div class="product-price-row">
-
-                            <strong class="product-price">
-                                $${price.toFixed(2)}
-                            </strong>
-
-                            ${referenceHTML}
-
-                        </div>
-
-
-                        ${colorsHTML}
-
-
-                        <div class="product-actions">
-
-                            <!-- IMPORTANT:
-                                 The product page is
-                                 product-view.html
-                            -->
-
-                            <a
-                                href="product-view.html?id=${encodeURIComponent(
-                                    product.id
-                                )}"
-                                class="acrylic-button product-view-button"
-                            >
-                                VIEW PRODUCT
-                            </a>
-
-
-                            <button
-                                type="button"
-                                class="acrylic-button product-buy-button"
-                                data-product-id="${escapeHTML(
-                                    product.id
-                                )}"
-                            >
-                                ADD TO CART
-                            </button>
-
-                        </div>
-
-                    </div>
+                    <div class="product-grid-section"></div>
 
                 `;
 
 
-                grid.appendChild(card);
+                const sectionGrid =
+                    sectionElement.querySelector(
+                        ".product-grid-section"
+                    );
+
+
+                productsForSection.forEach(
+                    function (product) {
+
+                        sectionGrid.appendChild(
+                            createProductCard(product)
+                        );
+
+                    }
+                );
+
+
+                grid.appendChild(
+                    sectionElement
+                );
+
+
+                sectionContainers.set(
+                    section.id,
+                    sectionElement
+                );
 
             }
         );
 
 
+        /* =================================================
+           UNMATCHED PRODUCTS
+           ================================================= */
+
+        const unmatchedProducts =
+            activeProducts.filter(
+                product =>
+                    !getProductSection(product)
+            );
+
+
+        if (unmatchedProducts.length) {
+
+            const sectionElement =
+                document.createElement(
+                    "section"
+                );
+
+
+            sectionElement.className =
+                "product-category-section";
+
+
+            sectionElement.dataset.section =
+                "collection";
+
+
+            sectionElement.innerHTML = `
+
+                <div class="product-section-header">
+
+                    <div class="product-section-title">
+
+                        <span class="product-section-icon">
+                            ✦
+                        </span>
+
+                        <div>
+
+                            <span class="product-section-label">
+                                VOLTICA COLLECTION
+                            </span>
+
+                            <h2>
+                                COLLECTION
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                    <span class="product-section-count">
+                        ${unmatchedProducts.length}
+                        ${
+                            unmatchedProducts.length === 1
+                                ? "PRODUCT"
+                                : "PRODUCTS"
+                        }
+                    </span>
+
+                </div>
+
+
+                <div class="product-grid-section"></div>
+
+            `;
+
+
+            const sectionGrid =
+                sectionElement.querySelector(
+                    ".product-grid-section"
+                );
+
+
+            unmatchedProducts.forEach(
+                function (product) {
+
+                    sectionGrid.appendChild(
+                        createProductCard(product)
+                    );
+
+                }
+            );
+
+
+            grid.appendChild(
+                sectionElement
+            );
+
+        }
+
+
         console.log(
             "VOLTICA: PRODUCTS RENDERED =",
             activeProducts.length
+        );
+
+
+        console.log(
+            "VOLTICA: SECTIONS =",
+            collectionSections
+                .map(section => {
+
+                    const count =
+                        activeProducts.filter(
+                            product =>
+                                getProductSection(product)?.id ===
+                                section.id
+                        ).length;
+
+                    return `${section.title}: ${count}`;
+
+                })
         );
 
     }
@@ -645,10 +1036,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     String(product.id),
 
                 name:
-                    product.name || "Voltica Product",
+                    product.name ||
+                    "Voltica Product",
 
                 price:
-                    Number(product.price || 0),
+                    Number(
+                        product.price || 0
+                    ),
 
                 image:
                     product.images?.[0] || "",

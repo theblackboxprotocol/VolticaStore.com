@@ -759,6 +759,62 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/cNi28s5tZ3VZgSIgh42Ji0h",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1763544551962189824.html",
         "active": true
+},
+       /* =========================================================
+       Product name : XXL World Map Gaming Mouse Pad - 900x400x4mm Large Desk Mat | Voltica Store
+       ========================================================= */
+
+{
+        "id": "xxl-world-map-gaming-mouse-pad-900x400x4mm-large-desk-mat-voltica-store",
+        "sku": "CJJT106172401AZ",
+        "name": "XXL World Map Gaming Mouse Pad - 900x400x4mm Large Desk Mat | Voltica Store",
+        "category": "Gaming Gear",
+        "badge": "BEST SELLER",
+        "price": 27.99,
+        "referencePrice": 34.99,
+        "cost": 8.39,
+        "shipping": 9.02,
+        "shortDescription": "Transform your workspace with the XXL World Map Gaming Mouse Pad (900 x 400 x 4 mm). Combining an ultra-precise gliding surface, detailed high-definition printing, and superior ergonomic comfort thanks to its 4mm thickness, this oversized desk mat is ideal for gaming, remote work, and upgrading your setup. Anti-slip and durable, it protects your desk while enhancing your room aesthetics. Available now at Voltica Store.",
+        "description": "An Oversized Gaming and Work Space\nâ€‹With generous dimensions of 900 x 400 mm, this giant mouse pad provides ample room to comfortably accommodate your keyboard, gaming mouse, and other desk accessories simultaneously. Enjoy complete freedom of movement without restrictions, whether you are in an intense competitive gaming match or multitasking on daily projects.\nâ€‹Ergonomic Comfort & Optimized 4mm Thickness\nâ€‹Designed to protect your wrists and hands, this pad features a robust 4mm thickness. This premium construction absorbs micro-shocks, reduces fatigue during long hours of gaming or intensive work, and creates a stable, cushioned feel across any desktop surface.\nâ€‹High-Precision Gliding & HD World Map\nâ€‹The low-friction, high-density fabric surface ensures laser-sharp tracking accuracy, guaranteeing smooth and fast mouse movements. Enhanced by a stylish and detailed world map design, it adds a sophisticated and inspiring touch to your station.",
+        "features": [
+            "Non-Slip Rubber Base: Firmly grips your desk to prevent sliding, even during rapid, high-intensity mouse movements.",
+            "Stitched Reinforced Edges: Prevents fraying, peeling, and premature wear for long-lasting durability.",
+            "Water-Resistant Coating: Effectively shields against accidental spills from water or coffee, making cleanup effortless.",
+            "XXL Format (900 x 400 mm): Large surface area covering the desk to house both keyboard and mouse.",
+            "Comfortable 4mm Thickness: Offers superior cushioning, ergonomic support, and smooths out desk imperfections.",
+            "High-Precision Gliding Surface: Fabric optimized for maximum responsiveness with optical and laser sensors.",
+            "HD World Map Design: Elegant, modern, and detailed aesthetic tailored for gamers and travel enthusiasts.",
+            "Non-Slip Base & Stitched Edges: Ensures a secure desk grip and prevents edge fraying."
+        ],
+        "specifications": {
+            "Product Type": "Gaming Mouse Pad / Desk Mat / Mouse Mat",
+            "Design": "World Map",
+            "Dimensions": "900 x 400 mm",
+            "Thickness": "4 mm",
+            "Surface Material": "High-performance micro-textured fabric",
+            "Base Material": "Natural anti-slip rubber",
+            "Edge Finish": "Reinforced anti-fray stitching",
+            "Water Resistance": "Splash-proof and easy to clean",
+            "Inside the Box": "",
+            "1 x XXL World Map Gaming Mouse Pad (900x400x4mm)": ""
+        },
+        "images": [
+            "assets/images/desk1.webp",
+            "assets/images/desk2.webp",
+            "assets/images/desk3.webp",
+            "assets/images/desk4.webp"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Upgrade Your Desk with Style",
+            "lines": [
+                "Ready to transform your workspace with unmatched comfort and precision? Order your XXL World Map Gaming Mouse Pad today from Voltica Store and elevate your setup!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/14AaEY8Gbakn6e4e8W2Ji0i",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-1377449685635174400.html",
+        "active": true
 }
 
 

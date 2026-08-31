@@ -815,7 +815,7 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/14AaEY8Gbakn6e4e8W2Ji0i",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1377449685635174400.html",
         "active": true
-}
+},
 
 
 ];

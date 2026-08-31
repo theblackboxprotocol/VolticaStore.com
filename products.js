@@ -880,6 +880,64 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/3cI28saOj6475a01ma2Ji0r",
         "supplierLink": "https://www.alibaba.com/x/B2NhlS?ck=pdp",
         "active": true
+},
+       /* =========================================================
+       Product name : Ferrofluid Bluetooth Speaker - 10W Magnetic Fluid Audio Visualizer | Voltica Store
+       ========================================================= */
+
+{
+        "id": "ferrofluid-bluetooth-speaker-10w-magnetic-fluid-audio-visualizer-voltica-store",
+        "sku": "VLT-TCH-FFS-001",
+        "name": "Ferrofluid Bluetooth Speaker - 10W Magnetic Fluid Audio Visualizer | Voltica Store",
+        "category": "Tech",
+        "badge": "FEATURED",
+        "price": 149.99,
+        "referencePrice": 179.99,
+        "cost": 79,
+        "shipping": 24.64,
+        "shortDescription": "Experience music like never before with the Frekvenspro Floaters Magnetic Fluid Bluetooth Speaker. Combining futuristic visual art with high-performance audio, this unique speaker features a 10W full-range driver, Bluetooth 5.3 connectivity, and a patented ferrofluid chamber that dances in real-time to your music and ambient sound. A true masterpiece of modern technology available now at Voltica Store.",
+        "description": "The Frekvenspro Floaters magnetic fluid speaker redefines modern audio experiences by transforming sound into a mesmerizing visual art form. Designed with a high-borosilicate glass bottle boasting over 90% light transmittance, its curved, unibody structure lets you clearly appreciate every flow and transformation of the magnetic fluid inside.\nâ€‹Immersive Sound & Visual Rhythm\nâ€‹Equipped with a powerful 10W internal magnetic full-range speaker and a custom passive radiator, this device delivers crisp, transparent audio paired with an unparalleled bass experience. Using a patented \"float\" magnetic fluid formula and advanced cavity design, the ferrofluid flows in exact sync with your musicâ€”allowing your eyes to follow the rhythm of every beat.",
+        "features": [
+            "Ferrofluid Visualizer: Real-time magnetic fluid choreography that brings your music to life visually.",
+            "10W High-Power Acoustic Unit: Features a 2-inch full-frequency speaker and passive radiator for deep bass and clear sound.",
+            "Bluetooth 5.3 Connectivity: Ultra-stable wireless transmission for uninterrupted listening.",
+            "High-Borosilicate Glass: Crystal-clear transparency offering a 90%+ light transmission rate to view every fluid movement.",
+            "Versatile Setup: Perfect desk accessory for home offices, living rooms, gaming setups, and streaming backdrops.",
+            "Bluetooth 5.3 Technology: Ensures a fast, stable, and high-quality wireless audio stream from your smartphone, tablet, or laptop.",
+            "Dual Interaction Modes: Switch easily between Bluetooth beat mode (green light) and sound pickup interaction mode (blue light).",
+            "Adjustable Backlight: Set the ideal desktop ambiance with customizable backlight brightness and easy on/off toggles."
+        ],
+        "specifications": {
+            "Product Name": "Frekvenspro Floaters Magnetic Fluid Bluetooth Speaker",
+            "Audio Unit": "2-inch full-frequency 10W speaker x1, passive radiator x1",
+            "Frequency Response Range": "100Hz to 20kHz",
+            "Bluetooth Version": "5.3",
+            "Power Supply": "DC 12V / 2A (AC wall adapter included)",
+            "Display Materials": "High-borosilicate glass with unibody curved design",
+            "Inside the Box": "",
+            "1 x Frekvenspro Floaters Magnetic Fluid Speaker": "",
+            "1 x Power Adapter (DC 12V/2A)": "",
+            "1 x User Manual & Operating Instructions": ""
+        },
+        "images": [
+            "assets/images/ferro1.jpg",
+            "assets/images/ferro2.jpg",
+            "assets/images/ferro3.jpg",
+            "assets/images/ferro4.jpg",
+            "assets/images/ferro5.jpg",
+            "assets/images/ferro6.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Feel the Rhythm, See the Flow",
+            "lines": [
+                "Ready to add the ultimate conversation piece to your desk? Order the Frekvenspro Floaters Magnetic Fluid Bluetooth Speaker today from Voltica Store and experience sound in a whole new dimension!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/dRm9AUcWrdwz8mc8OC2Ji0s",
+        "supplierLink": "https://www.alibaba.com/x/B2Nkkw?ck=pdp",
+        "active": true
 }
 
 ];

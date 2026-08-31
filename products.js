@@ -703,7 +703,63 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/5kQdRa7C70JN45W3ui2Ji0c",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2601211009261604500.html",
         "active": true
-    }
+    },
+     /* =========================================================
+       Product name : RGB Colorful Branches Ambience Light
+       ========================================================= */
+
+{
+        "id": "rgb-colorful-branches-ambience-light",
+        "sku": "CJYD197940402BY",
+        "name": "RGB Colorful Branches Ambience Light",
+        "category": "Gaming Gear",
+        "badge": "NEW",
+        "price": 94.57,
+        "referencePrice": 99.99,
+        "cost": 55.72,
+        "shipping": 21.85,
+        "shortDescription": "Elevate your home environment with the RGB Colorful Branches Ambience Light 12-Piece Kit. Designed with a modern minimalist style, these smart LED branch lights feature intelligent music sync pickup rhythm, smartphone app integration, and a handy remote control. Create a dynamic visual atmosphere for your gaming station, living room, or studio. Available now at Voltica Store!",
+        "description": "Modern Minimalist Aesthetic & Branch Design\nâ€‹Redefine your interior dÃ©cor with an artistic, structural layout. Crafted from durable, high-quality PVC lamp shades, the RGB Colorful Branches Ambience Light adds a sleek, futuristic, yet minimalist visual flair to any blank wall or studio background.\nâ€‹Sound-Activated Music Sync & Rhythm Mode\nâ€‹Bring your entertainment space to life. Equipped with an advanced pickup rhythm feature, these smart lights synchronize dynamically with your favorite music, movies, or gaming audio, pulsing and shifting colors in real-time to match the beat.\nâ€‹Smart App Control & RF Remote\nâ€‹Take full command of your lighting experience. Seamlessly switch colors, adjust brightness, or cycle through dynamic modes using either the intuitive smartphone app or the included multi-function remote control, putting total ambiance management right at your fingertips.",
+        "features": [
+            "12-Piece Complete Kit: Supplied as a comprehensive 12-set configuration for expansive wall layouts and custom designs.",
+            "Music Sync Pickup Rhythm: Built-in audio response technology that moves and pulses dynamically with environmental sound and music.",
+            "Smart App & Remote Control: Dual control functionality via mobile application and a dedicated wireless remote.",
+            "Modern Minimalist Style: Clean geometric branch structure that blends seamlessly into modern gaming setups, bedrooms, and living spaces."
+        ],
+        "specifications": {
+            "Product Type": "RGB Colorful Branches Ambience Light",
+            "Pack Size": "12-Piece Set (12 sets configuration)",
+            "Light Source Type": "Energy-efficient LED light",
+            "Lamp Shade Material": "High-grade PVC",
+            "Voltage": "220V",
+            "Control Method": "Smart App (Graffiti App) + Wireless Remote Control (with pickup rhythm)",
+            "Design Style": "Modern and minimalist",
+            "Certifications": "EU CE certified",
+            "Inside the Box": "",
+            "12 x LED Branch Light Strips / Components": "",
+            "1 x Remote Control": "",
+            "1 x System Controller": "",
+            "1 x Adapter & Power Adapter": "",
+            "1 x USB Cable": ""
+        },
+        "images": [
+            "assets/images/light1.webp",
+            "assets/images/light2.webp",
+            "assets/images/light3.webp",
+            "assets/images/light4.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Illuminate Your Space in Style",
+            "lines": [
+                "Ready to transform your room with dynamic lighting and futuristic design? Get your RGB Colorful Branches Ambience Light today from Voltica Store and create the ultimate immersive atmosphere!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/cNi28s5tZ3VZgSIgh42Ji0h",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-1763544551962189824.html",
+        "active": true
+}
 
 
 ];

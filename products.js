@@ -625,12 +625,12 @@ window.volticaProducts = [
             "1 Year Warranty (Includes 1 year warranty on the headphones)": ""
         },
         "images": [
-            "assets/images/1000053100.jpg",
-            "assets/images/1000053102.jpg",
-            "assets/images/1000053094.jpg",
-            "assets/images/1000053096.jpg",
-            "assets/images/1000053104.jpg",
-            "assets/images/1000053098.jpg"
+            "assets/images/ardor1.jpg",
+            "assets/images/ardor2.jpg",
+            "assets/images/ardor3.jpg",
+            "assets/images/ardor4.jpg",
+            "assets/images/ardor5.jpg",
+            "assets/images/ardor6.jpg"
         ],
         "colors": [],
         "variants": [],

@@ -684,15 +684,15 @@ window.volticaProducts = [
             "â€‹Control Methods": "Bluetooth Mobile App, 2.4G RF Remote Control"
         },
         "images": [
-            "assets/images/1000053127.jpg",
-            "assets/images/1000053128.jpg",
-            "assets/images/1000053129.jpg",
-            "assets/images/1000053130.jpg",
-            "assets/images/1000053131.jpg",
-            "assets/images/1000053132.jpg",
-            "assets/images/1000053133.jpg",
-            "assets/images/1000053135.jpg",
-            "assets/images/1000053134.jpg"
+            "assets/images/hex1.jpg",
+            "assets/images/hex2.jpg",
+            "assets/images/hex3.jpg",
+            "assets/images/hex4.jpg",
+            "assets/images/hex5.jpg",
+            "assets/images/hex6.jpg",
+            "assets/images/hex7.jpg",
+            "assets/images/hex8.jpg",
+            "assets/images/hex9.jpg"
         ],
         "colors": [],
         "variants": [],

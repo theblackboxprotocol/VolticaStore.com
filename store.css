@@ -91,6 +91,12 @@ html {
 
 body {
 
+    position:
+        relative;
+
+    isolation:
+        isolate;
+
     margin:
         0;
 
@@ -169,7 +175,7 @@ body::before {
         none;
 
     z-index:
-        -5;
+        0;
 
     background:
 
@@ -196,6 +202,25 @@ body::before {
 }
 
 
+/* =========================================================
+   CONTENT STACK
+   ========================================================= */
+
+body > * {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+}
+
+
+/* =========================================================
+   FILM GRAIN
+   ========================================================= */
+
 body::after {
 
     content:
@@ -211,7 +236,7 @@ body::after {
         none;
 
     z-index:
-        999;
+        1100;
 
     opacity:
         0.025;
@@ -244,7 +269,7 @@ body::after {
         none;
 
     z-index:
-        -3;
+        0;
 
 }
 
@@ -402,7 +427,7 @@ body::after {
         none;
 
     z-index:
-        -4;
+        0;
 
     opacity:
         0.25;
@@ -424,6 +449,13 @@ body::after {
         70px 70px;
 
     mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 88%
+        );
+
+    -webkit-mask-image:
         linear-gradient(
             to bottom,
             black,
@@ -862,6 +894,12 @@ body::after {
 
 main {
 
+    position:
+        relative;
+
+    z-index:
+        2;
+
     width:
         100%;
 
@@ -876,6 +914,9 @@ main {
 
     position:
         relative;
+
+    z-index:
+        2;
 
     min-height:
         560px;
@@ -943,6 +984,9 @@ main {
     filter:
         blur(70px);
 
+    pointer-events:
+        none;
+
 }
 
 
@@ -950,6 +994,9 @@ main {
 
     position:
         absolute;
+
+    z-index:
+        1;
 
     width:
         150px;
@@ -975,6 +1022,9 @@ main {
 
     box-shadow:
         0 0 100px rgba(255,255,255,0.06);
+
+    pointer-events:
+        none;
 
 }
 
@@ -1229,6 +1279,12 @@ main {
 
 .products-section {
 
+    position:
+        relative;
+
+    z-index:
+        2;
+
     width:
         min(
             calc(100% - 32px),
@@ -1242,6 +1298,12 @@ main {
 
 
 .product-grid {
+
+    position:
+        relative;
+
+    z-index:
+        2;
 
     display:
         grid;
@@ -1269,6 +1331,9 @@ main {
 
     position:
         relative;
+
+    z-index:
+        2;
 
     display:
         flex;
@@ -1387,6 +1452,9 @@ main {
 
     filter:
         blur(35px);
+
+    pointer-events:
+        none;
 
 }
 
@@ -1974,6 +2042,12 @@ main {
    ========================================================= */
 
 .contact-section {
+
+    position:
+        relative;
+
+    z-index:
+        2;
 
     width:
         min(
@@ -2894,6 +2968,12 @@ body.cart-is-open {
 
 .store-footer {
 
+    position:
+        relative;
+
+    z-index:
+        2;
+
     width:
         min(
             calc(100% - 32px),
@@ -3261,4 +3341,4 @@ body.cart-is-open {
 
     }
 
-                       }
+   }

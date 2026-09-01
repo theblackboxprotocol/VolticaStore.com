@@ -2,6 +2,7 @@
    VOLTICA STORE — STORE.JS
    Product Render + Shopping Cart Engine
    Sectioned Collection System
+   No Emoji Icons
    ========================================================= */
 
 "use strict";
@@ -73,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       COLLECTION SECTIONS
+       COLLECTION CONFIGURATION
        ===================================================== */
 
     const collectionSections = [
@@ -81,8 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: "audio",
             title: "AUDIO",
-            icon: "◉",
+            label: "AUDIO",
             gridId: "productGridAudio",
+
             keywords: [
                 "audio",
                 "sport audio",
@@ -97,11 +99,13 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
 
+
         {
             id: "lifestyle",
             title: "LIFESTYLE",
-            icon: "◇",
+            label: "LIFESTYLE",
             gridId: "productGridLifestyle",
+
             keywords: [
                 "lifestyle",
                 "life style",
@@ -116,11 +120,13 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
 
+
         {
             id: "tech",
             title: "TECH",
-            icon: "ϟ",
+            label: "TECH",
             gridId: "productGridTech",
+
             keywords: [
                 "tech",
                 "technology",
@@ -136,11 +142,13 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
 
+
         {
             id: "vlogging",
             title: "VLOGGING & STREAMING GEAR",
-            icon: "◌",
+            label: "VLOGGING & STREAMING GEAR",
             gridId: "productGridVlogging",
+
             keywords: [
                 "vlogging",
                 "vlog",
@@ -155,11 +163,13 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
 
+
         {
             id: "gaming",
             title: "GAMING GEAR",
-            icon: "⌁",
+            label: "GAMING GEAR",
             gridId: "productGridGaming",
+
             keywords: [
                 "gaming",
                 "gamer",
@@ -172,11 +182,13 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
 
+
         {
             id: "smart-home",
             title: "SMART HOME",
-            icon: "⌂",
+            label: "SMART HOME",
             gridId: "productGridSmartHome",
+
             keywords: [
                 "smart home",
                 "smart-home",
@@ -432,7 +444,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       CART EVENTS
+       CART BUTTON
        ===================================================== */
 
     if (cartButton) {
@@ -451,6 +463,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    /* =====================================================
+       CLOSE BUTTON
+       ===================================================== */
+
     if (cartClose) {
 
         cartClose.addEventListener(
@@ -467,6 +483,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    /* =====================================================
+       OVERLAY CLOSE
+       ===================================================== */
+
     if (cartOverlay) {
 
         cartOverlay.addEventListener(
@@ -476,6 +496,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+
+    /* =====================================================
+       ESC KEY
+       ===================================================== */
 
     document.addEventListener(
         "keydown",
@@ -697,7 +721,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       PRODUCT RENDER
+       RENDER PRODUCTS
        ===================================================== */
 
     function renderProducts() {
@@ -716,53 +740,8 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        if (!activeProducts.length) {
-
-            collectionSections.forEach(
-                function (section) {
-
-                    const grid =
-                        document.getElementById(
-                            section.gridId
-                        );
-
-
-                    if (!grid) {
-                        return;
-                    }
-
-
-                    grid.innerHTML = `
-
-                        <div class="store-empty-state">
-
-                            <div class="store-empty-pulsar"></div>
-
-                            <span>
-                                VOLTICA STORE
-                            </span>
-
-                            <h2>
-                                COLLECTION EMPTY
-                            </h2>
-
-                            <p>
-                                New products are coming soon.
-                            </p>
-
-                        </div>
-
-                    `;
-
-                }
-            );
-
-            return;
-        }
-
-
         /* =================================================
-           CLEAR EXISTING CATEGORY GRIDS
+           CLEAR ALL EXISTING GRIDS
            ================================================= */
 
         collectionSections.forEach(
@@ -784,8 +763,19 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
+        if (!activeProducts.length) {
+
+            console.warn(
+                "VOLTICA: NO ACTIVE PRODUCTS"
+            );
+
+            return;
+
+        }
+
+
         /* =================================================
-           RENDER PRODUCTS INTO STATIC HTML GRIDS
+           RENDER PRODUCTS INTO EXISTING HTML GRIDS
            ================================================= */
 
         const renderedProductIds =
@@ -804,8 +794,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!grid) {
 
                     console.warn(
-                        "VOLTICA: Grid introuvable :",
-                        section.gridId
+                        `VOLTICA: Grid introuvable : #${section.gridId}`
                     );
 
                     return;
@@ -815,9 +804,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const productsForSection =
                     activeProducts.filter(
-                        product =>
-                            getProductSection(product)?.id ===
-                            section.id
+                        function (product) {
+
+                            const productSection =
+                                getProductSection(
+                                    product
+                                );
+
+
+                            return (
+                                productSection &&
+                                productSection.id ===
+                                section.id
+                            );
+
+                        }
                     );
 
 
@@ -825,7 +826,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     function (product) {
 
                         grid.appendChild(
-                            createProductCard(product)
+                            createProductCard(
+                                product
+                            )
                         );
 
 
@@ -861,8 +864,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (unmatchedProducts.length) {
 
             console.warn(
-                "VOLTICA: Produits sans catégorie reconnue =",
-                unmatchedProducts.length
+                "VOLTICA: PRODUCTS WITHOUT SECTION =",
+                unmatchedProducts
             );
 
 
@@ -878,7 +881,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     function (product) {
 
                         fallbackGrid.appendChild(
-                            createProductCard(product)
+                            createProductCard(
+                                product
+                            )
                         );
 
                     }
@@ -1009,7 +1014,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (productId) {
 
-                addToCart(productId);
+                addToCart(
+                    productId
+                );
 
             }
 
@@ -1069,7 +1076,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (item.quantity <= 0) {
 
-            removeFromCart(productId);
+            removeFromCart(
+                productId
+            );
 
             return;
 
@@ -1406,7 +1415,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 /*
                  * Stripe checkout logic
-                 * can be connected here.
+                 * will be connected here.
                  */
 
             }

@@ -7,6 +7,10 @@
 "use strict";
 
 
+/* =========================================================
+   STORE INITIALIZATION
+   ========================================================= */
+
 document.addEventListener("DOMContentLoaded", function () {
 
     console.log("VOLTICA: STORE START");
@@ -77,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: "audio",
             title: "AUDIO",
-            icon: "🎧",
+            icon: "◉",
             gridId: "productGridAudio",
             keywords: [
                 "audio",
@@ -96,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: "lifestyle",
             title: "LIFESTYLE",
-            icon: "🏠",
+            icon: "◇",
             gridId: "productGridLifestyle",
             keywords: [
                 "lifestyle",
@@ -115,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: "tech",
             title: "TECH",
-            icon: "⚡",
+            icon: "ϟ",
             gridId: "productGridTech",
             keywords: [
                 "tech",
@@ -135,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: "vlogging",
             title: "VLOGGING & STREAMING GEAR",
-            icon: "🎥",
+            icon: "◌",
             gridId: "productGridVlogging",
             keywords: [
                 "vlogging",
@@ -154,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: "gaming",
             title: "GAMING GEAR",
-            icon: "🎮",
+            icon: "⌁",
             gridId: "productGridGaming",
             keywords: [
                 "gaming",
@@ -171,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: "smart-home",
             title: "SMART HOME",
-            icon: "🏡",
+            icon: "⌂",
             gridId: "productGridSmartHome",
             keywords: [
                 "smart home",
@@ -378,7 +382,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        cartDrawer.classList.add("open");
+        cartDrawer.classList.add(
+            "open"
+        );
+
 
         document.body.classList.add(
             "cart-is-open"
@@ -495,7 +502,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function createProductCard(product) {
 
         const card =
-            document.createElement("article");
+            document.createElement(
+                "article"
+            );
 
 
         card.className =
@@ -503,7 +512,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         const image =
-            product.images?.[0] || "";
+            Array.isArray(product.images) &&
+            product.images.length
+                ? product.images[0]
+                : "";
 
 
         const price =
@@ -586,7 +598,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =================================================
-           CARD
+           PRODUCT CARD
            ================================================= */
 
         card.innerHTML = `
@@ -685,7 +697,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       RENDER PRODUCTS INTO EXISTING HTML SECTIONS
+       PRODUCT RENDER
        ===================================================== */
 
     function renderProducts() {
@@ -698,8 +710,59 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
+        console.log(
+            "VOLTICA: ACTIVE PRODUCTS =",
+            activeProducts.length
+        );
+
+
+        if (!activeProducts.length) {
+
+            collectionSections.forEach(
+                function (section) {
+
+                    const grid =
+                        document.getElementById(
+                            section.gridId
+                        );
+
+
+                    if (!grid) {
+                        return;
+                    }
+
+
+                    grid.innerHTML = `
+
+                        <div class="store-empty-state">
+
+                            <div class="store-empty-pulsar"></div>
+
+                            <span>
+                                VOLTICA STORE
+                            </span>
+
+                            <h2>
+                                COLLECTION EMPTY
+                            </h2>
+
+                            <p>
+                                New products are coming soon.
+                            </p>
+
+                        </div>
+
+                    `;
+
+                }
+            );
+
+            return;
+        }
+
+
         /* =================================================
-           CLEAR EXISTING PRODUCT GRIDS
+           CLEAR EXISTING CATEGORY GRIDS
            ================================================= */
 
         collectionSections.forEach(
@@ -721,80 +784,16 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        if (!activeProducts.length) {
-
-            const firstGrid =
-                document.getElementById(
-                    "productGridAudio"
-                );
-
-
-            if (firstGrid) {
-
-                firstGrid.innerHTML = `
-
-                    <div class="store-empty-state">
-
-                        <div class="store-empty-pulsar"></div>
-
-                        <span>
-                            VOLTICA STORE
-                        </span>
-
-                        <h2>
-                            COLLECTION EMPTY
-                        </h2>
-
-                        <p>
-                            New products are coming soon.
-                        </p>
-
-                    </div>
-
-                `;
-
-            }
-
-
-            return;
-
-        }
-
-
         /* =================================================
-           RENDER EACH PRODUCT
+           RENDER PRODUCTS INTO STATIC HTML GRIDS
            ================================================= */
 
-        const sectionCounts = {};
+        const renderedProductIds =
+            new Set();
 
 
         collectionSections.forEach(
             function (section) {
-
-                sectionCounts[section.id] = 0;
-
-            }
-        );
-
-
-        activeProducts.forEach(
-            function (product) {
-
-                const section =
-                    getProductSection(product);
-
-
-                if (!section) {
-
-                    console.warn(
-                        "VOLTICA: Produit sans catégorie reconnue:",
-                        product.name
-                    );
-
-                    return;
-
-                }
-
 
                 const grid =
                     document.getElementById(
@@ -804,8 +803,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (!grid) {
 
-                    console.error(
-                        "VOLTICA: Grille introuvable:",
+                    console.warn(
+                        "VOLTICA: Grid introuvable :",
                         section.gridId
                     );
 
@@ -814,61 +813,85 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                grid.appendChild(
-                    createProductCard(product)
+                const productsForSection =
+                    activeProducts.filter(
+                        product =>
+                            getProductSection(product)?.id ===
+                            section.id
+                    );
+
+
+                productsForSection.forEach(
+                    function (product) {
+
+                        grid.appendChild(
+                            createProductCard(product)
+                        );
+
+
+                        renderedProductIds.add(
+                            String(product.id)
+                        );
+
+                    }
                 );
 
 
-                sectionCounts[section.id] += 1;
+                console.log(
+                    `VOLTICA: ${section.title} = ${productsForSection.length}`
+                );
 
             }
         );
 
 
         /* =================================================
-           HIDE EMPTY SECTIONS
+           UNMATCHED PRODUCTS
            ================================================= */
 
-        collectionSections.forEach(
-            function (section) {
-
-                const sectionElement =
-                    document.getElementById(
-                        section.id
-                    );
-
-
-                const grid =
-                    document.getElementById(
-                        section.gridId
-                    );
+        const unmatchedProducts =
+            activeProducts.filter(
+                product =>
+                    !renderedProductIds.has(
+                        String(product.id)
+                    )
+            );
 
 
-                if (!sectionElement || !grid) {
-                    return;
-                }
+        if (unmatchedProducts.length) {
+
+            console.warn(
+                "VOLTICA: Produits sans catégorie reconnue =",
+                unmatchedProducts.length
+            );
 
 
-                const count =
-                    sectionCounts[section.id] || 0;
+            const fallbackGrid =
+                document.getElementById(
+                    "productGridTech"
+                );
 
 
-                sectionElement.hidden =
-                    count === 0;
+            if (fallbackGrid) {
+
+                unmatchedProducts.forEach(
+                    function (product) {
+
+                        fallbackGrid.appendChild(
+                            createProductCard(product)
+                        );
+
+                    }
+                );
 
             }
-        );
+
+        }
 
 
         console.log(
             "VOLTICA: PRODUCTS RENDERED =",
             activeProducts.length
-        );
-
-
-        console.log(
-            "VOLTICA: SECTION COUNTS =",
-            sectionCounts
         );
 
     }
@@ -892,7 +915,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!product) {
 
             console.error(
-                "VOLTICA: Produit introuvable:",
+                "VOLTICA: Produit introuvable :",
                 productId
             );
 
@@ -930,7 +953,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     ),
 
                 image:
-                    product.images?.[0] || "",
+                    Array.isArray(product.images) &&
+                    product.images.length
+                        ? product.images[0]
+                        : "",
 
                 quantity:
                     1
@@ -959,57 +985,40 @@ document.addEventListener("DOMContentLoaded", function () {
        PRODUCT BUTTON DELEGATION
        ===================================================== */
 
-    collectionSections.forEach(
-        function (section) {
+    document.addEventListener(
+        "click",
+        function (event) {
 
-            const grid =
-                document.getElementById(
-                    section.gridId
+            const button =
+                event.target.closest(
+                    ".product-buy-button"
                 );
 
 
-            if (!grid) {
+            if (!button) {
                 return;
             }
 
 
-            grid.addEventListener(
-                "click",
-                function (event) {
-
-                    const button =
-                        event.target.closest(
-                            ".product-buy-button"
-                        );
+            event.preventDefault();
 
 
-                    if (!button) {
-                        return;
-                    }
+            const productId =
+                button.dataset.productId;
 
 
-                    event.preventDefault();
+            if (productId) {
 
+                addToCart(productId);
 
-                    const productId =
-                        button.dataset.productId;
-
-
-                    if (productId) {
-
-                        addToCart(productId);
-
-                    }
-
-                }
-            );
+            }
 
         }
     );
 
 
     /* =====================================================
-       REMOVE FROM CART
+       REMOVE ITEM
        ===================================================== */
 
     function removeFromCart(productId) {
@@ -1187,7 +1196,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 const element =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
 
 
                 element.className =
@@ -1395,7 +1406,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 /*
                  * Stripe checkout logic
-                 * will be connected here.
+                 * can be connected here.
                  */
 
             }

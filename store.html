@@ -1,146 +1,179 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<head>
 
-<meta
-    name="description"
-    content="Voltica Store — The future of everyday."
->
+    <meta charset="UTF-8">
 
-<meta
-    name="theme-color"
-    content="#030303"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Voltica — The Future of Everyday</title>
+    <meta
+        name="description"
+        content="Voltica Store — The future of everyday."
+    >
 
-<link
-    rel="stylesheet"
-    href="store.css"
->
+    <meta
+        name="theme-color"
+        content="#030303"
+    >
 
-</head><body><!-- =====================================================
+    <title>Voltica — The Future of Everyday</title>
+
+    <link
+        rel="stylesheet"
+        href="store.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
      PULSAR FIELD
-     ===================================================== --><div
+     ===================================================== -->
+
+<div
     class="pulsar-field"
     aria-hidden="true"
-><span class="pulsar p1"></span>
-<span class="pulsar p2"></span>
-<span class="pulsar p3"></span>
-<span class="pulsar p4"></span>
-<span class="pulsar p5"></span>
-<span class="pulsar p6"></span>
+>
 
-</div><!-- =====================================================
+    <span class="pulsar p1"></span>
+    <span class="pulsar p2"></span>
+    <span class="pulsar p3"></span>
+    <span class="pulsar p4"></span>
+    <span class="pulsar p5"></span>
+    <span class="pulsar p6"></span>
+
+</div>
+
+
+<!-- =====================================================
      BACKGROUND GRID
-     ===================================================== --><div
+     ===================================================== -->
+
+<div
     class="tech-grid"
     aria-hidden="true"
-></div><!-- =====================================================
+></div>
+
+
+<!-- =====================================================
      HEADER
-     ===================================================== --><header class="store-header"><!-- LOGO -->
+     ===================================================== -->
 
-<a
-    href="index.html"
-    class="logo-acrylic"
-    aria-label="Voltica"
->
-
-    <span class="logo-v">
-        V
-    </span>
-
-    <span class="logo-text">
-        VOLTICA
-    </span>
-
-</a>
+<header class="store-header">
 
 
-<!-- NAVIGATION -->
-
-<nav class="store-nav">
-
-    <a href="index.html">
-        HOME
-    </a>
+    <!-- LOGO -->
 
     <a
-        href="store.html"
-        class="nav-active"
+        href="index.html"
+        class="logo-acrylic"
+        aria-label="Voltica"
     >
-        STORE
+
+        <span class="logo-v">
+            V
+        </span>
+
+        <span class="logo-text">
+            VOLTICA
+        </span>
+
     </a>
 
-    <a href="#contact">
-        CONTACT
-    </a>
 
-</nav>
+    <!-- NAVIGATION -->
 
+    <nav class="store-nav">
 
-<!-- CART BUTTON -->
+        <a href="index.html">
+            HOME
+        </a>
 
-<button
-    type="button"
-    class="cart-acrylic"
-    id="cartButton"
-    aria-label="Open shopping cart"
->
-
-    <span class="cart-icon">
-
-        <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
+        <a
+            href="store.html"
+            class="nav-active"
         >
+            STORE
+        </a>
 
-            <path
-                d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 7H6"
-            />
+        <a href="#contact">
+            CONTACT
+        </a>
 
-            <circle
-                cx="10"
-                cy="20"
-                r="1"
-            />
-
-            <circle
-                cx="18"
-                cy="20"
-                r="1"
-            />
-
-        </svg>
-
-    </span>
+    </nav>
 
 
-    <span
-        class="cart-count"
-        id="cartCount"
+    <!-- CART -->
+
+    <button
+        type="button"
+        class="cart-acrylic"
+        id="cartButton"
+        aria-label="Open shopping cart"
     >
-        0
-    </span>
 
-</button>
+        <span class="cart-icon">
 
-</header><!-- =====================================================
-     MAIN CONTENT
-     ===================================================== --><main><!-- =================================================
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+
+                <path
+                    d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 7H6"
+                />
+
+                <circle
+                    cx="10"
+                    cy="20"
+                    r="1"
+                />
+
+                <circle
+                    cx="18"
+                    cy="20"
+                    r="1"
+                />
+
+            </svg>
+
+        </span>
+
+
+        <span
+            class="cart-count"
+            id="cartCount"
+        >
+            0
+        </span>
+
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
      HERO
-     ================================================= -->
+     ===================================================== -->
 
 <section class="store-hero">
 
-
     <div class="hero-pulsar">
-
         <span></span>
-
     </div>
 
 
@@ -171,13 +204,12 @@
 
     </div>
 
-
 </section>
 
 
-<!-- =================================================
+<!-- =====================================================
      CATEGORY NAVIGATION
-     ================================================= -->
+     ===================================================== -->
 
 <section
     class="category-section"
@@ -299,25 +331,21 @@
 
         </a>
 
-
     </div>
 
 </section>
 
 
-<!-- =================================================
+<!-- =====================================================
      PRODUCTS
-     ================================================= -->
+     ===================================================== -->
 
 <section
     class="products-section"
     aria-label="Voltica products"
 >
 
-
-    <!-- =================================================
-         AUDIO
-         ================================================= -->
+    <!-- AUDIO -->
 
     <section
         id="audio"
@@ -347,9 +375,7 @@
     </section>
 
 
-    <!-- =================================================
-         LIFESTYLE
-         ================================================= -->
+    <!-- LIFESTYLE -->
 
     <section
         id="lifestyle"
@@ -379,9 +405,7 @@
     </section>
 
 
-    <!-- =================================================
-         TECH
-         ================================================= -->
+    <!-- TECH -->
 
     <section
         id="tech"
@@ -411,9 +435,7 @@
     </section>
 
 
-    <!-- =================================================
-         VLOGGING & STREAMING GEAR
-         ================================================= -->
+    <!-- VLOGGING -->
 
     <section
         id="vlogging"
@@ -443,9 +465,7 @@
     </section>
 
 
-    <!-- =================================================
-         GAMING GEAR
-         ================================================= -->
+    <!-- GAMING -->
 
     <section
         id="gaming"
@@ -475,9 +495,7 @@
     </section>
 
 
-    <!-- =================================================
-         SMART HOME
-         ================================================= -->
+    <!-- SMART HOME -->
 
     <section
         id="smart-home"
@@ -506,13 +524,12 @@
 
     </section>
 
-
 </section>
 
 
-<!-- =================================================
+<!-- =====================================================
      CONTACT
-     ================================================= -->
+     ===================================================== -->
 
 <section
     id="contact"
@@ -520,7 +537,6 @@
 >
 
     <div class="contact-acrylic">
-
 
         <div class="contact-pulsar"></div>
 
@@ -543,7 +559,7 @@
 
 
             <a
-                href="mailto:support@volticastore.com"
+                href="mailto:contact@volticastore.com"
                 class="contact-button"
             >
 
@@ -559,111 +575,133 @@
 
         </div>
 
-
     </div>
-
 
 </section>
 
-</main><!-- =====================================================
+</main>
+
+
+<!-- =====================================================
      CART OVERLAY
-     ===================================================== --><div
+     ===================================================== -->
+
+<div
     class="cart-overlay"
     id="cartOverlay"
     aria-hidden="true"
     hidden
-></div><!-- =====================================================
-     CART DRAWER
-     ===================================================== --><aside
-    class="cart-drawer"
-    id="cartDrawer"
-    aria-label="Shopping cart"
-><div class="cart-header">
-
-    <div>
-
-        <span class="cart-small-title">
-            VOLTICA
-        </span>
-
-        <h2>
-            CART
-        </h2>
-
-    </div>
-
-
-    <button
-        type="button"
-        class="cart-close"
-        id="cartClose"
-        aria-label="Close cart"
-    >
-        ×
-    </button>
-
-</div>
-
-
-<div
-    class="cart-items"
-    id="cartItems"
 ></div>
 
 
-<div class="cart-footer">
+<!-- =====================================================
+     CART DRAWER
+     ===================================================== -->
 
-    <div class="cart-total-row">
+<aside
+    class="cart-drawer"
+    id="cartDrawer"
+    aria-label="Shopping cart"
+>
 
-        <span>
-            TOTAL
-        </span>
+    <div class="cart-header">
 
-        <strong id="cartTotal">
-            $0.00
-        </strong>
+        <div>
+
+            <span class="cart-small-title">
+                VOLTICA
+            </span>
+
+            <h2>
+                CART
+            </h2>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="cart-close"
+            id="cartClose"
+            aria-label="Close cart"
+        >
+            ×
+        </button>
 
     </div>
 
 
-    <button
-        type="button"
-        class="checkout-button"
-        id="checkoutButton"
-    >
+    <div
+        class="cart-items"
+        id="cartItems"
+    ></div>
 
-        CHECKOUT
+
+    <div class="cart-footer">
+
+        <div class="cart-total-row">
+
+            <span>
+                TOTAL
+            </span>
+
+            <strong id="cartTotal">
+                $0.00
+            </strong>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="checkout-button"
+            id="checkoutButton"
+        >
+
+            CHECKOUT
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="store-footer">
+
+    <div class="footer-acrylic">
 
         <span>
-            →
+            VOLTICA
         </span>
 
-    </button>
+        <span>
+            THE FUTURE OF EVERYDAY
+        </span>
 
-</div>
+        <span>
+            © 2026
+        </span>
 
-</aside><!-- =====================================================
-     FOOTER
-     ===================================================== --><footer class="store-footer"><div class="footer-acrylic">
+    </div>
 
-    <span>
-        VOLTICA
-    </span>
+</footer>
 
-    <span>
-        THE FUTURE OF EVERYDAY
-    </span>
 
-    <span>
-        © 2026
-    </span>
-
-</div>
-
-</footer><!-- =====================================================
+<!-- =====================================================
      DATABASE
      ===================================================== -->
-    <script src="products.js?v=7"></script>
-    <script src="store.js?v=7"></script>
+
+<script src="products.js?v=8"></script>
+<script src="store.js?v=8"></script>
+
 </body>
 </html>

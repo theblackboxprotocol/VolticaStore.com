@@ -1,7 +1,8 @@
 /* =========================================================
    VOLTICA STORE — STORE.JS
    Product Render + Shopping Cart Engine
-   Sectioned Collection System
+   Single Collection System
+   No Sectioned Product Grids
    No Emoji Icons
    ========================================================= */
 
@@ -45,6 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkoutButton =
         document.getElementById("checkoutButton");
 
+    const productGrid =
+        document.getElementById("productGrid");
+
 
     /* =====================================================
        PRODUCT DATABASE CHECK
@@ -74,193 +78,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       COLLECTION CONFIGURATION
+       PRODUCT GRID CHECK
        ===================================================== */
 
-    const collectionSections = [
+    if (!productGrid) {
 
-        {
-            id: "audio",
-            title: "AUDIO",
-            label: "AUDIO",
-            gridId: "productGridAudio",
-
-            keywords: [
-                "audio",
-                "sport audio",
-                "earbuds",
-                "earbud",
-                "headphones",
-                "headphone",
-                "speaker",
-                "speakers",
-                "sound",
-                "tws"
-            ]
-        },
-
-
-        {
-            id: "lifestyle",
-            title: "LIFESTYLE",
-            label: "LIFESTYLE",
-            gridId: "productGridLifestyle",
-
-            keywords: [
-                "lifestyle",
-                "life style",
-                "decoration",
-                "decor",
-                "accessories",
-                "accessory",
-                "fashion",
-                "clothing",
-                "pet",
-                "costume"
-            ]
-        },
-
-
-        {
-            id: "tech",
-            title: "TECH",
-            label: "TECH",
-            gridId: "productGridTech",
-
-            keywords: [
-                "tech",
-                "technology",
-                "electronics",
-                "electronic",
-                "charger",
-                "charging",
-                "cable",
-                "projector",
-                "mobile",
-                "phone",
-                "computer"
-            ]
-        },
-
-
-        {
-            id: "vlogging",
-            title: "VLOGGING & STREAMING GEAR",
-            label: "VLOGGING & STREAMING GEAR",
-            gridId: "productGridVlogging",
-
-            keywords: [
-                "vlogging",
-                "vlog",
-                "streaming",
-                "streamer",
-                "creator",
-                "creator gear",
-                "camera",
-                "microphone",
-                "microphone gear",
-                "content creator"
-            ]
-        },
-
-
-        {
-            id: "gaming",
-            title: "GAMING GEAR",
-            label: "GAMING GEAR",
-            gridId: "productGridGaming",
-
-            keywords: [
-                "gaming",
-                "gamer",
-                "gaming gear",
-                "keyboard",
-                "mouse",
-                "controller",
-                "console",
-                "pc gaming"
-            ]
-        },
-
-
-        {
-            id: "smart-home",
-            title: "SMART HOME",
-            label: "SMART HOME",
-            gridId: "productGridSmartHome",
-
-            keywords: [
-                "smart home",
-                "smart-home",
-                "smart",
-                "door lock",
-                "lock",
-                "home automation",
-                "security",
-                "smart device"
-            ]
-        }
-
-    ];
-
-
-    /* =====================================================
-       GET PRODUCT SECTION
-       ===================================================== */
-
-    function getProductSection(product) {
-
-        const category =
-            String(
-                product?.category || ""
-            )
-                .toLowerCase()
-                .trim();
-
-
-        const name =
-            String(
-                product?.name || ""
-            )
-                .toLowerCase()
-                .trim();
-
-
-        const description =
-            String(
-                product?.shortDescription || ""
-            )
-                .toLowerCase()
-                .trim();
-
-
-        const searchText =
-            `${category} ${name} ${description}`;
-
-
-        for (
-            const section of collectionSections
-        ) {
-
-            const match =
-                section.keywords.some(
-                    keyword =>
-                        searchText.includes(
-                            keyword.toLowerCase()
-                        )
-                );
-
-
-            if (match) {
-
-                return section;
-
-            }
-
-        }
-
-
-        return null;
+        console.error(
+            "VOLTICA: #productGrid introuvable."
+        );
 
     }
 
@@ -379,6 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             return;
+
         }
 
 
@@ -726,6 +552,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderProducts() {
 
+        if (!productGrid) {
+
+            return;
+
+        }
+
+
         const activeProducts =
             products.filter(
                 product =>
@@ -741,29 +574,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =================================================
-           CLEAR ALL EXISTING GRIDS
+           CLEAR PRODUCT GRID
            ================================================= */
 
-        collectionSections.forEach(
-            function (section) {
-
-                const grid =
-                    document.getElementById(
-                        section.gridId
-                    );
-
-
-                if (grid) {
-
-                    grid.innerHTML = "";
-
-                }
-
-            }
-        );
+        productGrid.innerHTML = "";
 
 
         if (!activeProducts.length) {
+
+            productGrid.innerHTML = `
+
+                <div class="store-empty">
+
+                    <strong>
+                        COLLECTION UNAVAILABLE
+                    </strong>
+
+                    <span>
+                        Please check back soon.
+                    </span>
+
+                </div>
+
+            `;
+
 
             console.warn(
                 "VOLTICA: NO ACTIVE PRODUCTS"
@@ -775,123 +609,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =================================================
-           RENDER PRODUCTS INTO EXISTING HTML GRIDS
+           RENDER ALL PRODUCTS
            ================================================= */
 
-        const renderedProductIds =
-            new Set();
+        activeProducts.forEach(
+            function (product) {
 
-
-        collectionSections.forEach(
-            function (section) {
-
-                const grid =
-                    document.getElementById(
-                        section.gridId
-                    );
-
-
-                if (!grid) {
-
-                    console.warn(
-                        `VOLTICA: Grid introuvable : #${section.gridId}`
-                    );
-
-                    return;
-
-                }
-
-
-                const productsForSection =
-                    activeProducts.filter(
-                        function (product) {
-
-                            const productSection =
-                                getProductSection(
-                                    product
-                                );
-
-
-                            return (
-                                productSection &&
-                                productSection.id ===
-                                section.id
-                            );
-
-                        }
-                    );
-
-
-                productsForSection.forEach(
-                    function (product) {
-
-                        grid.appendChild(
-                            createProductCard(
-                                product
-                            )
-                        );
-
-
-                        renderedProductIds.add(
-                            String(product.id)
-                        );
-
-                    }
-                );
-
-
-                console.log(
-                    `VOLTICA: ${section.title} = ${productsForSection.length}`
+                productGrid.appendChild(
+                    createProductCard(
+                        product
+                    )
                 );
 
             }
         );
-
-
-        /* =================================================
-           UNMATCHED PRODUCTS
-           ================================================= */
-
-        const unmatchedProducts =
-            activeProducts.filter(
-                product =>
-                    !renderedProductIds.has(
-                        String(product.id)
-                    )
-            );
-
-
-        if (unmatchedProducts.length) {
-
-            console.warn(
-                "VOLTICA: PRODUCTS WITHOUT SECTION =",
-                unmatchedProducts
-            );
-
-
-            const fallbackGrid =
-                document.getElementById(
-                    "productGridTech"
-                );
-
-
-            if (fallbackGrid) {
-
-                unmatchedProducts.forEach(
-                    function (product) {
-
-                        fallbackGrid.appendChild(
-                            createProductCard(
-                                product
-                            )
-                        );
-
-                    }
-                );
-
-            }
-
-        }
 
 
         console.log(
@@ -1001,7 +732,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             if (!button) {
+
                 return;
+
             }
 
 
@@ -1065,7 +798,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         if (!item) {
+
             return;
+
         }
 
 
@@ -1101,7 +836,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateCartCount() {
 
         if (!cartCount) {
+
             return;
+
         }
 
 
@@ -1138,7 +875,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function renderCart() {
 
         if (!cartItems) {
+
             return;
+
         }
 
 
@@ -1148,7 +887,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 <div class="cart-empty">
 
-                    <div class="cart-empty-pulsar"></div>
+                    <div
+                        class="cart-empty-pulsar"
+                        aria-hidden="true"
+                    ></div>
 
                     <strong>
                         YOUR CART IS EMPTY
@@ -1253,6 +995,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 data-id="${escapeHTML(
                                     item.id
                                 )}"
+                                aria-label="Decrease quantity"
                             >
                                 −
                             </button>
@@ -1267,6 +1010,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 data-id="${escapeHTML(
                                     item.id
                                 )}"
+                                aria-label="Increase quantity"
                             >
                                 +
                             </button>
@@ -1329,7 +1073,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 if (!button) {
+
                     return;
+
                 }
 
 
@@ -1342,7 +1088,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 if (!productId) {
+
                     return;
+
                 }
 
 

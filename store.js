@@ -2,8 +2,7 @@
    VOLTICA STORE — STORE.JS
    Product Render + Shopping Cart Engine
    Single Collection System
-   No Sectioned Product Grids
-   No Emoji Icons
+   No Product Sections
    ========================================================= */
 
 "use strict";
@@ -46,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkoutButton =
         document.getElementById("checkoutButton");
 
+
     const productGrid =
         document.getElementById("productGrid");
 
@@ -63,6 +63,26 @@ document.addEventListener("DOMContentLoaded", function () {
             "VOLTICA: products.js introuvable ou invalide."
         );
 
+        if (productGrid) {
+
+            productGrid.innerHTML = `
+
+                <div class="store-empty">
+
+                    <strong>
+                        COLLECTION UNAVAILABLE
+                    </strong>
+
+                    <span>
+                        Product database could not be loaded.
+                    </span>
+
+                </div>
+
+            `;
+
+        }
+
         return;
     }
 
@@ -75,19 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "VOLTICA: PRODUCTS =",
         products.length
     );
-
-
-    /* =====================================================
-       PRODUCT GRID CHECK
-       ===================================================== */
-
-    if (!productGrid) {
-
-        console.error(
-            "VOLTICA: #productGrid introuvable."
-        );
-
-    }
 
 
     /* =====================================================
@@ -204,7 +211,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             return;
-
         }
 
 
@@ -554,9 +560,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!productGrid) {
 
+            console.error(
+                "VOLTICA: #productGrid introuvable."
+            );
+
             return;
 
         }
+
+
+        productGrid.innerHTML = "";
 
 
         const activeProducts =
@@ -573,25 +586,23 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        /* =================================================
-           CLEAR PRODUCT GRID
-           ================================================= */
-
-        productGrid.innerHTML = "";
-
-
         if (!activeProducts.length) {
 
             productGrid.innerHTML = `
 
                 <div class="store-empty">
 
+                    <div
+                        class="cart-empty-pulsar"
+                        aria-hidden="true"
+                    ></div>
+
                     <strong>
-                        COLLECTION UNAVAILABLE
+                        COLLECTION COMING SOON
                     </strong>
 
                     <span>
-                        Please check back soon.
+                        New products are being prepared.
                     </span>
 
                 </div>
@@ -609,7 +620,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =================================================
-           RENDER ALL PRODUCTS
+           RENDER EVERY PRODUCT INTO ONE GRID
            ================================================= */
 
         activeProducts.forEach(
@@ -732,9 +743,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             if (!button) {
-
                 return;
-
             }
 
 
@@ -798,9 +807,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         if (!item) {
-
             return;
-
         }
 
 
@@ -836,9 +843,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateCartCount() {
 
         if (!cartCount) {
-
             return;
-
         }
 
 
@@ -875,9 +880,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function renderCart() {
 
         if (!cartItems) {
-
             return;
-
         }
 
 
@@ -1000,9 +1003,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                 −
                             </button>
 
+
                             <span>
                                 ${quantity}
                             </span>
+
 
                             <button
                                 type="button"
@@ -1073,9 +1078,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 if (!button) {
-
                     return;
-
                 }
 
 
@@ -1088,9 +1091,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 if (!productId) {
-
                     return;
-
                 }
 
 

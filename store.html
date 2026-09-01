@@ -82,18 +82,41 @@
 </nav>
 
 
-<!-- CART -->
+<!-- SHOPPING CART -->
 
 <button
     type="button"
     class="cart-acrylic"
     id="cartButton"
     aria-label="Open shopping cart"
+    title="Shopping Cart"
 >
 
-    <span class="cart-label">
-        CART
-    </span>
+    <svg
+        class="cart-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        focusable="false"
+    >
+
+        <path
+            d="M3 4H5L7.2 15.2C7.4 16.2 8.3 17 9.3 17H18.2C19.2 17 20.1 16.3 20.4 15.3L22 9H6"
+        />
+
+        <circle
+            cx="9"
+            cy="20"
+            r="1.4"
+        />
+
+        <circle
+            cx="18"
+            cy="20"
+            r="1.4"
+        />
+
+    </svg>
+
 
     <span
         class="cart-count"
@@ -106,211 +129,132 @@
 
 </header><!-- =====================================================
      MAIN CONTENT
-     ===================================================== --><main><!-- =====================================================
+     ===================================================== --><main><!-- =================================================
      HERO
-     ===================================================== --><section class="store-hero"><div
-    class="hero-pulsar"
-    aria-hidden="true"
->
+     ================================================= -->
 
-    <span></span>
-
-</div>
-
-
-<h1 class="future-title">
-
-    <span>
-        THE FUTURE
-    </span>
-
-    <span class="future-second">
-        OF EVERYDAY
-    </span>
-
-</h1>
-
-
-<div class="opening-acrylic">
-
-    <span class="opening-pulse"></span>
-
-    <span>
-        COLLECTION OPEN
-    </span>
-
-    <strong>
-        SEPT 1
-    </strong>
-
-</div>
-
-</section><!-- =====================================================
-     CATEGORY NAVIGATION
-     ===================================================== --><section
-    class="category-section"
-    aria-label="Voltica product categories"
-><div class="category-header">
-
-    <span class="category-label">
-        EXPLORE
-    </span>
-
-    <h2>
-        COLLECTIONS
-    </h2>
-
-    <p>
-        Discover the Voltica collection.
-    </p>
-
-</div>
-
-
-<div class="category-grid">
-
-
-    <a
-        href="#audio"
-        class="category-card"
-    >
-
-        <span class="category-name">
-            AUDIO
-        </span>
-
-    </a>
-
-
-    <a
-        href="#lifestyle"
-        class="category-card"
-    >
-
-        <span class="category-name">
-            LIFESTYLE
-        </span>
-
-    </a>
-
-
-    <a
-        href="#tech"
-        class="category-card"
-    >
-
-        <span class="category-name">
-            TECH
-        </span>
-
-    </a>
-
-
-    <a
-        href="#vlogging"
-        class="category-card"
-    >
-
-        <span class="category-name">
-            VLOGGING &amp; STREAMING GEAR
-        </span>
-
-    </a>
-
-
-    <a
-        href="#gaming"
-        class="category-card"
-    >
-
-        <span class="category-name">
-            GAMING GEAR
-        </span>
-
-    </a>
-
-
-    <a
-        href="#smart-home"
-        class="category-card"
-    >
-
-        <span class="category-name">
-            SMART HOME
-        </span>
-
-    </a>
-
-
-</div>
-
-</section><!-- =====================================================
-     PRODUCTS
-     ===================================================== --><section
-    class="products-section"
-    aria-label="Voltica products"
-><!-- IMPORTANT:
-     store.js renders ALL product sections
-     dynamically inside this single grid.
--->
-
-<div
-    id="productGrid"
-    class="product-grid"
-></div>
-
-</section><!-- =====================================================
-     CONTACT
-     ===================================================== --><section
-    id="contact"
-    class="contact-section"
-><div class="contact-acrylic">
+<section class="store-hero">
 
 
     <div
-        class="contact-pulsar"
+        class="hero-pulsar"
         aria-hidden="true"
-    ></div>
+    >
 
-
-    <div class="contact-content">
-
-        <span class="contact-label">
-            VOLTICA SUPPORT
-        </span>
-
-
-        <h2>
-            CONTACT US
-        </h2>
-
-
-        <p>
-            Need help with your order?
-        </p>
-
-
-        <a
-            href="mailto:support@volticastore.com"
-            class="contact-button"
-        >
-
-            <span>
-                CONTACT US
-            </span>
-
-            <strong>
-                →
-            </strong>
-
-        </a>
+        <span></span>
 
     </div>
 
 
-</div>
+    <h1 class="future-title">
 
-</section></main><!-- =====================================================
+        <span>
+            THE FUTURE
+        </span>
+
+        <span class="future-second">
+            OF EVERYDAY
+        </span>
+
+    </h1>
+
+
+    <div class="opening-acrylic">
+
+        <span
+            class="opening-pulse"
+            aria-hidden="true"
+        ></span>
+
+        <span>
+            COLLECTION OPEN
+        </span>
+
+        <strong>
+            SEPT 1
+        </strong>
+
+    </div>
+
+
+</section>
+
+
+<!-- =================================================
+     PRODUCTS
+     ================================================= -->
+
+<section
+    class="products-section"
+    aria-label="Voltica products"
+>
+
+    <div
+        id="productGrid"
+        class="product-grid"
+    ></div>
+
+</section>
+
+
+<!-- =================================================
+     CONTACT
+     ================================================= -->
+
+<section
+    id="contact"
+    class="contact-section"
+>
+
+    <div class="contact-acrylic">
+
+
+        <div
+            class="contact-pulsar"
+            aria-hidden="true"
+        ></div>
+
+
+        <div class="contact-content">
+
+            <span class="contact-label">
+                VOLTICA SUPPORT
+            </span>
+
+
+            <h2>
+                CONTACT US
+            </h2>
+
+
+            <p>
+                Need help with your order?
+            </p>
+
+
+            <a
+                href="mailto:contact@volticastore.com"
+                class="contact-button"
+            >
+
+                <span>
+                    CONTACT US
+                </span>
+
+                <strong>
+                    →
+                </strong>
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+</main><!-- =====================================================
      CART OVERLAY
      ===================================================== --><div
     class="cart-overlay"
@@ -405,8 +349,7 @@
 
 </div>
 
-</footer>
-    <!-- =====================================================
+</footer><!-- =====================================================
      DATABASE
      ===================================================== -->
     <script src="products.js?v=7"></script>

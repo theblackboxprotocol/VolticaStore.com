@@ -264,6 +264,74 @@ window.volticaProducts = [
         "active": true
     },
 
+   /* =========================================================
+       Product name : C22 Smartphone Single-Axis Stabilizer With Intelligent AI Face Tracking And Handheld Design
+       ========================================================= */
+
+{
+        "id": "c22-smartphone-single-axis-stabilizer-with-intelligent-ai-face-tracking-and-handheld-design",
+        "sku": "VLT-VLG-C22-001",
+        "name": "C22 Smartphone Single-Axis Stabilizer With Intelligent AI Face Tracking And Handheld Design",
+        "category": "Vlogging and Creator Gear",
+        "badge": "BEST SELLER",
+        "price": 59.99,
+        "referencePrice": 69.99,
+        "cost": 23.05,
+        "shipping": 9.32,
+        "shortDescription": "Capture cinematic, shake-free footage anywhere with the C22 Smartphone Single-Axis Stabilizer. Built with smart AI face tracking, a 1.3-meter aluminum extension rod, and a multi-function Bluetooth remote, this 3-in-1 device functions as an anti-shake gimbal, desktop tripod, and selfie stick. Perfect for vloggers, creators, and content makers!",
+        "description": "Take absolute control of your video creation with the C22 AI Smart Gimbal Stabilizer. Whether you are streaming live, filming dynamic travel vlogs, or capturing hands-free content, this versatile 3-in-1 gadget delivers professional-grade stability right from your smartphone.\nâ€‹Smart AI Face Tracking & Gesture Control\nâ€‹Equipped with an independent AI lens, the C22 automatically locks onto and follows your face smoothly without requiring complex apps or manual adjustments. Use simple hand gestures to start or stop tracking instantly, keeping you perfectly framed at all times.\nâ€‹Anti-Shake Core & 360Â° Rotation\nâ€‹Say goodbye to shaky mobile videos. The intelligent single-axis anti-shake stabilization core keeps your shots steady even while walking or running. Explore creative angles with 360-degree rotation, sports steady mode, and low-angle perspective shooting.\nâ€‹Extendable 1.3m Aluminum Alloy Rod & Stable Tripod\nâ€‹The lightweight, high-grade aluminum alloy rod extends up to 1.3 meters to capture wider scenery and group shots. Fold out the built-in umbrella tripod base in seconds for a sturdy, hands-free setup on any desktop or flat surface.",
+        "features": [
+            "3-in-1 Versatility: Seamlessly switches between a mobile stabilizer, AI tracking gimbal, and extendable selfie stick tripod.",
+            "Intelligent AI Face Tracking: Independent tracking lens keeps you in focus automatically.",
+            "Anti-Shake Stabilization: Ensures crystal-clear, steady footage while walking, running, or filming on the move.",
+            "1.3-Meter Extension: Premium aluminum alloy rod provides the ideal reach for vlogs and group photos.",
+            "Detachable Bluetooth Remote: Multi-function remote control allows easy shutter release, mode toggling, and remote operation.",
+            "Universal Compatibility: Securely fits most iOS and Android smartphones."
+        ],
+        "specifications": {
+            "Model": "C22",
+            "Color": "Black",
+            "Material": "Durable ABS + Lightweight Aluminum Alloy",
+            "Max Extendable Length": "1.3 meters (1338mm)",
+            "Connectivity": "Bluetooth wireless remote",
+            "Compatibility": "Android & iOS smartphones",
+            "Packing List": "",
+            "1 x C22 Single-Axis AI Gimbal Stabilizer / Selfie Stick Tripod": "",
+            "1 x Multi-Function Bluetooth Remote Control": "",
+            "1 x Charging Cable": "",
+            "1 x User Manual": ""
+        },
+        "images": [
+            "assets/images/selfie1.jpg",
+            "assets/images/selfie2.jpg",
+            "assets/images/selfie3.jpg",
+            "assets/images/selfie4.jpg",
+            "assets/images/selfie5.jpg",
+            "assets/images/selfie6.jpg",
+            "assets/images/selfie7.jpg",
+            "assets/images/selfie8.jpg",
+            "assets/images/selfie9.jpg",
+            "assets/images/selfie10.jpg",
+            "assets/images/selfie11.jpg",
+            "assets/images/selfie12.jpg",
+            "assets/images/selfie13.jpg",
+            "assets/images/selfie14.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Shoot Like a Pro Anywhere You Go!",
+            "lines": [
+                "Shoot Like a Pro Anywhere You Go!",
+                "Upgrade your mobile videography setup today. Order your C22 AI Stabilizer now at VolticaStore.com!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/7sYbJ24pV5030TK5Cq2Ji0w",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-2512050900151624000.html",
+        "active": true
+    },
+
+
     /* =========================================================
        PRODUCT 05 — Q17 OPEN-EAR WIRELESS EARBUDS
        ========================================================= */

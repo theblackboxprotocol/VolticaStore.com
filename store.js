@@ -3,6 +3,7 @@
    Product Render + Shopping Cart Engine
    Single Collection System
    No Product Sections
+   GA4 Analytics Integrated
    ========================================================= */
 
 "use strict";
@@ -48,6 +49,112 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const productGrid =
         document.getElementById("productGrid");
+
+
+    /* =====================================================
+       GA4 ANALYTICS
+       ===================================================== */
+
+    function trackEvent(
+        eventName,
+        eventParameters
+    ) {
+
+        if (
+            typeof window.gtag === "function"
+        ) {
+
+            window.gtag(
+                "event",
+                eventName,
+                eventParameters || {}
+            );
+
+            console.log(
+                "VOLTICA: GA4 EVENT",
+                eventName,
+                eventParameters || {}
+            );
+
+        } else {
+
+            console.warn(
+                "VOLTICA: GA4 gtag() unavailable.",
+                eventName
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       GA4 PRODUCT FORMAT
+       ===================================================== */
+
+    function createAnalyticsItem(
+        product,
+        quantity = 1
+    ) {
+
+        if (!product) {
+            return null;
+        }
+
+
+        return {
+
+            item_id:
+                String(
+                    product.id || ""
+                ),
+
+            item_name:
+                String(
+                    product.name ||
+                    "Voltica Product"
+                ),
+
+            item_category:
+                String(
+                    product.category ||
+                    "VOLTICA COLLECTION"
+                ),
+
+            price:
+                Number(
+                    product.price || 0
+                ),
+
+            quantity:
+                Math.max(
+                    1,
+                    Number(
+                        quantity || 1
+                    )
+                )
+
+        };
+
+    }
+
+
+    /* =====================================================
+       FIND PRODUCT
+       ===================================================== */
+
+    function findProduct(
+        productId
+    ) {
+
+        return products.find(
+            item =>
+                item &&
+                String(item.id) ===
+                String(productId)
+        );
+
+    }
 
 
     /* =====================================================
@@ -525,6 +632,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             product.id
                         )}"
                         class="acrylic-button product-view-button"
+                        data-product-id="${escapeHTML(
+                            product.id
+                        )}"
                     >
                         VIEW PRODUCT
                     </a>
@@ -645,17 +755,88 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
+       PRODUCT VIEW ANALYTICS
+       ===================================================== */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            const viewButton =
+                event.target.closest(
+                    ".product-view-button"
+                );
+
+
+            if (!viewButton) {
+                return;
+            }
+
+
+            const productId =
+                viewButton.dataset.productId;
+
+
+            if (!productId) {
+                return;
+            }
+
+
+            const product =
+                findProduct(
+                    productId
+                );
+
+
+            if (!product) {
+                return;
+            }
+
+
+            const analyticsItem =
+                createAnalyticsItem(
+                    product,
+                    1
+                );
+
+
+            if (analyticsItem) {
+
+                trackEvent(
+                    "view_item",
+                    {
+
+                        currency:
+                            "USD",
+
+                        value:
+                            Number(
+                                product.price || 0
+                            ),
+
+                        items:
+                            [
+                                analyticsItem
+                            ]
+
+                    }
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
        ADD TO CART
        ===================================================== */
 
     function addToCart(productId) {
 
         const product =
-            products.find(
-                item =>
-                    item &&
-                    String(item.id) ===
-                    String(productId)
+            findProduct(
+                productId
             );
 
 
@@ -720,6 +901,42 @@ document.addEventListener("DOMContentLoaded", function () {
         renderCart();
 
 
+        /* =================================================
+           GA4 — ADD TO CART
+           ================================================= */
+
+        const analyticsItem =
+            createAnalyticsItem(
+                product,
+                1
+            );
+
+
+        if (analyticsItem) {
+
+            trackEvent(
+                "add_to_cart",
+                {
+
+                    currency:
+                        "USD",
+
+                    value:
+                        Number(
+                            product.price || 0
+                        ),
+
+                    items:
+                        [
+                            analyticsItem
+                        ]
+
+                }
+            );
+
+        }
+
+
         console.log(
             "VOLTICA: ADDED TO CART",
             product.name
@@ -772,6 +989,88 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function removeFromCart(productId) {
 
+        const existingItem =
+            cart.find(
+                item =>
+                    String(item.id) ===
+                    String(productId)
+            );
+
+
+        if (existingItem) {
+
+            const product =
+                findProduct(
+                    productId
+                );
+
+
+            const analyticsItem = {
+
+                item_id:
+                    String(
+                        existingItem.id
+                    ),
+
+                item_name:
+                    String(
+                        existingItem.name ||
+                        "Voltica Product"
+                    ),
+
+                item_category:
+                    product
+                        ? String(
+                            product.category ||
+                            "VOLTICA COLLECTION"
+                        )
+                        : "VOLTICA COLLECTION",
+
+                price:
+                    Number(
+                        existingItem.price || 0
+                    ),
+
+                quantity:
+                    Math.max(
+                        1,
+                        Number(
+                            existingItem.quantity || 1
+                        )
+                    )
+
+            };
+
+
+            trackEvent(
+                "remove_from_cart",
+                {
+
+                    currency:
+                        "USD",
+
+                    value:
+                        Number(
+                            existingItem.price || 0
+                        ) *
+                        Math.max(
+                            1,
+                            Number(
+                                existingItem.quantity || 1
+                            )
+                        ),
+
+                    items:
+                        [
+                            analyticsItem
+                        ]
+
+                }
+            );
+
+        }
+
+
         cart =
             cart.filter(
                 item =>
@@ -811,10 +1110,29 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        item.quantity =
-            Number(item.quantity || 1) +
-            Number(amount || 0);
+        const previousQuantity =
+            Math.max(
+                1,
+                Number(
+                    item.quantity || 1
+                )
+            );
 
+
+        const quantityChange =
+            Number(
+                amount || 0
+            );
+
+
+        item.quantity =
+            previousQuantity +
+            quantityChange;
+
+
+        /* =================================================
+           REMOVE WHEN QUANTITY REACHES ZERO
+           ================================================= */
 
         if (item.quantity <= 0) {
 
@@ -823,6 +1141,98 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             return;
+
+        }
+
+
+        /* =================================================
+           GA4 — QUANTITY CHANGE
+           ================================================= */
+
+        const product =
+            findProduct(
+                productId
+            );
+
+
+        const analyticsItem = {
+
+            item_id:
+                String(
+                    item.id
+                ),
+
+            item_name:
+                String(
+                    item.name ||
+                    "Voltica Product"
+                ),
+
+            item_category:
+                product
+                    ? String(
+                        product.category ||
+                        "VOLTICA COLLECTION"
+                    )
+                    : "VOLTICA COLLECTION",
+
+            price:
+                Number(
+                    item.price || 0
+                ),
+
+            quantity:
+                1
+
+        };
+
+
+        if (quantityChange > 0) {
+
+            trackEvent(
+                "add_to_cart",
+                {
+
+                    currency:
+                        "USD",
+
+                    value:
+                        Number(
+                            item.price || 0
+                        ),
+
+                    items:
+                        [
+                            analyticsItem
+                        ]
+
+                }
+            );
+
+        }
+
+
+        if (quantityChange < 0) {
+
+            trackEvent(
+                "remove_from_cart",
+                {
+
+                    currency:
+                        "USD",
+
+                    value:
+                        Number(
+                            item.price || 0
+                        ),
+
+                    items:
+                        [
+                            analyticsItem
+                        ]
+
+                }
+            );
 
         }
 
@@ -1159,6 +1569,103 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(
                     "VOLTICA: CHECKOUT",
                     cart
+                );
+
+
+                /* =================================================
+                   GA4 — BEGIN CHECKOUT
+                   ================================================= */
+
+                const analyticsItems =
+                    cart
+                        .map(
+                            function (item) {
+
+                                const product =
+                                    findProduct(
+                                        item.id
+                                    );
+
+
+                                return {
+
+                                    item_id:
+                                        String(
+                                            item.id
+                                        ),
+
+                                    item_name:
+                                        String(
+                                            item.name ||
+                                            "Voltica Product"
+                                        ),
+
+                                    item_category:
+                                        product
+                                            ? String(
+                                                product.category ||
+                                                "VOLTICA COLLECTION"
+                                            )
+                                            : "VOLTICA COLLECTION",
+
+                                    price:
+                                        Number(
+                                            item.price || 0
+                                        ),
+
+                                    quantity:
+                                        Math.max(
+                                            1,
+                                            Number(
+                                                item.quantity || 1
+                                            )
+                                        )
+
+                                };
+
+                            }
+                        );
+
+
+                const checkoutValue =
+                    cart.reduce(
+                        function (
+                            total,
+                            item
+                        ) {
+
+                            return total +
+                                (
+                                    Number(
+                                        item.price || 0
+                                    ) *
+                                    Math.max(
+                                        1,
+                                        Number(
+                                            item.quantity || 1
+                                        )
+                                    )
+                                );
+
+                        },
+                        0
+                    );
+
+
+                trackEvent(
+                    "begin_checkout",
+                    {
+
+                        currency:
+                            "USD",
+
+                        value:
+                            checkoutValue,
+
+                        items:
+                            analyticsItems
+
+                    }
                 );
 
 

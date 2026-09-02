@@ -773,6 +773,67 @@ window.volticaProducts = [
         "active": true
     },
 
+   /* =========================================================
+       Product name : Mountop UVC Sterilization Smart Water Bottle - 316 Stainless Steel Insulated Thermos with Temperature Display | Voltica Store
+       ========================================================= */
+
+{
+        "id": "mountop-uvc-sterilization-smart-water-bottle-316-stainless-steel-insulated-thermos-with-temperature-display-voltica-store",
+        "sku": "VLT-LST-002",
+        "name": "Mountop UVC Sterilization Smart Water Bottle - 316 Stainless Steel Insulated Thermos with Temperature Display | Voltica Store",
+        "category": "Lifestyle",
+        "badge": "BEST SELLER",
+        "price": 63.99,
+        "referencePrice": 69.99,
+        "cost": 38.84,
+        "shipping": 8.2,
+        "shortDescription": "â€‹Meet the ultimate hydration tech: the Mountop UVC Sterilization Smart Water Bottle. Combining 99.99% UVC-LED sterilization, real-time LED temperature display, and a 316 food-grade stainless steel vacuum body, this smart tumbler keeps your water pure, safe, and at the perfect temperature all day long. Upgrade your daily routine, available now at Voltica Store.",
+        "description": "Take absolute control of your drinking water safety with the Mountop Smart UVC Sterilization Water Bottle. Standard kettles, taps, and water dispensers can silently harbor scale and stubborn heat-resistant bacteria over time. This advanced smart bottle cuts out the risk entirely with state-of-the-art technology.\n\n99.99% Rapid UVC Sterilization\nâ€‹With just a quick touch of the smart cap, the high-power UVC-LED system kicks into gear, breaking down the DNA strands of pathogenic microorganisms and achieving up to 99.99% sterilization in just 180 seconds. Enjoy pure, sanitized water wherever you goâ€”no chemicals, no hassle.",
+        "features": [
+            "Real-Time LED Screen: Instantly view the exact temperature of your drink right on the cap so you never burn your tongue again.",
+            "Smart 90-Minute Hydration Alarm: Set the reminder function with a double-tap, and the bottle will gently chime (Di Di Di!) every 90 minutes to keep you consistently hydrated throughout the day.",
+            "Long-Term Insulation: Built with a double-layer vacuum insulation design using superior 316 stainless steel to preserve hot and cold temperatures for hours.",
+            "UVC-LED Purification: Eliminates up to 99.99% of bacteria and microorganisms in 180 seconds.",
+            "Smart Touch Cap: Wake up the screen to check liquid temperature or trigger sterilization and hydration alarms.",
+            "Premium 316 Stainless Steel: Food-grade inner tank ensuring maximum health safety, corrosion resistance, and durability.",
+            "Matte Anti-Slip Body: Elegant, wear-resistant matte finish that feels great in your hand and stands up to active daily use.",
+            "Non-Slip Silicone Base: Protects the bottom of the bottle against bumps and prevents sliding on your desk."
+        ],
+        "specifications": {
+            "Brand/Model": "Mountop UVC Sterilization Water Bottle",
+            "Inner Material": "Food-grade 316 Stainless Steel",
+            "Insulation Performance": "Double-layer vacuum heat & cold preservation",
+            "Key Functions": "UVC-LED sterilization, real-time temperature display, 90-minute hydration reminder alarm",
+            "Finish": "Matte anti-slip coating with protective silicone pad",
+            "Inside the Box": "",
+            "1 x Mountop UVC Smart Sterilization Insulated Water Bottle": "",
+            "1 x Charging / Power Cable (for smart cap)": "",
+            "1 x User Manual": ""
+        },
+        "images": [
+            "assets/images/cup1.jpg",
+            "assets/images/cup2.jpg",
+            "assets/images/cup3.jpg",
+            "assets/images/cup4.jpg",
+            "assets/images/cup5.jpg",
+            "assets/images/cup6.jpg",
+            "assets/images/cup7.jpg",
+            "assets/images/cup8.jpg",
+            "assets/images/cup9.jpg",
+            "assets/images/cup10.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Pure Water, Perfect Temperature, Zero Compromise",
+            "lines": [
+                "Ready to drink smarter and safer? Add the Mountop UVC Sterilization Smart Water Bottle to your daily gear today from Voltica Store and experience the future of hydration!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/00w8wQ1dJcsv8mc5Cq2Ji0t",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-1893953216514207746.html",
+        "active": true
+},
     /* =========================================================
        PRODUCT 13 — XXL WORLD MAP GAMING MOUSE PAD
        ========================================================= */

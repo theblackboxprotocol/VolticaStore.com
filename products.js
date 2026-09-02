@@ -518,6 +518,63 @@ window.volticaProducts = [
         "active": true
     },
 
+   /* =========================================================
+       Product name : Lumi Robot - Smart AI Car Companion & Dashboard Display | Voltica Store
+       ========================================================= */
+
+{
+        "id": "lumi-robot-smart-ai-car-companion-dashboard-display-voltica-store",
+        "sku": "VLT-TCH-003",
+        "name": "Lumi Robot - Smart AI Car Companion & Dashboard Display | Voltica Store",
+        "category": "Tech",
+        "badge": "FEATURED",
+        "price": 219.99,
+        "referencePrice": 249.99,
+        "cost": 148.5,
+        "shipping": 30.5,
+        "shortDescription": "Meet the Lumi Robot, your ultimate smart AI car companion designed for the dashboard. Featuring voice interaction, a vibrant IPS screen with expressive emotion animations, solar-powered dual-core battery life, and hands-free control, Lumi makes every drive more fun and connected. Available now at Voltica Store!",
+        "description": "Transform your daily commute with the Lumi Robot, a compact, expressive AI companion built specifically for your car's dashboard. Combining sleek design with cutting-edge tech, Lumi brings personality and smart assistance right to your front seat.\nâ€‹Interactive AI & Expressive Personality\nâ€‹Lumi features a bright IPS display capable of showing over 100 rich emotional expressions that react to you and your music. With built-in AI voice interaction, you can talk directly to your car companion to play playlists, get instant responses, and enjoy a lively ride.\nâ€‹Solar-Powered & Always Ready\nâ€‹Equipped with dual-core solar power support, Lumi ensures long-lasting battery life for the head unit and base. Its wireless connectivity and vehicle detection sensors offer seamless, unrestricted use on any road trip.",
+        "features": [
+            "Smart AI Voice Interaction: Talk naturally to your companion for instant responses and hands-free control while driving.",
+            "Vibrant IPS Screen: Displays 100+ rich, animated emotional expressions that bring your dashboard to life.",
+            "Dual-Core Solar Power: Solar-powered setup charges both the head unit and base for long-lasting performance.",
+            "Music Sync & Sound Localization: Works dynamically with your audio environment and detects sound sources.",
+            "Dashboard Decor & Pet Companion: Acts as a stylish, futuristic accessory and an engaging travel buddy."
+        ],
+        "specifications": {
+            "Product Name": "Lumi Robot (Car Companion Edition)",
+            "Display": "High-definition IPS Screen with animated expressions",
+            "Power Source": "Dual-core Solar Power & rechargeable battery",
+            "Connectivity": "Wireless App connectivity with multi-language support",
+            "Sensors": "Vibration sensor, vehicle detection, sound source localization",
+            "Inside the Box": "",
+            "1 x Lumi Robot Head Unit": "",
+            "1 x Motorized / Mounting Base": "",
+            "1 x Solar Power Panel Unit": "",
+            "1 x Charging Cable": "",
+            "1 x User Manual & Dashboard Mounting Pad": ""
+        },
+        "images": [
+            "assets/images/Ai1.jpg",
+            "assets/images/Ai2.jpg",
+            "assets/images/Ai3.jpg",
+            "assets/images/Ai4.jpg",
+            "assets/images/Ai5.jpg",
+            "assets/images/Ai6.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Bring Life to Your Dashboard",
+            "lines": [
+                "Ready to upgrade your commute? Order the Lumi Robot today from Voltica Store and hit the road with a smart AI travel companion!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/9B69AU4pV503eKAc0O2Ji0u",
+        "supplierLink": "https://www.alibaba.com/x/B2O469?ck=pdp",
+        "active": true
+},
+   
     /* =========================================================
        PRODUCT 09 — SMART AUTO-TRACKING PHONE GIMBAL
        ========================================================= */

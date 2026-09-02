@@ -2,6 +2,7 @@
    VOLTICA STORE
    PRODUCT VIEW ENGINE
    DYNAMIC PRODUCT LOADER
+   GA4 ANALYTICS INTEGRATED
    ========================================================= */
 
 "use strict";
@@ -126,6 +127,97 @@ function initializeProductPage() {
         document.getElementById(
             "finalProductName"
         );
+
+
+    /* =====================================================
+       GA4 ANALYTICS
+       ===================================================== */
+
+    function trackEvent(
+        eventName,
+        parameters
+    ) {
+
+        if (
+            typeof window.gtag !==
+            "function"
+        ) {
+
+            console.warn(
+                "VOLTICA: GA4 gtag() unavailable.",
+                eventName
+            );
+
+            return;
+
+        }
+
+
+        window.gtag(
+            "event",
+            eventName,
+            parameters || {}
+        );
+
+
+        console.log(
+            "VOLTICA: GA4 EVENT",
+            eventName,
+            parameters || {}
+        );
+
+    }
+
+
+    /* =====================================================
+       GA4 PRODUCT ITEM
+       ===================================================== */
+
+    function createAnalyticsItem(
+        product,
+        quantity = 1
+    ) {
+
+        if (!product) {
+            return null;
+        }
+
+
+        return {
+
+            item_id:
+                String(
+                    product.id || ""
+                ),
+
+            item_name:
+                String(
+                    product.name ||
+                    "Voltica Product"
+                ),
+
+            item_category:
+                String(
+                    product.category ||
+                    "VOLTICA COLLECTION"
+                ),
+
+            price:
+                Number(
+                    product.price || 0
+                ),
+
+            quantity:
+                Math.max(
+                    1,
+                    Number(
+                        quantity || 1
+                    )
+                )
+
+        };
+
+    }
 
 
     /* =====================================================
@@ -288,6 +380,43 @@ function initializeProductPage() {
 
 
     /* =====================================================
+       GA4 — VIEW ITEM
+       ===================================================== */
+
+    const analyticsItem =
+        createAnalyticsItem(
+            product,
+            1
+        );
+
+
+    if (analyticsItem) {
+
+        trackEvent(
+            "view_item",
+            {
+
+                currency:
+                    product.currency ||
+                    "USD",
+
+                value:
+                    Number(
+                        product.price || 0
+                    ),
+
+                items:
+                    [
+                        analyticsItem
+                    ]
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
        BASIC INFORMATION
        ===================================================== */
 
@@ -434,6 +563,22 @@ function initializeProductPage() {
 
 
     /* =====================================================
+       STRIPE ANALYTICS
+       ===================================================== */
+
+    configureBuyAnalytics(
+        stripeButton,
+        product
+    );
+
+
+    configureBuyAnalytics(
+        finalStripeButton,
+        product
+    );
+
+
+    /* =====================================================
        DESCRIPTION
        ===================================================== */
 
@@ -477,7 +622,8 @@ function initializeProductPage() {
     renderProductOptions(
         variantsContainer,
         selectedOption,
-        product
+        product,
+        trackEvent
     );
 
 
@@ -561,6 +707,126 @@ function configureStripeButton(
             "none";
 
     }
+
+}
+
+
+/* =========================================================
+   BUY NOW ANALYTICS
+   ========================================================= */
+
+function configureBuyAnalytics(
+    button,
+    product
+) {
+
+    if (!button || !product) {
+        return;
+    }
+
+
+    if (
+        !(
+            typeof product.stripeLink ===
+            "string"
+        ) ||
+        !product.stripeLink.trim()
+    ) {
+
+        return;
+
+    }
+
+
+    button.addEventListener(
+        "click",
+        function () {
+
+            const item = {
+
+                item_id:
+                    String(
+                        product.id || ""
+                    ),
+
+                item_name:
+                    String(
+                        product.name ||
+                        "Voltica Product"
+                    ),
+
+                item_category:
+                    String(
+                        product.category ||
+                        "VOLTICA COLLECTION"
+                    ),
+
+                price:
+                    Number(
+                        product.price || 0
+                    ),
+
+                quantity:
+                    1
+
+            };
+
+
+            if (
+                typeof window.gtag ===
+                "function"
+            ) {
+
+                window.gtag(
+                    "event",
+                    "begin_checkout",
+                    {
+
+                        currency:
+                            product.currency ||
+                            "USD",
+
+                        value:
+                            Number(
+                                product.price || 0
+                            ),
+
+                        items:
+                            [
+                                item
+                            ]
+
+                    }
+                );
+
+
+                console.log(
+                    "VOLTICA: GA4 EVENT",
+                    "begin_checkout",
+                    {
+                        currency:
+                            product.currency ||
+                            "USD",
+                        value:
+                            Number(
+                                product.price || 0
+                            ),
+                        items:
+                            [item]
+                    }
+                );
+
+            } else {
+
+                console.warn(
+                    "VOLTICA: GA4 gtag() unavailable.",
+                    "begin_checkout"
+                );
+
+            }
+
+        }
+    );
 
 }
 
@@ -991,7 +1257,8 @@ function appendSpecification(
 function renderProductOptions(
     container,
     selectedOption,
-    product
+    product,
+    trackEvent
 ) {
 
     if (!container) {
@@ -1208,6 +1475,68 @@ function renderProductOptions(
 
                         selectedOption.textContent =
                             option.name;
+
+                    }
+
+
+                    /* =====================================
+                       GA4 — SELECT ITEM / VARIANT
+                       ===================================== */
+
+                    if (
+                        typeof trackEvent ===
+                        "function"
+                    ) {
+
+                        const analyticsItem = {
+
+                            item_id:
+                                String(
+                                    product.id || ""
+                                ),
+
+                            item_name:
+                                String(
+                                    product.name ||
+                                    "Voltica Product"
+                                ),
+
+                            item_category:
+                                String(
+                                    product.category ||
+                                    "VOLTICA COLLECTION"
+                                ),
+
+                            item_variant:
+                                String(
+                                    option.name
+                                ),
+
+                            price:
+                                Number(
+                                    product.price || 0
+                                ),
+
+                            quantity:
+                                1
+
+                        };
+
+
+                        trackEvent(
+                            "select_item",
+                            {
+
+                                item_list_name:
+                                    "Voltica Product Options",
+
+                                items:
+                                    [
+                                        analyticsItem
+                                    ]
+
+                            }
+                        );
 
                     }
 

@@ -208,7 +208,7 @@ window.volticaProducts = [
 {
         "id": "kiwi-ears-aventus-bluetooth-coaxial-driver-dj-and-gaming-headphones",
         "sku": "VLT-AUD-KWE-003",
-        "name": "Kiwi Ears Aventus â€“ Bluetooth Coaxial Driver DJ and Gaming Headphones",
+        "name": "Kiwi Ears Aventus Bluetooth Coaxial Driver DJ and Gaming Headphones",
         "category": "Audio",
         "badge": "BEST SELLER",
         "price": 69.99,

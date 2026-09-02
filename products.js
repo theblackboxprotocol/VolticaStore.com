@@ -201,6 +201,61 @@ window.volticaProducts = [
         "active": true
     },
 
+   /* =========================================================
+       Product name : Kiwi Ears Aventus â€“ Bluetooth Coaxial Driver DJ and Gaming Headphones
+       ========================================================= */
+
+{
+        "id": "kiwi-ears-aventus-bluetooth-coaxial-driver-dj-and-gaming-headphones",
+        "sku": "VLT-AUD-KWE-003",
+        "name": "Kiwi Ears Aventus â€“ Bluetooth Coaxial Driver DJ and Gaming Headphones",
+        "category": "Audio",
+        "badge": "BEST SELLER",
+        "price": 69.99,
+        "referencePrice": 89.99,
+        "cost": 45.99,
+        "shipping": null,
+        "shortDescription": "Engineered for DJs, gamers, and audiophiles, the Kiwi Ears Aventus delivers exceptional sound through an innovative coaxial dual-driver setup (40mm + 10mm). Featuring hybrid ANC, customizable Harman-inspired tuning, dazzling RGB lighting, and up to an astounding 82 hours of battery life, it offers ultimate comfort and performance for your immersive sessions.",
+        "description": "Meet the Kiwi Ears Aventus, a high-performance wireless headset designed from the ground up for DJs, competitive gamers, and music lovers who refuse to compromise. Combining striking RGB aesthetics with professional-grade audio architecture, the Aventus delivers power, precision, and all-day comfort.\nâ€‹Innovative Coaxial Dual-Driver System\nâ€‹The Aventus features an advanced coaxial driver configuration combining two independent dynamic drivers. The 40mm dynamic driver covers the full bandwidth to pump out deep, engaging bass, natural mid-range tones, and pristine trebles. Complementing this, the 10mm dynamic driver is tuned independently to enhance overall clarity and construct a wide, highly immersive soundstage.\nâ€‹Audiophile Reference Tuning with Customization\nâ€‹Meticulously crafted around a mild Harman tuning curve, the Aventus delivers impactful bass and a natural mid-range. Included foam inserts allow you to physically modify and personalize the tuning signature to match your precise listening preferences.\nâ€‹Hybrid ANC and 5-Mic Clarity\nâ€‹Block out the world with advanced hybrid Active Noise Cancellation capable of reducing up to 35dB of ambient noise. Backed by a 5-microphone array, your environment stays quiet and your communication crystal clear, even while operating in wired mode.\nâ€‹Built for Marathon Sessions and DJs\nâ€‹Featuring independently rotating and folding earcups, the Aventus allows for seamless single-ear cueing, making it perfect for live DJ performances or situational awareness during intense gaming sessions. Enjoy up to 82 hours of playback with ANC off, 45 hours with ANC on, or 18 hours with both ANC and RGB active. Need a quick top-up? A 10-minute fast charge delivers 4 hours of playback. Equipped with Bluetooth 5.4, you get ultra-low latency wireless streaming, wired connection support, and the ability to connect up to two devices simultaneously for effortless multitasking.",
+        "features": [
+            "Coaxial dual-driver system combining a 40mm full-bandwidth driver and a 10mm clarity driver",
+            "Hybrid Active Noise Cancellation reducing up to 35dB of ambient noise with a 5-microphone array",
+            "Exceptional battery life providing up to 82 hours of playback with ANC off and fast charging support",
+            "Ergonomic design featuring independently rotating and folding earcups for single-ear cueing and portability",
+            "Bluetooth 5.4 connectivity with dual-device multi-point pairing and a reliable wired mode option",
+            "Customizable audio tuning profile inspired by the mild Harman curve, complete with interchangeable foam inserts",
+            "Vibrant RGB lighting built into a lightweight, durable frame with plush vegan leather linings"
+        ],
+        "specifications": {
+            "Brand / Model": "Kiwi Ears Aventus",
+            "Driver Configuration": "Coaxial dual dynamic drivers (40mm full-bandwidth + 10mm clarity driver)",
+            "Connectivity": "Bluetooth 5.4 / Wired connection (supports multi-point pairing up to 2 devices)",
+            "Noise Cancellation": "Hybrid Active Noise Cancellation (ANC) up to 35dB reduction via a 5-microphone array",
+            "Battery Capacity": "1000mAh",
+            "Max Playback Time": "Up to 82 hours (ANC Off) / 45 hours (ANC On) / 18 hours (ANC + RGB Active)",
+            "Fast Charging": "10 minutes of charge yields approximately 4 hours of playback",
+            "Design Features": "Independently rotating and folding earcups, plush vegan leather linings, RGB illumination",
+            "Tuning": "Mild Harman reference curve with modular foam insert customization"
+        },
+        "images": [
+            "assets/images/aventus1.jpg",
+            "assets/images/aventus2.jpg",
+            "assets/images/aventus3.jpg",
+            "assets/images/aventus4.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Unleash Superior Sound and Performance Today!",
+            "lines": [
+                "Elevate your audio experience and stay powered through your longest sessions. Order your Kiwi Ears Aventus today at VolticaStore.com and enjoy premium sound, advanced comfort, and unmatched performance!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/fZueVeaOj78b7i80i62Ji0y",
+        "supplierLink": "business@kiwiears.com",
+        "active": true
+},
+
     /* =========================================================
        PRODUCT 04 — FA-5370 PLANAR MAGNETIC
        ========================================================= */

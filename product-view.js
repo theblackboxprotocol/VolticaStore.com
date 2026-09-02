@@ -3,6 +3,7 @@
    PRODUCT VIEW ENGINE
    DYNAMIC PRODUCT LOADER
    GA4 ANALYTICS INTEGRATED
+   SEO OPTIMIZED
    ========================================================= */
 
 "use strict";
@@ -319,6 +320,11 @@ function initializeProductPage() {
 
     if (!requestedId) {
 
+        setGenericSEO(
+            "Product Not Found — Voltica Store",
+            "Discover premium technology, audio, gaming gear, smart home products and lifestyle technology at Voltica Store."
+        );
+
         showProductError(
             "PRODUCT NOT SPECIFIED",
             "No product was specified in this URL."
@@ -351,6 +357,11 @@ function initializeProductPage() {
             requestedId
         );
 
+        setGenericSEO(
+            "Product Not Found — Voltica Store",
+            "The requested product could not be found at Voltica Store."
+        );
+
         showProductError(
             "PRODUCT NOT FOUND",
             "The requested product does not exist in the Voltica database."
@@ -370,13 +381,12 @@ function initializeProductPage() {
 
 
     /* =====================================================
-       PAGE TITLE
+       SEO
        ===================================================== */
 
-    document.title =
-        product.name
-            ? `${product.name} — Voltica Store`
-            : "Voltica Store — Product";
+    configureProductSEO(
+        product
+    );
 
 
     /* =====================================================
@@ -667,6 +677,938 @@ function initializeProductPage() {
     console.log(
         "VOLTICA: PRODUCT READY —",
         product.name
+    );
+
+}
+
+
+/* =========================================================
+   SEO ENGINE
+   ========================================================= */
+
+function configureProductSEO(
+    product
+) {
+
+    const productName =
+        String(
+            product.name ||
+            "Voltica Product"
+        ).trim();
+
+
+    const shortDescription =
+        String(
+            product.shortDescription ||
+            product.description ||
+            product.fullDescription ||
+            "Discover premium technology from Voltica Store."
+        )
+            .replace(
+                /\s+/g,
+                " "
+            )
+            .trim();
+
+
+    const description =
+        shortenMetaDescription(
+            shortDescription
+        );
+
+
+    const productId =
+        String(
+            product.id || ""
+        ).trim();
+
+
+    const canonicalUrl =
+        buildProductUrl(
+            productId
+        );
+
+
+    const title =
+        `${productName} — Voltica Store`;
+
+
+    /* =====================================================
+       DOCUMENT TITLE
+       ===================================================== */
+
+    document.title =
+        title;
+
+
+    /* =====================================================
+       BASIC META
+       ===================================================== */
+
+    setMeta(
+        "description",
+        description
+    );
+
+
+    setMeta(
+        "robots",
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    );
+
+
+    setMeta(
+        "author",
+        "Voltica Store"
+    );
+
+
+    setMeta(
+        "application-name",
+        "Voltica Store"
+    );
+
+
+    setMeta(
+        "theme-color",
+        "#050505"
+    );
+
+
+    /* =====================================================
+       CANONICAL
+       ===================================================== */
+
+    setCanonical(
+        canonicalUrl
+    );
+
+
+    /* =====================================================
+       OPEN GRAPH
+       ===================================================== */
+
+    setMeta(
+        "og:type",
+        "product",
+        true
+    );
+
+
+    setMeta(
+        "og:title",
+        title,
+        true
+    );
+
+
+    setMeta(
+        "og:description",
+        description,
+        true
+    );
+
+
+    setMeta(
+        "og:url",
+        canonicalUrl,
+        true
+    );
+
+
+    setMeta(
+        "og:site_name",
+        "Voltica Store",
+        true
+    );
+
+
+    setMeta(
+        "og:locale",
+        "en_US",
+        true
+    );
+
+
+    /* =====================================================
+       PRODUCT OPEN GRAPH
+       ===================================================== */
+
+    const price =
+        Number(
+            product.price
+        );
+
+
+    const productCurrency =
+        String(
+            product.currency ||
+            "USD"
+        ).trim();
+
+
+    if (
+        Number.isFinite(price)
+    ) {
+
+        setMeta(
+            "product:price:amount",
+            price.toFixed(2),
+            true
+        );
+
+
+        setMeta(
+            "product:price:currency",
+            productCurrency,
+            true
+        );
+
+    }
+
+
+    if (
+        product.availability
+    ) {
+
+        setMeta(
+            "product:availability",
+            String(
+                product.availability
+            ),
+            true
+        );
+
+    }
+
+
+    /* =====================================================
+       TWITTER
+       ===================================================== */
+
+    setMeta(
+        "twitter:card",
+        "summary_large_image",
+        true
+    );
+
+
+    setMeta(
+        "twitter:title",
+        title,
+        true
+    );
+
+
+    setMeta(
+        "twitter:description",
+        description,
+        true
+    );
+
+
+    /* =====================================================
+       PRODUCT IMAGE
+       ===================================================== */
+
+    const images =
+        normalizeArray(
+            product.images
+        )
+            .filter(Boolean)
+            .map(
+                image =>
+                    normalizeImagePath(
+                        image
+                    )
+            )
+            .filter(Boolean);
+
+
+    if (images.length) {
+
+        const absoluteImageUrl =
+            toAbsoluteUrl(
+                images[0]
+            );
+
+
+        setMeta(
+            "og:image",
+            absoluteImageUrl,
+            true
+        );
+
+
+        setMeta(
+            "twitter:image",
+            absoluteImageUrl,
+            true
+        );
+
+    }
+
+
+    /* =====================================================
+       STRUCTURED DATA
+       ===================================================== */
+
+    injectProductStructuredData(
+        product,
+        canonicalUrl,
+        images
+    );
+
+
+    console.log(
+        "VOLTICA: PRODUCT SEO CONFIGURED",
+        {
+            title,
+            description,
+            canonical: canonicalUrl
+        }
+    );
+
+}
+
+
+/* =========================================================
+   META HELPER
+   ========================================================= */
+
+function setMeta(
+    name,
+    content,
+    property = false
+) {
+
+    if (
+        !content
+    ) {
+
+        return;
+
+    }
+
+
+    const attribute =
+        property
+            ? "property"
+            : "name";
+
+
+    let element =
+        document.head.querySelector(
+            `meta[${attribute}="${name}"]`
+        );
+
+
+    if (!element) {
+
+        element =
+            document.createElement(
+                "meta"
+            );
+
+
+        element.setAttribute(
+            attribute,
+            name
+        );
+
+
+        document.head.appendChild(
+            element
+        );
+
+    }
+
+
+    element.setAttribute(
+        "content",
+        String(content)
+    );
+
+}
+
+
+/* =========================================================
+   CANONICAL HELPER
+   ========================================================= */
+
+function setCanonical(
+    url
+) {
+
+    let canonical =
+        document.head.querySelector(
+            'link[rel="canonical"]'
+        );
+
+
+    if (!canonical) {
+
+        canonical =
+            document.createElement(
+                "link"
+            );
+
+
+        canonical.rel =
+            "canonical";
+
+
+        document.head.appendChild(
+            canonical
+        );
+
+    }
+
+
+    canonical.href =
+        url;
+
+}
+
+
+/* =========================================================
+   PRODUCT URL
+   ========================================================= */
+
+function buildProductUrl(
+    productId
+) {
+
+    const base =
+        "https://volticastore.com/product-view.html";
+
+
+    if (!productId) {
+
+        return base;
+
+    }
+
+
+    return (
+        base +
+        "?id=" +
+        encodeURIComponent(
+            productId
+        )
+    );
+
+}
+
+
+/* =========================================================
+   ABSOLUTE URL
+   ========================================================= */
+
+function toAbsoluteUrl(
+    path
+) {
+
+    const value =
+        String(
+            path || ""
+        ).trim();
+
+
+    if (!value) {
+
+        return "";
+
+    }
+
+
+    if (
+        value.startsWith(
+            "http://"
+        ) ||
+        value.startsWith(
+            "https://"
+        )
+    ) {
+
+        return value;
+
+    }
+
+
+    if (
+        value.startsWith(
+            "//"
+        )
+    ) {
+
+        return (
+            "https:" +
+            value
+        );
+
+    }
+
+
+    return new URL(
+        value,
+        "https://volticastore.com/"
+    ).href;
+
+}
+
+
+/* =========================================================
+   META DESCRIPTION LENGTH
+   ========================================================= */
+
+function shortenMetaDescription(
+    text
+) {
+
+    const value =
+        String(
+            text || ""
+        )
+            .replace(
+                /\s+/g,
+                " "
+            )
+            .trim();
+
+
+    if (
+        value.length <= 160
+    ) {
+
+        return value;
+
+    }
+
+
+    return (
+        value
+            .slice(
+                0,
+                157
+            )
+            .replace(
+                /\s+\S*$/,
+                ""
+            )
+            .trim() +
+        "..."
+    );
+
+}
+
+
+/* =========================================================
+   STRUCTURED DATA — PRODUCT
+   ========================================================= */
+
+function injectProductStructuredData(
+    product,
+    canonicalUrl,
+    images
+) {
+
+    const productName =
+        String(
+            product.name ||
+            "Voltica Product"
+        ).trim();
+
+
+    const description =
+        String(
+            product.shortDescription ||
+            product.description ||
+            product.fullDescription ||
+            "Premium technology from Voltica Store."
+        )
+            .replace(
+                /\s+/g,
+                " "
+            )
+            .trim();
+
+
+    const price =
+        Number(
+            product.price
+        );
+
+
+    const productCurrency =
+        String(
+            product.currency ||
+            "USD"
+        ).trim();
+
+
+    const structuredProduct = {
+
+        "@context":
+            "https://schema.org",
+
+        "@type":
+            "Product",
+
+        "name":
+            productName,
+
+        "description":
+            description,
+
+        "url":
+            canonicalUrl,
+
+        "brand": {
+
+            "@type":
+                "Brand",
+
+            "name":
+                "Voltica Store"
+
+        }
+
+    };
+
+
+    /* =====================================================
+       IMAGE
+       ===================================================== */
+
+    if (
+        images &&
+        images.length
+    ) {
+
+        structuredProduct.image =
+            images
+                .map(
+                    image =>
+                        toAbsoluteUrl(
+                            image
+                        )
+                )
+                .filter(Boolean);
+
+    }
+
+
+    /* =====================================================
+       CATEGORY
+       ===================================================== */
+
+    if (
+        product.category
+    ) {
+
+        structuredProduct.category =
+            String(
+                product.category
+            ).trim();
+
+    }
+
+
+    /* =====================================================
+       SKU
+       ===================================================== */
+
+    if (
+        product.sku
+    ) {
+
+        structuredProduct.sku =
+            String(
+                product.sku
+            ).trim();
+
+    }
+
+
+    /* =====================================================
+       PRODUCT OFFER
+       ===================================================== */
+
+    if (
+        Number.isFinite(price)
+    ) {
+
+        structuredProduct.offers = {
+
+            "@type":
+                "Offer",
+
+            "url":
+                canonicalUrl,
+
+            "priceCurrency":
+                productCurrency,
+
+            "price":
+                price.toFixed(2)
+
+        };
+
+
+        const availability =
+            getSchemaAvailability(
+                product
+            );
+
+
+        if (
+            availability
+        ) {
+
+            structuredProduct.offers.availability =
+                availability;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       REMOVE PREVIOUS SCHEMA
+       ===================================================== */
+
+    const existing =
+        document.head.querySelector(
+            'script[data-voltica-product-schema="true"]'
+        );
+
+
+    if (existing) {
+
+        existing.remove();
+
+    }
+
+
+    /* =====================================================
+       INSERT SCHEMA
+       ===================================================== */
+
+    const script =
+        document.createElement(
+            "script"
+        );
+
+
+    script.type =
+        "application/ld+json";
+
+
+    script.setAttribute(
+        "data-voltica-product-schema",
+        "true"
+    );
+
+
+    script.textContent =
+        JSON.stringify(
+            structuredProduct
+        );
+
+
+    document.head.appendChild(
+        script
+    );
+
+
+    console.log(
+        "VOLTICA: PRODUCT STRUCTURED DATA INJECTED",
+        structuredProduct
+    );
+
+}
+
+
+/* =========================================================
+   SCHEMA AVAILABILITY
+   ========================================================= */
+
+function getSchemaAvailability(
+    product
+) {
+
+    if (
+        product.active === false
+    ) {
+
+        return "https://schema.org/OutOfStock";
+
+    }
+
+
+    const raw =
+        String(
+            product.availability ||
+            ""
+        )
+            .toLowerCase()
+            .trim();
+
+
+    if (
+        !raw
+    ) {
+
+        return "https://schema.org/InStock";
+
+    }
+
+
+    if (
+        raw.includes("out") ||
+        raw.includes("unavailable") ||
+        raw.includes("sold")
+    ) {
+
+        return "https://schema.org/OutOfStock";
+
+    }
+
+
+    if (
+        raw.includes("preorder") ||
+        raw.includes("pre-order")
+    ) {
+
+        return "https://schema.org/PreOrder";
+
+    }
+
+
+    if (
+        raw.includes("backorder") ||
+        raw.includes("back-order")
+    ) {
+
+        return "https://schema.org/BackOrder";
+
+    }
+
+
+    return "https://schema.org/InStock";
+
+}
+
+
+/* =========================================================
+   GENERIC SEO
+   ========================================================= */
+
+function setGenericSEO(
+    title,
+    description
+) {
+
+    document.title =
+        title;
+
+
+    setMeta(
+        "description",
+        shortenMetaDescription(
+            description
+        )
+    );
+
+
+    setMeta(
+        "robots",
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    );
+
+
+    setMeta(
+        "author",
+        "Voltica Store"
+    );
+
+
+    setMeta(
+        "application-name",
+        "Voltica Store"
+    );
+
+
+    setCanonical(
+        window.location.href
+    );
+
+
+    setMeta(
+        "og:type",
+        "website",
+        true
+    );
+
+
+    setMeta(
+        "og:title",
+        title,
+        true
+    );
+
+
+    setMeta(
+        "og:description",
+        shortenMetaDescription(
+            description
+        ),
+        true
+    );
+
+
+    setMeta(
+        "og:url",
+        window.location.href,
+        true
+    );
+
+
+    setMeta(
+        "og:site_name",
+        "Voltica Store",
+        true
+    );
+
+
+    setMeta(
+        "og:locale",
+        "en_US",
+        true
+    );
+
+
+    setMeta(
+        "twitter:card",
+        "summary",
+        true
+    );
+
+
+    setMeta(
+        "twitter:title",
+        title,
+        true
+    );
+
+
+    setMeta(
+        "twitter:description",
+        shortenMetaDescription(
+            description
+        ),
+        true
     );
 
 }
@@ -1761,6 +2703,10 @@ function initializeGallery(
 
             image.loading =
                 "lazy";
+
+
+            image.decoding =
+                "async";
 
 
             image.onerror =

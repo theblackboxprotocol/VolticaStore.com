@@ -10,9 +10,18 @@
     content="width=device-width, initial-scale=1.0"
 >
 
+<!-- =====================================================
+     SEO — CORE
+     ===================================================== -->
+
 <meta
     name="description"
-    content="Voltica Store — The future of everyday."
+    content="Shop premium technology at Voltica Store. Discover precision audio, headphones, earbuds, gaming gear, creator gear, smart home products and lifestyle tech."
+>
+
+<meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
 >
 
 <meta
@@ -20,7 +29,89 @@
     content="#030303"
 >
 
-<title>Voltica — The Future of Everyday</title>
+<meta
+    name="author"
+    content="Voltica Store"
+>
+
+<meta
+    name="application-name"
+    content="Voltica Store"
+>
+
+
+<!-- =====================================================
+     CANONICAL
+     ===================================================== -->
+
+<link
+    rel="canonical"
+    href="https://volticastore.com/store.html"
+>
+
+
+<!-- =====================================================
+     OPEN GRAPH
+     ===================================================== -->
+
+<meta
+    property="og:type"
+    content="website"
+>
+
+<meta
+    property="og:title"
+    content="Shop Premium Technology | Voltica Store"
+>
+
+<meta
+    property="og:description"
+    content="Explore premium audio, gaming gear, creator gear, smart home products and lifestyle technology at Voltica Store."
+>
+
+<meta
+    property="og:url"
+    content="https://volticastore.com/store.html"
+>
+
+<meta
+    property="og:site_name"
+    content="Voltica Store"
+>
+
+<meta
+    property="og:locale"
+    content="en_US"
+>
+
+
+<!-- =====================================================
+     TWITTER / X
+     ===================================================== -->
+
+<meta
+    name="twitter:card"
+    content="summary_large_image"
+>
+
+<meta
+    name="twitter:title"
+    content="Shop Premium Technology | Voltica Store"
+>
+
+<meta
+    name="twitter:description"
+    content="Explore premium audio, gaming gear, creator gear, smart home products and lifestyle technology at Voltica Store."
+>
+
+
+<!-- =====================================================
+     TITLE
+     ===================================================== -->
+
+<title>
+    Shop Premium Technology | Voltica Store
+</title>
 
 
 <!-- =====================================================
@@ -59,10 +150,44 @@
 </script>
 
 
+<!-- =====================================================
+     STORE STYLES
+     ===================================================== -->
+
 <link
     rel="stylesheet"
     href="store.css"
 >
+
+
+<!-- =====================================================
+     STRUCTURED DATA — WEBSITE
+     ===================================================== -->
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Voltica Store",
+    "url": "https://volticastore.com/",
+    "description": "Premium technology, precision audio, gaming gear, creator gear, smart home products and lifestyle tech."
+}
+</script>
+
+
+<!-- =====================================================
+     STRUCTURED DATA — STORE PAGE
+     ===================================================== -->
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Voltica Store",
+    "url": "https://volticastore.com/store.html",
+    "description": "Shop premium technology, audio, gaming gear, creator gear, smart home products and lifestyle technology at Voltica Store."
+}
+</script>
 
 </head>
 
@@ -111,7 +236,7 @@
     <a
         href="index.html"
         class="logo-acrylic"
-        aria-label="Voltica"
+        aria-label="Voltica Store Home"
     >
 
         <span class="logo-v">
@@ -127,7 +252,10 @@
 
     <!-- NAVIGATION -->
 
-    <nav class="store-nav">
+    <nav
+        class="store-nav"
+        aria-label="Main navigation"
+    >
 
         <a href="index.html">
             HOME
@@ -206,7 +334,10 @@
          HERO
          ================================================= -->
 
-    <section class="store-hero">
+    <section
+        class="store-hero"
+        aria-labelledby="store-title"
+    >
 
 
         <div
@@ -219,7 +350,10 @@
         </div>
 
 
-        <h1 class="future-title">
+        <h1
+            class="future-title"
+            id="store-title"
+        >
 
             <span>
                 THE FUTURE
@@ -232,7 +366,10 @@
         </h1>
 
 
-        <div class="opening-acrylic">
+        <div
+            class="opening-acrylic"
+            aria-label="Voltica collection opening September 1"
+        >
 
             <span
                 class="opening-pulse"
@@ -259,8 +396,16 @@
 
     <section
         class="products-section"
-        aria-label="Voltica products"
+        aria-labelledby="products-title"
     >
+
+        <h2
+            id="products-title"
+            style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"
+        >
+            Voltica Store Products
+        </h2>
+
 
         <div
             id="productGrid"
@@ -277,6 +422,7 @@
     <section
         id="contact"
         class="contact-section"
+        aria-labelledby="contact-title"
     >
 
         <div class="contact-acrylic">
@@ -295,7 +441,7 @@
                 </span>
 
 
-                <h2>
+                <h2 id="contact-title">
                     CONTACT US
                 </h2>
 
@@ -308,13 +454,14 @@
                 <a
                     href="mailto:contact@volticastore.com"
                     class="contact-button"
+                    aria-label="Contact Voltica Store by email"
                 >
 
                     <span>
                         CONTACT US
                     </span>
 
-                    <strong>
+                    <strong aria-hidden="true">
                         →
                     </strong>
 
@@ -371,7 +518,7 @@
             type="button"
             class="cart-close"
             id="cartClose"
-            aria-label="Close cart"
+            aria-label="Close shopping cart"
         >
             CLOSE
         </button>

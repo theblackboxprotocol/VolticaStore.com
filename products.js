@@ -830,6 +830,70 @@ window.volticaProducts = [
         "active": true
     },
 
+       /* =========================================================
+       Product name : GameSir G8 Galileo Type-C Wired Mobile Gaming Controller
+       ========================================================= */
+
+{
+        "id": "gamesir-g8-galileo-type-c-wired-mobile-gaming-controller",
+        "sku": "VLT-GMR-G8-001",
+        "name": "GameSir G8 Galileo Type-C Wired Mobile Gaming Controller",
+        "category": "Gaming Gear",
+        "badge": "BEST SELLER",
+        "price": 84.99,
+        "referencePrice": 99.99,
+        "cost": 59.99,
+        "shipping": null,
+        "shortDescription": "Turn your smartphone into the ultimate portable console with the GameSir G8 Galileo Type-C Wired Mobile Gaming Controller. Designed for iPhone 15 series and Android devices, this pro-grade controller features a moveable Type-C port, magnetic detachable faceplates, customizable back buttons, and ultra-low latency pass-through charging. Available now at Voltica Store!",
+        "description": "Unlock console-quality gaming anywhere you go with the GameSir G8 Galileo. Engineered for maximum precision and universal compatibility, this wired mobile controller delivers a seamless, lag-free gaming experience for mobile hits, cloud streaming, and remote play.\nâ€‹Pro-Level Customization & Precision\nâ€‹Make the controller truly yours with interchangeable magnetic detachable faceplates and customizable thumbsticks. Map commands on-the-fly using the rear back buttons without needing any extra software, giving you a competitive edge in fast-paced racing, action, and FPS games.\nâ€‹Universal Fit & Moveable Type-C Port\nâ€‹The innovative moveable Type-C port ensures smooth plugging and unplugging while protecting your phone's charging port from damage. Featuring an expanded back space, it safely accommodates phone camera depths up to 5mm and fits a wide range of smartphone sizes securely.\nâ€‹Zero Latency & Pass-Through Charging\nâ€‹Say goodbye to Bluetooth lag. The direct Type-C wired connection delivers ultra-low latency response times. Plus, with pass-through charging, you can keep your phone powered up while you play for hours on end.",
+        "features": [
+            "Universal Mobile Compatibility: Supports iPhone 15 series and most Android smartphones.",
+            "Moveable Type-C Port: Flexible plug design for effortless alignment and device safety.",
+            "On-The-Fly Mapping: Program back buttons instantly without requiring third-party software.",
+            "Interchangeable Magnetic Faceplates: Easily swap plates and thumbsticks for a personalized look and feel.",
+            "Ultra-Low Latency Wired Connection: Direct connection ensures zero input lag during intense gameplay.",
+            "Pass-Through Charging & Audio: Charge your device and plug in headphones via the 3.5mm audio jack while gaming.",
+            "Cloud Gaming & Remote Play Ready: Fully compatible with Xbox Game Pass, Steam Link, Moonlight, and PS Remote Play."
+        ],
+        "specifications": {
+            "Brand": "GameSir",
+            "Model": "G8 Galileo",
+            "Connection Type": "Wired Type-C",
+            "Compatibility": "iPhone 15 Series & Android Phones",
+            "Audio Jack": "3.5mm Audio Port",
+            "Software Support": "GameSir App for advanced remapping and customizations",
+            "Inside the Box": "",
+            "1 x GameSir G8 Galileo Mobile Controller": "",
+            "Interchangeable Thumbsticks & Accessories": "",
+            "User Manual & Documentation": ""
+        },
+        "images": [
+            "assets/images/pad1.jpg",
+            "assets/images/pad2.jpg",
+            "assets/images/pad3.jpg",
+            "assets/images/pad4.jpg",
+            "assets/images/pad5.jpg",
+            "assets/images/pad6.jpg",
+            "assets/images/pad7.jpg",
+            "assets/images/pad8.jpg",
+            "assets/images/pad9.jpg",
+            "assets/images/pad10.jpg",
+            "assets/images/pad11.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Level Up Your Mobile Gameplay Today!",
+            "lines": [
+                "Level Up Your Mobile Gameplay Today!",
+                "Ready to experience true handheld console performance on your phone? Order your GameSir G8 Galileo now at VolticaStore.com!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/6oUdRa6y33VZ9qgaWK2Ji0v",
+        "supplierLink": "https://www.alibaba.com/x/B2O6hN?ck=pdp",
+        "active": true
+},
+
    /* =========================================================
        Product name : Mountop UVC Sterilization Smart Water Bottle - 316 Stainless Steel Insulated Thermos with Temperature Display | Voltica Store
        ========================================================= */

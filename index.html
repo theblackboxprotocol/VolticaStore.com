@@ -106,6 +106,11 @@
         content="en_US"
     >
 
+    <meta
+        property="og:image"
+        content="https://volticastore.com/assets/images/og-image.jpg"
+    >
+
 
     <!-- =====================================================
          TWITTER / X
@@ -124,6 +129,11 @@
     <meta
         name="twitter:description"
         content="Premium technology, precision audio, gaming gear, creator gear, smart home products and lifestyle tech."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://volticastore.com/assets/images/og-image.jpg"
     >
 
 
@@ -173,7 +183,14 @@
         "@type": "Organization",
         "name": "Voltica Store",
         "url": "https://volticastore.com/",
-        "description": "Voltica Store is a premium technology store offering precision audio, gaming gear, creator gear, smart home products and lifestyle technology."
+        "logo": "https://volticastore.com/logo.png",
+        "description": "Voltica Store is a premium technology store offering precision audio, gaming gear, creator gear, smart home products and lifestyle technology.",
+        "sameAs": [],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "email": "contact@volticastore.com"
+        }
     }
     </script>
 
@@ -188,7 +205,12 @@
         "@type": "WebSite",
         "name": "Voltica Store",
         "url": "https://volticastore.com/",
-        "description": "Premium technology, precision audio, gaming gear, creator gear, smart home products and lifestyle tech."
+        "description": "Premium technology, precision audio, gaming gear, creator gear, smart home products and lifestyle tech.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://volticastore.com/store.html?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
     }
     </script>
 
@@ -1694,9 +1716,13 @@
         aria-label="Voltica Store Home"
     >
 
-        <span class="logo-v">
-            V
-        </span>
+        <img
+            src="logo.png"
+            alt="Voltica Store Logo"
+            class="logo-img"
+            width="32"
+            height="32"
+        >
 
         <span class="logo-text">
             VOLTICA
@@ -1705,8 +1731,23 @@
     </a>
 
 
+    <button
+        type="button"
+        class="mobile-menu-toggle"
+        id="mobileMenuToggle"
+        aria-label="Toggle mobile menu"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+    >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+
+
     <nav
         class="store-nav"
+        id="mobileMenu"
         aria-label="Main navigation"
     >
 
@@ -1733,7 +1774,7 @@
         class="cart-acrylic"
         id="cartButton"
         aria-label="Open shopping cart"
-        aria-controls="indexCartDrawer"
+        aria-controls="cartDrawer"
         aria-expanded="false"
     >
 
@@ -1773,6 +1814,82 @@
     </button>
 
 </header>
+
+
+<!-- =====================================================
+     CART DRAWER
+     ===================================================== -->
+
+<div
+    class="cart-drawer-overlay"
+    id="cartDrawerOverlay"
+    aria-hidden="true"
+></div>
+
+<aside
+    class="cart-drawer"
+    id="cartDrawer"
+    role="dialog"
+    aria-label="Shopping cart"
+    aria-hidden="true"
+>
+
+    <div class="cart-drawer-header">
+
+        <h2 class="cart-drawer-title">
+            YOUR CART
+        </h2>
+
+        <button
+            type="button"
+            class="cart-drawer-close"
+            id="cartDrawerClose"
+            aria-label="Close cart"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div class="cart-drawer-content" id="cartDrawerContent">
+
+        <p class="cart-empty-message">
+            Your cart is empty
+        </p>
+
+    </div>
+
+
+    <div class="cart-drawer-footer" id="cartDrawerFooter">
+
+        <div class="cart-total">
+
+            <span class="cart-total-label">
+                TOTAL
+            </span>
+
+            <span
+                class="cart-total-amount"
+                id="cartTotalAmount"
+            >
+                $0.00
+            </span>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="cart-checkout-button"
+            id="cartCheckoutButton"
+        >
+            CHECKOUT
+        </button>
+
+    </div>
+
+</aside>
 
 
 <!-- =====================================================

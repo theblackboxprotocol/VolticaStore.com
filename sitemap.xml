@@ -1,97 +1,266 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-    <!-- MAIN PAGES -->
-
+    <!-- PAGE D'ACCUEIL -->
     <url>
         <loc>https://volticastore.com/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
     </url>
 
+    <!-- PAGE BOUTIQUE -->
     <url>
         <loc>https://volticastore.com/store.html</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
     </url>
 
-
-    <!-- PRODUCTS -->
-
+    <!-- PRODUITS AUDIO -->
     <url>
         <loc>https://volticastore.com/product-view.html?id=anker-soundcore-space-q45-wireless-headphones-selected-by-voltica-store</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/Q45.1.jpg</image:loc>
+            <image:title>Anker Soundcore Space Q45 Wireless Headphones</image:title>
+            <image:caption>Premium over-ear wireless headphones with hybrid ANC</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=kiwi-ears-orchestra-ii-10ba-professional-in-ear-monitors-voltica-store-canada</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/orchestra1.jpg</image:loc>
+            <image:title>Kiwi Ears Orchestra II Professional IEM</image:title>
+            <image:caption>10 balanced armature drivers professional in-ear monitors</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=kiwi-ears-ardor-audiophile-bluetooth-dual-driver-headphones-with-anc</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/orchestra1.jpg</image:loc>
+            <image:title>Kiwi Ears Ardor Bluetooth Headphones</image:title>
+            <image:caption>Audiophile dual-driver Bluetooth headphones with ANC</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=kiwi-ears-aventus-bluetooth-coaxial-driver-dj-and-gaming-headphones</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/orchestra1.jpg</image:loc>
+            <image:title>Kiwi Ears Aventus DJ &amp; Gaming Headphones</image:title>
+            <image:caption>Coaxial driver Bluetooth headphones for DJ and gaming</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=voltica-store-selected-fa-5370-planar-magnetic-hi-fi-audiophile-headphones-brazilian-rosewood-106mm-driver</loc>
-    </url>
-
-    <url>
-        <loc>https://volticastore.com/product-view.html?id=c22-smartphone-single-axis-stabilizer-with-intelligent-ai-face-tracking-and-handheld-design</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/Q45.1.jpg</image:loc>
+            <image:title>FA-5370 Planar Magnetic Headphones</image:title>
+            <image:caption>Hi-fi audiophile headphones with Brazilian rosewood and 106mm driver</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=new-wireless-bluetooth-earbuds-neckband-design-noise-canceling-perfect-for-workouts</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/orchestra1.jpg</image:loc>
+            <image:title>Wireless Neckband Earbuds</image:title>
+            <image:caption>Noise canceling neckband earbuds for workouts</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=voltica-store-selected-tws-in-ear-noise-canceling-earbuds-with-mic</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/orchestra1.jpg</image:loc>
+            <image:title>TWS Noise Canceling Earbuds</image:title>
+            <image:caption>True wireless in-ear earbuds with microphone</image:caption>
+        </image:image>
     </url>
 
+    <!-- PRODUITS VIDÉO / CRÉATEUR -->
     <url>
-        <loc>https://volticastore.com/product-view.html?id=levitating-wireless-bluetooth-speaker</loc>
-    </url>
-
-    <url>
-        <loc>https://volticastore.com/product-view.html?id=ferrofluid-bluetooth-speaker-10w-magnetic-fluid-audio-visualizer-voltica-store</loc>
-    </url>
-
-    <url>
-        <loc>https://volticastore.com/product-view.html?id=lumi-robot-smart-ai-car-companion-dashboard-display-voltica-store</loc>
+        <loc>https://volticastore.com/product-view.html?id=c22-smartphone-single-axis-stabilizer-with-intelligent-ai-face-tracking-and-handheld-design</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>C22 Smartphone Stabilizer</image:title>
+            <image:caption>Single-axis stabilizer with AI face tracking</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=smart-gesture-control-auto-tracking-phone-gimbal-tripod-mount-voltica-store</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>Smart Gesture Control Gimbal</image:title>
+            <image:caption>Auto-tracking phone gimbal with tripod mount</image:caption>
+        </image:image>
+    </url>
+
+    <!-- PRODUITS SMART HOME / GADGETS -->
+    <url>
+        <loc>https://volticastore.com/product-view.html?id=levitating-wireless-bluetooth-speaker</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>Levitating Bluetooth Speaker</image:title>
+            <image:caption>Wireless speaker with magnetic levitation</image:caption>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://volticastore.com/product-view.html?id=ferrofluid-bluetooth-speaker-10w-magnetic-fluid-audio-visualizer-voltica-store</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>Ferrofluid Bluetooth Speaker</image:title>
+            <image:caption>10W speaker with magnetic fluid audio visualizer</image:caption>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://volticastore.com/product-view.html?id=lumi-robot-smart-ai-car-companion-dashboard-display-voltica-store</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>Lumi Robot Car Companion</image:title>
+            <image:caption>Smart AI robot with dashboard display</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=hexagonal-smart-rgb-sound-activated-quantum-light-panels</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>Hexagonal RGB Light Panels</image:title>
+            <image:caption>Sound-activated smart quantum light panels</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=rgb-colorful-branches-ambience-light</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>RGB Branches Ambience Light</image:title>
+            <image:caption>Colorful branches ambient lighting</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=voltica-store-black-star-projector-ambience-night-lamp</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>Star Projector Night Lamp</image:title>
+            <image:caption>Black star projector ambience lamp</image:caption>
+        </image:image>
     </url>
 
+    <!-- PRODUITS GAMING -->
     <url>
         <loc>https://volticastore.com/product-view.html?id=gamesir-g8-galileo-type-c-wired-mobile-gaming-controller</loc>
-    </url>
-
-    <url>
-        <loc>https://volticastore.com/product-view.html?id=mountop-uvc-sterilization-smart-water-bottle-316-stainless-steel-insulated-thermos-with-temperature-display-voltica-store</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>GameSir G8 Galileo Controller</image:title>
+            <image:caption>Type-C wired mobile gaming controller</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=xxl-world-map-gaming-mouse-pad-900x400x4mm-large-desk-mat-voltica-store</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>XXL World Map Gaming Mouse Pad</image:title>
+            <image:caption>900x400x4mm large desk mat</image:caption>
+        </image:image>
+    </url>
+
+    <!-- PRODUITS TECH INNOVANTE -->
+    <url>
+        <loc>https://volticastore.com/product-view.html?id=mountop-uvc-sterilization-smart-water-bottle-316-stainless-steel-insulated-thermos-with-temperature-display-voltica-store</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>Mountop Smart Water Bottle</image:title>
+            <image:caption>UVC sterilization bottle with temperature display</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=xreal-air-1s-ai-augmented-reality-smart-glasses-selected-by-voltica-store</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>XREAL Air 1S Smart Glasses</image:title>
+            <image:caption>AI augmented reality smart glasses</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/product-view.html?id=smart-android-15-bathroom-mirror-touch-screen-ai-health-mirror-voltica-store</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
+            <image:title>Smart Android Bathroom Mirror</image:title>
+            <image:caption>Touch screen AI health mirror</image:caption>
+        </image:image>
     </url>
 
 </urlset>

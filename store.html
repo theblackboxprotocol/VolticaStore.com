@@ -84,6 +84,11 @@
     content="en_US"
 >
 
+<meta
+    property="og:image"
+    content="https://volticastore.com/assets/images/og-image.jpg"
+>
+
 
 <!-- =====================================================
      TWITTER / X
@@ -102,6 +107,11 @@
 <meta
     name="twitter:description"
     content="Explore premium audio, gaming gear, creator gear, smart home products and lifestyle technology at Voltica Store."
+>
+
+<meta
+    name="twitter:image"
+    content="https://volticastore.com/assets/images/og-image.jpg"
 >
 
 
@@ -151,6 +161,27 @@
 
 
 <!-- =====================================================
+     PREMIUM TYPOGRAPHY
+     ===================================================== -->
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+
+<!-- =====================================================
      STORE STYLES
      ===================================================== -->
 
@@ -161,16 +192,22 @@
 
 
 <!-- =====================================================
-     STRUCTURED DATA — WEBSITE
+     STRUCTURED DATA — ORGANIZATION
      ===================================================== -->
 
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
-    "@type": "WebSite",
+    "@type": "Organization",
     "name": "Voltica Store",
     "url": "https://volticastore.com/",
-    "description": "Premium technology, precision audio, gaming gear, creator gear, smart home products and lifestyle tech."
+    "logo": "https://volticastore.com/logo.png",
+    "description": "Voltica Store is a premium technology store offering precision audio, gaming gear, creator gear, smart home products and lifestyle technology.",
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "contact@volticastore.com"
+    }
 }
 </script>
 
@@ -188,6 +225,339 @@
     "description": "Shop premium technology, audio, gaming gear, creator gear, smart home products and lifestyle technology at Voltica Store."
 }
 </script>
+
+
+<style>
+
+    /* =====================================================
+       HEADER — GRAPHITE TINTED GLASS SYSTEM
+       ===================================================== */
+
+    .store-header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1000 !important;
+        
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        
+        padding: 0 32px !important;
+        height: 72px !important;
+
+        background: rgba(24, 26, 30, 0.72) !important;
+        backdrop-filter: blur(28px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+        
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+        
+        box-shadow: 
+            0 4px 30px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+            
+        transition: all 0.4s ease !important;
+    }
+
+    .store-header::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 1px !important;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent) !important;
+        pointer-events: none !important;
+    }
+
+    .store-header .logo-acrylic {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        text-decoration: none !important;
+        z-index: 1001 !important;
+    }
+
+    .store-header .logo-img {
+        width: 32px !important;
+        height: 32px !important;
+        object-fit: contain !important;
+    }
+
+    .store-header .logo-text {
+        font-family: "Manrope", sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.15em !important;
+        color: #fff !important;
+    }
+
+    /* Desktop Navigation */
+    .store-header .store-nav {
+        display: flex !important;
+        align-items: center !important;
+        gap: 32px !important;
+    }
+
+    .store-header .store-nav a {
+        text-decoration: none !important;
+        color: rgba(255, 255, 255, 0.65) !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.12em !important;
+        transition: color 0.3s ease !important;
+        position: relative !important;
+        padding: 4px 0 !important;
+    }
+
+    .store-header .store-nav a:hover,
+    .store-header .store-nav a.nav-active {
+        color: #fff !important;
+    }
+
+    .store-header .store-nav a.nav-active::after {
+        content: "" !important;
+        position: absolute !important;
+        bottom: -2px !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 1px !important;
+        background: #fff !important;
+        opacity: 0.6 !important;
+    }
+
+    /* Mobile Menu Toggle */
+    .store-header .mobile-menu-toggle {
+        display: none !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        width: 32px !important;
+        height: 32px !important;
+        background: transparent !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 4px !important;
+        z-index: 1001 !important;
+    }
+
+    .store-header .hamburger-line {
+        display: block !important;
+        width: 100% !important;
+        height: 1.5px !important;
+        background: #fff !important;
+        border-radius: 2px !important;
+        transition: all 0.3s ease !important;
+        transform-origin: center !important;
+    }
+
+    .store-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+        transform: translateY(6.5px) rotate(45deg) !important;
+    }
+
+    .store-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+        opacity: 0 !important;
+    }
+
+    .store-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg) !important;
+    }
+
+    /* Mobile Nav Link with Pulsar Dot */
+    .store-header .store-nav .mobile-nav-link {
+        display: flex !important;
+        align-items: center !important;
+        gap: 14px !important;
+        text-decoration: none !important;
+        color: rgba(255, 255, 255, 0.75) !important;
+        font-family: "Manrope", sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.2em !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .store-header .store-nav .mobile-nav-link:hover {
+        color: #fff !important;
+        transform: translateX(4px) !important;
+    }
+
+    .store-header .store-nav .mobile-nav-link .mobile-pulsar-dot {
+        width: 6px !important;
+        height: 6px !important;
+        border-radius: 50% !important;
+        background: #fff !important;
+        box-shadow: 0 0 10px #fff, 0 0 20px rgba(255, 255, 255, 0.5) !important;
+        animation: mobilePulse 2s ease-in-out infinite !important;
+        flex-shrink: 0 !important;
+    }
+
+    @keyframes mobilePulse {
+        0%, 100% {
+            transform: scale(0.85) !important;
+            opacity: 0.6 !important;
+            box-shadow: 0 0 8px #fff, 0 0 16px rgba(255, 255, 255, 0.3) !important;
+        }
+        50% {
+            transform: scale(1.2) !important;
+            opacity: 1 !important;
+            box-shadow: 0 0 14px #fff, 0 0 28px rgba(255, 255, 255, 0.7) !important;
+        }
+    }
+
+    /* Cart Button */
+    .store-header .cart-acrylic {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        
+        position: relative !important;
+        width: 44px !important;
+        height: 44px !important;
+        
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 12px !important;
+        
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        z-index: 1001 !important;
+    }
+
+    .store-header .cart-acrylic:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .store-header .cart-acrylic .cart-icon {
+        width: 20px !important;
+        height: 20px !important;
+        stroke: #fff !important;
+        fill: none !important;
+        stroke-width: 2 !important;
+        stroke-linecap: round !important;
+        stroke-linejoin: round !important;
+    }
+
+    .store-header .cart-acrylic .cart-count {
+        position: absolute !important;
+        top: -6px !important;
+        right: -6px !important;
+        
+        min-width: 18px !important;
+        height: 18px !important;
+        padding: 0 5px !important;
+        
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        
+        background: #fff !important;
+        color: #050505 !important;
+        
+        font-family: "Manrope", sans-serif !important;
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        
+        border-radius: 999px !important;
+        
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* Cart Close Button (X) */
+    .cart-close-x {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        
+        width: 40px !important;
+        height: 40px !important;
+        
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 10px !important;
+        
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .cart-close-x:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+        transform: rotate(90deg) !important;
+    }
+
+    .cart-close-x svg {
+        width: 16px !important;
+        height: 16px !important;
+        stroke: #fff !important;
+        stroke-width: 2 !important;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width:850px) {
+
+        .store-header {
+            padding: 0 24px !important;
+            height: 68px !important;
+        }
+
+        .store-header .mobile-menu-toggle {
+            display: flex !important;
+        }
+
+        .store-header .store-nav {
+            position: fixed !important;
+            top: 0 !important;
+            right: -100% !important;
+            width: 75% !important;
+            max-width: 320px !important;
+            height: 100vh !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: flex-start !important;
+            padding: 0 48px !important;
+            gap: 32px !important;
+            
+            background: rgba(12, 14, 18, 0.96) !important;
+            backdrop-filter: blur(35px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
+            border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7) !important;
+            
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            z-index: 999 !important;
+        }
+
+        .store-header .store-nav.mobile-open {
+            right: 0 !important;
+        }
+
+    }
+
+    @media (max-width:560px) {
+
+        .store-header {
+            padding: 0 16px !important;
+            height: 64px !important;
+        }
+
+        .store-header .store-nav {
+            width: 85% !important;
+            padding: 0 32px !important;
+        }
+
+    }
+
+</style>
 
 </head>
 
@@ -230,53 +600,64 @@
 
 <header class="store-header">
 
-
-    <!-- LOGO -->
-
+    <!-- LOGO — LEFT -->
     <a
         href="index.html"
         class="logo-acrylic"
         aria-label="Voltica Store Home"
     >
-
-        <span class="logo-v">
-            V
-        </span>
-
+        <img
+            src="logo.png"
+            alt="Voltica Store Logo"
+            class="logo-img"
+            width="32"
+            height="32"
+        >
         <span class="logo-text">
             VOLTICA
         </span>
-
     </a>
 
 
-    <!-- NAVIGATION -->
+    <!-- HAMBURGER — CENTER (mobile only) -->
+    <button
+        type="button"
+        class="mobile-menu-toggle"
+        id="mobileMenuToggle"
+        aria-label="Toggle mobile menu"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+    >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
 
+
+    <!-- NAVIGATION -->
     <nav
         class="store-nav"
+        id="mobileMenu"
         aria-label="Main navigation"
     >
-
-        <a href="index.html">
+        <a href="index.html" class="mobile-nav-link">
+            <span class="mobile-pulsar-dot"></span>
             HOME
         </a>
 
-        <a
-            href="store.html"
-            class="nav-active"
-        >
+        <a href="store.html" class="mobile-nav-link nav-active">
+            <span class="mobile-pulsar-dot"></span>
             STORE
         </a>
 
-        <a href="#contact">
+        <a href="#contact" class="mobile-nav-link">
+            <span class="mobile-pulsar-dot"></span>
             CONTACT
         </a>
-
     </nav>
 
 
-    <!-- SHOPPING CART -->
-
+    <!-- SHOPPING CART — RIGHT -->
     <button
         type="button"
         class="cart-acrylic"
@@ -284,32 +665,16 @@
         aria-label="Open shopping cart"
         title="Shopping Cart"
     >
-
         <svg
             class="cart-icon"
             viewBox="0 0 24 24"
             aria-hidden="true"
             focusable="false"
         >
-
-            <path
-                d="M3 4H5L7.2 15.2C7.4 16.2 8.3 17 9.3 17H18.2C19.2 17 20.1 16.3 20.4 15.3L22 9H6"
-            />
-
-            <circle
-                cx="9"
-                cy="20"
-                r="1.4"
-            />
-
-            <circle
-                cx="18"
-                cy="20"
-                r="1.4"
-            />
-
+            <path d="M3 4H5L7.2 15.2C7.4 16.2 8.3 17 9.3 17H18.2C19.2 17 20.1 16.3 20.4 15.3L22 9H6"/>
+            <circle cx="9" cy="20" r="1.4"/>
+            <circle cx="18" cy="20" r="1.4"/>
         </svg>
-
 
         <span
             class="cart-count"
@@ -317,7 +682,6 @@
         >
             0
         </span>
-
     </button>
 
 </header>
@@ -339,53 +703,40 @@
         aria-labelledby="store-title"
     >
 
-
         <div
             class="hero-pulsar"
             aria-hidden="true"
         >
-
             <span></span>
-
         </div>
-
 
         <h1
             class="future-title"
             id="store-title"
         >
-
             <span>
                 THE FUTURE
             </span>
-
             <span class="future-second">
                 OF EVERYDAY
             </span>
-
         </h1>
-
 
         <div
             class="opening-acrylic"
             aria-label="Voltica collection opening September 1"
         >
-
             <span
                 class="opening-pulse"
                 aria-hidden="true"
             ></span>
-
             <span>
                 COLLECTION OPEN
             </span>
-
             <strong>
                 SEPT 1
             </strong>
-
         </div>
-
 
     </section>
 
@@ -405,7 +756,6 @@
         >
             Voltica Store Products
         </h2>
-
 
         <div
             id="productGrid"
@@ -427,12 +777,10 @@
 
         <div class="contact-acrylic">
 
-
             <div
                 class="contact-pulsar"
                 aria-hidden="true"
             ></div>
-
 
             <div class="contact-content">
 
@@ -440,35 +788,28 @@
                     VOLTICA SUPPORT
                 </span>
 
-
                 <h2 id="contact-title">
                     CONTACT US
                 </h2>
 
-
                 <p>
                     Need help with your order?
                 </p>
-
 
                 <a
                     href="mailto:contact@volticastore.com"
                     class="contact-button"
                     aria-label="Contact Voltica Store by email"
                 >
-
                     <span>
                         CONTACT US
                     </span>
-
                     <strong aria-hidden="true">
                         →
                     </strong>
-
                 </a>
 
             </div>
-
 
         </div>
 
@@ -502,63 +843,52 @@
     <div class="cart-header">
 
         <div>
-
             <span class="cart-small-title">
                 VOLTICA
             </span>
-
             <h2>
                 CART
             </h2>
-
         </div>
-
 
         <button
             type="button"
-            class="cart-close"
+            class="cart-close-x"
             id="cartClose"
             aria-label="Close shopping cart"
         >
-            CLOSE
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
         </button>
 
     </div>
-
 
     <div
         class="cart-items"
         id="cartItems"
     ></div>
 
-
     <div class="cart-footer">
 
         <div class="cart-total-row">
-
             <span>
                 TOTAL
             </span>
-
             <strong id="cartTotal">
                 $0.00
             </strong>
-
         </div>
-
 
         <button
             type="button"
             class="checkout-button"
             id="checkoutButton"
         >
-
             CHECKOUT
-
             <span>
                 →
             </span>
-
         </button>
 
     </div>
@@ -592,8 +922,32 @@
 
 
 <!-- =====================================================
-     DATABASE
+     SCRIPTS
      ===================================================== -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('mobile-open');
+            });
+            
+            const navLinks = mobileMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('mobile-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    });
+</script>
 
 <script src="products.js?v=7"></script>
 <script src="store.js?v=7"></script>

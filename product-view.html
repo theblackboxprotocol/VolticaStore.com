@@ -10,9 +10,21 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <!-- =====================================================
+         DYNAMIC SEO META TAGS
+         ===================================================== -->
+
+    <title id="dynamic-title">Voltica Store — Premium Technology</title>
+
     <meta
         name="description"
-        content="Voltica Store — Product"
+        id="dynamic-description"
+        content="Discover premium technology, precision audio, gaming gear, creator gear, smart home products and lifestyle tech at Voltica Store."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     >
 
     <meta
@@ -20,7 +32,169 @@
         content="#050505"
     >
 
-    <title>Voltica Store — Product</title>
+    <meta
+        name="author"
+        content="Voltica Store"
+    >
+
+    <!-- =====================================================
+         CANONICAL URL
+         ===================================================== -->
+
+    <link
+        rel="canonical"
+        id="dynamic-canonical"
+        href="https://volticastore.com/product-view.html"
+    >
+
+
+    <!-- =====================================================
+         OPEN GRAPH — FACEBOOK / LINKEDIN / WHATSAPP
+         ===================================================== -->
+
+    <meta
+        property="og:type"
+        content="product"
+    >
+
+    <meta
+        property="og:title"
+        id="og-title"
+        content="Voltica Store — Premium Technology"
+    >
+
+    <meta
+        property="og:description"
+        id="og-description"
+        content="Discover premium technology at Voltica Store."
+    >
+
+    <meta
+        property="og:image"
+        id="og-image"
+        content="https://volticastore.com/assets/images/og-image.jpg"
+    >
+
+    <meta
+        property="og:image:width"
+        content="1200"
+    >
+
+    <meta
+        property="og:image:height"
+        content="630"
+    >
+
+    <meta
+        property="og:url"
+        id="og-url"
+        content="https://volticastore.com/product-view.html"
+    >
+
+    <meta
+        property="og:site_name"
+        content="Voltica Store"
+    >
+
+    <meta
+        property="og:locale"
+        content="en_US"
+    >
+
+    <meta
+        property="product:price:amount"
+        id="og-price"
+        content="0.00"
+    >
+
+    <meta
+        property="product:price:currency"
+        content="USD"
+    >
+
+    <meta
+        property="product:availability"
+        id="og-availability"
+        content="in stock"
+    >
+
+
+    <!-- =====================================================
+         TWITTER / X CARDS
+         ===================================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        id="twitter-title"
+        content="Voltica Store — Premium Technology"
+    >
+
+    <meta
+        name="twitter:description"
+        id="twitter-description"
+        content="Discover premium technology at Voltica Store."
+    >
+
+    <meta
+        name="twitter:image"
+        id="twitter-image"
+        content="https://volticastore.com/assets/images/og-image.jpg"
+    >
+
+
+    <!-- =====================================================
+         SCHEMA.ORG — PRODUCT (JSON-LD)
+         ===================================================== -->
+
+    <script type="application/ld+json" id="product-schema">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Voltica Store Product",
+        "description": "Premium technology product selected by Voltica Store.",
+        "image": "https://volticastore.com/assets/images/og-image.jpg",
+        "brand": {
+            "@type": "Brand",
+            "name": "Voltica Store"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": "https://volticastore.com/product-view.html",
+            "priceCurrency": "USD",
+            "price": "0.00",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+                "@type": "Organization",
+                "name": "Voltica Store"
+            }
+        }
+    }
+    </script>
+
+
+    <!-- =====================================================
+         SCHEMA.ORG — ORGANIZATION
+         ===================================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Voltica Store",
+        "url": "https://volticastore.com/",
+        "logo": "https://volticastore.com/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "email": "contact@volticastore.com"
+        }
+    }
+    </script>
 
 
     <!-- =====================================================
@@ -59,10 +233,249 @@
     </script>
 
 
+    <!-- =====================================================
+         PREMIUM TYPOGRAPHY
+         ===================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
     <link
         rel="stylesheet"
         href="product-view.css"
     >
+
+
+    <style>
+
+        /* =====================================================
+           HEADER — GRAPHITE TINTED GLASS (cohérent avec les autres pages)
+           ===================================================== */
+
+        .product-header {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 1000 !important;
+            
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            
+            padding: 0 32px !important;
+            height: 72px !important;
+
+            background: rgba(24, 26, 30, 0.72) !important;
+            backdrop-filter: blur(28px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+            
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+            
+            box-shadow: 
+                0 4px 30px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+        }
+
+        .product-header::before {
+            content: "" !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            height: 1px !important;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent) !important;
+            pointer-events: none !important;
+        }
+
+        .product-header .voltica-logo {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            text-decoration: none !important;
+            z-index: 1001 !important;
+        }
+
+        .product-header .logo-img {
+            width: 32px !important;
+            height: 32px !important;
+            object-fit: contain !important;
+        }
+
+        .product-header .logo-name {
+            font-family: "Manrope", sans-serif !important;
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.15em !important;
+            color: #fff !important;
+        }
+
+        .product-header .product-navigation {
+            display: flex !important;
+            align-items: center !important;
+            gap: 32px !important;
+        }
+
+        .product-header .product-navigation a {
+            text-decoration: none !important;
+            color: rgba(255, 255, 255, 0.65) !important;
+            font-size: 11px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.12em !important;
+            transition: color 0.3s ease !important;
+            position: relative !important;
+            padding: 4px 0 !important;
+        }
+
+        .product-header .product-navigation a:hover {
+            color: #fff !important;
+        }
+
+        /* Mobile Menu */
+        .product-header .mobile-menu-toggle {
+            display: none !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            gap: 5px !important;
+            width: 32px !important;
+            height: 32px !important;
+            background: transparent !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 4px !important;
+            z-index: 1001 !important;
+        }
+
+        .product-header .hamburger-line {
+            display: block !important;
+            width: 100% !important;
+            height: 1.5px !important;
+            background: #fff !important;
+            border-radius: 2px !important;
+            transition: all 0.3s ease !important;
+            transform-origin: center !important;
+        }
+
+        .product-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg) !important;
+        }
+
+        .product-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+            opacity: 0 !important;
+        }
+
+        .product-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg) !important;
+        }
+
+        .product-header .product-navigation .mobile-nav-link {
+            display: flex !important;
+            align-items: center !important;
+            gap: 14px !important;
+            text-decoration: none !important;
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-family: "Manrope", sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.2em !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .product-header .product-navigation .mobile-nav-link:hover {
+            color: #fff !important;
+            transform: translateX(4px) !important;
+        }
+
+        .product-header .product-navigation .mobile-nav-link .mobile-pulsar-dot {
+            width: 6px !important;
+            height: 6px !important;
+            border-radius: 50% !important;
+            background: #fff !important;
+            box-shadow: 0 0 10px #fff, 0 0 20px rgba(255, 255, 255, 0.5) !important;
+            animation: mobilePulse 2s ease-in-out infinite !important;
+            flex-shrink: 0 !important;
+        }
+
+        @keyframes mobilePulse {
+            0%, 100% {
+                transform: scale(0.85) !important;
+                opacity: 0.6 !important;
+            }
+            50% {
+                transform: scale(1.2) !important;
+                opacity: 1 !important;
+            }
+        }
+
+        @media (max-width:850px) {
+
+            .product-header {
+                padding: 0 24px !important;
+                height: 68px !important;
+            }
+
+            .product-header .mobile-menu-toggle {
+                display: flex !important;
+            }
+
+            .product-header .product-navigation {
+                position: fixed !important;
+                top: 0 !important;
+                right: -100% !important;
+                width: 75% !important;
+                max-width: 320px !important;
+                height: 100vh !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: flex-start !important;
+                padding: 0 48px !important;
+                gap: 32px !important;
+                
+                background: rgba(12, 14, 18, 0.96) !important;
+                backdrop-filter: blur(35px) saturate(180%) !important;
+                -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
+                border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+                box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7) !important;
+                
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                z-index: 999 !important;
+            }
+
+            .product-header .product-navigation.mobile-open {
+                right: 0 !important;
+            }
+
+        }
+
+        @media (max-width:560px) {
+
+            .product-header {
+                padding: 0 16px !important;
+                height: 64px !important;
+            }
+
+            .product-header .product-navigation {
+                width: 85% !important;
+                padding: 0 32px !important;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -81,32 +494,53 @@
         class="voltica-logo"
         aria-label="Voltica Home"
     >
-
-        <span class="logo-mark">
-            V
-        </span>
+        <img
+            src="logo.png"
+            alt="Voltica Store Logo"
+            class="logo-img"
+            width="32"
+            height="32"
+        >
 
         <span class="logo-name">
             VOLTICA
         </span>
-
     </a>
 
 
-    <nav class="product-navigation">
+    <button
+        type="button"
+        class="mobile-menu-toggle"
+        id="mobileMenuToggle"
+        aria-label="Toggle mobile menu"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+    >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
 
-        <a href="index.html">
+
+    <nav
+        class="product-navigation"
+        id="mobileMenu"
+        aria-label="Main navigation"
+    >
+        <a href="index.html" class="mobile-nav-link">
+            <span class="mobile-pulsar-dot"></span>
             HOME
         </a>
 
-        <a href="store.html">
+        <a href="store.html" class="mobile-nav-link">
+            <span class="mobile-pulsar-dot"></span>
             STORE
         </a>
 
-        <a href="#contact">
+        <a href="#contact" class="mobile-nav-link">
+            <span class="mobile-pulsar-dot"></span>
             CONTACT
         </a>
-
     </nav>
 
 </header>
@@ -511,7 +945,7 @@
             </p>
 
             <a
-                href="mailto:support@volticastore.com"
+                href="mailto:contact@volticastore.com"
                 class="contact-button"
             >
                 CONTACT US →
@@ -583,6 +1017,30 @@
 
 <script src="product-view.js"></script>
 
+
+<script>
+    // Mobile Menu Logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('mobile-open');
+            });
+            
+            const navLinks = mobileMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('mobile-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    });
+</script>
 
 </body>
 

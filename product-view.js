@@ -940,9 +940,40 @@ function configureProductSEO(
         );
 
 
+        // NOUVEAU : Dimensions de l'image pour Open Graph
+        setMeta(
+            "og:image:width",
+            "1200",
+            true
+        );
+
+
+        setMeta(
+            "og:image:height",
+            "630",
+            true
+        );
+
+
+        // NOUVEAU : Alt text pour l'image Open Graph
+        setMeta(
+            "og:image:alt",
+            `${productName} - Premium technology from Voltica Store`,
+            true
+        );
+
+
         setMeta(
             "twitter:image",
             absoluteImageUrl,
+            true
+        );
+
+
+        // NOUVEAU : Alt text pour Twitter
+        setMeta(
+            "twitter:image:alt",
+            `${productName} - Premium technology from Voltica Store`,
             true
         );
 
@@ -1328,6 +1359,14 @@ function injectProductStructuredData(
                 product.sku
             ).trim();
 
+    } else if (
+        product.id
+    ) {
+        // NOUVEAU : Utiliser l'ID comme SKU si pas de SKU dédié
+        structuredProduct.sku =
+            String(
+                product.id
+            ).trim();
     }
 
 
@@ -1370,6 +1409,26 @@ function injectProductStructuredData(
                 availability;
 
         }
+
+    }
+
+
+    /* =====================================================
+       NOUVEAU : AGGREGATE RATING (si disponible)
+       ===================================================== */
+
+    if (
+        product.rating &&
+        Number.isFinite(product.rating)
+    ) {
+
+        structuredProduct.aggregateRating = {
+            "@type": "AggregateRating",
+            "ratingValue": product.rating,
+            "reviewCount": product.reviewCount || 1,
+            "bestRating": "5",
+            "worstRating": "1"
+        };
 
     }
 

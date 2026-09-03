@@ -359,6 +359,48 @@
         transform: translateY(-6.5px) rotate(-45deg);
     }
 
+    /* Mobile Nav Link with Pulsar Dot */
+    .mobile-nav-link {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.75);
+        font-family: "Manrope", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-nav-link:hover {
+        color: #fff;
+        transform: translateX(4px);
+    }
+
+    .mobile-pulsar-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 10px #fff, 0 0 20px rgba(255, 255, 255, 0.5);
+        animation: mobilePulse 2s ease-in-out infinite;
+        flex-shrink: 0;
+    }
+
+    @keyframes mobilePulse {
+        0%, 100% {
+            transform: scale(0.85);
+            opacity: 0.6;
+            box-shadow: 0 0 8px #fff, 0 0 16px rgba(255, 255, 255, 0.3);
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 1;
+            box-shadow: 0 0 14px #fff, 0 0 28px rgba(255, 255, 255, 0.7);
+        }
+    }
+
     /* =====================================================
        INDEX — PREMIUM HOME
        ===================================================== */
@@ -381,7 +423,7 @@
     .collection-overlay h3,
     .final-glass h2,
     .lifetime-copy h2,
-    .contact-content h2 {
+    .contact-card h2 {
         font-family: "Manrope", sans-serif;
     }
 
@@ -1508,121 +1550,171 @@
 
 
     /* =====================================================
-       CONTACT
+       CONTACT — BLACK GLASSMORPHIC PLATE
        ===================================================== */
 
     .contact-section {
-        position:relative;
-        z-index:3;
-        padding:20px 24px 70px;
+        position: relative;
+        z-index: 3;
+        padding: 40px 24px 80px;
     }
 
-    .contact-acrylic {
-        position:relative;
+    .contact-card {
+        position: relative;
+        width: min(720px, 100%);
+        margin: 0 auto;
+        padding: 60px 40px;
+        text-align: center;
+        overflow: hidden;
 
-        width:min(900px,100%);
-        margin:auto;
+        border-radius: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
 
-        padding:45px 35px;
-
-        text-align:center;
-
-        border:1px solid rgba(255,255,255,.1);
-        border-radius:28px;
-
-        background:
+        background: 
             linear-gradient(
-                135deg,
-                rgba(255,255,255,.06),
-                rgba(255,255,255,.015)
+                145deg,
+                rgba(15, 16, 20, 0.85),
+                rgba(8, 9, 12, 0.92)
             );
 
-        backdrop-filter:blur(25px);
-        -webkit-backdrop-filter:blur(25px);
+        backdrop-filter: blur(40px) saturate(180%);
+        -webkit-backdrop-filter: blur(40px) saturate(180%);
 
-        overflow:hidden;
+        box-shadow:
+            0 30px 80px rgba(0, 0, 0, 0.7),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.3);
     }
 
-    .contact-pulsar {
-        position:absolute;
-
-        width:280px;
-        height:280px;
-
-        top:-140px;
-        right:-140px;
-
-        border-radius:50%;
-
-        background:
-            radial-gradient(
-                circle,
-                rgba(255,255,255,.06),
-                transparent 70%
-            );
-
-        pointer-events:none;
+    /* Subtle top highlight */
+    .contact-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        pointer-events: none;
     }
 
-    .contact-label {
-        display:inline-block;
-
-        padding:5px 12px;
-
-        border:1px solid rgba(255,255,255,.1);
-        border-radius:999px;
-
-        color:rgba(255,255,255,.5);
-
-        font-size:8px;
-        letter-spacing:.2em;
+    /* Ambient glow behind card */
+    .contact-card::after {
+        content: "";
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 400px;
+        height: 200px;
+        background: radial-gradient(
+            ellipse,
+            rgba(255, 255, 255, 0.04),
+            transparent 70%
+        );
+        filter: blur(40px);
+        pointer-events: none;
+        z-index: -1;
     }
 
-    .contact-content h2 {
-        margin:12px 0 5px;
+    .contact-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        margin-bottom: 16px;
 
-        font-size:clamp(26px,3.5vw,40px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
 
-        letter-spacing:-.045em;
-        font-weight:600;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        font-weight: 600;
     }
 
-    .contact-content p {
-        color:rgba(255,255,255,.5);
-        font-size:12px;
+    .contact-kicker-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 12px #fff;
+        animation: pulsePoint 2s infinite;
     }
 
-    .contact-button {
-        display:inline-flex;
-        align-items:center;
-        gap:10px;
+    .contact-card h2 {
+        margin: 0 0 12px;
+        font-size: clamp(32px, 5vw, 48px);
+        line-height: 1;
+        letter-spacing: -0.04em;
+        font-weight: 700;
+        color: #fff;
+    }
 
-        margin-top:16px;
+    .contact-description {
+        max-width: 420px;
+        margin: 0 auto 28px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 13px;
+        line-height: 1.7;
+    }
 
-        padding:10px 22px;
+    .contact-button-premium {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 52px;
+        padding: 0 32px;
 
-        border:1px solid rgba(255,255,255,.15);
-        border-radius:14px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 16px;
 
-        color:#fff;
+        background: #fff;
+        color: #050505;
 
-        font-size:9px;
-        font-weight:600;
-        letter-spacing:.08em;
-
-        transition:.3s ease;
-
-        background:rgba(255,255,255,.04);
+        font-family: "Manrope", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
         text-decoration: none;
+
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
     }
 
-    .contact-button:hover {
-        background:rgba(255,255,255,.1);
-        transform:translateY(-2px);
+    .contact-button-premium::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.6s ease;
     }
 
-    .contact-button strong {
-        font-size:14px;
+    .contact-button-premium:hover::before {
+        left: 100%;
+    }
+
+    .contact-button-premium:hover {
+        transform: translateY(-3px);
+        box-shadow: 
+            0 20px 50px rgba(255, 255, 255, 0.15),
+            0 0 30px rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-button-premium svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.3s ease;
+    }
+
+    .contact-button-premium:hover svg {
+        transform: translateX(3px);
     }
 
 
@@ -1699,14 +1791,15 @@
             height: 100vh;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            gap: 40px;
+            align-items: flex-start;
+            padding: 0 48px;
+            gap: 32px;
             
-            background: rgba(20, 22, 26, 0.95);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            background: rgba(12, 14, 18, 0.96);
+            backdrop-filter: blur(35px) saturate(180%);
+            -webkit-backdrop-filter: blur(35px) saturate(180%);
             border-left: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7);
             
             transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 999;
@@ -1716,9 +1809,8 @@
             right: 0;
         }
 
-        .store-nav a {
-            font-size: 14px;
-            letter-spacing: 0.2em;
+        .contact-card {
+            padding: 48px 28px;
         }
 
         .hero-glass {
@@ -1779,6 +1871,11 @@
         .store-header {
             padding: 0 16px;
             height: 64px;
+        }
+
+        .store-nav {
+            width: 85%;
+            padding: 0 32px;
         }
 
         .hero-copy h1 {
@@ -1888,6 +1985,19 @@
             padding:35px 20px;
         }
 
+        .contact-card {
+            padding: 40px 22px;
+            border-radius: 24px;
+        }
+
+        .contact-card h2 {
+            font-size: 28px;
+        }
+
+        .contact-button-premium {
+            width: 100%;
+        }
+
     }
 
 </style>
@@ -1992,18 +2102,18 @@
         aria-label="Main navigation"
     >
 
-        <a
-            href="index.html"
-            class="nav-active"
-        >
+        <a href="index.html" class="mobile-nav-link nav-active">
+            <span class="mobile-pulsar-dot"></span>
             HOME
         </a>
 
-        <a href="store.html">
+        <a href="store.html" class="mobile-nav-link">
+            <span class="mobile-pulsar-dot"></span>
             STORE
         </a>
 
-        <a href="#contact">
+        <a href="#contact" class="mobile-nav-link">
+            <span class="mobile-pulsar-dot"></span>
             CONTACT
         </a>
 
@@ -2541,7 +2651,7 @@
 
 
     <!-- =================================================
-         CONTACT
+         CONTACT — BLACK GLASSMORPHIC PLATE
          ================================================= -->
 
     <section
@@ -2550,47 +2660,35 @@
         aria-labelledby="contact-title"
     >
 
-        <div class="contact-acrylic">
+        <div class="contact-card">
 
-            <div
-                class="contact-pulsar"
-                aria-hidden="true"
-            ></div>
-
-
-            <span class="contact-label">
+            <div class="contact-kicker">
+                <span class="contact-kicker-dot" aria-hidden="true"></span>
                 VOLTICA SUPPORT
-            </span>
-
-
-            <div class="contact-content">
-
-                <h2 id="contact-title">
-                    NEED TO TALK?
-                </h2>
-
-
-                <p>
-                    Questions about a product, an order
-                    or Voltica Store?
-                </p>
-
-
-                <a
-                    href="mailto:contact@volticastore.com"
-                    class="contact-button"
-                    aria-label="Contact Voltica Store by email"
-                >
-
-                    <strong aria-hidden="true">
-                        ✉
-                    </strong>
-
-                    CONTACT VOLTICA
-
-                </a>
-
             </div>
+
+
+            <h2 id="contact-title">
+                NEED HELP?
+            </h2>
+
+
+            <p class="contact-description">
+                Questions about a product, an order, or Voltica Store? 
+                Our team is ready to assist you.
+            </p>
+
+
+            <a
+                href="mailto:contact@volticastore.com"
+                class="contact-button-premium"
+                aria-label="Contact Voltica Store by email"
+            >
+                CONTACT US
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
 
         </div>
 

@@ -447,6 +447,59 @@ window.volticaProducts = [
         "active": true
     },
 
+   /* =========================================================
+       Product name : Multifunctional Folding & Lifting Laptop Stand â€“ Ergonomic Notebook Riser
+       ========================================================= */
+
+{
+        "id": "multifunctional-folding-lifting-laptop-stand-ergonomic-notebook-riser",
+        "sku": "VLT-TCH-004",
+        "name": "Multifunctional Folding & Lifting Laptop Stand â€“ Ergonomic Notebook Riser",
+        "category": "Tech",
+        "badge": "NEW",
+        "price": 42.99,
+        "referencePrice": 54.99,
+        "cost": 12.22,
+        "shipping": 16.07,
+        "shortDescription": "Upgrade your workspace ergonomics with the Multifunctional Folding & Lifting Laptop Stand. Designed to support laptops, PCs, and notebooks up to 17 inches with a max load capacity of up to 20KG, it features 9 adjustable angles to help eliminate neck stiffness and eyestrain. Built with hollow panels for superior heat dissipation, integrated phone stands, and a spacious open design to keep your desk neat and organized.",
+        "description": "Optimize your productivity and protect your posture with the Multifunctional Folding & Lifting Laptop Stand, a versatile accessory built for any modern workstation. Whether you are working from home, gaming, or studying, this stand combines ergonomic engineering with smart desktop organization.\nâ€‹Wide Compatibility and Heavy-Duty Support\nâ€‹Engineered to fit all notebooks, PCs, and laptops up to 17 inchesâ€”including MacBook, Lenovo, Acer, ASUS, HP, and Dell modelsâ€”this stand boasts a robust max load capacity of up to 20KG. The centered anti-slip holder on the panel ensures your device remains safely in place while offering a comfortable typing experience.\nâ€‹Ergonomic 9-Angle Adjustment\nâ€‹Say goodbye to eyestrain and neck stiffness. Featuring 9 adjustable height angles, the foldable stand holds your laptop at the ideal ergonomic viewing level to suit your posture, reduce fatigue, and enhance overall daily comfort.\nâ€‹Enhanced Heat Dissipation\nâ€‹Keep your hardware running at peak performance. Multiple hollow sections built into the panel significantly enhance airflow, paired with a special cooling knob design to thoroughly ventilate your personal laptop and prevent overheating during heavy workloads.\nâ€‹Smart Multi-Functional Design\nâ€‹The open-frame structure creates ample storage space underneath for your external keyboard and mouse, maintaining a clean and clutter-free desk. Additionally, built-in foldable phone stands on both the left and right sides keep your smartphone conveniently within view for seamless multi-device management.",
+        "features": [
+            "Wide compatibility supporting all laptops, PCs, and notebooks up to 17 inches with a 20KG max load capacity",
+            "9 adjustable angles designed for customized ergonomics to reduce eyestrain and neck fatigue",
+            "Enhanced heat dissipation system utilizing multiple hollow panel slots and a special cooling knob design",
+            "Integrated dual smartphone stands located conveniently on both the left and right sides",
+            "Open-space design underneath to store your keyboard and mouse for a clean, organized desk",
+            "Foldable and convenient structure featuring a centered anti-slip holder for safe device placement"
+        ],
+        "specifications": {
+            "Product Type": "Multifunctional Folding and Lifting Laptop Stand",
+            "Compatibility": "Laptops, PCs, and notebooks up to 17 inches (MacBook, Lenovo, Acer, ASUS, HP, Dell, etc.)",
+            "Max Load Capacity": "Up to 20KG",
+            "Adjustment Angles": "9 adjustable height levels",
+            "Cooling Features": "Multi-hollow ventilation panel and special cooling knob design",
+            "Extra Features": "Dual built-in foldable phone holders (left and right), anti-slip safety panel stop, keyboard storage clearance space"
+        },
+        "images": [
+            "assets/images/stand1.webp",
+            "assets/images/stand2.webp",
+            "assets/images/stand3.webp",
+            "assets/images/stand4.webp",
+            "assets/images/stand5.webp"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Build a Healthier, Cleaner Workspace Today!",
+            "lines": [
+                "Elevate your posture, protect your hardware from overheating, and maximize your desk space. Order your Multifunctional Folding & Lifting Laptop Stand today at VolticaStore.com and experience ultimate ergonomic comfort!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/bJe7sM8Gb647cCs7Ky2Ji0a",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-900A64B9-EC12-4A91-A8DA-68624EF9A572.html",
+        "active": true
+    },
+
+
     /* =========================================================
        PRODUCT 06 — VOLTICA TWS
        ========================================================= */

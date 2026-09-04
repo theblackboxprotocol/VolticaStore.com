@@ -627,6 +627,64 @@ window.volticaProducts = [
         "active": true
     },
 
+   /* =========================================================
+       Product name : Ultra-thin Tri-fold Folding Touch Keyboard with Integrated Touchpad
+       ========================================================= */
+
+{
+        "id": "ultra-thin-tri-fold-folding-touch-keyboard-with-integrated-touchpad",
+        "sku": "VLT-TEC-022",
+        "name": "Ultra-thin Tri-fold Folding Touch Keyboard with Integrated Touchpad",
+        "category": "Tech",
+        "badge": "PREMIUM",
+        "price": 37.99,
+        "referencePrice": 69.99,
+        "cost": 13.6,
+        "shipping": 7.34,
+        "shortDescription": "Unleash productivity anywhere with the Voltica Ultra-thin Tri-fold Touch Keyboard. This premium, pocket-sized portable keyboard features an integrated precision touchpad and universal Bluetooth compatibility (iOS, Android, Windows). The ultimate travel companion for seamless typing on the go.",
+        "description": "Stop Sacrificing Portability for Productivity. Meet Your New Mobile Workhorse.Tired of typing long emails on your phone's cramped screen? Frustrated with lugging a heavy laptop everywhere? The Voltica Ultra-thin Tri-fold Folding Touch Keyboard is the game-changer you've been waiting for.Designed for the modern digital nomad, business professional, and creative, this premium keyboard is impossibly thin and folds down smaller than a smartphone. Slip it into your pocket, purse, or backpack and you're ready to turn any cafe, park bench, or airport terminal into a fully functional workstation.Your All-in-One Input Solution:Forget carrying a separate mouse. Our ingenious design incorporates a high-precision, responsive touchpad right next to the keyboard. Navigate, scroll, and click effortlessly, just like on a laptop. The full-sized, ergonomic key layout ensures a comfortable and natural typing experience, even during marathon writing sessions.Universal Harmony:Switch seamlessly between your devices with reliable Bluetooth connectivity. Whether you're drafting a proposal on your Windows tablet, responding to messages on your iPhone, or taking notes on an Android smartphone, this keyboard works in perfect harmony with all three major operating systems.Built for the Road:Crafted from durable, high-quality materials, the Voltica keyboard is built to withstand the rigors of travel. Its powerful rechargeable lithium battery provides an incredible 100 hours of continuous use on a single, quick charge, so you're never left stranded.Don't just carry your technology master it. Upgrade to the Voltica Ultra-thin Tri-fold Folding Touch Keyboard and experience true mobile freedom.",
+        "features": [
+            "Tri-Fold Design for Ultimate Portability: Folds down compactly to fit in a pocket or small bag, making it the perfect travel keyboard.",
+            "Integrated Precision Touchpad: Eliminates the need for an external mouse; navigate and control your device with laptop-like ease.",
+            "Universal Multi-Device Compatibility: Pairs instantly via Bluetooth with iOS, Android, and Windows tablets, smartphones, and laptops.",
+            "Ergonomic Full-Sized Keyboard Layout: Enjoy a comfortable, familiar typing experience, even on mobile devices.",
+            "Premium, Durable Build: Constructed with high-quality materials for long-lasting performance on the go.",
+            "Long-Lasting Battery Life: Up to 100 hours of continuous use on a single 2-hour charge."
+        ],
+        "specifications": {
+            "Product Name": "Ultra-thin Tri-fold Folding Touch Keyboard",
+            "Compatibility": "Compatible with Apple, Android, and Windows devices",
+            "Connectivity": "Bluetooth 3.0",
+            "Layout": "Standard QWERTY",
+            "Battery": "Built-in Rechargeable Lithium Battery",
+            "Battery Capacity": "140mAh",
+            "Charging Time": "< 2 hours",
+            "Continuous Use Time": "100 hours",
+            "Spread Dimensions": "152 x 97 x 18 mm",
+            "Folded Dimensions": "302 x 97 x 18 mm",
+            "Touchpad Dimensions": "54.8 x 44.8 mm",
+            "Weight": "Approx. 180g"
+        },
+        "images": [
+            "assets/images/keyboard1.webp",
+            "assets/images/keyboard2.webp",
+            "assets/images/keyboard3.webp",
+            "assets/images/keyboard4.webp",
+            "assets/images/keyboard5.webp"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Unlock Your Mobile Productivityâ€”Risk-Free!",
+            "lines": [
+                "Ready to experience the freedom of a full workstation in your pocket? Order your Voltica Ultra-thin Tri-fold Keyboard today and enjoy faster typing, smoother navigation, and increased efficiency wherever you are. We back our premium keyboard with a 30-day satisfaction guarantee. If you don't love how it transforms your mobile device, return it for a full refund. No questions asked. Add to Cart and start typing smarter, not harder."
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/7sY4gA5tZgIL9qg3ui2Ji09",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-5D65A979-76A2-4B37-8E3F-D289A05BDDB3.html",
+        "active": true
+},
+
     /* =========================================================
        PRODUCT 08 — FERROFLUID BLUETOOTH SPEAKER
        ========================================================= */

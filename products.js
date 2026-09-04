@@ -447,6 +447,63 @@ window.volticaProducts = [
         "active": true
     },
 
+       /* =========================================================
+       Product name : Voltica T75 Open-Ear True Wireless Bone Conduction Sports Earbuds
+       ========================================================= */
+
+{
+        "id": "voltica-t75-open-ear-true-wireless-bone-conduction-sports-earbuds",
+        "sku": "VLT-AUD-005",
+        "name": "Voltica T75 Open-Ear True Wireless Bone Conduction Sports Earbuds",
+        "category": "Audio",
+        "badge": "BEST SELLER",
+        "price": 39.99,
+        "referencePrice": 79.99,
+        "cost": 6.58,
+        "shipping": 7.74,
+        "shortDescription": "Experience total situational awareness and premium sound with Voltica T75 Open-Ear Sports Earbuds. Featuring Bluetooth 5.3, IPX5 waterproof protection, and an ergonomic ear-clip design, they deliver secure, HiFi audio for workouts, gaming, and the office.",
+        "description": "Break Free from Traditional Earbuds. Total Sound, Total Awareness.Tired of earbuds that constantly slip out or block out the world around you when you're running outdoors? Meet the Voltica T75 Open-Ear Sports Earbuds engineered for those who demand high-performance sound without sacrificing safety or comfort.Featuring an innovative non-intrusive ear-clip design, these earbuds rest gently and securely on your ears using directional sound transmission technology. Enjoy your favorite workout playlist, podcast, or gaming session while staying fully aware of your surroundings, whether you're hitting city streets, grinding in the gym, or taking calls in the car.Next-Gen Acoustic Engineering:Equipped with a super-sensitive moving ring unit and a high-hardness diaphragm, the T75 delivers crystal-clear HiFi stereo surround sound and deep acoustic details. Powered by Bluetooth 5.3, you get an ultra-stable, low-latency connection that instantly syncs audio and video for seamless gaming and media consumption.Built for Your Dynamic Lifestyle:From heavy sweat sessions to sudden downpours, the IPX5 waterproof and sweat-resistant rating ensures your music never stops. With dual-host technology, you can use both earbuds in binaural stereo mode or switch to single-ear mode effortlessly for uninterrupted calls and listening.Upgrade your daily audio experience. Secure your Voltica T75 today and hear the difference.",
+        "features": [
+            "Innovative Ear-Clip Design: Rests comfortably outside the ear canal for long-wearing comfort and total situational awareness during sports and outdoor activities.",
+            "HiFi Stereo Sound & Directional Transmission: High-sensitivity moving ring unit delivers rich audio details while directing sound safely into your ear to prevent sound leakage.",
+            "Ultra-Stable Bluetooth 5.3: Provides instant auto-reconnection, lower power consumption, and ultra-low latency for gaming and video.",
+            "IPX5 Waterproof & Sweat-Resistant: Built tough to handle rigorous workouts, rain, and intense daily use.",
+            "Binaural & Single-Ear Versatility: Independent host technology allows you to use either earbud individually or both together seamlessly.",
+            "All-Day Battery Reserve: Designed with low-power consumption for long-lasting playback anywhere."
+        ],
+        "specifications": {
+            "Product Name": "Voltica T75 Open-Ear True Wireless Sports Earbuds",
+            "Design Type": "Open-Ear Clip Design",
+            "Connectivity": "Bluetooth 5.3",
+            "Sound Quality": "HiFi Sound with Panoramic Audio & Three-Frequency Adjustment",
+            "Waterproof Rating": "IPX5 Waterproof and Sweat-Resistant",
+            "Audio Transmission": "Directional Sound Transmission (Anti-leakage)",
+            "Usage Modes": "Binaural Stereo or Independent Single-Ear Connection",
+            "Compatibility": "Universal compatibility with iOS, Android, and Windows devices (Smartphones, Tablets, Laptops)"
+        },
+        "images": [
+            "assets/images/T751.webp",
+            "assets/images/T752.webp",
+            "assets/images/T753.webp",
+            "assets/images/T754.webp",
+            "assets/images/T755.webp",
+            "assets/images/T756.jpg",
+            "assets/images/T757.webp",
+            "assets/images/T758.webp"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Elevate Your Workout Soundâ€”Risk-Free!",
+            "lines": [
+                "Ready to experience unmatched comfort, open-ear safety, and premium HiFi sound? Order your Voltica T75 Earbuds today and transform how you listen on the move. Backed by our 30-day satisfaction guaranteeâ€”if you arenâ€™t blown away by the comfort and sound, weâ€™ll make it right. Add to Cart now and move to your own beat!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/5kQ6oI9Kf9gj8mc3ui2Ji06",
+        "supplierLink": "https://a.aliexpress.com/_mqGzwIX",
+        "active": true
+},
+
    /* =========================================================
        Product name : Multifunctional Folding & Lifting Laptop Stand â€“ Ergonomic Notebook Riser
        ========================================================= */

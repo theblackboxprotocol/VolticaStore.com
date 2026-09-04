@@ -454,7 +454,7 @@ window.volticaProducts = [
 {
         "id": "multifunctional-folding-lifting-laptop-stand-ergonomic-notebook-riser",
         "sku": "VLT-TCH-004",
-        "name": "Multifunctional Folding & Lifting Laptop Stand â€“ Ergonomic Notebook Riser",
+        "name": "Multifunctional Folding & Lifting Laptop Stand“ Ergonomic Notebook Riser",
         "category": "Tech",
         "badge": "NEW",
         "price": 42.99,

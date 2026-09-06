@@ -874,7 +874,7 @@ window.volticaProducts = [
         "id": "smart-gesture-control-auto-tracking-phone-gimbal-tripod-mount-voltica-store",
         "sku": "VLT-VLG-001",
         "name": "Smart Gesture Control Auto-Tracking Phone Gimbal & Tripod Mount | Voltica Store",
-        "category": "Vlogging & Streaming Gear",
+        "category": "Vlogging and Creator Gear",
         "badge": "NEW",
         "price": 39.99,
         "referencePrice": 49.99,

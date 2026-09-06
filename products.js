@@ -1,7 +1,7 @@
 /* =========================================================
    VOLTICA STORE
    PRODUCT DATABASE
-   23 ACTIVE PRODUCTS
+   24 ACTIVE PRODUCTS
    ========================================================= */
 
 "use strict";

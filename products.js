@@ -1429,7 +1429,60 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/3cI28saOj6475a01ma2Ji0r",
         "supplierLink": "https://www.alibaba.com/x/B2NhlS?ck=pdp",
         "active": true
-    }
+    },
+
+   /* =========================================================
+       Product name : Voltica 3D Holographic LED Fan Display Projector
+       ========================================================= */
+
+{
+        "id": "voltica-3d-holographic-led-fan-display-projector",
+        "sku": "VLT-TEC-006",
+        "name": "Voltica 3D Holographic LED Fan Display Projector",
+        "category": "Tech",
+        "badge": "NEW",
+        "price": 78.87,
+        "referencePrice": 89.99,
+        "cost": 32.85,
+        "shipping": 8.9,
+        "shortDescription": "Stop scrolling and start stopping traffic with the Voltica selection 3D Holographic LED Fan. Transform any space, storefront, or event with breathtaking floating 3D visuals that captivate audiences and skyrocket engagement.",
+        "description": "Turn Heads, Stop Traffic, and Captivate Every Eye.In a world full of flat screens and boring advertisements, how do you make your brand, storefront, or event truly unforgettable? Meet the 3D Holographic LED Fan, hand-selected for the Voltica collection. This cutting-edge visual device creates stunning, high-definition floating 3D holograms right in mid-air, leaving viewers spellbound.Mesmerizing Visual Impact:Powered by high-density LED rotating blades, the projector creates seamless, background-free animations that look like magic floating in space. Whether you're showcasing product launches at a trade show, drawing customers into your retail shop, or elevating your content creation setup, this holographic display delivers high-impact visual storytelling that traditional screens simply cannot match.Easy Content Management & Versatility:Upload your own custom 3D logos, videos, and animations effortlessly. Designed for versatility, it's lightweight, energy-efficient, and engineered to operate smoothly for hours. Give your space the futuristic edge it deserves and watch your audience pull out their phones to record and share your display.Upgrade your visual presentation. Secure the Voltica selection 3D Holographic LED Fan today and bring the future into focus.",
+        "features": [
+            "Stunning 3D Holographic Effect: High-density LED rotating display creates vivid, floating visual animations without visible borders or backgrounds.",
+            "Ultimate Audience Magnet: Proven to dramatically increase foot traffic, consumer engagement, and social media shares for businesses and events.",
+            "Custom Content Support: Easily upload and play your own 3D product renders, logos, and promotional videos.",
+            "Sleek & Lightweight Build: Designed for easy mounting and seamless integration into retail stores, offices, or home studios.",
+            "Energy-Efficient Operation: High-performance LEDs built for long hours of continuous, reliable display performance."
+        ],
+        "specifications": {
+            "Product Name": "3D Holographic LED Fan Projector (Voltica Selection)",
+            "Display Technology": "High-Density Rotating LED Array",
+            "Visual Effect": "Floating 3D Hologram",
+            "Content Format": "MP4, AVI, RMVB, MKV, GIF, JPG, PNG",
+            "Application": "Retail stores, trade shows, events, nightlife, and content creation studios"
+        },
+        "images": [
+            "assets/images/holo1.webp",
+            "assets/images/holo2.webp",
+            "assets/images/holo3.webp",
+            "assets/images/holo4.webp",
+            "assets/images/holo5.webp",
+            "assets/images/holo6.webp",
+            "assets/images/holo7.webp",
+            "assets/images/holo8.webp"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Elevate Your Display",
+            "lines": [
+                "Ready to hypnotize your audience and make your brand unforgettable? Order your 3D Holographic LED Fan from the Voltica selection today and revolutionize how you present visuals. Backed by our 30-day satisfaction guaranteeâ€”if you arenâ€™t amazed by the impact, weâ€™ll make it right. Add to Cart now and step into the future of advertising!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/dRm6oI2hNakngSI2qe2Ji0e",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-2086387249086910465.html",
+        "active": true
+}
 
 ];
 

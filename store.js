@@ -1,8 +1,6 @@
 /* =========================================================
    VOLTICA STORE — STORE.JS
-   Product Render + Shopping Cart Engine
-   Single Collection System
-   No Product Sections
+   Category Sections + Filter + Shopping Cart Engine
    GA4 Analytics Integrated
    ========================================================= */
 
@@ -49,6 +47,82 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const productGrid =
         document.getElementById("productGrid");
+
+
+    /* =====================================================
+       CATEGORY SYSTEM
+       ===================================================== */
+
+    const CATEGORY_ORDER = [
+        "Audio",
+        "Gaming Gear",
+        "Vlogging and Creator Gear",
+        "Tech",
+        "Lifestyle",
+        "Smart Home"
+    ];
+
+
+    const CATEGORY_TAGLINES = {
+        "Audio":
+            "Precision listening. Studio-grade sound.",
+        "Gaming Gear":
+            "Built for competition and immersion.",
+        "Vlogging and Creator Gear":
+            "Tools for the next generation of creators.",
+        "Tech":
+            "Innovation you can hold.",
+        "Lifestyle":
+            "Everyday technology, refined.",
+        "Smart Home":
+            "Intelligent living spaces."
+    };
+
+
+    /* =====================================================
+       CATEGORY NORMALIZATION
+       (corrige automatiquement les doublons de libellés)
+       ===================================================== */
+
+    function normalizeCategory(category) {
+
+        const raw =
+            String(category || "")
+                .trim();
+
+
+        if (!raw) {
+            return "VOLTICA COLLECTION";
+        }
+
+
+        const lower = raw.toLowerCase();
+
+
+        if (
+            lower === "vlogging & streaming gear" ||
+            lower === "vlogging and streaming gear" ||
+            lower === "vlogging and creator gear" ||
+            lower === "vlogging" ||
+            lower === "creator gear"
+        ) {
+            return "Vlogging and Creator Gear";
+        }
+
+
+        return raw;
+
+    }
+
+
+    function getCategoryTagline(category) {
+
+        return (
+            CATEGORY_TAGLINES[category] ||
+            "The future of everyday."
+        );
+
+    }
 
 
     /* =====================================================
@@ -116,9 +190,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 ),
 
             item_category:
-                String(
-                    product.category ||
-                    "VOLTICA COLLECTION"
+                normalizeCategory(
+                    product.category
                 ),
 
             price:
@@ -135,24 +208,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 )
 
         };
-
-    }
-
-
-    /* =====================================================
-       FIND PRODUCT
-       ===================================================== */
-
-    function findProduct(
-        productId
-    ) {
-
-        return products.find(
-            item =>
-                item &&
-                String(item.id) ===
-                String(productId)
-        );
 
     }
 
@@ -191,6 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         return;
+
     }
 
 
@@ -202,6 +258,24 @@ document.addEventListener("DOMContentLoaded", function () {
         "VOLTICA: PRODUCTS =",
         products.length
     );
+
+
+    /* =====================================================
+       FIND PRODUCT
+       ===================================================== */
+
+    function findProduct(
+        productId
+    ) {
+
+        return products.find(
+            item =>
+                item &&
+                String(item.id) ===
+                String(productId)
+        );
+
+    }
 
 
     /* =====================================================
@@ -318,6 +392,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             return;
+
         }
 
 
@@ -589,8 +664,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 <span class="product-category">
                     ${escapeHTML(
-                        product.category ||
-                        "VOLTICA COLLECTION"
+                        normalizeCategory(
+                            product.category
+                        )
                     )}
                 </span>
 
@@ -663,7 +739,224 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       RENDER PRODUCTS
+       CATEGORY LIST (ordered, present categories only)
+       ===================================================== */
+
+    function getCategoryList(activeProducts) {
+
+        const present =
+            new Set(
+                activeProducts.map(
+                    product =>
+                        normalizeCategory(
+                            product.category
+                        )
+                )
+            );
+
+
+        const ordered =
+            CATEGORY_ORDER.filter(
+                category =>
+                    present.has(category)
+            );
+
+
+        const extras =
+            Array.from(present)
+                .filter(
+                    category =>
+                        !CATEGORY_ORDER.includes(
+                            category
+                        )
+                )
+                .sort();
+
+
+        return ordered.concat(extras);
+
+    }
+
+
+    /* =====================================================
+       CURRENT FILTER STATE
+       ===================================================== */
+
+    let currentFilter = "ALL";
+
+
+    /* =====================================================
+       FILTER BAR
+       ===================================================== */
+
+    function renderFilterBar(categories) {
+
+        const existingBar =
+            document.getElementById(
+                "categoryFilterBar"
+            );
+
+
+        if (existingBar) {
+            existingBar.remove();
+        }
+
+
+        if (!productGrid || !productGrid.parentNode) {
+            return;
+        }
+
+
+        const bar =
+            document.createElement("div");
+
+
+        bar.id = "categoryFilterBar";
+
+        bar.className =
+            "category-filter-bar";
+
+
+        bar.setAttribute(
+            "aria-label",
+            "Filter products by category"
+        );
+
+
+        bar.appendChild(
+            createFilterChip(
+                "ALL",
+                "ALL CATEGORIES"
+            )
+        );
+
+
+        categories.forEach(
+            category => {
+
+                bar.appendChild(
+                    createFilterChip(
+                        category,
+                        category
+                    )
+                );
+
+            }
+        );
+
+
+        productGrid.parentNode.insertBefore(
+            bar,
+            productGrid
+        );
+
+    }
+
+
+    function createFilterChip(value, label) {
+
+        const button =
+            document.createElement("button");
+
+
+        button.type = "button";
+
+
+        button.className =
+            "category-chip" +
+            (
+                value === currentFilter
+                    ? " active"
+                    : ""
+            );
+
+
+        button.dataset.category =
+            value;
+
+
+        button.textContent =
+            String(label).toUpperCase();
+
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                applyFilter(value);
+
+            }
+        );
+
+
+        return button;
+
+    }
+
+
+    /* =====================================================
+       APPLY FILTER
+       ===================================================== */
+
+    function applyFilter(category) {
+
+        currentFilter = category;
+
+
+        document
+            .querySelectorAll(".category-chip")
+            .forEach(
+                chip => {
+
+                    chip.classList.toggle(
+                        "active",
+                        chip.dataset.category ===
+                        category
+                    );
+
+                }
+            );
+
+
+        document
+            .querySelectorAll(".category-section")
+            .forEach(
+                section => {
+
+                    const show =
+                        category === "ALL" ||
+                        section.dataset.category ===
+                        category;
+
+
+                    section.style.display =
+                        show ? "" : "none";
+
+                }
+            );
+
+
+        trackEvent(
+            "view_item_list",
+            {
+                item_list_name:
+                    category === "ALL"
+                        ? "All Categories"
+                        : category
+            }
+        );
+
+
+        console.log(
+            "VOLTICA: FILTER =",
+            category
+        );
+
+    }
+
+
+    /* =====================================================
+       RENDER PRODUCTS — CATEGORY SECTIONS
        ===================================================== */
 
     function renderProducts() {
@@ -678,6 +971,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+
+        /* =================================================
+           TRANSFORM CONTAINER INTO SECTIONS WRAPPER
+           ================================================= */
+
+        productGrid.classList.remove("product-grid");
+
+        productGrid.classList.add("product-sections");
+
+        productGrid.style.display = "block";
+        productGrid.style.width = "100%";
+        productGrid.style.maxWidth = "none";
+        productGrid.style.margin = "0";
+        productGrid.style.padding = "0";
 
         productGrid.innerHTML = "";
 
@@ -730,25 +1037,118 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =================================================
-           RENDER EVERY PRODUCT INTO ONE GRID
+           BUILD CATEGORY SECTIONS
            ================================================= */
 
-        activeProducts.forEach(
-            function (product) {
+        const categories =
+            getCategoryList(activeProducts);
 
-                productGrid.appendChild(
-                    createProductCard(
-                        product
-                    )
+
+        renderFilterBar(categories);
+
+
+        categories.forEach(
+            function (category, index) {
+
+                const items =
+                    activeProducts.filter(
+                        product =>
+                            normalizeCategory(
+                                product.category
+                            ) === category
+                    );
+
+
+                if (!items.length) {
+                    return;
+                }
+
+
+                const section =
+                    document.createElement("section");
+
+
+                section.className =
+                    "category-section";
+
+
+                section.dataset.category =
+                    category;
+
+
+                const number =
+                    String(index + 1)
+                        .padStart(2, "0");
+
+
+                section.innerHTML = `
+
+                    <div class="category-section-heading">
+
+                        <div>
+
+                            <span class="category-kicker">
+                                COLLECTION ${number}
+                            </span>
+
+                            <h2 class="category-title">
+                                ${escapeHTML(
+                                    category.toUpperCase()
+                                )}
+                            </h2>
+
+                            <p class="category-tagline">
+                                ${escapeHTML(
+                                    getCategoryTagline(
+                                        category
+                                    )
+                                )}
+                            </p>
+
+                        </div>
+
+                        <span class="category-count">
+                            ${items.length}
+                            PRODUCT${items.length > 1 ? "S" : ""}
+                        </span>
+
+                    </div>
+
+                `;
+
+
+                const grid =
+                    document.createElement("div");
+
+
+                grid.className =
+                    "product-grid";
+
+
+                items.forEach(
+                    product => {
+
+                        grid.appendChild(
+                            createProductCard(
+                                product
+                            )
+                        );
+
+                    }
                 );
+
+
+                section.appendChild(grid);
+
+                productGrid.appendChild(section);
 
             }
         );
 
 
         console.log(
-            "VOLTICA: PRODUCTS RENDERED =",
-            activeProducts.length
+            "VOLTICA: SECTIONS RENDERED =",
+            categories.length
         );
 
     }
@@ -1020,9 +1420,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 item_category:
                     product
-                        ? String(
-                            product.category ||
-                            "VOLTICA COLLECTION"
+                        ? normalizeCategory(
+                            product.category
                         )
                         : "VOLTICA COLLECTION",
 
@@ -1099,9 +1498,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const item =
             cart.find(
-                product =>
-                    String(product.id) ===
-                    String(productId)
+            product =>
+                String(product.id) ===
+                String(productId)
             );
 
 
@@ -1170,9 +1569,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             item_category:
                 product
-                    ? String(
-                        product.category ||
-                        "VOLTICA COLLECTION"
+                    ? normalizeCategory(
+                        product.category
                     )
                     : "VOLTICA COLLECTION",
 
@@ -1602,9 +2000,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                     item_category:
                                         product
-                                            ? String(
-                                                product.category ||
-                                                "VOLTICA COLLECTION"
+                                            ? normalizeCategory(
+                                                product.category
                                             )
                                             : "VOLTICA COLLECTION",
 

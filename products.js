@@ -1482,6 +1482,61 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/dRm6oI2hNakngSI2qe2Ji0e",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2086387249086910465.html",
         "active": true
+},
+   /* =========================================================
+       Product name : SL90 Professional RGB LED Video Light Panel with App Control & Aluminum Alloy Build
+       ========================================================= */
+
+{
+        "id": "sl90-professional-rgb-led-video-light-panel-with-app-control-aluminum-alloy-build",
+        "sku": "VLT-VLG-007",
+        "name": "SL90 Professional RGB LED Video Light Panel with App Control & Aluminum Alloy Build",
+        "category": "Vlogging and Creator Gear",
+        "badge": "PREMIUM",
+        "price": 94.99,
+        "referencePrice": 119.99,
+        "cost": 60,
+        "shipping": 10.84,
+        "shortDescription": "Elevate your studio content with the SL90 Professional RGB LED Video Light Panel, hand-selected for the Voltica collection. Featuring 150 LEDs, 360° full-color RGB adjustment, 18 dynamic scene modes, and durable aluminum construction, it's the ultimate lighting tool for creators and filmmakers.",
+        "description": "Professional Studio Lighting, Pocket-Sized Power.Whether you're shooting YouTube videos, streaming live, or capturing high-end cinematic b-roll, lighting is the ultimate difference between amateur and professional content. Meet the SL90 Professional RGB LED Video Light Panel, hand-selected for the Voltica collection to give your productions broadcast-quality illumination anywhere you go.Breathtaking Color & Precision:Equipped with 150 premium LEDs (40 warm white, 40 cold white, and 70 RGB), this powerful 12W panel delivers an astonishing 1700 lux at 0.5m with an ultra-high CRI and TLCI rating of 97+. Experience rich, accurate color rendering, adjustable color temperatures from 2500K to 10000K, and complete 360° RGB hue control to set the exact mood your scene demands.Smart Control & Creative Effects:Take full command of your setup with advanced app connectivity, 18 pre-programmed scene effects (including music synchronization modes), and Infinity connection technology to sync multiple lights seamlessly. Housed in a robust, aerospace-grade aluminum alloy frame with a 360° rotating cold-shoe mount, the SL90 is built to perform under pressure and look great doing it.Upgrade your production value. Secure the SL90 from the Voltica selection today and illuminate your creative vision.",
+        "features": [
+            "High-Output 12W RGB Lighting: Features 150 advanced LEDs delivering up to 1700 lux (at 0.5m) for crisp, professional brightness.",
+            "Stunning Color Accuracy: Ultra-high CRI and TLCI of 97+ ensure natural skin tones and true-to-life color reproduction.",
+            "Wide Color Temperature Range: Fully adjustable from 2500K (warm) to 10000K (cold) to match any ambient lighting condition.",
+            "18 Creative Scene & Music Modes: Dynamic lighting effects and intelligent music synchronization add instant excitement to video shoots.",
+            "Robust Aluminum Alloy Build: Durable, lightweight metal construction with a 360Â° rotating arm and cold-shoe mount for maximum versatility.",
+            "Smart App & Infinity Control: Effortlessly adjust settings, apply updates, and control multiple lights directly from your mobile device."
+        ],
+        "specifications": {
+            "Product Name": "SL90 Professional RGB LED Video Light Panel (Voltica Selection)",
+            "Model": "SL90",
+            "Material": "Premium Aluminum Alloy Frame",
+            "LED Count": "150 Total (40 Warm White, 40 Cold White, 70 RGB)",
+            "Power Output": "12W",
+            "Battery Capacity": "Built-in 7.4V 4300mAh rechargeable battery",
+            "Max Brightness": "1700 lux @ 0.5m",
+            "Color Temperature": "2500K ~ 10000K",
+            "Color Accuracy": "CRI 97+ / TLCI 97+",
+            "Special Modes": "18 Scene Modes & Music Sync",
+            "Connectivity": "USB Type-C (5V 2A, 9V 2A input) & Smart App Control"
+        },
+        "images": [
+            "assets/images/light1.jpg",
+            "assets/images/light2.jpg",
+            "assets/images/light3.jpg",
+            "assets/images/light4.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Transform Your Lighting",
+            "lines": [
+                "Ready to give your videos Hollywood-grade color, professional depth, and flawless clarity? Order your SL90 LED Light Panel from the Voltica selection today and master your studio setup. Backed by our 30-day satisfaction guaranteeâ€”if you arenâ€™t completely blown away by the performance, weâ€™ll make it right. Add to Cart now and shine brighter!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/bJeaEY3lRdwz5a04ym2Ji0z",
+        "supplierLink": "https://www.alibaba.com/x/B2PGv3?ck=pdp",
+        "active": true
 }
 
 ];

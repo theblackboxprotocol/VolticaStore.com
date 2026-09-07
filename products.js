@@ -1537,7 +1537,61 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/bJeaEY3lRdwz5a04ym2Ji0z",
         "supplierLink": "https://www.alibaba.com/x/B2PGv3?ck=pdp",
         "active": true
-}
+},
+   /* =========================================================
+       Product name : Voltica MT53 Portable Pocket Photo Printer
+       ========================================================= */
+
+{
+        "id": "voltica-mt53-portable-pocket-photo-printer",
+        "sku": "VLT-TEC-008",
+        "name": "Voltica MT53 Portable Pocket Photo Printer",
+        "category": "Tech",
+        "badge": "BEST SELLER",
+        "price": 129.99,
+        "referencePrice": 149.99,
+        "cost": 77.78,
+        "shipping": 10.66,
+        "shortDescription": "Print your favorite memories instantly with the Voltica selection MT53 Portable Pocket Photo Printer. Featuring wireless Bluetooth connectivity, zero-ink ZINK technology, and a pocket-sized design, it delivers vibrant, sticky-backed full-color photos straight from your smartphone anywhere you go.",
+        "description": "Your Memories, Printed Instantly. Anywhere, Anytime.Tired of leaving your best digital photos trapped inside your phone? Bring them to life with the MT53 Portable Pocket Photo Printer, hand-selected for the Voltica collection. Sleek, lightweight, and compact enough to fit right in your palm or pocket, this little device is the ultimate companion for content creators, travelers, and memory-makers of all ages.Zero Ink, Zero Hassle:Using advanced thermal and ZINK (Zero Ink) printing technology, the MT53 delivers beautifully detailed, smudge-proof, and water-resistant full-color prints without a single drop of ink or messy cartridge. Plus, every print features a peel-and-stick backing, making it effortless to customize your journals, phone cases, laptops, or bedroom walls.Seamless Wireless Creativity:Connect via Bluetooth in seconds using the dedicated mobile app to unlock custom templates, filters, collages, and fun AR features. With a built-in rechargeable battery and fast setup, you're always ready to capture the moment and share physical copies with friends on the spot.Upgrade your creative toolkit. Secure the Voltica selection MT53 Pocket Printer today and start printing your world.",
+        "features": [
+            "Ultra-Portable Palm-Sized Design: Weighs less than a pound and slips easily into your pocket or bag for instant printing on the go.",
+            "Vibrant ZINK Zero-Ink Technology: Delivers durable, smudge-proof, tear-resistant, and high-detail color prints without requiring expensive ink cartridges.",
+            "Peel-and-Stick Backing: Turn any photo into a custom sticker to personalize journals, crafts, and accessories.",
+            "Wireless Bluetooth Connectivity: Pairs effortlessly with iOS and Android devices for fast app-controlled printing.",
+            "Interactive Mobile App Features: Customize your shots with filters, frames, text, and augmented reality (AR) templates."
+        ],
+        "specifications": {
+            "Product Name": "MT53 Portable Pocket Photo Printer (Voltica Selection)",
+            "Model": "MT53",
+            "Printer Type": "Portable Pocket Photo Printer",
+            "Connectivity": "Bluetooth Wireless Interface",
+            "Printing Technology": "ZINK Zero-Ink / Thermal Direct Printing",
+            "Resolution": "313 \\times 600 DPI",
+            "Battery Capacity": "Built-in 500mAh Rechargeable Battery",
+            "Compatibility": "iOS and Android via Mobile App"
+        },
+        "images": [
+            "assets/images/printer1.jpg",
+            "assets/images/printer2.jpg",
+            "assets/images/printer3.jpg",
+            "assets/images/printer4.jpg",
+            "assets/images/printer5.jpg",
+            "assets/images/printer6.jpg"
+        ],
+        "colors": [],
+        "variants": [],
+        "customCta": {
+            "title": "Print Your Memories",
+            "lines": [
+                "Ready to turn your digital camera roll into physical stickers and keepsakes in seconds? Order your MT53 Pocket Printer from the Voltica selection today and bring your photos to life. Backed by our 30-day satisfaction guaranteeâ€”if you arenâ€™t thrilled with the quality, weâ€™ll make it right. Add to Cart now and start creating!"
+            ]
+        },
+        "stripeLink": "https://buy.stripe.com/6oUaEYf4zgILfOEc0O2Ji0A",
+        "supplierLink": "https://www.cjdropshipping.com/product/-p-1509728177428639744.html",
+        "active": true
+    }
+
 
 ];
 

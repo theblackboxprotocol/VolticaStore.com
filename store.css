@@ -2259,3 +2259,99 @@ body.cart-is-open {
     }
 
    }
+/* =========================================================
+   MOBILE — HEADER 3 ZONES (≤ 850px) — v10
+   Gauche : logo + panier | Centre : hamburger | Nav off-canvas
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    html body .product-header,
+    html body .store-header {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 10px !important;
+        height: 64px !important;
+        min-height: 64px !important;
+        padding: 0 14px !important;
+        overflow: visible !important;
+    }
+
+    html body .product-header .voltica-logo,
+    html body .store-header .logo-acrylic {
+        order: 1 !important;
+        position: relative !important;
+        flex: 0 0 auto !important;
+        margin: 0 !important;
+        z-index: 1003 !important;
+    }
+
+    /* Panier à gauche (variante à droite : margin-left: auto !important) */
+    html body .product-header .cart-acrylic,
+    html body .store-header .cart-acrylic {
+        order: 2 !important;
+        position: relative !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        flex: 0 0 auto !important;
+        margin: 0 !important;
+        width: 42px !important;
+        height: 42px !important;
+        pointer-events: auto !important;
+        z-index: 1003 !important;
+    }
+
+    /* Hamburger centré en absolu */
+    html body .product-header .mobile-menu-toggle,
+    html body .store-header .mobile-menu-toggle {
+        order: 3 !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 !important;
+        width: 44px !important;
+        height: 44px !important;
+        pointer-events: auto !important;
+        z-index: 1004 !important;
+    }
+
+    html body .product-header .product-navigation,
+    html body .store-header .store-nav {
+        order: 99 !important;
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        width: 82% !important;
+        max-width: 340px !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 32px !important;
+        padding: 0 44px !important;
+        margin: 0 !important;
+        background: linear-gradient(155deg, rgba(36,39,48,0.92), rgba(10,12,16,0.96)) !important;
+        backdrop-filter: blur(34px) saturate(170%) !important;
+        -webkit-backdrop-filter: blur(34px) saturate(170%) !important;
+        border-left: 1px solid rgba(255,255,255,0.10) !important;
+        box-shadow: -20px 0 60px rgba(0,0,0,0.65) !important;
+        transition: right 0.38s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        z-index: 1001 !important;
+    }
+
+    html body .product-header .product-navigation.mobile-open,
+    html body .store-header .store-nav.mobile-open {
+        right: 0 !important;
+    }
+
+}

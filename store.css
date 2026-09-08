@@ -2158,9 +2158,10 @@ body.cart-is-open {
 
 
 /* =========================================================
-   35. MOBILE — HEADER 3 ZONES + PANNEAU NAV (≤ 850px) — v12
+   35. MOBILE — HEADER 3 ZONES + PANNEAU NAV (≤ 850px) — v12.1
    logo gauche | pulsar centre | panier droite
-   Nav : invisible tant que .mobile-open n'est pas posé
+   Nav et lignes hamburger : INVISIBLES par défaut
+   Drawer : largeur compacte (pas pleine largeur)
    ========================================================= */
 
 @media (max-width: 850px) {
@@ -2216,6 +2217,18 @@ body.cart-is-open {
         z-index: 1004 !important;
     }
 
+    /* FIX : lignes hamburger TOTALEMENT masquées sur mobile
+       (écrase toute règle résiduelle de product-view.css / Q45 inline) */
+    html body .store-header .mobile-menu-toggle .hamburger-line,
+    html body .product-header .mobile-menu-toggle .hamburger-line {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        background: transparent !important;
+    }
+
     /* ZONE 3 — Panier (droite) */
     html body .store-header .cart-acrylic,
     html body .product-header .cart-acrylic {
@@ -2233,7 +2246,7 @@ body.cart-is-open {
         z-index: 1001 !important;
     }
 
-    /* Panneau nav : INVISIBLE par défaut (plus de fuite visuelle) */
+    /* Panneau nav : INVISIBLE par défaut */
     html body .store-header .store-nav,
     html body .product-header .product-navigation {
         position: fixed !important;
@@ -2274,13 +2287,16 @@ body.cart-is-open {
             visibility 0s linear 0s !important;
     }
 
-    /* Drawer : pleine largeur, ancré exactement au bord */
+    /* Drawer : largeur COMPACTE sur mobile (plus de pleine largeur)
+       380px max ou 92% du viewport, ancré au bord droit */
     html body .cart-drawer {
-        width: 100% !important;
-        max-width: 100% !important;
+        width: min(380px, 92vw) !important;
+        max-width: 92vw !important;
         height: 100% !important;
         height: 100dvh !important;
         transform: translateX(100%) !important;
+        left: auto !important;
+        right: 0 !important;
     }
 
     html body .cart-drawer.open,
@@ -2289,22 +2305,6 @@ body.cart-is-open {
     }
 
 }
-
-/* ≤ 480px : masque le texte logo pour ne pas déborder */
-@media (max-width: 480px) {
-
-    html body .store-header .logo-text,
-    html body .product-header .logo-name {
-        display: none !important;
-    }
-
-    html body .store-header .logo-acrylic,
-    html body .product-header .voltica-logo {
-        padding: 8px !important;
-    }
-
-}
-
 
 /* =========================================================
    36. REDUCED MOTION

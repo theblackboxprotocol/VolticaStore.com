@@ -2409,3 +2409,260 @@ body.cart-is-open {
     }
 
    }
+/* =========================================================
+   38. MOBILE FINAL — CART DANS MENU + POPUP FULL PAGE
+   Header : logo gauche | triangle pulsar centre | coin droit vide
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    /* Header mobile : on garde 3 zones, mais la zone droite est vide */
+    html body .store-header,
+    html body .product-header {
+        grid-template-columns: 1fr 44px 1fr !important;
+    }
+
+    /* Masque totalement le panier du header mobile */
+    html body .store-header > .cart-acrylic,
+    html body .product-header > .cart-acrylic {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+
+    /* Le bouton menu reste parfaitement centré */
+    html body .store-header .mobile-menu-toggle,
+    html body .product-header .mobile-menu-toggle {
+        grid-column: 2 !important;
+        justify-self: center !important;
+        position: relative !important;
+        width: 44px !important;
+        height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: visible !important;
+    }
+
+    /* On retire le gros pulsar central */
+    html body .store-header .mobile-menu-toggle::before,
+    html body .product-header .mobile-menu-toggle::before {
+        content: none !important;
+        display: none !important;
+    }
+
+    html body .store-header .mobile-menu-toggle::after,
+    html body .product-header .mobile-menu-toggle::after {
+        content: none !important;
+        display: none !important;
+    }
+
+    /* Les anciennes lignes hamburger deviennent 3 petits pulsars */
+    html body .store-header .mobile-menu-toggle .hamburger-line,
+    html body .product-header .mobile-menu-toggle .hamburger-line {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+
+        position: absolute !important;
+
+        width: 6px !important;
+        height: 6px !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+
+        border: 0 !important;
+        border-radius: 50% !important;
+
+        background: #ffffff !important;
+
+        box-shadow:
+            0 0 8px rgba(255,255,255,0.95),
+            0 0 18px rgba(255,255,255,0.45) !important;
+
+        transform: none !important;
+
+        animation: menuTrianglePulse 2.4s ease-in-out infinite !important;
+    }
+
+    /* Triangle : point du haut */
+    html body .store-header .mobile-menu-toggle .hamburger-line:nth-child(1),
+    html body .product-header .mobile-menu-toggle .hamburger-line:nth-child(1) {
+        top: 12px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        animation-delay: 0s !important;
+    }
+
+    /* Triangle : point bas gauche */
+    html body .store-header .mobile-menu-toggle .hamburger-line:nth-child(2),
+    html body .product-header .mobile-menu-toggle .hamburger-line:nth-child(2) {
+        top: 27px !important;
+        left: 14px !important;
+        animation-delay: 0.18s !important;
+    }
+
+    /* Triangle : point bas droit */
+    html body .store-header .mobile-menu-toggle .hamburger-line:nth-child(3),
+    html body .product-header .mobile-menu-toggle .hamburger-line:nth-child(3) {
+        top: 27px !important;
+        right: 14px !important;
+        animation-delay: 0.36s !important;
+    }
+
+    @keyframes menuTrianglePulse {
+        0%, 100% {
+            opacity: 0.45;
+            scale: 0.78;
+            box-shadow:
+                0 0 6px rgba(255,255,255,0.7),
+                0 0 14px rgba(255,255,255,0.25);
+        }
+
+        50% {
+            opacity: 1;
+            scale: 1.2;
+            box-shadow:
+                0 0 11px rgba(255,255,255,1),
+                0 0 28px rgba(255,255,255,0.55);
+        }
+    }
+
+    /* État menu ouvert : les 3 points deviennent plus doux */
+    html body .store-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line,
+    html body .product-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line {
+        animation: none !important;
+        opacity: 0.85 !important;
+        scale: 1 !important;
+    }
+
+    /* Menu mobile : bouton panier intégré */
+    .mobile-cart-menu-button,
+    .nav-cart-button {
+        width: 100% !important;
+        min-height: 48px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+
+        padding: 0 0 !important;
+        margin-top: 8px !important;
+
+        border: 0 !important;
+        background: transparent !important;
+
+        color: rgba(255,255,255,0.86) !important;
+
+        font-family: var(--font-display) !important;
+        font-size: 11px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.18em !important;
+        text-align: left !important;
+
+        cursor: pointer !important;
+    }
+
+    .mobile-cart-menu-button::after,
+    .nav-cart-button::after {
+        content: "→";
+        font-size: 18px;
+        letter-spacing: 0;
+        opacity: 0.7;
+    }
+
+    .mobile-cart-menu-button:hover,
+    .nav-cart-button:hover {
+        color: #ffffff !important;
+    }
+
+    /* Cart drawer devient popup plein écran */
+    html body .cart-drawer,
+    html body .cart-drawer#cartDrawer {
+        position: fixed !important;
+        inset: 0 !important;
+
+        width: 100% !important;
+        max-width: none !important;
+        height: 100% !important;
+        height: 100dvh !important;
+
+        border-left: 0 !important;
+        border-radius: 0 !important;
+
+        transform: none !important;
+        translate: 0 16px !important;
+        scale: 0.98 !important;
+
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+
+        background:
+            radial-gradient(circle at 50% 0%, rgba(255,255,255,0.10), transparent 35%),
+            linear-gradient(
+                155deg,
+                rgba(38, 42, 52, 0.92) 0%,
+                rgba(18, 20, 28, 0.96) 48%,
+                rgba(5, 6, 9, 0.98) 100%
+            ) !important;
+
+        backdrop-filter: blur(38px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(38px) saturate(180%) !important;
+
+        transition:
+            opacity 0.28s ease,
+            translate 0.28s ease,
+            scale 0.28s ease,
+            visibility 0s linear 0.28s !important;
+
+        z-index: 1200 !important;
+    }
+
+    html body .cart-drawer.open,
+    html body.cart-is-open .cart-drawer,
+    html body .cart-drawer#cartDrawer.open,
+    html body.cart-is-open .cart-drawer#cartDrawer {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+
+        translate: 0 0 !important;
+        scale: 1 !important;
+
+        transform: none !important;
+
+        transition:
+            opacity 0.28s ease,
+            translate 0.28s ease,
+            scale 0.28s ease,
+            visibility 0s linear 0s !important;
+    }
+
+    /* Cart header plus premium en full page */
+    html body .cart-drawer .cart-header {
+        padding-top: calc(24px + var(--safe-top)) !important;
+        padding-left: 22px !important;
+        padding-right: 22px !important;
+    }
+
+    html body .cart-drawer .cart-items {
+        padding-left: 22px !important;
+        padding-right: 22px !important;
+    }
+
+    html body .cart-drawer .cart-footer {
+        padding-left: 22px !important;
+        padding-right: 22px !important;
+        padding-bottom: calc(22px + var(--safe-bottom)) !important;
+    }
+
+    /* Empty state centré proprement */
+    html body .cart-drawer .cart-empty {
+        min-height: 55vh !important;
+        padding: 40px 20px !important;
+    }
+
+}

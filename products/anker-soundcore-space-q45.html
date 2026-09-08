@@ -237,74 +237,199 @@
 <style>
 
     /* =====================================================
-       FIX 1 — MASQUE LE HAMBURGER SUR DESKTOP (ligne blanche)
+       PATCH UNIVERSEL v3 — PANIER + HEADER (MOBILE + DESKTOP)
+       Non-scopé : fonctionne sous .store-header ET .product-header
        ===================================================== */
 
-    @media (min-width: 851px) {
-        .store-header .mobile-menu-toggle,
+
+    /* 1. BOUTON PANIER — boîte glass + icône blanche (NON scopé) */
+    .cart-acrylic {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 44px !important;
+        height: 44px !important;
+        flex-shrink: 0 !important;
+        background: rgba(255,255,255,0.06) !important;
+        border: 1px solid rgba(255,255,255,0.14) !important;
+        border-radius: 12px !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        z-index: 1001 !important;
+    }
+
+    .cart-acrylic:hover {
+        background: rgba(255,255,255,0.12) !important;
+        transform: translateY(-2px) !important;
+    }
+
+    /* 2. ICÔNE SVG PANIER — corrige le SVG noir géant par défaut */
+    .cart-acrylic .cart-icon,
+    .cart-icon {
+        width: 20px !important;
+        height: 20px !important;
+        display: block !important;
+        fill: none !important;
+        stroke: #ffffff !important;
+        stroke-width: 2 !important;
+        stroke-linecap: round !important;
+        stroke-linejoin: round !important;
+    }
+
+    /* 3. BADGE COMPTEUR — rond blanc en haut à droite */
+    .cart-acrylic .cart-count,
+    .cart-count {
+        position: absolute !important;
+        top: -6px !important;
+        right: -6px !important;
+        min-width: 18px !important;
+        height: 18px !important;
+        padding: 0 5px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #ffffff !important;
+        color: #050505 !important;
+        font-family: "Manrope", sans-serif !important;
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        border-radius: 999px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    }
+
+    /* 4. HAMBURGER — boîte glass, masqué sur desktop */
+    .mobile-menu-toggle {
+        display: none !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        width: 44px !important;
+        height: 44px !important;
+        flex-shrink: 0 !important;
+        padding: 0 !important;
+        background: rgba(255,255,255,0.06) !important;
+        border: 1px solid rgba(255,255,255,0.14) !important;
+        border-radius: 12px !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        cursor: pointer !important;
+        z-index: 1001 !important;
+    }
+
+    .mobile-menu-toggle .hamburger-line {
+        display: block !important;
+        width: 20px !important;
+        height: 2px !important;
+        background: #fff !important;
+        border-radius: 2px !important;
+        transition: all 0.3s ease !important;
+        transform-origin: center !important;
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg) !important;
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+        opacity: 0 !important;
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg) !important;
+    }
+
+    /* Sur MOBILE (≤ 850px) : hamburger visible */
+    @media (max-width: 850px) {
         .mobile-menu-toggle {
-            display: none !important;
+            display: flex !important;
         }
     }
 
 
-    /* =====================================================
-       FIX 2 — DESCRIPTION COMPLÈTE (annule le clamp de store.css)
-       ===================================================== */
+    /* 5. HEADER MOBILE — flex 3 colonnes garanti */
+    @media (max-width: 850px) {
+        .store-header {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            padding: 0 16px !important;
+            height: 64px !important;
+            gap: 12px !important;
+        }
 
-    .product-description {
-        display: block !important;
-        -webkit-line-clamp: none !important;
-        -webkit-box-orient: initial !important;
-        overflow: visible !important;
-        max-height: none !important;
+        .store-header .logo-acrylic {
+            flex: 0 0 auto !important;
+        }
+
+        .store-header .store-nav,
+        .store-header .store-nav:not(.mobile-open) {
+            position: fixed !important;
+            top: 0 !important;
+            right: -100% !important;
+            width: 75% !important;
+            max-width: 320px !important;
+            height: 100vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: flex-start !important;
+            padding: 0 48px !important;
+            gap: 32px !important;
+            background: rgba(12, 14, 18, 0.96) !important;
+            backdrop-filter: blur(35px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
+            border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7) !important;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            z-index: 999 !important;
+        }
+
+        .store-header .store-nav.mobile-open {
+            right: 0 !important;
+        }
     }
 
-    .product-description p {
-        margin: 0 0 16px;
-        color: rgba(255, 255, 255, 0.62);
-        font-family: "DM Sans", sans-serif;
-        font-size: 14px;
-        line-height: 1.85;
-    }
 
-    .product-description p:last-child {
-        margin-bottom: 0;
-    }
-
-
-    /* =====================================================
-       FIX 3 — PANIER GLASSMORPHIQUE (translucide, pas noir opaque)
-       ===================================================== */
-
+    /* 6. DRAWER — verre teinté BLANC (style maison Voltica) */
     .cart-drawer {
         width: 400px !important;
         max-width: 92vw !important;
         background:
             linear-gradient(
-                165deg,
-                rgba(30, 32, 38, 0.72),
-                rgba(14, 15, 19, 0.78)
+                160deg,
+                rgba(255,255,255,0.10),
+                rgba(255,255,255,0.04)
             ) !important;
-        backdrop-filter: blur(30px) saturate(170%) !important;
-        -webkit-backdrop-filter: blur(30px) saturate(170%) !important;
-        border-left: 1px solid rgba(255, 255, 255, 0.10) !important;
+        backdrop-filter: blur(40px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+        border-left: 1px solid rgba(255,255,255,0.14) !important;
         box-shadow:
-            -24px 0 70px rgba(0, 0, 0, 0.55),
-            inset 1px 0 0 rgba(255, 255, 255, 0.06) !important;
+            -24px 0 70px rgba(0,0,0,0.55),
+            inset 1px 0 0 rgba(255,255,255,0.08) !important;
+    }
+
+    .cart-overlay {
+        background: rgba(0,0,0,0.5) !important;
+        backdrop-filter: blur(6px) !important;
+        -webkit-backdrop-filter: blur(6px) !important;
     }
 
     .cart-header {
         padding: 24px 24px 20px !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-        background: rgba(255, 255, 255, 0.02) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+        background: rgba(255,255,255,0.03) !important;
     }
 
     .cart-small-title {
         font-family: "Manrope", sans-serif !important;
         font-size: 10px !important;
         letter-spacing: 0.25em !important;
-        color: rgba(255, 255, 255, 0.45) !important;
+        color: rgba(255,255,255,0.45) !important;
         font-weight: 600 !important;
     }
 
@@ -323,22 +448,22 @@
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        background: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.10) !important;
+        background: rgba(255,255,255,0.05) !important;
+        border: 1px solid rgba(255,255,255,0.10) !important;
         border-radius: 9px !important;
         cursor: pointer !important;
         transition: all 0.3s ease !important;
     }
 
     .cart-close-x:hover {
-        background: rgba(255, 255, 255, 0.10) !important;
+        background: rgba(255,255,255,0.10) !important;
         transform: rotate(90deg) !important;
     }
 
     .cart-close-x svg {
         width: 14px !important;
         height: 14px !important;
-        stroke: rgba(255, 255, 255, 0.75) !important;
+        stroke: rgba(255,255,255,0.75) !important;
         stroke-width: 2 !important;
     }
 
@@ -353,7 +478,7 @@
         align-items: center !important;
         gap: 14px !important;
         padding: 14px 0 !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.07) !important;
         background: transparent !important;
     }
 
@@ -363,8 +488,8 @@
         border-radius: 9px !important;
         overflow: hidden !important;
         flex-shrink: 0 !important;
-        background: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        background: rgba(255,255,255,0.05) !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
     }
 
     .cart-item-image img {
@@ -394,7 +519,7 @@
     .cart-item-info > span {
         font-family: "DM Sans", sans-serif !important;
         font-size: 13px !important;
-        color: rgba(255, 255, 255, 0.65) !important;
+        color: rgba(255,255,255,0.65) !important;
         font-weight: 500 !important;
     }
 
@@ -409,8 +534,8 @@
         width: 24px !important;
         height: 24px !important;
         border-radius: 6px !important;
-        background: rgba(255, 255, 255, 0.07) !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        background: rgba(255,255,255,0.07) !important;
+        border: 1px solid rgba(255,255,255,0.12) !important;
         color: #fff !important;
         font-size: 14px !important;
         cursor: pointer !important;
@@ -418,7 +543,7 @@
     }
 
     .cart-quantity button:hover {
-        background: rgba(255, 255, 255, 0.14) !important;
+        background: rgba(255,255,255,0.14) !important;
     }
 
     .cart-quantity > span {
@@ -435,8 +560,8 @@
         height: 28px !important;
         border-radius: 7px !important;
         background: transparent !important;
-        border: 1px solid rgba(255, 255, 255, 0.10) !important;
-        color: rgba(255, 255, 255, 0.45) !important;
+        border: 1px solid rgba(255,255,255,0.10) !important;
+        color: rgba(255,255,255,0.45) !important;
         font-size: 18px !important;
         line-height: 1 !important;
         cursor: pointer !important;
@@ -445,17 +570,15 @@
     }
 
     .cart-remove:hover {
-        background: rgba(255, 60, 60, 0.12) !important;
-        border-color: rgba(255, 60, 60, 0.35) !important;
+        background: rgba(255,60,60,0.12) !important;
+        border-color: rgba(255,60,60,0.35) !important;
         color: #ff7a7a !important;
     }
 
     .cart-footer {
         padding: 20px 24px !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.09) !important;
-        background: rgba(0, 0, 0, 0.18) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
+        border-top: 1px solid rgba(255,255,255,0.09) !important;
+        background: rgba(255,255,255,0.04) !important;
     }
 
     .cart-total-row {
@@ -469,7 +592,7 @@
         font-family: "Manrope", sans-serif !important;
         font-size: 11px !important;
         letter-spacing: 0.2em !important;
-        color: rgba(255, 255, 255, 0.55) !important;
+        color: rgba(255,255,255,0.55) !important;
         font-weight: 600 !important;
     }
 
@@ -502,7 +625,7 @@
 
     .checkout-button:hover {
         transform: translateY(-1px) !important;
-        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
+        box-shadow: 0 10px 30px rgba(255,255,255,0.15) !important;
     }
 
     .cart-empty {
@@ -515,7 +638,7 @@
         font-family: "Manrope", sans-serif !important;
         font-size: 14px !important;
         letter-spacing: 0.15em !important;
-        color: rgba(255, 255, 255, 0.85) !important;
+        color: rgba(255,255,255,0.85) !important;
         font-weight: 700 !important;
         margin-bottom: 8px !important;
     }
@@ -523,14 +646,32 @@
     .cart-empty span {
         font-family: "DM Sans", sans-serif !important;
         font-size: 13px !important;
-        color: rgba(255, 255, 255, 0.45) !important;
+        color: rgba(255,255,255,0.45) !important;
     }
 
-    @media (max-width: 560px) {
-        .cart-drawer {
-            width: 100% !important;
-            max-width: 100vw !important;
-        }
+
+    /* =====================================================
+       DESCRIPTION COMPLÈTE (annule le clamp de store.css)
+       ===================================================== */
+
+    .product-description {
+        display: block !important;
+        -webkit-line-clamp: none !important;
+        -webkit-box-orient: initial !important;
+        overflow: visible !important;
+        max-height: none !important;
+    }
+
+    .product-description p {
+        margin: 0 0 16px;
+        color: rgba(255,255,255,0.62);
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        line-height: 1.85;
+    }
+
+    .product-description p:last-child {
+        margin-bottom: 0;
     }
 
 
@@ -614,6 +755,13 @@
     @media (max-width: 850px) {
         .static-product-hero {
             padding-top: 120px;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .cart-drawer {
+            width: 100% !important;
+            max-width: 100vw !important;
         }
     }
 

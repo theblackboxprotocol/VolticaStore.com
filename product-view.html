@@ -286,7 +286,7 @@
     >
 
 
-    <!-- Store CSS pour cohérence du header et du panier -->
+    <!-- Store CSS (header + panier) + CSS produit -->
     <link rel="stylesheet" href="store.css">
     <link rel="stylesheet" href="product-view.css">
 
@@ -294,7 +294,7 @@
     <style>
 
         /* =====================================================
-           HEADER — GRAPHITE TINTED GLASS (cohérent avec les autres pages)
+           HEADER — GRAPHITE TINTED GLASS
            ===================================================== */
 
         .product-header {
@@ -303,21 +303,21 @@
             left: 0 !important;
             right: 0 !important;
             z-index: 1000 !important;
-            
+
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
-            
+
             padding: 0 32px !important;
             height: 72px !important;
 
             background: rgba(24, 26, 30, 0.72) !important;
             backdrop-filter: blur(28px) saturate(180%) !important;
             -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-            
+
             border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-            
-            box-shadow: 
+
+            box-shadow:
                 0 4px 30px rgba(0, 0, 0, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
         }
@@ -376,13 +376,15 @@
             color: #fff !important;
         }
 
-        /* Cart button in header */
         .product-header .cart-acrylic {
             width: 44px !important;
             height: 44px !important;
         }
 
-        /* Mobile Menu */
+        /* =====================================================
+           FIX 1 — HAMBURGER MASQUÉ SUR DESKTOP (ligne blanche)
+           ===================================================== */
+
         .product-header .mobile-menu-toggle {
             display: none !important;
             flex-direction: column !important;
@@ -395,6 +397,13 @@
             cursor: pointer !important;
             padding: 4px !important;
             z-index: 1001 !important;
+        }
+
+        @media (min-width: 851px) {
+            .product-header .mobile-menu-toggle,
+            .mobile-menu-toggle {
+                display: none !important;
+            }
         }
 
         .product-header .hamburger-line {
@@ -481,13 +490,13 @@
                 align-items: flex-start !important;
                 padding: 0 48px !important;
                 gap: 32px !important;
-                
+
                 background: rgba(12, 14, 18, 0.96) !important;
                 backdrop-filter: blur(35px) saturate(180%) !important;
                 -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
                 border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
                 box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7) !important;
-                
+
                 transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
                 z-index: 999 !important;
             }
@@ -512,6 +521,326 @@
 
         }
 
+
+        /* =====================================================
+           FIX 2 — DESCRIPTION COMPLÈTE (annule le clamp store.css)
+           ===================================================== */
+
+        .product-description {
+            display: block !important;
+            -webkit-line-clamp: none !important;
+            -webkit-box-orient: initial !important;
+            overflow: visible !important;
+            max-height: none !important;
+        }
+
+        .product-description p {
+            margin: 0 0 16px;
+            color: rgba(255, 255, 255, 0.62);
+            font-family: "DM Sans", sans-serif;
+            font-size: 14px;
+            line-height: 1.85;
+        }
+
+        .product-description p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* =====================================================
+           FIX 3 — BOUTON ADD TO CART DANS LE PANEAU D'ACHAT
+           ===================================================== */
+
+        .purchase-panel {
+            display: flex !important;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .product-add-to-cart {
+            min-height: 48px;
+            padding: 0 22px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 13px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            font-family: "Manrope", sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .product-add-to-cart:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           FIX 4 — PANIER GLASSMORPHIQUE (translucide, pas noir)
+           ===================================================== */
+
+        .cart-drawer {
+            width: 400px !important;
+            max-width: 92vw !important;
+            background:
+                linear-gradient(
+                    165deg,
+                    rgba(30, 32, 38, 0.72),
+                    rgba(14, 15, 19, 0.78)
+                ) !important;
+            backdrop-filter: blur(30px) saturate(170%) !important;
+            -webkit-backdrop-filter: blur(30px) saturate(170%) !important;
+            border-left: 1px solid rgba(255, 255, 255, 0.10) !important;
+            box-shadow:
+                -24px 0 70px rgba(0, 0, 0, 0.55),
+                inset 1px 0 0 rgba(255, 255, 255, 0.06) !important;
+        }
+
+        .cart-header {
+            padding: 24px 24px 20px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            background: rgba(255, 255, 255, 0.02) !important;
+        }
+
+        .cart-small-title {
+            font-family: "Manrope", sans-serif !important;
+            font-size: 10px !important;
+            letter-spacing: 0.25em !important;
+            color: rgba(255, 255, 255, 0.45) !important;
+            font-weight: 600 !important;
+        }
+
+        .cart-header h2 {
+            font-family: "Manrope", sans-serif !important;
+            font-size: 22px !important;
+            letter-spacing: 0.1em !important;
+            color: #fff !important;
+            font-weight: 700 !important;
+            margin: 4px 0 0 !important;
+        }
+
+        .cart-close-x {
+            width: 36px !important;
+            height: 36px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.10) !important;
+            border-radius: 9px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .cart-close-x:hover {
+            background: rgba(255, 255, 255, 0.10) !important;
+            transform: rotate(90deg) !important;
+        }
+
+        .cart-close-x svg {
+            width: 14px !important;
+            height: 14px !important;
+            stroke: rgba(255, 255, 255, 0.75) !important;
+            stroke-width: 2 !important;
+        }
+
+        .cart-items {
+            flex: 1 !important;
+            overflow-y: auto !important;
+            padding: 16px 24px !important;
+        }
+
+        .cart-item {
+            display: flex !important;
+            align-items: center !important;
+            gap: 14px !important;
+            padding: 14px 0 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+            background: transparent !important;
+        }
+
+        .cart-item-image {
+            width: 56px !important;
+            height: 56px !important;
+            border-radius: 9px !important;
+            overflow: hidden !important;
+            flex-shrink: 0 !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .cart-item-image img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+
+        .cart-item-info {
+            flex: 1 !important;
+            min-width: 0 !important;
+        }
+
+        .cart-item-info strong {
+            display: -webkit-box !important;
+            -webkit-line-clamp: 2 !important;
+            -webkit-box-orient: vertical !important;
+            overflow: hidden !important;
+            font-family: "Manrope", sans-serif !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            color: #fff !important;
+            line-height: 1.4 !important;
+            margin-bottom: 4px !important;
+        }
+
+        .cart-item-info > span {
+            font-family: "DM Sans", sans-serif !important;
+            font-size: 13px !important;
+            color: rgba(255, 255, 255, 0.65) !important;
+            font-weight: 500 !important;
+        }
+
+        .cart-quantity {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            margin-top: 6px !important;
+        }
+
+        .cart-quantity button {
+            width: 24px !important;
+            height: 24px !important;
+            border-radius: 6px !important;
+            background: rgba(255, 255, 255, 0.07) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            color: #fff !important;
+            font-size: 14px !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .cart-quantity button:hover {
+            background: rgba(255, 255, 255, 0.14) !important;
+        }
+
+        .cart-quantity > span {
+            font-family: "Manrope", sans-serif !important;
+            font-size: 12px !important;
+            color: #fff !important;
+            font-weight: 600 !important;
+            min-width: 20px !important;
+            text-align: center !important;
+        }
+
+        .cart-remove {
+            width: 28px !important;
+            height: 28px !important;
+            border-radius: 7px !important;
+            background: transparent !important;
+            border: 1px solid rgba(255, 255, 255, 0.10) !important;
+            color: rgba(255, 255, 255, 0.45) !important;
+            font-size: 18px !important;
+            line-height: 1 !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+            flex-shrink: 0 !important;
+        }
+
+        .cart-remove:hover {
+            background: rgba(255, 60, 60, 0.12) !important;
+            border-color: rgba(255, 60, 60, 0.35) !important;
+            color: #ff7a7a !important;
+        }
+
+        .cart-footer {
+            padding: 20px 24px !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.09) !important;
+            background: rgba(0, 0, 0, 0.18) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+        }
+
+        .cart-total-row {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            margin-bottom: 14px !important;
+        }
+
+        .cart-total-row span {
+            font-family: "Manrope", sans-serif !important;
+            font-size: 11px !important;
+            letter-spacing: 0.2em !important;
+            color: rgba(255, 255, 255, 0.55) !important;
+            font-weight: 600 !important;
+        }
+
+        .cart-total-row strong {
+            font-family: "Manrope", sans-serif !important;
+            font-size: 20px !important;
+            letter-spacing: 0.05em !important;
+            color: #fff !important;
+            font-weight: 700 !important;
+        }
+
+        .checkout-button {
+            width: 100% !important;
+            padding: 14px 20px !important;
+            background: #fff !important;
+            color: #050505 !important;
+            border: none !important;
+            border-radius: 11px !important;
+            font-family: "Manrope", sans-serif !important;
+            font-size: 12px !important;
+            letter-spacing: 0.2em !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 10px !important;
+        }
+
+        .checkout-button:hover {
+            transform: translateY(-1px) !important;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
+        }
+
+        .cart-empty {
+            padding: 48px 20px !important;
+            text-align: center !important;
+        }
+
+        .cart-empty strong {
+            display: block !important;
+            font-family: "Manrope", sans-serif !important;
+            font-size: 14px !important;
+            letter-spacing: 0.15em !important;
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 700 !important;
+            margin-bottom: 8px !important;
+        }
+
+        .cart-empty span {
+            font-family: "DM Sans", sans-serif !important;
+            font-size: 13px !important;
+            color: rgba(255, 255, 255, 0.45) !important;
+        }
+
+        @media (max-width: 560px) {
+            .cart-drawer {
+                width: 100% !important;
+                max-width: 100vw !important;
+            }
+        }
+
     </style>
 
 </head>
@@ -521,7 +850,7 @@
 
 
 <!-- =====================================================
-     DECORATIVE ELEMENTS (cohérence avec store.html)
+     DÉCORS
      ===================================================== -->
 
 <div class="pulsar-field" aria-hidden="true">
@@ -596,7 +925,7 @@
         </a>
     </nav>
 
-    <!-- Cart button pour cohérence -->
+
     <button
         type="button"
         class="cart-acrylic"
@@ -720,7 +1049,7 @@
             </span>
 
 
-            <!-- CONTENU STATIQUE PAR DÉFAUT (lisible par Google même sans JS) -->
+            <!-- CONTENU STATIQUE PAR DÉFAUT (lisible par Google) -->
             <h1 id="productTitle">
                 Premium Technology Product
             </h1>
@@ -820,7 +1149,7 @@
 
                 <button
                     type="button"
-                    class="acrylic-button product-add-to-cart"
+                    class="product-add-to-cart"
                     id="addToCartButton"
                 >
                     ADD TO CART
@@ -1073,7 +1402,7 @@
 
 
 <!-- =====================================================
-     CART DRAWER (identique au reste du site)
+     PANIER (drawer)
      ===================================================== -->
 
 <div class="cart-overlay" id="cartOverlay" aria-hidden="true" hidden></div>
@@ -1112,6 +1441,7 @@
 </aside>
 
 
+
 <!-- =====================================================
      LIGHTBOX
      ===================================================== -->
@@ -1143,12 +1473,12 @@
      SCRIPTS
      ===================================================== -->
 
-<!-- 1. Product database -->
+<!-- 1. Base de données produits -->
 <script src="products.js?v=7"></script>
 
 
 <!-- 2. REDIRECTION INTELLIGENTE vers pages statiques
-         Exécute AVANT product-view.js pour éviter le flash -->
+         (exécutée AVANT tout rendu pour éviter le flash) -->
 <script>
     (function () {
 
@@ -1171,27 +1501,119 @@
 </script>
 
 
-<!-- 3. Store logic (cart) -->
+<!-- 3. Logique boutique (panier global) -->
 <script src="store.js?v=7"></script>
 
 
-<!-- 4. Product view logic (rendering) -->
+<!-- 4. Logique fiche produit (rendu dynamique) -->
 <script src="product-view.js?v=7"></script>
 
 
-<!-- 5. Mobile Menu Logic -->
+<!-- 5. AJOUT AU PANIER LOCAL (partage localStorage avec store.js) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        var button = document.getElementById("addToCartButton");
+        if (!button) { return; }
+
+        var id = new URLSearchParams(window.location.search).get("id");
+
+        var product = (window.volticaProducts || []).find(function (p) {
+            return p && String(p.id) === String(id);
+        });
+
+        if (!product) {
+            button.style.display = "none";
+            return;
+        }
+
+        button.addEventListener("click", function () {
+
+            var cart = [];
+            try {
+                cart = JSON.parse(
+                    localStorage.getItem("volticaCart")
+                ) || [];
+            } catch (error) {
+                cart = [];
+            }
+
+            var existing = cart.find(function (item) {
+                return String(item.id) === String(product.id);
+            });
+
+            if (existing) {
+                existing.quantity = (existing.quantity || 1) + 1;
+            } else {
+                cart.push({
+                    id: String(product.id),
+                    name: String(product.name || "Voltica Product"),
+                    price: Number(product.price || 0),
+                    image: (Array.isArray(product.images) && product.images.length)
+                        ? product.images[0]
+                        : "",
+                    quantity: 1
+                });
+            }
+
+            localStorage.setItem(
+                "volticaCart",
+                JSON.stringify(cart)
+            );
+
+            var total = cart.reduce(function (sum, item) {
+                return sum + (item.quantity || 1);
+            }, 0);
+
+            var badge = document.getElementById("cartCount");
+            if (badge) {
+                badge.textContent = total;
+                badge.classList.add("visible");
+            }
+
+            button.textContent = "✓ ADDED";
+            setTimeout(function () {
+                button.textContent = "ADD TO CART";
+            }, 1500);
+
+            if (typeof window.gtag === "function") {
+                window.gtag("event", "add_to_cart", {
+                    currency: "USD",
+                    value: Number(product.price || 0),
+                    items: [{
+                        item_id: String(product.id),
+                        item_name: String(product.name || ""),
+                        item_category: String(product.category || ""),
+                        price: Number(product.price || 0),
+                        quantity: 1
+                    }]
+                });
+            }
+
+            var cartButton = document.getElementById("cartButton");
+            if (cartButton) {
+                cartButton.click();
+            }
+
+        });
+
+    });
+</script>
+
+
+<!-- 6. MENU MOBILE -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const menuToggle = document.getElementById('mobileMenuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
-        
+
         if (menuToggle && mobileMenu) {
             menuToggle.addEventListener('click', function() {
                 const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
                 menuToggle.setAttribute('aria-expanded', !isExpanded);
                 mobileMenu.classList.toggle('mobile-open');
             });
-            
+
             const navLinks = mobileMenu.querySelectorAll('a');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {

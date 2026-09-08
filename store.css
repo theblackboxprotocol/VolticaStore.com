@@ -1,7 +1,7 @@
 /* =========================================================
-   VOLTICA STORE — STORE.CSS (v11 FINAL)
+   VOLTICA STORE — STORE.CSS (v12)
    Premium Glassmorphism / Black Tech / Acrylic
-   Source unique pour header mobile + cart + atmosphère
+   Source unique : header mobile + panier + atmosphère
    ========================================================= */
 
 
@@ -381,6 +381,7 @@ body::after {
 
 /* =========================================================
    7. BOUTON PANIER — UNIVERSEL
+   FIX PC : icône blanche garantie (svg direct OU wrapper)
    ========================================================= */
 
 .cart-acrylic {
@@ -394,7 +395,7 @@ body::after {
     background:
         linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
         rgba(255,255,255,0.045);
-    color: var(--white);
+    color: #ffffff;
     cursor: pointer;
     transition: all var(--duration-fast) var(--ease-premium);
     backdrop-filter: blur(12px);
@@ -418,26 +419,29 @@ body::after {
     transform: translateY(0) scale(0.95);
 }
 
-.cart-icon,
-.cart-acrylic .cart-icon {
+/* Conteneur éventuel */
+.cart-icon {
     width: 22px;
     height: 22px;
     display: block;
 }
 
-.cart-icon svg,
-.cart-acrylic .cart-icon svg {
-    width: 100%;
-    height: 100%;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+/* FIX : couvre svg.cart-icon (pages produit) ET .cart-icon svg (store) */
+.cart-acrylic svg,
+svg.cart-icon,
+.cart-icon svg {
+    width: 22px !important;
+    height: 22px !important;
+    display: block !important;
+    fill: none !important;
+    stroke: #ffffff !important;
+    stroke-width: 1.8 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
     transition: transform var(--duration-fast) var(--ease-premium);
 }
 
-.cart-acrylic:hover .cart-icon svg {
+.cart-acrylic:hover svg {
     transform: scale(1.1);
 }
 
@@ -481,15 +485,16 @@ body::after {
 
 
 /* =========================================================
-   8. HAMBURGER — DESKTOP (caché)
+   8. TOGGLE MENU — PULSAR BLANC (remplace le hamburger)
+   Caché sur desktop ; point pulsant sur mobile.
+   Aucun changement HTML nécessaire : le pulsar est un ::before
    ========================================================= */
 
 .mobile-menu-toggle {
     display: none;
-    flex-direction: column;
+    position: relative;
     align-items: center;
     justify-content: center;
-    gap: 5px;
     width: 44px;
     height: 44px;
     flex-shrink: 0;
@@ -506,29 +511,55 @@ body::after {
 .mobile-menu-toggle:hover {
     background: rgba(255,255,255,0.10);
     border-color: rgba(255,255,255,0.22);
-    transform: translateY(-1px);
 }
 
+/* Anciennes lignes hamburger : masquées définitivement */
 .mobile-menu-toggle .hamburger-line {
-    display: block;
-    width: 20px;
-    height: 2px;
-    background: #fff;
-    border-radius: 2px;
+    display: none;
+}
+
+/* Le pulsar blanc */
+.mobile-menu-toggle::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    margin: -5px 0 0 -5px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow:
+        0 0 10px #ffffff,
+        0 0 24px rgba(255,255,255,0.55);
+    animation: pulsarPulse 2.6s ease-in-out infinite;
     transition: all 0.3s ease;
-    transform-origin: center;
 }
 
-.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+/* Halo discret autour du bouton */
+.mobile-menu-toggle::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 12px;
+    box-shadow: 0 0 0 0 rgba(255,255,255,0);
+    transition: box-shadow 0.3s ease;
+    pointer-events: none;
 }
 
-.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
-    opacity: 0;
+/* Menu ouvert : le point devient un anneau */
+.mobile-menu-toggle[aria-expanded="true"]::before {
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    background: transparent;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 14px rgba(255,255,255,0.5);
+    animation: none;
 }
 
-.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+.mobile-menu-toggle[aria-expanded="true"]::after {
+    box-shadow: 0 0 0 5px rgba(255,255,255,0.10);
 }
 
 
@@ -769,7 +800,7 @@ main {
 
 @keyframes chipEntrance {
     from { opacity: 0; transform: translateY(10px) scale(0.9); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    to { opacity: 1; transform: translateY(0); scale(1); }
 }
 
 .category-chip::before {
@@ -1000,7 +1031,7 @@ main {
 
 @keyframes cardEntrance {
     from { opacity: 0; transform: translateY(50px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    to { opacity: 1; transform: translateY(0); scale(1); }
 }
 
 .store-product::before {
@@ -1571,7 +1602,8 @@ main {
 
 
 /* =========================================================
-   25. CART OVERLAY + DRAWER
+   25. CART OVERLAY + DRAWER — ANCRAGE FIABLE
+   FIX : width en % (pas vw), translateX(100%), visibility
    ========================================================= */
 
 .cart-overlay {
@@ -1599,12 +1631,18 @@ main {
     position: fixed;
     top: 0;
     right: 0;
+    bottom: 0;
+    left: auto;
     z-index: var(--z-drawer);
-    width: min(440px, 94vw);
-    height: 100vh;
+
+    width: min(440px, 100%);
+    max-width: 100vw;
+    height: 100%;
     height: 100dvh;
+
     display: flex;
     flex-direction: column;
+
     background:
         linear-gradient(
             155deg,
@@ -1620,20 +1658,26 @@ main {
         inset 0 1px 0 rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(34px) saturate(180%);
     -webkit-backdrop-filter: blur(34px) saturate(180%);
-    transform: translate3d(110%, 0, 0);
-    opacity: 0;
+
+    transform: translateX(100%);
+    visibility: hidden;
     pointer-events: none;
+    overscroll-behavior: contain;
+    will-change: transform;
+
     transition:
         transform 0.38s var(--ease-premium),
-        opacity 0.25s ease;
-    overflow: hidden;
+        visibility 0s linear 0.38s;
 }
 
 .cart-drawer.open,
 body.cart-is-open .cart-drawer {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
     pointer-events: auto;
+    transition:
+        transform 0.38s var(--ease-premium),
+        visibility 0s linear 0s;
 }
 
 .cart-drawer::before,
@@ -2010,7 +2054,7 @@ body.cart-is-open {
 
 
 /* =========================================================
-   33. RESPONSIVE — TABLET (≤ 850px)
+   33. RESPONSIVE — TABLET (≤ 850px, hors header)
    ========================================================= */
 
 @media (max-width: 850px) {
@@ -2058,7 +2102,7 @@ body.cart-is-open {
 
 
 /* =========================================================
-   34. RESPONSIVE — MOBILE (≤ 560px)
+   34. RESPONSIVE — MOBILE (≤ 560px, hors header)
    ========================================================= */
 
 @media (max-width: 560px) {
@@ -2114,15 +2158,17 @@ body.cart-is-open {
 
 
 /* =========================================================
-   35. MOBILE — HEADER GRID 3 ZONES (≤ 850px) — v11
-   SOURCE UNIQUE : logo | hamburger centré | panier
+   35. MOBILE — HEADER 3 ZONES + PANNEAU NAV (≤ 850px) — v12
+   logo gauche | pulsar centre | panier droite
+   Nav : invisible tant que .mobile-open n'est pas posé
    ========================================================= */
 
 @media (max-width: 850px) {
 
     html body .store-header,
     html body .product-header {
-        position: relative !important;
+        position: sticky !important;
+        top: 10px !important;
         display: grid !important;
         grid-template-columns: 1fr auto 1fr !important;
         grid-template-rows: 64px !important;
@@ -2131,6 +2177,7 @@ body.cart-is-open {
         height: 64px !important;
         min-height: 64px !important;
         padding: 0 12px !important;
+        margin: 10px auto 0 !important;
         overflow: visible !important;
     }
 
@@ -2149,10 +2196,10 @@ body.cart-is-open {
         position: relative !important;
         margin: 0 !important;
         min-width: 0 !important;
-        z-index: 1003 !important;
+        z-index: 1001 !important;
     }
 
-    /* ZONE 2 — Hamburger (centre exact) */
+    /* ZONE 2 — Pulsar (centre exact, au-dessus du panneau) */
     html body .store-header .mobile-menu-toggle,
     html body .product-header .mobile-menu-toggle {
         grid-column: 2 !important;
@@ -2183,24 +2230,17 @@ body.cart-is-open {
         width: 42px !important;
         height: 42px !important;
         pointer-events: auto !important;
-        z-index: 1003 !important;
+        z-index: 1001 !important;
     }
 
-    html body .store-header .hamburger-line,
-    html body .product-header .hamburger-line {
-        height: 2px !important;
-        background: rgba(255,255,255,0.92) !important;
-    }
-
-    /* Navigation — panneau hors-canvas */
+    /* Panneau nav : INVISIBLE par défaut (plus de fuite visuelle) */
     html body .store-header .store-nav,
     html body .product-header .product-navigation {
         position: fixed !important;
         top: 0 !important;
-        right: -100% !important;
-        width: 82% !important;
-        max-width: 340px !important;
-        height: 100vh !important;
+        right: 0 !important;
+        width: min(340px, 82%) !important;
+        height: 100% !important;
         height: 100dvh !important;
         display: flex !important;
         flex-direction: column !important;
@@ -2215,27 +2255,37 @@ body.cart-is-open {
         -webkit-backdrop-filter: blur(34px) saturate(170%) !important;
         border-left: 1px solid rgba(255,255,255,0.10) !important;
         box-shadow: -20px 0 60px rgba(0,0,0,0.65) !important;
-        transition: right 0.38s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        z-index: 1001 !important;
+        transform: translateX(100%) !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transition:
+            transform 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+            visibility 0s linear 0.38s !important;
+        z-index: 1002 !important;
     }
 
     html body .store-header .store-nav.mobile-open,
     html body .product-header .product-navigation.mobile-open {
-        right: 0 !important;
+        transform: translateX(0) !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transition:
+            transform 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+            visibility 0s linear 0s !important;
     }
 
-    /* Drawer pleine largeur */
+    /* Drawer : pleine largeur, ancré exactement au bord */
     html body .cart-drawer {
-        width: 100vw !important;
-        max-width: 100vw !important;
-        height: 100vh !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
         height: 100dvh !important;
-        transform: translate3d(105%, 0, 0) !important;
+        transform: translateX(100%) !important;
     }
 
     html body .cart-drawer.open,
     html body.cart-is-open .cart-drawer {
-        transform: translate3d(0, 0, 0) !important;
+        transform: translateX(0) !important;
     }
 
 }
@@ -2269,6 +2319,12 @@ body.cart-is-open {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+
+    .cart-drawer,
+    .store-nav,
+    .product-navigation {
+        transition: none !important;
     }
 
    }

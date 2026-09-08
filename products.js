@@ -137,6 +137,7 @@ window.volticaProducts = [
         },
 
         "stripeLink": "https://buy.stripe.com/9B628saOjbor6e4fd02Ji0p",
+        "staticPage": "products/kiwi-ears-orchestra-ii.html",
         "supplierLink": "business@kiwiears.com",
         "active": true
     },
@@ -198,6 +199,7 @@ window.volticaProducts = [
         },
 
         "stripeLink": "https://buy.stripe.com/14AbJ2aOjdwz8mc7Ky2Ji0q",
+        "staticPage": "products/kiwi-ears-ardor.html",
         "supplierLink": "business@kiwiears.com",
         "active": true
     },
@@ -253,6 +255,7 @@ window.volticaProducts = [
             ]
         },
         "stripeLink": "https://buy.stripe.com/fZueVeaOj78b7i80i62Ji0y",
+        "staticPage": "products/kiwi-ears-aventus.html",
         "supplierLink": "business@kiwiears.com",
         "active": true
     },
@@ -316,6 +319,7 @@ window.volticaProducts = [
         "variants": [],
 
         "stripeLink": "https://buy.stripe.com/3cI5kE3lRgIL31Sc0O2Ji0m",
+        "staticPage": "products/fa-5370-planar-magnetic.html",
         "supplierLink": "https://www.alibaba.com/x/B2MSRf?ck=pdp",
         "active": true
     },
@@ -383,6 +387,7 @@ window.volticaProducts = [
             ]
         },
         "stripeLink": "https://buy.stripe.com/7sYbJ24pV5030TK5Cq2Ji0w",
+        "staticPage": "products/c22-smartphone-gimbal.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2512050900151624000.html",
         "active": true
     },
@@ -444,6 +449,7 @@ window.volticaProducts = [
         "variants": [],
 
         "stripeLink": "https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01",
+        "staticPage": "products/q17-open-ear-earbuds.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2512210524261601400.html",
         "active": true
     },
@@ -501,6 +507,7 @@ window.volticaProducts = [
             ]
         },
         "stripeLink": "https://buy.stripe.com/5kQ6oI9Kf9gj8mc3ui2Ji06",
+        "staticPage": "products/voltica-t75-earbuds.html",
         "supplierLink": "https://a.aliexpress.com/_mqGzwIX",
         "active": true
     },
@@ -553,6 +560,7 @@ window.volticaProducts = [
             ]
         },
         "stripeLink": "https://buy.stripe.com/bJe7sM8Gb647cCs7Ky2Ji0a",
+        "staticPage": "products/multifunctional-laptop-stand.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-900A64B9-EC12-4A91-A8DA-68624EF9A572.html",
         "active": true
     },
@@ -618,6 +626,7 @@ window.volticaProducts = [
         "variants": [],
 
         "stripeLink": "https://buy.stripe.com/7sY28s5tZ78bbyo9SG2Ji02",
+        "staticPage": "products/voltica-tws-earbuds.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1996427591927648257.html",
         "active": true
     },
@@ -681,6 +690,7 @@ window.volticaProducts = [
         },
 
         "stripeLink": "https://buy.stripe.com/4gM4gA09F0JNfOE3ui2Ji0d",
+        "staticPage": "products/levitating-bluetooth-speaker.html",
         "supplierLink": "https://www.alibaba.com/x/B2MZ0n?ck=pdp",
         "active": true
     },
@@ -739,6 +749,7 @@ window.volticaProducts = [
             ]
         },
         "stripeLink": "https://buy.stripe.com/7sY4gA5tZgIL9qg3ui2Ji09",
+        "staticPage": "products/tri-fold-keyboard.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-5D65A979-76A2-4B37-8E3F-D289A05BDDB3.html",
         "active": true
     },
@@ -806,6 +817,7 @@ window.volticaProducts = [
         },
 
         "stripeLink": "https://buy.stripe.com/dRm9AUcWrdwz8mc8OC2Ji0s",
+        "staticPage": "products/ferrofluid-bluetooth-speaker.html",
         "supplierLink": "https://www.alibaba.com/x/B2Nkkw?ck=pdp",
         "active": true
     },
@@ -863,6 +875,7 @@ window.volticaProducts = [
             ]
         },
         "stripeLink": "https://buy.stripe.com/9B69AU4pV503eKAc0O2Ji0u",
+        "staticPage": "products/lumi-robot-car-companion.html",
         "supplierLink": "https://www.alibaba.com/x/B2O469?ck=pdp",
         "active": true
     },
@@ -933,6 +946,7 @@ window.volticaProducts = [
         },
 
         "stripeLink": "https://buy.stripe.com/6oUbJ2cWrdwzbyo4ym2Ji08",
+        "staticPage": "products/smart-auto-tracking-gimbal.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1597165945188405248.html",
         "active": true
     },
@@ -996,6 +1010,7 @@ window.volticaProducts = [
         },
 
         "stripeLink": "https://buy.stripe.com/5kQdRa7C70JN45W3ui2Ji0c",
+        "staticPage": "products/hexagonal-quantum-light-panels.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2601211009261604500.html",
         "active": true
     },
@@ -1061,6 +1076,7 @@ window.volticaProducts = [
         },
 
         "stripeLink": "https://buy.stripe.com/cNi28s5tZ3VZgSIgh42Ji0h",
+        "staticPage": "products/rgb-branches-ambience-light.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1763544551962189824.html",
         "active": true
     },
@@ -1118,6 +1134,7 @@ window.volticaProducts = [
         },
 
         "stripeLink": "https://buy.stripe.com/7sY4gAaOj6476e47Ky2Ji0f",
+        "staticPage": "products/black-star-projector.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2408290911051600500.html",
         "active": true
     },
@@ -1182,6 +1199,7 @@ window.volticaProducts = [
             ]
         },
         "stripeLink": "https://buy.stripe.com/6oUdRa6y33VZ9qgaWK2Ji0v",
+        "staticPage": "products/gamesir-g8-galileo.html",
         "supplierLink": "https://www.alibaba.com/x/B2O6hN?ck=pdp",
         "active": true
     },
@@ -1244,6 +1262,7 @@ window.volticaProducts = [
             ]
         },
         "stripeLink": "https://buy.stripe.com/00w8wQ1dJcsv8mc5Cq2Ji0t",
+        "staticPage": "products/mountop-uvc-water-bottle.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1893953216514207746.html",
         "active": true
     },
@@ -1309,6 +1328,7 @@ window.volticaProducts = [
         },
 
         "stripeLink": "https://buy.stripe.com/14AaEY8Gbakn6e4e8W2Ji0i",
+        "staticPage": "products/xxl-world-map-mouse-pad.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1377449685635174400.html",
         "active": true
     },
@@ -1364,6 +1384,7 @@ window.volticaProducts = [
         "variants": [],
 
         "stripeLink": "https://buy.stripe.com/14A28se0v78bauk4ym2Ji0o",
+        "staticPage": "products/xreal-air-1s-glasses.html",
         "supplierLink": "https://www.alibaba.com/x/B2MGgw?ck=pdp",
         "active": true
     },
@@ -1429,6 +1450,7 @@ window.volticaProducts = [
         },
 
         "stripeLink": "https://buy.stripe.com/3cI28saOj6475a01ma2Ji0r",
+        "staticPage": "products/smart-android-bathroom-mirror.html",
         "supplierLink": "https://www.alibaba.com/x/B2NhlS?ck=pdp",
         "active": true
     },
@@ -1482,6 +1504,7 @@ window.volticaProducts = [
             ]
         },
         "stripeLink": "https://buy.stripe.com/dRm6oI2hNakngSI2qe2Ji0e",
+        "staticPage": "products/3d-holographic-led-fan.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2086387249086910465.html",
         "active": true
     },
@@ -1538,6 +1561,7 @@ window.volticaProducts = [
             ]
         },
         "stripeLink": "https://buy.stripe.com/bJeaEY3lRdwz5a04ym2Ji0z",
+        "staticPage": "products/sl90-rgb-led-video-light.html",
         "supplierLink": "https://www.alibaba.com/x/B2PGv3?ck=pdp",
         "active": true
     },
@@ -1592,6 +1616,7 @@ window.volticaProducts = [
             ]
         },
         "stripeLink": "https://buy.stripe.com/6oUaEYf4zgILfOEc0O2Ji0A",
+        "staticPage": "products/voltica-mt53-pocket-printer.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1509728177428639744.html",
         "active": true
     }

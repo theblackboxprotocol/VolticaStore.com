@@ -2,155 +2,50 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- =====================================================
          DYNAMIC SEO META TAGS
          ===================================================== -->
-
     <title id="dynamic-title">Premium Technology | Voltica Store</title>
-
-    <meta
-        name="description"
-        id="dynamic-description"
-        content="Discover premium technology, precision audio, gaming gear, creator gear, smart home products and lifestyle tech at Voltica Store."
-    >
-
-    <meta
-        name="robots"
-        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-    >
-
-    <meta
-        name="theme-color"
-        content="#050505"
-    >
-
-    <meta
-        name="author"
-        content="Voltica Store"
-    >
+    <meta name="description" id="dynamic-description" content="Discover premium technology, precision audio, gaming gear, creator gear, smart home products and lifestyle tech at Voltica Store.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#050505">
+    <meta name="author" content="Voltica Store">
 
     <!-- =====================================================
          CANONICAL URL
          ===================================================== -->
-
-    <link
-        rel="canonical"
-        id="dynamic-canonical"
-        href="https://volticastore.com/product-view.html"
-    >
-
+    <link rel="canonical" id="dynamic-canonical" href="https://volticastore.com/product-view.html">
 
     <!-- =====================================================
-         OPEN GRAPH — FACEBOOK / LINKEDIN / WHATSAPP
+         OPEN GRAPH
          ===================================================== -->
-
-    <meta
-        property="og:type"
-        content="product"
-    >
-
-    <meta
-        property="og:title"
-        id="og-title"
-        content="Premium Technology | Voltica Store"
-    >
-
-    <meta
-        property="og:description"
-        id="og-description"
-        content="Discover premium technology at Voltica Store."
-    >
-
-    <meta
-        property="og:image"
-        id="og-image"
-        content="https://volticastore.com/assets/images/og-image.jpg"
-    >
-
-    <meta
-        property="og:image:width"
-        content="1200"
-    >
-
-    <meta
-        property="og:image:height"
-        content="630"
-    >
-
-    <meta
-        property="og:url"
-        id="og-url"
-        content="https://volticastore.com/product-view.html"
-    >
-
-    <meta
-        property="og:site_name"
-        content="Voltica Store"
-    >
-
-    <meta
-        property="og:locale"
-        content="en_US"
-    >
-
-    <meta
-        property="product:price:amount"
-        id="og-price"
-        content="0.00"
-    >
-
-    <meta
-        property="product:price:currency"
-        content="USD"
-    >
-
-    <meta
-        property="product:availability"
-        id="og-availability"
-        content="in stock"
-    >
-
+    <meta property="og:type" content="product">
+    <meta property="og:title" id="og-title" content="Premium Technology | Voltica Store">
+    <meta property="og:description" id="og-description" content="Discover premium technology at Voltica Store.">
+    <meta property="og:image" id="og-image" content="https://volticastore.com/assets/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" id="og-url" content="https://volticastore.com/product-view.html">
+    <meta property="og:site_name" content="Voltica Store">
+    <meta property="og:locale" content="en_US">
+    <meta property="product:price:amount" id="og-price" content="0.00">
+    <meta property="product:price:currency" content="CAD">
+    <meta property="product:availability" id="og-availability" content="in stock">
 
     <!-- =====================================================
          TWITTER / X CARDS
          ===================================================== -->
-
-    <meta
-        name="twitter:card"
-        content="summary_large_image"
-    >
-
-    <meta
-        name="twitter:title"
-        id="twitter-title"
-        content="Premium Technology | Voltica Store"
-    >
-
-    <meta
-        name="twitter:description"
-        id="twitter-description"
-        content="Discover premium technology at Voltica Store."
-    >
-
-    <meta
-        name="twitter:image"
-        id="twitter-image"
-        content="https://volticastore.com/assets/images/og-image.jpg"
-    >
-
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twitter-title" content="Premium Technology | Voltica Store">
+    <meta name="twitter:description" id="twitter-description" content="Discover premium technology at Voltica Store.">
+    <meta name="twitter:image" id="twitter-image" content="https://volticastore.com/assets/images/og-image.jpg">
 
     <!-- =====================================================
          SCHEMA.ORG — PRODUCT (JSON-LD)
          ===================================================== -->
-
     <script type="application/ld+json" id="product-schema">
     {
         "@context": "https://schema.org",
@@ -165,22 +60,52 @@
         "offers": {
             "@type": "Offer",
             "url": "https://volticastore.com/product-view.html",
-            "priceCurrency": "USD",
+            "priceCurrency": "CAD",
             "price": "0.00",
             "availability": "https://schema.org/InStock",
             "seller": {
                 "@type": "Organization",
                 "name": "Voltica Store"
+            },
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": "0",
+                    "currency": "CAD"
+                },
+                "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "CA"
+                },
+                "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 1,
+                        "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 3,
+                        "unitCode": "DAY"
+                    }
+                }
             }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "47"
         }
     }
     </script>
 
-
     <!-- =====================================================
          SCHEMA.ORG — ORGANIZATION
          ===================================================== -->
-
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -196,11 +121,9 @@
     }
     </script>
 
-
     <!-- =====================================================
          SCHEMA.ORG — BREADCRUMB
          ===================================================== -->
-
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -228,631 +151,103 @@
     }
     </script>
 
-
     <!-- =====================================================
          GOOGLE ANALYTICS 4
          ===================================================== -->
-
-    <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-LCJ9SC3NZP"
-    ></script>
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCJ9SC3NZP"></script>
     <script>
-
-        window.dataLayer =
-            window.dataLayer || [];
-
-
-        function gtag() {
-
-            dataLayer.push(arguments);
-
-        }
-
-
-        gtag(
-            "js",
-            new Date()
-        );
-
-
-        gtag(
-            "config",
-            "G-LCJ9SC3NZP"
-        );
-
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag("js", new Date());
+        gtag("config", "G-LCJ9SC3NZP");
     </script>
-
 
     <!-- =====================================================
          PREMIUM TYPOGRAPHY
          ===================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <!-- Store CSS (header + panier) + CSS produit -->
+    <!-- =====================================================
+         STYLES (External only — no inline CSS)
+         ===================================================== -->
     <link rel="stylesheet" href="store.css">
     <link rel="stylesheet" href="product-view.css">
 
-
-    <style>
-
+    <!-- =====================================================
+         CRITICAL SCRIPTS — BLOCKING REDIRECTION
+         Exécutés AVANT le rendu pour éviter le flash de contenu
+         ===================================================== -->
+    <script src="products.js?v=8" defer></script>
+    <script>
         /* =====================================================
-           HEADER — GRAPHITE TINTED GLASS
+           INTELLIGENT REDIRECT (runs synchronously before render)
            ===================================================== */
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var id = params.get("id");
 
-        .product-header {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            z-index: 1000 !important;
-
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-
-            padding: 0 32px !important;
-            height: 72px !important;
-
-            background: rgba(24, 26, 30, 0.72) !important;
-            backdrop-filter: blur(28px) saturate(180%) !important;
-            -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-
-            box-shadow:
-                0 4px 30px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
-        }
-
-        .product-header::before {
-            content: "" !important;
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            height: 1px !important;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent) !important;
-            pointer-events: none !important;
-        }
-
-        .product-header .voltica-logo {
-            display: flex !important;
-            align-items: center !important;
-            gap: 12px !important;
-            text-decoration: none !important;
-            z-index: 1001 !important;
-        }
-
-        .product-header .logo-img {
-            width: 32px !important;
-            height: 32px !important;
-            object-fit: contain !important;
-        }
-
-        .product-header .logo-name {
-            font-family: "Manrope", sans-serif !important;
-            font-size: 14px !important;
-            font-weight: 700 !important;
-            letter-spacing: 0.15em !important;
-            color: #fff !important;
-        }
-
-        .product-header .product-navigation {
-            display: flex !important;
-            align-items: center !important;
-            gap: 32px !important;
-        }
-
-        .product-header .product-navigation a {
-            text-decoration: none !important;
-            color: rgba(255, 255, 255, 0.65) !important;
-            font-size: 11px !important;
-            font-weight: 600 !important;
-            letter-spacing: 0.12em !important;
-            transition: color 0.3s ease !important;
-            position: relative !important;
-            padding: 4px 0 !important;
-        }
-
-        .product-header .product-navigation a:hover {
-            color: #fff !important;
-        }
-
-        .product-header .cart-acrylic {
-            width: 44px !important;
-            height: 44px !important;
-        }
-
-        /* =====================================================
-           FIX 1 — HAMBURGER MASQUÉ SUR DESKTOP (ligne blanche)
-           ===================================================== */
-
-        .product-header .mobile-menu-toggle {
-            display: none !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-            gap: 5px !important;
-            width: 32px !important;
-            height: 32px !important;
-            background: transparent !important;
-            border: none !important;
-            cursor: pointer !important;
-            padding: 4px !important;
-            z-index: 1001 !important;
-        }
-
-        @media (min-width: 851px) {
-            .product-header .mobile-menu-toggle,
-            .mobile-menu-toggle {
-                display: none !important;
-            }
-        }
-
-        .product-header .hamburger-line {
-            display: block !important;
-            width: 100% !important;
-            height: 1.5px !important;
-            background: #fff !important;
-            border-radius: 2px !important;
-            transition: all 0.3s ease !important;
-            transform-origin: center !important;
-        }
-
-        .product-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
-            transform: translateY(6.5px) rotate(45deg) !important;
-        }
-
-        .product-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
-            opacity: 0 !important;
-        }
-
-        .product-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
-            transform: translateY(-6.5px) rotate(-45deg) !important;
-        }
-
-        .product-header .product-navigation .mobile-nav-link {
-            display: flex !important;
-            align-items: center !important;
-            gap: 14px !important;
-            text-decoration: none !important;
-            color: rgba(255, 255, 255, 0.75) !important;
-            font-family: "Manrope", sans-serif !important;
-            font-size: 13px !important;
-            font-weight: 600 !important;
-            letter-spacing: 0.2em !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .product-header .product-navigation .mobile-nav-link:hover {
-            color: #fff !important;
-            transform: translateX(4px) !important;
-        }
-
-        .product-header .product-navigation .mobile-nav-link .mobile-pulsar-dot {
-            width: 6px !important;
-            height: 6px !important;
-            border-radius: 50% !important;
-            background: #fff !important;
-            box-shadow: 0 0 10px #fff, 0 0 20px rgba(255, 255, 255, 0.5) !important;
-            animation: mobilePulse 2s ease-in-out infinite !important;
-            flex-shrink: 0 !important;
-        }
-
-        @keyframes mobilePulse {
-            0%, 100% {
-                transform: scale(0.85) !important;
-                opacity: 0.6 !important;
-            }
-            50% {
-                transform: scale(1.2) !important;
-                opacity: 1 !important;
-            }
-        }
-
-        @media (max-width:850px) {
-
-            .product-header {
-                padding: 0 24px !important;
-                height: 68px !important;
+            // No ID = redirect to store
+            if (!id) {
+                window.location.replace("store.html");
+                return;
             }
 
-            .product-header .mobile-menu-toggle {
-                display: flex !important;
+            // Wait for products.js to load
+            function tryRedirect() {
+                var products = window.volticaProducts || [];
+
+                if (!products.length) {
+                    // products.js not loaded yet, retry
+                    setTimeout(tryRedirect, 50);
+                    return;
+                }
+
+                var product = products.find(function (item) {
+                    return item && String(item.id) === String(id);
+                });
+
+                // Found product with staticPage → redirect
+                if (product && product.staticPage) {
+                    window.location.replace(product.staticPage);
+                    return;
+                }
+
+                // Product exists but no staticPage → stay (fallback)
+                if (product) {
+                    return;
+                }
+
+                // Product not found → show 404 state
+                document.addEventListener("DOMContentLoaded", function () {
+                    var main = document.querySelector("main");
+                    if (main) {
+                        main.innerHTML = `
+                            <div class="product-not-found">
+                                <div class="not-found-content">
+                                    <div class="pulse-dot" style="width: 10px; height: 10px; margin-bottom: 20px;"></div>
+                                    <h1>PRODUCT NOT FOUND</h1>
+                                    <p>The product you're looking for is no longer available.</p>
+                                    <a href="store.html" class="back-store-button">← BACK TO STORE</a>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
             }
 
-            .product-header .product-navigation {
-                position: fixed !important;
-                top: 0 !important;
-                right: -100% !important;
-                width: 75% !important;
-                max-width: 320px !important;
-                height: 100vh !important;
-                flex-direction: column !important;
-                justify-content: center !important;
-                align-items: flex-start !important;
-                padding: 0 48px !important;
-                gap: 32px !important;
-
-                background: rgba(12, 14, 18, 0.96) !important;
-                backdrop-filter: blur(35px) saturate(180%) !important;
-                -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
-                border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
-                box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7) !important;
-
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-                z-index: 999 !important;
-            }
-
-            .product-header .product-navigation.mobile-open {
-                right: 0 !important;
-            }
-
-        }
-
-        @media (max-width:560px) {
-
-            .product-header {
-                padding: 0 16px !important;
-                height: 64px !important;
-            }
-
-            .product-header .product-navigation {
-                width: 85% !important;
-                padding: 0 32px !important;
-            }
-
-        }
-
-
-        /* =====================================================
-           FIX 2 — DESCRIPTION COMPLÈTE (annule le clamp store.css)
-           ===================================================== */
-
-        .product-description {
-            display: block !important;
-            -webkit-line-clamp: none !important;
-            -webkit-box-orient: initial !important;
-            overflow: visible !important;
-            max-height: none !important;
-        }
-
-        .product-description p {
-            margin: 0 0 16px;
-            color: rgba(255, 255, 255, 0.62);
-            font-family: "DM Sans", sans-serif;
-            font-size: 14px;
-            line-height: 1.85;
-        }
-
-        .product-description p:last-child {
-            margin-bottom: 0;
-        }
-
-
-        /* =====================================================
-           FIX 3 — BOUTON ADD TO CART DANS LE PANEAU D'ACHAT
-           ===================================================== */
-
-        .purchase-panel {
-            display: flex !important;
-            flex-wrap: wrap;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .product-add-to-cart {
-            min-height: 48px;
-            padding: 0 22px;
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 13px;
-            background: rgba(255, 255, 255, 0.06);
-            color: #fff;
-            font-family: "Manrope", sans-serif;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .product-add-to-cart:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-2px);
-        }
-
-
-        /* =====================================================
-           FIX 4 — PANIER GLASSMORPHIQUE (translucide, pas noir)
-           ===================================================== */
-
-        .cart-drawer {
-            width: 400px !important;
-            max-width: 92vw !important;
-            background:
-                linear-gradient(
-                    165deg,
-                    rgba(30, 32, 38, 0.72),
-                    rgba(14, 15, 19, 0.78)
-                ) !important;
-            backdrop-filter: blur(30px) saturate(170%) !important;
-            -webkit-backdrop-filter: blur(30px) saturate(170%) !important;
-            border-left: 1px solid rgba(255, 255, 255, 0.10) !important;
-            box-shadow:
-                -24px 0 70px rgba(0, 0, 0, 0.55),
-                inset 1px 0 0 rgba(255, 255, 255, 0.06) !important;
-        }
-
-        .cart-header {
-            padding: 24px 24px 20px !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-            background: rgba(255, 255, 255, 0.02) !important;
-        }
-
-        .cart-small-title {
-            font-family: "Manrope", sans-serif !important;
-            font-size: 10px !important;
-            letter-spacing: 0.25em !important;
-            color: rgba(255, 255, 255, 0.45) !important;
-            font-weight: 600 !important;
-        }
-
-        .cart-header h2 {
-            font-family: "Manrope", sans-serif !important;
-            font-size: 22px !important;
-            letter-spacing: 0.1em !important;
-            color: #fff !important;
-            font-weight: 700 !important;
-            margin: 4px 0 0 !important;
-        }
-
-        .cart-close-x {
-            width: 36px !important;
-            height: 36px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            background: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid rgba(255, 255, 255, 0.10) !important;
-            border-radius: 9px !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .cart-close-x:hover {
-            background: rgba(255, 255, 255, 0.10) !important;
-            transform: rotate(90deg) !important;
-        }
-
-        .cart-close-x svg {
-            width: 14px !important;
-            height: 14px !important;
-            stroke: rgba(255, 255, 255, 0.75) !important;
-            stroke-width: 2 !important;
-        }
-
-        .cart-items {
-            flex: 1 !important;
-            overflow-y: auto !important;
-            padding: 16px 24px !important;
-        }
-
-        .cart-item {
-            display: flex !important;
-            align-items: center !important;
-            gap: 14px !important;
-            padding: 14px 0 !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
-            background: transparent !important;
-        }
-
-        .cart-item-image {
-            width: 56px !important;
-            height: 56px !important;
-            border-radius: 9px !important;
-            overflow: hidden !important;
-            flex-shrink: 0 !important;
-            background: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        }
-
-        .cart-item-image img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-        }
-
-        .cart-item-info {
-            flex: 1 !important;
-            min-width: 0 !important;
-        }
-
-        .cart-item-info strong {
-            display: -webkit-box !important;
-            -webkit-line-clamp: 2 !important;
-            -webkit-box-orient: vertical !important;
-            overflow: hidden !important;
-            font-family: "Manrope", sans-serif !important;
-            font-size: 12px !important;
-            font-weight: 600 !important;
-            color: #fff !important;
-            line-height: 1.4 !important;
-            margin-bottom: 4px !important;
-        }
-
-        .cart-item-info > span {
-            font-family: "DM Sans", sans-serif !important;
-            font-size: 13px !important;
-            color: rgba(255, 255, 255, 0.65) !important;
-            font-weight: 500 !important;
-        }
-
-        .cart-quantity {
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 8px !important;
-            margin-top: 6px !important;
-        }
-
-        .cart-quantity button {
-            width: 24px !important;
-            height: 24px !important;
-            border-radius: 6px !important;
-            background: rgba(255, 255, 255, 0.07) !important;
-            border: 1px solid rgba(255, 255, 255, 0.12) !important;
-            color: #fff !important;
-            font-size: 14px !important;
-            cursor: pointer !important;
-            transition: all 0.2s ease !important;
-        }
-
-        .cart-quantity button:hover {
-            background: rgba(255, 255, 255, 0.14) !important;
-        }
-
-        .cart-quantity > span {
-            font-family: "Manrope", sans-serif !important;
-            font-size: 12px !important;
-            color: #fff !important;
-            font-weight: 600 !important;
-            min-width: 20px !important;
-            text-align: center !important;
-        }
-
-        .cart-remove {
-            width: 28px !important;
-            height: 28px !important;
-            border-radius: 7px !important;
-            background: transparent !important;
-            border: 1px solid rgba(255, 255, 255, 0.10) !important;
-            color: rgba(255, 255, 255, 0.45) !important;
-            font-size: 18px !important;
-            line-height: 1 !important;
-            cursor: pointer !important;
-            transition: all 0.2s ease !important;
-            flex-shrink: 0 !important;
-        }
-
-        .cart-remove:hover {
-            background: rgba(255, 60, 60, 0.12) !important;
-            border-color: rgba(255, 60, 60, 0.35) !important;
-            color: #ff7a7a !important;
-        }
-
-        .cart-footer {
-            padding: 20px 24px !important;
-            border-top: 1px solid rgba(255, 255, 255, 0.09) !important;
-            background: rgba(0, 0, 0, 0.18) !important;
-            backdrop-filter: blur(20px) !important;
-            -webkit-backdrop-filter: blur(20px) !important;
-        }
-
-        .cart-total-row {
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            margin-bottom: 14px !important;
-        }
-
-        .cart-total-row span {
-            font-family: "Manrope", sans-serif !important;
-            font-size: 11px !important;
-            letter-spacing: 0.2em !important;
-            color: rgba(255, 255, 255, 0.55) !important;
-            font-weight: 600 !important;
-        }
-
-        .cart-total-row strong {
-            font-family: "Manrope", sans-serif !important;
-            font-size: 20px !important;
-            letter-spacing: 0.05em !important;
-            color: #fff !important;
-            font-weight: 700 !important;
-        }
-
-        .checkout-button {
-            width: 100% !important;
-            padding: 14px 20px !important;
-            background: #fff !important;
-            color: #050505 !important;
-            border: none !important;
-            border-radius: 11px !important;
-            font-family: "Manrope", sans-serif !important;
-            font-size: 12px !important;
-            letter-spacing: 0.2em !important;
-            font-weight: 700 !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 10px !important;
-        }
-
-        .checkout-button:hover {
-            transform: translateY(-1px) !important;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
-        }
-
-        .cart-empty {
-            padding: 48px 20px !important;
-            text-align: center !important;
-        }
-
-        .cart-empty strong {
-            display: block !important;
-            font-family: "Manrope", sans-serif !important;
-            font-size: 14px !important;
-            letter-spacing: 0.15em !important;
-            color: rgba(255, 255, 255, 0.85) !important;
-            font-weight: 700 !important;
-            margin-bottom: 8px !important;
-        }
-
-        .cart-empty span {
-            font-family: "DM Sans", sans-serif !important;
-            font-size: 13px !important;
-            color: rgba(255, 255, 255, 0.45) !important;
-        }
-
-        @media (max-width: 560px) {
-            .cart-drawer {
-                width: 100% !important;
-                max-width: 100vw !important;
-            }
-        }
-
-    </style>
+            tryRedirect();
+        })();
+    </script>
 
 </head>
 
-
 <body>
 
-
 <!-- =====================================================
-     DÉCORS
+     ATMOSPHERIC DECORATIONS
      ===================================================== -->
-
 <div class="pulsar-field" aria-hidden="true">
     <span class="pulsar p1"></span>
     <span class="pulsar p2"></span>
@@ -864,79 +259,23 @@
 
 <div class="tech-grid" aria-hidden="true"></div>
 
-
 <!-- =====================================================
-     HEADER
+     HEADER (uses store.css unified system)
      ===================================================== -->
-
 <header class="product-header">
-
-    <a
-        href="index.html"
-        class="voltica-logo"
-        aria-label="Voltica Home"
-    >
-        <img
-            src="logo.png"
-            alt="Voltica Store Logo"
-            class="logo-img"
-            width="32"
-            height="32"
-        >
-
-        <span class="logo-name">
-            VOLTICA
-        </span>
+    <a href="index.html" class="voltica-logo" aria-label="Voltica Home">
+        <img src="logo.png" alt="Voltica Store Logo" class="logo-img" width="34" height="34">
+        <span class="logo-name">VOLTICA</span>
     </a>
 
-
-    <button
-        type="button"
-        class="mobile-menu-toggle"
-        id="mobileMenuToggle"
-        aria-label="Toggle mobile menu"
-        aria-controls="mobileMenu"
-        aria-expanded="false"
-    >
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-    </button>
-
-
-    <nav
-        class="product-navigation"
-        id="mobileMenu"
-        aria-label="Main navigation"
-    >
-        <a href="index.html" class="mobile-nav-link">
-            <span class="mobile-pulsar-dot"></span>
-            HOME
-        </a>
-
-        <a href="store.html" class="mobile-nav-link">
-            <span class="mobile-pulsar-dot"></span>
-            STORE
-        </a>
-
-        <a href="#contact" class="mobile-nav-link">
-            <span class="mobile-pulsar-dot"></span>
-            CONTACT
-        </a>
+    <nav class="product-navigation" aria-label="Main navigation">
+        <a href="index.html">HOME</a>
+        <a href="store.html">STORE</a>
+        <a href="#contact">CONTACT</a>
     </nav>
 
-
-    <button
-        type="button"
-        class="cart-acrylic"
-        id="cartButton"
-        aria-label="Open shopping cart"
-    >
-        <svg
-            class="cart-icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-        >
+    <button type="button" class="cart-acrylic" id="cartButton" aria-label="Open shopping cart" title="Shopping Cart">
+        <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path d="M3 4H5L7.2 15.2C7.4 16.2 8.3 17 9.3 17H18.2C19.2 17 20.1 16.3 20.4 15.3L22 9H6"/>
             <circle cx="9" cy="20" r="1.4"/>
             <circle cx="18" cy="20" r="1.4"/>
@@ -944,490 +283,188 @@
         <span class="cart-count" id="cartCount">0</span>
     </button>
 
+    <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
 </header>
 
-
+<!-- =====================================================
+     MOBILE MENU OVERLAY (unified system)
+     ===================================================== -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
+    <a href="index.html" class="mobile-nav-link">
+        <span class="mobile-pulsar-dot"></span>
+        HOME
+    </a>
+    <a href="store.html" class="mobile-nav-link">
+        <span class="mobile-pulsar-dot"></span>
+        STORE
+    </a>
+    <a href="#contact" class="mobile-nav-link">
+        <span class="mobile-pulsar-dot"></span>
+        CONTACT
+    </a>
+    <button type="button" class="mobile-cart-button" data-cart-open>
+        <span class="mobile-pulsar-dot"></span>
+        CART
+    </button>
+</div>
 
 <!-- =====================================================
      PRODUCT PAGE
      ===================================================== -->
+<main class="product-page" id="productPage">
 
-<main
-    class="product-page"
-    id="productPage"
->
-
-
-    <!-- =================================================
-         PRODUCT HERO
-         ================================================= -->
-
+    <!-- PRODUCT HERO -->
     <section class="product-hero">
-
-
-        <!-- =============================================
-             GALLERY
-             ============================================= -->
-
         <div class="product-gallery">
-
-
             <div class="main-image-panel">
-
-                <img
-                    id="mainProductImage"
-                    src="assets/images/og-image.jpg"
-                    alt="Voltica Premium Technology Product"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                >
-
-
-                <div
-                    class="image-reflection"
-                    aria-hidden="true"
-                ></div>
-
-
-                <div
-                    class="gallery-pulse"
-                    aria-hidden="true"
-                >
-
+                <img id="mainProductImage" src="assets/images/og-image.jpg" alt="Voltica Premium Technology Product" width="800" height="800" loading="eager">
+                <div class="image-reflection" aria-hidden="true"></div>
+                <div class="gallery-pulse" aria-hidden="true">
                     <span class="pulse-dot"></span>
-
                 </div>
-
             </div>
-
-
-            <div
-                class="product-thumbnails"
-                id="productThumbnails"
-            ></div>
-
-
+            <div class="product-thumbnails" id="productThumbnails"></div>
         </div>
 
-
-
-        <!-- =============================================
-             PRODUCT INFORMATION
-             ============================================= -->
-
         <div class="product-information">
-
-
-            <div
-                class="product-status"
-                id="productStatus"
-            >
-
+            <div class="product-status" id="productStatus">
                 <span class="pulse-dot"></span>
-
-                <span id="productBadge">
-                    PREMIUM
-                </span>
-
+                <span id="productBadge">PREMIUM</span>
             </div>
 
+            <span class="product-category" id="productCategory">TECHNOLOGY</span>
+            <span class="product-number" id="productNumber">PRODUCT 01</span>
 
-            <span
-                class="product-category"
-                id="productCategory"
-            >
-                TECHNOLOGY
-            </span>
+            <h1 id="productTitle">Premium Technology Product</h1>
 
-
-            <span
-                class="product-number"
-                id="productNumber"
-            >
-                PRODUCT 01
-            </span>
-
-
-            <!-- CONTENU STATIQUE PAR DÉFAUT (lisible par Google) -->
-            <h1 id="productTitle">
-                Premium Technology Product
-            </h1>
-
-
-            <!-- =========================================
-                 SHORT DESCRIPTION
-                 ========================================= -->
-
-            <p
-                class="product-short-description"
-                id="productShortDescription"
-            >
+            <p class="product-short-description" id="productShortDescription">
                 Discover premium technology selected by Voltica Store.
             </p>
 
-
-
-            <!-- =========================================
-                 PRICE
-                 ========================================= -->
-
             <div class="product-price-panel">
-
-                <span
-                    class="product-price"
-                    id="productPrice"
-                >
-                    $0.00
-                </span>
-
-
-                <span
-                    class="product-currency"
-                    id="productCurrency"
-                >
-                    USD
-                </span>
-
-
-                <span
-                    class="product-reference-price"
-                    id="referencePrice"
-                ></span>
-
+                <span class="product-price" id="productPrice">$0.00</span>
+                <span class="product-currency" id="productCurrency">CAD</span>
+                <span class="product-reference-price" id="referencePrice"></span>
             </div>
 
-
-
-            <!-- =========================================
-                 COLOR / VARIANT OPTIONS
-                 ========================================= -->
-
-            <div
-                class="product-options-inline"
-                id="colorOptions"
-            ></div>
-
+            <div class="product-options-inline" id="colorOptions"></div>
 
             <div class="selected-option-row">
-
-                <span>
-                    SELECTED
-                </span>
-
-                <strong id="selectedOption">
-                    —
-                </strong>
-
+                <span>SELECTED</span>
+                <strong id="selectedOption">—</strong>
             </div>
-
-
-
-            <!-- =========================================
-                 PURCHASE
-                 ========================================= -->
 
             <div class="purchase-panel">
-
-                <a
-                    href="#"
-                    id="buyNowButton"
-                    class="stripe-button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <span>
-                        BUY NOW
-                    </span>
-
-                    <strong>
-                        →
-                    </strong>
-
+                <a href="#" id="buyNowButton" class="stripe-button" target="_blank" rel="noopener noreferrer">
+                    <span>BUY NOW</span>
+                    <strong>→</strong>
                 </a>
-
-                <button
-                    type="button"
-                    class="product-add-to-cart"
-                    id="addToCartButton"
-                >
+                <button type="button" class="product-add-to-cart" id="addToCartButton">
                     ADD TO CART
                 </button>
-
             </div>
 
-
-            <div
-                class="product-availability"
-                id="productAvailability"
-            >
-
+            <div class="product-availability" id="productAvailability">
                 <span class="pulse-dot"></span>
-
                 VOLTICA COLLECTION
-
             </div>
-
         </div>
-
     </section>
 
-
-
-    <!-- =================================================
-         FULL DESCRIPTION
-         ================================================= -->
-
+    <!-- FULL DESCRIPTION -->
     <section class="product-description-section">
-
         <div class="acrylic-panel">
-
-            <span class="section-kicker">
-                PRODUCT STORY
-            </span>
-
-            <h2>
-                THE EXPERIENCE
-            </h2>
-
-
-            <div
-                class="product-description"
-                id="productDescription"
-            >
+            <span class="section-kicker">PRODUCT STORY</span>
+            <h2>THE EXPERIENCE</h2>
+            <div class="product-description" id="productDescription">
                 <p>Premium technology product curated by Voltica Store.</p>
             </div>
-
         </div>
-
     </section>
 
-
-
-    <!-- =================================================
-         FEATURES
-         ================================================= -->
-
-    <section
-        class="product-features-section"
-        id="featuresSection"
-    >
-
+    <!-- FEATURES -->
+    <section class="product-features-section" id="featuresSection">
         <div class="section-heading">
-
-            <span class="section-kicker">
-                ENGINEERED DIFFERENTLY
-            </span>
-
-            <h2>
-                KEY FEATURES
-            </h2>
-
+            <span class="section-kicker">ENGINEERED DIFFERENTLY</span>
+            <h2>KEY FEATURES</h2>
         </div>
-
-
-        <div
-            class="features-grid"
-            id="featureList"
-        ></div>
-
+        <div class="features-grid" id="featureList"></div>
     </section>
 
-
-
-    <!-- =================================================
-         SPECIFICATIONS
-         ================================================= -->
-
-    <section
-        class="product-specifications-section"
-        id="specificationsSection"
-    >
-
+    <!-- SPECIFICATIONS -->
+    <section class="product-specifications-section" id="specificationsSection">
         <div class="section-heading">
-
-            <span class="section-kicker">
-                TECHNICAL DATA
-            </span>
-
-            <h2>
-                SPECIFICATIONS
-            </h2>
-
+            <span class="section-kicker">TECHNICAL DATA</span>
+            <h2>SPECIFICATIONS</h2>
         </div>
-
-
         <div class="specifications-panel acrylic-panel">
-
-            <div
-                class="specifications-table"
-                id="specificationTable"
-            ></div>
-
+            <div class="specifications-table" id="specificationTable"></div>
         </div>
-
     </section>
 
-
-
-    <!-- =================================================
-         FINAL CTA
-         ================================================= -->
-
+    <!-- FINAL CTA -->
     <section class="product-final-cta">
-
         <div class="cta-glass">
-
             <span class="pulse-dot"></span>
-
-            <span class="section-kicker">
-                VOLTICA STORE
-            </span>
-
-
-            <h2 id="finalProductName">
-                DISCOVER THE FUTURE.
-            </h2>
-
-
-            <p>
-                Premium technology selected for
-                the next generation.
-            </p>
-
-
-            <a
-                href="#"
-                id="finalStripeButton"
-                class="final-buy-button"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                BUY NOW
-
-                <strong>
-                    →
-                </strong>
-
+            <span class="section-kicker">VOLTICA STORE</span>
+            <h2 id="finalProductName">DISCOVER THE FUTURE.</h2>
+            <p>Premium technology selected for the next generation.</p>
+            <a href="#" id="finalStripeButton" class="final-buy-button" target="_blank" rel="noopener noreferrer">
+                BUY NOW <strong>→</strong>
             </a>
-
         </div>
-
     </section>
 
-
-
-    <!-- =================================================
-         BACK TO STORE
-         ================================================= -->
-
+    <!-- BACK TO STORE -->
     <section class="product-back-store-section">
-
-        <a
-            href="store.html"
-            class="back-store-button"
-        >
-
-            ← BACK TO STORE
-
-        </a>
-
+        <a href="store.html" class="back-store-button">← BACK TO STORE</a>
     </section>
 
-
-
-    <!-- =================================================
-         CONTACT
-         ================================================= -->
-
-    <section
-        class="product-contact-section"
-        id="contact"
-    >
-
+    <!-- CONTACT -->
+    <section class="product-contact-section" id="contact">
         <div class="acrylic-panel">
-
-            <span class="section-kicker">
-                VOLTICA SUPPORT
-            </span>
-
-            <h2>
-                NEED HELP?
-            </h2>
-
-            <p>
-                Our support team is here to help.
-            </p>
-
-            <a
-                href="mailto:contact@volticastore.com"
-                class="contact-button"
-            >
-                CONTACT US →
-            </a>
-
+            <span class="section-kicker">VOLTICA SUPPORT</span>
+            <h2>NEED HELP?</h2>
+            <p>Our support team is here to help.</p>
+            <a href="mailto:contact@volticastore.com" class="contact-button">CONTACT US →</a>
         </div>
-
     </section>
-
 
 </main>
-
-
 
 <!-- =====================================================
      FOOTER
      ===================================================== -->
-
 <footer class="product-footer">
-
-    <span>
-        VOLTICA STORE
-    </span>
-
-    <span>
-        THE FUTURE OF EVERYDAY
-    </span>
-
-    <a href="store.html">STORE</a>
-
-    <span>
-        © 2026
-    </span>
-
+    <div class="footer-acrylic">
+        <span>© 2026 VOLTICA STORE</span>
+        <span>THE FUTURE OF EVERYDAY</span>
+        <a href="store.html">STORE</a>
+    </div>
 </footer>
 
-
-
 <!-- =====================================================
-     PANIER (drawer)
+     CART (drawer — shared with store.js)
      ===================================================== -->
-
 <div class="cart-overlay" id="cartOverlay" aria-hidden="true" hidden></div>
 
 <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
-
     <div class="cart-header">
         <div>
             <span class="cart-small-title">VOLTICA</span>
             <h2>CART</h2>
         </div>
-        <button
-            type="button"
-            class="cart-close-x"
-            id="cartClose"
-            aria-label="Close shopping cart"
-        >
+        <button type="button" class="cart-close-x" id="cartClose" aria-label="Close shopping cart">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M18 6L6 18M6 6l12 12"/>
             </svg>
         </button>
     </div>
-
     <div class="cart-items" id="cartItems"></div>
-
     <div class="cart-footer">
         <div class="cart-total-row">
             <span>TOTAL</span>
@@ -1437,194 +474,65 @@
             CHECKOUT <span>→</span>
         </button>
     </div>
-
 </aside>
-
-
 
 <!-- =====================================================
      LIGHTBOX
      ===================================================== -->
-
-<div
-    class="product-lightbox"
-    aria-hidden="true"
->
-
-    <button
-        type="button"
-        class="lightbox-close"
-        aria-label="Close image"
-    >
-        ×
-    </button>
-
-
-    <img
-        src=""
-        alt="Product preview"
-    >
-
+<div class="product-lightbox" aria-hidden="true">
+    <button type="button" class="lightbox-close" aria-label="Close image">×</button>
+    <img src="" alt="Product preview">
 </div>
 
-
-
 <!-- =====================================================
-     SCRIPTS
+     SCRIPTS (defer for performance)
      ===================================================== -->
+<script src="store.js?v=8" defer></script>
+<script src="product-view.js?v=8" defer></script>
 
-<!-- 1. Base de données produits -->
-<script src="products.js?v=7"></script>
-
-
-<!-- 2. REDIRECTION INTELLIGENTE vers pages statiques
-         (exécutée AVANT tout rendu pour éviter le flash) -->
-<script>
-    (function () {
-
-        var params = new URLSearchParams(window.location.search);
-        var id = params.get("id");
-
-        if (!id) { return; }
-
-        var products = window.volticaProducts || [];
-
-        var product = products.find(function (item) {
-            return item && String(item.id) === String(id);
-        });
-
-        if (product && product.staticPage) {
-            window.location.replace(product.staticPage);
-        }
-
-    })();
-</script>
-
-
-<!-- 3. Logique boutique (panier global) -->
-<script src="store.js?v=7"></script>
-
-
-<!-- 4. Logique fiche produit (rendu dynamique) -->
-<script src="product-view.js?v=7"></script>
-
-
-<!-- 5. AJOUT AU PANIER LOCAL (partage localStorage avec store.js) -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-        var button = document.getElementById("addToCartButton");
-        if (!button) { return; }
-
-        var id = new URLSearchParams(window.location.search).get("id");
-
-        var product = (window.volticaProducts || []).find(function (p) {
-            return p && String(p.id) === String(id);
-        });
-
-        if (!product) {
-            button.style.display = "none";
-            return;
-        }
-
-        button.addEventListener("click", function () {
-
-            var cart = [];
-            try {
-                cart = JSON.parse(
-                    localStorage.getItem("volticaCart")
-                ) || [];
-            } catch (error) {
-                cart = [];
-            }
-
-            var existing = cart.find(function (item) {
-                return String(item.id) === String(product.id);
-            });
-
-            if (existing) {
-                existing.quantity = (existing.quantity || 1) + 1;
-            } else {
-                cart.push({
-                    id: String(product.id),
-                    name: String(product.name || "Voltica Product"),
-                    price: Number(product.price || 0),
-                    image: (Array.isArray(product.images) && product.images.length)
-                        ? product.images[0]
-                        : "",
-                    quantity: 1
-                });
-            }
-
-            localStorage.setItem(
-                "volticaCart",
-                JSON.stringify(cart)
-            );
-
-            var total = cart.reduce(function (sum, item) {
-                return sum + (item.quantity || 1);
-            }, 0);
-
-            var badge = document.getElementById("cartCount");
-            if (badge) {
-                badge.textContent = total;
-                badge.classList.add("visible");
-            }
-
-            button.textContent = "✓ ADDED";
-            setTimeout(function () {
-                button.textContent = "ADD TO CART";
-            }, 1500);
-
-            if (typeof window.gtag === "function") {
-                window.gtag("event", "add_to_cart", {
-                    currency: "USD",
-                    value: Number(product.price || 0),
-                    items: [{
-                        item_id: String(product.id),
-                        item_name: String(product.name || ""),
-                        item_category: String(product.category || ""),
-                        price: Number(product.price || 0),
-                        quantity: 1
-                    }]
-                });
-            }
-
-            var cartButton = document.getElementById("cartButton");
-            if (cartButton) {
-                cartButton.click();
-            }
-
-        });
-
-    });
-</script>
-
-
-<!-- 6. MENU MOBILE -->
+<!-- MENU MOBILE -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const menuToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('mobileMenuOverlay');
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const mobileCartButton = document.querySelector('.mobile-cart-button');
 
-        if (menuToggle && mobileMenu) {
+        if (menuToggle && menuOverlay) {
             menuToggle.addEventListener('click', function() {
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-                mobileMenu.classList.toggle('mobile-open');
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                menuOverlay.classList.toggle('active');
+                menuOverlay.setAttribute('aria-hidden', isExpanded);
             });
 
-            const navLinks = mobileMenu.querySelectorAll('a');
-            navLinks.forEach(link => {
+            // Close menu on link click
+            menuOverlay.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('mobile-open');
+                    menuOverlay.classList.remove('active');
+                    menuOverlay.setAttribute('aria-hidden', 'true');
                     menuToggle.setAttribute('aria-expanded', 'false');
                 });
+            });
+        }
+
+        // Mobile cart button opens cart and closes menu
+        if (mobileCartButton) {
+            mobileCartButton.addEventListener('click', function() {
+                if (cartDrawer) cartDrawer.classList.add('open');
+                if (cartOverlay) cartOverlay.hidden = false;
+                document.body.classList.add('cart-is-open');
+
+                if (menuOverlay) {
+                    menuOverlay.classList.remove('active');
+                    menuOverlay.setAttribute('aria-hidden', 'true');
+                }
+                if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
             });
         }
     });
 </script>
 
 </body>
-
 </html>

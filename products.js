@@ -1,7 +1,7 @@
 /* =========================================================
    VOLTICA STORE
    PRODUCT DATABASE
-   24 ACTIVE PRODUCTS
+   26 ACTIVE PRODUCTS
    ========================================================= */
 
 "use strict";
@@ -67,6 +67,7 @@ window.volticaProducts = [
         ],
 
         "stripeLink": "https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j",
+        "staticPage": "products/anker-soundcore-space-q45.html",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2601110810071616400.html",
         "active": true
     },
@@ -202,10 +203,10 @@ window.volticaProducts = [
     },
 
    /* =========================================================
-       Product name : Kiwi Ears Aventus â€“ Bluetooth Coaxial Driver DJ and Gaming Headphones
+       PRODUCT 04 — KIWI EARS AVENTUS
        ========================================================= */
 
-{
+    {
         "id": "kiwi-ears-aventus-bluetooth-coaxial-driver-dj-and-gaming-headphones",
         "sku": "VLT-AUD-KWE-003",
         "name": "Kiwi Ears Aventus Bluetooth Coaxial Driver DJ and Gaming Headphones",
@@ -216,7 +217,7 @@ window.volticaProducts = [
         "cost": 45.99,
         "shipping": null,
         "shortDescription": "Engineered for DJs, gamers, and audiophiles, the Kiwi Ears Aventus delivers exceptional sound through an innovative coaxial dual-driver setup (40mm + 10mm). Featuring hybrid ANC, customizable Harman-inspired tuning, dazzling RGB lighting, and up to an astounding 82 hours of battery life, it offers ultimate comfort and performance for your immersive sessions.",
-        "description": "Meet the Kiwi Ears Aventus, a high-performance wireless headset designed from the ground up for DJs, competitive gamers, and music lovers who refuse to compromise. Combining striking RGB aesthetics with professional-grade audio architecture, the Aventus delivers power, precision, and all-day comfort.\nâ€‹Innovative Coaxial Dual-Driver System\nâ€‹The Aventus features an advanced coaxial driver configuration combining two independent dynamic drivers. The 40mm dynamic driver covers the full bandwidth to pump out deep, engaging bass, natural mid-range tones, and pristine trebles. Complementing this, the 10mm dynamic driver is tuned independently to enhance overall clarity and construct a wide, highly immersive soundstage.\nâ€‹Audiophile Reference Tuning with Customization\nâ€‹Meticulously crafted around a mild Harman tuning curve, the Aventus delivers impactful bass and a natural mid-range. Included foam inserts allow you to physically modify and personalize the tuning signature to match your precise listening preferences.\nâ€‹Hybrid ANC and 5-Mic Clarity\nâ€‹Block out the world with advanced hybrid Active Noise Cancellation capable of reducing up to 35dB of ambient noise. Backed by a 5-microphone array, your environment stays quiet and your communication crystal clear, even while operating in wired mode.\nâ€‹Built for Marathon Sessions and DJs\nâ€‹Featuring independently rotating and folding earcups, the Aventus allows for seamless single-ear cueing, making it perfect for live DJ performances or situational awareness during intense gaming sessions. Enjoy up to 82 hours of playback with ANC off, 45 hours with ANC on, or 18 hours with both ANC and RGB active. Need a quick top-up? A 10-minute fast charge delivers 4 hours of playback. Equipped with Bluetooth 5.4, you get ultra-low latency wireless streaming, wired connection support, and the ability to connect up to two devices simultaneously for effortless multitasking.",
+        "description": "Meet the Kiwi Ears Aventus, a high-performance wireless headset designed from the ground up for DJs, competitive gamers, and music lovers who refuse to compromise. Combining striking RGB aesthetics with professional-grade audio architecture, the Aventus delivers power, precision, and all-day comfort.\n\nInnovative Coaxial Dual-Driver System\n\nThe Aventus features an advanced coaxial driver configuration combining two independent dynamic drivers. The 40mm dynamic driver covers the full bandwidth to pump out deep, engaging bass, natural mid-range tones, and pristine trebles. Complementing this, the 10mm dynamic driver is tuned independently to enhance overall clarity and construct a wide, highly immersive soundstage.\n\nAudiophile Reference Tuning with Customization\n\nMeticulously crafted around a mild Harman tuning curve, the Aventus delivers impactful bass and a natural mid-range. Included foam inserts allow you to physically modify and personalize the tuning signature to match your precise listening preferences.\n\nHybrid ANC and 5-Mic Clarity\n\nBlock out the world with advanced hybrid Active Noise Cancellation capable of reducing up to 35dB of ambient noise. Backed by a 5-microphone array, your environment stays quiet and your communication crystal clear, even while operating in wired mode.\n\nBuilt for Marathon Sessions and DJs\n\nFeaturing independently rotating and folding earcups, the Aventus allows for seamless single-ear cueing, making it perfect for live DJ performances or situational awareness during intense gaming sessions. Enjoy up to 82 hours of playback with ANC off, 45 hours with ANC on, or 18 hours with both ANC and RGB active. Need a quick top-up? A 10-minute fast charge delivers 4 hours of playback. Equipped with Bluetooth 5.4, you get ultra-low latency wireless streaming, wired connection support, and the ability to connect up to two devices simultaneously for effortless multitasking.",
         "features": [
             "Coaxial dual-driver system combining a 40mm full-bandwidth driver and a 10mm clarity driver",
             "Hybrid Active Noise Cancellation reducing up to 35dB of ambient noise with a 5-microphone array",
@@ -254,10 +255,10 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/fZueVeaOj78b7i80i62Ji0y",
         "supplierLink": "business@kiwiears.com",
         "active": true
-},
+    },
 
     /* =========================================================
-       PRODUCT 04 — FA-5370 PLANAR MAGNETIC
+       PRODUCT 05 — FA-5370 PLANAR MAGNETIC
        ========================================================= */
 
     {
@@ -319,11 +320,11 @@ window.volticaProducts = [
         "active": true
     },
 
-   /* =========================================================
-       Product name : C22 Smartphone Single-Axis Stabilizer With Intelligent AI Face Tracking And Handheld Design
+    /* =========================================================
+       PRODUCT 06 — C22 SMARTPHONE GIMBAL
        ========================================================= */
 
-{
+    {
         "id": "c22-smartphone-single-axis-stabilizer-with-intelligent-ai-face-tracking-and-handheld-design",
         "sku": "VLT-VLG-C22-001",
         "name": "C22 Smartphone Single-Axis Stabilizer With Intelligent AI Face Tracking And Handheld Design",
@@ -334,7 +335,7 @@ window.volticaProducts = [
         "cost": 23.05,
         "shipping": 9.32,
         "shortDescription": "Capture cinematic, shake-free footage anywhere with the C22 Smartphone Single-Axis Stabilizer. Built with smart AI face tracking, a 1.3-meter aluminum extension rod, and a multi-function Bluetooth remote, this 3-in-1 device functions as an anti-shake gimbal, desktop tripod, and selfie stick. Perfect for vloggers, creators, and content makers!",
-        "description": "Take absolute control of your video creation with the C22 AI Smart Gimbal Stabilizer. Whether you are streaming live, filming dynamic travel vlogs, or capturing hands-free content, this versatile 3-in-1 gadget delivers professional-grade stability right from your smartphone.\nâ€‹Smart AI Face Tracking & Gesture Control\nâ€‹Equipped with an independent AI lens, the C22 automatically locks onto and follows your face smoothly without requiring complex apps or manual adjustments. Use simple hand gestures to start or stop tracking instantly, keeping you perfectly framed at all times.\nâ€‹Anti-Shake Core & 360Â° Rotation\nâ€‹Say goodbye to shaky mobile videos. The intelligent single-axis anti-shake stabilization core keeps your shots steady even while walking or running. Explore creative angles with 360-degree rotation, sports steady mode, and low-angle perspective shooting.\nâ€‹Extendable 1.3m Aluminum Alloy Rod & Stable Tripod\nâ€‹The lightweight, high-grade aluminum alloy rod extends up to 1.3 meters to capture wider scenery and group shots. Fold out the built-in umbrella tripod base in seconds for a sturdy, hands-free setup on any desktop or flat surface.",
+        "description": "Take absolute control of your video creation with the C22 AI Smart Gimbal Stabilizer. Whether you are streaming live, filming dynamic travel vlogs, or capturing hands-free content, this versatile 3-in-1 gadget delivers professional-grade stability right from your smartphone.\n\nSmart AI Face Tracking & Gesture Control\n\nEquipped with an independent AI lens, the C22 automatically locks onto and follows your face smoothly without requiring complex apps or manual adjustments. Use simple hand gestures to start or stop tracking instantly, keeping you perfectly framed at all times.\n\nAnti-Shake Core & 360° Rotation\n\nSay goodbye to shaky mobile videos. The intelligent single-axis anti-shake stabilization core keeps your shots steady even while walking or running. Explore creative angles with 360-degree rotation, sports steady mode, and low-angle perspective shooting.\n\nExtendable 1.3m Aluminum Alloy Rod & Stable Tripod\n\nThe lightweight, high-grade aluminum alloy rod extends up to 1.3 meters to capture wider scenery and group shots. Fold out the built-in umbrella tripod base in seconds for a sturdy, hands-free setup on any desktop or flat surface.",
         "features": [
             "3-in-1 Versatility: Seamlessly switches between a mobile stabilizer, AI tracking gimbal, and extendable selfie stick tripod.",
             "Intelligent AI Face Tracking: Independent tracking lens keeps you in focus automatically.",
@@ -388,7 +389,7 @@ window.volticaProducts = [
 
 
     /* =========================================================
-       PRODUCT 05 — Q17 OPEN-EAR WIRELESS EARBUDS
+       PRODUCT 07 — Q17 OPEN-EAR WIRELESS EARBUDS
        ========================================================= */
 
     {
@@ -447,11 +448,11 @@ window.volticaProducts = [
         "active": true
     },
 
-       /* =========================================================
-       Product name : Voltica T75 Open-Ear True Wireless Bone Conduction Sports Earbuds
+    /* =========================================================
+       PRODUCT 08 — VOLTICA T75
        ========================================================= */
 
-{
+    {
         "id": "voltica-t75-open-ear-true-wireless-bone-conduction-sports-earbuds",
         "sku": "VLT-AUD-005",
         "name": "Voltica T75 Open-Ear True Wireless Bone Conduction Sports Earbuds",
@@ -462,7 +463,7 @@ window.volticaProducts = [
         "cost": 6.58,
         "shipping": 7.74,
         "shortDescription": "Experience total situational awareness and premium sound with Voltica T75 Open-Ear Sports Earbuds. Featuring Bluetooth 5.3, IPX5 waterproof protection, and an ergonomic ear-clip design, they deliver secure, HiFi audio for workouts, gaming, and the office.",
-        "description": "Break Free from Traditional Earbuds. Total Sound, Total Awareness.Tired of earbuds that constantly slip out or block out the world around you when you're running outdoors? Meet the Voltica T75 Open-Ear Sports Earbuds engineered for those who demand high-performance sound without sacrificing safety or comfort.Featuring an innovative non-intrusive ear-clip design, these earbuds rest gently and securely on your ears using directional sound transmission technology. Enjoy your favorite workout playlist, podcast, or gaming session while staying fully aware of your surroundings, whether you're hitting city streets, grinding in the gym, or taking calls in the car.Next-Gen Acoustic Engineering:Equipped with a super-sensitive moving ring unit and a high-hardness diaphragm, the T75 delivers crystal-clear HiFi stereo surround sound and deep acoustic details. Powered by Bluetooth 5.3, you get an ultra-stable, low-latency connection that instantly syncs audio and video for seamless gaming and media consumption.Built for Your Dynamic Lifestyle:From heavy sweat sessions to sudden downpours, the IPX5 waterproof and sweat-resistant rating ensures your music never stops. With dual-host technology, you can use both earbuds in binaural stereo mode or switch to single-ear mode effortlessly for uninterrupted calls and listening.Upgrade your daily audio experience. Secure your Voltica T75 today and hear the difference.",
+        "description": "Break Free from Traditional Earbuds. Total Sound, Total Awareness. Tired of earbuds that constantly slip out or block out the world around you when you're running outdoors? Meet the Voltica T75 Open-Ear Sports Earbuds engineered for those who demand high-performance sound without sacrificing safety or comfort. Featuring an innovative non-intrusive ear-clip design, these earbuds rest gently and securely on your ears using directional sound transmission technology. Enjoy your favorite workout playlist, podcast, or gaming session while staying fully aware of your surroundings, whether you're hitting city streets, grinding in the gym, or taking calls in the car. Next-Gen Acoustic Engineering: Equipped with a super-sensitive moving ring unit and a high-hardness diaphragm, the T75 delivers crystal-clear HiFi stereo surround sound and deep acoustic details. Powered by Bluetooth 5.3, you get an ultra-stable, low-latency connection that instantly syncs audio and video for seamless gaming and media consumption. Built for Your Dynamic Lifestyle: From heavy sweat sessions to sudden downpours, the IPX5 waterproof and sweat-resistant rating ensures your music never stops. With dual-host technology, you can use both earbuds in binaural stereo mode or switch to single-ear mode effortlessly for uninterrupted calls and listening. Upgrade your daily audio experience. Secure your Voltica T75 today and hear the difference.",
         "features": [
             "Innovative Ear-Clip Design: Rests comfortably outside the ear canal for long-wearing comfort and total situational awareness during sports and outdoor activities.",
             "HiFi Stereo Sound & Directional Transmission: High-sensitivity moving ring unit delivers rich audio details while directing sound safely into your ear to prevent sound leakage.",
@@ -494,24 +495,24 @@ window.volticaProducts = [
         "colors": [],
         "variants": [],
         "customCta": {
-            "title": "Elevate Your Workout Soundâ€”Risk-Free!",
+            "title": "Elevate Your Workout Sound — Risk-Free!",
             "lines": [
-                "Ready to experience unmatched comfort, open-ear safety, and premium HiFi sound? Order your Voltica T75 Earbuds today and transform how you listen on the move. Backed by our 30-day satisfaction guaranteeâ€”if you arenâ€™t blown away by the comfort and sound, weâ€™ll make it right. Add to Cart now and move to your own beat!"
+                "Ready to experience unmatched comfort, open-ear safety, and premium HiFi sound? Order your Voltica T75 Earbuds today and transform how you listen on the move. Backed by our 30-day satisfaction guarantee — if you aren't blown away by the comfort and sound, we'll make it right. Add to Cart now and move to your own beat!"
             ]
         },
         "stripeLink": "https://buy.stripe.com/5kQ6oI9Kf9gj8mc3ui2Ji06",
         "supplierLink": "https://a.aliexpress.com/_mqGzwIX",
         "active": true
-},
+    },
 
-   /* =========================================================
-       Product name : Multifunctional Folding & Lifting Laptop Stand â€“ Ergonomic Notebook Riser
+    /* =========================================================
+       PRODUCT 09 — MULTIFUNCTIONAL LAPTOP STAND
        ========================================================= */
 
-{
+    {
         "id": "multifunctional-folding-lifting-laptop-stand-ergonomic-notebook-riser",
         "sku": "VLT-TCH-004",
-        "name": "Multifunctional Folding & Lifting Laptop Stand“ Ergonomic Notebook Riser",
+        "name": "Multifunctional Folding & Lifting Laptop Stand - Ergonomic Notebook Riser",
         "category": "Tech",
         "badge": "NEW",
         "price": 42.99,
@@ -519,7 +520,7 @@ window.volticaProducts = [
         "cost": 12.22,
         "shipping": 16.07,
         "shortDescription": "Upgrade your workspace ergonomics with the Multifunctional Folding & Lifting Laptop Stand. Designed to support laptops, PCs, and notebooks up to 17 inches with a max load capacity of up to 20KG, it features 9 adjustable angles to help eliminate neck stiffness and eyestrain. Built with hollow panels for superior heat dissipation, integrated phone stands, and a spacious open design to keep your desk neat and organized.",
-        "description": "Optimize your productivity and protect your posture with the Multifunctional Folding & Lifting Laptop Stand, a versatile accessory built for any modern workstation. Whether you are working from home, gaming, or studying, this stand combines ergonomic engineering with smart desktop organization.\nâ€‹Wide Compatibility and Heavy-Duty Support\nâ€‹Engineered to fit all notebooks, PCs, and laptops up to 17 inchesâ€”including MacBook, Lenovo, Acer, ASUS, HP, and Dell modelsâ€”this stand boasts a robust max load capacity of up to 20KG. The centered anti-slip holder on the panel ensures your device remains safely in place while offering a comfortable typing experience.\nâ€‹Ergonomic 9-Angle Adjustment\nâ€‹Say goodbye to eyestrain and neck stiffness. Featuring 9 adjustable height angles, the foldable stand holds your laptop at the ideal ergonomic viewing level to suit your posture, reduce fatigue, and enhance overall daily comfort.\nâ€‹Enhanced Heat Dissipation\nâ€‹Keep your hardware running at peak performance. Multiple hollow sections built into the panel significantly enhance airflow, paired with a special cooling knob design to thoroughly ventilate your personal laptop and prevent overheating during heavy workloads.\nâ€‹Smart Multi-Functional Design\nâ€‹The open-frame structure creates ample storage space underneath for your external keyboard and mouse, maintaining a clean and clutter-free desk. Additionally, built-in foldable phone stands on both the left and right sides keep your smartphone conveniently within view for seamless multi-device management.",
+        "description": "Optimize your productivity and protect your posture with the Multifunctional Folding & Lifting Laptop Stand, a versatile accessory built for any modern workstation. Whether you are working from home, gaming, or studying, this stand combines ergonomic engineering with smart desktop organization.\n\nWide Compatibility and Heavy-Duty Support\n\nEngineered to fit all notebooks, PCs, and laptops up to 17 inches — including MacBook, Lenovo, Acer, ASUS, HP, and Dell models — this stand boasts a robust max load capacity of up to 20KG. The centered anti-slip holder on the panel ensures your device remains safely in place while offering a comfortable typing experience.\n\nErgonomic 9-Angle Adjustment\n\nSay goodbye to eyestrain and neck stiffness. Featuring 9 adjustable height angles, the foldable stand holds your laptop at the ideal ergonomic viewing level to suit your posture, reduce fatigue, and enhance overall daily comfort.\n\nEnhanced Heat Dissipation\n\nKeep your hardware running at peak performance. Multiple hollow sections built into the panel significantly enhance airflow, paired with a special cooling knob design to thoroughly ventilate your personal laptop and prevent overheating during heavy workloads.\n\nSmart Multi-Functional Design\n\nThe open-frame structure creates ample storage space underneath for your external keyboard and mouse, maintaining a clean and clutter-free desk. Additionally, built-in foldable phone stands on both the left and right sides keep your smartphone conveniently within view for seamless multi-device management.",
         "features": [
             "Wide compatibility supporting all laptops, PCs, and notebooks up to 17 inches with a 20KG max load capacity",
             "9 adjustable angles designed for customized ergonomics to reduce eyestrain and neck fatigue",
@@ -558,7 +559,7 @@ window.volticaProducts = [
 
 
     /* =========================================================
-       PRODUCT 06 — VOLTICA TWS
+       PRODUCT 10 — VOLTICA TWS
        ========================================================= */
 
     {
@@ -622,7 +623,7 @@ window.volticaProducts = [
     },
 
     /* =========================================================
-       PRODUCT 07 — LEVITATING WIRELESS BLUETOOTH SPEAKER
+       PRODUCT 11 — LEVITATING SPEAKER
        ========================================================= */
 
     {
@@ -684,11 +685,11 @@ window.volticaProducts = [
         "active": true
     },
 
-   /* =========================================================
-       Product name : Ultra-thin Tri-fold Folding Touch Keyboard with Integrated Touchpad
+    /* =========================================================
+       PRODUCT 12 — TRI-FOLD KEYBOARD
        ========================================================= */
 
-{
+    {
         "id": "ultra-thin-tri-fold-folding-touch-keyboard-with-integrated-touchpad",
         "sku": "VLT-TEC-022",
         "name": "Ultra-thin Tri-fold Folding Touch Keyboard with Integrated Touchpad",
@@ -699,7 +700,7 @@ window.volticaProducts = [
         "cost": 13.6,
         "shipping": 7.34,
         "shortDescription": "Unleash productivity anywhere with the Voltica Ultra-thin Tri-fold Touch Keyboard. This premium, pocket-sized portable keyboard features an integrated precision touchpad and universal Bluetooth compatibility (iOS, Android, Windows). The ultimate travel companion for seamless typing on the go.",
-        "description": "Stop Sacrificing Portability for Productivity. Meet Your New Mobile Workhorse.Tired of typing long emails on your phone's cramped screen? Frustrated with lugging a heavy laptop everywhere? The Voltica Ultra-thin Tri-fold Folding Touch Keyboard is the game-changer you've been waiting for.Designed for the modern digital nomad, business professional, and creative, this premium keyboard is impossibly thin and folds down smaller than a smartphone. Slip it into your pocket, purse, or backpack and you're ready to turn any cafe, park bench, or airport terminal into a fully functional workstation.Your All-in-One Input Solution:Forget carrying a separate mouse. Our ingenious design incorporates a high-precision, responsive touchpad right next to the keyboard. Navigate, scroll, and click effortlessly, just like on a laptop. The full-sized, ergonomic key layout ensures a comfortable and natural typing experience, even during marathon writing sessions.Universal Harmony:Switch seamlessly between your devices with reliable Bluetooth connectivity. Whether you're drafting a proposal on your Windows tablet, responding to messages on your iPhone, or taking notes on an Android smartphone, this keyboard works in perfect harmony with all three major operating systems.Built for the Road:Crafted from durable, high-quality materials, the Voltica keyboard is built to withstand the rigors of travel. Its powerful rechargeable lithium battery provides an incredible 100 hours of continuous use on a single, quick charge, so you're never left stranded.Don't just carry your technology master it. Upgrade to the Voltica Ultra-thin Tri-fold Folding Touch Keyboard and experience true mobile freedom.",
+        "description": "Stop Sacrificing Portability for Productivity. Meet Your New Mobile Workhorse. Tired of typing long emails on your phone's cramped screen? Frustrated with lugging a heavy laptop everywhere? The Voltica Ultra-thin Tri-fold Folding Touch Keyboard is the game-changer you've been waiting for. Designed for the modern digital nomad, business professional, and creative, this premium keyboard is impossibly thin and folds down smaller than a smartphone. Slip it into your pocket, purse, or backpack and you're ready to turn any cafe, park bench, or airport terminal into a fully functional workstation. Your All-in-One Input Solution: Forget carrying a separate mouse. Our ingenious design incorporates a high-precision, responsive touchpad right next to the keyboard. Navigate, scroll, and click effortlessly, just like on a laptop. The full-sized, ergonomic key layout ensures a comfortable and natural typing experience, even during marathon writing sessions. Universal Harmony: Switch seamlessly between your devices with reliable Bluetooth connectivity. Whether you're drafting a proposal on your Windows tablet, responding to messages on your iPhone, or taking notes on an Android smartphone, this keyboard works in perfect harmony with all three major operating systems. Built for the Road: Crafted from durable, high-quality materials, the Voltica keyboard is built to withstand the rigors of travel. Its powerful rechargeable lithium battery provides an incredible 100 hours of continuous use on a single, quick charge, so you're never left stranded. Don't just carry your technology, master it. Upgrade to the Voltica Ultra-thin Tri-fold Folding Touch Keyboard and experience true mobile freedom.",
         "features": [
             "Tri-Fold Design for Ultimate Portability: Folds down compactly to fit in a pocket or small bag, making it the perfect travel keyboard.",
             "Integrated Precision Touchpad: Eliminates the need for an external mouse; navigate and control your device with laptop-like ease.",
@@ -732,7 +733,7 @@ window.volticaProducts = [
         "colors": [],
         "variants": [],
         "customCta": {
-            "title": "Unlock Your Mobile Productivityâ€”Risk-Free!",
+            "title": "Unlock Your Mobile Productivity — Risk-Free!",
             "lines": [
                 "Ready to experience the freedom of a full workstation in your pocket? Order your Voltica Ultra-thin Tri-fold Keyboard today and enjoy faster typing, smoother navigation, and increased efficiency wherever you are. We back our premium keyboard with a 30-day satisfaction guarantee. If you don't love how it transforms your mobile device, return it for a full refund. No questions asked. Add to Cart and start typing smarter, not harder."
             ]
@@ -740,10 +741,10 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/7sY4gA5tZgIL9qg3ui2Ji09",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-5D65A979-76A2-4B37-8E3F-D289A05BDDB3.html",
         "active": true
-},
+    },
 
     /* =========================================================
-       PRODUCT 08 — FERROFLUID BLUETOOTH SPEAKER
+       PRODUCT 13 — FERROFLUID SPEAKER
        ========================================================= */
 
     {
@@ -759,7 +760,7 @@ window.volticaProducts = [
 
         "shortDescription": "Experience music like never before with the Frekvenspro Floaters Magnetic Fluid Bluetooth Speaker. Combining futuristic visual art with high-performance audio, this unique speaker features a 10W full-range driver, Bluetooth 5.3 connectivity, and a patented ferrofluid chamber that dances in real-time to your music and ambient sound. A true masterpiece of modern technology available now at Voltica Store.",
 
-        "description": "The Frekvenspro Floaters magnetic fluid speaker redefines modern audio experiences by transforming sound into a mesmerizing visual art form. Designed with a high-borosilicate glass bottle boasting over 90% light transmittance, its curved, unibody structure lets you clearly appreciate every flow and transformation of the magnetic fluid inside.\nâ€‹Immersive Sound & Visual Rhythm\nâ€‹Equipped with a powerful 10W internal magnetic full-range speaker and a custom passive radiator, this device delivers crisp, transparent audio paired with an unparalleled bass experience. Using a patented \"float\" magnetic fluid formula and advanced cavity design, the ferrofluid flows in exact sync with your musicâ€”allowing your eyes to follow the rhythm of every beat.",
+        "description": "The Frekvenspro Floaters magnetic fluid speaker redefines modern audio experiences by transforming sound into a mesmerizing visual art form. Designed with a high-borosilicate glass bottle boasting over 90% light transmittance, its curved, unibody structure lets you clearly appreciate every flow and transformation of the magnetic fluid inside.\n\nImmersive Sound & Visual Rhythm\n\nEquipped with a powerful 10W internal magnetic full-range speaker and a custom passive radiator, this device delivers crisp, transparent audio paired with an unparalleled bass experience. Using a patented \"float\" magnetic fluid formula and advanced cavity design, the ferrofluid flows in exact sync with your music — allowing your eyes to follow the rhythm of every beat.",
 
         "features": [
             "Ferrofluid Visualizer: Real-time magnetic fluid choreography that brings your music to life visually.",
@@ -809,11 +810,11 @@ window.volticaProducts = [
         "active": true
     },
 
-   /* =========================================================
-       Product name : Lumi Robot - Smart AI Car Companion & Dashboard Display | Voltica Store
+    /* =========================================================
+       PRODUCT 14 — LUMI ROBOT
        ========================================================= */
 
-{
+    {
         "id": "lumi-robot-smart-ai-car-companion-dashboard-display-voltica-store",
         "sku": "VLT-TCH-003",
         "name": "Lumi Robot - Smart AI Car Companion & Dashboard Display | Voltica Store",
@@ -824,7 +825,7 @@ window.volticaProducts = [
         "cost": 148.5,
         "shipping": 30.5,
         "shortDescription": "Meet the Lumi Robot, your ultimate smart AI car companion designed for the dashboard. Featuring voice interaction, a vibrant IPS screen with expressive emotion animations, solar-powered dual-core battery life, and hands-free control, Lumi makes every drive more fun and connected. Available now at Voltica Store!",
-        "description": "Transform your daily commute with the Lumi Robot, a compact, expressive AI companion built specifically for your car's dashboard. Combining sleek design with cutting-edge tech, Lumi brings personality and smart assistance right to your front seat.\nâ€‹Interactive AI & Expressive Personality\nâ€‹Lumi features a bright IPS display capable of showing over 100 rich emotional expressions that react to you and your music. With built-in AI voice interaction, you can talk directly to your car companion to play playlists, get instant responses, and enjoy a lively ride.\nâ€‹Solar-Powered & Always Ready\nâ€‹Equipped with dual-core solar power support, Lumi ensures long-lasting battery life for the head unit and base. Its wireless connectivity and vehicle detection sensors offer seamless, unrestricted use on any road trip.",
+        "description": "Transform your daily commute with the Lumi Robot, a compact, expressive AI companion built specifically for your car's dashboard. Combining sleek design with cutting-edge tech, Lumi brings personality and smart assistance right to your front seat.\n\nInteractive AI & Expressive Personality\n\nLumi features a bright IPS display capable of showing over 100 rich emotional expressions that react to you and your music. With built-in AI voice interaction, you can talk directly to your car companion to play playlists, get instant responses, and enjoy a lively ride.\n\nSolar-Powered & Always Ready\n\nEquipped with dual-core solar power support, Lumi ensures long-lasting battery life for the head unit and base. Its wireless connectivity and vehicle detection sensors offer seamless, unrestricted use on any road trip.",
         "features": [
             "Smart AI Voice Interaction: Talk naturally to your companion for instant responses and hands-free control while driving.",
             "Vibrant IPS Screen: Displays 100+ rich, animated emotional expressions that bring your dashboard to life.",
@@ -864,10 +865,10 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/9B69AU4pV503eKAc0O2Ji0u",
         "supplierLink": "https://www.alibaba.com/x/B2O469?ck=pdp",
         "active": true
-},
+    },
    
     /* =========================================================
-       PRODUCT 09 — SMART AUTO-TRACKING PHONE GIMBAL
+       PRODUCT 15 — SMART AUTO-TRACKING PHONE GIMBAL
        ========================================================= */
 
     {
@@ -927,7 +928,7 @@ window.volticaProducts = [
         "customCta": {
             "title": "Stream Like a Pro, Hands-Free",
             "lines": [
-                "Defy limits and capture every angle effortlessly with the Voltica Store 360° Auto Face Tracking Smart Gimbal. Featuring smart gesture controls, app-free setup, and an 8-hour battery life, it’s the ultimate companion for TikTok live streams, VLOGs, and content creation. Add it to your cart today and take your videos to the next level!"
+                "Defy limits and capture every angle effortlessly with the Voltica Store 360° Auto Face Tracking Smart Gimbal. Featuring smart gesture controls, app-free setup, and an 8-hour battery life, it's the ultimate companion for TikTok live streams, VLOGs, and content creation. Add it to your cart today and take your videos to the next level!"
             ]
         },
 
@@ -937,7 +938,7 @@ window.volticaProducts = [
     },
 
     /* =========================================================
-       PRODUCT 10 — HEXAGONAL SMART RGB QUANTUM LIGHT PANELS
+       PRODUCT 16 — HEXAGONAL QUANTUM LIGHT PANELS
        ========================================================= */
 
     {
@@ -965,8 +966,8 @@ window.volticaProducts = [
         "specifications": {
             "Product Type": "Smart Quantum Atmosphere Light / Hexagonal Breathing Light",
             "Power Rating": "12W",
-            "Input Voltage": "\\le 36V",
-            "Panel Dimensions": "103 \\times 89 \\times 28\\text{ mm} per panel",
+            "Input Voltage": "≤ 36V",
+            "Panel Dimensions": "103 × 89 × 28 mm per panel",
             "Housing Material": "High-grade Polycarbonate (PC)",
             "Protection Rating": "IP43",
             "Control Methods": "Bluetooth Mobile App, 2.4G RF Remote Control"
@@ -1000,7 +1001,7 @@ window.volticaProducts = [
     },
 
     /* =========================================================
-       PRODUCT 11 — RGB COLORFUL BRANCHES AMBIENCE LIGHT
+       PRODUCT 17 — RGB BRANCHES AMBIENCE LIGHT
        ========================================================= */
 
     {
@@ -1065,7 +1066,7 @@ window.volticaProducts = [
     },
 
     /* =========================================================
-       PRODUCT 12 — BLACK STAR PROJECTOR
+       PRODUCT 18 — BLACK STAR PROJECTOR
        ========================================================= */
 
     {
@@ -1079,9 +1080,9 @@ window.volticaProducts = [
         "cost": 55.56,
         "shipping": 12.05,
 
-        "shortDescription": "Transform your bedroom into a breathtaking cosmic observatory with the Voltica Store Black Star Projector & Ambience Night Lamp. Featuring 10 interchangeable projection discs—including Star Saturn, Northern Lights, Manta rays, and deep space galaxies—this sleek, UFO-inspired ambiance lamp projects crystal-clear constellations and planets right onto your ceiling and walls. USB-powered and effortlessly versatile, it’s the ultimate romantic night light and mood creator for any room.",
+        "shortDescription": "Transform your bedroom into a breathtaking cosmic observatory with the Voltica Store Black Star Projector & Ambience Night Lamp. Featuring 10 interchangeable projection discs — including Star Saturn, Northern Lights, Manta rays, and deep space galaxies — this sleek, UFO-inspired ambiance lamp projects crystal-clear constellations and planets right onto your ceiling and walls. USB-powered and effortlessly versatile, it's the ultimate romantic night light and mood creator for any room.",
 
-        "description": "Turn your ceiling into a mesmerizing canvas of the universe with the Voltica Store Black Star Projector & Ambience Night Lamp. Designed to spark wonder and set the ultimate mood, this sleek black projection lamp lets you explore the cosmos without ever leaving your bed.\n\nFeaturing 10 unique slide discs, you can instantly switch your room's atmosphere from a majestic starlit galaxy (Star Saturn, Star Planet, Dark Cloud Planet) to surreal deep-sea vistas (Manta, Black whale), natural wonders (Northern Lights), or prehistoric worlds (Dinosaur World). Whether you are looking to create a romantic ambiance for date night, a calming sleep environment for a child’s room, or an aesthetic background for your evening relaxation, this lamp delivers stunning, high-definition clarity.\n\nCompact, USB-powered, and engineered with a modern matte black aesthetic that blends seamlessly into any room decor, it is the ultimate ambient lighting accessory for dreamers, stargazers, and modern interior stylists.",
+        "description": "Turn your ceiling into a mesmerizing canvas of the universe with the Voltica Store Black Star Projector & Ambience Night Lamp. Designed to spark wonder and set the ultimate mood, this sleek black projection lamp lets you explore the cosmos without ever leaving your bed.\n\nFeaturing 10 unique slide discs, you can instantly switch your room's atmosphere from a majestic starlit galaxy (Star Saturn, Star Planet, Dark Cloud Planet) to surreal deep-sea vistas (Manta, Black whale), natural wonders (Northern Lights), or prehistoric worlds (Dinosaur World). Whether you are looking to create a romantic ambiance for date night, a calming sleep environment for a child's room, or an aesthetic background for your evening relaxation, this lamp delivers stunning, high-definition clarity.\n\nCompact, USB-powered, and engineered with a modern matte black aesthetic that blends seamlessly into any room decor, it is the ultimate ambient lighting accessory for dreamers, stargazers, and modern interior stylists.",
 
         "features": [
             "10 Interchangeable Discs: Comes with ten distinct projection themes including Star Saturn, Northern Lights, Manta, Dinosaur World, Zodiac, and deep space galaxies.",
@@ -1121,11 +1122,11 @@ window.volticaProducts = [
         "active": true
     },
 
-       /* =========================================================
-       Product name : GameSir G8 Galileo Type-C Wired Mobile Gaming Controller
+    /* =========================================================
+       PRODUCT 19 — GAMESIR G8 GALILEO
        ========================================================= */
 
-{
+    {
         "id": "gamesir-g8-galileo-type-c-wired-mobile-gaming-controller",
         "sku": "VLT-GMR-G8-001",
         "name": "GameSir G8 Galileo Type-C Wired Mobile Gaming Controller",
@@ -1136,7 +1137,7 @@ window.volticaProducts = [
         "cost": 59.99,
         "shipping": null,
         "shortDescription": "Turn your smartphone into the ultimate portable console with the GameSir G8 Galileo Type-C Wired Mobile Gaming Controller. Designed for iPhone 15 series and Android devices, this pro-grade controller features a moveable Type-C port, magnetic detachable faceplates, customizable back buttons, and ultra-low latency pass-through charging. Available now at Voltica Store!",
-        "description": "Unlock console-quality gaming anywhere you go with the GameSir G8 Galileo. Engineered for maximum precision and universal compatibility, this wired mobile controller delivers a seamless, lag-free gaming experience for mobile hits, cloud streaming, and remote play.\nâ€‹Pro-Level Customization & Precision\nâ€‹Make the controller truly yours with interchangeable magnetic detachable faceplates and customizable thumbsticks. Map commands on-the-fly using the rear back buttons without needing any extra software, giving you a competitive edge in fast-paced racing, action, and FPS games.\nâ€‹Universal Fit & Moveable Type-C Port\nâ€‹The innovative moveable Type-C port ensures smooth plugging and unplugging while protecting your phone's charging port from damage. Featuring an expanded back space, it safely accommodates phone camera depths up to 5mm and fits a wide range of smartphone sizes securely.\nâ€‹Zero Latency & Pass-Through Charging\nâ€‹Say goodbye to Bluetooth lag. The direct Type-C wired connection delivers ultra-low latency response times. Plus, with pass-through charging, you can keep your phone powered up while you play for hours on end.",
+        "description": "Unlock console-quality gaming anywhere you go with the GameSir G8 Galileo. Engineered for maximum precision and universal compatibility, this wired mobile controller delivers a seamless, lag-free gaming experience for mobile hits, cloud streaming, and remote play.\n\nPro-Level Customization & Precision\n\nMake the controller truly yours with interchangeable magnetic detachable faceplates and customizable thumbsticks. Map commands on-the-fly using the rear back buttons without needing any extra software, giving you a competitive edge in fast-paced racing, action, and FPS games.\n\nUniversal Fit & Moveable Type-C Port\n\nThe innovative moveable Type-C port ensures smooth plugging and unplugging while protecting your phone's charging port from damage. Featuring an expanded back space, it safely accommodates phone camera depths up to 5mm and fits a wide range of smartphone sizes securely.\n\nZero Latency & Pass-Through Charging\n\nSay goodbye to Bluetooth lag. The direct Type-C wired connection delivers ultra-low latency response times. Plus, with pass-through charging, you can keep your phone powered up while you play for hours on end.",
         "features": [
             "Universal Mobile Compatibility: Supports iPhone 15 series and most Android smartphones.",
             "Moveable Type-C Port: Flexible plug design for effortless alignment and device safety.",
@@ -1183,13 +1184,13 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/6oUdRa6y33VZ9qgaWK2Ji0v",
         "supplierLink": "https://www.alibaba.com/x/B2O6hN?ck=pdp",
         "active": true
-},
+    },
 
-   /* =========================================================
-       Product name : Mountop UVC Sterilization Smart Water Bottle - 316 Stainless Steel Insulated Thermos with Temperature Display | Voltica Store
+    /* =========================================================
+       PRODUCT 20 — MOUNTOP UVC SMART WATER BOTTLE
        ========================================================= */
 
-{
+    {
         "id": "mountop-uvc-sterilization-smart-water-bottle-316-stainless-steel-insulated-thermos-with-temperature-display-voltica-store",
         "sku": "VLT-LST-002",
         "name": "Mountop UVC Sterilization Smart Water Bottle - 316 Stainless Steel Insulated Thermos with Temperature Display | Voltica Store",
@@ -1199,8 +1200,8 @@ window.volticaProducts = [
         "referencePrice": 69.99,
         "cost": 38.84,
         "shipping": 8.2,
-        "shortDescription": "â€‹Meet the ultimate hydration tech: the Mountop UVC Sterilization Smart Water Bottle. Combining 99.99% UVC-LED sterilization, real-time LED temperature display, and a 316 food-grade stainless steel vacuum body, this smart tumbler keeps your water pure, safe, and at the perfect temperature all day long. Upgrade your daily routine, available now at Voltica Store.",
-        "description": "Take absolute control of your drinking water safety with the Mountop Smart UVC Sterilization Water Bottle. Standard kettles, taps, and water dispensers can silently harbor scale and stubborn heat-resistant bacteria over time. This advanced smart bottle cuts out the risk entirely with state-of-the-art technology.\n\n99.99% Rapid UVC Sterilization\nâ€‹With just a quick touch of the smart cap, the high-power UVC-LED system kicks into gear, breaking down the DNA strands of pathogenic microorganisms and achieving up to 99.99% sterilization in just 180 seconds. Enjoy pure, sanitized water wherever you goâ€”no chemicals, no hassle.",
+        "shortDescription": "Meet the ultimate hydration tech: the Mountop UVC Sterilization Smart Water Bottle. Combining 99.99% UVC-LED sterilization, real-time LED temperature display, and a 316 food-grade stainless steel vacuum body, this smart tumbler keeps your water pure, safe, and at the perfect temperature all day long. Upgrade your daily routine, available now at Voltica Store.",
+        "description": "Take absolute control of your drinking water safety with the Mountop Smart UVC Sterilization Water Bottle. Standard kettles, taps, and water dispensers can silently harbor scale and stubborn heat-resistant bacteria over time. This advanced smart bottle cuts out the risk entirely with state-of-the-art technology.\n\n99.99% Rapid UVC Sterilization\n\nWith just a quick touch of the smart cap, the high-power UVC-LED system kicks into gear, breaking down the DNA strands of pathogenic microorganisms and achieving up to 99.99% sterilization in just 180 seconds. Enjoy pure, sanitized water wherever you go — no chemicals, no hassle.",
         "features": [
             "Real-Time LED Screen: Instantly view the exact temperature of your drink right on the cap so you never burn your tongue again.",
             "Smart 90-Minute Hydration Alarm: Set the reminder function with a double-tap, and the bottle will gently chime (Di Di Di!) every 90 minutes to keep you consistently hydrated throughout the day.",
@@ -1245,9 +1246,10 @@ window.volticaProducts = [
         "stripeLink": "https://buy.stripe.com/00w8wQ1dJcsv8mc5Cq2Ji0t",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-1893953216514207746.html",
         "active": true
-},
+    },
+
     /* =========================================================
-       PRODUCT 13 — XXL WORLD MAP GAMING MOUSE PAD
+       PRODUCT 21 — XXL WORLD MAP GAMING MOUSE PAD
        ========================================================= */
 
     {
@@ -1312,7 +1314,7 @@ window.volticaProducts = [
     },
 
     /* =========================================================
-       PRODUCT 14 — XREAL AIR 1S
+       PRODUCT 22 — XREAL AIR 1S
        ========================================================= */
 
     {
@@ -1367,7 +1369,7 @@ window.volticaProducts = [
     },
 
     /* =========================================================
-       PRODUCT 15 — SMART ANDROID 15 BATHROOM MIRROR
+       PRODUCT 23 — SMART ANDROID 15 BATHROOM MIRROR
        ========================================================= */
 
     {
@@ -1381,9 +1383,9 @@ window.volticaProducts = [
         "cost": 399,
         "shipping": 130,
 
-        "shortDescription": "Upgrade your bathroom with the Voltica Smart Android 15 Mirror . This luxury smart mirror combines a sleek design with cutting-edge technology: an HD touch screen, a high-performance Android 15 interface (8GB RAM + 128GB ROM), an AI health-monitoring camera, adjustable 3-color LED lighting, and anti-fog functionality. Enjoy seamless app streaming and daily wellness tracking directly from your mirror. Available now at Voltica Store.",
+        "shortDescription": "Upgrade your bathroom with the Voltica Smart Android 15 Mirror. This luxury smart mirror combines a sleek design with cutting-edge technology: an HD touch screen, a high-performance Android 15 interface (8GB RAM + 128GB ROM), an AI health-monitoring camera, adjustable 3-color LED lighting, and anti-fog functionality. Enjoy seamless app streaming and daily wellness tracking directly from your mirror. Available now at Voltica Store.",
 
-        "description": "The Voltica Smart Mirror redefines contemporary living. Blending exquisite luxury craftsmanship with cutting-edge technology, this IP65 waterproof smart mirror features precise dimensions of 1000 x 500 x 30 mm, making it the ultimate centerpiece for modern homes, luxury hotels, upscale apartments, and executive salons.\nâ€‹Endless Entertainment and Seamless Connectivity: Enjoy lightning-fast navigation, smooth multitasking, and top-tier app compatibility powered by 8GB of RAM and 128GB of internal storage. Features a responsive HD touch screen seamlessly embedded into the reflective glass. Download and stream your favorite content directlyâ€”watch videos on YouTube, listen to music on Spotify, or manage your schedule effortlessly. Built-in Wi-Fi and Bluetooth ensure you stay effortlessly connected.\nâ€‹Advanced AI Health and Wellness Monitoring: Equipped with a high-definition camera utilizing state-of-the-art AI algorithms to scan and evaluate your face and eyes. Monitor vital personal metrics including skin condition, daily mood fluctuations, and heart rate (BPM). Receive tailor-made wellness recommendations based on real-time diagnostic results. All health data can be tracked, recorded, and reviewed on daily, weekly, and monthly timelines.\nâ€‹Designed for Daily Comfort and Durability: Create the perfect ambiance with adjustable brightness and 3 distinct lighting colors ranging from bright white to warm white tones. Check the real-time weather, temperature, date, and clock layout at a glance. IP65 waterproof rating paired with advanced defogging technology ensures a crystal-clear reflection even after hot showers.\nâ€‹Smart Control and Customization: Operate hands-free via the built-in microphone or use the included multi-function remote control for volume adjustment and cursor simulation. Fully available for OEM/ODM orders with customizable logo integration.",
+        "description": "The Voltica Smart Mirror redefines contemporary living. Blending exquisite luxury craftsmanship with cutting-edge technology, this IP65 waterproof smart mirror features precise dimensions of 1000 x 500 x 30 mm, making it the ultimate centerpiece for modern homes, luxury hotels, upscale apartments, and executive salons.\n\nEndless Entertainment and Seamless Connectivity: Enjoy lightning-fast navigation, smooth multitasking, and top-tier app compatibility powered by 8GB of RAM and 128GB of internal storage. Features a responsive HD touch screen seamlessly embedded into the reflective glass. Download and stream your favorite content directly — watch videos on YouTube, listen to music on Spotify, or manage your schedule effortlessly. Built-in Wi-Fi and Bluetooth ensure you stay effortlessly connected.\n\nAdvanced AI Health and Wellness Monitoring: Equipped with a high-definition camera utilizing state-of-the-art AI algorithms to scan and evaluate your face and eyes. Monitor vital personal metrics including skin condition, daily mood fluctuations, and heart rate (BPM). Receive tailor-made wellness recommendations based on real-time diagnostic results. All health data can be tracked, recorded, and reviewed on daily, weekly, and monthly timelines.\n\nDesigned for Daily Comfort and Durability: Create the perfect ambiance with adjustable brightness and 3 distinct lighting colors ranging from bright white to warm white tones. Check the real-time weather, temperature, date, and clock layout at a glance. IP65 waterproof rating paired with advanced defogging technology ensures a crystal-clear reflection even after hot showers.\n\nSmart Control and Customization: Operate hands-free via the built-in microphone or use the included multi-function remote control for volume adjustment and cursor simulation. Fully available for OEM/ODM orders with customizable logo integration.",
 
         "features": [
             "Android 15 System: High-performance interface with 8GB RAM and 128GB ROM.",
@@ -1431,11 +1433,11 @@ window.volticaProducts = [
         "active": true
     },
 
-   /* =========================================================
-       Product name : Voltica 3D Holographic LED Fan Display Projector
+    /* =========================================================
+       PRODUCT 24 — VOLTICA 3D HOLOGRAPHIC LED FAN
        ========================================================= */
 
-{
+    {
         "id": "voltica-3d-holographic-led-fan-display-projector",
         "sku": "VLT-TEC-006",
         "name": "Voltica 3D Holographic LED Fan Display Projector",
@@ -1446,7 +1448,7 @@ window.volticaProducts = [
         "cost": 32.85,
         "shipping": 8.9,
         "shortDescription": "Stop scrolling and start stopping traffic with the Voltica selection 3D Holographic LED Fan. Transform any space, storefront, or event with breathtaking floating 3D visuals that captivate audiences and skyrocket engagement.",
-        "description": "Turn Heads, Stop Traffic, and Captivate Every Eye.In a world full of flat screens and boring advertisements, how do you make your brand, storefront, or event truly unforgettable? Meet the 3D Holographic LED Fan, hand-selected for the Voltica collection. This cutting-edge visual device creates stunning, high-definition floating 3D holograms right in mid-air, leaving viewers spellbound.Mesmerizing Visual Impact:Powered by high-density LED rotating blades, the projector creates seamless, background-free animations that look like magic floating in space. Whether you're showcasing product launches at a trade show, drawing customers into your retail shop, or elevating your content creation setup, this holographic display delivers high-impact visual storytelling that traditional screens simply cannot match.Easy Content Management & Versatility:Upload your own custom 3D logos, videos, and animations effortlessly. Designed for versatility, it's lightweight, energy-efficient, and engineered to operate smoothly for hours. Give your space the futuristic edge it deserves and watch your audience pull out their phones to record and share your display.Upgrade your visual presentation. Secure the Voltica selection 3D Holographic LED Fan today and bring the future into focus.",
+        "description": "Turn Heads, Stop Traffic, and Captivate Every Eye. In a world full of flat screens and boring advertisements, how do you make your brand, storefront, or event truly unforgettable? Meet the 3D Holographic LED Fan, hand-selected for the Voltica collection. This cutting-edge visual device creates stunning, high-definition floating 3D holograms right in mid-air, leaving viewers spellbound. Mesmerizing Visual Impact: Powered by high-density LED rotating blades, the projector creates seamless, background-free animations that look like magic floating in space. Whether you're showcasing product launches at a trade show, drawing customers into your retail shop, or elevating your content creation setup, this holographic display delivers high-impact visual storytelling that traditional screens simply cannot match. Easy Content Management & Versatility: Upload your own custom 3D logos, videos, and animations effortlessly. Designed for versatility, it's lightweight, energy-efficient, and engineered to operate smoothly for hours. Give your space the futuristic edge it deserves and watch your audience pull out their phones to record and share your display. Upgrade your visual presentation. Secure the Voltica selection 3D Holographic LED Fan today and bring the future into focus.",
         "features": [
             "Stunning 3D Holographic Effect: High-density LED rotating display creates vivid, floating visual animations without visible borders or backgrounds.",
             "Ultimate Audience Magnet: Proven to dramatically increase foot traffic, consumer engagement, and social media shares for businesses and events.",
@@ -1476,18 +1478,19 @@ window.volticaProducts = [
         "customCta": {
             "title": "Elevate Your Display",
             "lines": [
-                "Ready to hypnotize your audience and make your brand unforgettable? Order your 3D Holographic LED Fan from the Voltica selection today and revolutionize how you present visuals. Backed by our 30-day satisfaction guaranteeâ€”if you arenâ€™t amazed by the impact, weâ€™ll make it right. Add to Cart now and step into the future of advertising!"
+                "Ready to hypnotize your audience and make your brand unforgettable? Order your 3D Holographic LED Fan from the Voltica selection today and revolutionize how you present visuals. Backed by our 30-day satisfaction guarantee — if you aren't amazed by the impact, we'll make it right. Add to Cart now and step into the future of advertising!"
             ]
         },
         "stripeLink": "https://buy.stripe.com/dRm6oI2hNakngSI2qe2Ji0e",
         "supplierLink": "https://www.cjdropshipping.com/product/-p-2086387249086910465.html",
         "active": true
-},
-   /* =========================================================
-       Product name : SL90 Professional RGB LED Video Light Panel with App Control & Aluminum Alloy Build
+    },
+
+    /* =========================================================
+       PRODUCT 25 — SL90 RGB LED VIDEO LIGHT PANEL
        ========================================================= */
 
-{
+    {
         "id": "sl90-professional-rgb-led-video-light-panel-with-app-control-aluminum-alloy-build",
         "sku": "VLT-VLG-007",
         "name": "SL90 Professional RGB LED Video Light Panel with App Control & Aluminum Alloy Build",
@@ -1498,13 +1501,13 @@ window.volticaProducts = [
         "cost": 60,
         "shipping": 10.84,
         "shortDescription": "Elevate your studio content with the SL90 Professional RGB LED Video Light Panel, hand-selected for the Voltica collection. Featuring 150 LEDs, 360° full-color RGB adjustment, 18 dynamic scene modes, and durable aluminum construction, it's the ultimate lighting tool for creators and filmmakers.",
-        "description": "Professional Studio Lighting, Pocket-Sized Power.Whether you're shooting YouTube videos, streaming live, or capturing high-end cinematic b-roll, lighting is the ultimate difference between amateur and professional content. Meet the SL90 Professional RGB LED Video Light Panel, hand-selected for the Voltica collection to give your productions broadcast-quality illumination anywhere you go.Breathtaking Color & Precision:Equipped with 150 premium LEDs (40 warm white, 40 cold white, and 70 RGB), this powerful 12W panel delivers an astonishing 1700 lux at 0.5m with an ultra-high CRI and TLCI rating of 97+. Experience rich, accurate color rendering, adjustable color temperatures from 2500K to 10000K, and complete 360° RGB hue control to set the exact mood your scene demands.Smart Control & Creative Effects:Take full command of your setup with advanced app connectivity, 18 pre-programmed scene effects (including music synchronization modes), and Infinity connection technology to sync multiple lights seamlessly. Housed in a robust, aerospace-grade aluminum alloy frame with a 360° rotating cold-shoe mount, the SL90 is built to perform under pressure and look great doing it.Upgrade your production value. Secure the SL90 from the Voltica selection today and illuminate your creative vision.",
+        "description": "Professional Studio Lighting, Pocket-Sized Power. Whether you're shooting YouTube videos, streaming live, or capturing high-end cinematic b-roll, lighting is the ultimate difference between amateur and professional content. Meet the SL90 Professional RGB LED Video Light Panel, hand-selected for the Voltica collection to give your productions broadcast-quality illumination anywhere you go. Breathtaking Color & Precision: Equipped with 150 premium LEDs (40 warm white, 40 cold white, and 70 RGB), this powerful 12W panel delivers an astonishing 1700 lux at 0.5m with an ultra-high CRI and TLCI rating of 97+. Experience rich, accurate color rendering, adjustable color temperatures from 2500K to 10000K, and complete 360° RGB hue control to set the exact mood your scene demands. Smart Control & Creative Effects: Take full command of your setup with advanced app connectivity, 18 pre-programmed scene effects (including music synchronization modes), and Infinity connection technology to sync multiple lights seamlessly. Housed in a robust, aerospace-grade aluminum alloy frame with a 360° rotating cold-shoe mount, the SL90 is built to perform under pressure and look great doing it. Upgrade your production value. Secure the SL90 from the Voltica selection today and illuminate your creative vision.",
         "features": [
             "High-Output 12W RGB Lighting: Features 150 advanced LEDs delivering up to 1700 lux (at 0.5m) for crisp, professional brightness.",
             "Stunning Color Accuracy: Ultra-high CRI and TLCI of 97+ ensure natural skin tones and true-to-life color reproduction.",
             "Wide Color Temperature Range: Fully adjustable from 2500K (warm) to 10000K (cold) to match any ambient lighting condition.",
             "18 Creative Scene & Music Modes: Dynamic lighting effects and intelligent music synchronization add instant excitement to video shoots.",
-            "Robust Aluminum Alloy Build: Durable, lightweight metal construction with a 360Â° rotating arm and cold-shoe mount for maximum versatility.",
+            "Robust Aluminum Alloy Build: Durable, lightweight metal construction with a 360° rotating arm and cold-shoe mount for maximum versatility.",
             "Smart App & Infinity Control: Effortlessly adjust settings, apply updates, and control multiple lights directly from your mobile device."
         ],
         "specifications": {
@@ -1531,18 +1534,19 @@ window.volticaProducts = [
         "customCta": {
             "title": "Transform Your Lighting",
             "lines": [
-                "Ready to give your videos Hollywood-grade color, professional depth, and flawless clarity? Order your SL90 LED Light Panel from the Voltica selection today and master your studio setup. Backed by our 30-day satisfaction guaranteeâ€”if you arenâ€™t completely blown away by the performance, weâ€™ll make it right. Add to Cart now and shine brighter!"
+                "Ready to give your videos Hollywood-grade color, professional depth, and flawless clarity? Order your SL90 LED Light Panel from the Voltica selection today and master your studio setup. Backed by our 30-day satisfaction guarantee — if you aren't completely blown away by the performance, we'll make it right. Add to Cart now and shine brighter!"
             ]
         },
         "stripeLink": "https://buy.stripe.com/bJeaEY3lRdwz5a04ym2Ji0z",
         "supplierLink": "https://www.alibaba.com/x/B2PGv3?ck=pdp",
         "active": true
-},
-   /* =========================================================
-       Product name : Voltica MT53 Portable Pocket Photo Printer
+    },
+
+    /* =========================================================
+       PRODUCT 26 — VOLTICA MT53 POCKET PHOTO PRINTER
        ========================================================= */
 
-{
+    {
         "id": "voltica-mt53-portable-pocket-photo-printer",
         "sku": "VLT-TEC-008",
         "name": "Voltica MT53 Portable Pocket Photo Printer",
@@ -1553,7 +1557,7 @@ window.volticaProducts = [
         "cost": 77.78,
         "shipping": 10.66,
         "shortDescription": "Print your favorite memories instantly with the Voltica selection MT53 Portable Pocket Photo Printer. Featuring wireless Bluetooth connectivity, zero-ink ZINK technology, and a pocket-sized design, it delivers vibrant, sticky-backed full-color photos straight from your smartphone anywhere you go.",
-        "description": "Your Memories, Printed Instantly. Anywhere, Anytime.Tired of leaving your best digital photos trapped inside your phone? Bring them to life with the MT53 Portable Pocket Photo Printer, hand-selected for the Voltica collection. Sleek, lightweight, and compact enough to fit right in your palm or pocket, this little device is the ultimate companion for content creators, travelers, and memory-makers of all ages.Zero Ink, Zero Hassle:Using advanced thermal and ZINK (Zero Ink) printing technology, the MT53 delivers beautifully detailed, smudge-proof, and water-resistant full-color prints without a single drop of ink or messy cartridge. Plus, every print features a peel-and-stick backing, making it effortless to customize your journals, phone cases, laptops, or bedroom walls.Seamless Wireless Creativity:Connect via Bluetooth in seconds using the dedicated mobile app to unlock custom templates, filters, collages, and fun AR features. With a built-in rechargeable battery and fast setup, you're always ready to capture the moment and share physical copies with friends on the spot.Upgrade your creative toolkit. Secure the Voltica selection MT53 Pocket Printer today and start printing your world.",
+        "description": "Your Memories, Printed Instantly. Anywhere, Anytime. Tired of leaving your best digital photos trapped inside your phone? Bring them to life with the MT53 Portable Pocket Photo Printer, hand-selected for the Voltica collection. Sleek, lightweight, and compact enough to fit right in your palm or pocket, this little device is the ultimate companion for content creators, travelers, and memory-makers of all ages. Zero Ink, Zero Hassle: Using advanced thermal and ZINK (Zero Ink) printing technology, the MT53 delivers beautifully detailed, smudge-proof, and water-resistant full-color prints without a single drop of ink or messy cartridge. Plus, every print features a peel-and-stick backing, making it effortless to customize your journals, phone cases, laptops, or bedroom walls. Seamless Wireless Creativity: Connect via Bluetooth in seconds using the dedicated mobile app to unlock custom templates, filters, collages, and fun AR features. With a built-in rechargeable battery and fast setup, you're always ready to capture the moment and share physical copies with friends on the spot. Upgrade your creative toolkit. Secure the Voltica selection MT53 Pocket Printer today and start printing your world.",
         "features": [
             "Ultra-Portable Palm-Sized Design: Weighs less than a pound and slips easily into your pocket or bag for instant printing on the go.",
             "Vibrant ZINK Zero-Ink Technology: Delivers durable, smudge-proof, tear-resistant, and high-detail color prints without requiring expensive ink cartridges.",
@@ -1567,7 +1571,7 @@ window.volticaProducts = [
             "Printer Type": "Portable Pocket Photo Printer",
             "Connectivity": "Bluetooth Wireless Interface",
             "Printing Technology": "ZINK Zero-Ink / Thermal Direct Printing",
-            "Resolution": "313 \\times 600 DPI",
+            "Resolution": "313 × 600 DPI",
             "Battery Capacity": "Built-in 500mAh Rechargeable Battery",
             "Compatibility": "iOS and Android via Mobile App"
         },
@@ -1584,7 +1588,7 @@ window.volticaProducts = [
         "customCta": {
             "title": "Print Your Memories",
             "lines": [
-                "Ready to turn your digital camera roll into physical stickers and keepsakes in seconds? Order your MT53 Pocket Printer from the Voltica selection today and bring your photos to life. Backed by our 30-day satisfaction guaranteeâ€”if you arenâ€™t thrilled with the quality, weâ€™ll make it right. Add to Cart now and start creating!"
+                "Ready to turn your digital camera roll into physical stickers and keepsakes in seconds? Order your MT53 Pocket Printer from the Voltica selection today and bring your photos to life. Backed by our 30-day satisfaction guarantee — if you aren't thrilled with the quality, we'll make it right. Add to Cart now and start creating!"
             ]
         },
         "stripeLink": "https://buy.stripe.com/6oUaEYf4zgILfOEc0O2Ji0A",

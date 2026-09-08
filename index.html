@@ -414,50 +414,58 @@
         animation-duration: 1.5s;
     }
 
+
     /* =====================================================
        MOBILE MENU TOGGLE — STYLISH GLASSMORPHIC HAMBURGER
+       (FORCÉ pour éviter les conflits avec store.css / style.css)
        ===================================================== */
     .mobile-menu-toggle {
-        display: none; /* Caché sur desktop */
-        justify-self: end;
-        width: 44px;
-        height: 44px;
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: none !important;
+        justify-self: end !important;
+        width: 44px !important;
+        height: 44px !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 12px !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 5px !important;
+        cursor: pointer !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        position: relative !important;
+        z-index: 1001 !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
     .mobile-menu-toggle:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-color: rgba(255, 255, 255, 0.15) !important;
     }
 
     .hamburger-line {
-        width: 18px;
-        height: 1.5px;
-        background: #fff;
-        border-radius: 2px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: block !important;
+        width: 18px !important;
+        height: 1.5px !important;
+        background: #fff !important;
+        border-radius: 2px !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        transform-origin: center !important;
     }
 
     /* Animation en croix (X) à l'ouverture */
     .mobile-menu-toggle.is-open .hamburger-line:nth-child(1) {
-        transform: translateY(6.5px) rotate(45deg);
+        transform: translateY(6.5px) rotate(45deg) !important;
     }
     .mobile-menu-toggle.is-open .hamburger-line:nth-child(2) {
-        opacity: 0;
-        transform: scaleX(0);
+        opacity: 0 !important;
+        transform: scaleX(0) !important;
     }
     .mobile-menu-toggle.is-open .hamburger-line:nth-child(3) {
-        transform: translateY(-6.5px) rotate(-45deg);
+        transform: translateY(-6.5px) rotate(-45deg) !important;
     }
 
 
@@ -478,7 +486,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 24px; /* Espacement réduit */
+        gap: 24px;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -494,7 +502,7 @@
         align-items: center;
         gap: 12px;
         color: rgba(255, 255, 255, 0.7);
-        font-size: 14px; /* Taille réduite pour plus d'élégance */
+        font-size: 14px;
         font-weight: 600;
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -1148,21 +1156,21 @@
 
 
     /* =====================================================
-       RESPONSIVE
+       RESPONSIVE — HAMBURGER FORCÉ VISIBLE SUR MOBILE
        ===================================================== */
 
     @media (max-width: 850px) {
         .store-header {
             padding: 16px 24px;
-            grid-template-columns: 1fr auto; /* Logo à gauche, hamburger à droite */
+            grid-template-columns: 1fr auto !important;
         }
 
         .store-nav {
-            display: none; /* Cache la nav desktop */
+            display: none !important;
         }
 
         .mobile-menu-toggle {
-            display: flex; /* Affiche le hamburger */
+            display: flex !important;
         }
 
         .contact-card { padding: 48px 28px; }
@@ -1276,7 +1284,7 @@
 </header>
 
 
-<!-- Mobile Menu Overlay (Taille de texte réduite + STORE et CONTACT seulement) -->
+<!-- Mobile Menu Overlay -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
 
     <a href="store.html" class="mobile-nav-link">
@@ -1481,16 +1489,13 @@
                 const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
                 menuToggle.setAttribute('aria-expanded', !isExpanded);
                 
-                // Bascule la classe pour l'animation du hamburger et du menu
                 menuToggle.classList.toggle('is-open');
                 menuOverlay.classList.toggle('active');
                 menuOverlay.setAttribute('aria-hidden', isExpanded);
                 
-                // Empêche le scroll du body quand le menu est ouvert
                 document.body.style.overflow = isExpanded ? '' : 'hidden';
             });
             
-            // Fermer le menu au clic sur un lien
             const navLinks = menuOverlay.querySelectorAll('a');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
@@ -1502,7 +1507,6 @@
                 });
             });
             
-            // Fermer le menu au clic en dehors des liens
             menuOverlay.addEventListener('click', function(e) {
                 if (e.target === menuOverlay) {
                     menuToggle.classList.remove('is-open');

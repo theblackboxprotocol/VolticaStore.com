@@ -1992,3 +1992,64 @@ button:focus-visible {
     }
 
 }
+/* =========================================================
+   PRODUCT NOT FOUND — 404 STATE
+   ========================================================= */
+.product-not-found {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+}
+
+.not-found-content {
+    max-width: 500px;
+}
+
+.not-found-content h1 {
+    margin: 20px 0 16px;
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 48px);
+    letter-spacing: -0.05em;
+    font-weight: 800;
+    background: linear-gradient(180deg, #ffffff 0%, #cfcfcf 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.not-found-content p {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.not-found-content .back-store-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.not-found-content .back-store-button:hover {
+    background: #fff;
+    color: #050505;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(255,255,255,0.15);
+}

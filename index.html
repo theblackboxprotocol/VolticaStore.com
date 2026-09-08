@@ -20,7 +20,6 @@
         }
 
         gtag("js", new Date());
-
         gtag("config", "G-LCJ9SC3NZP");
     </script>
 
@@ -221,186 +220,9 @@
 
 
 <style>
-
     /* =====================================================
-       HEADER — GRAPHITE TINTED GLASS SYSTEM
-       ===================================================== */
-
-    .store-header {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        z-index: 1000 !important;
-        
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        
-        padding: 0 32px !important;
-        height: 72px !important;
-
-        background: rgba(24, 26, 30, 0.72) !important;
-        backdrop-filter: blur(28px) saturate(180%) !important;
-        -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-        
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-        
-        box-shadow: 
-            0 4px 30px rgba(0, 0, 0, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
-            
-        transition: all 0.4s ease !important;
-    }
-
-    .store-header::before {
-        content: "" !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 1px !important;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent) !important;
-        pointer-events: none !important;
-    }
-
-    .store-header .logo-acrylic {
-        display: flex !important;
-        align-items: center !important;
-        gap: 12px !important;
-        text-decoration: none !important;
-        z-index: 1001 !important;
-    }
-
-    .store-header .logo-img {
-        width: 32px !important;
-        height: 32px !important;
-        object-fit: contain !important;
-    }
-
-    .store-header .logo-text {
-        font-family: "Manrope", sans-serif !important;
-        font-size: 14px !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.15em !important;
-        color: #fff !important;
-    }
-
-    /* Desktop Navigation */
-    .store-header .store-nav {
-        display: flex !important;
-        align-items: center !important;
-        gap: 32px !important;
-    }
-
-    .store-header .store-nav a {
-        text-decoration: none !important;
-        color: rgba(255, 255, 255, 0.65) !important;
-        font-size: 11px !important;
-        font-weight: 600 !important;
-        letter-spacing: 0.12em !important;
-        transition: color 0.3s ease !important;
-        position: relative !important;
-        padding: 4px 0 !important;
-    }
-
-    .store-header .store-nav a:hover,
-    .store-header .store-nav a.nav-active {
-        color: #fff !important;
-    }
-
-    .store-header .store-nav a.nav-active::after {
-        content: "" !important;
-        position: absolute !important;
-        bottom: -2px !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 1px !important;
-        background: #fff !important;
-        opacity: 0.6 !important;
-    }
-
-    /* Mobile Menu Toggle */
-    .store-header .mobile-menu-toggle {
-        display: none !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        gap: 5px !important;
-        width: 32px !important;
-        height: 32px !important;
-        background: transparent !important;
-        border: none !important;
-        cursor: pointer !important;
-        padding: 4px !important;
-        z-index: 1001 !important;
-    }
-
-    .store-header .hamburger-line {
-        display: block !important;
-        width: 100% !important;
-        height: 1.5px !important;
-        background: #fff !important;
-        border-radius: 2px !important;
-        transition: all 0.3s ease !important;
-        transform-origin: center !important;
-    }
-
-    .store-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
-        transform: translateY(6.5px) rotate(45deg) !important;
-    }
-
-    .store-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
-        opacity: 0 !important;
-    }
-
-    .store-header .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
-        transform: translateY(-6.5px) rotate(-45deg) !important;
-    }
-
-    /* Mobile Nav Link with Pulsar Dot */
-    .store-header .store-nav .mobile-nav-link {
-        display: flex !important;
-        align-items: center !important;
-        gap: 14px !important;
-        text-decoration: none !important;
-        color: rgba(255, 255, 255, 0.75) !important;
-        font-family: "Manrope", sans-serif !important;
-        font-size: 13px !important;
-        font-weight: 600 !important;
-        letter-spacing: 0.2em !important;
-        transition: all 0.3s ease !important;
-    }
-
-    .store-header .store-nav .mobile-nav-link:hover {
-        color: #fff !important;
-        transform: translateX(4px) !important;
-    }
-
-    .store-header .store-nav .mobile-nav-link .mobile-pulsar-dot {
-        width: 6px !important;
-        height: 6px !important;
-        border-radius: 50% !important;
-        background: #fff !important;
-        box-shadow: 0 0 10px #fff, 0 0 20px rgba(255, 255, 255, 0.5) !important;
-        animation: mobilePulse 2s ease-in-out infinite !important;
-        flex-shrink: 0 !important;
-    }
-
-    @keyframes mobilePulse {
-        0%, 100% {
-            transform: scale(0.85) !important;
-            opacity: 0.6 !important;
-            box-shadow: 0 0 8px #fff, 0 0 16px rgba(255, 255, 255, 0.3) !important;
-        }
-        50% {
-            transform: scale(1.2) !important;
-            opacity: 1 !important;
-            box-shadow: 0 0 14px #fff, 0 0 28px rgba(255, 255, 255, 0.7) !important;
-        }
-    }
-
-    /* =====================================================
-       INDEX — PREMIUM HOME
+       INDEX — PAGE-SPECIFIC STYLES
+       (Header, navigation, cart gérés par store.css)
        ===================================================== */
 
     body {
@@ -469,7 +291,6 @@
     }
 
     @keyframes ambientFloat {
-
         0%,100% {
             transform: translate3d(0,0,0);
             opacity: .45;
@@ -479,7 +300,6 @@
             transform: translate3d(50px,-35px,0);
             opacity: .8;
         }
-
     }
 
 
@@ -544,7 +364,6 @@
     }
 
     @keyframes pulsePoint {
-
         0%,100% {
             transform:scale(.75);
             opacity:.35;
@@ -554,11 +373,9 @@
             transform:scale(1.45);
             opacity:1;
         }
-
     }
 
     @keyframes pulseRing {
-
         0% {
             transform:scale(.4);
             opacity:.8;
@@ -568,7 +385,6 @@
             transform:scale(2.5);
             opacity:0;
         }
-
     }
 
 
@@ -636,7 +452,6 @@
     }
 
     @keyframes glassSweep {
-
         0%,55% {
             transform:translateX(-120%);
         }
@@ -644,7 +459,6 @@
         75%,100% {
             transform:translateX(120%);
         }
-
     }
 
     .hero-copy {
@@ -896,7 +710,6 @@
     }
 
     @keyframes promoLight {
-
         0%,100% {
             opacity:.25;
             transform:scaleX(.7);
@@ -906,7 +719,6 @@
             opacity:.75;
             transform:scaleX(1);
         }
-
     }
 
     .q45-promo-copy,
@@ -1245,7 +1057,6 @@
     }
 
     @keyframes cardPulse {
-
         0%,100% {
             box-shadow:0 0 20px rgba(255,255,255,.04);
         }
@@ -1253,7 +1064,6 @@
         50% {
             box-shadow:0 0 45px rgba(255,255,255,.16);
         }
-
     }
 
     .lifetime-copy span {
@@ -1309,7 +1119,7 @@
 
 
     /* =====================================================
-       COLLECTION — NEW PREMIUM 3 IMAGE SYSTEM
+       COLLECTION
        ===================================================== */
 
     .collection-section {
@@ -1546,7 +1356,7 @@
 
 
     /* =====================================================
-       CONTACT — BLACK GLASSMORPHIC PLATE
+       CONTACT
        ===================================================== */
 
     .contact-section {
@@ -1762,46 +1572,39 @@
 
 
     /* =====================================================
+       BUTTON CART IN MENU
+       ===================================================== */
+
+    .nav-cart-button {
+        width: 100%;
+        display: flex !important;
+        align-items: center !important;
+        gap: 14px !important;
+        padding: 0 !important;
+        margin-top: 8px !important;
+        border: 0 !important;
+        background: transparent !important;
+        color: rgba(255, 255, 255, 0.75) !important;
+        font-family: "Manrope", sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.2em !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        text-decoration: none !important;
+    }
+
+    .nav-cart-button:hover {
+        color: #fff !important;
+        transform: translateX(4px) !important;
+    }
+
+
+    /* =====================================================
        RESPONSIVE
        ===================================================== */
 
     @media (max-width:850px) {
-
-        .store-header {
-            padding: 0 24px !important;
-            height: 68px !important;
-        }
-
-        .store-header .mobile-menu-toggle {
-            display: flex !important;
-        }
-
-        .store-header .store-nav {
-            position: fixed !important;
-            top: 0 !important;
-            right: -100% !important;
-            width: 75% !important;
-            max-width: 320px !important;
-            height: 100vh !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-            align-items: flex-start !important;
-            padding: 0 48px !important;
-            gap: 32px !important;
-            
-            background: rgba(12, 14, 18, 0.96) !important;
-            backdrop-filter: blur(35px) saturate(180%) !important;
-            -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
-            border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
-            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7) !important;
-            
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            z-index: 999 !important;
-        }
-
-        .store-header .store-nav.mobile-open {
-            right: 0 !important;
-        }
 
         .contact-card {
             padding: 48px 28px;
@@ -1861,16 +1664,6 @@
 
 
     @media (max-width:560px) {
-
-        .store-header {
-            padding: 0 16px !important;
-            height: 64px !important;
-        }
-
-        .store-header .store-nav {
-            width: 85% !important;
-            padding: 0 32px !important;
-        }
 
         .hero-copy h1 {
             font-size:38px;
@@ -2109,6 +1902,16 @@
         <a href="#contact" class="mobile-nav-link">
             <span class="mobile-pulsar-dot"></span>
             CONTACT
+        </a>
+
+        <!-- PANIER — Redirige vers la boutique où se trouve le panier -->
+        <a
+            href="store.html"
+            class="mobile-nav-link nav-cart-button"
+            aria-label="Go to shopping cart"
+        >
+            <span class="mobile-pulsar-dot"></span>
+            PANIER
         </a>
 
     </nav>
@@ -2451,7 +2254,7 @@
 
 
     <!-- =================================================
-         COLLECTION — PREMIUM 3 IMAGE SYSTEM
+         COLLECTION
          ================================================= -->
 
     <section
@@ -2488,9 +2291,7 @@
             <div class="collection-grid">
 
 
-                <!-- =====================================
-                     FEATURE — Q45
-                     ===================================== -->
+                <!-- FEATURE — Q45 -->
 
                 <a
                     href="store.html"
@@ -2525,9 +2326,7 @@
                 <div class="collection-side">
 
 
-                    <!-- =================================
-                         ORCHESTRA
-                         ================================= -->
+                    <!-- ORCHESTRA -->
 
                     <a
                         href="store.html"
@@ -2559,9 +2358,7 @@
                     </a>
 
 
-                    <!-- =================================
-                         LIFESTYLE
-                         ================================= -->
+                    <!-- LIFESTYLE -->
 
                     <a
                         href="store.html"
@@ -2645,7 +2442,7 @@
 
 
     <!-- =================================================
-         CONTACT — BLACK GLASSMORPHIC PLATE
+         CONTACT
          ================================================= -->
 
     <section

@@ -211,7 +211,7 @@
 
 
 <!-- =====================================================
-     TYPOGRAPHY + STYLES
+     TYPOGRAPHY + STYLES EXTERNES
      ===================================================== -->
 
 <link
@@ -237,12 +237,11 @@
 <style>
 
     /* =====================================================
-       PATCH UNIVERSEL v3 — PANIER + HEADER (MOBILE + DESKTOP)
-       Non-scopé : fonctionne sous .store-header ET .product-header
+       PATCH UNIVERSEL v3 — PANIER + HAMBURGER + DRAWER
+       Règles NON scopées : valables sous tous les headers
        ===================================================== */
 
-
-    /* 1. BOUTON PANIER — boîte glass + icône blanche (NON scopé) */
+    /* 1. Bouton panier — boîte glass */
     .cart-acrylic {
         position: relative !important;
         display: flex !important;
@@ -266,7 +265,7 @@
         transform: translateY(-2px) !important;
     }
 
-    /* 2. ICÔNE SVG PANIER — corrige le SVG noir géant par défaut */
+    /* 2. Icône SVG panier — blanche, 20px, jamais de fill noir */
     .cart-acrylic .cart-icon,
     .cart-icon {
         width: 20px !important;
@@ -279,7 +278,7 @@
         stroke-linejoin: round !important;
     }
 
-    /* 3. BADGE COMPTEUR — rond blanc en haut à droite */
+    /* 3. Badge compteur */
     .cart-acrylic .cart-count,
     .cart-count {
         position: absolute !important;
@@ -298,9 +297,17 @@
         font-weight: 700 !important;
         border-radius: 999px !important;
         box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        opacity: 0 !important;
+        transform: scale(0.6) !important;
+        transition: all 0.25s ease !important;
     }
 
-    /* 4. HAMBURGER — boîte glass, masqué sur desktop */
+    .cart-count.visible {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+    }
+
+    /* 4. Hamburger — boîte glass, caché sur desktop */
     .mobile-menu-toggle {
         display: none !important;
         flex-direction: column !important;
@@ -342,60 +349,13 @@
         transform: translateY(-7px) rotate(-45deg) !important;
     }
 
-    /* Sur MOBILE (≤ 850px) : hamburger visible */
     @media (max-width: 850px) {
         .mobile-menu-toggle {
             display: flex !important;
         }
     }
 
-
-    /* 5. HEADER MOBILE — flex 3 colonnes garanti */
-    @media (max-width: 850px) {
-        .store-header {
-            display: flex !important;
-            flex-direction: row !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            padding: 0 16px !important;
-            height: 64px !important;
-            gap: 12px !important;
-        }
-
-        .store-header .logo-acrylic {
-            flex: 0 0 auto !important;
-        }
-
-        .store-header .store-nav,
-        .store-header .store-nav:not(.mobile-open) {
-            position: fixed !important;
-            top: 0 !important;
-            right: -100% !important;
-            width: 75% !important;
-            max-width: 320px !important;
-            height: 100vh !important;
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-            align-items: flex-start !important;
-            padding: 0 48px !important;
-            gap: 32px !important;
-            background: rgba(12, 14, 18, 0.96) !important;
-            backdrop-filter: blur(35px) saturate(180%) !important;
-            -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
-            border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
-            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7) !important;
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            z-index: 999 !important;
-        }
-
-        .store-header .store-nav.mobile-open {
-            right: 0 !important;
-        }
-    }
-
-
-    /* 6. DRAWER — verre teinté BLANC (style maison Voltica) */
+    /* 5. Drawer — verre teinté BLANC (style maison Voltica) */
     .cart-drawer {
         width: 400px !important;
         max-width: 92vw !important;
@@ -676,7 +636,7 @@
 
 
     /* =====================================================
-       AJUSTEMENTS LOCAUX PAGE STATIQUE
+       AJUSTEMENTS LOCAUX — PAGE STATIQUE (DESKTOP)
        ===================================================== */
 
     .static-product-hero {
@@ -752,10 +712,115 @@
         object-fit: cover;
     }
 
+
+    /* =====================================================
+       PATCH MOBILE v4 — HEADER 1 LIGNE + HERO COMPACT
+       ===================================================== */
+
     @media (max-width: 850px) {
-        .static-product-hero {
-            padding-top: 120px;
+
+        /* Header : une seule ligne, aucun retour à la ligne */
+        .store-header {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 10px !important;
+            padding: 8px 12px !important;
+            min-height: 64px !important;
+            height: auto !important;
+            width: calc(100% - 20px) !important;
+            margin: 10px auto 0 !important;
         }
+
+        /* Ordre explicite : logo | hamburger | panier */
+        .store-header .logo-acrylic {
+            order: 1 !important;
+            flex: 0 1 auto !important;
+            min-width: 0 !important;
+        }
+
+        .store-header .mobile-menu-toggle {
+            order: 2 !important;
+        }
+
+        .store-header .cart-acrylic {
+            order: 3 !important;
+        }
+
+        /* Nav : panneau hors-canvas (ne participe plus au flex) */
+        .store-header .store-nav {
+            order: 99 !important;
+            position: fixed !important;
+            top: 0 !important;
+            right: -100% !important;
+            width: 78% !important;
+            max-width: 320px !important;
+            height: 100vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: flex-start !important;
+            gap: 28px !important;
+            padding: 0 40px !important;
+            margin: 0 !important;
+            background: rgba(10, 12, 16, 0.97) !important;
+            backdrop-filter: blur(30px) !important;
+            -webkit-backdrop-filter: blur(30px) !important;
+            border-left: 1px solid rgba(255,255,255,0.08) !important;
+            box-shadow: -20px 0 60px rgba(0,0,0,0.7) !important;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            z-index: 1200 !important;
+        }
+
+        .store-header .store-nav.mobile-open {
+            right: 0 !important;
+        }
+
+        /* Panier : verrouillé DANS le header */
+        .store-header .cart-acrylic {
+            position: relative !important;
+            display: flex !important;
+            width: 44px !important;
+            height: 44px !important;
+            margin: 0 !important;
+            flex-shrink: 0 !important;
+        }
+
+        /* Hero compact : suppression du grand vide noir */
+        .static-product-hero {
+            padding-top: 88px !important;
+            padding-bottom: 24px !important;
+        }
+
+        .static-breadcrumb {
+            margin: 12px auto 14px !important;
+            padding: 0 20px !important;
+        }
+
+        /* Panneau image : hauteur libre, pas de vide interne */
+        .product-gallery {
+            margin-top: 0 !important;
+        }
+
+        .main-image-panel {
+            padding: 10px !important;
+            min-height: 0 !important;
+            height: auto !important;
+        }
+
+        .main-image-panel img {
+            width: 100% !important;
+            height: auto !important;
+            max-height: 70vh !important;
+            object-fit: contain !important;
+        }
+
+        .image-reflection {
+            display: none !important;
+        }
+
     }
 
     @media (max-width: 560px) {
@@ -896,7 +961,7 @@
                     alt="Anker Soundcore Space Q45 wireless headphones in Light Blue, selected by Voltica Store"
                     width="800"
                     height="800"
-                    loading="lazy"
+                    fetchpriority="high"
                 >
                 <div class="image-reflection" aria-hidden="true"></div>
             </div>

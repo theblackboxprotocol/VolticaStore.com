@@ -2328,3 +2328,87 @@ body.cart-is-open {
     }
 
    }
+/* =========================================================
+   37. MOBILE HOTFIX v12.2 — SPÉCIFICITÉ MAXIMALE
+   Écrase les <style> inline de index.html / store.html
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    /* --- 1. Lignes hamburger : totalement supprimées ---
+       Sélecteur volontairement très spécifique (header inclus)
+       pour battre les règles !important des <style> inline */
+    html body header.store-header .mobile-menu-toggle .hamburger-line,
+    html body header.product-header .mobile-menu-toggle .hamburger-line,
+    html body .store-header .mobile-menu-toggle .hamburger-line,
+    html body .product-header .mobile-menu-toggle .hamburger-line {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    /* Le bouton ne montre QUE le pulsar (::before) */
+    html body header.store-header .mobile-menu-toggle,
+    html body header.product-header .mobile-menu-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0 !important;
+    }
+
+    /* --- 2. Drawer : largeur bornée + ancrage droit garanti ---
+       L'ID #cartDrawer donne la spécificité la plus élevée */
+    html body .cart-drawer#cartDrawer {
+        width: min(360px, 88vw) !important;
+        max-width: 88vw !important;
+        min-width: 0 !important;
+        right: 0 !important;
+        left: auto !important;
+        margin: 0 !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        height: 100% !important;
+        height: 100dvh !important;
+        transform: translateX(102%) !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+
+    html body .cart-drawer#cartDrawer.open,
+    html body.cart-is-open .cart-drawer#cartDrawer {
+        transform: translateX(0) !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    /* Aucun enfant ne peut élargir le panneau */
+    html body .cart-drawer#cartDrawer .cart-header,
+    html body .cart-drawer#cartDrawer .cart-items,
+    html body .cart-drawer#cartDrawer .cart-footer {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    html body .cart-drawer#cartDrawer .cart-empty {
+        min-height: 200px !important;
+        padding: 40px 16px !important;
+    }
+
+    html body .cart-drawer#cartDrawer .cart-empty strong {
+        font-size: 13px !important;
+        letter-spacing: 0.12em !important;
+    }
+
+    html body .cart-drawer#cartDrawer .cart-empty span {
+        font-size: 12px !important;
+    }
+
+}

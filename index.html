@@ -1572,31 +1572,29 @@
 
 
     /* =====================================================
-       BUTTON CART IN MENU
+       INDEX NAVIGATION — CENTERED
        ===================================================== */
 
-    .nav-cart-button {
-        width: 100%;
-        display: flex !important;
-        align-items: center !important;
-        gap: 14px !important;
-        padding: 0 !important;
-        margin-top: 8px !important;
-        border: 0 !important;
-        background: transparent !important;
-        color: rgba(255, 255, 255, 0.75) !important;
-        font-family: "Manrope", sans-serif !important;
-        font-size: 13px !important;
-        font-weight: 600 !important;
-        letter-spacing: 0.2em !important;
-        cursor: pointer !important;
-        transition: all 0.3s ease !important;
-        text-decoration: none !important;
+    .store-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
     }
 
-    .nav-cart-button:hover {
-        color: #fff !important;
-        transform: translateX(4px) !important;
+    .store-nav .mobile-nav-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: auto;
+        padding: 8px 0;
+        margin: 0;
+        text-decoration: none;
+    }
+
+    .store-nav .mobile-nav-link .mobile-pulsar-dot {
+        flex: 0 0 auto;
     }
 
 
@@ -1605,6 +1603,14 @@
        ===================================================== */
 
     @media (max-width:850px) {
+
+        .store-nav {
+            justify-content: center;
+        }
+
+        .store-nav .mobile-nav-link {
+            justify-content: flex-start;
+        }
 
         .contact-card {
             padding: 48px 28px;
@@ -1664,6 +1670,14 @@
 
 
     @media (max-width:560px) {
+
+        .store-nav {
+            gap: 22px;
+        }
+
+        .store-nav .mobile-nav-link {
+            gap: 8px;
+        }
 
         .hero-copy h1 {
             font-size:38px;
@@ -1902,16 +1916,6 @@
         <a href="#contact" class="mobile-nav-link">
             <span class="mobile-pulsar-dot"></span>
             CONTACT
-        </a>
-
-        <!-- PANIER — Redirige vers la boutique où se trouve le panier -->
-        <a
-            href="store.html"
-            class="mobile-nav-link nav-cart-button"
-            aria-label="Go to shopping cart"
-        >
-            <span class="mobile-pulsar-dot"></span>
-            PANIER
         </a>
 
     </nav>

@@ -2,6 +2,7 @@
    VOLTICA STORE — STORE.JS
    Category Sections + Filter + Shopping Cart Engine
    GA4 Analytics Integrated
+   STATIC PAGE ROUTING (v2)
    ========================================================= */
 
 "use strict";
@@ -81,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        CATEGORY NORMALIZATION
-       (corrige automatiquement les doublons de libellés)
        ===================================================== */
 
     function normalizeCategory(category) {
@@ -569,6 +569,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =================================================
+           STATIC PAGE ROUTING
+           If the product has a staticPage field, use it.
+           Otherwise, fall back to the dynamic URL.
+           ================================================= */
+
+        const productURL =
+            product.staticPage
+                ? product.staticPage
+                : "product-view.html?id=" +
+                  encodeURIComponent(product.id);
+
+
+        /* =================================================
            COLORS
            ================================================= */
 
@@ -704,9 +717,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="product-actions">
 
                     <a
-                        href="product-view.html?id=${encodeURIComponent(
-                            product.id
-                        )}"
+                        href="${productURL}"
                         class="acrylic-button product-view-button"
                         data-product-id="${escapeHTML(
                             product.id

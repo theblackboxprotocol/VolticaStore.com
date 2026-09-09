@@ -1160,3 +1160,286 @@
     color: var(--blog-white-muted);
     margin: 0;
 }
+/* =========================================================
+   21. ARTICLE PULL LINES — PHRASES MANIFESTES
+   ========================================================= */
+
+.article-pull-line {
+    font-family: var(--blog-font-display);
+    font-size: clamp(19px, 2.4vw, 24px);
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 36px 0;
+    padding-left: 20px;
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+
+/* =========================================================
+   22. ARTICLE FIGURES — PHOTOS INSÉRÉES DANS LE CORPS
+   ========================================================= */
+
+.article-figure {
+    margin: 44px 0;
+    border-radius: var(--blog-radius);
+    overflow: hidden;
+    border: 1px solid var(--blog-glass-border);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+}
+
+.article-figure img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 1s var(--blog-ease);
+}
+
+.article-figure:hover img {
+    transform: scale(1.03);
+}
+
+.article-figure figcaption {
+    padding: 14px 22px;
+    background: var(--blog-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-family: var(--blog-font-body);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--blog-white-muted);
+    font-style: italic;
+    text-align: center;
+}
+
+
+/* =========================================================
+   23. SPEC TABLE — TABLEAU TECHNIQUE GLASS
+   ========================================================= */
+
+.article-spec-wrap {
+    margin: 8px 0 20px;
+    border: 1px solid var(--blog-glass-border);
+    border-radius: var(--blog-radius);
+    overflow: hidden;
+    background: var(--blog-glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.article-spec-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.article-spec-table th,
+.article-spec-table td {
+    padding: 14px 22px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    vertical-align: top;
+}
+
+.article-spec-table tr:last-child th,
+.article-spec-table tr:last-child td {
+    border-bottom: none;
+}
+
+.article-spec-table th {
+    width: 40%;
+    background: rgba(255, 255, 255, 0.03);
+    font-family: var(--blog-font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.article-spec-table td {
+    font-family: var(--blog-font-body);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--blog-white-muted);
+}
+
+.article-spec-note {
+    margin: 0 0 28px;
+    font-size: 11px;
+    font-style: italic;
+    color: var(--blog-white-faint);
+}
+
+
+/* =========================================================
+   24. PRODUCT CTA — BOUTON GLASSMORPHIQUE
+   ========================================================= */
+
+.blog-product-cta {
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+}
+
+.blog-product-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 0 34px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    color: #ffffff;
+    font-family: var(--blog-font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s var(--blog-ease);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.blog-product-button svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s var(--blog-ease);
+}
+
+.blog-product-button:hover {
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-3px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 20px 50px rgba(255, 255, 255, 0.08);
+}
+
+.blog-product-button:hover svg {
+    transform: translateX(4px);
+}
+
+.blog-product-button.blog-button-ghost {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.blog-product-cta-note {
+    font-family: var(--blog-font-body);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--blog-white-faint);
+}
+
+
+/* =========================================================
+   25. LIFETIME CALLOUT — RAPPEL 15% À VIE
+   ========================================================= */
+
+.blog-lifetime-callout {
+    margin: 48px 0;
+    padding: 40px 36px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--blog-radius-large);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-lifetime-callout::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
+    height: 180px;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.06), transparent 70%);
+    filter: blur(35px);
+    pointer-events: none;
+}
+
+.callout-badge {
+    position: relative;
+    display: inline-flex;
+    padding: 7px 16px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    font-family: var(--blog-font-display);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    color: #ffffff;
+}
+
+.blog-lifetime-callout h3 {
+    position: relative;
+    margin: 0 0 12px;
+    font-family: var(--blog-font-display);
+    font-size: clamp(20px, 2.6vw, 28px);
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.blog-lifetime-callout p {
+    position: relative;
+    max-width: 520px;
+    margin: 0 auto 26px;
+    font-family: var(--blog-font-body);
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--blog-white-muted);
+}
+
+.blog-lifetime-callout .blog-product-button {
+    position: relative;
+}
+
+
+/* =========================================================
+   26. RESPONSIVE — AJUSTEMENTS ARTICLE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+    .article-pull-line {
+        font-size: 18px;
+        padding-left: 16px;
+    }
+
+    .article-figure {
+        margin: 32px 0;
+        border-radius: var(--blog-radius-small);
+    }
+
+    .article-spec-table th,
+    .article-spec-table td {
+        padding: 12px 16px;
+    }
+
+    .article-spec-table th {
+        width: 45%;
+    }
+
+    .blog-lifetime-callout {
+        padding: 32px 22px;
+    }
+
+    .blog-product-button {
+        width: 100%;
+    }
+
+}

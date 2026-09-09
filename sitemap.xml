@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+    <!-- ============================================================
+         VOLTICA STORE — SITEMAP OPTIMISÉ
+         Dernière mise à jour : 2026-09-09
+         26 fiches produits + pages principales
+         Conforme Google Search Console & Merchant Center
+         ============================================================ -->
+
 
     <!-- ==================================================
-         PAGES PRINCIPALES
+         🏠 PAGES PRINCIPALES (navigation prioritaire)
          ================================================== -->
 
     <url>
@@ -22,383 +31,469 @@
 
 
     <!-- ==================================================
-         PAGES STATIQUES PRODUITS (SEO PREMIUM)
-         Priorité 0.95 — URL canonique pour Google
-         26 fiches produits statiques
-         ================================================== -->
-
-
-    <!-- ==================================================
-         AUDIO — CASQUES & ÉCOUTEURS (8 produits)
+         🎧 AUDIO — CASQUES & ÉCOUTEURS (8 produits)
          ================================================== -->
 
     <url>
         <loc>https://volticastore.com/products/anker-soundcore-space-q45.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://volticastore.com/products/anker-soundcore-space-q45.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://volticastore.com/products/anker-soundcore-space-q45.html"/>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/Q45.1.jpg</image:loc>
-            <image:title>Anker Soundcore Space Q45 Wireless Headphones</image:title>
-            <image:caption>Premium over-ear wireless headphones with adaptive ANC, Hi-Res LDAC audio and 50-hour battery</image:caption>
+            <image:title>Anker Soundcore Space Q45 Wireless Headphones — Light Blue</image:title>
+            <image:caption>Premium over-ear wireless headphones with adaptive ANC blocking 98% of noise, Hi-Res LDAC audio and 50-hour battery life. Selected by Voltica Store.</image:caption>
         </image:image>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/Q45.2.jpg</image:loc>
+            <image:title>Space Q45 Side Profile — Ergonomic Memory Foam Earcups</image:title>
         </image:image>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/Q45.3.jpg</image:loc>
+            <image:title>Space Q45 Detail — Premium Leatherette Finish</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/kiwi-ears-orchestra-ii.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/orchestra1.jpg</image:loc>
-            <image:title>Kiwi Ears Orchestra II 10BA IEM</image:title>
-            <image:caption>Professional in-ear monitors with 10 balanced armature drivers per side and 4-way crossover</image:caption>
+            <image:title>Kiwi Ears Orchestra II 10BA Professional IEM</image:title>
+            <image:caption>Reference-grade in-ear monitors with 10 balanced armature drivers per side and 4-way acoustic crossover for audiophile listening.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/orchestra2.jpg</image:loc>
+            <image:title>Orchestra II Transparent Acrylic Shell Detail</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/kiwi-ears-ardor.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/ardor1.jpg</image:loc>
-            <image:title>Kiwi Ears Ardor Audiophile Headphones</image:title>
-            <image:caption>Coaxial dual-driver Bluetooth headphones with 140-hour battery and hybrid ANC</image:caption>
+            <image:title>Kiwi Ears Ardor Audiophile Bluetooth Headphones</image:title>
+            <image:caption>Coaxial dual-driver (40mm + 10mm) Bluetooth headphones with hybrid ANC, Harman tuning and 140-hour battery life.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/ardor2.jpg</image:loc>
+            <image:title>Ardor Foldable Design — Vegan Leather Ear Pads</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/kiwi-ears-aventus.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/aventus1.jpg</image:loc>
             <image:title>Kiwi Ears Aventus DJ &amp; Gaming Headphones</image:title>
-            <image:caption>RGB Bluetooth headphones with coaxial dual-driver system and 82-hour battery</image:caption>
+            <image:caption>RGB Bluetooth headphones with coaxial dual-driver system, hybrid ANC up to 35dB and 82-hour battery life for DJs and gamers.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/aventus2.jpg</image:loc>
+            <image:title>Aventus Rotating Earcups — DJ-Ready Ergonomic Design</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/fa-5370-planar-magnetic.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/wood1.jpg</image:loc>
-            <image:title>FA-5370 Planar Magnetic Headphones</image:title>
-            <image:caption>Open-back audiophile headphones with 106mm planar drivers and Brazilian rosewood earcups</image:caption>
+            <image:title>FA-5370 Planar Magnetic Audiophile Headphones — Brazilian Rosewood</image:title>
+            <image:caption>Open-back audiophile headphones with 106mm isodynamic planar drivers, hand-carved Brazilian rosewood earcups and ultra-low 0.2% THD distortion.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/wood2.jpg</image:loc>
+            <image:title>FA-5370 8-Sided Stainless Steel Mesh Grille Detail</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/q17-open-ear-earbuds.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/Screenshot_20260825_184613.jpg</image:loc>
-            <image:title>Q17 Open-Ear Wireless Earbuds</image:title>
-            <image:caption>Gem Blue open-ear ear-hook earbuds with 45-hour battery and AI bass enhancement</image:caption>
+            <image:title>Q17 Open-Ear Wireless Earbuds — Electroplated Gem Blue</image:title>
+            <image:caption>Gem Blue open-ear ear-hook earbuds with 45-hour battery, AI bass enhancement and Bluetooth 5.4 for active lifestyles.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/Screenshot_20260825_183622.jpg</image:loc>
+            <image:title>Q17 Smart Digital Display Charging Case</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/voltica-t75-earbuds.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/T751.webp</image:loc>
-            <image:title>Voltica T75 Open-Ear Sports Earbuds</image:title>
-            <image:caption>IPX5 waterproof open-ear ear-clip earbuds with Bluetooth 5.3 and HiFi stereo</image:caption>
+            <image:title>Voltica T75 Open-Ear Sports Earbuds — IPX5 Waterproof</image:title>
+            <image:caption>IPX5 waterproof open-ear ear-clip earbuds with Bluetooth 5.3, HiFi stereo sound and secure ear-hook design for workouts.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/T752.webp</image:loc>
+            <image:title>T75 Ear-Clip Ergonomic Sports Design</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/voltica-tws-earbuds.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/earbuds2-1.webp</image:loc>
             <image:title>Voltica TWS In-Ear Noise Canceling Earbuds</image:title>
-            <image:caption>True wireless earbuds with CVC noise cancellation, Bluetooth 5.0 and 24-hour magnetic charging dock</image:caption>
+            <image:caption>True wireless earbuds with CVC noise cancellation, Bluetooth 5.0 and 24-hour battery life via magnetic charging dock.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/earbuds2-2.webp</image:loc>
+            <image:title>TWS Magnetic Charging Dock with LED Battery Display</image:title>
         </image:image>
     </url>
 
 
     <!-- ==================================================
-         GAMING GEAR (4 produits)
+         🎮 GAMING GEAR (4 produits)
          ================================================== -->
 
     <url>
         <loc>https://volticastore.com/products/hexagonal-quantum-light-panels.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/hex1.jpg</image:loc>
             <image:title>Hexagonal Smart RGB Quantum Light Panels</image:title>
-            <image:caption>Sound-activated modular RGB panels with 16 million colors for gaming setups</image:caption>
+            <image:caption>Sound-activated modular RGB panels with 16 million colors, music sync and dual app/remote control for gaming setups.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/hex2.jpg</image:loc>
+            <image:title>Modular Hex Panels — Custom Wall Layout</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/rgb-branches-ambience-light.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/light1.webp</image:loc>
-            <image:title>RGB Branches Ambience Light</image:title>
-            <image:caption>12-piece music-sync LED branch lighting kit with smart app control</image:caption>
+            <image:title>RGB Branches Ambience Light — 12-Piece Smart LED Kit</image:title>
+            <image:caption>12-piece music-sync LED branch lighting kit with smart app control, wireless remote and modern minimalist design.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/light2.webp</image:loc>
+            <image:title>RGB Branches Modern Minimalist Wall Design</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/gamesir-g8-galileo.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/pad1.jpg</image:loc>
-            <image:title>GameSir G8 Galileo Mobile Controller</image:title>
-            <image:caption>Type-C wired controller for iPhone 15 and Android mobile gaming with magnetic faceplates</image:caption>
+            <image:title>GameSir G8 Galileo Mobile Gaming Controller</image:title>
+            <image:caption>Type-C wired controller for iPhone 15 &amp; Android mobile gaming with magnetic faceplates, moveable connector and pass-through charging.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/pad2.jpg</image:loc>
+            <image:title>G8 Galileo Magnetic Detachable Faceplates Detail</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/xxl-world-map-mouse-pad.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/desk1.webp</image:loc>
-            <image:title>XXL World Map Gaming Mouse Pad</image:title>
-            <image:caption>900x400x4mm large desk mat with anti-slip rubber base and HD world map design</image:caption>
+            <image:title>XXL World Map Gaming Mouse Pad — 900x400mm</image:title>
+            <image:caption>900x400x4mm large desk mat with anti-slip rubber base, stitched edges and HD world map design for gaming setups.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/desk2.webp</image:loc>
+            <image:title>XXL Mouse Pad Anti-Slip Rubber Base Detail</image:title>
         </image:image>
     </url>
 
 
     <!-- ==================================================
-         VLOGGING & CREATOR GEAR (4 produits)
+         🎬 VLOGGING & CREATOR GEAR (4 produits)
          ================================================== -->
 
     <url>
         <loc>https://volticastore.com/products/c22-smartphone-gimbal.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/selfie1.jpg</image:loc>
-            <image:title>C22 AI Smartphone Stabilizer</image:title>
-            <image:caption>3-in-1 gimbal with AI face tracking, 1.3m extension rod and tripod base</image:caption>
+            <image:title>C22 AI Smartphone Gimbal Stabilizer — 3-in-1</image:title>
+            <image:caption>3-in-1 gimbal with AI face tracking, 1.3m aluminum extension rod, Bluetooth remote and tripod base for vloggers.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/selfie2.jpg</image:loc>
+            <image:title>C22 360-Degree Rotation &amp; Gesture Control</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/smart-auto-tracking-gimbal.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/gimbal1-1.webp</image:loc>
-            <image:title>Smart Auto-Tracking Phone Gimbal</image:title>
-            <image:caption>360-degree gesture-controlled face tracking gimbal with 8-hour battery for TikTok and vlogging</image:caption>
+            <image:title>Smart Auto-Tracking Phone Gimbal — 360° Face Tracking</image:title>
+            <image:caption>360-degree gesture-controlled face tracking gimbal with 8-hour battery for TikTok, Instagram Reels and vlogging.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/gimbal1-2.webp</image:loc>
+            <image:title>Auto-Tracking Gimbal Gesture Control Demo</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/sl90-rgb-led-video-light.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/light1.jpg</image:loc>
-            <image:title>SL90 RGB LED Video Light Panel</image:title>
-            <image:caption>150-LED professional RGB panel with app control, CRI 97+ and 1700 lux brightness</image:caption>
+            <image:title>SL90 Professional RGB LED Video Light Panel</image:title>
+            <image:caption>150-LED professional RGB panel with app control, CRI 97+, 18 scene modes and 1700 lux brightness for studio lighting.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/light2.jpg</image:loc>
+            <image:title>SL90 Aluminum Alloy Build with 360° Rotation</image:title>
         </image:image>
     </url>
 
 
     <!-- ==================================================
-         TECH & GADGETS INNOVANTS (6 produits)
+         💻 TECH & GADGETS INNOVANTS (7 produits)
          ================================================== -->
 
     <url>
         <loc>https://volticastore.com/products/multifunctional-laptop-stand.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/stand1.webp</image:loc>
-            <image:title>Multifunctional Laptop Stand</image:title>
-            <image:caption>Ergonomic folding laptop riser with 9 adjustable angles, 20KG capacity and dual phone holders</image:caption>
+            <image:title>Multifunctional Folding Laptop Stand — 9 Adjustable Angles</image:title>
+            <image:caption>Ergonomic folding laptop riser with 9 adjustable angles, 20KG capacity, hollow heat dissipation panels and dual phone holders.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/stand2.webp</image:loc>
+            <image:title>Laptop Stand Hollow Heat Dissipation Panel Detail</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/levitating-bluetooth-speaker.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/lifestyle1.1.jpg</image:loc>
-            <image:title>Levitating Bluetooth Speaker</image:title>
-            <image:caption>Magnetic levitation wireless speaker with 360-degree rotation and RGB lighting</image:caption>
+            <image:title>Levitating Bluetooth Speaker — Magnetic Floating Orb</image:title>
+            <image:caption>Magnetic levitation wireless speaker with 360-degree rotation, RGB lighting and wireless induction charging.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/lifestyle1.2.jpg</image:loc>
+            <image:title>Levitating Speaker RGB LED Illumination Detail</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/tri-fold-keyboard.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/keyboard1.webp</image:loc>
-            <image:title>Tri-fold Folding Touch Keyboard</image:title>
-            <image:caption>Ultra-thin portable Bluetooth keyboard with integrated touchpad and 100-hour battery</image:caption>
+            <image:title>Tri-fold Folding Touch Keyboard — Portable Bluetooth</image:title>
+            <image:caption>Ultra-thin portable Bluetooth keyboard with integrated touchpad, tri-fold design and 100-hour battery life.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/keyboard2.webp</image:loc>
+            <image:title>Tri-fold Keyboard Compact Folded Travel Size</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/ferrofluid-bluetooth-speaker.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/ferro1.jpg</image:loc>
-            <image:title>Ferrofluid Bluetooth Speaker</image:title>
-            <image:caption>10W speaker with real-time magnetic fluid audio visualizer and high-borosilicate glass chamber</image:caption>
+            <image:title>Ferrofluid Bluetooth Speaker — Magnetic Fluid Visualizer</image:title>
+            <image:caption>10W speaker with real-time magnetic fluid audio visualizer, high-borosilicate glass chamber and Bluetooth 5.3 connectivity.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/ferro2.jpg</image:loc>
+            <image:title>Ferrofluid Dancing to Music — Real-Time Visual Rhythm</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/lumi-robot-car-companion.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/Ai1.jpg</image:loc>
-            <image:title>Lumi Robot Smart AI Car Companion</image:title>
-            <image:caption>Dashboard AI companion with IPS screen, 100+ emotion animations and solar power</image:caption>
+            <image:title>Lumi Robot Smart AI Car Companion — Dashboard Display</image:title>
+            <image:caption>Dashboard AI companion with IPS screen, 100+ emotion animations, voice interaction and solar-powered dual-core battery.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/Ai2.jpg</image:loc>
+            <image:title>Lumi Robot Expressive Emotion Animations Display</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/3d-holographic-led-fan.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/holo1.webp</image:loc>
-            <image:title>3D Holographic LED Fan Projector</image:title>
-            <image:caption>Floating 3D hologram display with high-density rotating LED array for retail and events</image:caption>
+            <image:title>3D Holographic LED Fan Projector — Floating Holograms</image:title>
+            <image:caption>Floating 3D hologram display with high-density rotating LED array, custom content support for retail stores and events.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/holo2.webp</image:loc>
+            <image:title>3D Holographic Fan Retail Storefront Display</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/voltica-mt53-pocket-printer.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/printer1.jpg</image:loc>
-            <image:title>Voltica MT53 Pocket Photo Printer</image:title>
-            <image:caption>Wireless Bluetooth pocket printer with ZINK zero-ink technology and peel-and-stick backing</image:caption>
+            <image:title>Voltica MT53 Pocket Photo Printer — ZINK Technology</image:title>
+            <image:caption>Wireless Bluetooth pocket printer with ZINK zero-ink technology, 2x3 inch peel-and-stick photo paper and app connectivity.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/printer2.jpg</image:loc>
+            <image:title>MT53 Compact Portable Pocket-Sized Design</image:title>
         </image:image>
     </url>
 
 
     <!-- ==================================================
-         LIFESTYLE (3 produits)
+         🌿 LIFESTYLE (3 produits)
          ================================================== -->
 
     <url>
         <loc>https://volticastore.com/products/black-star-projector.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/projector2.webp</image:loc>
-            <image:title>Black Star Projector Night Lamp</image:title>
-            <image:caption>USB-powered ambient lamp with 10 interchangeable projection discs including Star Saturn and Northern Lights</image:caption>
+            <image:title>Black Star Projector &amp; Ambience Night Lamp — 10 Discs</image:title>
+            <image:caption>USB-powered ambient lamp with 10 interchangeable projection discs including Star Saturn, Northern Lights and deep space galaxies.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/projector1.jpg</image:loc>
+            <image:title>Black Star Projector UFO-Inspired Matte Black Design</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/mountop-uvc-water-bottle.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/cup1.jpg</image:loc>
-            <image:title>Mountop UVC Smart Water Bottle</image:title>
-            <image:caption>316 stainless steel insulated bottle with UVC sterilization, 99.99% purity and LED temperature display</image:caption>
+            <image:title>Mountop UVC Smart Water Bottle — 316 Stainless Steel</image:title>
+            <image:caption>316 stainless steel insulated bottle with 99.99% UVC sterilization in 180 seconds, LED temperature display and 90-minute hydration alarm.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/cup2.jpg</image:loc>
+            <image:title>Mountop Smart LED Temperature Display Cap Detail</image:title>
         </image:image>
     </url>
 
     <url>
         <loc>https://volticastore.com/products/xreal-air-1s-glasses.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/glass1-1.jpg</image:loc>
-            <image:title>XREAL Air 1S AI Smart Glasses</image:title>
-            <image:caption>Augmented reality glasses with micro-OLED 52° FOV display, AI translation and TÜV Rheinland eye comfort</image:caption>
+            <image:title>XREAL Air 1S AI Smart Glasses — AR Display</image:title>
+            <image:caption>Augmented reality glasses with micro-OLED 52° FOV display, AI translation, TÜV Rheinland eye comfort certification and 130-inch virtual screen.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/glass1-2.jpg</image:loc>
+            <image:title>XREAL Air 1S Lightweight AR Frame Design</image:title>
         </image:image>
     </url>
 
 
     <!-- ==================================================
-         SMART HOME (1 produit premium)
+         🏠 SMART HOME (1 produit premium)
          ================================================== -->
 
     <url>
         <loc>https://volticastore.com/products/smart-android-bathroom-mirror.html</loc>
         <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>https://volticastore.com/assets/images/mirror1.jpg</image:loc>
-            <image:title>Smart Android 15 Bathroom Mirror</image:title>
-            <image:caption>1000x500mm IP65 waterproof mirror with Android 15, AI health tracking, 3-color LED and touch screen</image:caption>
+            <image:title>Smart Android 15 Bathroom Mirror — IP65 Waterproof</image:title>
+            <image:caption>1000x500mm IP65 waterproof smart mirror with Android 15, AI health tracking, 3-color LED lighting and touchscreen display.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://volticastore.com/assets/images/mirror2.jpg</image:loc>
+            <image:title>Android Smart Mirror Touchscreen Interface Detail</image:title>
         </image:image>
     </url>
 
 
     <!-- ==================================================
-         ANCIENNES URLS DYNAMIQUES (redirection conservée)
-         URLs legacy — redirigées par product-view.html
-         vers les pages statiques, conservées pour les liens entrants
+         📄 PAGES UTILITAIRES
          ================================================== -->
 
-    <url>
-        <loc>https://volticastore.com/product-view.html?id=anker-soundcore-space-q45-wireless-headphones-selected-by-voltica-store</loc>
-        <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.3</priority>
-    </url>
-
-
-    <!-- ==================================================
-         PAGES UTILITAIRES
-         ================================================== -->
-
-    <url>
-        <loc>https://volticastore.com/thank-you.html</loc>
-        <lastmod>2026-09-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.4</priority>
-    </url>
+    <!--
+        ⚠️ NOTES IMPORTANTES :
+        - L'URL legacy "product-view.html?id=..." a été RETIRÉE du sitemap.
+          Elle est redirigée en 301 vers les pages statiques et ne doit PAS
+          apparaître dans un sitemap (directive Google : "Don't include
+          redirected URLs in your sitemap").
+        - La page "thank-you.html" est supposée NOINDEX (page de conversion)
+          et a donc été retirée du sitemap conformément aux bonnes pratiques.
+    -->
 
 </urlset>

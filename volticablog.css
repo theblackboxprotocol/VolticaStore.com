@@ -1068,3 +1068,95 @@
 .blog-main ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
   }
+/* =========================================================
+   19. ARTICLE BODY — LISTS & SIGNATURE
+   ========================================================= */
+
+.article-reader-body ul {
+    margin: 0 0 28px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.article-reader-body li {
+    position: relative;
+    padding-left: 26px;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.75;
+}
+
+.article-reader-body li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.article-reader-body li strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.article-signature {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: var(--blog-font-display);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blog-white-muted);
+    font-weight: 700;
+}
+
+.article-reader-body blockquote cite a {
+    color: var(--blog-white);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: border-color 0.3s ease;
+}
+
+.article-reader-body blockquote cite a:hover {
+    border-color: #ffffff;
+}
+
+
+/* =========================================================
+   20. BLOG GRID — EMPTY STATE
+   ========================================================= */
+
+.blog-grid-empty {
+    grid-column: 1 / -1;
+    padding: 60px 32px;
+    text-align: center;
+    border: 1px dashed rgba(255, 255, 255, 0.14);
+    border-radius: var(--blog-radius);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.blog-grid-empty .blog-empty-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 18px #ffffff;
+    animation: pulsePoint 2s infinite;
+    margin-bottom: 18px;
+}
+
+.blog-grid-empty p {
+    font-family: var(--blog-font-body);
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--blog-white-muted);
+    margin: 0;
+}

@@ -97,11 +97,20 @@
         "priceCurrency": "USD",
         "price": "189.99",
         "priceValidUntil": "2026-12-31",
+        "validFrom": "2026-09-09",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "seller": {
             "@type": "Organization",
             "name": "Voltica Store"
+        },
+        "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "US",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
         },
         "shippingDetails": {
             "@type": "OfferShippingDetails",
@@ -109,6 +118,10 @@
                 "@type": "MonetaryAmount",
                 "value": "6.14",
                 "currency": "USD"
+            },
+            "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "US"
             },
             "deliveryTime": {
                 "@type": "ShippingDeliveryTime",
@@ -758,7 +771,7 @@
             <article class="feature-card">
                 <div class="feature-card-inner">
                     <span class="feature-number">04</span>
-                    <h3>Ergonomic & Lightweight Design</h3>
+                    <h3>Ergonomic &amp; Lightweight Design</h3>
                     <p>Built with a refined aesthetic, a comfortable pressure-relieving headband, and ultra-soft memory foam earcups for all-day listening comfort.</p>
                 </div>
             </article>
@@ -766,7 +779,7 @@
             <article class="feature-card">
                 <div class="feature-card-inner">
                     <span class="feature-number">05</span>
-                    <h3>Customizable Sound & Transparency</h3>
+                    <h3>Customizable Sound &amp; Transparency</h3>
                     <p>Tailor your audio profile using the Soundcore app's 8-band EQ and switch seamlessly between transparency modes to stay connected to the world.</p>
                 </div>
             </article>
@@ -810,7 +823,7 @@
                 </div>
                 <div class="specification-row">
                     <span class="specification-label">Frequency Response</span>
-                    <strong class="specification-value">20Hz - 40kHz (Hi-Res Wired & Wireless)</strong>
+                    <strong class="specification-value">20Hz - 40kHz (Hi-Res Wired &amp; Wireless)</strong>
                 </div>
                 <div class="specification-row">
                     <span class="specification-label">Connectivity Range</span>

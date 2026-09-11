@@ -151,6 +151,7 @@
 
     <!-- =====================================================
          STRUCTURED DATA — BLOG POSTING (ARTICLE 2 — Q45)
+         CORRIGÉ : Ajout complet du schéma Product avec offers
          ===================================================== -->
 
     <script type="application/ld+json">
@@ -186,7 +187,50 @@
         "about": {
             "@type": "Product",
             "name": "Anker Soundcore Space Q45",
-            "url": "https://volticastore.com/products/anker-soundcore-space-q45.html"
+            "description": "Premium over-ear headphones with adaptive noise cancellation, LDAC high-resolution audio, 65-hour battery life, and multipoint connectivity. Designed for long listening sessions and everyday versatility.",
+            "image": "https://volticastore.com/assets/images/blog2.jpg",
+            "url": "https://volticastore.com/products/anker-soundcore-space-q45.html",
+            "brand": {
+                "@type": "Brand",
+                "name": "Soundcore"
+            },
+            "category": "Headphones",
+            "offers": {
+                "@type": "Offer",
+                "url": "https://volticastore.com/products/anker-soundcore-space-q45.html",
+                "priceCurrency": "USD",
+                "price": "189.99",
+                "priceValidUntil": "2026-12-31",
+                "availability": "https://schema.org/InStock",
+                "itemCondition": "https://schema.org/NewCondition",
+                "seller": {
+                    "@type": "Organization",
+                    "name": "Voltica Store"
+                },
+                "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                        "@type": "MonetaryAmount",
+                        "value": "0",
+                        "currency": "USD"
+                    },
+                    "deliveryTime": {
+                        "@type": "ShippingDeliveryTime",
+                        "handlingTime": {
+                            "@type": "QuantitativeValue",
+                            "minValue": "0",
+                            "maxValue": "1",
+                            "unitCode": "DAY"
+                        },
+                        "transitTime": {
+                            "@type": "QuantitativeValue",
+                            "minValue": "3",
+                            "maxValue": "7",
+                            "unitCode": "DAY"
+                        }
+                    }
+                }
+            }
         }
     }
     </script>

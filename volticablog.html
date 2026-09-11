@@ -225,25 +225,26 @@
        TRIANGLE PULSAR — IDENTIQUE À INDEX/STORE
        ===================================================== */
     .mobile-menu-toggle {
-        display: none !important;
-        position: relative !important;
-        justify-self: end !important;
-        width: 44px !important;
-        height: 44px !important;
-        background: rgba(255, 255, 255, 0.06) !important;
-        border: 1px solid rgba(255, 255, 255, 0.14) !important;
-        border-radius: 12px !important;
-        backdrop-filter: blur(15px) !important;
-        -webkit-backdrop-filter: blur(15px) !important;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        z-index: 1001 !important;
-        padding: 0 !important;
-        margin: 0 !important;
+        display: none;
+        position: relative;
+        justify-self: end;
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 12px;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1001;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
     }
 
     .mobile-menu-toggle:hover {
-        background: rgba(255, 255, 255, 0.10) !important;
-        border-color: rgba(255, 255, 255, 0.22) !important;
+        background: rgba(255, 255, 255, 0.10);
+        border-color: rgba(255, 255, 255, 0.22);
     }
 
     .pulsar-triangle {
@@ -284,8 +285,8 @@
     }
 
     .mobile-menu-toggle.is-open {
-        background: rgba(255, 255, 255, 0.12) !important;
-        border-color: rgba(255, 255, 255, 0.25) !important;
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.25);
     }
 
     .mobile-menu-toggle.is-open .pulsar-triangle span {
@@ -338,6 +339,26 @@
 
 
     /* =====================================================
+       RESPONSIVE — CRITICAL: AFFICHER LE MENU MOBILE
+       ===================================================== */
+    @media (max-width: 850px) {
+        .store-header {
+            grid-template-columns: 1fr auto !important;
+        }
+
+        .store-nav {
+            display: none !important;
+        }
+
+        .mobile-menu-toggle {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+
+    /* =====================================================
        RESPONSIVE FOOTER
        ===================================================== */
     @media (max-width: 560px) {
@@ -375,8 +396,29 @@
      SKIP LINK — ACCESSIBILITÉ
      ===================================================== -->
 
-<a href="#main-content" class="skip-link" style="position:fixed;top:-100px;left:16px;z-index:2000;padding:12px 20px;background:#fff;color:#050505;border-radius:12px;font-size:12px;font-weight:700;letter-spacing:.08em;transition:top .3s ease;">Skip to content</a>
-<style>.skip-link:focus{top:16px;outline:2px solid #fff;outline-offset:2px;}</style>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<style>
+    .skip-link {
+        position: fixed;
+        top: -100px;
+        left: 16px;
+        z-index: 2000;
+        padding: 12px 20px;
+        background: #fff;
+        color: #050505;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        transition: top 0.3s ease;
+    }
+    .skip-link:focus {
+        top: 16px;
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+</style>
 
 
 <!-- =====================================================
@@ -907,7 +949,6 @@
         const menuOverlay = document.getElementById('mobileMenuOverlay');
         const header = document.getElementById('storeHeader');
 
-        // Centralized open/close functions
         function openMenu() {
             menuToggle.classList.add('is-open');
             menuOverlay.classList.add('active');
@@ -930,17 +971,14 @@
                 isExpanded ? closeMenu() : openMenu();
             });
 
-            // Close on link click
             menuOverlay.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', closeMenu);
             });
 
-            // Close on overlay click
             menuOverlay.addEventListener('click', function(e) {
                 if (e.target === menuOverlay) closeMenu();
             });
 
-            // Close on Escape key (accessibility)
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
                     closeMenu();
@@ -948,7 +986,6 @@
                 }
             });
 
-            // Auto-close on desktop resize
             window.addEventListener('resize', function() {
                 if (window.innerWidth > 850 && menuOverlay.classList.contains('active')) {
                     closeMenu();
@@ -956,7 +993,6 @@
             });
         }
 
-        // Header scroll — throttled with requestAnimationFrame
         if (header) {
             let ticking = false;
             window.addEventListener('scroll', function() {

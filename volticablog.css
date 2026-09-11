@@ -1,62 +1,142 @@
 /* =========================================================
    VOLTICA BLOG — VOLTICABLOG.CSS
    Next-gen editorial design. Purist. Minimalist. Memorable.
+   Version 2.0 — Optimized & Unified
    ========================================================= */
 
 
 /* =========================================================
    1. TOKENS & VARIABLES
+   Harmonisés avec index.css / store.css
    ========================================================= */
 
 :root {
+    /* Colors */
     --blog-black: #050505;
     --blog-white: #ffffff;
     --blog-white-soft: rgba(255, 255, 255, 0.72);
-    --blog-white-muted: rgba(255, 255, 255, 0.48);
-    --blog-white-faint: rgba(255, 255, 255, 0.24);
+    --blog-white-muted: rgba(255, 255, 255, 0.50);
+    --blog-white-faint: rgba(255, 255, 255, 0.28);
     --blog-white-ghost: rgba(255, 255, 255, 0.08);
 
+    /* Glass */
     --blog-glass: rgba(255, 255, 255, 0.055);
     --blog-glass-strong: rgba(255, 255, 255, 0.09);
     --blog-glass-border: rgba(255, 255, 255, 0.12);
 
+    /* Radius */
     --blog-radius-small: 12px;
     --blog-radius: 20px;
     --blog-radius-large: 28px;
+    --blog-radius-xl: 34px;
 
+    /* Motion */
     --blog-ease: cubic-bezier(0.4, 0, 0.2, 1);
     --blog-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-    --blog-duration: 0.45s;
+    --blog-ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --blog-duration: 0.4s;
+    --blog-duration-slow: 0.7s;
 
+    /* Layout */
     --blog-content-max: 1180px;
     --blog-reader-max: 720px;
 
+    /* Typography */
     --blog-font-display: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
     --blog-font-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    /* Z-index */
+    --z-bg: 0;
+    --z-content: 2;
+    --z-sticky: 50;
+    --z-header: 1000;
+    --z-skip: 2000;
+
+    /* Safe areas */
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 
 /* =========================================================
-   2. BASE & LAYOUT
+   2. PERFORMANCE OPTIMIZATIONS
+   ========================================================= */
+
+/* GPU acceleration for animated elements */
+.blog-hero-inner,
+.featured-article-card,
+.blog-card,
+.blog-newsletter-card,
+.article-nav-link {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Contain layout for better rendering */
+.blog-featured,
+.blog-grid-section,
+.article-reader-section {
+    contain: layout style;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+}
+
+.blog-card {
+    contain: layout style paint;
+}
+
+/* Lazy render below-fold sections */
+.article-reader-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1200px;
+}
+
+.blog-newsletter {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 400px;
+}
+
+
+/* =========================================================
+   3. BASE & LAYOUT
    ========================================================= */
 
 .blog-main {
     position: relative;
-    z-index: 2;
+    z-index: var(--z-content);
     width: min(var(--blog-content-max), calc(100% - 48px));
     margin: 0 auto;
-    padding-top: 140px;
+    padding-top: calc(140px + var(--safe-top));
+    isolation: isolate;
+}
+
+/* Custom scrollbar for blog */
+.blog-main ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.blog-main ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.blog-main ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 99px;
+}
+
+.blog-main ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 
 /* =========================================================
-   3. BLOG HERO — ÉDITORIAL & CINÉMATIQUE
+   4. BLOG HERO — ÉDITORIAL & CINÉMATIQUE
    ========================================================= */
 
 .blog-hero {
+    position: relative;
     padding: 60px 0 70px;
     text-align: center;
-    position: relative;
 }
 
 .blog-hero-inner {
@@ -65,21 +145,11 @@
     animation: blogHeroFadeUp 1s var(--blog-ease) both;
 }
 
-@keyframes blogHeroFadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .blog-hero-kicker {
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 32px;
     padding: 7px 16px;
     border: 1px solid var(--blog-glass-border);
     border-radius: 999px;
@@ -91,16 +161,15 @@
     font-size: 10px;
     letter-spacing: 0.28em;
     font-weight: 600;
-    margin-bottom: 32px;
 }
 
 .blog-hero h1 {
+    margin: 0 0 28px;
     font-family: var(--blog-font-display);
     font-size: clamp(44px, 7vw, 88px);
     line-height: 0.92;
     letter-spacing: -0.065em;
     font-weight: 800;
-    margin: 0 0 28px;
     background: linear-gradient(180deg, #ffffff 0%, #b8b8b8 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -108,42 +177,41 @@
 }
 
 .blog-hero-subtitle {
+    max-width: 540px;
+    margin: 0 auto;
     font-family: var(--blog-font-body);
     font-size: clamp(14px, 1.6vw, 17px);
     line-height: 1.75;
     color: var(--blog-white-muted);
-    max-width: 540px;
-    margin: 0 auto;
     font-weight: 400;
 }
 
 
 /* =========================================================
-   4. CATEGORIES NAV — CHIPS GLASSMORPHIQUES
+   5. CATEGORIES NAV — CHIPS GLASSMORPHIQUES
    ========================================================= */
 
 .blog-categories {
+    position: sticky;
+    top: calc(88px + var(--safe-top));
+    z-index: var(--z-sticky);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
-    padding: 0 0 60px;
-    position: sticky;
-    top: 88px;
-    z-index: 50;
-    background: rgba(5, 5, 5, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     margin: 0 -24px;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 16px;
-    padding-bottom: 20px;
+    padding: 16px 24px 20px;
+    background: rgba(5, 5, 5, 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .blog-category-chip {
+    position: relative;
     display: inline-flex;
     align-items: center;
+    overflow: hidden;
     padding: 10px 22px;
     border: 1px solid var(--blog-glass-border);
     border-radius: 999px;
@@ -158,8 +226,6 @@
     text-transform: uppercase;
     text-decoration: none;
     transition: all var(--blog-duration) var(--blog-ease);
-    position: relative;
-    overflow: hidden;
 }
 
 .blog-category-chip::before {
@@ -193,7 +259,7 @@
 
 
 /* =========================================================
-   5. FEATURED ARTICLE — IMMERSION ÉDITORIALE
+   6. FEATURED ARTICLE — IMMERSION ÉDITORIALE
    ========================================================= */
 
 .blog-featured {
@@ -204,19 +270,26 @@
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 0;
+    overflow: hidden;
     border: 1px solid var(--blog-glass-border);
     border-radius: var(--blog-radius-large);
     background: linear-gradient(135deg, var(--blog-glass-strong), var(--blog-glass));
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    overflow: hidden;
-    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    transition: transform var(--blog-duration) var(--blog-ease), box-shadow var(--blog-duration) var(--blog-ease);
+    box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition:
+        transform var(--blog-duration) var(--blog-ease),
+        box-shadow var(--blog-duration) var(--blog-ease);
 }
 
 .featured-article-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 50px 130px rgba(0, 0, 0, 0.75), 0 0 50px rgba(255, 255, 255, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 50px 130px rgba(0, 0, 0, 0.75),
+        0 0 50px rgba(255, 255, 255, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .featured-article-media {
@@ -231,8 +304,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 1.2s var(--blog-ease), filter 0.6s ease;
     filter: saturate(0.85) contrast(1.05);
+    transition:
+        transform 1.2s var(--blog-ease),
+        filter 0.6s ease;
 }
 
 .featured-article-card:hover .featured-article-media img {
@@ -244,46 +319,48 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent 60%, rgba(5, 5, 5, 0.4) 100%);
     pointer-events: none;
+    background: linear-gradient(90deg, transparent 60%, rgba(5, 5, 5, 0.4) 100%);
 }
 
 .featured-article-content {
-    padding: 50px 48px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 50px 48px;
 }
 
 
 /* =========================================================
-   6. ARTICLE META — SIGNATURE ÉDITORIALE
+   7. ARTICLE META — SIGNATURE ÉDITORIALE
    ========================================================= */
 
 .article-meta {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 12px;
+    margin-bottom: 20px;
     font-family: var(--blog-font-display);
     font-size: 10px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 600;
     color: var(--blog-white-muted);
-    margin-bottom: 20px;
 }
 
 .article-category {
-    color: var(--blog-white);
     padding: 4px 12px;
     border: 1px solid var(--blog-glass-border);
     border-radius: 999px;
     background: var(--blog-glass);
+    color: var(--blog-white);
     font-weight: 700;
     letter-spacing: 0.22em;
 }
 
 .article-dot {
+    flex: 0 0 auto;
     width: 3px;
     height: 3px;
     border-radius: 50%;
@@ -296,16 +373,16 @@
 
 
 /* =========================================================
-   7. FEATURED CONTENT TYPOGRAPHY
+   8. FEATURED CONTENT TYPOGRAPHY
    ========================================================= */
 
 .featured-article-title {
+    margin: 0 0 20px;
     font-family: var(--blog-font-display);
     font-size: clamp(26px, 3.2vw, 38px);
     line-height: 1.1;
     letter-spacing: -0.04em;
     font-weight: 800;
-    margin: 0 0 20px;
 }
 
 .featured-article-title a {
@@ -322,21 +399,28 @@
 }
 
 .featured-article-excerpt {
+    margin: 0 0 28px;
     font-family: var(--blog-font-body);
     font-size: 14px;
     line-height: 1.8;
     color: var(--blog-white-muted);
-    margin: 0 0 28px;
 }
 
 .featured-article-footer {
     margin-top: auto;
 }
 
+
+/* =========================================================
+   9. READ ARTICLE LINK — GLASSMORPHIC BUTTON
+   ========================================================= */
+
 .read-article-link {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    overflow: hidden;
     padding: 14px 28px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: var(--blog-radius-small);
@@ -349,8 +433,6 @@
     text-transform: uppercase;
     text-decoration: none;
     transition: all 0.4s var(--blog-ease);
-    position: relative;
-    overflow: hidden;
 }
 
 .read-article-link svg {
@@ -385,7 +467,7 @@
 
 
 /* =========================================================
-   8. BLOG GRID SECTION
+   10. BLOG GRID SECTION
    ========================================================= */
 
 .blog-grid-section {
@@ -402,11 +484,11 @@
 }
 
 .blog-section-header h2 {
+    margin: 0;
     font-family: var(--blog-font-display);
     font-size: clamp(28px, 4vw, 42px);
     letter-spacing: -0.05em;
     font-weight: 700;
-    margin: 0;
 }
 
 .blog-section-count {
@@ -420,7 +502,7 @@
 
 
 /* =========================================================
-   9. BLOG GRID — CARDS MINIMALISTES
+   11. BLOG GRID — CARDS MINIMALISTES
    ========================================================= */
 
 .blog-grid {
@@ -432,27 +514,35 @@
 .blog-card {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     border: 1px solid var(--blog-glass-border);
     border-radius: var(--blog-radius);
     background: linear-gradient(160deg, var(--blog-glass-strong), var(--blog-glass));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    overflow: hidden;
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    transition: transform var(--blog-duration) var(--blog-ease), box-shadow var(--blog-duration) var(--blog-ease), border-color var(--blog-duration) var(--blog-ease);
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition:
+        transform var(--blog-duration) var(--blog-ease),
+        box-shadow var(--blog-duration) var(--blog-ease),
+        border-color var(--blog-duration) var(--blog-ease);
 }
 
 .blog-card:hover {
     transform: translateY(-8px);
     border-color: rgba(255, 255, 255, 0.22);
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 255, 255, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 40px 100px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(255, 255, 255, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .blog-card-media {
     position: relative;
     display: block;
-    aspect-ratio: 16 / 9;
     overflow: hidden;
+    aspect-ratio: 16 / 9;
     background: #0a0a0a;
 }
 
@@ -460,8 +550,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 1s var(--blog-ease), filter 0.6s ease;
     filter: saturate(0.8) contrast(1.05);
+    transition:
+        transform 1s var(--blog-ease),
+        filter 0.6s ease;
 }
 
 .blog-card:hover .blog-card-media img {
@@ -473,24 +565,24 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 60%, rgba(5, 5, 5, 0.3) 100%);
     pointer-events: none;
+    background: linear-gradient(180deg, transparent 60%, rgba(5, 5, 5, 0.3) 100%);
 }
 
 .blog-card-content {
-    padding: 28px;
     display: flex;
     flex-direction: column;
     flex: 1;
+    padding: 28px;
 }
 
 .blog-card-title {
+    margin: 0 0 14px;
     font-family: var(--blog-font-display);
     font-size: 20px;
     line-height: 1.3;
     letter-spacing: -0.03em;
     font-weight: 700;
-    margin: 0 0 14px;
 }
 
 .blog-card-title a {
@@ -507,12 +599,12 @@
 }
 
 .blog-card-excerpt {
+    flex: 1;
+    margin: 0 0 20px;
     font-family: var(--blog-font-body);
     font-size: 13px;
     line-height: 1.75;
     color: var(--blog-white-muted);
-    margin: 0 0 20px;
-    flex: 1;
 }
 
 .blog-card-footer {
@@ -531,7 +623,7 @@
 
 
 /* =========================================================
-   10. ARTICLE READER — LECTURE IMMERSIVE
+   12. ARTICLE READER — LECTURE IMMERSIVE
    ========================================================= */
 
 .article-reader-section {
@@ -542,17 +634,17 @@
 }
 
 .article-reader-header {
-    text-align: center;
     margin-bottom: 48px;
+    text-align: center;
 }
 
 .article-reader-title {
+    margin: 0 0 24px;
     font-family: var(--blog-font-display);
     font-size: clamp(32px, 5vw, 52px);
     line-height: 1.05;
     letter-spacing: -0.05em;
     font-weight: 800;
-    margin: 0 0 24px;
     background: linear-gradient(180deg, #ffffff 0%, #a8a8a8 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -560,12 +652,12 @@
 }
 
 .article-reader-deck {
+    max-width: 580px;
+    margin: 0 auto 32px;
     font-family: var(--blog-font-body);
     font-size: clamp(15px, 1.8vw, 18px);
     line-height: 1.7;
     color: var(--blog-white-soft);
-    max-width: 580px;
-    margin: 0 auto 32px;
     font-weight: 400;
 }
 
@@ -582,14 +674,14 @@
 }
 
 .author-avatar {
+    flex: 0 0 auto;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background: linear-gradient(135deg, #ffffff, #888888);
     color: var(--blog-black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
     font-family: var(--blog-font-display);
     font-weight: 800;
     font-size: 16px;
@@ -621,21 +713,21 @@
 
 
 /* =========================================================
-   11. ARTICLE MEDIA & BODY
+   13. ARTICLE MEDIA & BODY
    ========================================================= */
 
 .article-reader-media {
     margin: 0 0 48px;
-    border-radius: var(--blog-radius-large);
     overflow: hidden;
     border: 1px solid var(--blog-glass-border);
+    border-radius: var(--blog-radius-large);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
 }
 
 .article-reader-media img {
+    display: block;
     width: 100%;
     height: auto;
-    display: block;
     aspect-ratio: 16 / 9;
     object-fit: cover;
 }
@@ -665,16 +757,60 @@
 }
 
 .article-reader-body h2 {
+    margin: 48px 0 20px;
     font-family: var(--blog-font-display);
     font-size: clamp(24px, 3vw, 30px);
     line-height: 1.2;
     letter-spacing: -0.035em;
     font-weight: 700;
     color: var(--blog-white);
-    margin: 48px 0 20px;
 }
 
+
+/* =========================================================
+   14. ARTICLE BODY — LISTS
+   ========================================================= */
+
+.article-reader-body ul {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0 0 28px;
+    padding: 0;
+    list-style: none;
+}
+
+.article-reader-body li {
+    position: relative;
+    padding-left: 26px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.article-reader-body li::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.article-reader-body li strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   15. BLOCKQUOTE
+   ========================================================= */
+
 .article-reader-body blockquote {
+    position: relative;
     margin: 48px 0;
     padding: 32px 40px;
     border-left: 3px solid var(--blog-white);
@@ -682,7 +818,6 @@
     background: linear-gradient(135deg, var(--blog-glass-strong), var(--blog-glass));
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    position: relative;
 }
 
 .article-reader-body blockquote::before {
@@ -718,405 +853,6 @@
     font-weight: 600;
 }
 
-
-/* =========================================================
-   12. ARTICLE NAVIGATION — VOYAGE FLUIDE
-   ========================================================= */
-
-.article-nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 80px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.article-nav-link {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 24px 28px;
-    border: 1px solid var(--blog-glass-border);
-    border-radius: var(--blog-radius);
-    background: var(--blog-glass);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    text-decoration: none;
-    transition: all var(--blog-duration) var(--blog-ease);
-    position: relative;
-    overflow: hidden;
-}
-
-.article-nav-link::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.08) 50%, transparent 70%);
-    transform: translateX(-100%);
-    transition: transform 0.7s var(--blog-ease);
-}
-
-.article-nav-link:hover {
-    border-color: rgba(255, 255, 255, 0.25);
-    background: var(--blog-glass-strong);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-}
-
-.article-nav-link:hover::before {
-    transform: translateX(100%);
-}
-
-.article-nav-label {
-    font-family: var(--blog-font-display);
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--blog-white-faint);
-    font-weight: 600;
-}
-
-.article-nav-title {
-    font-family: var(--blog-font-display);
-    font-size: 15px;
-    line-height: 1.4;
-    letter-spacing: -0.02em;
-    color: var(--blog-white);
-    font-weight: 700;
-}
-
-.article-nav-next {
-    text-align: right;
-    align-items: flex-end;
-}
-
-
-/* =========================================================
-   13. NEWSLETTER CTA
-   ========================================================= */
-
-.blog-newsletter {
-    padding: 60px 0 100px;
-}
-
-.blog-newsletter-card {
-    width: min(720px, 100%);
-    margin: 0 auto;
-    padding: 60px 48px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: var(--blog-radius-large);
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-.blog-newsletter-card::before {
-    content: "";
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 400px;
-    height: 200px;
-    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.05), transparent 70%);
-    filter: blur(40px);
-    pointer-events: none;
-}
-
-.blog-newsletter-card .pulse-dot {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--blog-white);
-    box-shadow: 0 0 25px var(--blog-white);
-    animation: pulsePoint 2s infinite;
-    margin-bottom: 24px;
-}
-
-.blog-newsletter-card h2 {
-    font-family: var(--blog-font-display);
-    font-size: clamp(28px, 4vw, 42px);
-    letter-spacing: -0.05em;
-    line-height: 1.05;
-    font-weight: 700;
-    margin: 0 0 16px;
-}
-
-.blog-newsletter-card p {
-    font-family: var(--blog-font-body);
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--blog-white-muted);
-    max-width: 420px;
-    margin: 0 auto 32px;
-}
-
-.blog-newsletter-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 52px;
-    padding: 0 36px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: var(--blog-radius-small);
-    background: var(--blog-white);
-    color: var(--blog-black);
-    font-family: var(--blog-font-display);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.4s var(--blog-ease);
-    position: relative;
-    overflow: hidden;
-}
-
-.blog-newsletter-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 0.6s ease;
-}
-
-.blog-newsletter-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 20px 50px rgba(255, 255, 255, 0.15), 0 0 30px rgba(255, 255, 255, 0.1);
-}
-
-.blog-newsletter-button:hover::before {
-    left: 100%;
-}
-
-
-/* =========================================================
-   14. ANIMATIONS DE SCROLL REVEAL
-   ========================================================= */
-
-@keyframes blogFadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.blog-featured,
-.blog-grid-section,
-.article-reader-section,
-.blog-newsletter {
-    animation: blogFadeInUp 0.8s var(--blog-ease) both;
-}
-
-.blog-grid .blog-card:nth-child(1) { animation-delay: 0.1s; }
-.blog-grid .blog-card:nth-child(2) { animation-delay: 0.2s; }
-.blog-grid .blog-card:nth-child(3) { animation-delay: 0.3s; }
-.blog-grid .blog-card:nth-child(4) { animation-delay: 0.4s; }
-
-
-/* =========================================================
-   15. RESPONSIVE — TABLETTE
-   ========================================================= */
-
-@media (max-width: 960px) {
-
-    .featured-article-card {
-        grid-template-columns: 1fr;
-    }
-
-    .featured-article-media {
-        min-height: 320px;
-    }
-
-    .featured-article-media::after {
-        background: linear-gradient(180deg, transparent 60%, rgba(5, 5, 5, 0.4) 100%);
-    }
-
-    .blog-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-}
-
-
-/* =========================================================
-   16. RESPONSIVE — MOBILE
-   ========================================================= */
-
-@media (max-width: 640px) {
-
-    .blog-main {
-        padding-top: 120px;
-    }
-
-    .blog-hero {
-        padding: 40px 0 50px;
-    }
-
-    .blog-hero h1 {
-        font-size: clamp(38px, 10vw, 56px);
-    }
-
-    .blog-categories {
-        top: 72px;
-        gap: 8px;
-    }
-
-    .blog-category-chip {
-        padding: 8px 16px;
-        font-size: 10px;
-    }
-
-    .blog-featured {
-        padding: 20px 0 60px;
-    }
-
-    .featured-article-content {
-        padding: 32px 24px;
-    }
-
-    .featured-article-media {
-        min-height: 240px;
-    }
-
-    .blog-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .blog-section-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .article-reader-section {
-        padding: 20px 0 80px;
-    }
-
-    .article-reader-body {
-        font-size: 15px;
-    }
-
-    .article-nav {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .article-nav-next {
-        text-align: left;
-        align-items: flex-start;
-    }
-
-    .blog-newsletter-card {
-        padding: 48px 28px;
-    }
-
-}
-
-
-/* =========================================================
-   17. ACCESSIBILITÉ — REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-
-}
-
-
-/* =========================================================
-   18. SCROLLBAR CUSTOM POUR LE BLOG
-   ========================================================= */
-
-.blog-main ::-webkit-scrollbar {
-    width: 8px;
-}
-
-.blog-main ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.blog-main ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 99px;
-}
-
-.blog-main ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-/* =========================================================
-   19. ARTICLE BODY — LISTS & SIGNATURE
-   ========================================================= */
-
-.article-reader-body ul {
-    margin: 0 0 28px;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.article-reader-body li {
-    position: relative;
-    padding-left: 26px;
-    color: rgba(255, 255, 255, 0.78);
-    line-height: 1.75;
-}
-
-.article-reader-body li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-}
-
-.article-reader-body li strong {
-    color: #ffffff;
-    font-weight: 700;
-}
-
-.article-signature {
-    margin-top: 48px;
-    padding-top: 28px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    font-family: var(--blog-font-display);
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--blog-white-muted);
-    font-weight: 700;
-}
-
 .article-reader-body blockquote cite a {
     color: var(--blog-white);
     text-decoration: none;
@@ -1130,68 +866,37 @@
 
 
 /* =========================================================
-   20. BLOG GRID — EMPTY STATE
-   ========================================================= */
-
-.blog-grid-empty {
-    grid-column: 1 / -1;
-    padding: 60px 32px;
-    text-align: center;
-    border: 1px dashed rgba(255, 255, 255, 0.14);
-    border-radius: var(--blog-radius);
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.blog-grid-empty .blog-empty-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #ffffff;
-    box-shadow: 0 0 18px #ffffff;
-    animation: pulsePoint 2s infinite;
-    margin-bottom: 18px;
-}
-
-.blog-grid-empty p {
-    font-family: var(--blog-font-body);
-    font-size: 13px;
-    line-height: 1.8;
-    color: var(--blog-white-muted);
-    margin: 0;
-}
-/* =========================================================
-   21. ARTICLE PULL LINES — PHRASES MANIFESTES
+   16. PULL LINES — PHRASES MANIFESTES
    ========================================================= */
 
 .article-pull-line {
+    margin: 36px 0;
+    padding-left: 20px;
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
     font-family: var(--blog-font-display);
     font-size: clamp(19px, 2.4vw, 24px);
     line-height: 1.4;
     letter-spacing: -0.02em;
     font-weight: 600;
     color: #ffffff;
-    margin: 36px 0;
-    padding-left: 20px;
-    border-left: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 
 /* =========================================================
-   22. ARTICLE FIGURES — PHOTOS INSÉRÉES DANS LE CORPS
+   17. ARTICLE FIGURES — PHOTOS INSÉRÉES
    ========================================================= */
 
 .article-figure {
     margin: 44px 0;
-    border-radius: var(--blog-radius);
     overflow: hidden;
     border: 1px solid var(--blog-glass-border);
+    border-radius: var(--blog-radius);
     box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
 }
 
 .article-figure img {
-    width: 100%;
     display: block;
+    width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     transition: transform 1s var(--blog-ease);
@@ -1210,20 +915,20 @@
     font-size: 12px;
     line-height: 1.6;
     color: var(--blog-white-muted);
-    font-style: italic;
     text-align: center;
+    font-style: italic;
 }
 
 
 /* =========================================================
-   23. SPEC TABLE — TABLEAU TECHNIQUE GLASS
+   18. SPEC TABLE — TABLEAU TECHNIQUE GLASS
    ========================================================= */
 
 .article-spec-wrap {
     margin: 8px 0 20px;
+    overflow: hidden;
     border: 1px solid var(--blog-glass-border);
     border-radius: var(--blog-radius);
-    overflow: hidden;
     background: var(--blog-glass);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -1274,15 +979,32 @@
 
 
 /* =========================================================
-   24. PRODUCT CTA — BOUTON GLASSMORPHIQUE
+   19. ARTICLE SIGNATURE
+   ========================================================= */
+
+.article-signature {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: var(--blog-font-display);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blog-white-muted);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   20. PRODUCT CTA — BOUTON GLASSMORPHIQUE
    ========================================================= */
 
 .blog-product-cta {
-    margin: 40px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 14px;
+    margin: 40px 0;
     text-align: center;
 }
 
@@ -1305,8 +1027,10 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     text-decoration: none;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 15px 40px rgba(0, 0, 0, 0.35);
     transition: all 0.4s var(--blog-ease);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 15px 40px rgba(0, 0, 0, 0.35);
 }
 
 .blog-product-button svg {
@@ -1318,7 +1042,9 @@
 .blog-product-button:hover {
     background: rgba(255, 255, 255, 0.14);
     transform: translateY(-3px);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 20px 50px rgba(255, 255, 255, 0.08);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 20px 50px rgba(255, 255, 255, 0.08);
 }
 
 .blog-product-button:hover svg {
@@ -1339,21 +1065,23 @@
 
 
 /* =========================================================
-   25. LIFETIME CALLOUT — RAPPEL 15% À VIE
+   21. LIFETIME CALLOUT — RAPPEL 15% À VIE
    ========================================================= */
 
 .blog-lifetime-callout {
+    position: relative;
+    overflow: hidden;
     margin: 48px 0;
     padding: 40px 36px;
-    text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: var(--blog-radius-large);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-align: center;
 }
 
 .blog-lifetime-callout::before {
@@ -1361,19 +1089,19 @@
     position: absolute;
     top: -80px;
     left: 50%;
-    transform: translateX(-50%);
     width: 360px;
     height: 180px;
     background: radial-gradient(ellipse, rgba(255, 255, 255, 0.06), transparent 70%);
     filter: blur(35px);
     pointer-events: none;
+    transform: translateX(-50%);
 }
 
 .callout-badge {
     position: relative;
     display: inline-flex;
-    padding: 7px 16px;
     margin-bottom: 18px;
+    padding: 7px 16px;
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.08);
@@ -1410,10 +1138,421 @@
 
 
 /* =========================================================
-   26. RESPONSIVE — AJUSTEMENTS ARTICLE
+   22. ARTICLE NAVIGATION — VOYAGE FLUIDE
+   ========================================================= */
+
+.article-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.article-nav-link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+    padding: 24px 28px;
+    border: 1px solid var(--blog-glass-border);
+    border-radius: var(--blog-radius);
+    background: var(--blog-glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    text-decoration: none;
+    transition: all var(--blog-duration) var(--blog-ease);
+}
+
+.article-nav-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.08) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.7s var(--blog-ease);
+}
+
+.article-nav-link:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: var(--blog-glass-strong);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.article-nav-link:hover::before {
+    transform: translateX(100%);
+}
+
+.article-nav-label {
+    font-family: var(--blog-font-display);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blog-white-faint);
+    font-weight: 600;
+}
+
+.article-nav-title {
+    font-family: var(--blog-font-display);
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: var(--blog-white);
+    font-weight: 700;
+}
+
+.article-nav-next {
+    text-align: right;
+    align-items: flex-end;
+}
+
+
+/* =========================================================
+   23. NEWSLETTER CTA
+   ========================================================= */
+
+.blog-newsletter {
+    padding: 60px 0 100px;
+}
+
+.blog-newsletter-card {
+    position: relative;
+    overflow: hidden;
+    width: min(720px, 100%);
+    margin: 0 auto;
+    padding: 60px 48px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: var(--blog-radius-large);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow:
+        0 40px 100px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.blog-newsletter-card::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    width: 400px;
+    height: 200px;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.05), transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    transform: translateX(-50%);
+}
+
+.blog-newsletter-card .pulse-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-bottom: 24px;
+    border-radius: 50%;
+    background: var(--blog-white);
+    box-shadow: 0 0 25px var(--blog-white);
+    animation: pulsePoint 2s infinite;
+}
+
+.blog-newsletter-card h2 {
+    margin: 0 0 16px;
+    font-family: var(--blog-font-display);
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+    font-weight: 700;
+}
+
+.blog-newsletter-card p {
+    max-width: 420px;
+    margin: 0 auto 32px;
+    font-family: var(--blog-font-body);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--blog-white-muted);
+}
+
+.blog-newsletter-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+    min-height: 52px;
+    padding: 0 36px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--blog-radius-small);
+    background: var(--blog-white);
+    color: var(--blog-black);
+    font-family: var(--blog-font-display);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s var(--blog-ease);
+}
+
+.blog-newsletter-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.blog-newsletter-button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 20px 50px rgba(255, 255, 255, 0.15),
+        0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.blog-newsletter-button:hover::before {
+    left: 100%;
+}
+
+
+/* =========================================================
+   24. BLOG GRID — EMPTY STATE
+   ========================================================= */
+
+.blog-grid-empty {
+    grid-column: 1 / -1;
+    padding: 60px 32px;
+    border: 1px dashed rgba(255, 255, 255, 0.14);
+    border-radius: var(--blog-radius);
+    background: rgba(255, 255, 255, 0.02);
+    text-align: center;
+}
+
+.blog-grid-empty .blog-empty-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 18px #ffffff;
+    animation: pulsePoint 2s infinite;
+}
+
+.blog-grid-empty p {
+    margin: 0;
+    font-family: var(--blog-font-body);
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--blog-white-muted);
+}
+
+
+/* =========================================================
+   25. ANIMATIONS — SCROLL REVEAL
+   ========================================================= */
+
+@keyframes blogHeroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blogFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.blog-featured,
+.blog-grid-section,
+.article-reader-section,
+.blog-newsletter {
+    animation: blogFadeInUp 0.8s var(--blog-ease) both;
+}
+
+.blog-grid .blog-card:nth-child(1) { animation-delay: 0.1s; }
+.blog-grid .blog-card:nth-child(2) { animation-delay: 0.2s; }
+.blog-grid .blog-card:nth-child(3) { animation-delay: 0.3s; }
+.blog-grid .blog-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Shared keyframe with index.css */
+@keyframes pulsePoint {
+    0%, 100% {
+        transform: scale(0.75);
+        opacity: 0.35;
+    }
+    50% {
+        transform: scale(1.45);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   26. ACCESSIBILITY
+   ========================================================= */
+
+/* Focus visible */
+.blog-category-chip:focus-visible,
+.blog-card-title a:focus-visible,
+.featured-article-title a:focus-visible,
+.read-article-link:focus-visible,
+.blog-product-button:focus-visible,
+.blog-newsletter-button:focus-visible,
+.article-nav-link:focus-visible,
+blockquote cite a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+    border-radius: 6px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .featured-article-card:hover,
+    .blog-card:hover,
+    .article-figure:hover {
+        transform: none !important;
+    }
+}
+
+
+/* =========================================================
+   27. RESPONSIVE — TABLET (≤ 960px)
+   ========================================================= */
+
+@media (max-width: 960px) {
+    .blog-main {
+        padding-top: calc(120px + var(--safe-top));
+    }
+
+    .blog-categories {
+        top: calc(72px + var(--safe-top));
+        gap: 10px;
+    }
+
+    .featured-article-card {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-article-media {
+        min-height: 320px;
+    }
+
+    .featured-article-media::after {
+        background: linear-gradient(180deg, transparent 60%, rgba(5, 5, 5, 0.4) 100%);
+    }
+
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+
+/* =========================================================
+   28. RESPONSIVE — MOBILE (≤ 640px)
    ========================================================= */
 
 @media (max-width: 640px) {
+    .blog-main {
+        width: calc(100% - 32px);
+        padding-top: calc(110px + var(--safe-top));
+    }
+
+    .blog-hero {
+        padding: 40px 0 50px;
+    }
+
+    .blog-hero h1 {
+        font-size: clamp(38px, 10vw, 56px);
+    }
+
+    .blog-categories {
+        top: calc(64px + var(--safe-top));
+        gap: 8px;
+        margin: 0 -16px;
+        padding: 14px 16px 16px;
+    }
+
+    .blog-category-chip {
+        padding: 8px 16px;
+        font-size: 10px;
+    }
+
+    .blog-featured {
+        padding: 20px 0 60px;
+    }
+
+    .featured-article-content {
+        padding: 32px 24px;
+    }
+
+    .featured-article-media {
+        min-height: 240px;
+    }
+
+    .blog-grid-section {
+        padding: 30px 0 70px;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .blog-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .article-reader-section {
+        padding: 20px 0 80px;
+    }
+
+    .article-reader-body {
+        font-size: 15px;
+    }
+
+    .article-reader-body h2 {
+        margin: 36px 0 16px;
+    }
+
+    .article-reader-body blockquote {
+        margin: 36px 0;
+        padding: 24px 28px;
+    }
+
+    .article-reader-body blockquote p {
+        font-size: 16px;
+    }
 
     .article-pull-line {
         font-size: 18px;
@@ -1422,6 +1561,10 @@
 
     .article-figure {
         margin: 32px 0;
+        border-radius: var(--blog-radius-small);
+    }
+
+    .article-spec-wrap {
         border-radius: var(--blog-radius-small);
     }
 
@@ -1442,4 +1585,116 @@
         width: 100%;
     }
 
+    .article-nav {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .article-nav-next {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .blog-newsletter {
+        padding: 40px 0 80px;
+    }
+
+    .blog-newsletter-card {
+        padding: 48px 28px;
+        border-radius: var(--blog-radius);
+    }
+}
+
+
+/* =========================================================
+   29. RESPONSIVE — SMALL PHONES (≤ 390px)
+   ========================================================= */
+
+@media (max-width: 390px) {
+    .blog-hero h1 {
+        font-size: 36px;
+    }
+
+    .blog-category-chip {
+        padding: 7px 14px;
+        font-size: 9px;
+    }
+
+    .featured-article-content {
+        padding: 24px 18px;
+    }
+
+    .blog-card-content {
+        padding: 22px;
+    }
+
+    .blog-card-title {
+        font-size: 18px;
+    }
+
+    .article-reader-title {
+        font-size: 28px;
+    }
+
+    .article-reader-body {
+        font-size: 14px;
+    }
+
+    .article-nav-link {
+        padding: 20px;
+    }
+
+    .blog-newsletter-card {
+        padding: 40px 22px;
+    }
+
+    .blog-newsletter-button {
+        width: 100%;
+        padding: 0 20px;
+    }
+}
+
+
+/* =========================================================
+   30. PRINT STYLES
+   ========================================================= */
+
+@media print {
+    .blog-categories,
+    .article-nav,
+    .blog-newsletter,
+    .blog-lifetime-callout,
+    .blog-product-cta {
+        display: none !important;
+    }
+
+    body,
+    .blog-main {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    .blog-hero h1,
+    .article-reader-title,
+    .featured-article-title,
+    .blog-card-title,
+    .article-reader-body h2 {
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+    }
+
+    .article-reader-body,
+    .article-reader-body p,
+    .article-reader-body li,
+    .featured-article-excerpt,
+    .blog-card-excerpt {
+        color: #333 !important;
+    }
+
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
 }

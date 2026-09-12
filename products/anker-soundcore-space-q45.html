@@ -17,6 +17,7 @@
 <meta name="theme-color" content="#030303">
 <meta name="author" content="Voltica Store">
 <meta name="application-name" content="Voltica Store">
+<meta name="format-detection" content="telephone=no">
 
 <link rel="canonical" href="https://volticastore.com/products/anker-soundcore-space-q45.html">
 
@@ -62,7 +63,7 @@
 
 
 <!-- =====================================================
-     DONNÉES STRUCTURÉES — PRODUCT (JSON-LD)
+     DONNÉES STRUCTURÉES — PRODUCT (JSON-LD COMPLET)
      ===================================================== -->
 
 <script type="application/ld+json">
@@ -202,7 +203,7 @@
 
 
 <!-- =====================================================
-     DONNÉES STRUCTURÉES — ORGANIZATION
+     DONNÉES STRUCTURÉES — ORGANIZATION (HARMONISÉ)
      ===================================================== -->
 
 <script type="application/ld+json">
@@ -212,16 +213,17 @@
     "name": "Voltica Store",
     "url": "https://volticastore.com/",
     "logo": "https://volticastore.com/logo.png",
+    "description": "Voltica Store is a premium technology store offering precision audio, gaming gear, creator gear, smart home products and lifestyle technology.",
+    "sameAs": [
+        "https://www.facebook.com/share/1CiGLjoBiR/",
+        "https://discord.gg/dqgUxR5JM"
+    ],
     "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
         "email": "contact@volticastore.com",
         "availableLanguage": ["English", "French"]
-    },
-    "sameAs": [
-        "https://www.instagram.com/volticastore",
-        "https://www.facebook.com/volticastore"
-    ]
+    }
 }
 </script>
 
@@ -257,7 +259,6 @@
 <style>
     /* =====================================================
        OVERRIDES SPÉCIFIQUES À CETTE PAGE STATIQUE
-       (store.css et product-view.css gèrent 95% du style)
        ===================================================== */
 
     .static-product-hero {
@@ -298,7 +299,7 @@
         color: rgba(255,255,255,0.8);
     }
 
-    /* Thumbnails spécifiques page statique */
+    /* Thumbnails */
     .product-thumbnails {
         display: flex;
         gap: 10px;
@@ -334,7 +335,7 @@
         object-fit: cover;
     }
 
-    /* Description complète (override du clamp de store.css) */
+    /* Description complète */
     .product-description {
         display: block !important;
         -webkit-line-clamp: none !important;
@@ -353,8 +354,139 @@
         margin-bottom: 0;
     }
 
-    /* Mobile overrides */
+    /* =====================================================
+       TRIANGLE PULSAR — IDENTIQUE À INDEX/STORE
+       ===================================================== */
+    .mobile-menu-toggle {
+        display: none !important;
+        position: relative !important;
+        justify-self: end !important;
+        width: 44px !important;
+        height: 44px !important;
+        background: rgba(255, 255, 255, 0.06) !important;
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-radius: 12px !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        z-index: 1001 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        cursor: pointer !important;
+    }
+
+    .mobile-menu-toggle:hover {
+        background: rgba(255, 255, 255, 0.10) !important;
+        border-color: rgba(255, 255, 255, 0.22) !important;
+    }
+
+    .pulsar-triangle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+    }
+
+    .pulsar-triangle span {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+        animation: productPulsePoint 2s ease-in-out infinite;
+    }
+
+    .pulsar-triangle span:nth-child(1) {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .pulsar-triangle span:nth-child(2) {
+        bottom: 2px;
+        left: 2px;
+        animation-delay: 0.3s;
+    }
+
+    .pulsar-triangle span:nth-child(3) {
+        bottom: 2px;
+        right: 2px;
+        animation-delay: 0.6s;
+    }
+
+    .mobile-menu-toggle.is-open {
+        background: rgba(255, 255, 255, 0.12) !important;
+        border-color: rgba(255, 255, 255, 0.25) !important;
+    }
+
+    .mobile-menu-toggle.is-open .pulsar-triangle span {
+        animation-duration: 1.2s;
+        box-shadow: 0 0 14px rgba(255, 255, 255, 1);
+    }
+
+    @keyframes productPulsePoint {
+        0%, 100% { transform: scale(0.75); opacity: 0.35; }
+        50% { transform: scale(1.45); opacity: 1; }
+    }
+
+    /* =====================================================
+       FOOTER ENRICHI
+       ===================================================== */
+    .footer-social {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding-left: 16px;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s ease;
+    }
+
+    .footer-social-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.25);
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+    .footer-social-link svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
     @media (max-width: 850px) {
+        .store-header {
+            grid-template-columns: 1fr auto !important;
+        }
+
+        .store-nav {
+            display: none !important;
+        }
+
+        .mobile-menu-toggle {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
         .static-product-hero {
             padding-top: 88px;
             padding-bottom: 24px;
@@ -383,6 +515,28 @@
         }
     }
 
+    @media (max-width: 560px) {
+        .footer-social {
+            border-left: none;
+            padding-left: 0;
+            padding-top: 8px;
+        }
+        .footer-acrylic {
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+
+    /* =====================================================
+       REDUCED MOTION
+       ===================================================== */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
 </style>
 
 </head>
@@ -408,64 +562,50 @@
 
 
 <!-- =====================================================
-     HEADER
+     HEADER — 4 LIENS (HOME, STORE, BLOG, CONTACT)
      ===================================================== -->
 
-<header class="store-header" itemscope itemtype="https://schema.org/WPHeader">
+<header class="store-header" id="storeHeader">
 
-    <a
-        href="../index.html"
-        class="logo-acrylic"
-        aria-label="Voltica Store Home"
-        itemprop="url"
-    >
-        <img
-            src="../logo.png"
-            alt="Voltica Store Logo"
-            class="logo-img"
-            width="32"
-            height="32"
-            itemprop="logo"
-            decoding="async"
-        >
-        <span class="logo-text" itemprop="name">
-            VOLTICA
-        </span>
+    <a href="../index.html" class="logo-acrylic" aria-label="Voltica Store Home">
+        <img src="../logo.png" alt="Voltica Store Logo" class="logo-img" width="32" height="32" loading="eager" fetchpriority="high">
+        <span class="logo-text">VOLTICA</span>
     </a>
 
+    <nav class="store-nav" aria-label="Main navigation">
+        <a href="../index.html" class="nav-link">
+            <span class="nav-pulsar" style="animation-delay: 0.9s;"></span>
+            HOME
+        </a>
+        <a href="../store.html" class="nav-link nav-active">
+            <span class="nav-pulsar"></span>
+            STORE
+        </a>
+        <a href="../volticablog.html" class="nav-link">
+            <span class="nav-pulsar" style="animation-delay: 0.3s;"></span>
+            BLOG
+        </a>
+        <a href="#contact" class="nav-link">
+            <span class="nav-pulsar" style="animation-delay: 0.6s;"></span>
+            CONTACT
+        </a>
+    </nav>
+
+    <!-- TRIANGLE PULSAR — IDENTIQUE À INDEX/STORE -->
     <button
         type="button"
         class="mobile-menu-toggle"
         id="mobileMenuToggle"
         aria-label="Toggle mobile menu"
-        aria-controls="mobileMenu"
         aria-expanded="false"
+        aria-controls="mobileMenuOverlay"
     >
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
+        <div class="pulsar-triangle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </button>
-
-    <nav
-        class="store-nav"
-        id="mobileMenu"
-        aria-label="Main navigation"
-        itemscope
-        itemtype="https://schema.org/SiteNavigationElement"
-    >
-        <a href="../index.html" class="mobile-nav-link" itemprop="url">
-            <span class="mobile-pulsar-dot"></span>
-            <span itemprop="name">HOME</span>
-        </a>
-        <a href="../store.html" class="mobile-nav-link nav-active" itemprop="url">
-            <span class="mobile-pulsar-dot"></span>
-            <span itemprop="name">STORE</span>
-        </a>
-        <a href="#contact" class="mobile-nav-link" itemprop="url">
-            <span class="mobile-pulsar-dot"></span>
-            <span itemprop="name">CONTACT</span>
-        </a>
-    </nav>
 
     <button
         type="button"
@@ -473,11 +613,7 @@
         id="cartButton"
         aria-label="Open shopping cart"
     >
-        <svg
-            class="cart-icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-        >
+        <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M3 4H5L7.2 15.2C7.4 16.2 8.3 17 9.3 17H18.2C19.2 17 20.1 16.3 20.4 15.3L22 9H6"/>
             <circle cx="9" cy="20" r="1.4"/>
             <circle cx="18" cy="20" r="1.4"/>
@@ -488,32 +624,32 @@
 </header>
 
 
+<!-- Mobile Menu Overlay — 4 LIENS -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
+    <a href="../index.html" class="mobile-nav-link">
+        <span class="mobile-pulsar-dot" style="animation-delay: 0.9s;"></span>
+        HOME
+    </a>
+    <a href="../store.html" class="mobile-nav-link nav-active">
+        <span class="mobile-pulsar-dot"></span>
+        STORE
+    </a>
+    <a href="../volticablog.html" class="mobile-nav-link">
+        <span class="mobile-pulsar-dot" style="animation-delay: 0.3s;"></span>
+        BLOG
+    </a>
+    <a href="#contact" class="mobile-nav-link">
+        <span class="mobile-pulsar-dot" style="animation-delay: 0.6s;"></span>
+        CONTACT
+    </a>
+</div>
+
+
 <!-- =====================================================
-     CONTENU PRODUIT — HTML SÉMANTIQUE + MICRODATA
+     CONTENU PRODUIT — HTML SÉMANTIQUE
      ===================================================== -->
 
-<main itemscope itemtype="https://schema.org/Product">
-
-    <!-- Métadonnées cachées pour Schema.org -->
-    <meta itemprop="name" content="Anker Soundcore Space Q45 Wireless Headphones">
-    <meta itemprop="sku" content="VLT-AUD-Q45-001">
-    <meta itemprop="mpn" content="A3035">
-    <meta itemprop="description" content="Premium over-ear headphones with industry-leading adaptive active noise cancellation, Hi-Res wireless audio powered by LDAC, and an exceptional 50-hour battery life.">
-    <meta itemprop="image" content="https://volticastore.com/assets/images/Q45.1.jpg">
-    <meta itemprop="color" content="Light Blue">
-    <meta itemprop="material" content="Leatherette, Memory Foam, Plastic">
-    
-    <div itemprop="brand" itemscope itemtype="https://schema.org/Brand">
-        <meta itemprop="name" content="Soundcore">
-    </div>
-
-    <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-        <meta itemprop="price" content="189.99">
-        <meta itemprop="priceCurrency" content="USD">
-        <meta itemprop="availability" content="https://schema.org/InStock">
-        <meta itemprop="url" content="https://volticastore.com/products/anker-soundcore-space-q45.html">
-    </div>
-
+<main>
 
     <!-- FIL D'ARIANE VISIBLE -->
     <nav class="static-breadcrumb" aria-label="Breadcrumb">
@@ -542,7 +678,6 @@
                     height="800"
                     fetchpriority="high"
                     decoding="async"
-                    itemprop="image"
                 >
                 <div class="image-reflection" aria-hidden="true"></div>
             </div>
@@ -554,7 +689,6 @@
                     class="product-thumbnail active"
                     data-full="../assets/images/Q45.1.jpg"
                     aria-label="View image 1 of 4: Front view"
-                    role="button"
                 >
                     <img src="../assets/images/Q45.1.jpg" alt="Q45 front view" loading="lazy" decoding="async">
                 </button>
@@ -564,7 +698,6 @@
                     class="product-thumbnail"
                     data-full="../assets/images/Q45.2.jpg"
                     aria-label="View image 2 of 4: Side view"
-                    role="button"
                 >
                     <img src="../assets/images/Q45.2.jpg" alt="Q45 side view" loading="lazy" decoding="async">
                 </button>
@@ -574,7 +707,6 @@
                     class="product-thumbnail"
                     data-full="../assets/images/Q45.3.jpg"
                     aria-label="View image 3 of 4: Detail view"
-                    role="button"
                 >
                     <img src="../assets/images/Q45.3.jpg" alt="Q45 detail view" loading="lazy" decoding="async">
                 </button>
@@ -584,7 +716,6 @@
                     class="product-thumbnail"
                     data-full="../assets/images/Q45.6.jpg"
                     aria-label="View image 4 of 4: Lifestyle view"
-                    role="button"
                 >
                     <img src="../assets/images/Q45.6.jpg" alt="Q45 lifestyle view" loading="lazy" decoding="async">
                 </button>
@@ -602,17 +733,13 @@
                 <span id="productBadge">LIMITED</span>
             </div>
 
-            <span class="product-category">
-                AUDIO
-            </span>
+            <span class="product-category">AUDIO</span>
 
             <span class="product-number">PRODUCT 01</span>
 
-            <h1 id="productTitle" itemprop="name">
-                Anker Soundcore Space Q45 Wireless Headphones
-            </h1>
+            <h1 id="productTitle">Anker Soundcore Space Q45 Wireless Headphones</h1>
 
-            <p class="product-short-description" itemprop="description">
+            <p class="product-short-description">
                 Experience industry-leading adaptive active noise
                 cancellation, stunning Hi-Res wireless audio powered
                 by LDAC, and an exceptional 50-hour battery life.
@@ -621,20 +748,15 @@
             </p>
 
             <div class="product-price-panel">
-                <span class="product-price" itemprop="price" content="189.99">$189.99</span>
-                <span class="product-currency" itemprop="priceCurrency" content="USD">USD</span>
+                <span class="product-price">$189.99</span>
+                <span class="product-currency">USD</span>
                 <span class="product-reference-price">$219.99</span>
             </div>
 
             <div class="product-colors">
                 <span>COLOR</span>
                 <div class="color-list">
-                    <span
-                        class="color-chip"
-                        title="Light Blue"
-                        aria-label="Light Blue"
-                        itemprop="color"
-                    ></span>
+                    <span class="color-chip" title="Light Blue" aria-label="Light Blue"></span>
                 </div>
             </div>
 
@@ -679,13 +801,11 @@
 
 
     <!-- DESCRIPTION LONGUE -->
-    <section class="product-description-section" itemprop="description">
+    <section class="product-description-section">
 
         <div class="acrylic-panel">
 
-            <span class="section-kicker">
-                PRODUCT STORY
-            </span>
+            <span class="section-kicker">PRODUCT STORY</span>
 
             <h2>THE EXPERIENCE</h2>
 
@@ -736,9 +856,7 @@
     <section class="product-features-section">
 
         <div class="section-heading">
-            <span class="section-kicker">
-                ENGINEERED DIFFERENTLY
-            </span>
+            <span class="section-kicker">ENGINEERED DIFFERENTLY</span>
             <h2>KEY FEATURES</h2>
         </div>
 
@@ -793,9 +911,7 @@
     <section class="product-specifications-section">
 
         <div class="section-heading">
-            <span class="section-kicker">
-                TECHNICAL DATA
-            </span>
+            <span class="section-kicker">TECHNICAL DATA</span>
             <h2>SPECIFICATIONS</h2>
         </div>
 
@@ -835,7 +951,7 @@
                 </div>
                 <div class="specification-row">
                     <span class="specification-label">Weight</span>
-                    <strong class="specification-value" itemprop="weight">292 g</strong>
+                    <strong class="specification-value">292 g</strong>
                 </div>
             </div>
         </div>
@@ -894,15 +1010,40 @@
 
 
 <!-- =====================================================
-     FOOTER
+     FOOTER — ENRICHI (BLOG + SOCIAL ICONS)
      ===================================================== -->
 
-<footer class="store-footer" itemscope itemtype="https://schema.org/WPFooter">
+<footer class="store-footer">
     <div class="footer-acrylic">
-        <span itemprop="name">VOLTICA</span>
+        <span>© 2026 VOLTICA STORE</span>
         <span>THE FUTURE OF EVERYDAY</span>
-        <a href="../store.html" itemprop="url">STORE</a>
-        <span>© 2026</span>
+        <a href="../index.html">HOME</a>
+        <a href="../store.html">STORE</a>
+        <a href="../volticablog.html">BLOG</a>
+        <div class="footer-social" aria-label="Social media">
+            <a
+                href="https://www.facebook.com/share/1CiGLjoBiR/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-social-link"
+                aria-label="Voltica on Facebook"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
+                </svg>
+            </a>
+            <a
+                href="https://discord.gg/dqgUxR5JM"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-social-link"
+                aria-label="Voltica on Discord"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                </svg>
+            </a>
+        </div>
     </div>
 </footer>
 
@@ -963,7 +1104,7 @@
                 currency: "USD",
                 value: 189.99,
                 items: [{
-                    item_id: "anker-soundcore-space-q45-wireless-headphones-selected-by-voltica-store",
+                    item_id: "VLT-AUD-Q45-001",
                     item_name: "Anker Soundcore Space Q45 Wireless Headphones",
                     item_category: "Audio",
                     price: 189.99,
@@ -1003,8 +1144,8 @@
     document.addEventListener("DOMContentLoaded", function () {
 
         var PRODUCT = {
-            id: "anker-soundcore-space-q45-wireless-headphones-selected-by-voltica-store",
-            name: "Anker Soundcore Space Q45 Wireless Headphones | Selected by Voltica Store",
+            id: "VLT-AUD-Q45-001",
+            name: "Anker Soundcore Space Q45 Wireless Headphones",
             price: 189.99,
             image: "https://volticastore.com/assets/images/Q45.1.jpg"
         };
@@ -1086,26 +1227,68 @@
 </script>
 
 
-<!-- MENU MOBILE -->
+<!-- MENU MOBILE — TRIANGLE PULSAR -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var menuToggle = document.getElementById("mobileMenuToggle");
-        var mobileMenu = document.getElementById("mobileMenu");
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('mobileMenuToggle');
+        const menuOverlay = document.getElementById('mobileMenuOverlay');
+        const header = document.getElementById('storeHeader');
 
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener("click", function () {
-                var isOpen =
-                    menuToggle.getAttribute("aria-expanded") === "true";
-                menuToggle.setAttribute("aria-expanded", !isOpen);
-                mobileMenu.classList.toggle("mobile-open");
+        function openMenu() {
+            menuToggle.classList.add('is-open');
+            menuOverlay.classList.add('active');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            menuOverlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            menuToggle.classList.remove('is-open');
+            menuOverlay.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuOverlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        if (menuToggle && menuOverlay) {
+            menuToggle.addEventListener('click', function() {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                isExpanded ? closeMenu() : openMenu();
             });
 
-            mobileMenu.querySelectorAll("a").forEach(function (link) {
-                link.addEventListener("click", function () {
-                    mobileMenu.classList.remove("mobile-open");
-                    menuToggle.setAttribute("aria-expanded", "false");
-                });
+            menuOverlay.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
             });
+
+            menuOverlay.addEventListener('click', function(e) {
+                if (e.target === menuOverlay) closeMenu();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+                    closeMenu();
+                    menuToggle.focus();
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 850 && menuOverlay.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        }
+
+        if (header) {
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        header.classList.toggle('scrolled', window.pageYOffset > 50);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
         }
     });
 </script>

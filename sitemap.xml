@@ -5,15 +5,16 @@
 
     <!-- 
         ╔═══════════════════════════════════════════════════════════╗
-        ║  VOLTICA STORE — SITEMAP OPTIMISÉ v2.0                    ║
+        ║  VOLTICA STORE — SITEMAP OPTIMISÉ v2.1                    ║
         ║  Dernière mise à jour : 2026-09-12                        ║
-        ║  Total URLs : 37                                          ║
-        ║  Conforme Google Search Console, Merchant Center,         ║
-        ║  Rich Results & Google Shopping                           ║
+        ║  Total URLs : 42                                          ║
+        ║  Conforme Google Search Console, Bing Webmaster Tools,    ║
+        ║  IndexNow, Merchant Center, Rich Results & Shopping       ║
         ╚═══════════════════════════════════════════════════════════╝
         
         📊 RÉPARTITION :
         ├─ Pages principales : 3 URLs
+        ├─ Pages légales & info : 5 URLs  ⬅ NOUVEAU
         ├─ Audio : 8 produits
         ├─ Gaming Gear : 4 produits
         ├─ Vlogging & Creator : 3 produits
@@ -22,18 +23,20 @@
         ├─ Smart Home : 1 produit
         └─ Blog Articles : 8 articles
         
-        🆕 CHANGEMENTS v2.0 (2026-09-12) :
-        ✓ Ajout page blog principale (volticablog.html)
-        ✓ Ajout 8 articles de blog individuels
-        ✓ Update Q45 : lastmod 2026-09-12 + article review
-        ✓ Hreflang ajouté sur TOUTES les URLs (cohérence)
-        ✓ Dates lastmod réalistes (produits optimisés sept 2026)
-        ✓ Correction Vlogging : 3 produits (pas 4)
-        ✓ Priority et changefreq recalibrés
-        ✓ Images supplémentaires ajoutées
-        ✓ Titres et captions optimisés SEO
-        ✓ URLs legacy retirées (301 redirects)
-        ✓ Pages NOINDEX exclues (thank-you, etc.)
+        🆕 CHANGEMENTS v2.1 (2026-09-12) :
+        ✓ Ajout about.html (solo-founder, honest curation)
+        ✓ Ajout contact.html (dedicated contact page)
+        ✓ Ajout privacy.html (GDPR/CCPA compliant)
+        ✓ Ajout terms.html (full terms of service)
+        ✓ Ajout shipping.html (shipping & returns policy)
+        ✓ Hreflang sur toutes les nouvelles pages
+        ✓ Priority calibrées selon importance SEO
+        
+        📈 IMPACT ATTENDU :
+        ✓ Meilleure indexation des pages de confiance
+        ✓ Rich snippets FAQ pour privacy/shipping/about
+        ✓ Trust signals pour Google Shopping
+        ✓ E-E-A-T signals (Experience, Expertise, Authority, Trust)
     -->
 
 
@@ -70,6 +73,86 @@
             <image:loc>https://volticastore.com/assets/images/blog-hero.jpg</image:loc>
             <image:title>Voltica Blog — Tech Reviews, Guides &amp; News</image:title>
             <image:caption>Latest reviews, buying guides and tech news from Voltica Store experts. Updated weekly with in-depth analysis of audio gear, gaming equipment, creator tools and smart home technology.</image:caption>
+        </image:image>
+    </url>
+
+
+    <!-- ════════════════════════════════════════════════════════════
+         📄 PAGES LÉGALES & INFO (trust signals — SEO critical)
+         ════════════════════════════════════════════════════════════ -->
+
+    <!-- ABOUT — Honest solo-founder curation story -->
+    <url>
+        <loc>https://volticastore.com/about.html</loc>
+        <lastmod>2026-09-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://volticastore.com/about.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://volticastore.com/about.html"/>
+        <image:image>
+            <image:loc>https://volticastore.com/logo.png</image:loc>
+            <image:title>About Voltica Store — Honest Tech Curation</image:title>
+            <image:caption>Independent solo-curated technology store built on honesty, real testing, and zero paid placements. Meet the person behind Voltica.</image:caption>
+        </image:image>
+    </url>
+
+    <!-- CONTACT — Dedicated contact page with 24h response promise -->
+    <url>
+        <loc>https://volticastore.com/contact.html</loc>
+        <lastmod>2026-09-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://volticastore.com/contact.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://volticastore.com/contact.html"/>
+        <image:image>
+            <image:loc>https://volticastore.com/logo.png</image:loc>
+            <image:title>Contact Voltica Store — We Respond in 24 Hours</image:title>
+            <image:caption>Contact Voltica Store for questions about orders, products, returns or partnerships. Email contact@volticastore.com or join our Discord and Facebook community.</image:caption>
+        </image:image>
+    </url>
+
+    <!-- SHIPPING & RETURNS — Comprehensive shipping/return policy -->
+    <url>
+        <loc>https://volticastore.com/shipping.html</loc>
+        <lastmod>2026-09-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://volticastore.com/shipping.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://volticastore.com/shipping.html"/>
+        <image:image>
+            <image:loc>https://volticastore.com/logo.png</image:loc>
+            <image:title>Shipping &amp; Returns Policy — Voltica Store</image:title>
+            <image:caption>Free US shipping with tracking, 1-3 day delivery, 30-day returns, international shipping to 50+ countries. Complete guide to shipping costs, delivery times, and return process.</image:caption>
+        </image:image>
+    </url>
+
+    <!-- PRIVACY POLICY — GDPR/CCPA compliance -->
+    <url>
+        <loc>https://volticastore.com/privacy.html</loc>
+        <lastmod>2026-09-12</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://volticastore.com/privacy.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://volticastore.com/privacy.html"/>
+        <image:image>
+            <image:loc>https://volticastore.com/logo.png</image:loc>
+            <image:title>Privacy Policy — Voltica Store</image:title>
+            <image:caption>Voltica Store privacy policy. Learn how we collect, use, and protect your personal information. Full GDPR, CCPA &amp; international compliance with transparent data practices.</image:caption>
+        </image:image>
+    </url>
+
+    <!-- TERMS OF SERVICE -->
+    <url>
+        <loc>https://volticastore.com/terms.html</loc>
+        <lastmod>2026-09-12</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://volticastore.com/terms.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://volticastore.com/terms.html"/>
+        <image:image>
+            <image:loc>https://volticastore.com/logo.png</image:loc>
+            <image:title>Terms of Service — Voltica Store</image:title>
+            <image:caption>Voltica Store terms of service. Complete terms and conditions covering orders, payments, warranties, returns, intellectual property and dispute resolution.</image:caption>
         </image:image>
     </url>
 
@@ -738,117 +821,4 @@
         <image:image>
             <image:loc>https://volticastore.com/assets/images/blog-smart-mirror.jpg</image:loc>
             <image:title>How to Choose the Perfect Smart Mirror for Your Bathroom</image:title>
-            <image:caption>Detailed guide on selecting a smart bathroom mirror, covering Android 15 features, AI health monitoring, IP65 waterproof ratings, LED lighting options and installation considerations.</image:caption>
-        </image:image>
-    </url>
-
-    <url>
-        <loc>https://volticastore.com/blog/xreal-air-1s-ar-glasses-review.html</loc>
-        <lastmod>2026-08-28</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://volticastore.com/blog/xreal-air-1s-ar-glasses-review.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://volticastore.com/blog/xreal-air-1s-ar-glasses-review.html"/>
-        <image:image>
-            <image:loc>https://volticastore.com/assets/images/blog-xreal-review.jpg</image:loc>
-            <image:title>XREAL Air 1S AR Glasses Review — The Future of Portable Displays</image:title>
-            <image:caption>Complete review of the XREAL Air 1S augmented reality glasses covering the 52° FOV micro-OLED display, electrochromic lenses, AI features, USB-C connectivity and real-world use cases.</image:caption>
-        </image:image>
-    </url>
-
-    <url>
-        <loc>https://volticastore.com/blog/top-creator-tools-tiktok-2026.html</loc>
-        <lastmod>2026-08-25</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://volticastore.com/blog/top-creator-tools-tiktok-2026.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://volticastore.com/blog/top-creator-tools-tiktok-2026.html"/>
-        <image:image>
-            <image:loc>https://volticastore.com/assets/images/blog-creator-tools.jpg</image:loc>
-            <image:title>Top 5 Creator Tools for TikTok in 2026 — Gimbals, Lights &amp; More</image:title>
-            <image:caption>Essential creator gear for TikTok, Instagram Reels and YouTube Shorts in 2026, featuring the C22 gimbal, auto-tracking gimbal, SL90 LED panel and smartphone accessories.</image:caption>
-        </image:image>
-    </url>
-
-    <url>
-        <loc>https://volticastore.com/blog/planar-magnetic-headphones-guide.html</loc>
-        <lastmod>2026-08-20</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://volticastore.com/blog/planar-magnetic-headphones-guide.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://volticastore.com/blog/planar-magnetic-headphones-guide.html"/>
-        <image:image>
-            <image:loc>https://volticastore.com/assets/images/blog-planar-magnetic.jpg</image:loc>
-            <image:title>Why Audiophiles Love Planar Magnetic Headphones — Complete Guide</image:title>
-            <image:caption>Comprehensive guide to planar magnetic headphones explaining the technology, sound signature advantages, comparison with dynamic drivers, and featuring the FA-5370 Brazilian rosewood model.</image:caption>
-        </image:image>
-    </url>
-
-    <url>
-        <loc>https://volticastore.com/blog/smart-home-gadgets-2026.html</loc>
-        <lastmod>2026-08-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://volticastore.com/blog/smart-home-gadgets-2026.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://volticastore.com/blog/smart-home-gadgets-2026.html"/>
-        <image:image>
-            <image:loc>https://volticastore.com/assets/images/blog-smart-home.jpg</image:loc>
-            <image:title>Smart Home Gadgets That Actually Work in 2026 — Top Picks</image:title>
-            <image:caption>Curated list of practical smart home gadgets for 2026 including the Android 15 bathroom mirror, UVC water bottle, levitating speaker, Lumi robot companion and star projector.</image:caption>
-        </image:image>
-    </url>
-
-
-    <!-- ════════════════════════════════════════════════════════════
-         📄 NOTES IMPORTANTES
-         ════════════════════════════════════════════════════════════ -->
-
-    <!--
-        ⚠️ EXCLUS DU SITEMAP (conformément aux directives Google) :
-        
-        ❌ URLs redirigées (301) :
-           - product-view.html?id=... → pages statiques
-           
-        ❌ Pages NOINDEX :
-           - thank-you.html (page de conversion)
-           - order-confirmation.html
-           
-        ❌ Pages utilitaires non-indexables :
-           - search.html (résultats de recherche)
-           - cart.html (panier dynamique)
-           - checkout.html (processus de paiement)
-           
-        ❌ Duplicate content :
-           - index.html (redirige vers /)
-           - URLs avec paramètres de tracking
-           
-        ✅ ROBOTS.TXT RECOMMANDÉ :
-           User-agent: *
-           Allow: /
-           Disallow: /cart.html
-           Disallow: /checkout.html
-           Disallow: /thank-you.html
-           Disallow: /search.html
-           Sitemap: https://volticastore.com/sitemap.xml
-           
-        📊 STATISTIQUES :
-           - Total URLs indexables : 37
-           - Produits : 26
-           - Articles blog : 8
-           - Pages principales : 3
-           - Images référencées : 100+
-           - Langues supportées : en, x-default
-           
-        🔄 FRÉQUENCE DE MISE À JOUR :
-           - Homepage/Store : daily
-           - Blog main : daily
-           - Produits : weekly/monthly
-           - Articles blog : weekly/monthly/yearly
-           
-        📱 MOBILE-FIRST :
-           - Toutes les pages sont responsive
-           - Images optimisées WebP/JPG
-           - Pas de tag mobile:mobile (déprécié)
-    -->
-
-</urlset>
+            <image

@@ -84,7 +84,7 @@
 
 
     <!-- =====================================================
-         STRUCTURED DATA — ORGANIZATION
+         STRUCTURED DATA — ORGANIZATION (TikTok ajouté)
          ===================================================== -->
 
     <script type="application/ld+json">
@@ -99,7 +99,8 @@
         "slogan": "The Future of Everyday",
         "sameAs": [
             "https://www.facebook.com/share/1CiGLjoBiR/",
-            "https://discord.gg/dqgUxR5JM"
+            "https://discord.gg/dqgUxR5JM",
+            "https://www.tiktok.com/@volticastore"
         ],
         "contactPoint": {
             "@type": "ContactPoint",
@@ -378,8 +379,7 @@
 
 
     /* =====================================================
-       MOBILE MENU TOGGLE — TRIANGLE PULSAR (HARMONISÉ STORE)
-       3 points formant un triangle équilatéral pulsant
+       MOBILE MENU TOGGLE — TRIANGLE PULSAR
        ===================================================== */
     .mobile-menu-toggle {
         display: none !important;
@@ -403,7 +403,6 @@
         border-color: rgba(255, 255, 255, 0.22) !important;
     }
 
-    /* Triangle pulsar container */
     .pulsar-triangle {
         position: absolute;
         top: 50%;
@@ -413,7 +412,6 @@
         height: 20px;
     }
 
-    /* Individual pulsar dots forming triangle */
     .pulsar-triangle span {
         position: absolute;
         width: 5px;
@@ -424,28 +422,24 @@
         animation: pulsePoint 2s ease-in-out infinite;
     }
 
-    /* Top point of triangle */
     .pulsar-triangle span:nth-child(1) {
         top: 0;
         left: 50%;
         transform: translateX(-50%);
     }
 
-    /* Bottom-left point of triangle */
     .pulsar-triangle span:nth-child(2) {
         bottom: 2px;
         left: 2px;
         animation-delay: 0.3s;
     }
 
-    /* Bottom-right point of triangle */
     .pulsar-triangle span:nth-child(3) {
         bottom: 2px;
         right: 2px;
         animation-delay: 0.6s;
     }
 
-    /* Active state - intensified glow when menu open */
     .mobile-menu-toggle.is-open {
         background: rgba(255, 255, 255, 0.12) !important;
         border-color: rgba(255, 255, 255, 0.25) !important;
@@ -542,42 +536,98 @@
         border-color: rgba(255, 255, 255, 0.3);
     }
 
-    /* Séparateur et sous-section communauté dans menu mobile */
+    /* =====================================================
+       MOBILE COMMUNITY — ICONS PLUS VISIBLES (ÉTOILES)
+       ===================================================== */
     .mobile-community-divider {
-        width: 60px;
+        width: 80px;
         height: 1px;
-        background: rgba(255, 255, 255, 0.15);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+        margin-top: 16px;
+    }
+
+    .mobile-community-label {
         margin-top: 8px;
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 600;
+        text-transform: uppercase;
     }
 
     .mobile-community-row {
         display: flex;
-        gap: 12px;
-        margin-top: 8px;
+        gap: 16px;
+        margin-top: 12px;
     }
 
+    /* Icônes sociales MOBILE — plus grandes et visibles */
     .mobile-community-link {
+        position: relative;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 48px;
-        height: 48px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.04);
+        width: 58px;
+        height: 58px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.05);
         color: #fff;
-        transition: all 0.3s ease;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+    }
+
+    .mobile-community-link::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 70%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .mobile-community-link:hover::before {
+        opacity: 1;
     }
 
     .mobile-community-link:hover {
-        background: rgba(255, 255, 255, 0.12);
-        border-color: rgba(255, 255, 255, 0.3);
-        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.35);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     }
 
+    /* Couleurs spécifiques au hover pour chaque plateforme */
+    .mobile-community-link.facebook:hover {
+        border-color: rgba(24, 119, 242, 0.5);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(24, 119, 242, 0.3);
+        background: rgba(24, 119, 242, 0.12);
+    }
+
+    .mobile-community-link.discord:hover {
+        border-color: rgba(88, 101, 242, 0.5);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(88, 101, 242, 0.35);
+        background: rgba(88, 101, 242, 0.12);
+    }
+
+    .mobile-community-link.tiktok:hover {
+        border-color: rgba(255, 0, 80, 0.5);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(255, 0, 80, 0.35);
+        background: rgba(255, 0, 80, 0.12);
+    }
+
+    /* Icônes SVG plus grandes */
     .mobile-community-link svg {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
+        position: relative;
+        z-index: 2;
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-community-link:hover svg {
+        transform: scale(1.1);
     }
 
 
@@ -1256,7 +1306,7 @@
 
 
     /* =====================================================
-       COMMUNITY CARD
+       COMMUNITY CARD — 3 boutons maintenant (FB, Discord, TikTok)
        ===================================================== */
 
     .community-section {
@@ -1365,11 +1415,12 @@
         line-height: 1.75;
     }
 
+    /* 3 boutons sociaux au lieu de 2 */
     .community-buttons {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 14px;
-        max-width: 560px;
+        max-width: 720px;
         margin: 0 auto;
     }
 
@@ -1380,7 +1431,7 @@
         justify-content: center;
         gap: 14px;
         min-height: 64px;
-        padding: 0 28px;
+        padding: 0 20px;
         border: 1px solid rgba(255, 255, 255, 0.14);
         border-radius: 18px;
         background: rgba(255, 255, 255, 0.04);
@@ -1433,6 +1484,15 @@
             0 0 35px rgba(88, 101, 242, 0.25);
     }
 
+    /* Style spécifique TikTok — gradient signature */
+    .community-button.tiktok:hover {
+        border-color: rgba(255, 0, 80, 0.4);
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.4),
+            0 0 35px rgba(255, 0, 80, 0.25),
+            0 0 20px rgba(0, 242, 234, 0.15);
+    }
+
     .community-button-icon {
         position: relative;
         z-index: 2;
@@ -1461,6 +1521,11 @@
     .community-button.discord:hover .community-button-icon {
         background: rgba(88, 101, 242, 0.2);
         border-color: rgba(88, 101, 242, 0.4);
+    }
+
+    .community-button.tiktok:hover .community-button-icon {
+        background: linear-gradient(135deg, rgba(255, 0, 80, 0.25), rgba(0, 242, 234, 0.2));
+        border-color: rgba(255, 0, 80, 0.4);
     }
 
     .community-button-icon svg {
@@ -1546,7 +1611,8 @@
 
     .community-avatar.a1 { background: linear-gradient(135deg, #1877f2, #0a5dc7); }
     .community-avatar.a2 { background: linear-gradient(135deg, #5865f2, #3c45c7); }
-    .community-avatar.a3 { background: linear-gradient(135deg, #ffffff, #c8c8c8); color: #050505; }
+    .community-avatar.a3 { background: linear-gradient(135deg, #ff0050, #00f2ea); color: #050505; }
+    .community-avatar.a4 { background: linear-gradient(135deg, #ffffff, #c8c8c8); color: #050505; }
 
 
     /* =====================================================
@@ -1596,7 +1662,7 @@
 
 
     /* =====================================================
-       FOOTER
+       FOOTER — 4 icônes sociales (FB, Discord, TikTok, IG)
        ===================================================== */
 
     .store-footer { position: relative; z-index: 3; padding: 40px 24px; text-align: center; }
@@ -1635,6 +1701,21 @@
         border-color: rgba(255, 255, 255, 0.25);
         color: #fff;
         transform: translateY(-2px);
+    }
+
+    .footer-social-link.facebook:hover {
+        border-color: rgba(24, 119, 242, 0.4);
+        box-shadow: 0 0 20px rgba(24, 119, 242, 0.25);
+    }
+
+    .footer-social-link.discord:hover {
+        border-color: rgba(88, 101, 242, 0.4);
+        box-shadow: 0 0 20px rgba(88, 101, 242, 0.3);
+    }
+
+    .footer-social-link.tiktok:hover {
+        border-color: rgba(255, 0, 80, 0.4);
+        box-shadow: 0 0 20px rgba(255, 0, 80, 0.3);
     }
 
     .footer-social-link svg {
@@ -1714,6 +1795,10 @@
         .community-button-text strong { font-size: 11px; }
         .footer-social { border-left: none; padding-left: 0; padding-top: 8px; }
         .footer-acrylic { flex-direction: column; gap: 16px; }
+
+        /* Menu mobile : icônes sociales plus grandes conservées */
+        .mobile-community-link { width: 54px; height: 54px; }
+        .mobile-community-link svg { width: 22px; height: 22px; }
     }
 
 
@@ -1760,7 +1845,7 @@
 
 
 <!-- =====================================================
-     HEADER — UPDATED WITH ABOUT + CONTACT PAGE
+     HEADER
      ===================================================== -->
 
 <header class="store-header" id="storeHeader">
@@ -1791,7 +1876,6 @@
     </nav>
 
 
-    <!-- TRIANGLE PULSAR (harmonisé avec store.html) -->
     <button
         type="button"
         class="mobile-menu-toggle"
@@ -1811,7 +1895,7 @@
 
 
 <!-- =====================================================
-     MOBILE MENU — UPDATED WITH ABOUT + CONTACT PAGE
+     MOBILE MENU — 3 icônes sociales (FB, Discord, TikTok)
      ===================================================== -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
 
@@ -1846,12 +1930,13 @@
     </a>
 
     <div class="mobile-community-divider" aria-hidden="true"></div>
+    <span class="mobile-community-label">FOLLOW US</span>
     <div class="mobile-community-row">
         <a
             href="https://www.facebook.com/share/1CiGLjoBiR/"
             target="_blank"
             rel="noopener noreferrer"
-            class="mobile-community-link"
+            class="mobile-community-link facebook"
             aria-label="Join Voltica on Facebook"
         >
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -1862,11 +1947,22 @@
             href="https://discord.gg/dqgUxR5JM"
             target="_blank"
             rel="noopener noreferrer"
-            class="mobile-community-link"
+            class="mobile-community-link discord"
             aria-label="Join Voltica on Discord"
         >
             <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+        </a>
+        <a
+            href="https://www.tiktok.com/@volticastore"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-community-link tiktok"
+            aria-label="Follow Voltica on TikTok"
+        >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/>
             </svg>
         </a>
     </div>
@@ -2011,6 +2107,9 @@
         </div>
     </section>
 
+    <!-- =====================================================
+         COMMUNITY — 3 boutons (FB, Discord, TikTok)
+         ===================================================== -->
     <section id="community" class="community-section" aria-labelledby="community-title">
         <div class="community-card">
             <div class="community-kicker">
@@ -2065,13 +2164,33 @@
                     </span>
                     <span class="community-button-arrow" aria-hidden="true">→</span>
                 </a>
+
+                <a
+                    href="https://www.tiktok.com/@volticastore"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="community-button tiktok"
+                    aria-label="Follow Voltica on TikTok"
+                >
+                    <span class="community-button-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/>
+                        </svg>
+                    </span>
+                    <span class="community-button-text">
+                        <strong>TIKTOK</strong>
+                        <small>Follow us</small>
+                    </span>
+                    <span class="community-button-arrow" aria-hidden="true">→</span>
+                </a>
             </div>
 
             <div class="community-members">
                 <div class="community-members-avatars" aria-hidden="true">
                     <span class="community-avatar a1">V</span>
                     <span class="community-avatar a2">V</span>
-                    <span class="community-avatar a3">+</span>
+                    <span class="community-avatar a3">V</span>
+                    <span class="community-avatar a4">+</span>
                 </div>
                 <span>JOIN THE VOLTICA CREW</span>
             </div>
@@ -2079,7 +2198,7 @@
     </section>
 
     <!-- =====================================================
-         CONTACT — UPDATED TO LINK TO CONTACT PAGE
+         CONTACT
          ===================================================== -->
     <section id="contact" class="contact-section" aria-labelledby="contact-title">
         <div class="contact-card">
@@ -2101,7 +2220,7 @@
 
 
 <!-- =====================================================
-     FOOTER — UPDATED WITH ALL PAGES
+     FOOTER — 3 icônes sociales (FB, Discord, TikTok)
      ===================================================== -->
 <footer class="store-footer">
     <div class="footer-acrylic">
@@ -2120,7 +2239,7 @@
                 href="https://www.facebook.com/share/1CiGLjoBiR/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="footer-social-link"
+                class="footer-social-link facebook"
                 aria-label="Voltica on Facebook"
             >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -2131,11 +2250,22 @@
                 href="https://discord.gg/dqgUxR5JM"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="footer-social-link"
+                class="footer-social-link discord"
                 aria-label="Voltica on Discord"
             >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                </svg>
+            </a>
+            <a
+                href="https://www.tiktok.com/@volticastore"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-social-link tiktok"
+                aria-label="Voltica on TikTok"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/>
                 </svg>
             </a>
         </div>
@@ -2224,4 +2354,4 @@
 </script>
 
 </body>
-</html>
+                    </html>

@@ -1,5 +1,13 @@
 User-agent: *
 Allow: /
+Disallow: /cart.html
+Disallow: /checkout.html
 Disallow: /thank-you.html
+Disallow: /order-confirmation.html
+Disallow: /search.html
+Disallow: /*?*utm_*
+Disallow: /*?*ref=*
+Disallow: /*?*gclid=*
+Disallow: /assets/private/
 
 Sitemap: https://volticastore.com/sitemap.xml

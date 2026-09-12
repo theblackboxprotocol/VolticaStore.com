@@ -31,10 +31,19 @@
 
 
     <!-- =====================================================
-         CANONICAL
+         CANONICAL + HREFLANG
          ===================================================== -->
 
     <link rel="canonical" href="https://volticastore.com/volticablog.html">
+    <link rel="alternate" hreflang="en" href="https://volticastore.com/volticablog.html">
+    <link rel="alternate" hreflang="x-default" href="https://volticastore.com/volticablog.html">
+
+
+    <!-- =====================================================
+         PERFORMANCE
+         ===================================================== -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="preload" href="https://fonts.gstatic.com/s/manrope/v15/xn7gYHE4JvUqXhQzR2Lx.woff2" as="font" type="font/woff2" crossorigin>
 
 
     <!-- =====================================================
@@ -91,6 +100,7 @@
         "name": "Voltica Blog",
         "url": "https://volticastore.com/volticablog.html",
         "description": "Deep dives into smart tech. Expert analysis, hardware breakdowns, and bleeding-edge trends.",
+        "inLanguage": "en-US",
         "publisher": {
             "@type": "Organization",
             "name": "Voltica Store",
@@ -129,6 +139,7 @@
         "datePublished": "2026-09-09",
         "dateModified": "2026-09-09",
         "articleSection": "Inside Voltica",
+        "inLanguage": "en-US",
         "author": {
             "@type": "Organization",
             "name": "The Voltica Engineering & Design Team"
@@ -151,7 +162,6 @@
 
     <!-- =====================================================
          STRUCTURED DATA — BLOG POSTING (ARTICLE 2 — Q45)
-         CORRIGÉ : Ajout complet du schéma Product avec offers
          ===================================================== -->
 
     <script type="application/ld+json">
@@ -166,8 +176,9 @@
             "https://volticastore.com/assets/images/blog4.jpg"
         ],
         "datePublished": "2026-09-09",
-        "dateModified": "2026-09-09",
+        "dateModified": "2026-09-12",
         "articleSection": "Audio",
+        "inLanguage": "en-US",
         "author": {
             "@type": "Organization",
             "name": "The Voltica Engineering & Design Team"
@@ -224,8 +235,8 @@
                         },
                         "transitTime": {
                             "@type": "QuantitativeValue",
-                            "minValue": "3",
-                            "maxValue": "7",
+                            "minValue": "1",
+                            "maxValue": "3",
                             "unitCode": "DAY"
                         }
                     }
@@ -237,7 +248,7 @@
 
 
     <!-- =====================================================
-         STRUCTURED DATA — ORGANIZATION (sameAs ENRICHI)
+         STRUCTURED DATA — ORGANIZATION (UPDATED)
          ===================================================== -->
 
     <script type="application/ld+json">
@@ -248,6 +259,8 @@
         "url": "https://volticastore.com/",
         "logo": "https://volticastore.com/logo.png",
         "description": "Voltica Store is a premium technology store offering precision audio, gaming gear, creator gear, smart home products and lifestyle technology.",
+        "foundingDate": "2024",
+        "slogan": "The Future of Everyday",
         "sameAs": [
             "https://www.facebook.com/share/1CiGLjoBiR/",
             "https://discord.gg/dqgUxR5JM"
@@ -255,7 +268,14 @@
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",
-            "email": "contact@volticastore.com"
+            "email": "contact@volticastore.com",
+            "availableLanguage": ["English", "French"],
+            "hoursAvailable": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+            }
         }
     }
     </script>
@@ -485,7 +505,7 @@
 
 
 <!-- =====================================================
-     HEADER — 4 LIENS (HOME, STORE, BLOG, CONTACT)
+     HEADER — UPDATED WITH ABOUT + CONTACT PAGE
      ===================================================== -->
 
 <header class="store-header" id="storeHeader">
@@ -497,19 +517,23 @@
 
     <nav class="store-nav" aria-label="Main navigation">
         <a href="index.html" class="nav-link">
-            <span class="nav-pulsar" style="animation-delay: 0.9s;"></span>
+            <span class="nav-pulsar" style="animation-delay: 0.2s;"></span>
             HOME
         </a>
         <a href="store.html" class="nav-link">
-            <span class="nav-pulsar" style="animation-delay: 0.3s;"></span>
+            <span class="nav-pulsar" style="animation-delay: 0.4s;"></span>
             STORE
         </a>
         <a href="volticablog.html" class="nav-link nav-active">
             <span class="nav-pulsar"></span>
             BLOG
         </a>
-        <a href="index.html#contact" class="nav-link">
+        <a href="about.html" class="nav-link">
             <span class="nav-pulsar" style="animation-delay: 0.6s;"></span>
+            ABOUT
+        </a>
+        <a href="contact.html" class="nav-link">
+            <span class="nav-pulsar" style="animation-delay: 0.8s;"></span>
             CONTACT
         </a>
     </nav>
@@ -533,22 +557,28 @@
 </header>
 
 
-<!-- Mobile Menu Overlay — 4 LIENS -->
+<!-- =====================================================
+     MOBILE MENU — UPDATED WITH ABOUT + CONTACT PAGE
+     ===================================================== -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
     <a href="index.html" class="mobile-nav-link">
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.9s;"></span>
+        <span class="mobile-pulsar-dot" style="animation-delay: 0.2s;"></span>
         HOME
     </a>
     <a href="store.html" class="mobile-nav-link">
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.2s;"></span>
+        <span class="mobile-pulsar-dot" style="animation-delay: 0.4s;"></span>
         STORE
     </a>
     <a href="volticablog.html" class="mobile-nav-link nav-active">
         <span class="mobile-pulsar-dot"></span>
         BLOG
     </a>
-    <a href="index.html#contact" class="mobile-nav-link">
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.4s;"></span>
+    <a href="about.html" class="mobile-nav-link">
+        <span class="mobile-pulsar-dot" style="animation-delay: 0.6s;"></span>
+        ABOUT
+    </a>
+    <a href="contact.html" class="mobile-nav-link">
+        <span class="mobile-pulsar-dot" style="animation-delay: 0.8s;"></span>
         CONTACT
     </a>
 </div>
@@ -945,7 +975,7 @@
 
 
 <!-- =====================================================
-     FOOTER — ENRICHI (BLOG + SOCIAL ICONS)
+     FOOTER — UPDATED WITH ALL PAGES
      ===================================================== -->
 
 <footer class="store-footer">
@@ -954,7 +984,12 @@
         <span>THE FUTURE OF EVERYDAY</span>
         <a href="index.html">HOME</a>
         <a href="store.html">STORE</a>
-        <a href="volticablog.html">BLOG</a>
+        <a href="volticablog.html" style="color: #fff;">BLOG</a>
+        <a href="about.html">ABOUT</a>
+        <a href="privacy.html">PRIVACY</a>
+        <a href="terms.html">TERMS</a>
+        <a href="shipping.html">SHIPPING</a>
+        <a href="contact.html">CONTACT</a>
         <div class="footer-social" aria-label="Social media">
             <a
                 href="https://www.facebook.com/share/1CiGLjoBiR/"
@@ -1048,6 +1083,19 @@
                     ticking = true;
                 }
             }, { passive: true });
+        }
+    });
+</script>
+
+<!-- GA4 — PAGE VIEW -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (typeof window.gtag === "function") {
+            window.gtag("event", "page_view", {
+                page_title: "Voltica Blog — Deep Dives into Smart Tech",
+                page_location: window.location.href,
+                page_path: "/volticablog.html"
+            });
         }
     });
 </script>

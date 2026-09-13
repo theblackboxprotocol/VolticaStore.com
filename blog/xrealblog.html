@@ -549,58 +549,211 @@
     .faq-item h3 { margin: 0 0 10px; font-size: 16px; }
     .faq-item p { margin: 0; font-size: 15px; }
 
-    /* CTA */
-    .article-cta {
-        margin: 44px 0 32px; padding: 36px 32px;
-        text-align: center; border-radius: 22px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-    }
-    .article-cta h2 { margin: 0 0 12px; }
-    .article-cta p { color: rgba(255, 255, 255, 0.65); margin-bottom: 22px; }
-    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .cta-primary {
-        display: inline-flex; align-items: center; gap: 10px;
-        padding: 15px 30px; background: #fff; color: #050505;
-        border-radius: 999px; font-family: "Manrope", sans-serif;
-        font-size: 12px; font-weight: 800; letter-spacing: 0.1em;
-        text-transform: uppercase; text-decoration: none;
-        transition: all 0.3s ease;
-    }
-    .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2); }
-    .cta-secondary {
-        display: inline-flex; align-items: center; gap: 10px;
-        padding: 15px 30px; background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.2); color: #fff;
-        border-radius: 999px; font-family: "Manrope", sans-serif;
-        font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
-        text-transform: uppercase; text-decoration: none;
-        transition: all 0.3s ease;
-    }
-    .cta-secondary:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
 
+    /* =====================================================
+       SIGNATURE — AVANT LE CTA (pas après)
+       ===================================================== */
     .article-signature {
         font-family: "Manrope", sans-serif;
-        font-size: 15px; font-weight: 700; color: rgba(255, 255, 255, 0.8);
-        margin-top: 28px;
+        font-size: 15px; font-weight: 700; color: rgba(255, 255, 255, 0.85);
+        margin: 32px 0 24px;
+        letter-spacing: 0.02em;
     }
 
-    /* Article nav */
+
+    /* =====================================================
+       CTA — PREMIUM (avec correction !important pour le bouton)
+       ===================================================== */
+    .article-cta {
+        margin: 0 0 40px; padding: 40px 32px;
+        text-align: center; border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background:
+            radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05), transparent 50%),
+            linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .article-cta::before {
+        content: "";
+        position: absolute;
+        top: -60px; right: -60px;
+        width: 200px; height: 200px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+        filter: blur(40px);
+        pointer-events: none;
+    }
+
+    .article-cta > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .article-cta h2 {
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(20px, 3vw, 26px);
+        font-weight: 800; letter-spacing: -0.02em;
+        color: #fff; margin: 0 0 12px;
+    }
+
+    .article-cta p {
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 15px; line-height: 1.6;
+        margin: 0 0 26px;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ★★★ BOUTON PRIMAIRE — CORRECTION COULEUR AVEC !important ★★★ */
+    .cta-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 32px;
+        background: #fff;
+        color: #050505 !important;  /* FORCÉ : texte noir sur fond blanc */
+        border-radius: 999px;
+        font-family: "Manrope", sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+    }
+
+    /* Effet shimmer au hover */
+    .cta-primary::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            110deg,
+            transparent 30%,
+            rgba(5, 5, 5, 0.08) 50%,
+            transparent 70%
+        );
+        background-size: 200% 100%;
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+        z-index: -1;
+    }
+
+    .cta-primary:hover {
+        transform: translateY(-3px);
+        box-shadow:
+            0 12px 32px rgba(255, 255, 255, 0.25),
+            0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .cta-primary:hover::before {
+        transform: translateX(100%);
+    }
+
+    .cta-primary:hover .cta-icon {
+        transform: translateX(4px);
+    }
+
+    .cta-icon {
+        width: 16px;
+        height: 16px;
+        stroke: #050505;
+        stroke-width: 2.5;
+        fill: none;
+        transition: transform 0.3s ease;
+    }
+
+    /* Bouton secondaire */
+    .cta-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 28px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff !important;
+        border-radius: 999px;
+        font-family: "Manrope", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .cta-secondary:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.35);
+        transform: translateY(-3px);
+    }
+
+    .cta-secondary svg {
+        width: 14px;
+        height: 14px;
+        stroke: currentColor;
+        stroke-width: 2;
+        fill: none;
+        transition: transform 0.3s ease;
+    }
+
+    .cta-secondary:hover svg {
+        transform: translateX(3px);
+    }
+
+
+    /* =====================================================
+       ARTICLE NAV
+       ===================================================== */
     .article-nav {
         display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-        margin-top: 40px;
+        margin-top: 48px;
     }
     .article-nav a {
-        padding: 18px 20px; border-radius: 14px;
+        padding: 20px 22px; border-radius: 14px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         background: rgba(255, 255, 255, 0.03);
         transition: all 0.3s ease; text-decoration: none;
+        display: block;
     }
-    .article-nav a:hover { border-color: rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.06); }
-    .article-nav .label { display: block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255, 255, 255, 0.45); margin-bottom: 6px; }
-    .article-nav .title { font-family: "Manrope", sans-serif; font-size: 14px; font-weight: 700; color: #fff; }
+    .article-nav a:hover {
+        border-color: rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.06);
+        transform: translateY(-2px);
+    }
+    .article-nav .label {
+        display: block;
+        font-family: "Manrope", sans-serif;
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
+        margin-bottom: 8px;
+        font-weight: 700;
+    }
+    .article-nav .title {
+        font-family: "Manrope", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+    }
     .article-nav .next { text-align: right; }
 
 
@@ -643,6 +796,9 @@
 
     @media (max-width: 560px) {
         .blog-article { padding: 100px 16px 60px; }
+        .article-cta { padding: 32px 24px; }
+        .cta-buttons { flex-direction: column; }
+        .cta-primary, .cta-secondary { width: 100%; justify-content: center; }
         .article-nav { grid-template-columns: 1fr; }
         .article-nav .next { text-align: left; }
         .mobile-menu-overlay { gap: 14px; padding-top: calc(76px + env(safe-area-inset-top)); }
@@ -659,6 +815,7 @@
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
         }
+        .cta-primary::before { display: none; }
     }
 </style>
 
@@ -937,17 +1094,39 @@
 
         <p>Stop settling for tiny screens and neck strain when you're on the move. Step into the next generation of portable displays and see what you've been missing.</p>
 
-        <div class="article-cta">
-            <h2>Buy the XReal Air 1S Now on Voltica Store</h2>
-            <p>Free US shipping · 30-day satisfaction guarantee · Curated by the Voltica Team</p>
-            <div class="cta-buttons">
-                <a class="cta-primary" href="https://buy.stripe.com/14A28se0v78bauk4ym2Ji0o" target="_blank" rel="noopener noreferrer">Buy Now — $579.99</a>
-                <a class="cta-secondary" href="../products/xreal-air-1s-glasses.html">View Product Page</a>
-            </div>
-        </div>
-
+        <!-- ★ SIGNATURE — AVANT LE CTA (comme demandé) ★ -->
         <p class="article-signature">— The Voltica Team</p>
 
+    </div>
+
+    <!-- ★ CTA — APRÈS LA SIGNATURE ★ -->
+    <div class="article-cta" role="complementary" aria-label="Product purchase options">
+        <h2>Buy the XReal Air 1S Now on Voltica Store</h2>
+        <p>Free US shipping · 30-day satisfaction guarantee · Curated by the Voltica Team</p>
+        <div class="cta-buttons">
+            <a
+                class="cta-primary"
+                href="https://buy.stripe.com/14A28se0v78bauk4ym2Ji0o"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Buy XReal Air 1S for $579.99 on Stripe"
+            >
+                <span>Buy Now — $579.99</span>
+                <svg class="cta-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a
+                class="cta-secondary"
+                href="../products/xreal-air-1s-glasses.html"
+                aria-label="View full XReal Air 1S product page"
+            >
+                <span>View Product Page</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
     </div>
 
     <nav class="article-nav" aria-label="Article navigation">
@@ -1070,4 +1249,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 </body>
-  </html>
+</html>

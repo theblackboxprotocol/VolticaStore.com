@@ -464,9 +464,6 @@
 
     /* =====================================================
        MOBILE MENU OVERLAY — FIX DÉBORDEMENT (v2)
-       - Scrollable si contenu plus haut que l'écran
-       - Padding-top pour passer SOUS la bande acrylique
-       - Centrage intelligent via margin:auto (ne coupe plus le haut)
        ===================================================== */
     .mobile-menu-overlay {
         position: fixed;
@@ -486,7 +483,6 @@
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        /* FIX : scrollable + démarre sous le header fixe */
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
@@ -498,7 +494,6 @@
         pointer-events: auto;
     }
 
-    /* Centrage intelligent : centré si ça rentre, scrollable sinon */
     .mobile-menu-overlay > :first-child {
         margin-top: auto;
     }
@@ -539,7 +534,7 @@
 
 
     /* =====================================================
-       MOBILE COMMUNITY — ICONS PLUS VISIBLES (ÉTOILES)
+       MOBILE COMMUNITY
        ===================================================== */
     .mobile-community-divider {
         width: 80px;
@@ -566,7 +561,6 @@
         flex-shrink: 0;
     }
 
-    /* Icônes sociales MOBILE — plus grandes et visibles */
     .mobile-community-link {
         position: relative;
         display: inline-flex;
@@ -603,7 +597,6 @@
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     }
 
-    /* Couleurs spécifiques au hover pour chaque plateforme */
     .mobile-community-link.facebook:hover {
         border-color: rgba(24, 119, 242, 0.5);
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(24, 119, 242, 0.3);
@@ -622,7 +615,6 @@
         background: rgba(255, 0, 80, 0.12);
     }
 
-    /* Icônes SVG plus grandes */
     .mobile-community-link svg {
         width: 24px;
         height: 24px;
@@ -1311,7 +1303,7 @@
 
 
     /* =====================================================
-       COMMUNITY CARD — 3 boutons (FB, Discord, TikTok)
+       COMMUNITY CARD
        ===================================================== */
 
     .community-section {
@@ -1665,7 +1657,7 @@
 
 
     /* =====================================================
-       FOOTER — 3 icônes sociales (FB, Discord, TikTok)
+       FOOTER
        ===================================================== */
 
     .store-footer { position: relative; z-index: 3; padding: 40px 24px; text-align: center; }
@@ -1746,7 +1738,6 @@
             display: flex !important;
         }
 
-        /* Menu mobile : démarre sous le header compact mobile */
         .mobile-menu-overlay {
             padding-top: calc(80px + env(safe-area-inset-top));
             gap: 20px;
@@ -1805,9 +1796,6 @@
         .footer-social { border-left: none; padding-left: 0; padding-top: 8px; }
         .footer-acrylic { flex-direction: column; gap: 16px; }
 
-        /* =====================================================
-           MENU MOBILE COMPACT — tout rentre sans scroller
-           ===================================================== */
         .mobile-menu-overlay {
             gap: 14px;
             padding-top: calc(76px + env(safe-area-inset-top));
@@ -1837,10 +1825,6 @@
         .mobile-community-link svg { width: 22px; height: 22px; }
     }
 
-
-    /* =====================================================
-       ACCESSIBILITÉ — REDUCED MOTION
-       ===================================================== */
 
     @media (prefers-reduced-motion: reduce) {
         html {
@@ -1881,7 +1865,7 @@
 
 
 <!-- =====================================================
-     HEADER — HOME AJOUTÉ EN PREMIER
+     HEADER
      ===================================================== -->
 
 <header class="store-header" id="storeHeader">
@@ -1935,7 +1919,7 @@
 
 
 <!-- =====================================================
-     MOBILE MENU — 3 icônes sociales (FB, Discord, TikTok)
+     MOBILE MENU
      ===================================================== -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
 
@@ -2035,17 +2019,18 @@
         </div>
     </section>
 
+    <!-- ✅ SECTION Q45 CORRIGÉE : Prix $161.49 + lien Stripe correct -->
     <section id="q45-promo" class="q45-promo-section" aria-labelledby="q45-title">
         <div class="q45-promo-card">
             <div class="q45-promo-copy">
                 <div class="q45-promo-label">VOLTICA ELITE PASS EDITION</div>
                 <h2 id="q45-title">Q45. <span>ELITE AUDIO.</span></h2>
-                <p class="q45-promo-description">Premium over-ear audio with an exclusive Voltica Elite Pass. Get the Q45 for $189.99 and unlock 15% OFF FOR LIFE.</p>
+                <p class="q45-promo-description">Premium over-ear audio with an exclusive Voltica Elite Pass. Get the Q45 for $161.49 and unlock 15% OFF FOR LIFE.</p>
                 <div class="q45-price-row">
-                    <div class="q45-price">$189.99 <small>USD</small></div>
+                    <div class="q45-price">$161.49 <small>USD</small></div>
                     <div class="q45-lifetime-badge">+ 15% OFF FOR LIFE</div>
                 </div>
-                <a href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j" target="_blank" rel="noopener noreferrer" class="q45-promo-button">GET THE ELITE PASS →</a>
+                <a href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B" target="_blank" rel="noopener noreferrer" class="q45-promo-button">GET THE ELITE PASS →</a>
             </div>
         </div>
     </section>
@@ -2143,7 +2128,7 @@
     </section>
 
     <!-- =====================================================
-         COMMUNITY — 3 boutons (FB, Discord, TikTok)
+         COMMUNITY
          ===================================================== -->
     <section id="community" class="community-section" aria-labelledby="community-title">
         <div class="community-card">
@@ -2255,7 +2240,7 @@
 
 
 <!-- =====================================================
-     FOOTER — 3 icônes sociales (FB, Discord, TikTok)
+     FOOTER
      ===================================================== -->
 <footer class="store-footer">
     <div class="footer-acrylic">
@@ -2320,7 +2305,6 @@
             menuToggle.setAttribute('aria-expanded', 'true');
             menuOverlay.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
-            /* FIX : remet le scroll du menu en haut à chaque ouverture */
             menuOverlay.scrollTop = 0;
         }
 

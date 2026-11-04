@@ -677,20 +677,6 @@
         </div>
     </button>
 
-    <button
-        type="button"
-        class="cart-acrylic"
-        id="cartButton"
-        aria-label="Open shopping cart"
-    >
-        <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M3 4H5L7.2 15.2C7.4 16.2 8.3 17 9.3 17H18.2C19.2 17 20.1 16.3 20.4 15.3L22 9H6"/>
-            <circle cx="9" cy="20" r="1.4"/>
-            <circle cx="18" cy="20" r="1.4"/>
-        </svg>
-        <span class="cart-count" id="cartCount" aria-live="polite" aria-atomic="true">0</span>
-    </button>
-
 </header>
 
 
@@ -855,15 +841,6 @@
                     <span>BUY NOW</span>
                     <strong>→</strong>
                 </a>
-
-                <button
-                    type="button"
-                    class="acrylic-button"
-                    id="staticAddToCart"
-                    aria-label="Add Anker Soundcore Space Q45 to cart"
-                >
-                    ADD TO CART
-                </button>
 
             </div>
 
@@ -1126,46 +1103,6 @@
 
 
 <!-- =====================================================
-     PANIER (drawer)
-     ===================================================== -->
-
-<div class="cart-overlay" id="cartOverlay" aria-hidden="true" hidden></div>
-
-<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" role="dialog" aria-modal="true">
-
-    <div class="cart-header">
-        <div>
-            <span class="cart-small-title">VOLTICA</span>
-            <h2>CART</h2>
-        </div>
-        <button
-            type="button"
-            class="cart-close-x"
-            id="cartClose"
-            aria-label="Close shopping cart"
-        >
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-    </div>
-
-    <div class="cart-items" id="cartItems" role="list" aria-label="Cart items"></div>
-
-    <div class="cart-footer">
-        <div class="cart-total-row">
-            <span>TOTAL</span>
-            <strong id="cartTotal">$0.00</strong>
-        </div>
-        <button type="button" class="checkout-button" id="checkoutButton" aria-label="Proceed to checkout">
-            CHECKOUT <span>→</span>
-        </button>
-    </div>
-
-</aside>
-
-
-<!-- =====================================================
      SCRIPTS
      ===================================================== -->
 
@@ -1212,94 +1149,6 @@
                 btn.classList.add("active");
             });
         });
-    });
-</script>
-
-
-<!-- AJOUT AU PANIER LOCAL (PRIX MIS À JOUR À $161.49) -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-        var PRODUCT = {
-            id: "VLT-AUD-Q45-001",
-            name: "Anker Soundcore Space Q45 Wireless Headphones",
-            price: 161.49,
-            image: "https://volticastore.com/assets/images/Q45.1.jpg"
-        };
-
-        var button = document.getElementById("staticAddToCart");
-        if (!button) { return; }
-
-        button.addEventListener("click", function () {
-
-            var cart = [];
-            try {
-                cart = JSON.parse(
-                    localStorage.getItem("volticaCart")
-                ) || [];
-            } catch (error) {
-                cart = [];
-            }
-
-            var existing = cart.find(function (item) {
-                return String(item.id) === String(PRODUCT.id);
-            });
-
-            if (existing) {
-                existing.quantity = (existing.quantity || 1) + 1;
-            } else {
-                cart.push({
-                    id: PRODUCT.id,
-                    name: PRODUCT.name,
-                    price: PRODUCT.price,
-                    image: PRODUCT.image,
-                    quantity: 1
-                });
-            }
-
-            localStorage.setItem(
-                "volticaCart",
-                JSON.stringify(cart)
-            );
-
-            var total = cart.reduce(function (sum, item) {
-                return sum + (item.quantity || 1);
-            }, 0);
-
-            var badge = document.getElementById("cartCount");
-            if (badge) {
-                badge.textContent = total;
-                badge.classList.add("visible");
-            }
-
-            button.textContent = "✓ ADDED";
-            button.setAttribute("aria-label", "Anker Soundcore Space Q45 added to cart");
-            setTimeout(function () {
-                button.textContent = "ADD TO CART";
-                button.setAttribute("aria-label", "Add Anker Soundcore Space Q45 to cart");
-            }, 1500);
-
-            if (typeof window.gtag === "function") {
-                window.gtag("event", "add_to_cart", {
-                    currency: "USD",
-                    value: PRODUCT.price,
-                    items: [{
-                        item_id: PRODUCT.id,
-                        item_name: PRODUCT.name,
-                        item_category: "Audio",
-                        price: PRODUCT.price,
-                        quantity: 1
-                    }]
-                });
-            }
-
-            var cartButton = document.getElementById("cartButton");
-            if (cartButton) {
-                cartButton.click();
-            }
-
-        });
-
     });
 </script>
 

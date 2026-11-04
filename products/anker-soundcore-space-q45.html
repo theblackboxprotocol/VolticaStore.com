@@ -12,7 +12,7 @@
 
 <title>Anker Soundcore Space Q45 Wireless Headphones | Voltica Store</title>
 
-<meta name="description" content="Experience industry-leading adaptive active noise cancellation, stunning Hi-Res wireless audio powered by LDAC, and an exceptional 50-hour battery life. Selected by Voltica Store.">
+<meta name="description" content="Experience industry-leading adaptive active noise cancellation, stunning Hi-Res wireless audio powered by LDAC, and an exceptional 50-hour battery life. Selected by Voltica Store — Elite Pass Edition at $161.49.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#030303">
 <meta name="author" content="Voltica Store">
@@ -41,12 +41,12 @@
 <meta property="og:site_name" content="Voltica Store">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Anker Soundcore Space Q45 Wireless Headphones | Voltica Store">
-<meta property="og:description" content="Adaptive ANC blocking up to 98% of noise, Hi-Res LDAC audio and 50-hour battery. Selected by Voltica Store. $189.99.">
+<meta property="og:description" content="Adaptive ANC blocking up to 98% of noise, Hi-Res LDAC audio and 50-hour battery. Selected by Voltica Store — Elite Pass Edition at $161.49 (save $28.50).">
 <meta property="og:url" content="https://volticastore.com/products/anker-soundcore-space-q45.html">
 <meta property="og:image" content="https://volticastore.com/assets/images/Q45.1.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="product:price:amount" content="189.99">
+<meta property="product:price:amount" content="161.49">
 <meta property="product:price:currency" content="USD">
 <meta property="product:availability" content="in stock">
 <meta property="og:brand" content="Soundcore">
@@ -58,7 +58,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Anker Soundcore Space Q45 Wireless Headphones | Voltica Store">
-<meta name="twitter:description" content="Adaptive ANC, Hi-Res LDAC audio, 50-hour battery. $189.99 at Voltica Store.">
+<meta name="twitter:description" content="Adaptive ANC, Hi-Res LDAC audio, 50-hour battery. Elite Pass Edition at $161.49 (save $28.50). Voltica Store.">
 <meta name="twitter:image" content="https://volticastore.com/assets/images/Q45.1.jpg">
 
 
@@ -70,10 +70,10 @@
 {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Anker Soundcore Space Q45 Wireless Headphones",
+    "name": "Anker Soundcore Space Q45 Wireless Headphones — Elite Pass Edition",
     "sku": "VLT-AUD-Q45-001",
     "mpn": "A3035",
-    "description": "Premium over-ear headphones with industry-leading adaptive active noise cancellation, Hi-Res wireless audio powered by LDAC, and an exceptional 50-hour battery life. Hand-picked and curated by Voltica Store.",
+    "description": "Premium over-ear headphones with industry-leading adaptive active noise cancellation, Hi-Res wireless audio powered by LDAC, and an exceptional 50-hour battery life. Elite Pass Edition hand-picked and curated by Voltica Store.",
     "image": [
         "https://volticastore.com/assets/images/Q45.1.jpg",
         "https://volticastore.com/assets/images/Q45.2.jpg",
@@ -96,7 +96,7 @@
         "@type": "Offer",
         "url": "https://volticastore.com/products/anker-soundcore-space-q45.html",
         "priceCurrency": "USD",
-        "price": "189.99",
+        "price": "161.49",
         "priceValidUntil": "2026-12-31",
         "validFrom": "2026-09-09",
         "availability": "https://schema.org/InStock",
@@ -297,6 +297,64 @@
 
     .static-breadcrumb span.current {
         color: rgba(255,255,255,0.8);
+    }
+
+    /* =====================================================
+       ELITE PASS BADGE — 15% OFF FOR LIFE
+       ===================================================== */
+    .elite-pass-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 16px;
+        margin-top: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        font-family: var(--font-display);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        color: #fff;
+    }
+
+    .elite-pass-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 10px #fff, 0 0 20px rgba(255,255,255,0.5);
+        animation: elitePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes elitePulse {
+        0%, 100% { transform: scale(0.75); opacity: 0.5; }
+        50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    .elite-pass-badge strong {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+    }
+
+    /* Savings highlight */
+    .product-savings {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        margin-left: 8px;
+        background: linear-gradient(135deg, #ff4757, #ff6348);
+        color: #fff;
+        border-radius: 999px;
+        font-family: var(--font-display);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
     }
 
     /* Thumbnails */
@@ -513,6 +571,18 @@
         .image-reflection {
             display: none;
         }
+
+        .elite-pass-badge {
+            font-size: 8px;
+            padding: 6px 12px;
+        }
+
+        .product-savings {
+            font-size: 8px;
+            padding: 5px 12px;
+            margin-left: 0;
+            margin-top: 8px;
+        }
     }
 
     @media (max-width: 560px) {
@@ -673,7 +743,7 @@
                 <img
                     id="mainProductImage"
                     src="../assets/images/Q45.1.jpg"
-                    alt="Anker Soundcore Space Q45 wireless headphones in Light Blue, premium over-ear design with adaptive noise cancellation, selected by Voltica Store"
+                    alt="Anker Soundcore Space Q45 wireless headphones in Light Blue, premium over-ear design with adaptive noise cancellation, selected by Voltica Store — Elite Pass Edition"
                     width="800"
                     height="800"
                     fetchpriority="high"
@@ -730,7 +800,7 @@
 
             <div class="product-status">
                 <span class="pulse-dot"></span>
-                <span id="productBadge">LIMITED</span>
+                <span id="productBadge">ELITE PASS EDITION</span>
             </div>
 
             <span class="product-category">AUDIO</span>
@@ -747,10 +817,17 @@
                 comfort and premium sound performance.
             </p>
 
+            <!-- ELITE PASS BADGE -->
+            <div class="elite-pass-badge" aria-label="Elite Pass Edition — 15% OFF FOR LIFE included">
+                <span>VOLTICA ELITE PASS</span>
+                <strong>15% OFF FOR LIFE INCLUDED</strong>
+            </div>
+
             <div class="product-price-panel">
-                <span class="product-price">$189.99</span>
+                <span class="product-price">$161.49</span>
                 <span class="product-currency">USD</span>
-                <span class="product-reference-price">$219.99</span>
+                <span class="product-reference-price">$189.99</span>
+                <span class="product-savings">SAVE $28.50</span>
             </div>
 
             <div class="product-colors">
@@ -768,12 +845,12 @@
             <div class="purchase-panel">
 
                 <a
-                    href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+                    href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B"
                     id="buyNowButton"
                     class="stripe-button"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Buy Anker Soundcore Space Q45 now on Stripe"
+                    aria-label="Buy Anker Soundcore Space Q45 now on Stripe for $161.49"
                 >
                     <span>BUY NOW</span>
                     <strong>→</strong>
@@ -964,16 +1041,16 @@
 
         <div class="cta-glass">
             <span class="pulse-dot"></span>
-            <span class="section-kicker">VOLTICA STORE</span>
+            <span class="section-kicker">VOLTICA STORE — ELITE PASS EDITION</span>
             <h2>Q45. ELITE AUDIO.</h2>
-            <p>Premium technology selected for the next generation.</p>
+            <p>Premium technology selected for the next generation. $161.49 with 15% OFF FOR LIFE included.</p>
 
             <a
-                href="https://buy.stripe.com/eVqeVe2hNgILbyoaWK2Ji0j"
+                href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B"
                 class="final-buy-button"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Purchase Anker Soundcore Space Q45 on Stripe"
+                aria-label="Purchase Anker Soundcore Space Q45 on Stripe for $161.49"
             >
                 BUY NOW <strong>→</strong>
             </a>
@@ -1096,18 +1173,18 @@
 <script src="../store.js?v=8"></script>
 
 
-<!-- GA4 — VIEW ITEM AU CHARGEMENT -->
+<!-- GA4 — VIEW ITEM AU CHARGEMENT (PRIX MIS À JOUR À $161.49) -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (typeof window.gtag === "function") {
             window.gtag("event", "view_item", {
                 currency: "USD",
-                value: 189.99,
+                value: 161.49,
                 items: [{
                     item_id: "VLT-AUD-Q45-001",
-                    item_name: "Anker Soundcore Space Q45 Wireless Headphones",
+                    item_name: "Anker Soundcore Space Q45 Wireless Headphones — Elite Pass Edition",
                     item_category: "Audio",
-                    price: 189.99,
+                    price: 161.49,
                     quantity: 1
                 }]
             });
@@ -1139,14 +1216,14 @@
 </script>
 
 
-<!-- AJOUT AU PANIER LOCAL -->
+<!-- AJOUT AU PANIER LOCAL (PRIX MIS À JOUR À $161.49) -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 
         var PRODUCT = {
             id: "VLT-AUD-Q45-001",
             name: "Anker Soundcore Space Q45 Wireless Headphones",
-            price: 189.99,
+            price: 161.49,
             image: "https://volticastore.com/assets/images/Q45.1.jpg"
         };
 

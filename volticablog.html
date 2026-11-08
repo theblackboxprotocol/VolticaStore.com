@@ -20,7 +20,7 @@
          ===================================================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Voltica Blog — deep dives into smart tech. The Voltica Lab manifesto, a full deep dive on the Anker Soundcore Space Q45, and why the XReal Air 1S AR glasses change how we travel, work, and play.">
+    <meta name="description" content="Voltica Blog — deep dives into smart tech. The Voltica Lab manifesto, a full deep dive on the Anker Soundcore Space Q45, and why the XReal 1S AI AR Smart Glasses change how we travel, work, and play.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="theme-color" content="#050505">
     <meta name="author" content="Voltica Store">
@@ -48,7 +48,7 @@
          ===================================================== -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Voltica Blog — Deep Dives into Smart Tech">
-    <meta property="og:description" content="The Voltica Lab manifesto, a full deep dive on the Anker Soundcore Space Q45, and why the XReal Air 1S AR glasses change how we travel, work, and play.">
+    <meta property="og:description" content="The Voltica Lab manifesto, a full deep dive on the Anker Soundcore Space Q45, and why the XReal 1S AI AR Smart Glasses change how we travel, work, and play.">
     <meta property="og:url" content="https://volticastore.com/volticablog.html">
     <meta property="og:site_name" content="Voltica Store">
     <meta property="og:locale" content="en_US">
@@ -62,7 +62,7 @@
          ===================================================== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Voltica Blog — Deep Dives into Smart Tech">
-    <meta name="twitter:description" content="The Voltica Lab manifesto, a full deep dive on the Anker Soundcore Space Q45, and why the XReal Air 1S AR glasses change how we travel, work, and play.">
+    <meta name="twitter:description" content="The Voltica Lab manifesto, a full deep dive on the Anker Soundcore Space Q45, and why the XReal 1S AI AR Smart Glasses change how we travel, work, and play.">
     <meta name="twitter:image" content="https://volticastore.com/assets/images/blog1.jpg">
 
 
@@ -114,7 +114,7 @@
             },
             {
                 "@type": "BlogPosting",
-                "headline": "Beyond the Screen: Why the XReal Air 1S Changes How We Travel, Work, and Play",
+                "headline": "Beyond the Screen: Why the XReal 1S AI AR Smart Glasses Change How We Travel, Work, and Play",
                 "url": "https://volticastore.com/blog/xrealblog.html",
                 "datePublished": "2026-09-12",
                 "image": "https://volticastore.com/assets/images/glass1-1.jpg"
@@ -207,7 +207,7 @@
                 "@type": "Offer",
                 "url": "https://volticastore.com/products/anker-soundcore-space-q45.html",
                 "priceCurrency": "USD",
-                "price": "189.99",
+                "price": "161.49",
                 "priceValidUntil": "2026-12-31",
                 "availability": "https://schema.org/InStock",
                 "itemCondition": "https://schema.org/NewCondition",
@@ -785,6 +785,105 @@
 
 
     /* =====================================================
+       BLOG PRODUCT CTA (NOUVEAU)
+       ===================================================== */
+    .blog-product-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 32px 0;
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        align-items: flex-start;
+    }
+    .blog-product-cta-buttons {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .blog-product-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 24px;
+        background: #fff;
+        color: #050505;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+    }
+    .blog-product-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+    }
+    .blog-product-button.secondary {
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .blog-product-button.secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: none;
+    }
+    .blog-product-cta-note {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 4px;
+    }
+    .blog-elite-callout {
+        margin: 32px 0;
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+    }
+    .callout-badge {
+        display: inline-block;
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: #fff;
+        margin-bottom: 12px;
+    }
+    .blog-elite-callout h3 {
+        font-family: "Manrope", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: #fff;
+        margin: 0 0 8px;
+    }
+    .blog-elite-callout p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.7);
+        margin: 0 0 16px;
+    }
+    .blog-button-ghost {
+        background: transparent !important;
+        color: #fff !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        padding: 10px 20px !important;
+        font-size: 13px !important;
+    }
+    .blog-button-ghost:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-color: #fff !important;
+    }
+
+
+    /* =====================================================
        RESPONSIVE — IDENTIQUE INDEX/STORE
        ===================================================== */
     @media (max-width: 850px) {
@@ -847,6 +946,12 @@
         .footer-acrylic {
             flex-direction: column;
             gap: 16px;
+        }
+        .blog-product-cta-buttons {
+            flex-direction: column;
+        }
+        .blog-product-button {
+            width: 100%;
         }
     }
 
@@ -1125,10 +1230,10 @@
         </div>
         <div class="blog-grid">
 
-            <!-- NOUVEL ARTICLE — XREAL AIR 1S (lien vers blog/xrealblog.html) -->
+            <!-- NOUVEL ARTICLE — XREAL 1S AI AR SMART GLASSES (lien vers blog/xrealblog.html) -->
             <article class="blog-card" aria-labelledby="grid-article-xreal-title">
                 <a href="blog/xrealblog.html" class="blog-card-media" aria-hidden="true" tabindex="-1">
-                    <img src="assets/images/glass1-1.jpg" alt="XReal Air 1S AR glasses with Bose sound tuning and auto-dimming electrochromic lenses" loading="lazy" decoding="async">
+                    <img src="assets/images/glass1-1.jpg" alt="XReal 1S AI AR Smart Glasses with Bose sound tuning and auto-dimming electrochromic lenses" loading="lazy" decoding="async">
                 </a>
                 <div class="blog-card-content">
                     <div class="article-meta">
@@ -1137,9 +1242,9 @@
                         <time datetime="2026-09-12">Sept 12, 2026</time>
                     </div>
                     <h3 id="grid-article-xreal-title" class="blog-card-title">
-                        <a href="blog/xrealblog.html">Beyond the Screen: Why the XReal Air 1S Changes How We Travel, Work, and Play</a>
+                        <a href="blog/xrealblog.html">Beyond the Screen: Why the XReal 1S AI AR Smart Glasses Change How We Travel, Work, and Play</a>
                     </h3>
-                    <p class="blog-card-excerpt">The XReal Air 1S turns any seat — plane, train, or coffee shop — into a private 500-inch screen. Real-user feedback, key specs, and why Voltica curated these AR glasses.</p>
+                    <p class="blog-card-excerpt">The XReal 1S AI AR Smart Glasses turn any seat — plane, train, or coffee shop — into a private 500-inch screen. Real-user feedback, key specs, and why Voltica curated them.</p>
                     <div class="blog-card-footer">
                         <time datetime="2026-09-12">Sept 12</time>
                         <span class="article-read-time">7 min</span>
@@ -1150,7 +1255,7 @@
             <!-- ARTICLE Q45 -->
             <article class="blog-card" aria-labelledby="grid-article-2-title">
                 <a href="#article-q45" class="blog-card-media" aria-hidden="true" tabindex="-1">
-                    <img src="assets/images/blog2.jpg" alt="Commuter wearing Anker Soundcore Space Q45 headphones on a moving train" loading="lazy" decoding="async">
+                    <img src="assets/images/blog2.jpg" alt="Commuter wearing White Anker Soundcore Space Q45 headphones on a moving train" loading="lazy" decoding="async">
                 </a>
                 <div class="blog-card-content">
                     <div class="article-meta">
@@ -1290,7 +1395,7 @@
             <p class="article-pull-line">How well do they fit into the way you actually live?</p>
 
             <figure class="article-figure">
-                <img src="assets/images/blog2.jpg" alt="Commuter wearing Anker Soundcore Space Q45 headphones, eyes closed, on a moving train" loading="lazy" decoding="async">
+                <img src="assets/images/blog2.jpg" alt="Commuter wearing White Anker Soundcore Space Q45 headphones, eyes closed, on a moving train" loading="lazy" decoding="async">
                 <figcaption>The commute disappears. The music stays.</figcaption>
             </figure>
 
@@ -1319,7 +1424,7 @@
             <p>The point is that the headphones can adapt to you.</p>
 
             <figure class="article-figure">
-                <img src="assets/images/blog3.jpg" alt="Listener analysing audio waveforms on a laptop while wearing the Space Q45 in a studio workspace" loading="lazy" decoding="async">
+                <img src="assets/images/blog3.jpg" alt="Listener analysing audio waveforms on a laptop while wearing the White Space Q45 in a studio workspace" loading="lazy" decoding="async">
                 <figcaption>Tuning, testing, listening — where the Q45 earns its signature.</figcaption>
             </figure>
 
@@ -1405,33 +1510,41 @@
             <p>It's designed to become part of your everyday environment — and, when you need it, to give you a little more control over that environment.</p>
 
             <figure class="article-figure">
-                <img src="assets/images/blog4.jpg" alt="Anker Soundcore Space Q45 headphones resting on a leather travel bag in an airport lounge" loading="lazy" decoding="async">
+                <img src="assets/images/blog4.jpg" alt="White Anker Soundcore Space Q45 headphones resting on a leather travel bag in an airport lounge" loading="lazy" decoding="async">
                 <figcaption>The Space Q45 — engineered to travel with you.</figcaption>
             </figure>
 
             <div class="blog-product-cta">
-                <a href="products/anker-soundcore-space-q45.html" class="blog-product-button">
-                    Explore the Space Q45
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <span class="blog-product-cta-note">$189.99 USD · Free shipping · Elite Pass edition</span>
+                <div class="blog-product-cta-buttons">
+                    <a href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B" target="_blank" rel="noopener noreferrer" class="blog-product-button primary">
+                        Buy Now — $161.49
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="products/anker-soundcore-space-q45.html" class="blog-product-button secondary">
+                        View Product Page
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                <span class="blog-product-cta-note"><span style="text-decoration: line-through; opacity: 0.6; margin-right: 6px;">$189.99</span> $161.49 USD · SAVE $28.50 · Free shipping · Elite Pass edition</span>
             </div>
 
             <h2>The Voltica Advantage</h2>
             <p>At Voltica Store, we're also making the first stage of that journey a little more interesting.</p>
-            <p>The first 200 Voltica customers receive an exclusive 15% OFF FOR LIFE customer benefit — valid on future Voltica purchases.</p>
+            <p>Elite Pass members receive an exclusive 15% OFF FOR LIFE benefit — valid on every future Voltica Store purchase.</p>
             <p>No complicated membership tiers.</p>
             <p>No temporary discount.</p>
             <p>Just an early-customer advantage for the people who get here first.</p>
 
-            <aside class="blog-lifetime-callout" aria-label="Voltica lifetime discount offer">
-                <div class="callout-badge">💳 15% OFF FOR LIFE — FIRST 200 CUSTOMERS</div>
-                <h3>Any order. Any amount. Forever.</h3>
-                <p>Every one of the first 200 Voltica Store customers receives an exclusive metal card unlocking 15% OFF FOR LIFE — valid on every future purchase, any order amount, no minimum spend, no exclusions.</p>
-                <a href="index.html#lifetime" class="blog-product-button blog-button-ghost">
-                    Claim your spot
+            <aside class="blog-elite-callout" aria-label="Voltica Elite Pass offer">
+                <div class="callout-badge">⚡ ELITE PASS — EXCLUSIVE CUSTOMER BENEFIT</div>
+                <h3>Unlock Your Elite Status.</h3>
+                <p>Elite Pass members receive an exclusive 15% OFF FOR LIFE benefit — valid on every future Voltica Store purchase, any order amount, no minimum spend, no exclusions.</p>
+                <a href="index.html#elite-pass" class="blog-product-button blog-button-ghost">
+                    Claim your Elite Pass
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
@@ -1450,7 +1563,7 @@
             </a>
             <a href="blog/xrealblog.html" class="article-nav-link article-nav-next">
                 <span class="article-nav-label">Next article →</span>
-                <span class="article-nav-title">Beyond the Screen: XReal Air 1S</span>
+                <span class="article-nav-title">Beyond the Screen: XReal 1S AI AR Smart Glasses</span>
             </a>
         </nav>
     </section>
@@ -1607,4 +1720,4 @@
 </script>
 
 </body>
-</html>
+    </html>

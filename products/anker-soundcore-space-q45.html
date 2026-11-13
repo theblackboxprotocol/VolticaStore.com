@@ -1130,6 +1130,43 @@
 </script>
 
 
+<!-- GA4 — BEGIN_CHECKOUT SUR BUY NOW (STRIPE) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (typeof window.gtag !== "function") { return; }
+
+        var checkoutData = {
+            currency: "USD",
+            value: 161.49,
+            items: [{
+                item_id: "VLT-AUD-Q45-001",
+                item_name: "Anker Soundcore Space Q45 Wireless Headphones — Elite Pass Edition",
+                item_brand: "Soundcore",
+                item_category: "Audio",
+                price: 161.49,
+                quantity: 1
+            }]
+        };
+
+        function fireBeginCheckout() {
+            window.gtag("event", "begin_checkout", checkoutData);
+        }
+
+        // BUY NOW du hero (id="buyNowButton")
+        var buyBtn = document.getElementById("buyNowButton");
+        if (buyBtn) {
+            buyBtn.addEventListener("click", fireBeginCheckout);
+        }
+
+        // BUY NOW du CTA final
+        var finalBtn = document.querySelector("a.final-buy-button");
+        if (finalBtn) {
+            finalBtn.addEventListener("click", fireBeginCheckout);
+        }
+    });
+</script>
+
+
 <!-- GALERIE : CHANGEMENT D'IMAGE PAR MINIATURE -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {

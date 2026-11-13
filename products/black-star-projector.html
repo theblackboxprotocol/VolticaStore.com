@@ -1021,6 +1021,43 @@
 </script>
 
 
+<!-- GA4 — BEGIN_CHECKOUT SUR BUY NOW / ORDER NOW (STRIPE) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (typeof window.gtag !== "function") { return; }
+
+        var checkoutData = {
+            currency: "USD",
+            value: 83.74,
+            items: [{
+                item_id: "VLT-LFT-002",
+                item_name: "Black Star Projector & Ambience Night Lamp",
+                item_brand: "Voltica Store",
+                item_category: "Lifestyle",
+                price: 83.74,
+                quantity: 1
+            }]
+        };
+
+        function fireBeginCheckout() {
+            window.gtag("event", "begin_checkout", checkoutData);
+        }
+
+        // BUY NOW (hero) — lien Stripe
+        var buyBtn = document.querySelector("a.stripe-button");
+        if (buyBtn) {
+            buyBtn.addEventListener("click", fireBeginCheckout);
+        }
+
+        // ORDER NOW (CTA final) — lien Stripe uniquement (pas le bouton ADD TO CART)
+        var finalBtn = document.querySelector("a.final-buy-button");
+        if (finalBtn) {
+            finalBtn.addEventListener("click", fireBeginCheckout);
+        }
+    });
+</script>
+
+
 <!-- GALERIE : CHANGEMENT D'IMAGE PAR MINIATURE -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {

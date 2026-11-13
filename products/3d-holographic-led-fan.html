@@ -1051,6 +1051,43 @@
 </script>
 
 
+<!-- GA4 — BEGIN_CHECKOUT SUR BUY NOW / ORDER NOW (STRIPE) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (typeof window.gtag !== "function") { return; }
+
+        var checkoutData = {
+            currency: "USD",
+            value: 78.87,
+            items: [{
+                item_id: "VLT-TEC-006",
+                item_name: "3D Holographic LED Fan Display Projector",
+                item_brand: "Voltica Selection",
+                item_category: "Tech",
+                price: 78.87,
+                quantity: 1
+            }]
+        };
+
+        function fireBeginCheckout(e) {
+            window.gtag("event", "begin_checkout", checkoutData);
+        }
+
+        // BUY NOW (hero)
+        var buyBtn = document.querySelector("a.stripe-button");
+        if (buyBtn) {
+            buyBtn.addEventListener("click", fireBeginCheckout);
+        }
+
+        // ORDER NOW (CTA final) — uniquement les liens <a>, pas le bouton ADD TO CART
+        var orderBtns = document.querySelectorAll("a.final-buy-button");
+        orderBtns.forEach(function (btn) {
+            btn.addEventListener("click", fireBeginCheckout);
+        });
+    });
+</script>
+
+
 <!-- GALERIE : CHANGEMENT D'IMAGE PAR MINIATURE -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {

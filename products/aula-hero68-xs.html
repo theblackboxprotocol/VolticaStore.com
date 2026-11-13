@@ -959,6 +959,43 @@
 </script>
 
 
+<!-- GA4 — BEGIN_CHECKOUT SUR BUY NOW / ORDER NOW (STRIPE) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (typeof window.gtag !== "function") { return; }
+
+        var checkoutData = {
+            currency: "USD",
+            value: 119.99,
+            items: [{
+                item_id: "aula-hero68-xs",
+                item_name: "AULA HERO68 XS",
+                item_brand: "AULA",
+                item_category: "Gaming Gear",
+                price: 119.99,
+                quantity: 1
+            }]
+        };
+
+        function fireBeginCheckout() {
+            window.gtag("event", "begin_checkout", checkoutData);
+        }
+
+        // BUY NOW (hero)
+        var buyBtn = document.querySelector("a.stripe-button");
+        if (buyBtn) {
+            buyBtn.addEventListener("click", fireBeginCheckout);
+        }
+
+        // ORDER NOW (CTA final)
+        var finalBtn = document.querySelector("a.final-buy-button");
+        if (finalBtn) {
+            finalBtn.addEventListener("click", fireBeginCheckout);
+        }
+    });
+</script>
+
+
 <!-- GALERIE : CHANGEMENT D'IMAGE PAR MINIATURE -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {

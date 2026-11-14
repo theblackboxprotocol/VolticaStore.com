@@ -614,15 +614,6 @@
         </a>
     </nav>
 
-    <button type="button" class="cart-acrylic" id="cartButton" aria-label="Open shopping cart" title="Shopping Cart">
-        <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M3 4H5L7.2 15.2C7.4 16.2 8.3 17 9.3 17H18.2C19.2 17 20.1 16.3 20.4 15.3L22 9H6"/>
-            <circle cx="9" cy="20" r="1.4"/>
-            <circle cx="18" cy="20" r="1.4"/>
-        </svg>
-        <span class="cart-count" id="cartCount" aria-live="polite" aria-atomic="true">0</span>
-    </button>
-
     <!-- TRIANGLE PULSAR -->
     <button
         type="button"
@@ -662,10 +653,6 @@
         <span class="mobile-pulsar-dot"></span>
         CONTACT
     </a>
-    <button type="button" class="mobile-cart-button" data-cart-open>
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.2s;"></span>
-        CART
-    </button>
 </div>
 
 
@@ -761,15 +748,6 @@
                         <strong>BUY NOW</strong>
                         <span>→</span>
                     </a>
-                    <button
-                        type="button"
-                        class="final-buy-button"
-                        id="staticAddToCart"
-                        aria-label="Add Levitating Bluetooth Speaker to cart"
-                    >
-                        <strong>ADD TO CART</strong>
-                        <span>→</span>
-                    </button>
                 </div>
 
                 <div class="product-availability">
@@ -948,43 +926,6 @@
 
 
 <!-- =====================================================
-     CART OVERLAY
-     ===================================================== -->
-<div class="cart-overlay" id="cartOverlay" aria-hidden="true" hidden></div>
-
-
-<!-- =====================================================
-     CART DRAWER
-     ===================================================== -->
-<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" role="dialog" aria-modal="true">
-    <div class="cart-header">
-        <div>
-            <span class="cart-small-title">VOLTICA</span>
-            <h2>CART</h2>
-        </div>
-        <button type="button" class="cart-close-x" id="cartClose" aria-label="Close shopping cart">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-    </div>
-
-    <div class="cart-items" id="cartItems" role="list" aria-label="Cart items"></div>
-
-    <div class="cart-footer">
-        <div class="cart-total-row">
-            <span>TOTAL</span>
-            <strong id="cartTotal">$0.00</strong>
-        </div>
-        <button type="button" class="checkout-button" id="checkoutButton" aria-label="Proceed to checkout">
-            CHECKOUT
-            <span>→</span>
-        </button>
-    </div>
-</aside>
-
-
-<!-- =====================================================
      FOOTER — ENRICHI (BLOG + SOCIAL ICONS)
      ===================================================== -->
 <footer class="store-footer">
@@ -1049,6 +990,32 @@
 </script>
 
 
+<!-- GA4 — BEGIN CHECKOUT AU CLIC BUY NOW / ORDER NOW -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var buyButtons = document.querySelectorAll("a.stripe-button, a.final-buy-button");
+  buyButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "begin_checkout", {
+          currency: "USD",
+          value: 98.99,
+          items: [{
+            item_id: "VLT-TCH-001",
+            item_name: "M005B-23 Levitating Bluetooth Speaker",
+            item_brand: "Voltica Store Selected",
+            item_category: "Tech",
+            price: 98.99,
+            quantity: 1
+          }]
+        });
+      }
+    });
+  });
+});
+</script>
+
+
 <!-- GALERIE : CHANGEMENT D'IMAGE PAR MINIATURE -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -1068,94 +1035,6 @@
                 btn.classList.add("active");
             });
         });
-    });
-</script>
-
-
-<!-- AJOUT AU PANIER LOCAL -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-        var PRODUCT = {
-            id: "VLT-TCH-001",
-            name: "M005B-23 Levitating Bluetooth Speaker",
-            price: 98.99,
-            image: "https://volticastore.com/assets/images/lifestyle1.1.jpg"
-        };
-
-        var button = document.getElementById("staticAddToCart");
-        if (!button) { return; }
-
-        button.addEventListener("click", function () {
-
-            var cart = [];
-            try {
-                cart = JSON.parse(
-                    localStorage.getItem("volticaCart")
-                ) || [];
-            } catch (error) {
-                cart = [];
-            }
-
-            var existing = cart.find(function (item) {
-                return String(item.id) === String(PRODUCT.id);
-            });
-
-            if (existing) {
-                existing.quantity = (existing.quantity || 1) + 1;
-            } else {
-                cart.push({
-                    id: PRODUCT.id,
-                    name: PRODUCT.name,
-                    price: PRODUCT.price,
-                    image: PRODUCT.image,
-                    quantity: 1
-                });
-            }
-
-            localStorage.setItem(
-                "volticaCart",
-                JSON.stringify(cart)
-            );
-
-            var total = cart.reduce(function (sum, item) {
-                return sum + (item.quantity || 1);
-            }, 0);
-
-            var badge = document.getElementById("cartCount");
-            if (badge) {
-                badge.textContent = total;
-                badge.classList.add("visible");
-            }
-
-            button.innerHTML = "<strong>✓ ADDED</strong>";
-            button.setAttribute("aria-label", "Levitating Speaker added to cart");
-            setTimeout(function () {
-                button.innerHTML = "<strong>ADD TO CART</strong><span>→</span>";
-                button.setAttribute("aria-label", "Add Levitating Bluetooth Speaker to cart");
-            }, 1500);
-
-            if (typeof window.gtag === "function") {
-                window.gtag("event", "add_to_cart", {
-                    currency: "USD",
-                    value: PRODUCT.price,
-                    items: [{
-                        item_id: PRODUCT.id,
-                        item_name: PRODUCT.name,
-                        item_category: "Tech",
-                        price: PRODUCT.price,
-                        quantity: 1
-                    }]
-                });
-            }
-
-            var cartButton = document.getElementById("cartButton");
-            if (cartButton) {
-                cartButton.click();
-            }
-
-        });
-
     });
 </script>
 

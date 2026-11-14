@@ -585,7 +585,7 @@
 
 
 <!-- =====================================================
-     HEADER — 4 LIENS (HOME, STORE, BLOG, CONTACT)
+     HEADER — 4 LIENS (SANS CART)
      ===================================================== -->
 <header class="product-header" id="storeHeader">
 
@@ -613,15 +613,6 @@
         </a>
     </nav>
 
-    <button type="button" class="cart-acrylic" id="cartButton" aria-label="Open shopping cart" title="Shopping Cart">
-        <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M3 4H5L7.2 15.2C7.4 16.2 8.3 17 9.3 17H18.2C19.2 17 20.1 16.3 20.4 15.3L22 9H6"/>
-            <circle cx="9" cy="20" r="1.4"/>
-            <circle cx="18" cy="20" r="1.4"/>
-        </svg>
-        <span class="cart-count" id="cartCount" aria-live="polite" aria-atomic="true">0</span>
-    </button>
-
     <!-- TRIANGLE PULSAR -->
     <button
         type="button"
@@ -642,7 +633,7 @@
 
 
 <!-- =====================================================
-     MOBILE MENU OVERLAY — 4 LIENS
+     MOBILE MENU OVERLAY — 4 LIENS (SANS CART)
      ===================================================== -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
     <a href="../index.html" class="mobile-nav-link">
@@ -661,10 +652,6 @@
         <span class="mobile-pulsar-dot"></span>
         CONTACT
     </a>
-    <button type="button" class="mobile-cart-button" data-cart-open>
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.2s;"></span>
-        CART
-    </button>
 </div>
 
 
@@ -753,19 +740,10 @@
                 </div>
 
                 <div class="purchase-panel">
-                    <a href="https://buy.stripe.com/fZueVeaOj78b7i80i62Ji0y" target="_blank" rel="noopener noreferrer" class="stripe-button" aria-label="Buy Kiwi Ears Aventus now on Stripe">
+                    <a href="https://buy.stripe.com/fZueVeaOj78b7i80i62Ji0y" target="_blank" rel="noopener noreferrer" class="stripe-button" aria-label="Buy Kiwi Ears Aventus now on Stripe for $69.99 with free shipping">
                         <strong>BUY NOW</strong>
                         <span>→</span>
                     </a>
-                    <button
-                        type="button"
-                        class="final-buy-button"
-                        id="staticAddToCart"
-                        aria-label="Add Kiwi Ears Aventus to cart"
-                    >
-                        <strong>ADD TO CART</strong>
-                        <span>→</span>
-                    </button>
                 </div>
 
                 <div class="product-availability">
@@ -929,7 +907,7 @@
                 <p>
                     Elevate your audio experience and stay powered through your longest sessions. Order your Kiwi Ears Aventus today at Voltica Store and enjoy premium sound, advanced comfort, and unmatched performance!
                 </p>
-                <a href="https://buy.stripe.com/fZueVeaOj78b7i80i62Ji0y" target="_blank" rel="noopener noreferrer" class="final-buy-button" aria-label="Buy Kiwi Ears Aventus now on Stripe">
+                <a href="https://buy.stripe.com/fZueVeaOj78b7i80i62Ji0y" target="_blank" rel="noopener noreferrer" class="final-buy-button" aria-label="Order Kiwi Ears Aventus now on Stripe for $69.99 with free shipping">
                     <strong>ORDER NOW</strong>
                     <span>→</span>
                 </a>
@@ -961,43 +939,6 @@
     </div>
 
 </main>
-
-
-<!-- =====================================================
-     CART OVERLAY
-     ===================================================== -->
-<div class="cart-overlay" id="cartOverlay" aria-hidden="true" hidden></div>
-
-
-<!-- =====================================================
-     CART DRAWER
-     ===================================================== -->
-<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" role="dialog" aria-modal="true">
-    <div class="cart-header">
-        <div>
-            <span class="cart-small-title">VOLTICA</span>
-            <h2>CART</h2>
-        </div>
-        <button type="button" class="cart-close-x" id="cartClose" aria-label="Close shopping cart">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-    </div>
-
-    <div class="cart-items" id="cartItems" role="list" aria-label="Cart items"></div>
-
-    <div class="cart-footer">
-        <div class="cart-total-row">
-            <span>TOTAL</span>
-            <strong id="cartTotal">$0.00</strong>
-        </div>
-        <button type="button" class="checkout-button" id="checkoutButton" aria-label="Proceed to checkout">
-            CHECKOUT
-            <span>→</span>
-        </button>
-    </div>
-</aside>
 
 
 <!-- =====================================================
@@ -1045,22 +986,41 @@
 <script src="../store.js?v=8"></script>
 
 
-<!-- GA4 — VIEW ITEM AU CHARGEMENT -->
+<!-- GA4 — VIEW ITEM + BEGIN_CHECKOUT -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        if (typeof window.gtag === "function") {
-            window.gtag("event", "view_item", {
-                currency: "USD",
-                value: 69.99,
-                items: [{
-                    item_id: "VLT-AUD-KWE-003",
-                    item_name: "Kiwi Ears Aventus DJ & Gaming Headphones",
-                    item_category: "Audio",
-                    price: 69.99,
-                    quantity: 1
-                }]
+        if (typeof window.gtag !== "function") { return; }
+
+        window.gtag("event", "view_item", {
+            currency: "USD",
+            value: 69.99,
+            items: [{
+                item_id: "VLT-AUD-KWE-003",
+                item_name: "Kiwi Ears Aventus DJ & Gaming Headphones",
+                item_brand: "Kiwi Ears",
+                item_category: "Audio",
+                price: 69.99,
+                quantity: 1
+            }]
+        });
+
+        var buyButtons = document.querySelectorAll("a.stripe-button, a.final-buy-button");
+        buyButtons.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                window.gtag("event", "begin_checkout", {
+                    currency: "USD",
+                    value: 69.99,
+                    items: [{
+                        item_id: "VLT-AUD-KWE-003",
+                        item_name: "Kiwi Ears Aventus DJ & Gaming Headphones",
+                        item_brand: "Kiwi Ears",
+                        item_category: "Audio",
+                        price: 69.99,
+                        quantity: 1
+                    }]
+                });
             });
-        }
+        });
     });
 </script>
 
@@ -1084,94 +1044,6 @@
                 btn.classList.add("active");
             });
         });
-    });
-</script>
-
-
-<!-- AJOUT AU PANIER LOCAL -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-        var PRODUCT = {
-            id: "VLT-AUD-KWE-003",
-            name: "Kiwi Ears Aventus DJ & Gaming Headphones",
-            price: 69.99,
-            image: "https://volticastore.com/assets/images/aventus1.jpg"
-        };
-
-        var button = document.getElementById("staticAddToCart");
-        if (!button) { return; }
-
-        button.addEventListener("click", function () {
-
-            var cart = [];
-            try {
-                cart = JSON.parse(
-                    localStorage.getItem("volticaCart")
-                ) || [];
-            } catch (error) {
-                cart = [];
-            }
-
-            var existing = cart.find(function (item) {
-                return String(item.id) === String(PRODUCT.id);
-            });
-
-            if (existing) {
-                existing.quantity = (existing.quantity || 1) + 1;
-            } else {
-                cart.push({
-                    id: PRODUCT.id,
-                    name: PRODUCT.name,
-                    price: PRODUCT.price,
-                    image: PRODUCT.image,
-                    quantity: 1
-                });
-            }
-
-            localStorage.setItem(
-                "volticaCart",
-                JSON.stringify(cart)
-            );
-
-            var total = cart.reduce(function (sum, item) {
-                return sum + (item.quantity || 1);
-            }, 0);
-
-            var badge = document.getElementById("cartCount");
-            if (badge) {
-                badge.textContent = total;
-                badge.classList.add("visible");
-            }
-
-            button.innerHTML = "<strong>✓ ADDED</strong>";
-            button.setAttribute("aria-label", "Kiwi Ears Aventus added to cart");
-            setTimeout(function () {
-                button.innerHTML = "<strong>ADD TO CART</strong><span>→</span>";
-                button.setAttribute("aria-label", "Add Kiwi Ears Aventus to cart");
-            }, 1500);
-
-            if (typeof window.gtag === "function") {
-                window.gtag("event", "add_to_cart", {
-                    currency: "USD",
-                    value: PRODUCT.price,
-                    items: [{
-                        item_id: PRODUCT.id,
-                        item_name: PRODUCT.name,
-                        item_category: "Audio",
-                        price: PRODUCT.price,
-                        quantity: 1
-                    }]
-                });
-            }
-
-            var cartButton = document.getElementById("cartButton");
-            if (cartButton) {
-                cartButton.click();
-            }
-
-        });
-
     });
 </script>
 

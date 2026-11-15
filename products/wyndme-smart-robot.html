@@ -918,6 +918,32 @@
 </script>
 
 
+<!-- GA4 — BEGIN CHECKOUT AU CLIC BUY NOW / ORDER NOW -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var buyButtons = document.querySelectorAll("a.stripe-button, a.final-buy-button");
+  buyButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "begin_checkout", {
+          currency: "USD",
+          value: 529.99,
+          items: [{
+            item_id: "wyndme-smart-robot",
+            item_name: "WYNDME Smart Robot",
+            item_brand: "WYNDME",
+            item_category: "Smart Home",
+            price: 529.99,
+            quantity: 1
+          }]
+        });
+      }
+    });
+  });
+});
+</script>
+
+
 <!-- GALERIE : CHANGEMENT D'IMAGE PAR MINIATURE -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {

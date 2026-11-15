@@ -967,6 +967,32 @@
 </script>
 
 
+<!-- GA4 — BEGIN CHECKOUT AU CLIC BUY NOW / ORDER NOW -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var buyButtons = document.querySelectorAll("a.stripe-button, a.final-buy-button");
+  buyButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "begin_checkout", {
+          currency: "USD",
+          value: 499.99,
+          items: [{
+            item_id: "VLT-XREAL-1S",
+            item_name: "XReal 1S AI AR Smart Glasses",
+            item_brand: "XReal",
+            item_category: "Lifestyle",
+            price: 499.99,
+            quantity: 1
+          }]
+        });
+      }
+    });
+  });
+});
+</script>
+
+
 <!-- GALERIE : CHANGEMENT D'IMAGE PAR MINIATURE -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {

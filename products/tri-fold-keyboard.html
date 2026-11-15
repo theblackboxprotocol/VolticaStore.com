@@ -619,15 +619,6 @@
         </a>
     </nav>
 
-    <button type="button" class="cart-acrylic" id="cartButton" aria-label="Open shopping cart" title="Shopping Cart">
-        <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M3 4H5L7.2 15.2C7.4 16.2 8.3 17 9.3 17H18.2C19.2 17 20.1 16.3 20.4 15.3L22 9H6"/>
-            <circle cx="9" cy="20" r="1.4"/>
-            <circle cx="18" cy="20" r="1.4"/>
-        </svg>
-        <span class="cart-count" id="cartCount" aria-live="polite" aria-atomic="true">0</span>
-    </button>
-
     <!-- TRIANGLE PULSAR -->
     <button
         type="button"
@@ -667,10 +658,6 @@
         <span class="mobile-pulsar-dot"></span>
         CONTACT
     </a>
-    <button type="button" class="mobile-cart-button" data-cart-open>
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.2s;"></span>
-        CART
-    </button>
 </div>
 
 
@@ -700,7 +687,7 @@
                 <div class="main-image-panel">
                     <img
                         src="../assets/images/keyboard1.webp"
-                        alt="Voltica Ultra-thin Tri-fold Folding Touch Keyboard — Portable Bluetooth with Integrated Touchpad"
+                        alt="Ultra-thin Tri-fold Touch Keyboard — Portable Bluetooth Keyboard"
                         id="mainProductImage"
                         width="800"
                         height="800"
@@ -717,17 +704,17 @@
                     <button type="button" class="product-thumbnail active" data-full="../assets/images/keyboard1.webp" aria-label="View image 1 of 5: Main view">
                         <img src="../assets/images/keyboard1.webp" alt="Keyboard main view" loading="lazy" decoding="async">
                     </button>
-                    <button type="button" class="product-thumbnail" data-full="../assets/images/keyboard2.webp" aria-label="View image 2 of 5: Touchpad detail">
-                        <img src="../assets/images/keyboard2.webp" alt="Keyboard touchpad detail" loading="lazy" decoding="async">
+                    <button type="button" class="product-thumbnail" data-full="../assets/images/keyboard2.webp" aria-label="View image 2 of 5: Folded">
+                        <img src="../assets/images/keyboard2.webp" alt="Keyboard folded" loading="lazy" decoding="async">
                     </button>
-                    <button type="button" class="product-thumbnail" data-full="../assets/images/keyboard3.webp" aria-label="View image 3 of 5: Folded compact">
-                        <img src="../assets/images/keyboard3.webp" alt="Keyboard folded compact" loading="lazy" decoding="async">
+                    <button type="button" class="product-thumbnail" data-full="../assets/images/keyboard3.webp" aria-label="View image 3 of 5: Touchpad">
+                        <img src="../assets/images/keyboard3.webp" alt="Keyboard touchpad" loading="lazy" decoding="async">
                     </button>
-                    <button type="button" class="product-thumbnail" data-full="../assets/images/keyboard4.webp" aria-label="View image 4 of 5: Size comparison">
-                        <img src="../assets/images/keyboard4.webp" alt="Keyboard size comparison" loading="lazy" decoding="async">
+                    <button type="button" class="product-thumbnail" data-full="../assets/images/keyboard4.webp" aria-label="View image 4 of 5: In use">
+                        <img src="../assets/images/keyboard4.webp" alt="Keyboard in use" loading="lazy" decoding="async">
                     </button>
-                    <button type="button" class="product-thumbnail" data-full="../assets/images/keyboard5.webp" aria-label="View image 5 of 5: Lifestyle travel use">
-                        <img src="../assets/images/keyboard5.webp" alt="Keyboard lifestyle travel use" loading="lazy" decoding="async">
+                    <button type="button" class="product-thumbnail" data-full="../assets/images/keyboard5.webp" aria-label="View image 5 of 5: Detail">
+                        <img src="../assets/images/keyboard5.webp" alt="Keyboard detail" loading="lazy" decoding="async">
                     </button>
                 </div>
             </div>
@@ -738,19 +725,19 @@
                     <span>IN STOCK — FREE SHIPPING</span>
                 </div>
 
-                <span class="product-category">WORKSPACE MOBILITY</span>
+                <span class="product-category">PORTABLE KEYBOARD</span>
                 <span class="product-number">VLT-TEC-022</span>
 
                 <h1 id="product-title">Ultra-thin Tri-fold Touch Keyboard</h1>
 
                 <p class="product-short-description">
-                    Unleash productivity anywhere with the Voltica Ultra-thin Tri-fold Touch Keyboard. This premium, pocket-sized portable keyboard features an integrated precision touchpad and universal Bluetooth compatibility (iOS, Android, Windows). The ultimate travel companion for seamless typing on the go.
+                    Unleash productivity anywhere with the Voltica Ultra-thin Tri-fold Touch Keyboard. Premium pocket-sized portable keyboard featuring an integrated precision touchpad and universal Bluetooth compatibility (iOS, Android, Windows) — the ultimate travel companion for seamless typing on the go. Hand-selected by Voltica Store.
                 </p>
 
                 <div class="product-price-panel">
                     <span class="product-price">$37.99</span>
                     <span class="product-currency">USD</span>
-                    <span class="product-reference-price">$69.99</span>
+                    <span class="product-reference-price">$49.99</span>
                 </div>
 
                 <div class="lifetime-offer">
@@ -766,15 +753,6 @@
                         <strong>BUY NOW</strong>
                         <span>→</span>
                     </a>
-                    <button
-                        type="button"
-                        class="final-buy-button"
-                        id="staticAddToCart"
-                        aria-label="Add Tri-fold Keyboard to cart"
-                    >
-                        <strong>ADD TO CART</strong>
-                        <span>→</span>
-                    </button>
                 </div>
 
                 <div class="product-availability">
@@ -973,43 +951,6 @@
 
 
 <!-- =====================================================
-     CART OVERLAY
-     ===================================================== -->
-<div class="cart-overlay" id="cartOverlay" aria-hidden="true" hidden></div>
-
-
-<!-- =====================================================
-     CART DRAWER
-     ===================================================== -->
-<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" role="dialog" aria-modal="true">
-    <div class="cart-header">
-        <div>
-            <span class="cart-small-title">VOLTICA</span>
-            <h2>CART</h2>
-        </div>
-        <button type="button" class="cart-close-x" id="cartClose" aria-label="Close shopping cart">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-    </div>
-
-    <div class="cart-items" id="cartItems" role="list" aria-label="Cart items"></div>
-
-    <div class="cart-footer">
-        <div class="cart-total-row">
-            <span>TOTAL</span>
-            <strong id="cartTotal">$0.00</strong>
-        </div>
-        <button type="button" class="checkout-button" id="checkoutButton" aria-label="Proceed to checkout">
-            CHECKOUT
-            <span>→</span>
-        </button>
-    </div>
-</aside>
-
-
-<!-- =====================================================
      FOOTER — ENRICHI (BLOG + SOCIAL ICONS)
      ===================================================== -->
 <footer class="store-footer">
@@ -1074,6 +1015,32 @@
 </script>
 
 
+<!-- GA4 — BEGIN CHECKOUT AU CLIC BUY NOW / ORDER NOW -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var buyButtons = document.querySelectorAll("a.stripe-button, a.final-buy-button");
+  buyButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "begin_checkout", {
+          currency: "USD",
+          value: 37.99,
+          items: [{
+            item_id: "VLT-TEC-022",
+            item_name: "Ultra-thin Tri-fold Touch Keyboard",
+            item_brand: "Voltica",
+            item_category: "Tech",
+            price: 37.99,
+            quantity: 1
+          }]
+        });
+      }
+    });
+  });
+});
+</script>
+
+
 <!-- GALERIE : CHANGEMENT D'IMAGE PAR MINIATURE -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -1093,94 +1060,6 @@
                 btn.classList.add("active");
             });
         });
-    });
-</script>
-
-
-<!-- AJOUT AU PANIER LOCAL -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-        var PRODUCT = {
-            id: "VLT-TEC-022",
-            name: "Ultra-thin Tri-fold Touch Keyboard",
-            price: 37.99,
-            image: "https://volticastore.com/assets/images/keyboard1.webp"
-        };
-
-        var button = document.getElementById("staticAddToCart");
-        if (!button) { return; }
-
-        button.addEventListener("click", function () {
-
-            var cart = [];
-            try {
-                cart = JSON.parse(
-                    localStorage.getItem("volticaCart")
-                ) || [];
-            } catch (error) {
-                cart = [];
-            }
-
-            var existing = cart.find(function (item) {
-                return String(item.id) === String(PRODUCT.id);
-            });
-
-            if (existing) {
-                existing.quantity = (existing.quantity || 1) + 1;
-            } else {
-                cart.push({
-                    id: PRODUCT.id,
-                    name: PRODUCT.name,
-                    price: PRODUCT.price,
-                    image: PRODUCT.image,
-                    quantity: 1
-                });
-            }
-
-            localStorage.setItem(
-                "volticaCart",
-                JSON.stringify(cart)
-            );
-
-            var total = cart.reduce(function (sum, item) {
-                return sum + (item.quantity || 1);
-            }, 0);
-
-            var badge = document.getElementById("cartCount");
-            if (badge) {
-                badge.textContent = total;
-                badge.classList.add("visible");
-            }
-
-            button.innerHTML = "<strong>✓ ADDED</strong>";
-            button.setAttribute("aria-label", "Tri-fold Keyboard added to cart");
-            setTimeout(function () {
-                button.innerHTML = "<strong>ADD TO CART</strong><span>→</span>";
-                button.setAttribute("aria-label", "Add Tri-fold Keyboard to cart");
-            }, 1500);
-
-            if (typeof window.gtag === "function") {
-                window.gtag("event", "add_to_cart", {
-                    currency: "USD",
-                    value: PRODUCT.price,
-                    items: [{
-                        item_id: PRODUCT.id,
-                        item_name: PRODUCT.name,
-                        item_category: "Tech",
-                        price: PRODUCT.price,
-                        quantity: 1
-                    }]
-                });
-            }
-
-            var cartButton = document.getElementById("cartButton");
-            if (cartButton) {
-                cartButton.click();
-            }
-
-        });
-
     });
 </script>
 

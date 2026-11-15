@@ -85,7 +85,7 @@
         "name": "Soundcore"
     },
     "category": "Audio",
-    "color": "Light Blue",
+    "color": "White",
     "weight": {
         "@type": "QuantitativeValue",
         "value": "292",
@@ -140,25 +140,6 @@
                 }
             }
         }
-    },
-    "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "127"
-    },
-    "review": {
-        "@type": "Review",
-        "author": {
-            "@type": "Person",
-            "name": "Voltica Store"
-        },
-        "datePublished": "2026-01-15",
-        "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-        },
-        "reviewBody": "Exceptional noise cancellation and sound quality. The 50-hour battery life is unmatched in this price range."
     }
 }
 </script>
@@ -680,385 +661,379 @@
 </header>
 
 
-<!-- Mobile Menu Overlay — 4 LIENS -->
+<!-- =====================================================
+     MOBILE MENU OVERLAY — 4 LIENS
+     ===================================================== -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
     <a href="../index.html" class="mobile-nav-link">
         <span class="mobile-pulsar-dot" style="animation-delay: 0.9s;"></span>
         HOME
     </a>
-    <a href="../store.html" class="mobile-nav-link nav-active">
-        <span class="mobile-pulsar-dot"></span>
+    <a href="../store.html" class="mobile-nav-link">
+        <span class="mobile-pulsar-dot" style="animation-delay: 0.3s;"></span>
         STORE
     </a>
     <a href="../volticablog.html" class="mobile-nav-link">
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.3s;"></span>
+        <span class="mobile-pulsar-dot" style="animation-delay: 0.6s;"></span>
         BLOG
     </a>
     <a href="#contact" class="mobile-nav-link">
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.6s;"></span>
+        <span class="mobile-pulsar-dot"></span>
         CONTACT
     </a>
 </div>
 
 
 <!-- =====================================================
-     CONTENU PRODUIT — HTML SÉMANTIQUE
+     MAIN CONTENT
      ===================================================== -->
+<main id="main-content">
 
-<main>
+    <div class="product-page">
 
-    <!-- FIL D'ARIANE VISIBLE -->
-    <nav class="static-breadcrumb" aria-label="Breadcrumb">
-        <a href="../index.html">HOME</a>
-        <span class="separator">/</span>
-        <a href="../store.html">STORE</a>
-        <span class="separator">/</span>
-        <a href="../store.html">AUDIO</a>
-        <span class="separator">/</span>
-        <span class="current">Q45</span>
-    </nav>
+        <!-- BREADCRUMB -->
+        <nav class="static-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">HOME</a>
+            <span class="separator">/</span>
+            <a href="../store.html">STORE</a>
+            <span class="separator">/</span>
+            <a href="../store.html">AUDIO</a>
+            <span class="separator">/</span>
+            <span class="current">ANKER SOUNDCORE SPACE Q45</span>
+        </nav>
 
 
-    <!-- HERO PRODUIT -->
-    <section class="product-hero static-product-hero">
+        <!-- HERO -->
+        <section class="product-hero static-product-hero" aria-labelledby="productTitle">
 
-        <!-- GALERIE -->
-        <div class="product-gallery">
+            <div class="product-gallery">
+                <div class="main-image-panel">
+                    <img
+                        src="../assets/images/Q45.1.jpg"
+                        alt="Anker Soundcore Space Q45 Wireless Headphones in White"
+                        id="mainProductImage"
+                        width="800"
+                        height="800"
+                        fetchpriority="high"
+                        decoding="async"
+                    >
+                    <div class="image-reflection" aria-hidden="true"></div>
+                    <div class="gallery-pulse" aria-hidden="true">
+                        <span class="pulse-dot"></span>
+                    </div>
+                </div>
 
-            <div class="main-image-panel">
-                <img
-                    id="mainProductImage"
-                    src="../assets/images/Q45.1.jpg"
-                    alt="Anker Soundcore Space Q45 wireless headphones in Light Blue, premium over-ear design with adaptive noise cancellation, selected by Voltica Store — Elite Pass Edition"
-                    width="800"
-                    height="800"
-                    fetchpriority="high"
-                    decoding="async"
-                >
-                <div class="image-reflection" aria-hidden="true"></div>
+                <div class="product-thumbnails" id="productThumbnails" role="group" aria-label="Product image gallery">
+
+                    <button
+                        type="button"
+                        class="product-thumbnail active"
+                        data-full="../assets/images/Q45.1.jpg"
+                        aria-label="View image 1 of 4: Front view"
+                    >
+                        <img src="../assets/images/Q45.1.jpg" alt="Q45 front view" loading="lazy" decoding="async">
+                    </button>
+
+                    <button
+                        type="button"
+                        class="product-thumbnail"
+                        data-full="../assets/images/Q45.2.jpg"
+                        aria-label="View image 2 of 4: Side view"
+                    >
+                        <img src="../assets/images/Q45.2.jpg" alt="Q45 side view" loading="lazy" decoding="async">
+                    </button>
+
+                    <button
+                        type="button"
+                        class="product-thumbnail"
+                        data-full="../assets/images/Q45.3.jpg"
+                        aria-label="View image 3 of 4: Detail view"
+                    >
+                        <img src="../assets/images/Q45.3.jpg" alt="Q45 detail view" loading="lazy" decoding="async">
+                    </button>
+
+                    <button
+                        type="button"
+                        class="product-thumbnail"
+                        data-full="../assets/images/Q45.6.jpg"
+                        aria-label="View image 4 of 4: Lifestyle view"
+                    >
+                        <img src="../assets/images/Q45.6.jpg" alt="Q45 lifestyle view" loading="lazy" decoding="async">
+                    </button>
+
+                </div>
+
             </div>
 
-            <div class="product-thumbnails" id="productThumbnails" role="group" aria-label="Product image gallery">
 
-                <button
-                    type="button"
-                    class="product-thumbnail active"
-                    data-full="../assets/images/Q45.1.jpg"
-                    aria-label="View image 1 of 4: Front view"
-                >
-                    <img src="../assets/images/Q45.1.jpg" alt="Q45 front view" loading="lazy" decoding="async">
-                </button>
+            <!-- INFORMATIONS -->
+            <div class="product-information">
 
-                <button
-                    type="button"
-                    class="product-thumbnail"
-                    data-full="../assets/images/Q45.2.jpg"
-                    aria-label="View image 2 of 4: Side view"
-                >
-                    <img src="../assets/images/Q45.2.jpg" alt="Q45 side view" loading="lazy" decoding="async">
-                </button>
+                <div class="product-status">
+                    <span class="pulse-dot"></span>
+                    <span id="productBadge">ELITE PASS EDITION</span>
+                </div>
 
-                <button
-                    type="button"
-                    class="product-thumbnail"
-                    data-full="../assets/images/Q45.3.jpg"
-                    aria-label="View image 3 of 4: Detail view"
-                >
-                    <img src="../assets/images/Q45.3.jpg" alt="Q45 detail view" loading="lazy" decoding="async">
-                </button>
+                <span class="product-category">AUDIO</span>
 
-                <button
-                    type="button"
-                    class="product-thumbnail"
-                    data-full="../assets/images/Q45.6.jpg"
-                    aria-label="View image 4 of 4: Lifestyle view"
-                >
-                    <img src="../assets/images/Q45.6.jpg" alt="Q45 lifestyle view" loading="lazy" decoding="async">
-                </button>
+                <span class="product-number">PRODUCT 01</span>
+
+                <h1 id="productTitle">Anker Soundcore Space Q45 Wireless Headphones</h1>
+
+                <p class="product-short-description">
+                    Experience industry-leading adaptive active noise
+                    cancellation, stunning Hi-Res wireless audio powered
+                    by LDAC, and an exceptional 50-hour battery life.
+                    Hand-picked and curated by Voltica Store for ultimate
+                    comfort and premium sound performance.
+                </p>
+
+                <!-- ELITE PASS BADGE -->
+                <div class="elite-pass-badge" aria-label="Elite Pass Edition — 15% OFF FOR LIFE included">
+                    <span>VOLTICA ELITE PASS</span>
+                    <strong>15% OFF FOR LIFE INCLUDED</strong>
+                </div>
+
+                <div class="product-price-panel">
+                    <span class="product-price">$161.49</span>
+                    <span class="product-currency">USD</span>
+                    <span class="product-reference-price">$189.99</span>
+                    <span class="product-savings">SAVE $28.50</span>
+                </div>
+
+                <div class="purchase-panel">
+
+                    <a
+                        href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B"
+                        id="buyNowButton"
+                        class="stripe-button"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Buy Anker Soundcore Space Q45 now on Stripe for $161.49"
+                    >
+                        <span>BUY NOW</span>
+                        <strong>→</strong>
+                    </a>
+
+                </div>
+
+                <div class="product-availability">
+                    <span class="pulse-dot"></span>
+                    VOLTICA COLLECTION
+                </div>
 
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- INFORMATIONS -->
-        <div class="product-information">
+        <!-- DESCRIPTION LONGUE -->
+        <section class="product-description-section">
 
-            <div class="product-status">
-                <span class="pulse-dot"></span>
-                <span id="productBadge">ELITE PASS EDITION</span>
+            <div class="acrylic-panel">
+
+                <span class="section-kicker">PRODUCT STORY</span>
+
+                <h2>THE EXPERIENCE</h2>
+
+                <div class="product-description">
+                    <p>
+                        Step into your own private acoustic sanctuary
+                        with the Anker Soundcore Space Q45, expertly
+                        curated and selected by Voltica Store for
+                        discerning audiophiles and modern creators.
+                        Whether you are navigating a bustling downtown
+                        commute, locking in for a deep-work session, or
+                        unwinding with your favorite tracks, these
+                        headphones redefine what it means to truly
+                        listen.
+                    </p>
+                    <p>
+                        Engineered with a next-generation adaptive
+                        active noise-cancelling system, the Space Q45
+                        intelligently targets and blocks out up to 98%
+                        of ambient noise — from the rumble of airplane
+                        engines to the chatter of a busy coffee shop.
+                        Prefer to stay aware of your surroundings?
+                        Switch effortlessly between multiple
+                        transparency modes tailored to your environment.
+                    </p>
+                    <p>
+                        Beneath the sleek exterior lies certified Hi-Res
+                        Audio Wireless support powered by LDAC
+                        technology, transmitting three times more data
+                        than standard Bluetooth codecs to deliver
+                        breathtaking, studio-quality sound with rich
+                        detail and deep bass. Combined with an
+                        industry-leading 50-hour battery life with ANC
+                        turned on and ultra-comfortable ergonomic memory
+                        foam earcups wrapped in soft leatherette, the
+                        Space Q45 ensures your listening experience
+                        remains uninterrupted, luxurious, and
+                        fatigue-free from morning until night.
+                    </p>
+                </div>
+
             </div>
 
-            <span class="product-category">AUDIO</span>
+        </section>
 
-            <span class="product-number">PRODUCT 01</span>
 
-            <h1 id="productTitle">Anker Soundcore Space Q45 Wireless Headphones</h1>
+        <!-- FEATURES -->
+        <section class="product-features-section">
 
-            <p class="product-short-description">
-                Experience industry-leading adaptive active noise
-                cancellation, stunning Hi-Res wireless audio powered
-                by LDAC, and an exceptional 50-hour battery life.
-                Hand-picked and curated by Voltica Store for ultimate
-                comfort and premium sound performance.
-            </p>
-
-            <!-- ELITE PASS BADGE -->
-            <div class="elite-pass-badge" aria-label="Elite Pass Edition — 15% OFF FOR LIFE included">
-                <span>VOLTICA ELITE PASS</span>
-                <strong>15% OFF FOR LIFE INCLUDED</strong>
+            <div class="section-heading">
+                <span class="section-kicker">ENGINEERED DIFFERENTLY</span>
+                <h2>KEY FEATURES</h2>
             </div>
 
-            <div class="product-price-panel">
-                <span class="product-price">$161.49</span>
-                <span class="product-currency">USD</span>
-                <span class="product-reference-price">$189.99</span>
-                <span class="product-savings">SAVE $28.50</span>
+            <div class="features-grid">
+
+                <article class="feature-card">
+                    <div class="feature-card-inner">
+                        <span class="feature-number">01</span>
+                        <h3>Adaptive Active Noise Cancelling</h3>
+                        <p>Intelligently targets and blocks up to 98% of external sounds, with customized modes optimized for indoor, outdoor, and travel environments.</p>
+                    </div>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-card-inner">
+                        <span class="feature-number">02</span>
+                        <h3>Hi-Res Audio Wireless via LDAC</h3>
+                        <p>Transmits three times more data than standard Bluetooth connections to deliver pristine, high-resolution audio with rich instrumentation and deep bass.</p>
+                    </div>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-card-inner">
+                        <span class="feature-number">03</span>
+                        <h3>50-Hour Extended Battery Life</h3>
+                        <p>Provides up to 50 hours of continuous playtime with ANC turned on, and up to 65 hours in standard mode to keep you powered through days of use.</p>
+                    </div>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-card-inner">
+                        <span class="feature-number">04</span>
+                        <h3>Ergonomic &amp; Lightweight Design</h3>
+                        <p>Built with a refined aesthetic, a comfortable pressure-relieving headband, and ultra-soft memory foam earcups for all-day listening comfort.</p>
+                    </div>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-card-inner">
+                        <span class="feature-number">05</span>
+                        <h3>Customizable Sound &amp; Transparency</h3>
+                        <p>Tailor your audio profile using the Soundcore app's 8-band EQ and switch seamlessly between transparency modes to stay connected to the world.</p>
+                    </div>
+                </article>
+
             </div>
 
-            <div class="product-colors">
-                <span>COLOR</span>
-                <div class="color-list">
-                    <span class="color-chip" title="Light Blue" aria-label="Light Blue"></span>
+        </section>
+
+
+        <!-- SPECIFICATIONS -->
+        <section class="product-specifications-section">
+
+            <div class="section-heading">
+                <span class="section-kicker">TECHNICAL DATA</span>
+                <h2>SPECIFICATIONS</h2>
+            </div>
+
+            <div class="specifications-panel acrylic-panel">
+                <div class="specifications-table">
+                    <div class="specification-row">
+                        <span class="specification-label">Bluetooth Version</span>
+                        <strong class="specification-value">Bluetooth 5.3</strong>
+                    </div>
+                    <div class="specification-row">
+                        <span class="specification-label">Audio Codecs</span>
+                        <strong class="specification-value">LDAC, AAC, SBC</strong>
+                    </div>
+                    <div class="specification-row">
+                        <span class="specification-label">Playtime</span>
+                        <strong class="specification-value">Up to 50 hours (ANC on) / Up to 65 hours (ANC off)</strong>
+                    </div>
+                    <div class="specification-row">
+                        <span class="specification-label">Fast Charging</span>
+                        <strong class="specification-value">5 minutes charge for 4 hours of playtime</strong>
+                    </div>
+                    <div class="specification-row">
+                        <span class="specification-label">Driver Size</span>
+                        <strong class="specification-value">40mm customized double-layer diaphragm drivers</strong>
+                    </div>
+                    <div class="specification-row">
+                        <span class="specification-label">Frequency Response</span>
+                        <strong class="specification-value">20Hz - 40kHz (Hi-Res Wired &amp; Wireless)</strong>
+                    </div>
+                    <div class="specification-row">
+                        <span class="specification-label">Connectivity Range</span>
+                        <strong class="specification-value">Up to 15 meters / 50 feet (Multipoint supported)</strong>
+                    </div>
+                    <div class="specification-row">
+                        <span class="specification-label">Charging Port</span>
+                        <strong class="specification-value">USB Type-C</strong>
+                    </div>
+                    <div class="specification-row">
+                        <span class="specification-label">Weight</span>
+                        <strong class="specification-value">292 g</strong>
+                    </div>
                 </div>
             </div>
 
-            <div class="selected-option-row">
-                <span>SELECTED</span>
-                <strong>Light Blue</strong>
-            </div>
+        </section>
 
-            <div class="purchase-panel">
+
+        <!-- CTA FINAL -->
+        <section class="product-final-cta">
+
+            <div class="cta-glass">
+                <span class="pulse-dot"></span>
+                <span class="section-kicker">VOLTICA STORE — ELITE PASS EDITION</span>
+                <h2>Q45. ELITE AUDIO.</h2>
+                <p>Premium technology selected for the next generation. $161.49 with 15% OFF FOR LIFE included.</p>
 
                 <a
                     href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B"
-                    id="buyNowButton"
-                    class="stripe-button"
+                    class="final-buy-button"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Buy Anker Soundcore Space Q45 now on Stripe for $161.49"
+                    aria-label="Purchase Anker Soundcore Space Q45 on Stripe for $161.49"
                 >
-                    <span>BUY NOW</span>
-                    <strong>→</strong>
+                    BUY NOW <strong>→</strong>
                 </a>
-
             </div>
 
-            <div class="product-availability">
-                <span class="pulse-dot"></span>
-                VOLTICA COLLECTION
-            </div>
-
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- DESCRIPTION LONGUE -->
-    <section class="product-description-section">
-
-        <div class="acrylic-panel">
-
-            <span class="section-kicker">PRODUCT STORY</span>
-
-            <h2>THE EXPERIENCE</h2>
-
-            <div class="product-description">
-                <p>
-                    Step into your own private acoustic sanctuary
-                    with the Anker Soundcore Space Q45, expertly
-                    curated and selected by Voltica Store for
-                    discerning audiophiles and modern creators.
-                    Whether you are navigating a bustling downtown
-                    commute, locking in for a deep-work session, or
-                    unwinding with your favorite tracks, these
-                    headphones redefine what it means to truly
-                    listen.
-                </p>
-                <p>
-                    Engineered with a next-generation adaptive
-                    active noise-cancelling system, the Space Q45
-                    intelligently targets and blocks out up to 98%
-                    of ambient noise — from the rumble of airplane
-                    engines to the chatter of a busy coffee shop.
-                    Prefer to stay aware of your surroundings?
-                    Switch effortlessly between multiple
-                    transparency modes tailored to your environment.
-                </p>
-                <p>
-                    Beneath the sleek exterior lies certified Hi-Res
-                    Audio Wireless support powered by LDAC
-                    technology, transmitting three times more data
-                    than standard Bluetooth codecs to deliver
-                    breathtaking, studio-quality sound with rich
-                    detail and deep bass. Combined with an
-                    industry-leading 50-hour battery life with ANC
-                    turned on and ultra-comfortable ergonomic memory
-                    foam earcups wrapped in soft leatherette, the
-                    Space Q45 ensures your listening experience
-                    remains uninterrupted, luxurious, and
-                    fatigue-free from morning until night.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FEATURES -->
-    <section class="product-features-section">
-
-        <div class="section-heading">
-            <span class="section-kicker">ENGINEERED DIFFERENTLY</span>
-            <h2>KEY FEATURES</h2>
-        </div>
-
-        <div class="features-grid">
-
-            <article class="feature-card">
-                <div class="feature-card-inner">
-                    <span class="feature-number">01</span>
-                    <h3>Adaptive Active Noise Cancelling</h3>
-                    <p>Intelligently targets and blocks up to 98% of external sounds, with customized modes optimized for indoor, outdoor, and travel environments.</p>
-                </div>
-            </article>
-
-            <article class="feature-card">
-                <div class="feature-card-inner">
-                    <span class="feature-number">02</span>
-                    <h3>Hi-Res Audio Wireless via LDAC</h3>
-                    <p>Transmits three times more data than standard Bluetooth connections to deliver pristine, high-resolution audio with rich instrumentation and deep bass.</p>
-                </div>
-            </article>
-
-            <article class="feature-card">
-                <div class="feature-card-inner">
-                    <span class="feature-number">03</span>
-                    <h3>50-Hour Extended Battery Life</h3>
-                    <p>Provides up to 50 hours of continuous playtime with ANC turned on, and up to 65 hours in standard mode to keep you powered through days of use.</p>
-                </div>
-            </article>
-
-            <article class="feature-card">
-                <div class="feature-card-inner">
-                    <span class="feature-number">04</span>
-                    <h3>Ergonomic &amp; Lightweight Design</h3>
-                    <p>Built with a refined aesthetic, a comfortable pressure-relieving headband, and ultra-soft memory foam earcups for all-day listening comfort.</p>
-                </div>
-            </article>
-
-            <article class="feature-card">
-                <div class="feature-card-inner">
-                    <span class="feature-number">05</span>
-                    <h3>Customizable Sound &amp; Transparency</h3>
-                    <p>Tailor your audio profile using the Soundcore app's 8-band EQ and switch seamlessly between transparency modes to stay connected to the world.</p>
-                </div>
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- SPECIFICATIONS -->
-    <section class="product-specifications-section">
-
-        <div class="section-heading">
-            <span class="section-kicker">TECHNICAL DATA</span>
-            <h2>SPECIFICATIONS</h2>
-        </div>
-
-        <div class="specifications-panel acrylic-panel">
-            <div class="specifications-table">
-                <div class="specification-row">
-                    <span class="specification-label">Bluetooth Version</span>
-                    <strong class="specification-value">Bluetooth 5.3</strong>
-                </div>
-                <div class="specification-row">
-                    <span class="specification-label">Audio Codecs</span>
-                    <strong class="specification-value">LDAC, AAC, SBC</strong>
-                </div>
-                <div class="specification-row">
-                    <span class="specification-label">Playtime</span>
-                    <strong class="specification-value">Up to 50 hours (ANC on) / Up to 65 hours (ANC off)</strong>
-                </div>
-                <div class="specification-row">
-                    <span class="specification-label">Fast Charging</span>
-                    <strong class="specification-value">5 minutes charge for 4 hours of playtime</strong>
-                </div>
-                <div class="specification-row">
-                    <span class="specification-label">Driver Size</span>
-                    <strong class="specification-value">40mm customized double-layer diaphragm drivers</strong>
-                </div>
-                <div class="specification-row">
-                    <span class="specification-label">Frequency Response</span>
-                    <strong class="specification-value">20Hz - 40kHz (Hi-Res Wired &amp; Wireless)</strong>
-                </div>
-                <div class="specification-row">
-                    <span class="specification-label">Connectivity Range</span>
-                    <strong class="specification-value">Up to 15 meters / 50 feet (Multipoint supported)</strong>
-                </div>
-                <div class="specification-row">
-                    <span class="specification-label">Charging Port</span>
-                    <strong class="specification-value">USB Type-C</strong>
-                </div>
-                <div class="specification-row">
-                    <span class="specification-label">Weight</span>
-                    <strong class="specification-value">292 g</strong>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-
-    <!-- CTA FINAL -->
-    <section class="product-final-cta">
-
-        <div class="cta-glass">
-            <span class="pulse-dot"></span>
-            <span class="section-kicker">VOLTICA STORE — ELITE PASS EDITION</span>
-            <h2>Q45. ELITE AUDIO.</h2>
-            <p>Premium technology selected for the next generation. $161.49 with 15% OFF FOR LIFE included.</p>
-
-            <a
-                href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B"
-                class="final-buy-button"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Purchase Anker Soundcore Space Q45 on Stripe for $161.49"
-            >
-                BUY NOW <strong>→</strong>
+        <!-- RETOUR BOUTIQUE -->
+        <section class="product-back-store-section">
+            <a href="../store.html" class="back-store-button" aria-label="Return to store">
+                ← BACK TO STORE
             </a>
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- RETOUR BOUTIQUE -->
-    <section class="product-back-store-section">
-        <a href="../store.html" class="back-store-button" aria-label="Return to store">
-            ← BACK TO STORE
-        </a>
-    </section>
+        <!-- CONTACT -->
+        <section class="product-contact-section" id="contact">
+            <div class="acrylic-panel">
+                <span class="section-kicker">VOLTICA SUPPORT</span>
+                <h2>NEED HELP?</h2>
+                <p>Our support team is here to help.</p>
+                <a
+                    href="mailto:contact@volticastore.com"
+                    class="contact-button"
+                    aria-label="Contact Voltica Store support"
+                >
+                    CONTACT US →
+                </a>
+            </div>
+        </section>
 
-
-    <!-- CONTACT -->
-    <section class="product-contact-section" id="contact">
-        <div class="acrylic-panel">
-            <span class="section-kicker">VOLTICA SUPPORT</span>
-            <h2>NEED HELP?</h2>
-            <p>Our support team is here to help.</p>
-            <a
-                href="mailto:contact@volticastore.com"
-                class="contact-button"
-                aria-label="Contact Voltica Store support"
-            >
-                CONTACT US →
-            </a>
-        </div>
-    </section>
+    </div>
 
 </main>
 
@@ -1120,6 +1095,7 @@
                 items: [{
                     item_id: "VLT-AUD-Q45-001",
                     item_name: "Anker Soundcore Space Q45 Wireless Headphones — Elite Pass Edition",
+                    item_brand: "Soundcore",
                     item_category: "Audio",
                     price: 161.49,
                     quantity: 1

@@ -688,18 +688,31 @@
            ================================================= */
         @media (max-width: 850px) {
             .store-header {
+                padding: 16px 24px;
                 grid-template-columns: 1fr auto;
-                padding: 16px 20px;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+                justify-self: end;
             }
 
             .store-nav {
                 display: none;
             }
 
-            .mobile-menu-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            .mobile-menu-overlay {
+                padding-top: calc(80px + env(safe-area-inset-top));
+                gap: 20px;
+            }
+
+            .store-hero {
+                padding-top: 80px;
+                padding-bottom: 30px;
+            }
+
+            .products-section {
+                padding-top: 10px;
             }
 
             .footer-social {
@@ -714,19 +727,90 @@
             }
         }
 
+
+        @media (max-width: 560px) {
+            .store-hero {
+                padding-top: 70px;
+                padding-bottom: 25px;
+            }
+
+            .products-section {
+                padding-top: 5px;
+            }
+
+            .mobile-menu-overlay {
+                gap: 14px;
+                padding-top: calc(76px + env(safe-area-inset-top));
+                padding-bottom: calc(24px + env(safe-area-inset-bottom));
+            }
+
+            .mobile-nav-link {
+                font-size: 13px;
+                padding: 8px 18px;
+                gap: 10px;
+            }
+
+            .mobile-community-divider {
+                margin-top: 6px;
+            }
+
+            .mobile-community-label {
+                margin-top: 2px;
+            }
+
+            .mobile-community-row {
+                margin-top: 6px;
+                gap: 14px;
+            }
+
+            .mobile-community-link {
+                width: 52px;
+                height: 52px;
+            }
+            .mobile-community-link svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+
+        @media print {
+            .store-header,
+            .mobile-menu-toggle,
+            .mobile-menu-overlay,
+            .pulsar-field,
+            .tech-grid,
+            .hero-pulsar,
+            .contact-pulsar {
+                display: none !important;
+            }
+
+            body {
+                background: #fff;
+                color: #000;
             }
         }
     </style>
 
 </head>
 
+
 <body>
 
+
+    <!-- PULSAR FIELD -->
     <div class="pulsar-field" aria-hidden="true">
         <span class="pulsar p1"></span>
         <span class="pulsar p2"></span>
@@ -736,17 +820,33 @@
         <span class="pulsar p6"></span>
     </div>
 
+
+    <!-- BACKGROUND GRID -->
     <div class="tech-grid" aria-hidden="true"></div>
 
+
+    <!-- =====================================================
+         HEADER — SANS BOUTON CART
+         ===================================================== -->
     <header class="store-header" id="storeHeader">
+
         <a href="index.html" class="logo-acrylic" aria-label="Voltica Store Home">
-            <img src="logo.png" alt="Voltica Store Logo" class="logo-img" width="32" height="32" loading="eager" fetchpriority="high">
+            <img
+                src="logo.png"
+                alt="Voltica Store Logo"
+                class="logo-img"
+                width="32"
+                height="32"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+            >
             <span class="logo-text">VOLTICA</span>
         </a>
 
         <nav class="store-nav" aria-label="Main navigation">
             <a href="index.html" class="nav-link" data-nav="home">
-                <span class="nav-pulsar" style="animation-delay: 0.9s;"></span>
+                <span class="nav-pulsar" style="animation-delay: 0.2s;"></span>
                 HOME
             </a>
             <a href="store.html" class="nav-link nav-active" data-nav="store">
@@ -754,15 +854,20 @@
                 STORE
             </a>
             <a href="volticablog.html" class="nav-link" data-nav="blog">
-                <span class="nav-pulsar" style="animation-delay: 0.3s;"></span>
+                <span class="nav-pulsar" style="animation-delay: 0.4s;"></span>
                 BLOG
             </a>
-            <a href="#contact" class="nav-link" data-nav="contact">
+            <a href="about.html" class="nav-link" data-nav="about">
                 <span class="nav-pulsar" style="animation-delay: 0.6s;"></span>
+                ABOUT
+            </a>
+            <a href="contact.html" class="nav-link" data-nav="contact">
+                <span class="nav-pulsar" style="animation-delay: 0.8s;"></span>
                 CONTACT
             </a>
         </nav>
 
+        <!-- Mobile Menu Toggle -->
         <button
             type="button"
             class="mobile-menu-toggle"
@@ -777,40 +882,49 @@
                 <span></span>
             </div>
         </button>
+
     </header>
 
+
+    <!-- =====================================================
+         MOBILE MENU OVERLAY — SANS BOUTON CART
+         ===================================================== -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
         <a href="index.html" class="mobile-nav-link" data-nav="home">
-            <span class="mobile-pulsar-dot" style="animation-delay: 0.9s;"></span>
+            <span class="mobile-pulsar-dot" style="animation-delay: 0.1s;"></span>
             HOME
         </a>
         <a href="store.html" class="mobile-nav-link nav-active" data-nav="store">
-            <span class="mobile-pulsar-dot" style="animation-delay: 0.3s;"></span>
+            <span class="mobile-pulsar-dot"></span>
             STORE
         </a>
         <a href="volticablog.html" class="mobile-nav-link" data-nav="blog">
-            <span class="mobile-pulsar-dot" style="animation-delay: 0.6s;"></span>
+            <span class="mobile-pulsar-dot" style="animation-delay: 0.3s;"></span>
             BLOG
         </a>
-        <a href="#contact" class="mobile-nav-link" data-nav="contact">
-            <span class="mobile-pulsar-dot"></span>
+        <a href="about.html" class="mobile-nav-link" data-nav="about">
+            <span class="mobile-pulsar-dot" style="animation-delay: 0.4s;"></span>
+            ABOUT
+        </a>
+        <a href="contact.html" class="mobile-nav-link" data-nav="contact">
+            <span class="mobile-pulsar-dot" style="animation-delay: 0.5s;"></span>
             CONTACT
         </a>
 
-        <div class="mobile-community-divider"></div>
-        <span class="mobile-community-label">COMMUNITY</span>
+        <div class="mobile-community-divider" aria-hidden="true"></div>
+        <span class="mobile-community-label">FOLLOW US</span>
         <div class="mobile-community-row">
-            <a href="https://www.facebook.com/share/1CiGLjoBiR/" target="_blank" rel="noopener noreferrer" class="mobile-community-link facebook" aria-label="Voltica on Facebook" data-social="facebook">
+            <a href="https://www.facebook.com/share/1CiGLjoBiR/" target="_blank" rel="noopener noreferrer" class="mobile-community-link facebook" aria-label="Join Voltica on Facebook" data-social="facebook">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
                 </svg>
             </a>
-            <a href="https://discord.gg/dqgUxR5JM" target="_blank" rel="noopener noreferrer" class="mobile-community-link discord" aria-label="Voltica on Discord" data-social="discord">
+            <a href="https://discord.gg/dqgUxR5JM" target="_blank" rel="noopener noreferrer" class="mobile-community-link discord" aria-label="Join Voltica on Discord" data-social="discord">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
                 </svg>
             </a>
-            <a href="https://www.tiktok.com/@volticastore" target="_blank" rel="noopener noreferrer" class="mobile-community-link tiktok" aria-label="Voltica on TikTok" data-social="tiktok">
+            <a href="https://www.tiktok.com/@volticastore" target="_blank" rel="noopener noreferrer" class="mobile-community-link tiktok" aria-label="Follow Voltica on TikTok" data-social="tiktok">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/>
                 </svg>
@@ -818,17 +932,28 @@
         </div>
     </div>
 
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
     <main>
-        <section class="store-hero">
-            <div class="hero-content">
-                <span class="hero-kicker">VOLTICA COLLECTION</span>
-                <h1>PREMIUM TECHNOLOGY</h1>
-                <p>Precision audio, gaming gear, creator tools and lifestyle tech — selected for innovators.</p>
+
+        <section class="store-hero" aria-labelledby="store-title">
+            <div class="hero-pulsar" aria-hidden="true">
+                <span></span>
             </div>
+            <h1 class="future-title" id="store-title">
+                <span>THE FUTURE</span>
+                <span class="future-second">OF EVERYDAY</span>
+            </h1>
         </section>
 
-        <section class="category-filter" aria-label="Filter by category">
-            <div class="category-chips">
+
+        <!-- =====================================================
+             CATEGORY FILTER BAR
+             ===================================================== -->
+        <section class="products-section" aria-label="Category filter">
+            <div class="category-filter-bar">
                 <button type="button" class="category-chip active" data-category="all">ALL</button>
                 <button type="button" class="category-chip" data-category="Audio">AUDIO</button>
                 <button type="button" class="category-chip" data-category="Gaming Gear">GAMING</button>
@@ -839,171 +964,320 @@
             </div>
         </section>
 
-        <section class="products-section">
 
-            <!-- =====================================================
-                 CATEGORY: AUDIO
-                 ===================================================== -->
-            <section class="category-section" data-category="Audio" aria-labelledby="cat-audio">
-                <div class="category-section-heading">
-                    <div>
-                        <span class="category-kicker">VOLTICA COLLECTION</span>
-                        <h2 class="category-title" id="cat-audio">AUDIO</h2>
-                        <p class="category-tagline">Precision sound for every moment.</p>
+        <!-- =====================================================
+             CATEGORY: AUDIO (8 produits)
+             ===================================================== -->
+        <section class="category-section" data-category="Audio" aria-labelledby="cat-audio">
+            <div class="category-section-heading">
+                <div>
+                    <span class="category-kicker">VOLTICA COLLECTION</span>
+                    <h2 class="category-title" id="cat-audio">AUDIO</h2>
+                    <p class="category-tagline">Precision listening. Studio-grade sound.</p>
+                </div>
+                <span class="category-count">08 PRODUCTS</span>
+            </div>
+
+            <div class="product-grid" role="list">
+
+                <!-- PRODUCT 01 — Q45 ELITE PASS EDITION -->
+                <article class="store-product" role="listitem" data-product-id="VLT-AUD-Q45-001" data-product-name="Anker Soundcore Space Q45" data-product-brand="Anker" data-product-category="Audio" data-product-price="161.49" data-product-badge="ELITE PASS EDITION">
+                    <span class="product-badge" data-badge="limited">ELITE PASS EDITION</span>
+                    <div class="product-image">
+                        <img src="assets/images/Q45.1.jpg" alt="Anker Soundcore Space Q45" width="400" height="400" loading="eager" fetchpriority="high">
                     </div>
-                    <span class="category-count">15 PRODUCTS</span>
-                </div>
-
-                <div class="product-grid" role="list">
-                    <!-- (tous les produits Audio existants restent ici inchangés) -->
-
-                </div>
-            </section>
-
-
-            <!-- =====================================================
-                 CATEGORY: GAMING GEAR (6 produits)
-                 ===================================================== -->
-            <section class="category-section" data-category="Gaming Gear" aria-labelledby="cat-gaming">
-                <div class="category-section-heading">
-                    <div>
-                        <span class="category-kicker">VOLTICA COLLECTION</span>
-                        <h2 class="category-title" id="cat-gaming">GAMING GEAR</h2>
-                        <p class="category-tagline">Built for competition and immersion.</p>
+                    <div class="product-info">
+                        <span class="product-category">AUDIO</span>
+                        <h3 class="product-title">Anker Soundcore Space Q45</h3>
+                        <p class="product-description">Industry-leading adaptive ANC, Hi-Res LDAC audio, 50-hour battery. Elite Pass Edition with 15% OFF FOR LIFE included.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$161.49</span>
+                            <span class="product-reference-price">$189.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/anker-soundcore-space-q45.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
                     </div>
-                    <span class="category-count">06 PRODUCTS</span>
+                </article>
+
+                <!-- PRODUCT 02 — KIWI EARS ORCHESTRA II -->
+                <article class="store-product" role="listitem" data-product-id="VLT-AUD-OCH-200" data-product-name="Kiwi Ears Orchestra II" data-product-brand="Kiwi Ears" data-product-category="Audio" data-product-price="269.99" data-product-badge="NEW">
+                    <span class="product-badge" data-badge="new">NEW</span>
+                    <div class="product-image">
+                        <img src="assets/images/orchestra1.jpg" alt="Kiwi Ears Orchestra II" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">AUDIO</span>
+                        <h3 class="product-title">Kiwi Ears Orchestra II</h3>
+                        <p class="product-description">10BA professional in-ear monitors with 4-way crossover. Balanced U-shaped signature, studio-grade clarity.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$269.99</span>
+                            <span class="product-reference-price">$349.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/kiwi-ears-orchestra-ii.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/dRm6oI3lR9gj0TK6Gu2Ji0C" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 03 — KIWI EARS ARDOR -->
+                <article class="store-product" role="listitem" data-product-id="VLT-AUD-ARD-001" data-product-name="Kiwi Ears Ardor" data-product-brand="Kiwi Ears" data-product-category="Audio" data-product-price="84.99" data-product-badge="PREMIUM">
+                    <span class="product-badge" data-badge="premium">PREMIUM</span>
+                    <div class="product-image">
+                        <img src="assets/images/ardor1.jpg" alt="Kiwi Ears Ardor" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">AUDIO</span>
+                        <h3 class="product-title">Kiwi Ears Ardor</h3>
+                        <p class="product-description">Coaxial dual dynamic driver headphones with hybrid ANC reducing up to 35dB. 140-hour battery life.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$84.99</span>
+                            <span class="product-reference-price">$89.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/kiwi-ears-ardor.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/14AbJ2aOjdwz8mc7Ky2Ji0q" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 04 — KIWI EARS AVENTUS -->
+                <article class="store-product" role="listitem" data-product-id="VLT-AUD-KWE-003" data-product-name="Kiwi Ears Aventus" data-product-brand="Kiwi Ears" data-product-category="Audio" data-product-price="69.99" data-product-badge="BEST SELLER">
+                    <span class="product-badge">BEST SELLER</span>
+                    <div class="product-image">
+                        <img src="assets/images/aventus1.jpg" alt="Kiwi Ears Aventus" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">AUDIO</span>
+                        <h3 class="product-title">Kiwi Ears Aventus</h3>
+                        <p class="product-description">Coaxial dual-driver DJ and gaming headphones with hybrid ANC, RGB lighting, and 82-hour battery life.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$69.99</span>
+                            <span class="product-reference-price">$89.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/kiwi-ears-aventus.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/fZueVeaOj78b7i80i62Ji0y" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 05 — FA-5370 PLANAR MAGNETIC -->
+                <article class="store-product" role="listitem" data-product-id="VLT-AUD-FA5370-001" data-product-name="FA-5370 Planar Magnetic" data-product-brand="Voltica Selected" data-product-category="Audio" data-product-price="469.99" data-product-badge="PREMIUM">
+                    <span class="product-badge" data-badge="premium">PREMIUM</span>
+                    <div class="product-image">
+                        <img src="assets/images/wood1.jpg" alt="FA-5370 Planar Magnetic" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">AUDIO</span>
+                        <h3 class="product-title">FA-5370 Planar Magnetic</h3>
+                        <p class="product-description">Audiophile open-back headphones with 106mm planar drivers and hand-carved Brazilian rosewood earcups.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$469.99</span>
+                            <span class="product-reference-price">$499.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/fa-5370-planar-magnetic.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/3cI5kE3lRgIL31Sc0O2Ji0m" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 07 — Q17 OPEN-EAR -->
+                <article class="store-product" role="listitem" data-product-id="VLT-AUD-Q17-001" data-product-name="Q17 Open-Ear Earbuds" data-product-brand="Voltica Selected" data-product-category="Audio" data-product-price="69.97" data-product-badge="BEST SELLER">
+                    <span class="product-badge">BEST SELLER</span>
+                    <div class="product-image">
+                        <img src="assets/images/Screenshot_20260825_184613.jpg" alt="Q17 Open-Ear Earbuds" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">AUDIO</span>
+                        <h3 class="product-title">Q17 Open-Ear Earbuds</h3>
+                        <p class="product-description">Open-ear wireless earbuds with Gem Blue electroplated finish, directional audio, and 45-hour battery life.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$69.97</span>
+                            <span class="product-reference-price">$74.97</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/q17-open-ear-earbuds.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/dRm3cwe0vbor31S4ym2Ji01" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 08 — VOLTICA T75 -->
+                <article class="store-product" role="listitem" data-product-id="VLT-AUD-005" data-product-name="Voltica T75" data-product-brand="Voltica" data-product-category="Audio" data-product-price="39.99" data-product-badge="BEST SELLER">
+                    <span class="product-badge">BEST SELLER</span>
+                    <div class="product-image">
+                        <img src="assets/images/T751.webp" alt="Voltica T75" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">AUDIO</span>
+                        <h3 class="product-title">Voltica T75</h3>
+                        <p class="product-description">Open-ear true wireless bone conduction sports earbuds with Bluetooth 5.3 and IPX5 waterproof rating.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$39.99</span>
+                            <span class="product-reference-price">$79.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/voltica-t75-earbuds.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/5kQ6oI9Kf9gj8mc3ui2Ji06" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 10 — VOLTICA TWS -->
+                <article class="store-product" role="listitem" data-product-id="VLT-AUD-TWS-001" data-product-name="Voltica TWS Earbuds" data-product-brand="Voltica" data-product-category="Audio" data-product-price="59.97" data-product-badge="FEATURED">
+                    <span class="product-badge" data-badge="featured">FEATURED</span>
+                    <div class="product-image">
+                        <img src="assets/images/earbuds2-1.webp" alt="Voltica TWS Earbuds" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">AUDIO</span>
+                        <h3 class="product-title">Voltica TWS Earbuds</h3>
+                        <p class="product-description">Ultra-lightweight in-ear noise canceling earbuds with Bluetooth 5.0, CVC mic, and 24-hour battery.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$59.97</span>
+                            <span class="product-reference-price">$65.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/voltica-tws-earbuds.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/7sY28s5tZ78bbyo9SG2Ji02" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             CATEGORY: GAMING GEAR (5 produits)
+             ===================================================== -->
+        <section class="category-section" data-category="Gaming Gear" aria-labelledby="cat-gaming">
+            <div class="category-section-heading">
+                <div>
+                    <span class="category-kicker">VOLTICA COLLECTION</span>
+                    <h2 class="category-title" id="cat-gaming">GAMING GEAR</h2>
+                    <p class="category-tagline">Built for competition and immersion.</p>
                 </div>
+                <span class="category-count">05 PRODUCTS</span>
+            </div>
 
-                <div class="product-grid" role="list">
+            <div class="product-grid" role="list">
 
-                    <!-- PRODUCT 16 — HEXAGONAL QUANTUM LIGHT PANELS -->
-                    <article class="store-product" role="listitem" data-product-id="VLT-GAM-HEX-001" data-product-name="Hexagonal Quantum Light Panels" data-product-brand="Voltica" data-product-category="Gaming Gear" data-product-price="47.99" data-product-badge="FEATURED">
-                        <span class="product-badge" data-badge="featured">FEATURED</span>
-                        <div class="product-image">
-                            <img src="assets/images/hex1.jpg" alt="Hexagonal Quantum Light Panels" width="400" height="400" loading="lazy">
+                <!-- PRODUCT 16 — HEXAGONAL QUANTUM LIGHT PANELS -->
+                <article class="store-product" role="listitem" data-product-id="VLT-GAM-HEX-001" data-product-name="Hexagonal Quantum Light Panels" data-product-brand="Voltica" data-product-category="Gaming Gear" data-product-price="47.99" data-product-badge="FEATURED">
+                    <span class="product-badge" data-badge="featured">FEATURED</span>
+                    <div class="product-image">
+                        <img src="assets/images/hex1.jpg" alt="Hexagonal Quantum Light Panels" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">GAMING GEAR</span>
+                        <h3 class="product-title">Hexagonal Quantum Light Panels</h3>
+                        <p class="product-description">Smart RGB sound-activated panels with real-time music synchronization and 16 million colors.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$47.99</span>
+                            <span class="product-reference-price">$54.99</span>
                         </div>
-                        <div class="product-info">
-                            <span class="product-category">GAMING GEAR</span>
-                            <h3 class="product-title">Hexagonal Quantum Light Panels</h3>
-                            <p class="product-description">Smart RGB sound-activated panels with real-time music synchronization and 16 million colors.</p>
-                            <div class="product-price-row">
-                                <span class="product-price">$47.99</span>
-                                <span class="product-reference-price">$54.99</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="products/hexagonal-quantum-light-panels.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
-                                <a href="https://buy.stripe.com/5kQdRa7C70JN45W3ui2Ji0c" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
-                            </div>
+                        <div class="product-actions">
+                            <a href="products/hexagonal-quantum-light-panels.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/5kQdRa7C70JN45W3ui2Ji0c" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
                         </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <!-- PRODUCT 17 — RGB BRANCHES AMBIENCE LIGHT -->
-                    <article class="store-product" role="listitem" data-product-id="CJYD197940402BY" data-product-name="RGB Branches Ambience Light" data-product-brand="Voltica" data-product-category="Gaming Gear" data-product-price="94.57" data-product-badge="NEW">
-                        <span class="product-badge" data-badge="new">NEW</span>
-                        <div class="product-image">
-                            <img src="assets/images/branches1.jpg" alt="RGB Branches Ambience Light" width="400" height="400" loading="lazy">
+                <!-- PRODUCT 17 — RGB BRANCHES AMBIENCE LIGHT -->
+                <article class="store-product" role="listitem" data-product-id="CJYD197940402BY" data-product-name="RGB Branches Ambience Light" data-product-brand="Voltica" data-product-category="Gaming Gear" data-product-price="94.57" data-product-badge="NEW">
+                    <span class="product-badge" data-badge="new">NEW</span>
+                    <div class="product-image">
+                        <img src="assets/images/light1.webp" alt="RGB Branches Ambience Light" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">GAMING GEAR</span>
+                        <h3 class="product-title">RGB Branches Ambience Light</h3>
+                        <p class="product-description">12-piece smart LED branch light kit with music sync, app control, and wireless remote.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$94.57</span>
+                            <span class="product-reference-price">$99.99</span>
                         </div>
-                        <div class="product-info">
-                            <span class="product-category">GAMING GEAR</span>
-                            <h3 class="product-title">RGB Branches Ambience Light</h3>
-                            <p class="product-description">Dynamic RGB branches with music sync and adjustable brightness for immersive setups.</p>
-                            <div class="product-price-row">
-                                <span class="product-price">$94.57</span>
-                                <span class="product-reference-price">$109.99</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="products/rgb-branches-ambience-light.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
-                                <a href="https://buy.stripe.com/28E00k4pV50345W6Gu2Ji0d" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
-                            </div>
+                        <div class="product-actions">
+                            <a href="products/rgb-branches-ambience-light.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/cNi28s5tZ3VZgSIgh42Ji0h" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
                         </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <!-- PRODUCT 18 — GAMESIR G8 GALILEO -->
-                    <article class="store-product" role="listitem" data-product-id="VLT-GMR-G8-001" data-product-name="GameSir G8 Galileo" data-product-brand="GameSir" data-product-category="Gaming Gear" data-product-price="84.99" data-product-badge="BEST SELLER">
-                        <span class="product-badge" data-badge="best-seller">BEST SELLER</span>
-                        <div class="product-image">
-                            <img src="assets/images/gamesir1.jpg" alt="GameSir G8 Galileo" width="400" height="400" loading="lazy">
+                <!-- PRODUCT 19 — GAMESIR G8 GALILEO -->
+                <article class="store-product" role="listitem" data-product-id="VLT-GMR-G8-001" data-product-name="GameSir G8 Galileo" data-product-brand="GameSir" data-product-category="Gaming Gear" data-product-price="84.99" data-product-badge="BEST SELLER">
+                    <span class="product-badge">BEST SELLER</span>
+                    <div class="product-image">
+                        <img src="assets/images/pad1.jpg" alt="GameSir G8 Galileo" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">GAMING GEAR</span>
+                        <h3 class="product-title">GameSir G8 Galileo</h3>
+                        <p class="product-description">Type-C wired mobile gaming controller with moveable port, magnetic faceplates, and back buttons.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$84.99</span>
+                            <span class="product-reference-price">$99.99</span>
                         </div>
-                        <div class="product-info">
-                            <span class="product-category">GAMING GEAR</span>
-                            <h3 class="product-title">GameSir G8 Galileo</h3>
-                            <p class="product-description">Telescopic mobile controller with Hall Effect sticks, programmable buttons and low latency.</p>
-                            <div class="product-price-row">
-                                <span class="product-price">$84.99</span>
-                                <span class="product-reference-price">$99.99</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="products/gamesir-g8-galileo.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
-                                <a href="https://buy.stripe.com/eVa00k3lR1FG45W0i62Ji0e" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
-                            </div>
+                        <div class="product-actions">
+                            <a href="products/gamesir-g8-galileo.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/6oUdRa6y33VZ9qgaWK2Ji0v" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
                         </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <!-- PRODUCT 19 — XXL WORLD MAP MOUSE PAD -->
-                    <article class="store-product" role="listitem" data-product-id="CJJT106172401AZ" data-product-name="XXL World Map Mouse Pad" data-product-brand="Voltica" data-product-category="Gaming Gear" data-product-price="27.99" data-product-badge="BEST SELLER">
-                        <span class="product-badge" data-badge="best-seller">BEST SELLER</span>
-                        <div class="product-image">
-                            <img src="assets/images/mousepad1.jpg" alt="XXL World Map Mouse Pad" width="400" height="400" loading="lazy">
+                <!-- PRODUCT 21 — XXL WORLD MAP GAMING MOUSE PAD -->
+                <article class="store-product" role="listitem" data-product-id="CJJT106172401AZ" data-product-name="XXL World Map Mouse Pad" data-product-brand="Voltica" data-product-category="Gaming Gear" data-product-price="27.99" data-product-badge="BEST SELLER">
+                    <span class="product-badge">BEST SELLER</span>
+                    <div class="product-image">
+                        <img src="assets/images/desk1.webp" alt="XXL World Map Mouse Pad" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">GAMING GEAR</span>
+                        <h3 class="product-title">XXL World Map Mouse Pad</h3>
+                        <p class="product-description">900x400x4mm large desk mat with HD world map design, anti-slip base, and stitched edges.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$27.99</span>
+                            <span class="product-reference-price">$34.99</span>
                         </div>
-                        <div class="product-info">
-                            <span class="product-category">GAMING GEAR</span>
-                            <h3 class="product-title">XXL World Map Mouse Pad</h3>
-                            <p class="product-description">Large desk mat with world map design, stitched edges and smooth surface for precision.</p>
-                            <div class="product-price-row">
-                                <span class="product-price">$27.99</span>
-                                <span class="product-reference-price">$34.99</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="products/xxl-world-map-mouse-pad.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
-                                <a href="https://buy.stripe.com/14AaEY8Gbakn6e4e8W2Ji0i" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
-                            </div>
+                        <div class="product-actions">
+                            <a href="products/xxl-world-map-mouse-pad.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/14AaEY8Gbakn6e4e8W2Ji0i" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
                         </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <!-- PRODUCT 28 — AULA HERO68 XS -->
-                    <article class="store-product" role="listitem" data-product-id="aula-hero68-xs" data-product-name="AULA HERO68 XS" data-product-brand="AULA" data-product-category="Gaming Gear" data-product-price="119.99" data-product-badge="NEW">
-                        <span class="product-badge" data-badge="new">NEW</span>
-                        <div class="product-image">
-                            <img src="assets/images/aula1.jpg" alt="AULA HERO68 XS" width="400" height="400" loading="lazy">
+                <!-- PRODUCT 28 — AULA HERO68 XS -->
+                <article class="store-product" role="listitem" data-product-id="aula-hero68-xs" data-product-name="AULA HERO68 XS" data-product-brand="AULA" data-product-category="Gaming Gear" data-product-price="119.99" data-product-badge="NEW">
+                    <span class="product-badge" data-badge="new">NEW</span>
+                    <div class="product-image">
+                        <img src="assets/images/aula1.jpg" alt="AULA HERO68 XS" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">GAMING GEAR</span>
+                        <h3 class="product-title">AULA HERO68 XS</h3>
+                        <p class="product-description">68-key gaming keyboard with Hall Effect magnetic switches, Rapid Trigger 0.005mm, Dual 8K polling, transparent crystal case. Free shipping included.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$119.99</span>
                         </div>
-                        <div class="product-info">
-                            <span class="product-category">GAMING GEAR</span>
-                            <h3 class="product-title">AULA HERO68 XS</h3>
-                            <p class="product-description">68-key gaming keyboard with Hall Effect magnetic switches, Rapid Trigger 0.005mm, Dual 8K polling, transparent crystal case. Free shipping included.</p>
-                            <div class="product-price-row">
-                                <span class="product-price">$119.99</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="products/aula-hero68-xs.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
-                                <a href="https://buy.stripe.com/28E4gAcWr0JN6e4d4S2Ji0F" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
-                            </div>
+                        <div class="product-actions">
+                            <a href="products/aula-hero68-xs.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/28E4gAcWr0JN6e4d4S2Ji0F" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
                         </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <!-- PRODUCT — ATTACK SHARK R86HE -->
-                    <article class="store-product" role="listitem" data-product-id="attack-shark-r86he" data-product-name="ATTACK SHARK R86HE" data-product-brand="Attack Shark" data-product-category="Gaming Gear" data-product-price="119.99" data-product-badge="">
-                        <div class="product-image">
-                            <img src="assets/images/R86HE1.jpg" alt="ATTACK SHARK R86HE" width="400" height="400" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <span class="product-category">GAMING GEAR</span>
-                            <h3 class="product-title">ATTACK SHARK R86HE</h3>
-                            <p class="product-description">Attack Shark R86HE Hall Effect gaming keyboard — 8000 Hz polling, 0.005 mm Rapid Trigger and 0.08 ms latency in a carbon fiber composite shell. Transparent carbon keycaps, RGB side lighting and CNC aluminum flanks.</p>
-                            <div class="product-price-row">
-                                <span class="product-price">$119.99</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="products/R86HE.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
-                                <a href="https://buy.stripe.com/5kQ14obSn78beKA2qe2Ji0G" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
-                            </div>
-                        </div>
-                    </article>
+            </div>
+        </section>
 
-                </div>
-            </section>
-            <!-- =====================================================
-                 CATEGORY: VLOGGING AND CREATOR GEAR (3 produits)
-                 ===================================================== -->
+
+        <!-- =====================================================
+             CATEGORY: VLOGGING AND CREATOR GEAR (3 produits)
+             ===================================================== -->
         <section class="category-section" data-category="Vlogging and Creator Gear" aria-labelledby="cat-creator">
             <div class="category-section-heading">
                 <div>
@@ -1067,14 +1341,14 @@
                     <div class="product-info">
                         <span class="product-category">CREATOR GEAR</span>
                         <h3 class="product-title">SL90 RGB LED Video Light</h3>
-                        <p class="product-description">Professional RGB LED panel with app control, high CRI and multiple lighting modes for creators.</p>
+                        <p class="product-description">150 LEDs, 360° full-color RGB adjustment, 18 dynamic scene modes, aluminum alloy build.</p>
                         <div class="product-price-row">
                             <span class="product-price">$94.99</span>
                             <span class="product-reference-price">$119.99</span>
                         </div>
                         <div class="product-actions">
                             <a href="products/sl90-rgb-led-video-light.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
-                            <a href="https://buy.stripe.com/28E00k5tZgIL9qg8OC2Ji0t" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                            <a href="https://buy.stripe.com/bJeaEY3lRdwz5a04ym2Ji0z" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
                         </div>
                     </div>
                 </article>
@@ -1083,34 +1357,76 @@
         </section>
 
 
-            <!-- =====================================================
-                 CATEGORY: TECH (7 produits)
-                 ===================================================== -->
+        <!-- =====================================================
+             CATEGORY: TECH (7 produits)
+             ===================================================== -->
         <section class="category-section" data-category="Tech" aria-labelledby="cat-tech">
             <div class="category-section-heading">
                 <div>
                     <span class="category-kicker">VOLTICA COLLECTION</span>
                     <h2 class="category-title" id="cat-tech">TECH</h2>
-                    <p class="category-tagline">Everyday technology, elevated.</p>
+                    <p class="category-tagline">Innovation you can hold.</p>
                 </div>
                 <span class="category-count">07 PRODUCTS</span>
             </div>
 
             <div class="product-grid" role="list">
 
-                <!-- PRODUCT 11 — TRI-FOLD KEYBOARD -->
-                <article class="store-product" role="listitem" data-product-id="VLT-TCH-TFK-001" data-product-name="Tri-Fold Bluetooth Keyboard" data-product-brand="Voltica" data-product-category="Tech" data-product-price="49.99" data-product-badge="NEW">
+                <!-- PRODUCT 09 — MULTIFUNCTIONAL LAPTOP STAND -->
+                <article class="store-product" role="listitem" data-product-id="VLT-TECH-STD-001" data-product-name="Multifunctional Laptop Stand" data-product-brand="Voltica" data-product-category="Tech" data-product-price="42.99" data-product-badge="NEW">
                     <span class="product-badge" data-badge="new">NEW</span>
                     <div class="product-image">
-                        <img src="assets/images/keyboard1.jpg" alt="Tri-Fold Bluetooth Keyboard" width="400" height="400" loading="lazy">
+                        <img src="assets/images/stand1.webp" alt="Multifunctional Laptop Stand" width="400" height="400" loading="lazy">
                     </div>
                     <div class="product-info">
                         <span class="product-category">TECH</span>
-                        <h3 class="product-title">Tri-Fold Bluetooth Keyboard</h3>
-                        <p class="product-description">Ultra-portable foldable keyboard with multi-device support and long battery life.</p>
+                        <h3 class="product-title">Multifunctional Laptop Stand</h3>
+                        <p class="product-description">Ergonomic notebook riser with 9 adjustable angles, hollow panels for heat dissipation, and phone stands.</p>
                         <div class="product-price-row">
-                            <span class="product-price">$49.99</span>
-                            <span class="product-reference-price">$59.99</span>
+                            <span class="product-price">$42.99</span>
+                            <span class="product-reference-price">$54.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/multifunctional-laptop-stand.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/bJe7sM8Gb647cCs7Ky2Ji0a" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 11 — LEVITATING SPEAKER -->
+                <article class="store-product" role="listitem" data-product-id="VLT-TECH-LEV-001" data-product-name="Levitating Bluetooth Speaker" data-product-brand="Voltica" data-product-category="Tech" data-product-price="98.99" data-product-badge="BEST SELLER">
+                    <span class="product-badge">BEST SELLER</span>
+                    <div class="product-image">
+                        <img src="assets/images/lifestyle1.1.jpg" alt="Levitating Bluetooth Speaker" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">TECH</span>
+                        <h3 class="product-title">Levitating Bluetooth Speaker</h3>
+                        <p class="product-description">Magnetic levitation speaker with 360° rotation, RGB LED lighting, and portable wireless design.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$98.99</span>
+                            <span class="product-reference-price">$119.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/levitating-bluetooth-speaker.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/4gM4gA09F0JNfOE3ui2Ji0d" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 12 — TRI-FOLD KEYBOARD -->
+                <article class="store-product" role="listitem" data-product-id="VLT-TECH-KBD-001" data-product-name="Tri-fold Touch Keyboard" data-product-brand="Voltica" data-product-category="Tech" data-product-price="37.99" data-product-badge="PREMIUM">
+                    <span class="product-badge" data-badge="premium">PREMIUM</span>
+                    <div class="product-image">
+                        <img src="assets/images/keyboard1.webp" alt="Tri-fold Touch Keyboard" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">TECH</span>
+                        <h3 class="product-title">Tri-fold Touch Keyboard</h3>
+                        <p class="product-description">Ultra-thin folding keyboard with integrated touchpad and universal Bluetooth compatibility.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$37.99</span>
+                            <span class="product-reference-price">$69.99</span>
                         </div>
                         <div class="product-actions">
                             <a href="products/tri-fold-keyboard.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
@@ -1177,7 +1493,28 @@
                         </div>
                         <div class="product-actions">
                             <a href="products/3d-holographic-led-fan.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
-                            <a href="https://buy.stripe.com/28E00k7C7bakn6e4ym2Ji0v" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                            <a href="https://buy.stripe.com/dRm6oI2hNakngSI2qe2Ji0e" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 26 — VOLTICA MT53 POCKET PHOTO PRINTER -->
+                <article class="store-product" role="listitem" data-product-id="VLT-TECH-MT53-001" data-product-name="MT53 Pocket Photo Printer" data-product-brand="Voltica" data-product-category="Tech" data-product-price="129.99" data-product-badge="BEST SELLER">
+                    <span class="product-badge">BEST SELLER</span>
+                    <div class="product-image">
+                        <img src="assets/images/printer1.jpg" alt="MT53 Pocket Photo Printer" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">TECH</span>
+                        <h3 class="product-title">MT53 Pocket Photo Printer</h3>
+                        <p class="product-description">Wireless Bluetooth printer with ZINK zero-ink technology, peel-and-stick backing, and 313x600 DPI.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$129.99</span>
+                            <span class="product-reference-price">$149.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/voltica-mt53-pocket-printer.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/6oUaEYf4zgILfOEc0O2Ji0A" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
                         </div>
                     </div>
                 </article>
@@ -1186,28 +1523,91 @@
         </section>
 
 
-            <!-- =====================================================
-                 CATEGORY: LIFESTYLE (3 produits)
-                 ===================================================== -->
+        <!-- =====================================================
+             CATEGORY: LIFESTYLE (3 produits)
+             ===================================================== -->
         <section class="category-section" data-category="Lifestyle" aria-labelledby="cat-lifestyle">
             <div class="category-section-heading">
                 <div>
                     <span class="category-kicker">VOLTICA COLLECTION</span>
                     <h2 class="category-title" id="cat-lifestyle">LIFESTYLE</h2>
-                    <p class="category-tagline">Design that fits your life.</p>
+                    <p class="category-tagline">Everyday technology, refined.</p>
                 </div>
                 <span class="category-count">03 PRODUCTS</span>
             </div>
 
             <div class="product-grid" role="list">
-                <!-- (produits Lifestyle d’origine conservés) -->
+
+                <!-- PRODUCT 18 — BLACK STAR PROJECTOR -->
+                <article class="store-product" role="listitem" data-product-id="VLT-LFT-002" data-product-name="Black Star Projector" data-product-brand="Voltica" data-product-category="Lifestyle" data-product-price="83.74" data-product-badge="FEATURED">
+                    <span class="product-badge" data-badge="featured">FEATURED</span>
+                    <div class="product-image">
+                        <img src="assets/images/projector2.webp" alt="Black Star Projector" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">LIFESTYLE</span>
+                        <h3 class="product-title">Black Star Projector</h3>
+                        <p class="product-description">UFO-inspired ambience night lamp with 10 interchangeable projection discs and USB power.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$83.74</span>
+                            <span class="product-reference-price">$93.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/black-star-projector.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/7sY4gAaOj6476e47Ky2Ji0f" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 20 — MOUNTOP UVC SMART WATER BOTTLE -->
+                <article class="store-product" role="listitem" data-product-id="VLT-LST-002" data-product-name="Mountop UVC Smart Bottle" data-product-brand="Mountop" data-product-category="Lifestyle" data-product-price="63.99" data-product-badge="BEST SELLER">
+                    <span class="product-badge">BEST SELLER</span>
+                    <div class="product-image">
+                        <img src="assets/images/cup1.jpg" alt="Mountop UVC Smart Water Bottle" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">LIFESTYLE</span>
+                        <h3 class="product-title">Mountop UVC Smart Bottle</h3>
+                        <p class="product-description">316 stainless steel insulated thermos with 99.99% UVC sterilization and real-time LED temperature display.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$63.99</span>
+                            <span class="product-reference-price">$69.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/mountop-uvc-water-bottle.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/00w8wQ1dJcsv8mc5Cq2Ji0t" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 22 — XREAL 1S AI AR SMART GLASSES -->
+                <article class="store-product" role="listitem" data-product-id="VLT-XREAL-1S" data-product-name="XReal 1S AI AR Smart Glasses" data-product-brand="XReal" data-product-category="Lifestyle" data-product-price="499.99" data-product-badge="PREMIUM">
+                    <span class="product-badge" data-badge="premium">PREMIUM</span>
+                    <div class="product-image">
+                        <img src="assets/images/glass1-1.jpg" alt="XReal 1S AI AR Smart Glasses" width="400" height="400" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">LIFESTYLE</span>
+                        <h3 class="product-title">XReal 1S AI AR Smart Glasses</h3>
+                        <p class="product-description">AI augmented reality smart glasses with 52° FOV, automatic electrochromic lenses, and USB-C plug & play. Free shipping included.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$499.99</span>
+                            <span class="product-reference-price">$579.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="products/xreal-air-1s-glasses.html" class="acrylic-button view-product-btn">VIEW PRODUCT</a>
+                            <a href="https://buy.stripe.com/4gM14o6y39gjfOE5Cq2Ji0D" target="_blank" rel="noopener noreferrer" class="acrylic-button product-buy-button">BUY NOW</a>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </section>
 
 
-            <!-- =====================================================
-                 CATEGORY: SMART HOME (2 produits)
-                 ===================================================== -->
+        <!-- =====================================================
+             CATEGORY: SMART HOME (2 produits)
+             ===================================================== -->
         <section class="category-section" data-category="Smart Home" aria-labelledby="cat-smarthome">
             <div class="category-section-heading">
                 <div>
@@ -1265,7 +1665,7 @@
             </div>
         </section>
 
-        </section>
+
         <section id="contact" class="contact-section" aria-labelledby="contact-title">
             <div class="contact-acrylic">
                 <div class="contact-pulsar" aria-hidden="true"></div>
@@ -1649,4 +2049,4 @@
     </script>
 
 </body>
-</html>
+                            </html>

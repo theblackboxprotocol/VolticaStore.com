@@ -614,15 +614,6 @@
         </a>
     </nav>
 
-    <button type="button" class="cart-acrylic" id="cartButton" aria-label="Open shopping cart" title="Shopping Cart">
-        <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M3 4H5L7.2 15.2C7.4 16.2 8.3 17 9.3 17H18.2C19.2 17 20.1 16.3 20.4 15.3L22 9H6"/>
-            <circle cx="9" cy="20" r="1.4"/>
-            <circle cx="18" cy="20" r="1.4"/>
-        </svg>
-        <span class="cart-count" id="cartCount" aria-live="polite" aria-atomic="true">0</span>
-    </button>
-
     <!-- TRIANGLE PULSAR -->
     <button
         type="button"
@@ -662,10 +653,6 @@
         <span class="mobile-pulsar-dot"></span>
         CONTACT
     </a>
-    <button type="button" class="mobile-cart-button" data-cart-open>
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.2s;"></span>
-        CART
-    </button>
 </div>
 
 
@@ -695,7 +682,7 @@
                 <div class="main-image-panel">
                     <img
                         src="../assets/images/stand1.webp"
-                        alt="Multifunctional Folding & Lifting Laptop Stand — 9 Angles, 20KG Capacity, Ergonomic Notebook Riser"
+                        alt="Multifunctional Folding Laptop Stand — 9 Angles Ergonomic Design"
                         id="mainProductImage"
                         width="800"
                         height="800"
@@ -718,11 +705,11 @@
                     <button type="button" class="product-thumbnail" data-full="../assets/images/stand3.webp" aria-label="View image 3 of 5: Heat dissipation">
                         <img src="../assets/images/stand3.webp" alt="Laptop stand heat dissipation" loading="lazy" decoding="async">
                     </button>
-                    <button type="button" class="product-thumbnail" data-full="../assets/images/stand4.webp" aria-label="View image 4 of 5: Phone stand feature">
-                        <img src="../assets/images/stand4.webp" alt="Laptop stand phone stand feature" loading="lazy" decoding="async">
+                    <button type="button" class="product-thumbnail" data-full="../assets/images/stand4.webp" aria-label="View image 4 of 5: Phone stands">
+                        <img src="../assets/images/stand4.webp" alt="Laptop stand phone stands" loading="lazy" decoding="async">
                     </button>
-                    <button type="button" class="product-thumbnail" data-full="../assets/images/stand5.webp" aria-label="View image 5 of 5: Lifestyle view">
-                        <img src="../assets/images/stand5.webp" alt="Laptop stand lifestyle view" loading="lazy" decoding="async">
+                    <button type="button" class="product-thumbnail" data-full="../assets/images/stand5.webp" aria-label="View image 5 of 5: Folded view">
+                        <img src="../assets/images/stand5.webp" alt="Laptop stand folded view" loading="lazy" decoding="async">
                     </button>
                 </div>
             </div>
@@ -733,13 +720,13 @@
                     <span>IN STOCK — FREE SHIPPING</span>
                 </div>
 
-                <span class="product-category">WORKSPACE ERGONOMICS</span>
+                <span class="product-category">ERGONOMIC TECH</span>
                 <span class="product-number">VLT-TCH-004</span>
 
                 <h1 id="product-title">Multifunctional Folding Laptop Stand</h1>
 
                 <p class="product-short-description">
-                    Upgrade your workspace ergonomics with the Multifunctional Folding & Lifting Laptop Stand. Designed to support laptops, PCs, and notebooks up to 17 inches with a max load capacity of up to 20KG, it features 9 adjustable angles to help eliminate neck stiffness and eyestrain. Built with hollow panels for superior heat dissipation, integrated phone stands, and a spacious open design to keep your desk neat and organized.
+                    Upgrade your workspace ergonomics with the Multifunctional Folding & Lifting Laptop Stand. Supports laptops up to 17 inches with a 20KG max load, featuring 9 adjustable angles, hollow heat dissipation panels, and integrated phone stands. Perfect for WFH, gaming, and studying.
                 </p>
 
                 <div class="product-price-panel">
@@ -761,15 +748,6 @@
                         <strong>BUY NOW</strong>
                         <span>→</span>
                     </a>
-                    <button
-                        type="button"
-                        class="final-buy-button"
-                        id="staticAddToCart"
-                        aria-label="Add Multifunctional Laptop Stand to cart"
-                    >
-                        <strong>ADD TO CART</strong>
-                        <span>→</span>
-                    </button>
                 </div>
 
                 <div class="product-availability">
@@ -950,43 +928,6 @@
 
 
 <!-- =====================================================
-     CART OVERLAY
-     ===================================================== -->
-<div class="cart-overlay" id="cartOverlay" aria-hidden="true" hidden></div>
-
-
-<!-- =====================================================
-     CART DRAWER
-     ===================================================== -->
-<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" role="dialog" aria-modal="true">
-    <div class="cart-header">
-        <div>
-            <span class="cart-small-title">VOLTICA</span>
-            <h2>CART</h2>
-        </div>
-        <button type="button" class="cart-close-x" id="cartClose" aria-label="Close shopping cart">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-    </div>
-
-    <div class="cart-items" id="cartItems" role="list" aria-label="Cart items"></div>
-
-    <div class="cart-footer">
-        <div class="cart-total-row">
-            <span>TOTAL</span>
-            <strong id="cartTotal">$0.00</strong>
-        </div>
-        <button type="button" class="checkout-button" id="checkoutButton" aria-label="Proceed to checkout">
-            CHECKOUT
-            <span>→</span>
-        </button>
-    </div>
-</aside>
-
-
-<!-- =====================================================
      FOOTER — ENRICHI (BLOG + SOCIAL ICONS)
      ===================================================== -->
 <footer class="store-footer">
@@ -1051,6 +992,32 @@
 </script>
 
 
+<!-- GA4 — BEGIN CHECKOUT AU CLIC BUY NOW / ORDER NOW -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var buyButtons = document.querySelectorAll("a.stripe-button, a.final-buy-button");
+  buyButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "begin_checkout", {
+          currency: "USD",
+          value: 42.99,
+          items: [{
+            item_id: "VLT-TCH-004",
+            item_name: "Multifunctional Folding Laptop Stand",
+            item_brand: "Voltica",
+            item_category: "Tech",
+            price: 42.99,
+            quantity: 1
+          }]
+        });
+      }
+    });
+  });
+});
+</script>
+
+
 <!-- GALERIE : CHANGEMENT D'IMAGE PAR MINIATURE -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -1070,94 +1037,6 @@
                 btn.classList.add("active");
             });
         });
-    });
-</script>
-
-
-<!-- AJOUT AU PANIER LOCAL -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-        var PRODUCT = {
-            id: "VLT-TCH-004",
-            name: "Multifunctional Folding Laptop Stand",
-            price: 42.99,
-            image: "https://volticastore.com/assets/images/stand1.webp"
-        };
-
-        var button = document.getElementById("staticAddToCart");
-        if (!button) { return; }
-
-        button.addEventListener("click", function () {
-
-            var cart = [];
-            try {
-                cart = JSON.parse(
-                    localStorage.getItem("volticaCart")
-                ) || [];
-            } catch (error) {
-                cart = [];
-            }
-
-            var existing = cart.find(function (item) {
-                return String(item.id) === String(PRODUCT.id);
-            });
-
-            if (existing) {
-                existing.quantity = (existing.quantity || 1) + 1;
-            } else {
-                cart.push({
-                    id: PRODUCT.id,
-                    name: PRODUCT.name,
-                    price: PRODUCT.price,
-                    image: PRODUCT.image,
-                    quantity: 1
-                });
-            }
-
-            localStorage.setItem(
-                "volticaCart",
-                JSON.stringify(cart)
-            );
-
-            var total = cart.reduce(function (sum, item) {
-                return sum + (item.quantity || 1);
-            }, 0);
-
-            var badge = document.getElementById("cartCount");
-            if (badge) {
-                badge.textContent = total;
-                badge.classList.add("visible");
-            }
-
-            button.innerHTML = "<strong>✓ ADDED</strong>";
-            button.setAttribute("aria-label", "Laptop Stand added to cart");
-            setTimeout(function () {
-                button.innerHTML = "<strong>ADD TO CART</strong><span>→</span>";
-                button.setAttribute("aria-label", "Add Multifunctional Laptop Stand to cart");
-            }, 1500);
-
-            if (typeof window.gtag === "function") {
-                window.gtag("event", "add_to_cart", {
-                    currency: "USD",
-                    value: PRODUCT.price,
-                    items: [{
-                        item_id: PRODUCT.id,
-                        item_name: PRODUCT.name,
-                        item_category: "Tech",
-                        price: PRODUCT.price,
-                        quantity: 1
-                    }]
-                });
-            }
-
-            var cartButton = document.getElementById("cartButton");
-            if (cartButton) {
-                cartButton.click();
-            }
-
-        });
-
     });
 </script>
 

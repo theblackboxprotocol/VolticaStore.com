@@ -588,6 +588,36 @@
             transition-duration: 0.01ms !important;
         }
     }
+
+    /* =====================================================
+       DYNAMIC VIDEO GALLERY
+       ===================================================== */
+    .main-image-panel {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .main-media {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .main-media.fading {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+
+    .main-image-panel.has-video {
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.4), 0 0 25px rgba(255,255,255,0.15);
+        border-radius: 12px;
+    }
+
+    video.main-media {
+        background: #000;
+    }
+
 </style>
 
 </head>
@@ -728,7 +758,7 @@
                     <button
                         type="button"
                         class="product-thumbnail active"
-                        data-full="../assets/images/Q45.1.jpg"
+                        data-full="../assets/images/Q45.1.jpg" data-video="../assets/video/q451.mp4"
                         aria-label="View image 1 of 4: Front view"
                     >
                         <img src="../assets/images/Q45.1.jpg" alt="Q45 front view" loading="lazy" decoding="async">
@@ -737,7 +767,7 @@
                     <button
                         type="button"
                         class="product-thumbnail"
-                        data-full="../assets/images/Q45.2.jpg"
+                        data-full="../assets/images/Q45.2.jpg" data-video="../assets/video/q452.mp4"
                         aria-label="View image 2 of 4: Side view"
                     >
                         <img src="../assets/images/Q45.2.jpg" alt="Q45 side view" loading="lazy" decoding="async">
@@ -746,7 +776,7 @@
                     <button
                         type="button"
                         class="product-thumbnail"
-                        data-full="../assets/images/Q45.3.jpg"
+                        data-full="../assets/images/Q45.3.jpg" data-video="../assets/video/q453.mp4"
                         aria-label="View image 3 of 4: Detail view"
                     >
                         <img src="../assets/images/Q45.3.jpg" alt="Q45 detail view" loading="lazy" decoding="async">
@@ -755,7 +785,7 @@
                     <button
                         type="button"
                         class="product-thumbnail"
-                        data-full="../assets/images/Q45.6.jpg"
+                        data-full="../assets/images/Q45.6.jpg" data-video="../assets/video/q454.mp4"
                         aria-label="View image 4 of 4: Lifestyle view"
                     >
                         <img src="../assets/images/Q45.6.jpg" alt="Q45 lifestyle view" loading="lazy" decoding="async">
@@ -1143,19 +1173,54 @@
 </script>
 
 
-<!-- GALERIE : CHANGEMENT D'IMAGE PAR MINIATURE -->
+<!-- GALERIE DYNAMIQUE : IMAGE + VIDÉO -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var main = document.getElementById("mainProductImage");
+        var mainImg = document.getElementById("mainProductImage");
+        var mainVideo = document.getElementById("mainProductVideo");
+        var panel = document.getElementById("mainMediaPanel");
         var thumbs = document.querySelectorAll(".product-thumbnail");
+
+        function showImage(src, alt) {
+            mainVideo.pause();
+            mainVideo.style.display = "none";
+            mainImg.style.display = "block";
+            panel.classList.remove("has-video");
+
+            mainImg.classList.add("fading");
+            setTimeout(function () {
+                mainImg.src = src;
+                mainImg.alt = alt;
+                mainImg.classList.remove("fading");
+            }, 200);
+        }
+
+        function showVideo(src) {
+            mainImg.style.display = "none";
+            mainVideo.style.display = "block";
+            panel.classList.add("has-video");
+
+            mainVideo.classList.add("fading");
+            setTimeout(function () {
+                mainVideo.src = src;
+                mainVideo.load();
+                mainVideo.play().catch(function(){});
+                mainVideo.classList.remove("fading");
+            }, 200);
+        }
 
         thumbs.forEach(function (btn) {
             btn.addEventListener("click", function () {
-                var src = btn.getAttribute("data-full");
-                if (src && main) {
-                    main.src = src;
-                    main.alt = btn.querySelector("img").alt.replace("Q45", "Anker Soundcore Space Q45");
+                var videoSrc = btn.getAttribute("data-video");
+                var imgSrc = btn.getAttribute("data-full");
+                var alt = btn.querySelector("img").alt.replace("Q45", "Anker Soundcore Space Q45");
+
+                if (videoSrc) {
+                    showVideo(videoSrc);
+                } else if (imgSrc) {
+                    showImage(imgSrc, alt);
                 }
+
                 thumbs.forEach(function (b) {
                     b.classList.remove("active");
                 });

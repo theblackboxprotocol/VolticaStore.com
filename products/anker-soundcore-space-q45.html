@@ -758,16 +758,25 @@
         <section class="product-hero static-product-hero" aria-labelledby="productTitle">
 
             <div class="product-gallery">
-                <div class="main-image-panel">
+                <div class="main-image-panel" id="mainMediaPanel">
                     <img
                         src="../assets/images/Q45.1.jpg"
                         alt="Anker Soundcore Space Q45 Wireless Headphones in White"
                         id="mainProductImage"
+                        class="main-media"
                         width="800"
                         height="800"
                         fetchpriority="high"
                         decoding="async"
                     >
+                    <video
+                        id="mainProductVideo"
+                        class="main-media"
+                        muted
+                        loop
+                        playsinline
+                        style="display:none;"
+                    ></video>
                     <div class="image-reflection" aria-hidden="true"></div>
                     <div class="gallery-pulse" aria-hidden="true">
                         <span class="pulse-dot"></span>

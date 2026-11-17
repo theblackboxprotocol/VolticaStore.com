@@ -90,8 +90,8 @@
         }
 
         .article-figure {
-            margin: 36px 0;
-            max-width: 100%;
+            margin: 40px auto;
+            max-width: 900px;
             overflow: hidden;
             border-radius: 16px;
         }
@@ -105,11 +105,11 @@
         }
 
         .article-pull-line {
-            margin: 36px 0 24px;
-            padding-left: 20px;
+            margin: 40px 0 28px;
+            padding-left: 22px;
             border-left: 2px solid rgba(255, 255, 255, 0.55);
             font-family: "Manrope", sans-serif;
-            font-size: clamp(18px, 2.2vw, 24px);
+            font-size: clamp(20px, 2.4vw, 26px);
             line-height: 1.35;
             letter-spacing: -0.02em;
             font-weight: 600;
@@ -120,6 +120,57 @@
             background: transparent;
             position: relative;
             z-index: 2;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 60px 40px 100px;
+        }
+
+        .article-h1 {
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(36px, 4.5vw, 56px);
+            line-height: 1.02;
+            letter-spacing: -0.045em;
+            font-weight: 800;
+            background: linear-gradient(180deg, #ffffff 0%, #c8c8c8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 12px 0 24px;
+            text-align: center;
+        }
+
+        .article-deck {
+            font-family: "DM Sans", sans-serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.75);
+            max-width: 680px;
+            margin: 0 auto 32px;
+            text-align: center;
+        }
+
+        .article-meta-row {
+            text-align: center;
+            margin-bottom: 36px;
+            color: rgba(255,255,255,0.55);
+            font-size: 13px;
+            letter-spacing: 0.04em;
+        }
+
+        .article-body {
+            font-family: "DM Sans", sans-serif;
+            font-size: 17px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.84);
+        }
+
+        .article-body h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(24px, 2.8vw, 32px);
+            letter-spacing: -0.03em;
+            font-weight: 700;
+            margin: 56px 0 20px;
+            color: #fff;
         }
 
         #main-content,
@@ -143,6 +194,22 @@
             }
             .article-figure {
                 margin: 24px 0;
+                max-width: 100%;
+            }
+            .blog-article {
+                padding: 32px 16px 70px;
+                max-width: 100%;
+            }
+            .article-h1 {
+                font-size: 28px;
+                text-align: left;
+            }
+            .article-deck {
+                text-align: left;
+                font-size: 16px;
+            }
+            .article-meta-row {
+                text-align: left;
             }
         }
     </style>

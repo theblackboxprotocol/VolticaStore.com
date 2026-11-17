@@ -77,27 +77,39 @@
     <link rel="stylesheet" href="../volticablog.css">
 
     <style>
-        /* Orchestra II — specific styles inlined to avoid external CSS bugs */
+        /* Orchestra II — specific styles inlined */
         .article-video {
             display: block;
             width: 100%;
+            max-width: 100%;
             height: auto;
             aspect-ratio: 16 / 9;
             object-fit: cover;
             background: #050505;
-            border-radius: inherit;
+            border-radius: 16px;
         }
 
-        .article-figure video {
-            border-radius: inherit;
+        .article-figure {
+            margin: 36px 0;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .article-figure img {
+            width: 100%;
+            height: auto;
+            max-height: 60vh;
+            object-fit: cover;
+            aspect-ratio: 16 / 9;
         }
 
         .article-pull-line {
-            margin: 40px 0 28px;
-            padding-left: 22px;
+            margin: 36px 0 24px;
+            padding-left: 20px;
             border-left: 2px solid rgba(255, 255, 255, 0.55);
-            font-family: var(--blog-font-display, "Manrope", sans-serif);
-            font-size: clamp(20px, 2.5vw, 26px);
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(18px, 2.2vw, 24px);
             line-height: 1.35;
             letter-spacing: -0.02em;
             font-weight: 600;
@@ -110,11 +122,6 @@
             z-index: 2;
         }
 
-        .article-figure {
-            margin: 48px 0;
-        }
-
-        /* Ensure content is above any decorative overlays */
         #main-content,
         .blog-article,
         .article-body {
@@ -122,11 +129,21 @@
             z-index: 10;
         }
 
-        /* Soften or hide decorative overlays on article pages if they cover content */
         .pulsar-field,
         .tech-grid {
             z-index: 0;
             pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .article-figure img,
+            .article-video {
+                max-height: 42vh;
+                border-radius: 12px;
+            }
+            .article-figure {
+                margin: 24px 0;
+            }
         }
     </style>
 
@@ -356,7 +373,7 @@
         <p>The <a href="../products/kiwi-ears-orchestra-ii.html">Kiwi Ears Orchestra II</a> takes that professional stage technology and puts it right on your desk. Rather than cramming one generic speaker into each shell, Kiwi Ears packed ten custom Balanced Armature drivers per ear—twenty in total. Think of it like a dedicated sound crew: two drivers handle only the deep sub-bass, four focus purely on warm midrange vocals and guitars, two sharpen the upper instruments, and two ultra-high tweeters bring out the crisp airiness of cymbals and room acoustics.</p>
 
         <figure class="article-figure">
-            <video class="article-video" src="../assets/videos/orchestrablog.mp4" poster="../assets/images/orchestrablog.jpg" controls muted loop playsinline preload="metadata" width="1200" height="675">
+            <video class="article-video" src="../assets/videos/orchestrablog.mp4" autoplay muted loop playsinline preload="auto" width="1200" height="675">
                 Your browser does not support the video tag.
             </video>
             <figcaption>Slow rotation and detail reveal of the Orchestra II’s transparent resin shells, honeycomb faceplates, and internal driver array.</figcaption>

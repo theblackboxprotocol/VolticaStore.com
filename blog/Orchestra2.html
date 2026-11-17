@@ -75,7 +75,60 @@
     <link rel="stylesheet" href="../store.css">
     <link rel="stylesheet" href="../product-view.css">
     <link rel="stylesheet" href="../volticablog.css">
-    <link rel="stylesheet" href="Orchestra2.css">
+
+    <style>
+        /* Orchestra II — specific styles inlined to avoid external CSS bugs */
+        .article-video {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            background: #050505;
+            border-radius: inherit;
+        }
+
+        .article-figure video {
+            border-radius: inherit;
+        }
+
+        .article-pull-line {
+            margin: 40px 0 28px;
+            padding-left: 22px;
+            border-left: 2px solid rgba(255, 255, 255, 0.55);
+            font-family: var(--blog-font-display, "Manrope", sans-serif);
+            font-size: clamp(20px, 2.5vw, 26px);
+            line-height: 1.35;
+            letter-spacing: -0.02em;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .blog-article {
+            background: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .article-figure {
+            margin: 48px 0;
+        }
+
+        /* Ensure content is above any decorative overlays */
+        #main-content,
+        .blog-article,
+        .article-body {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Soften or hide decorative overlays on article pages if they cover content */
+        .pulsar-field,
+        .tech-grid {
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
 
     <!-- =====================================================
          STRUCTURED DATA — BLOG POSTING
@@ -435,4 +488,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
-

@@ -11,7 +11,7 @@
 <!-- Preload critical fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
 
 <!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCJ9SC3NZP"></script>
@@ -64,49 +64,33 @@ a { color: inherit; text-decoration: none; }
   z-index: 1000;
 }
 .logo {
-  height: 36px;
+  height: 42px;
   width: auto;
 }
-.nav {
-  margin-left: auto;
-  display: flex;
-  gap: 28px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-.nav a { opacity: 0.7; transition: opacity 0.3s; }
-.nav a:hover { opacity: 1; }
-
-/* Hero */
-.hero {
-  min-height: 100vh;
-  padding: calc(var(--header-h) + 40px) 24px 80px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-  position: relative;
-  background: radial-gradient(ellipse at 70% 40%, rgba(255,255,255,0.04) 0%, transparent 60%);
-}
-.hero-glass {
-  background: var(--glass);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  padding: 48px 40px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
-  animation: fadeUp 1s ease-out;
+.hero-logo-full {
+  max-width: 420px;
+  margin: 0 auto 32px;
+  filter: drop-shadow(0 10px 30px rgba(255,255,255,0.08));
 }
 .hero-title {
-  font-size: clamp(36px, 5vw, 56px);
-  font-weight: 300;
-  letter-spacing: 0.02em;
-  font-style: italic;
+  font-family: 'Great Vibes', 'Playfair Display', cursive;
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin-bottom: 8px;
+  line-height: 1;
+  background: linear-gradient(180deg, #fff 0%, #c0c0c0 50%, #888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 10px rgba(255,255,255,0.1);
+}
+.hero-subtitle {
+  font-size: 14px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
   margin-bottom: 24px;
-  line-height: 1.1;
 }
 .hero-product {
   font-size: 28px;
@@ -123,6 +107,14 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 480px;
+}
+.hero-visual video {
+  width: 100%;
+  max-height: 560px;
+  object-fit: contain;
+  border-radius: 16px;
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.6));
 }
 .hero-visual img {
   max-height: 520px;
@@ -130,7 +122,57 @@ a { color: inherit; text-decoration: none; }
   animation: float 6s ease-in-out infinite;
 }
 
-/* Acrylic button */
+.nav {
+  margin-left: auto;
+  display: flex;
+  gap: 28px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.nav a {
+  opacity: 0.75;
+  transition: opacity 0.3s;
+  position: relative;
+  padding-left: 14px;
+}
+.nav a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px #fff, 0 0 18px rgba(255,255,255,0.55);
+  animation: pulsePoint 2.2s ease-in-out infinite;
+}
+.nav a:hover { opacity: 1; }
+
+@keyframes pulsePoint {
+  0%, 100% { transform: translateY(-50%) scale(0.7); opacity: 0.45; }
+  50% { transform: translateY(-50%) scale(1.45); opacity: 1; }
+}
+@keyframes pulseRing {
+  0% { transform: translateY(-50%) scale(0.5); opacity: 0.6; }
+  100% { transform: translateY(-50%) scale(2.1); opacity: 0; }
+}
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  width: 17px;
+  height: 17px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  animation: pulseRing 2.2s ease-out infinite;
+  pointer-events: none;
+}
 .acrylic-btn {
   display: inline-block;
   position: relative;
@@ -240,7 +282,7 @@ a { color: inherit; text-decoration: none; }
 <body>
 
 <header class="header">
-  <a href="#"><img src="assets/images/testlogo.jpg" alt="Voltica" class="logo" width="120" height="36"></a>
+  <a href="#"><img src="assets/images/testlogo.jpg" alt="Voltica" class="logo" width="140" height="42"></a>
   <nav class="nav">
     <a href="#home">Home</a>
     <a href="#store">Store</a>
@@ -254,13 +296,18 @@ a { color: inherit; text-decoration: none; }
   <!-- Hero -->
   <section class="hero" id="home">
     <div class="hero-glass">
-      <div class="hero-title">The Future of Everyday</div>
+      <img src="assets/images/testlogo.jpg" alt="Voltica — The Future of Everyday" class="hero-logo-full">
+      <div class="hero-title">The Future</div>
+      <div class="hero-subtitle">of Everyday</div>
       <div class="hero-product">Anker Soundcore Q45<br>Elite Audio</div>
-      <div class="hero-price">$161.49 USD + Elite Pass 15% OFF for life</div>
+      <div class="hero-price">$161.49 USD + Elite Pass (first 200) 15% OFF for life</div>
       <a href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B" class="acrylic-btn" onclick="gtag('event','click',{event_category:'CTA',event_label:'Hero Enter Store'});">Enter the Store</a>
     </div>
     <div class="hero-visual">
-      <img src="https://volticastore.com/assets/images/Q45.1.jpg" alt="Anker Soundcore Space Q45" loading="eager">
+      <video autoplay muted loop playsinline poster="https://volticastore.com/assets/images/Q45.1.jpg">
+        <source src="https://volticastore.com/assets/videos/q452.mp4" type="video/mp4">
+        <img src="https://volticastore.com/assets/images/Q45.1.jpg" alt="Anker Soundcore Space Q45">
+      </video>
     </div>
   </section>
 
@@ -270,7 +317,7 @@ a { color: inherit; text-decoration: none; }
       <div>
         <div style="font-size:12px;letter-spacing:0.2em;opacity:0.6;margin-bottom:12px;">VOLTICA ELITE PASS EDITION</div>
         <h2 class="section-title">Anker Soundcore Q45<br>ELITE AUDIO</h2>
-        <p style="color:var(--text-muted);margin:16px 0 24px;">Get the Q45 for $161.49 and unlock 15% OFF FOR LIFE.<br><small>Not combinable with Kiwi Ears 10% offers.</small></p>
+        <p style="color:var(--text-muted);margin:16px 0 24px;">Get the Q45 for $161.49. The first 200 customers receive a metallic Elite Pass card with an exclusive promo code for 15% OFF FOR LIFE.<br><small>15% is not combinable with the Kiwi Ears 10% offer.</small></p>
         <a href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B" class="acrylic-btn" style="font-size:16px;padding:14px 32px;" onclick="gtag('event','click',{event_category:'CTA',event_label:'Elite Pass Buy'});">Order Now</a>
       </div>
       <img src="https://volticastore.com/assets/images/Q45.1.jpg" alt="Q45" style="max-height:360px;margin:0 auto;">
@@ -281,7 +328,7 @@ a { color: inherit; text-decoration: none; }
   <section class="section">
     <div class="card">
       <h2 class="section-title">Kiwi Ears × Voltica</h2>
-      <p style="color:var(--text-muted);">Orchestra II and more. First 100 customers receive 10% OFF plus exclusive VIP card. Elite Pass 15% is not combinable with the 10% Kiwi Ears offer.</p>
+      <p style="color:var(--text-muted);">10% discount on all Kiwi Ears models. Promo code is sent via Instagram DM to subscribers and is activated at Stripe checkout. The Elite Pass 15% is not combinable with this Kiwi Ears offer.</p>
       <a href="store.html" class="acrylic-btn" style="margin-top:24px;font-size:16px;padding:14px 32px;" onclick="gtag('event','click',{event_category:'CTA',event_label:'Shop Kiwi'});">Shop Kiwi Ears</a>
     </div>
   </section>
@@ -319,7 +366,7 @@ a { color: inherit; text-decoration: none; }
   <section class="section" id="contact">
     <div class="card" style="text-align:center;">
       <h2 class="section-title">Need Help?</h2>
-      <p style="color:var(--text-muted);margin-bottom:24px;">Questions about a product, an order, or Voltica Store? Our team responds within 24 hours.</p>
+      <p style="color:var(--text-muted);margin-bottom:24px;">Questions about a product, an order, or Voltica Store? Our team responds within 24 hours.<br><small style="display:block;margin-top:12px;opacity:0.8;">Shipping: 1-2 days processing + average 20 days delivery (includes quality inspection before shipment).</small></p>
       <a href="contact.html" class="acrylic-btn" style="font-size:16px;padding:14px 32px;" onclick="gtag('event','click',{event_category:'CTA',event_label:'Contact'});">Contact Us</a>
     </div>
   </section>
@@ -361,4 +408,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
-

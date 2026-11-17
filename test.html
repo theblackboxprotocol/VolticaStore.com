@@ -67,10 +67,25 @@ a { color: inherit; text-decoration: none; }
   height: 42px;
   width: auto;
 }
-.hero-logo-full {
-  max-width: 420px;
-  margin: 0 auto 32px;
-  filter: drop-shadow(0 10px 30px rgba(255,255,255,0.08));
+.hero {
+  min-height: 100vh;
+  padding: calc(var(--header-h) + 40px) 24px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background: radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.05) 0%, transparent 60%);
+}
+.hero-logo-video {
+  width: min(480px, 90vw);
+  max-height: 320px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+}
+.hero-btn-wrap {
+  margin: 16px 0 32px;
 }
 .hero-title {
   font-family: 'Great Vibes', 'Playfair Display', cursive;
@@ -93,28 +108,42 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 24px;
 }
 .hero-product {
-  font-size: 28px;
-  font-weight: 600;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 400;
   margin-bottom: 8px;
+  background: linear-gradient(180deg, #fff 0%, #c0c0c0 50%, #888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .hero-price {
   font-size: 18px;
   color: var(--text-muted);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  text-shadow: 0 0 12px rgba(255,255,255,0.15);
 }
 .hero-visual {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 480px;
+  width: min(420px, 85vw);
+  margin-top: 20px;
 }
 .hero-visual video {
   width: 100%;
-  max-height: 560px;
+  max-height: 380px;
   object-fit: contain;
   border-radius: 16px;
-  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 15px 40px rgba(0,0,0,0.55));
+}
+.section-title, h2 {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  background: linear-gradient(180deg, #fff 0%, #d0d0d0 60%, #999 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+p, .hero-price, small {
+  text-shadow: 0 0 8px rgba(255,255,255,0.12);
 }
 .hero-visual img {
   max-height: 520px;
@@ -295,14 +324,20 @@ a { color: inherit; text-decoration: none; }
 <main>
   <!-- Hero -->
   <section class="hero" id="home">
-    <div class="hero-glass">
-      <img src="assets/images/testlogo.jpg" alt="Voltica — The Future of Everyday" class="hero-logo-full">
-      <div class="hero-title">The Future</div>
-      <div class="hero-subtitle">of Everyday</div>
-      <div class="hero-product">Anker Soundcore Q45<br>Elite Audio</div>
-      <div class="hero-price">$161.49 USD + Elite Pass (first 200) 15% OFF for life</div>
-      <a href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B" class="acrylic-btn" onclick="gtag('event','click',{event_category:'CTA',event_label:'Hero Enter Store'});">Enter the Store</a>
+    <video class="hero-logo-video" autoplay muted loop playsinline poster="assets/images/testlogo.jpg">
+      <source src="assets/videos/testlogo.mp4" type="video/mp4">
+      <img src="assets/images/testlogo.jpg" alt="Voltica — The Future of Everyday">
+    </video>
+    <div class="hero-btn-wrap">
+      <a href="https://buy.stripe.com/28E00kf4z0JNeKA0i62Ji0B" class="acrylic-btn" onclick="gtag('event','click',{event_category:'CTA',event_label:'Hero Enter Store'});">
+        <video autoplay muted loop playsinline style="width:100%;max-width:320px;height:auto;border-radius:40px;" poster="assets/images/testbouton.jpg">
+          <source src="assets/videos/testbouton.mp4" type="video/mp4">
+          Enter the Store
+        </video>
+      </a>
     </div>
+    <div class="hero-product">Anker Soundcore Q45 Elite Audio</div>
+    <div class="hero-price">$161.49 USD + Elite Pass (first 200) 15% OFF for life</div>
     <div class="hero-visual">
       <video autoplay muted loop playsinline poster="https://volticastore.com/assets/images/Q45.1.jpg">
         <source src="https://volticastore.com/assets/videos/q452.mp4" type="video/mp4">

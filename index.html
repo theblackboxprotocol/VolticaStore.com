@@ -703,7 +703,7 @@
 
 
     /* =====================================================
-       HERO — TABLETTE RÉDUITE + SLOGAN IMAGE + BOUTON ENTER
+       HERO — TIGHT + SLOGAN ANIMÉ + BOUTON BLANC
        ===================================================== */
 
     .premium-home {
@@ -778,14 +778,50 @@
         animation: pulsePoint 2s infinite;
     }
 
-    /* Slogan image remplace le texte H1 */
-    .hero-slogan-img {
-        display: block;
-        margin: 14px auto 0;
-        max-width: 420px;
-        width: 100%;
-        height: auto;
-        object-fit: contain;
+    /* =====================================================
+       FUTURE TITLE — SLOGAN ANIMÉ (identique à store.html)
+       ===================================================== */
+    .future-title {
+        position: relative;
+        z-index: 3;
+        margin: 16px 0 0;
+        display: flex;
+        flex-direction: column;
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(44px, 7vw, 96px);
+        line-height: 0.9;
+        letter-spacing: -0.065em;
+        font-weight: 900;
+        text-transform: uppercase;
+        text-shadow: 0 0 40px rgba(255,255,255,0.08);
+    }
+
+    .future-title span:first-child {
+        background: linear-gradient(180deg, #ffffff 0%, #cfcfcf 45%, #777777 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: titleSlideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+    }
+
+    .future-second {
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255,255,255,0.38);
+        text-shadow: 0 0 30px rgba(255,255,255,0.04);
+        animation: titleSlideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+    }
+
+    @keyframes titleSlideUp {
+        from {
+            opacity: 0;
+            transform: translateY(60px);
+            filter: blur(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
     }
 
     .hero-copy p {
@@ -805,54 +841,28 @@
         margin-top: 16px;
     }
 
-    .hero-button {
+    /* Bouton blanc premium — style Q45 */
+    .explore-store-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 44px;
-        padding: 0 20px;
-        border: 1px solid rgba(255,255,255,.16);
+        gap: 8px;
+        width: max-content;
+        min-height: 48px;
+        padding: 0 28px;
         border-radius: 14px;
-        color: #fff;
-        background: rgba(255,255,255,.07);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
+        background: #fff;
+        color: #050505;
+        font-family: "Manrope", sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .08em;
         transition: .35s ease;
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: .05em;
     }
 
-    .hero-button:hover {
+    .explore-store-btn:hover {
         transform: translateY(-3px);
-        background: rgba(255,255,255,.14);
-        box-shadow: 0 15px 40px rgba(255,255,255,.08);
-    }
-
-    .hero-button.primary {
-        background: transparent;
-        border: none;
-        padding: 0;
-    }
-
-    .hero-button.primary:hover {
-        transform: translateY(-3px);
-        box-shadow: none;
-        background: transparent;
-    }
-
-    .hero-enter-btn img {
-        display: block;
-        max-width: 220px;
-        width: 100%;
-        height: auto;
-        transition: transform 0.35s ease, filter 0.35s ease;
-        filter: drop-shadow(0 4px 20px rgba(255,255,255,.08));
-    }
-
-    .hero-enter-btn:hover img {
-        transform: translateY(-3px) scale(1.03);
-        filter: drop-shadow(0 8px 30px rgba(255,255,255,.18));
+        box-shadow: 0 18px 45px rgba(255,255,255,.15);
     }
 
 
@@ -1729,7 +1739,7 @@
         .contact-card { padding: 48px 28px; }
         .hero-glass { padding: 22px 20px; }
         .premium-home { padding: 92px 20px 8px; }
-        .hero-slogan-img { max-width: 300px; }
+        .future-title { font-size: clamp(38px, 8vw, 64px); }
         .q45-promo-card, .kiwi-promo-card { min-height: 0; }
         .q45-promo-copy, .kiwi-promo-copy { padding: 30px 22px; }
         .kiwi-promo-copy { padding: 35px 30px; }
@@ -1744,9 +1754,9 @@
     }
 
     @media (max-width: 560px) {
-        .hero-slogan-img { max-width: 240px; }
+        .future-title { font-size: clamp(30px, 10vw, 44px); }
         .hero-actions { flex-direction: column; align-items: center; }
-        .hero-enter-btn img { max-width: 200px; }
+        .explore-store-btn { width: 100%; }
         .index-video-section { padding-left: 16px; padding-right: 16px; padding-bottom: 20px; }
         .index-video-frame { border-radius: 20px; }
         .q45-promo-section, .kiwi-promo-section, .blog-insights-section { padding-left: 16px; padding-right: 16px; }
@@ -1822,7 +1832,7 @@
 
 
     /* =====================================================
-       HERO FIX — TIGHT + SLOGAN LISIBLE + MERGED BUTTON
+       HERO FIX — TIGHT + MERGED
        ===================================================== */
 
     .premium-home {
@@ -1841,18 +1851,7 @@
         font-size: 8px !important;
     }
 
-    /* Slogan : RATIO NATUREL préservé (plus d'écrasement illisible).
-       Plus grand que l'original, mais toujours lisible.
-       Pour ajuster la taille : change seulement les max-width. */
-    .hero-slogan-img {
-        width: 100% !important;
-        max-width: 560px !important;
-        height: auto !important;
-        object-fit: contain !important;
-        margin: 10px auto 0 !important;
-    }
-
-    /* Texte en dessous resserré en conséquence */
+    /* Texte en dessous resserré */
     .hero-copy p {
         max-width: 520px !important;
         margin: 8px auto 0 !important;
@@ -1865,34 +1864,13 @@
         background: transparent !important;
     }
 
-    /* Le rectangle gris disparaît : tout merge avec le fond noir */
-    .hero-enter-btn,
-    .hero-enter-btn:hover {
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        padding: 0 !important;
-        min-height: 0 !important;
-        border-radius: 0 !important;
-    }
-
-    .hero-enter-btn img {
-        max-width: 230px !important;
-        background: transparent !important;
-    }
-
     @media (max-width: 850px) {
         .premium-home { padding: 88px 14px 4px !important; }
         .hero-glass { padding: 14px 16px 16px !important; }
-        .hero-slogan-img { max-width: 440px !important; }
     }
 
     @media (max-width: 560px) {
-        .hero-slogan-img { max-width: 320px !important; }
         .hero-copy p { font-size: 11.5px !important; }
-        .hero-enter-btn img { max-width: 190px !important; }
     }
 
 </style>
@@ -2053,16 +2031,18 @@
                     WELCOME TO VOLTICA
                 </div>
 
-                <!-- H1 visuellement masqué (SEO/accessibilité), slogan en image -->
-                <h1 id="hero-title" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">The Future of Everyday</h1>
-                <img src="assets/images/slogan.png" alt="The Future of Everyday" class="hero-slogan-img" loading="eager">
+                <!-- SLOGAN ANIMÉ — identique à store.html (remplace slogan.png) -->
+                <h1 class="future-title" id="hero-title">
+                    <span>THE FUTURE</span>
+                    <span class="future-second">OF EVERYDAY</span>
+                </h1>
 
                 <p>Premium technology. Carefully selected products. Designed around the way the next generation lives, works, plays and listens.</p>
 
                 <div class="hero-actions">
-                    <!-- BOUTON CORRIGÉ : classes hero-button primary retirées pour tuer le rectangle gris -->
-                    <a href="store.html" class="hero-enter-btn" aria-label="Enter Voltica Store">
-                        <img src="assets/images/enter.png" alt="Enter Voltica Store" loading="eager">
+                    <!-- BOUTON BLANC premium style Q45 (remplace enter.png) -->
+                    <a href="store.html" class="explore-store-btn" aria-label="Explore the Voltica Store">
+                        EXPLORE THE STORE <span aria-hidden="true">→</span>
                     </a>
                 </div>
             </div>
@@ -2166,9 +2146,9 @@
             <span class="pulse-dot" aria-hidden="true"></span>
             <h2 id="final-title">YOUR NEXT DEVICE<br>STARTS HERE.</h2>
             <p>Premium technology selected for people who expect more from the things they use every day.</p>
-            <!-- BOUTON CORRIGÉ : classes hero-button primary retirées pour tuer le rectangle gris -->
-            <a href="store.html" class="hero-enter-btn" aria-label="Enter Voltica Store">
-                <img src="assets/images/enter.png" alt="Enter Voltica Store" loading="lazy">
+            <!-- BOUTON BLANC premium style Q45 (remplace enter.png) -->
+            <a href="store.html" class="explore-store-btn" aria-label="Explore the Voltica Store">
+                EXPLORE THE STORE <span aria-hidden="true">→</span>
             </a>
         </div>
     </section>

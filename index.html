@@ -1820,6 +1820,82 @@
         }
     }
 
+
+    /* =====================================================
+       HERO FIX — TIGHT + STRETCHED SLOGAN + MERGED BUTTON
+       ===================================================== */
+
+    .premium-home {
+        min-height: 0 !important;
+        padding: 92px 16px 4px !important;
+    }
+
+    .hero-glass {
+        min-height: 0 !important;
+        padding: 16px 22px 18px !important;
+        border-radius: 34px !important;
+    }
+
+    .hero-kicker {
+        padding: 4px 11px !important;
+        font-size: 8px !important;
+    }
+
+    /* Slogan étiré : long, pas haut, adapté à la tablette */
+    .hero-slogan-img {
+        width: 100% !important;
+        max-width: 760px !important;
+        height: clamp(58px, 7vw, 84px) !important;
+        object-fit: fill !important;
+        margin: 8px auto 0 !important;
+    }
+
+    /* Texte en dessous resserré en conséquence */
+    .hero-copy p {
+        max-width: 520px !important;
+        margin: 8px auto 0 !important;
+        font-size: 12px !important;
+        line-height: 1.65 !important;
+    }
+
+    .hero-actions {
+        margin-top: 10px !important;
+        background: transparent !important;
+    }
+
+    /* Le rectangle gris disparaît : tout merge avec le fond noir */
+    .hero-enter-btn,
+    .hero-enter-btn:hover {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        padding: 0 !important;
+        min-height: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    .hero-enter-btn img {
+        max-width: 230px !important;
+        background: transparent !important;
+    }
+
+    @media (max-width: 850px) {
+        .premium-home { padding: 88px 14px 4px !important; }
+        .hero-glass { padding: 14px 16px 16px !important; }
+        .hero-slogan-img {
+            max-width: 100% !important;
+            height: clamp(54px, 9vw, 78px) !important;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .hero-slogan-img { height: clamp(48px, 11vw, 64px) !important; }
+        .hero-copy p { font-size: 11.5px !important; }
+        .hero-enter-btn img { max-width: 190px !important; }
+    }
+
 </style>
 
 </head>
@@ -1985,7 +2061,8 @@
                 <p>Premium technology. Carefully selected products. Designed around the way the next generation lives, works, plays and listens.</p>
 
                 <div class="hero-actions">
-                    <a href="store.html" class="hero-button primary hero-enter-btn" aria-label="Enter Voltica Store">
+                    <!-- BOUTON CORRIGÉ : classes hero-button primary retirées pour tuer le rectangle gris -->
+                    <a href="store.html" class="hero-enter-btn" aria-label="Enter Voltica Store">
                         <img src="assets/images/enter.png" alt="Enter Voltica Store" loading="eager">
                     </a>
                 </div>
@@ -2085,13 +2162,13 @@
             </div>
         </div>
     </section>
-
     <section class="final-section" aria-labelledby="final-title">
         <div class="final-glass">
             <span class="pulse-dot" aria-hidden="true"></span>
             <h2 id="final-title">YOUR NEXT DEVICE<br>STARTS HERE.</h2>
             <p>Premium technology selected for people who expect more from the things they use every day.</p>
-            <a href="store.html" class="hero-button primary hero-enter-btn" aria-label="Enter Voltica Store">
+            <!-- BOUTON CORRIGÉ : classes hero-button primary retirées pour tuer le rectangle gris -->
+            <a href="store.html" class="hero-enter-btn" aria-label="Enter Voltica Store">
                 <img src="assets/images/enter.png" alt="Enter Voltica Store" loading="lazy">
             </a>
         </div>

@@ -271,7 +271,7 @@
     }
 
     /* =====================================================
-       FLOATING HAMBURGER (MOBILE ONLY) — style Q45
+       FLOATING HAMBURGER (MOBILE ONLY)
        ===================================================== */
     .floating-hamburger {
         position: fixed;
@@ -301,14 +301,14 @@
     .floating-hamburger .pulsar-triangle { width: 22px; height: 22px; }
 
     /* =====================================================
-       VIDEO POPUP ACRYLIQUE — style Q45 (PC centre-droite-haut)
+       VIDEO POPUP ACRYLIQUE — FORMAT 1:1 (CARRÉ)
        ===================================================== */
     .video-popup-modal {
         position: fixed;
         top: 100px;
         right: 60px;
         z-index: 998;
-        width: 520px;
+        width: 480px;
         max-width: calc(100vw - 100px);
         background: linear-gradient(145deg, rgba(20, 22, 28, 0.78), rgba(8, 9, 12, 0.92));
         border: 1px solid rgba(255, 255, 255, 0.18);
@@ -339,6 +339,7 @@
         height: 1px;
         background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
         pointer-events: none;
+        z-index: 2;
     }
     .video-popup-header {
         display: flex;
@@ -389,17 +390,18 @@
         color: #fff;
         transform: rotate(90deg);
     }
+    /* FORMAT 1:1 — AUCUN CROP, infos visibles */
     .video-popup-frame {
         position: relative;
         width: 100%;
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 1 / 1;
         background: #000;
         overflow: hidden;
     }
     .video-popup-frame video {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         display: block;
     }
     .video-popup-frame::after {
@@ -412,7 +414,6 @@
     }
 
     @media (max-width: 850px) {
-        /* HEADER : caché sur mobile, remplacé par le hamburger flottant */
         .store-header {
             display: none !important;
         }
@@ -426,7 +427,7 @@
         .image-reflection { display: none; }
         .product-savings { font-size: 8px; padding: 5px 12px; margin-left: 0; margin-top: 8px; }
 
-        /* VIDEO POPUP : EN HAUT, pleine largeur sur mobile */
+        /* VIDEO POPUP MOBILE : EN HAUT, pleine largeur */
         .video-popup-modal {
             top: 78px;
             bottom: auto;
@@ -443,6 +444,7 @@
         .video-popup-header { padding: 12px 16px; }
         .video-popup-close { width: 34px; height: 34px; }
     }
+
     @media (max-width: 560px) {
         .footer-social { border-left: none; padding-left: 0; padding-top: 8px; }
         .footer-acrylic { flex-direction: column; gap: 16px; }
@@ -454,6 +456,7 @@
             border-radius: 18px;
         }
     }
+
     @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after {
             animation-duration: 0.01ms !important;
@@ -477,7 +480,7 @@
 </div>
 <div class="tech-grid" aria-hidden="true"></div>
 
-<!-- HAMBURGER FLOTTANT (visible uniquement sur mobile) -->
+<!-- HAMBURGER FLOTTANT (mobile only) -->
 <button
     type="button"
     class="floating-hamburger"
@@ -516,7 +519,7 @@
     <a href="#contact" class="mobile-nav-link"><span class="mobile-pulsar-dot"></span>CONTACT</a>
 </div>
 
-<!-- VIDEO POPUP ACRYLIQUE -->
+<!-- VIDEO POPUP ACRYLIQUE (1:1 carré) -->
 <div class="video-popup-modal" id="videoPopupModal" role="dialog" aria-modal="true" aria-label="Product video preview">
     <div class="video-popup-header">
         <span class="video-popup-label">VIDEO PREVIEW</span>
@@ -549,7 +552,7 @@
                     <div class="gallery-pulse" aria-hidden="true"><span class="pulse-dot"></span></div>
                 </div>
                 <div class="product-thumbnails" id="productThumbnails" role="group" aria-label="Product image gallery">
-                    <!-- MINIATURE 1 — FIX : data-video AJOUTÉ -->
+                    <!-- FIX miniature 1 : data-video ajouté -->
                     <button type="button" class="product-thumbnail active" data-full="../assets/images/orchestra1.jpg" data-video="../assets/videos/orchestra1.mp4" aria-label="View image 1 of 8: Main view">
                         <img src="../assets/images/orchestra1.jpg" alt="Kiwi Ears Orchestra II main view" loading="eager" decoding="async">
                     </button>
@@ -682,6 +685,7 @@
         <section class="product-back-store-section">
             <a href="../store.html" class="back-store-button" id="backToStoreBtn" aria-label="Return to store">← BACK TO STORE</a>
         </section>
+
         <section class="product-contact-section" id="contact" aria-labelledby="contact-title">
             <div class="acrylic-panel">
                 <span class="section-kicker">VOLTICA SUPPORT</span>
@@ -745,7 +749,7 @@
 
 
 <!-- =====================================================
-     GA4 — BEGIN CHECKOUT (enrichi avec coupon)
+     GA4 — BEGIN CHECKOUT (enrichi)
      ===================================================== -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -774,7 +778,7 @@
 
 
 <!-- =====================================================
-     GA4 — SCROLL DEPTH + ENGAGEMENT
+     GA4 — SCROLL DEPTH + ENGAGEMENT + SOCIAL
      ===================================================== -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -840,8 +844,7 @@
 
 
 <!-- =====================================================
-     VIDEO POPUP — GALLERY INTERACTION + GA4
-     (FIX MINIATURE 1 : data-video ajouté)
+     VIDEO POPUP + GALLERY (FIX miniature 1 + popup 1:1)
      ===================================================== -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -900,7 +903,6 @@
                 var alt = (btn.querySelector("img") && btn.querySelector("img").alt) || "Product";
 
                 if (videoSrc) {
-                    // Affiche l'image en fallback et ouvre le popup (style Q45)
                     showImage(imgSrc, alt);
                     openVideoPopup(videoSrc);
                 } else if (imgSrc) {

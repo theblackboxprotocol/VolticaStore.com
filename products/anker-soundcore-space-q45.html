@@ -366,12 +366,13 @@
     .floating-hamburger .pulsar-triangle { width: 22px; height: 22px; }
 
     /* =====================================================
-       VIDEO POPUP ACRYLIQUE — FORMAT 1:1 (CARRÉ)
+       VIDEO POPUP — POSITIONNÉ À GAUCHE (ne cache plus le titre)
        ===================================================== */
     .video-popup-modal {
         position: fixed;
         top: 100px;
-        right: 60px;
+        left: 60px;
+        right: auto;
         z-index: 998;
         width: 480px;
         max-width: calc(100vw - 100px);
@@ -386,7 +387,7 @@
             0 0 0 1px rgba(255, 255, 255, 0.05);
         overflow: hidden;
         opacity: 0;
-        transform: translateX(40px) scale(0.96);
+        transform: translateX(-40px) scale(0.96);
         pointer-events: none;
         transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -478,7 +479,7 @@
     }
 
     /* =====================================================
-       TRUST BAR — ÉLÉMENTS DE CONFIANCE VISIBLES (100% EN)
+       TRUST BAR
        ===================================================== */
     .trust-bar-section {
         width: min(1180px, 100%);
@@ -559,8 +560,7 @@
     }
 
     /* =====================================================
-       PERFORMANCE — content-visibility (SÉCURISÉ)
-       Exclu : hero, trust bar, CTA final, #contact (ancre)
+       PERFORMANCE
        ===================================================== */
     .product-description-section,
     .product-features-section,
@@ -592,7 +592,6 @@
 
         .video-popup-modal {
             top: 78px;
-            bottom: auto;
             left: 12px;
             right: 12px;
             width: auto;
@@ -751,9 +750,6 @@
             </div>
         </section>
 
-        <!-- =====================================================
-             TRUST BAR — 100% ENGLISH (harmonisé)
-             ===================================================== -->
         <section class="trust-bar-section" aria-label="Voltica Store Promise">
             <div class="trust-bar-inner">
                 <div class="trust-item">
@@ -899,10 +895,6 @@
 <script src="../products.js?v=8"></script>
 <script src="../store.js?v=8"></script>
 
-
-<!-- =====================================================
-     GA4 — VIEW ITEM (enrichi)
-     ===================================================== -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (typeof window.gtag !== "function") { return; }
@@ -924,10 +916,6 @@
     });
 </script>
 
-
-<!-- =====================================================
-     GA4 — BEGIN CHECKOUT (enrichi)
-     ===================================================== -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (typeof window.gtag !== "function") { return; }
@@ -953,10 +941,6 @@
     });
 </script>
 
-
-<!-- =====================================================
-     GA4 — SCROLL DEPTH GRANULAIRE (10% → 100%)
-     ===================================================== -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (typeof window.gtag !== "function") { return; }
@@ -1023,10 +1007,6 @@
     });
 </script>
 
-
-<!-- =====================================================
-     VIDEO POPUP + GALLERY (popup 1:1 carré)
-     ===================================================== -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var mainImg = document.getElementById("mainProductImage");
@@ -1104,10 +1084,6 @@
     });
 </script>
 
-
-<!-- =====================================================
-     MOBILE MENU — Header + Floating Hamburger sync
-     ===================================================== -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var menuToggle = document.getElementById('mobileMenuToggle');

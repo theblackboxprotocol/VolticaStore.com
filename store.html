@@ -642,36 +642,44 @@
         }
 
 
+        /* =================================================
+           FOLD + ANCHORS : toujours rendus (zéro CLS, zéro
+           saut d'ancre #contact, scrollbar stable)
+           ================================================= */
         .store-hero {
             padding-top: 90px;
             padding-bottom: 40px;
             min-height: auto;
-            content-visibility: auto;
-            contain-intrinsic-size: auto 400px;
         }
 
         .products-section {
             padding-top: 20px;
-            content-visibility: auto;
-            contain-intrinsic-size: auto 800px;
         }
 
         .contact-section {
-            content-visibility: auto;
-            contain-intrinsic-size: auto 300px;
+            content-visibility: visible;
         }
 
 
         /* =================================================
-           FOOTER
+           PERFORMANCE — content-visibility SÉCURISÉ
+           Seules les grilles produits (le vrai poids de la
+           page) sont rendues paresseusement hors écran.
+           ================================================= */
+        .category-section {
+            content-visibility: auto;
+            contain-intrinsic-size: auto 1200px;
+        }
+
+
+        /* =================================================
+           FOOTER — toujours rendu (liens légaux accessibles)
            ================================================= */
         .store-footer {
             position: relative;
             z-index: 3;
             padding: 40px 24px;
             text-align: center;
-            content-visibility: auto;
-            contain-intrinsic-size: auto 200px;
         }
 
         .footer-acrylic {
@@ -1167,11 +1175,11 @@
                     </div>
                 </article>
 
-                <!-- PRODUCT 05 — FA-5370 PLANAR MAGNETIC -->
+                <!-- PRODUCT 05 — FA-5370 PLANAR MAGNETIC (IMAGE .webp CORRIGÉE) -->
                 <article class="store-product" role="listitem" data-product-id="VLT-AUD-FA5370-001" data-product-name="FA-5370 Planar Magnetic" data-product-brand="Voltica Selected" data-product-category="Audio" data-product-price="469.99" data-product-badge="PREMIUM">
                     <span class="product-badge" data-badge="premium">PREMIUM</span>
                     <div class="product-image">
-                        <img src="assets/images/wood1.jpg" alt="FA-5370 Planar Magnetic" width="400" height="400" loading="lazy">
+                        <img src="assets/images/wood1.webp" alt="FA-5370 Planar Magnetic" width="400" height="400" loading="lazy">
                     </div>
                     <div class="product-info">
                         <span class="product-category">AUDIO</span>
@@ -1453,8 +1461,8 @@
                 </article>
 
             </div>
-                        </section>
-                        <!-- =====================================================
+        </section>
+        <!-- =====================================================
              CATEGORY: VLOGGING AND CREATOR GEAR (4 produits)
              ===================================================== -->
         <section class="category-section" data-category="Vlogging and Creator Gear" aria-labelledby="cat-creator">
@@ -1531,7 +1539,6 @@
                         </div>
                     </div>
                 </article>
-
 
                 <!-- PRODUCT — MRSVI 293S -->
                 <article class="store-product" role="listitem" data-product-id="mrsvi-293s" data-product-name="MRSVI 293S" data-product-brand="MRSVI" data-product-category="Vlogging and Creator Gear" data-product-price="79.99" data-product-badge="">
@@ -1719,7 +1726,6 @@
                     </div>
                 </article>
 
-
             </div>
         </section>
 
@@ -1804,6 +1810,8 @@
 
             </div>
         </section>
+
+
         <!-- =====================================================
              CATEGORY: SMART HOME (3 produits)
              ===================================================== -->
@@ -2177,9 +2185,12 @@
 
 
         // ============================================
-        // SCROLL DEPTH TRACKING (25%, 50%, 75%, 100%)
+        // SCROLL DEPTH TRACKING GRANULAIRE (10% → 100%)
         // ============================================
-        const scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+        const scrollMilestones = {};
+        for (let i = 10; i <= 100; i += 10) {
+            scrollMilestones[i] = false;
+        }
 
         window.addEventListener('scroll', function() {
             const scrollPercent = Math.round(
@@ -2279,4 +2290,4 @@
     </script>
 
 </body>
-</html>
+    </html>

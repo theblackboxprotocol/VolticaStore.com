@@ -8,15 +8,20 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag("js", new Date());
-        gtag("config", "G-LCJ9SC3NZP");
+        gtag("config", "G-LCJ9SC3NZP", {
+            anonymize_ip: true,
+            cookie_flags: 'SameSite=None;Secure',
+            page_title: 'FA-5370 Planar Magnetic - Product Page',
+            page_location: window.location.href,
+            page_path: '/products/fa-5370-planar-magnetic.html',
+            content_group: 'product',
+            page_type: 'product'
+        });
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <!-- =====================================================
-         SEO — CORE
-         ===================================================== -->
     <meta name="description" content="Voltica Store Selected FA-5370 Planar Magnetic Headphones — 106mm isodynamic drivers, hand-carved Brazilian rosewood earcups, and ultra-low 0.2% THD distortion. Premium audiophile reference-grade sound.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="theme-color" content="#030303">
@@ -25,29 +30,20 @@
     <meta name="format-detection" content="telephone=no">
 
     <link rel="canonical" href="https://volticastore.com/products/fa-5370-planar-magnetic.html">
-
-    <!-- Hreflang pour futur multilingue -->
     <link rel="alternate" hreflang="en" href="https://volticastore.com/products/fa-5370-planar-magnetic.html">
     <link rel="alternate" hreflang="x-default" href="https://volticastore.com/products/fa-5370-planar-magnetic.html">
 
-    <!-- Performance : DNS prefetch -->
     <link rel="dns-prefetch" href="https://buy.stripe.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-
-    <!-- Préchargement police critique -->
     <link rel="preload" href="https://fonts.gstatic.com/s/manrope/v15/xn7gYHE4JvUqXhQzR2Lx.woff2" as="font" type="font/woff2" crossorigin>
 
-
-    <!-- =====================================================
-         OPEN GRAPH
-         ===================================================== -->
     <meta property="og:type" content="product">
     <meta property="og:title" content="Voltica FA-5370 Planar Magnetic — Brazilian Rosewood Audiophile Headphones | Voltica Store">
     <meta property="og:description" content="106mm isodynamic planar drivers, hand-carved Brazilian rosewood earcups, 8-sided stainless steel mesh, and ultra-low 0.2% THD distortion. Reference-grade audiophile headphones. $469.99.">
     <meta property="og:url" content="https://volticastore.com/products/fa-5370-planar-magnetic.html">
     <meta property="og:site_name" content="Voltica Store">
     <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="https://volticastore.com/assets/images/wood1.jpg">
+    <meta property="og:image" content="https://volticastore.com/assets/images/wood1.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="product:price:amount" content="469.99">
@@ -55,34 +51,18 @@
     <meta property="product:availability" content="in stock">
     <meta property="og:brand" content="Voltica Store Selected">
 
-
-    <!-- =====================================================
-         TWITTER / X
-         ===================================================== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Voltica FA-5370 Planar Magnetic — Brazilian Rosewood Audiophile Headphones | Voltica Store">
     <meta name="twitter:description" content="106mm isodynamic drivers, hand-carved Brazilian rosewood, 0.2% THD distortion. Reference-grade audiophile headphones. $469.99 at Voltica Store.">
-    <meta name="twitter:image" content="https://volticastore.com/assets/images/wood1.jpg">
+    <meta name="twitter:image" content="https://volticastore.com/assets/images/wood1.webp">
 
-
-    <!-- =====================================================
-         PREMIUM TYPOGRAPHY
-         ===================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-
-    <!-- =====================================================
-         STYLES
-         ===================================================== -->
     <link rel="stylesheet" href="../store.css">
     <link rel="stylesheet" href="../product-view.css">
 
-
-    <!-- =====================================================
-         STRUCTURED DATA — PRODUCT (COMPLET)
-         ===================================================== -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -92,21 +72,20 @@
         "mpn": "FA-5370",
         "description": "Hand-crafted for true sound purists, these open-back isodynamic headphones feature massive 106mm planar magnetic drivers housed in exquisite, hand-carved Brazilian rosewood earcups. Engineered with a classical 8-sided stainless steel mesh and ultra-low 0.2% THD distortion for reference-grade fidelity. Hand-selected by Voltica Store.",
         "image": [
-            "https://volticastore.com/assets/images/wood1.jpg",
-            "https://volticastore.com/assets/images/wood2.jpg"
+            "https://volticastore.com/assets/images/wood1.webp",
+            "https://volticastore.com/assets/images/wood2.webp"
         ],
-        "brand": {
-            "@type": "Brand",
-            "name": "Voltica Store Selected"
-        },
+        "brand": { "@type": "Brand", "name": "Voltica Store Selected" },
         "category": "Audio",
         "color": "Brazilian Rosewood",
         "material": "Brazilian Rosewood, Stainless Steel, Soft Leather, ABS/Metal",
-        "weight": {
-            "@type": "QuantitativeValue",
-            "value": "475",
-            "unitCode": "GRM"
-        },
+        "weight": { "@type": "QuantitativeValue", "value": "475", "unitCode": "GRM" },
+        "additionalProperty": [
+            { "@type": "PropertyValue", "name": "Driver Size", "value": "106mm Planar Magnetic" },
+            { "@type": "PropertyValue", "name": "Impedance", "value": "50Ω" },
+            { "@type": "PropertyValue", "name": "Frequency Response", "value": "10Hz - 20kHz" },
+            { "@type": "PropertyValue", "name": "THD", "value": "0.2% @ 1kHz" }
+        ],
         "offers": {
             "@type": "Offer",
             "url": "https://volticastore.com/products/fa-5370-planar-magnetic.html",
@@ -116,9 +95,11 @@
             "validFrom": "2026-09-09",
             "availability": "https://schema.org/InStock",
             "itemCondition": "https://schema.org/NewCondition",
-            "seller": {
-                "@type": "Organization",
-                "name": "Voltica Store"
+            "seller": { "@type": "Organization", "name": "Voltica Store" },
+            "warranty": {
+                "@type": "WarrantyPromise",
+                "durationOfWarranty": { "@type": "QuantitativeValue", "value": 1, "unitCode": "ANN" },
+                "warrantyScope": "https://schema.org/PartsAndLabor"
             },
             "hasMerchantReturnPolicy": {
                 "@type": "MerchantReturnPolicy",
@@ -130,76 +111,32 @@
             },
             "shippingDetails": {
                 "@type": "OfferShippingDetails",
-                "shippingRate": {
-                    "@type": "MonetaryAmount",
-                    "value": "0",
-                    "currency": "USD"
-                },
-                "shippingDestination": {
-                    "@type": "DefinedRegion",
-                    "addressCountry": "US"
-                },
+                "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "USD" },
+                "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "US" },
                 "deliveryTime": {
                     "@type": "ShippingDeliveryTime",
-                    "handlingTime": {
-                        "@type": "QuantitativeValue",
-                        "minValue": 0,
-                        "maxValue": 1,
-                        "unitCode": "DAY"
-                    },
-                    "transitTime": {
-                        "@type": "QuantitativeValue",
-                        "minValue": 1,
-                        "maxValue": 3,
-                        "unitCode": "DAY"
-                    }
+                    "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
+                    "transitTime": { "@type": "QuantitativeValue", "minValue": 15, "maxValue": 35, "unitCode": "DAY" }
                 }
-            }
+            },
+            "eligibleRegion": { "@type": "Country", "name": "United States" }
         }
     }
     </script>
 
-
-    <!-- =====================================================
-         STRUCTURED DATA — BREADCRUMB
-         ===================================================== -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://volticastore.com/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Store",
-                "item": "https://volticastore.com/store.html"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Audio",
-                "item": "https://volticastore.com/store.html#audio"
-            },
-            {
-                "@type": "ListItem",
-                "position": 4,
-                "name": "FA-5370 Planar Magnetic",
-                "item": "https://volticastore.com/products/fa-5370-planar-magnetic.html"
-            }
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volticastore.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Store", "item": "https://volticastore.com/store.html" },
+            { "@type": "ListItem", "position": 3, "name": "Audio", "item": "https://volticastore.com/store.html#audio" },
+            { "@type": "ListItem", "position": 4, "name": "FA-5370 Planar Magnetic", "item": "https://volticastore.com/products/fa-5370-planar-magnetic.html" }
         ]
     }
     </script>
 
-
-    <!-- =====================================================
-         STRUCTURED DATA — ORGANIZATION (HARMONISÉ)
-         ===================================================== -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -210,31 +147,24 @@
         "description": "Voltica Store is a premium technology store offering precision audio, gaming gear, creator gear, smart home products and lifestyle technology.",
         "sameAs": [
             "https://www.facebook.com/share/1CiGLjoBiR/",
-            "https://discord.gg/dqgUxR5JM"
+            "https://discord.gg/dqgUxR5JM",
+            "https://www.tiktok.com/@volticastore"
         ],
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",
             "email": "contact@volticastore.com",
-            "availableLanguage": ["English", "French"]
-        }
+            "availableLanguage": ["English", "French"],
+            "areaServed": "US"
+        },
+        "areaServed": { "@type": "Country", "name": "United States" }
     }
     </script>
 
-
     <title>Voltica FA-5370 Planar Magnetic — Brazilian Rosewood Audiophile Headphones | Voltica Store</title>
 
-
 <style>
-    /* =====================================================
-       OVERRIDES SPÉCIFIQUES
-       ===================================================== */
-
-    .static-product-hero {
-        padding-top: 140px;
-        padding-bottom: 60px;
-    }
-
+    .static-product-hero { padding-top: 140px; padding-bottom: 60px; }
     .static-breadcrumb {
         width: min(1180px, 100%);
         margin: 0 auto 24px;
@@ -249,284 +179,358 @@
         letter-spacing: 0.18em;
         font-weight: 600;
     }
-
-    .static-breadcrumb a {
-        color: rgba(255,255,255,0.45);
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .static-breadcrumb a:hover {
-        color: #fff;
-    }
-
-    .static-breadcrumb span.separator {
-        opacity: 0.5;
-    }
-
-    .static-breadcrumb span.current {
-        color: rgba(255,255,255,0.8);
-    }
-
-    .product-thumbnails {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-top: 16px;
-    }
-
+    .static-breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.3s ease; }
+    .static-breadcrumb a:hover { color: #fff; }
+    .static-breadcrumb span.separator { opacity: 0.5; }
+    .static-breadcrumb span.current { color: rgba(255,255,255,0.8); }
+    .product-thumbnails { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; position: relative; z-index: 4; }
     .product-thumbnail {
-        width: 70px;
-        height: 70px;
-        padding: 0;
+        width: 82px; height: 82px; padding: 0;
         border: 1px solid rgba(255,255,255,0.12);
         border-radius: 10px;
         background: rgba(255,255,255,0.04);
-        cursor: pointer;
-        overflow: hidden;
+        cursor: pointer; overflow: hidden;
         transition: all 0.3s ease;
     }
-
-    .product-thumbnail:hover {
-        border-color: rgba(255,255,255,0.28);
-        transform: translateY(-2px);
-    }
-
-    .product-thumbnail.active {
-        border-color: #fff;
-        box-shadow: 0 0 15px rgba(255,255,255,0.15);
-    }
-
-    .product-thumbnail img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .product-description {
-        display: block !important;
-        -webkit-line-clamp: none !important;
-        overflow: visible !important;
-    }
-
-    .product-description p {
-        margin: 0 0 16px;
-        color: rgba(255,255,255,0.62);
-        font-family: var(--font-body);
-        font-size: 14px;
-        line-height: 1.85;
-    }
-
-    .product-description p:last-child {
-        margin-bottom: 0;
-    }
-
+    .product-thumbnail:hover { border-color: rgba(255,255,255,0.28); transform: translateY(-2px); }
+    .product-thumbnail.active { border-color: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.15); }
+    .product-thumbnail img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .product-description { display: block !important; -webkit-line-clamp: none !important; overflow: visible !important; }
+    .product-description p { margin: 0 0 16px; color: rgba(255,255,255,0.62); font-family: var(--font-body); font-size: 14px; line-height: 1.85; }
+    .product-description p:last-child { margin-bottom: 0; }
     .lifetime-offer {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 14px 16px;
-        margin: 16px 0;
+        display: flex; align-items: flex-start; gap: 12px;
+        padding: 14px 16px; margin: 16px 0;
         border: 1px solid rgba(255,255,255,0.12);
-        border-radius: 12px;
-        background: rgba(255,255,255,0.04);
+        border-radius: 12px; background: rgba(255,255,255,0.04);
     }
-
     .lifetime-offer .offer-pulse {
-        flex-shrink: 0;
-        width: 6px;
-        height: 6px;
-        margin-top: 6px;
-        border-radius: 50%;
-        background: #fff;
+        flex-shrink: 0; width: 6px; height: 6px; margin-top: 6px;
+        border-radius: 50%; background: #fff;
         box-shadow: 0 0 10px rgba(255,255,255,0.8);
         animation: pulsePoint 2s ease-in-out infinite;
     }
-
-    .lifetime-offer strong {
-        display: block;
-        font-size: 11px;
-        letter-spacing: 0.12em;
-        margin-bottom: 4px;
-    }
-
-    .lifetime-offer p {
-        margin: 0;
-        font-size: 12px;
-        line-height: 1.5;
-        color: rgba(255,255,255,0.6);
-    }
-
-    /* =====================================================
-       TRIANGLE PULSAR
-       ===================================================== */
+    .lifetime-offer strong { display: block; font-size: 11px; letter-spacing: 0.12em; margin-bottom: 4px; }
+    .lifetime-offer p { margin: 0; font-size: 12px; line-height: 1.5; color: rgba(255,255,255,0.6); }
     .mobile-menu-toggle {
-        display: none !important;
-        position: relative !important;
-        justify-self: end !important;
-        width: 44px !important;
-        height: 44px !important;
+        display: none !important; position: relative !important; justify-self: end !important;
+        width: 44px !important; height: 44px !important;
         background: rgba(255, 255, 255, 0.06) !important;
         border: 1px solid rgba(255, 255, 255, 0.14) !important;
         border-radius: 12px !important;
-        backdrop-filter: blur(15px) !important;
-        -webkit-backdrop-filter: blur(15px) !important;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        z-index: 1001 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        cursor: pointer !important;
+        backdrop-filter: blur(15px) !important; -webkit-backdrop-filter: blur(15px) !important;
+        z-index: 1001 !important; padding: 0 !important; margin: 0 !important; cursor: pointer !important;
     }
-
-    .mobile-menu-toggle:hover {
-        background: rgba(255, 255, 255, 0.10) !important;
-        border-color: rgba(255, 255, 255, 0.22) !important;
-    }
-
-    .pulsar-triangle {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 20px;
-        height: 20px;
-    }
-
+    .pulsar-triangle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; }
     .pulsar-triangle span {
-        position: absolute;
-        width: 5px;
-        height: 5px;
-        background: #fff;
-        border-radius: 50%;
+        position: absolute; width: 5px; height: 5px; background: #fff; border-radius: 50%;
         box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
         animation: planarPulsePoint 2s ease-in-out infinite;
     }
-
-    .pulsar-triangle span:nth-child(1) {
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .pulsar-triangle span:nth-child(2) {
-        bottom: 2px;
-        left: 2px;
-        animation-delay: 0.3s;
-    }
-
-    .pulsar-triangle span:nth-child(3) {
-        bottom: 2px;
-        right: 2px;
-        animation-delay: 0.6s;
-    }
-
-    .mobile-menu-toggle.is-open {
-        background: rgba(255, 255, 255, 0.12) !important;
-        border-color: rgba(255, 255, 255, 0.25) !important;
-    }
-
-    .mobile-menu-toggle.is-open .pulsar-triangle span {
-        animation-duration: 1.2s;
-        box-shadow: 0 0 14px rgba(255, 255, 255, 1);
-    }
-
+    .pulsar-triangle span:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+    .pulsar-triangle span:nth-child(2) { bottom: 2px; left: 2px; animation-delay: 0.3s; }
+    .pulsar-triangle span:nth-child(3) { bottom: 2px; right: 2px; animation-delay: 0.6s; }
+    .mobile-menu-toggle.is-open .pulsar-triangle span { animation-duration: 1.2s; box-shadow: 0 0 14px rgba(255, 255, 255, 1); }
     @keyframes planarPulsePoint {
         0%, 100% { transform: scale(0.75); opacity: 0.35; }
         50% { transform: scale(1.45); opacity: 1; }
     }
-
-    /* =====================================================
-       FOOTER ENRICHI
-       ===================================================== */
-    .footer-social {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        padding-left: 16px;
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
+    .footer-social { display: flex; gap: 10px; align-items: center; padding-left: 16px; border-left: 1px solid rgba(255, 255, 255, 0.1); }
+    .footer-social-link {
+        display: flex; align-items: center; justify-content: center;
+        width: 34px; height: 34px; border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7); transition: all 0.3s ease;
+    }
+    .footer-social-link:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.25); color: #fff; transform: translateY(-2px); }
+    .footer-social-link svg { width: 14px; height: 14px; fill: currentColor; }
+    .main-image-panel { position: relative; overflow: hidden; min-height: 420px; }
+    .main-media { width: 100%; height: 100%; object-fit: contain; }
+    #mainProductVideo {
+        display: none; width: 100%; height: 100%; object-fit: contain;
+        background: #000; position: absolute; inset: 0; z-index: 3;
+    }
+    #mainProductImage {
+        position: relative; z-index: 2; width: 100%; height: 100%;
+        max-height: 540px; object-fit: contain;
     }
 
-    .footer-social-link {
+    /* =====================================================
+       FLOATING HAMBURGER (MOBILE ONLY)
+       ===================================================== */
+    .floating-hamburger {
+        position: fixed;
+        top: 20px;
+        right: 16px;
+        z-index: 1002;
+        width: 48px;
+        height: 48px;
+        background: rgba(5, 5, 5, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 14px;
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        transition: all 0.3s ease;
+    }
+    .floating-hamburger:hover {
+        background: rgba(5, 5, 5, 0.9);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+    }
+    .floating-hamburger .pulsar-triangle { width: 22px; height: 22px; }
+
+    /* =====================================================
+       VIDEO POPUP ACRYLIQUE — FORMAT 1:1 (CARRÉ)
+       ===================================================== */
+    .video-popup-modal {
+        position: fixed;
+        top: 100px;
+        right: 60px;
+        z-index: 998;
+        width: 480px;
+        max-width: calc(100vw - 100px);
+        background: linear-gradient(145deg, rgba(20, 22, 28, 0.78), rgba(8, 9, 12, 0.92));
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 22px;
+        backdrop-filter: blur(35px) saturate(180%);
+        -webkit-backdrop-filter: blur(35px) saturate(180%);
+        box-shadow:
+            0 30px 80px rgba(0, 0, 0, 0.7),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            0 0 0 1px rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+        opacity: 0;
+        transform: translateX(40px) scale(0.96);
+        pointer-events: none;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .video-popup-modal.active {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        pointer-events: auto;
+    }
+    .video-popup-modal::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        pointer-events: none;
+        z-index: 2;
+    }
+    .video-popup-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .video-popup-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-display);
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        color: rgba(255, 255, 255, 0.7);
+        text-transform: uppercase;
+    }
+    .video-popup-label::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 10px #fff;
+        animation: planarPulsePoint 2s ease-in-out infinite;
+    }
+    .video-popup-close {
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 18px;
+        line-height: 1;
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.7);
-        transition: all 0.3s ease;
+        padding: 0;
+        transition: all 0.25s ease;
     }
-
-    .footer-social-link:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.25);
+    .video-popup-close:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.3);
         color: #fff;
-        transform: translateY(-2px);
+        transform: rotate(90deg);
     }
-
-    .footer-social-link svg {
-        width: 14px;
-        height: 14px;
-        fill: currentColor;
+    .video-popup-frame {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background: #000;
+        overflow: hidden;
+    }
+    .video-popup-frame video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+    .video-popup-frame::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.035);
+        pointer-events: none;
+        border-radius: inherit;
     }
 
     /* =====================================================
-       RESPONSIVE
+       TRUST BAR — ÉLÉMENTS DE CONFIANCE VISIBLES (100% EN)
        ===================================================== */
+    .trust-bar-section {
+        width: min(1180px, 100%);
+        margin: 32px auto 0;
+        padding: 0 24px;
+    }
+    .trust-bar-inner {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        padding: 18px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+    .trust-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        text-align: center;
+        padding: 8px 4px;
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-item-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #fff;
+    }
+    .trust-item-icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .trust-item-title {
+        font-family: var(--font-display);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #fff;
+        line-height: 1.2;
+    }
+    .trust-item-sub {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.3;
+    }
+    .trust-item-link {
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+        text-transform: uppercase;
+    }
+    .trust-item-link:hover { color: #fff; }
+
     @media (max-width: 850px) {
-        .product-header {
-            grid-template-columns: 1fr auto !important;
+        .trust-bar-inner {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px;
         }
-
-        .product-navigation {
-            display: none !important;
-        }
-
-        .mobile-menu-toggle {
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .static-product-hero {
-            padding-top: 88px;
-            padding-bottom: 24px;
-        }
-
-        .static-breadcrumb {
-            margin: 12px auto 14px;
-            padding: 0 20px;
-        }
-
-        .main-image-panel {
-            padding: 10px;
-            min-height: 0;
-            height: auto;
-        }
-
-        .main-image-panel img {
-            width: 100%;
-            height: auto;
-            max-height: 70vh;
-            object-fit: contain;
-        }
-
-        .image-reflection {
-            display: none;
-        }
+        .trust-item { border-right: none !important; border-bottom: 1px solid rgba(255, 255, 255, 0.06); padding-bottom: 12px; }
+        .trust-item:nth-last-child(-n+2) { border-bottom: none; }
+        .trust-bar-section { margin-top: 20px; padding: 0 20px; }
     }
 
     @media (max-width: 560px) {
-        .footer-social {
-            border-left: none;
-            padding-left: 0;
-            padding-top: 8px;
+        .trust-bar-inner { grid-template-columns: 1fr; }
+        .trust-item { border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+        .trust-item:last-child { border-bottom: none; }
+    }
+
+    /* =====================================================
+       PERFORMANCE — content-visibility (SÉCURISÉ)
+       Exclu : hero, trust bar, CTA final, #contact (ancre)
+       ===================================================== */
+    .product-description-section,
+    .product-features-section,
+    .product-specifications-section {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 500px;
+    }
+    .product-hero,
+    .trust-bar-section,
+    .product-final-cta,
+    .product-back-store-section,
+    .product-contact-section {
+        content-visibility: visible !important;
+    }
+
+    @media (max-width: 850px) {
+        .product-header { display: none !important; }
+        .floating-hamburger { display: flex !important; }
+        .static-product-hero { padding-top: 88px; padding-bottom: 24px; }
+        .static-breadcrumb { margin: 12px auto 14px; padding: 0 20px; }
+        .main-image-panel { padding: 12px; min-height: 280px; height: auto; aspect-ratio: 1 / 1; }
+        .image-reflection { display: none; }
+        .product-information { position: relative; z-index: 4; }
+
+        .video-popup-modal {
+            top: 78px;
+            bottom: auto;
+            left: 12px;
+            right: 12px;
+            width: auto;
+            max-width: none;
+            border-radius: 20px;
+            transform: translateY(-20px) scale(0.96);
         }
-        .footer-acrylic {
-            flex-direction: column;
-            gap: 16px;
+        .video-popup-modal.active {
+            transform: translateY(0) scale(1);
+        }
+        .video-popup-header { padding: 12px 16px; }
+        .video-popup-close { width: 34px; height: 34px; }
+    }
+
+    @media (max-width: 560px) {
+        .footer-social { border-left: none; padding-left: 0; padding-top: 8px; }
+        .footer-acrylic { flex-direction: column; gap: 16px; }
+        .video-popup-modal {
+            top: 74px;
+            left: 8px;
+            right: 8px;
+            border-radius: 18px;
         }
     }
 
@@ -543,17 +547,9 @@
 
 <body>
 
-
-<!-- =====================================================
-     SKIP LINK — ACCESSIBILITÉ
-     ===================================================== -->
 <a href="#main-content" class="skip-link" style="position:fixed;top:-100px;left:16px;z-index:2000;padding:12px 20px;background:#fff;color:#050505;border-radius:12px;font-size:12px;font-weight:700;letter-spacing:.08em;transition:top .3s ease;">Skip to content</a>
 <style>.skip-link:focus{top:16px;outline:2px solid #fff;outline-offset:2px;}</style>
 
-
-<!-- =====================================================
-     PULSAR FIELD
-     ===================================================== -->
 <div class="pulsar-field" aria-hidden="true">
     <span class="pulsar p1"></span>
     <span class="pulsar p2"></span>
@@ -562,89 +558,61 @@
     <span class="pulsar p5"></span>
     <span class="pulsar p6"></span>
 </div>
-
 <div class="tech-grid" aria-hidden="true"></div>
 
+<!-- HAMBURGER FLOTTANT (mobile only) -->
+<button
+    type="button"
+    class="floating-hamburger"
+    id="floatingHamburger"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="mobileMenuOverlay"
+>
+    <div class="pulsar-triangle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</button>
 
-<!-- =====================================================
-     HEADER — 4 LIENS (HOME, STORE, BLOG, CONTACT) — SANS CART
-     ===================================================== -->
 <header class="product-header" id="storeHeader">
-
     <a href="../index.html" class="voltica-logo" aria-label="Voltica Store Home">
         <img src="../logo.png" alt="Voltica Store Logo" class="logo-img" width="34" height="34" loading="eager" fetchpriority="high">
         <span class="logo-name">VOLTICA</span>
     </a>
-
     <nav class="product-navigation" aria-label="Main navigation">
-        <a href="../index.html">
-            <span class="mobile-pulsar-dot" style="animation-delay: 0.9s;"></span>
-            HOME
-        </a>
-        <a href="../store.html">
-            <span class="mobile-pulsar-dot" style="animation-delay: 0.3s;"></span>
-            STORE
-        </a>
-        <a href="../volticablog.html">
-            <span class="mobile-pulsar-dot" style="animation-delay: 0.6s;"></span>
-            BLOG
-        </a>
-        <a href="#contact">
-            <span class="mobile-pulsar-dot"></span>
-            CONTACT
-        </a>
+        <a href="../index.html"><span class="mobile-pulsar-dot" style="animation-delay: 0.9s;"></span>HOME</a>
+        <a href="../store.html"><span class="mobile-pulsar-dot" style="animation-delay: 0.3s;"></span>STORE</a>
+        <a href="../volticablog.html"><span class="mobile-pulsar-dot" style="animation-delay: 0.6s;"></span>BLOG</a>
+        <a href="#contact"><span class="mobile-pulsar-dot"></span>CONTACT</a>
     </nav>
-
-    <!-- TRIANGLE PULSAR -->
-    <button
-        type="button"
-        class="mobile-menu-toggle"
-        id="mobileMenuToggle"
-        aria-label="Toggle mobile menu"
-        aria-controls="mobileMenuOverlay"
-        aria-expanded="false"
-    >
-        <div class="pulsar-triangle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+    <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
+        <div class="pulsar-triangle"><span></span><span></span><span></span></div>
     </button>
-
 </header>
 
-
-<!-- =====================================================
-     MOBILE MENU OVERLAY — 4 LIENS
-     ===================================================== -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
-    <a href="../index.html" class="mobile-nav-link">
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.9s;"></span>
-        HOME
-    </a>
-    <a href="../store.html" class="mobile-nav-link">
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.3s;"></span>
-        STORE
-    </a>
-    <a href="../volticablog.html" class="mobile-nav-link">
-        <span class="mobile-pulsar-dot" style="animation-delay: 0.6s;"></span>
-        BLOG
-    </a>
-    <a href="#contact" class="mobile-nav-link">
-        <span class="mobile-pulsar-dot"></span>
-        CONTACT
-    </a>
+    <a href="../index.html" class="mobile-nav-link"><span class="mobile-pulsar-dot" style="animation-delay: 0.9s;"></span>HOME</a>
+    <a href="../store.html" class="mobile-nav-link"><span class="mobile-pulsar-dot" style="animation-delay: 0.3s;"></span>STORE</a>
+    <a href="../volticablog.html" class="mobile-nav-link"><span class="mobile-pulsar-dot" style="animation-delay: 0.6s;"></span>BLOG</a>
+    <a href="#contact" class="mobile-nav-link"><span class="mobile-pulsar-dot"></span>CONTACT</a>
 </div>
 
+<!-- VIDEO POPUP ACRYLIQUE (1:1 carré) -->
+<div class="video-popup-modal" id="videoPopupModal" role="dialog" aria-modal="true" aria-label="Product video preview">
+    <div class="video-popup-header">
+        <span class="video-popup-label">VIDEO PREVIEW</span>
+        <button type="button" class="video-popup-close" id="videoPopupClose" aria-label="Close video preview">×</button>
+    </div>
+    <div class="video-popup-frame">
+        <video id="popupVideo" muted loop playsinline preload="metadata"></video>
+    </div>
+</div>
 
-<!-- =====================================================
-     MAIN CONTENT
-     ===================================================== -->
 <main id="main-content">
-
     <div class="product-page">
 
-        <!-- BREADCRUMB -->
         <nav class="static-breadcrumb" aria-label="Breadcrumb">
             <a href="../index.html">HOME</a>
             <span class="separator">/</span>
@@ -655,33 +623,20 @@
             <span class="current">FA-5370 PLANAR MAGNETIC</span>
         </nav>
 
-
-        <!-- HERO -->
         <section class="product-hero static-product-hero" aria-labelledby="product-title">
-
             <div class="product-gallery">
-                <div class="main-image-panel">
-                    <img
-                        src="../assets/images/wood1.jpg"
-                        alt="Voltica Store Selected FA-5370 Planar Magnetic Audiophile Headphones — Brazilian Rosewood"
-                        id="mainProductImage"
-                        width="800"
-                        height="800"
-                        fetchpriority="high"
-                        decoding="async"
-                    >
+                <div class="main-image-panel" id="mainMediaPanel">
+                    <img id="mainProductImage" class="main-media" src="../assets/images/wood1.webp" alt="Voltica Store Selected FA-5370 Planar Magnetic Audiophile Headphones — Brazilian Rosewood" width="800" height="800" fetchpriority="high" decoding="async">
+                    <video id="mainProductVideo" class="main-media" muted loop playsinline preload="none" style="display:none;"></video>
                     <div class="image-reflection" aria-hidden="true"></div>
-                    <div class="gallery-pulse" aria-hidden="true">
-                        <span class="pulse-dot"></span>
-                    </div>
+                    <div class="gallery-pulse" aria-hidden="true"><span class="pulse-dot"></span></div>
                 </div>
-
                 <div class="product-thumbnails" role="group" aria-label="Product image gallery">
-                    <button type="button" class="product-thumbnail active" data-full="../assets/images/wood1.jpg" aria-label="View image 1 of 2: Front view">
-                        <img src="../assets/images/wood1.jpg" alt="FA-5370 front view" loading="lazy" decoding="async">
+                    <button type="button" class="product-thumbnail active" data-full="../assets/images/wood1.webp" data-video="../assets/videos/wood1.mp4" aria-label="View image 1 of 2: Front view">
+                        <img src="../assets/images/wood1.webp" alt="FA-5370 front view" loading="eager" decoding="async">
                     </button>
-                    <button type="button" class="product-thumbnail" data-full="../assets/images/wood2.jpg" aria-label="View image 2 of 2: Side view">
-                        <img src="../assets/images/wood2.jpg" alt="FA-5370 side view" loading="lazy" decoding="async">
+                    <button type="button" class="product-thumbnail" data-full="../assets/images/wood2.webp" data-video="../assets/videos/wood2.mp4" aria-label="View image 2 of 2: Side view">
+                        <img src="../assets/images/wood2.webp" alt="FA-5370 side view" loading="lazy" decoding="async">
                     </button>
                 </div>
             </div>
@@ -691,22 +646,17 @@
                     <span class="pulse-dot" aria-hidden="true"></span>
                     <span>IN STOCK — FREE SHIPPING</span>
                 </div>
-
                 <span class="product-category">REFERENCE AUDIO</span>
                 <span class="product-number">VLT-AUD-FA5370-001</span>
-
                 <h1 id="product-title">Voltica Store Selected FA-5370</h1>
-
                 <p class="product-short-description">
                     Immerse yourself in breathtaking, audiophile-grade sound with the Voltica Store Selected FA-5370 Planar Magnetic Headphones. Hand-crafted for true sound purists, these open-back isodynamic headphones feature massive 106mm planar magnetic drivers housed in exquisite, hand-carved and polished Brazilian rosewood earcups. Engineered with a classical 8-sided stainless steel mesh for crystal-clear acoustics, a lightweight hybrid ergonomic head beam, and ultra-soft leather cushions, the FA-5370 delivers sublime, distortion-free sound reproduction for all-day listening sessions.
                 </p>
-
                 <div class="product-price-panel">
                     <span class="product-price">$469.99</span>
                     <span class="product-currency">USD</span>
                     <span class="product-reference-price">$499.99</span>
                 </div>
-
                 <div class="lifetime-offer">
                     <span class="offer-pulse" aria-hidden="true"></span>
                     <div>
@@ -714,188 +664,141 @@
                         <p>Order today and receive your FA-5370 in about 25 days on average (usually 15–35 days). Free returns within 30 days.</p>
                     </div>
                 </div>
-
                 <div class="purchase-panel">
-                    <a href="https://buy.stripe.com/3cI5kE3lRgIL31Sc0O2Ji0m" target="_blank" rel="noopener noreferrer" class="stripe-button" aria-label="Buy Voltica FA-5370 now on Stripe for $469.99 with free shipping">
+                    <a href="https://buy.stripe.com/3cI5kE3lRgIL31Sc0O2Ji0m" id="buyNowButton" target="_blank" rel="noopener noreferrer" class="stripe-button" aria-label="Buy Voltica FA-5370 now on Stripe for $469.99 with free shipping">
                         <strong>BUY NOW</strong>
                         <span>→</span>
                     </a>
                 </div>
-
             </div>
-
         </section>
 
+        <!-- =====================================================
+             TRUST BAR — 100% ENGLISH (harmonisé)
+             ===================================================== -->
+        <section class="trust-bar-section" aria-label="Voltica Store Promise">
+            <div class="trust-bar-inner">
+                <div class="trust-item">
+                    <div class="trust-item-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <span class="trust-item-title">1-YEAR WARRANTY</span>
+                    <span class="trust-item-sub">Parts &amp; labor included</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10h10a8 8 0 018 8v2H3V10z M3 10l3-6h4l-3 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <span class="trust-item-title">30-DAY RETURNS</span>
+                    <span class="trust-item-sub">Free return shipping</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11l5 5v5h-3M3 7v10h3M3 7l-1 2M8 17a2 2 0 104 0 2 2 0 00-4 0zM15 17a2 2 0 104 0 2 2 0 00-4 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <span class="trust-item-title">FREE SHIPPING</span>
+                    <span class="trust-item-sub">15–35 days worldwide</span>
+                    <a href="../shipping.html" class="trust-item-link">DETAILS →</a>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <span class="trust-item-title">QUALITY INSPECTED</span>
+                    <span class="trust-item-sub">Every unit tested</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <span class="trust-item-title">24H SUPPORT</span>
+                    <span class="trust-item-sub">EN / FR response</span>
+                    <a href="../contact.html" class="trust-item-link">CONTACT →</a>
+                </div>
+            </div>
+        </section>
 
-        <!-- DESCRIPTION -->
         <section class="product-description-section" aria-labelledby="description-title">
             <div class="acrylic-panel">
                 <div class="section-heading">
                     <span class="section-kicker">FULL DETAILS</span>
                     <h2 id="description-title">The Product</h2>
                 </div>
-
                 <div class="product-description">
                     <p>Experience the pinnacle of acoustic engineering with the Voltica Store Selected FA-5370 Planar Magnetic Audiophile Headphones. Built on over 20 years of expert craftsmanship, this high-end open-back masterpiece redefines standard listening by utilizing advanced isodynamic planar technology. At its heart lies a colossal 106mm planar driver paired with a low 50Ω impedance, producing ultra-low distortion (THD 0.2% @ 1kHz) and an expansive frequency response ranging from 10Hz to 20kHz for deep, rich bass and pristine highs.</p>
-
                     <p>The striking acoustic chamber frames are meticulously carved from natural Brazilian rosewood, polished, and oiled to showcase each piece's unique wood grain and rich natural color. Combined with classical 8-sided stainless steel outer mesh grilles, the open-back design optimizes airflow to create a wide, natural soundstage.</p>
-
                     <p>Designed for long studio or home listening sessions, the headset features a new hybrid structure head beam that maximizes weight reduction and an ergonomic leather cushion system that distributes weight evenly with zero pressure points. Complete with detachable gold-plated dual audio connectors and a premium 1.5m detachable cable, the FA-5370 is certified for exceptional fidelity and unmatched long-term comfort.</p>
                 </div>
             </div>
         </section>
 
-
-        <!-- FEATURES -->
         <section class="product-features-section" aria-labelledby="features-title">
             <div class="acrylic-panel">
                 <div class="section-heading">
                     <span class="section-kicker">KEY FEATURES</span>
                     <h2 id="features-title">What Makes It Special</h2>
                 </div>
-
                 <div class="features-grid">
-                    <div class="feature-card">
-                        <span class="feature-number">01</span>
-                        <h3>106mm Planar Magnetic Drivers</h3>
-                        <p>Large-format isodynamic planar drivers deliver ultra-low harmonic distortion and exceptional transient response across a 10Hz–20kHz frequency range.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-number">02</span>
-                        <h3>Hand-Crafted Brazilian Rosewood</h3>
-                        <p>Each earcup is carved from genuine Brazilian rosewood, meticulously polished and oiled to reveal its natural wood texture and enhance acoustic resonance.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-number">03</span>
-                        <h3>8-Side Stainless Steel Mesh</h3>
-                        <p>Classical open-back grille design improves sound clarity, air permeability, and spatial imaging for a wide, natural soundstage.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-number">04</span>
-                        <h3>Ergonomic Hybrid Head Beam</h3>
-                        <p>Lightweight structural frame with a soft leather headband engineered for fatigue-free, all-day wearing with zero pressure points.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-number">05</span>
-                        <h3>Detachable Premium Cabling</h3>
-                        <p>Gold-plated dual audio connectors and a high-purity 1.5m detachable cable ensure reliable signal transmission and easy maintenance.</p>
-                    </div>
+                    <div class="feature-card"><span class="feature-number">01</span><h3>106mm Planar Magnetic Drivers</h3><p>Large-format isodynamic planar drivers deliver ultra-low harmonic distortion and exceptional transient response across a 10Hz–20kHz frequency range.</p></div>
+                    <div class="feature-card"><span class="feature-number">02</span><h3>Hand-Crafted Brazilian Rosewood</h3><p>Each earcup is carved from genuine Brazilian rosewood, meticulously polished and oiled to reveal its natural wood texture and enhance acoustic resonance.</p></div>
+                    <div class="feature-card"><span class="feature-number">03</span><h3>8-Side Stainless Steel Mesh</h3><p>Classical open-back grille design improves sound clarity, air permeability, and spatial imaging for a wide, natural soundstage.</p></div>
+                    <div class="feature-card"><span class="feature-number">04</span><h3>Ergonomic Hybrid Head Beam</h3><p>Lightweight structural frame with a soft leather headband engineered for fatigue-free, all-day wearing with zero pressure points.</p></div>
+                    <div class="feature-card"><span class="feature-number">05</span><h3>Detachable Premium Cabling</h3><p>Gold-plated dual audio connectors and a high-purity 1.5m detachable cable ensure reliable signal transmission and easy maintenance.</p></div>
                 </div>
             </div>
         </section>
 
-
-        <!-- SPECIFICATIONS -->
         <section class="product-specifications-section" aria-labelledby="specs-title">
             <div class="acrylic-panel specifications-panel">
                 <div class="section-heading">
                     <span class="section-kicker">TECHNICAL DATA</span>
                     <h2 id="specs-title">Specifications</h2>
                 </div>
-
                 <div class="specifications-table">
-                    <div class="specification-row">
-                        <span class="specification-label">Product Type</span>
-                        <span class="specification-value">Open-Back Planar Magnetic (Isodynamic) Audiophile Headphone</span>
-                    </div>
-                    <div class="specification-row">
-                        <span class="specification-label">Model</span>
-                        <span class="specification-value">FA-5370</span>
-                    </div>
-                    <div class="specification-row">
-                        <span class="specification-label">Driver Unit</span>
-                        <span class="specification-value">Φ 106mm Planar Magnetic Driver</span>
-                    </div>
-                    <div class="specification-row">
-                        <span class="specification-label">Unit Impedance</span>
-                        <span class="specification-value">50Ω</span>
-                    </div>
-                    <div class="specification-row">
-                        <span class="specification-label">Sensitivity</span>
-                        <span class="specification-value">100 dB/mW at 1kHz</span>
-                    </div>
-                    <div class="specification-row">
-                        <span class="specification-label">Total Harmonic Distortion (THD)</span>
-                        <span class="specification-value">SPL 0.2% @ 1kHz / 100dB</span>
-                    </div>
-                    <div class="specification-row">
-                        <span class="specification-label">Frequency Response</span>
-                        <span class="specification-value">10Hz - 20kHz</span>
-                    </div>
-                    <div class="specification-row">
-                        <span class="specification-label">Audio Jack / Connectors</span>
-                        <span class="specification-value">Φ 3.5mm (Detachable dual-sided connection)</span>
-                    </div>
-                    <div class="specification-row">
-                        <span class="specification-label">Cord Length</span>
-                        <span class="specification-value">1.5m</span>
-                    </div>
-                    <div class="specification-row">
-                        <span class="specification-label">Weight</span>
-                        <span class="specification-value">475g / 1.05 lbs</span>
-                    </div>
-                    <div class="specification-row">
-                        <span class="specification-label">Vocalism Principle</span>
-                        <span class="specification-value">Isodynamic / Planar Magnetic</span>
-                    </div>
-                    <div class="specification-row">
-                        <span class="specification-label">Materials</span>
-                        <span class="specification-value">Brazilian Rosewood, Stainless Steel Mesh, Soft Leather Cushions, Durable ABS/Metal Structure</span>
-                    </div>
+                    <div class="specification-row"><span class="specification-label">Product Type</span><span class="specification-value">Open-Back Planar Magnetic (Isodynamic) Audiophile Headphone</span></div>
+                    <div class="specification-row"><span class="specification-label">Model</span><span class="specification-value">FA-5370</span></div>
+                    <div class="specification-row"><span class="specification-label">Driver Unit</span><span class="specification-value">Φ 106mm Planar Magnetic Driver</span></div>
+                    <div class="specification-row"><span class="specification-label">Unit Impedance</span><span class="specification-value">50Ω</span></div>
+                    <div class="specification-row"><span class="specification-label">Sensitivity</span><span class="specification-value">100 dB/mW at 1kHz</span></div>
+                    <div class="specification-row"><span class="specification-label">Total Harmonic Distortion (THD)</span><span class="specification-value">SPL 0.2% @ 1kHz / 100dB</span></div>
+                    <div class="specification-row"><span class="specification-label">Frequency Response</span><span class="specification-value">10Hz - 20kHz</span></div>
+                    <div class="specification-row"><span class="specification-label">Audio Jack / Connectors</span><span class="specification-value">Φ 3.5mm (Detachable dual-sided connection)</span></div>
+                    <div class="specification-row"><span class="specification-label">Cord Length</span><span class="specification-value">1.5m</span></div>
+                    <div class="specification-row"><span class="specification-label">Weight</span><span class="specification-value">475g / 1.05 lbs</span></div>
+                    <div class="specification-row"><span class="specification-label">Vocalism Principle</span><span class="specification-value">Isodynamic / Planar Magnetic</span></div>
+                    <div class="specification-row"><span class="specification-label">Materials</span><span class="specification-value">Brazilian Rosewood, Stainless Steel Mesh, Soft Leather Cushions, Durable ABS/Metal Structure</span></div>
+                    <div class="specification-row"><span class="specification-label">Warranty</span><span class="specification-value">1 Year (parts &amp; labor)</span></div>
                 </div>
             </div>
         </section>
 
-
-        <!-- FINAL CTA -->
         <section class="product-final-cta" aria-labelledby="cta-title">
             <div class="cta-glass">
                 <span class="pulse-dot" aria-hidden="true"></span>
                 <h2 id="cta-title">Experience Reference-Grade Fidelity</h2>
-                <p>
-                    Discover the pinnacle of acoustic craftsmanship with the Voltica Store Selected FA-5370. Hand-carved Brazilian rosewood, colossal 106mm planar drivers, and ultra-low 0.2% distortion deliver a listening experience reserved for true sound purists. Order yours today and hear music the way it was meant to be heard.
-                </p>
-                <a href="https://buy.stripe.com/3cI5kE3lRgIL31Sc0O2Ji0m" target="_blank" rel="noopener noreferrer" class="final-buy-button" aria-label="Order Voltica FA-5370 now on Stripe for $469.99 with free shipping">
+                <p>Discover the pinnacle of acoustic craftsmanship with the Voltica Store Selected FA-5370. Hand-carved Brazilian rosewood, colossal 106mm planar drivers, and ultra-low 0.2% distortion deliver a listening experience reserved for true sound purists. Order yours today and hear music the way it was meant to be heard.</p>
+                <a href="https://buy.stripe.com/3cI5kE3lRgIL31Sc0O2Ji0m" class="final-buy-button" target="_blank" rel="noopener noreferrer" aria-label="Order Voltica FA-5370 now on Stripe for $469.99 with free shipping">
                     <strong>ORDER NOW</strong>
                     <span>→</span>
                 </a>
             </div>
         </section>
 
-
-        <!-- RETOUR BOUTIQUE -->
         <section class="product-back-store-section">
-            <a href="../store.html" class="back-store-button" aria-label="Return to store">
-                ← BACK TO STORE
-            </a>
+            <a href="../store.html" class="back-store-button" id="backToStoreBtn" aria-label="Return to store">← BACK TO STORE</a>
         </section>
-
-
-        <!-- CONTACT -->
         <section class="product-contact-section" id="contact" aria-labelledby="contact-title">
             <div class="acrylic-panel">
                 <span class="section-kicker">VOLTICA SUPPORT</span>
                 <h2 id="contact-title">NEED HELP?</h2>
-                <p>Questions about the FA-5370 or your order? Our team is ready to assist you.</p>
-                <a href="mailto:contact@volticastore.com" class="contact-button" aria-label="Contact Voltica Store support">
-                    CONTACT US
-                    <strong aria-hidden="true">→</strong>
-                </a>
+                <p>Questions about the FA-5370 or your order? Our team is ready to assist you within 24 hours.</p>
+                <a href="mailto:contact@volticastore.com" class="contact-button" aria-label="Contact Voltica Store support">CONTACT US <strong aria-hidden="true">→</strong></a>
             </div>
         </section>
 
     </div>
-
 </main>
 
-
-<!-- =====================================================
-     FOOTER — ENRICHI (BLOG + SOCIAL ICONS)
-     ===================================================== -->
 <footer class="store-footer">
     <div class="footer-acrylic">
         <span>© 2026 VOLTICA STORE</span>
@@ -903,67 +806,59 @@
         <a href="../index.html">HOME</a>
         <a href="../store.html">STORE</a>
         <a href="../volticablog.html">BLOG</a>
+        <a href="../about.html">ABOUT</a>
+        <a href="../privacy.html">PRIVACY</a>
+        <a href="../terms.html">TERMS</a>
+        <a href="../shipping.html">SHIPPING</a>
+        <a href="../contact.html">CONTACT</a>
         <div class="footer-social" aria-label="Social media">
-            <a
-                href="https://www.facebook.com/share/1CiGLjoBiR/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="footer-social-link"
-                aria-label="Voltica on Facebook"
-            >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
-                </svg>
+            <a href="https://www.facebook.com/share/1CiGLjoBiR/" target="_blank" rel="noopener noreferrer" class="footer-social-link facebook" aria-label="Voltica on Facebook" data-social="facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
             </a>
-            <a
-                href="https://discord.gg/dqgUxR5JM"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="footer-social-link"
-                aria-label="Voltica on Discord"
-            >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-                </svg>
+            <a href="https://discord.gg/dqgUxR5JM" target="_blank" rel="noopener noreferrer" class="footer-social-link discord" aria-label="Voltica on Discord" data-social="discord">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@volticastore" target="_blank" rel="noopener noreferrer" class="footer-social-link tiktok" aria-label="Voltica on TikTok" data-social="tiktok">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg>
             </a>
         </div>
     </div>
 </footer>
 
-
-<!-- =====================================================
-     SCRIPTS
-     ===================================================== -->
 <script src="../products.js?v=8"></script>
 <script src="../store.js?v=8"></script>
 
 
-<!-- GA4 — VIEW ITEM AU CHARGEMENT -->
+<!-- =====================================================
+     GA4 — VIEW ITEM (enrichi)
+     ===================================================== -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        if (typeof window.gtag === "function") {
-            window.gtag("event", "view_item", {
-                currency: "USD",
-                value: 469.99,
-                items: [{
-                    item_id: "VLT-AUD-FA5370-001",
-                    item_name: "FA-5370 Planar Magnetic Audiophile Headphones",
-                    item_brand: "Voltica Store Selected",
-                    item_category: "Audio",
-                    price: 469.99,
-                    quantity: 1
-                }]
-            });
-        }
+        if (typeof window.gtag !== "function") { return; }
+        window.gtag("event", "view_item", {
+            currency: "USD",
+            value: 469.99,
+            item_list_name: "Voltica Store Audio",
+            item_list_id: "voltica_audio_collection",
+            items: [{
+                item_id: "VLT-AUD-FA5370-001",
+                item_name: "FA-5370 Planar Magnetic Audiophile Headphones",
+                item_brand: "Voltica Store Selected",
+                item_category: "Audio",
+                price: 469.99,
+                quantity: 1
+            }]
+        });
     });
 </script>
 
 
-<!-- GA4 — BEGIN_CHECKOUT SUR BUY NOW / ORDER NOW (STRIPE) -->
+<!-- =====================================================
+     GA4 — BEGIN CHECKOUT (enrichi)
+     ===================================================== -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (typeof window.gtag !== "function") { return; }
-
         var checkoutData = {
             currency: "USD",
             value: 469.99,
@@ -976,102 +871,220 @@
                 quantity: 1
             }]
         };
-
-        function fireBeginCheckout() {
-            window.gtag("event", "begin_checkout", checkoutData);
-        }
-
-        // BUY NOW (hero) — lien Stripe
-        var buyBtn = document.querySelector("a.stripe-button");
-        if (buyBtn) {
-            buyBtn.addEventListener("click", fireBeginCheckout);
-        }
-
-        // ORDER NOW (CTA final) — lien Stripe
+        function fireBeginCheckout() { window.gtag("event", "begin_checkout", checkoutData); }
+        var buyBtn = document.getElementById("buyNowButton");
+        if (buyBtn) buyBtn.addEventListener("click", fireBeginCheckout);
         var finalBtn = document.querySelector("a.final-buy-button");
-        if (finalBtn) {
-            finalBtn.addEventListener("click", fireBeginCheckout);
-        }
+        if (finalBtn) finalBtn.addEventListener("click", fireBeginCheckout);
     });
 </script>
 
 
-<!-- GALERIE : CHANGEMENT D'IMAGE PAR MINIATURE -->
+<!-- =====================================================
+     GA4 — SCROLL DEPTH GRANULAIRE (10% à 100%)
+     ===================================================== -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var main = document.getElementById("mainProductImage");
-        var thumbs = document.querySelectorAll(".product-thumbnail");
+        if (typeof window.gtag !== "function") { return; }
 
-        thumbs.forEach(function (btn) {
-            btn.addEventListener("click", function () {
-                var src = btn.getAttribute("data-full");
-                if (src && main) {
-                    main.src = src;
-                    main.alt = btn.querySelector("img").alt.replace("FA-5370", "Voltica FA-5370 Planar Magnetic");
+        var scrollMilestones = {};
+        for (var i = 10; i <= 100; i += 10) {
+            scrollMilestones[i] = false;
+        }
+
+        window.addEventListener('scroll', function() {
+            var scrollPercent = Math.round(
+                (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+            );
+            Object.keys(scrollMilestones).forEach(function(milestone) {
+                var ms = parseInt(milestone);
+                if (scrollPercent >= ms && !scrollMilestones[ms]) {
+                    scrollMilestones[ms] = true;
+                    window.gtag('event', 'scroll', {
+                        percent_scrolled: ms,
+                        page_path: '/products/fa-5370-planar-magnetic.html'
+                    });
                 }
-                thumbs.forEach(function (b) {
-                    b.classList.remove("active");
+            });
+        }, { passive: true });
+
+        var timeOnPage = 0;
+        var engagementInterval = setInterval(function() {
+            timeOnPage += 10;
+            if (timeOnPage === 30) {
+                window.gtag('event', 'engagement_time', {
+                    seconds_on_page: 30,
+                    page_path: '/products/fa-5370-planar-magnetic.html'
                 });
-                btn.classList.add("active");
+            }
+            if (timeOnPage === 60) {
+                window.gtag('event', 'engagement_time', {
+                    seconds_on_page: 60,
+                    page_path: '/products/fa-5370-planar-magnetic.html'
+                });
+                clearInterval(engagementInterval);
+            }
+        }, 10000);
+
+        var backBtn = document.getElementById('backToStoreBtn');
+        if (backBtn) {
+            backBtn.addEventListener('click', function() {
+                window.gtag('event', 'navigate_back', {
+                    destination: 'store',
+                    page_path: '/products/fa-5370-planar-magnetic.html'
+                });
+            });
+        }
+
+        document.querySelectorAll('[data-social]').forEach(function(link) {
+            link.addEventListener('click', function() {
+                var platform = link.getAttribute('data-social');
+                window.gtag('event', 'social_click', {
+                    platform: platform,
+                    link_url: link.href,
+                    page_path: '/products/fa-5370-planar-magnetic.html'
+                });
             });
         });
     });
 </script>
 
 
-<!-- MENU MOBILE — TRIANGLE PULSAR -->
+<!-- =====================================================
+     VIDEO POPUP + GALLERY (popup 1:1 carré)
+     ===================================================== -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var mainImg = document.getElementById("mainProductImage");
+        var mainVideo = document.getElementById("mainProductVideo");
+        var panel = document.getElementById("mainMediaPanel");
+        var thumbs = document.querySelectorAll(".product-thumbnail");
+        var popup = document.getElementById("videoPopupModal");
+        var popupVideo = document.getElementById("popupVideo");
+        var popupClose = document.getElementById("videoPopupClose");
+
+        function showImage(src, alt) {
+            if (mainVideo) { mainVideo.pause(); mainVideo.style.display = "none"; mainVideo.removeAttribute("src"); }
+            if (mainImg) { mainImg.style.display = "block"; if (src) mainImg.src = src; if (alt) mainImg.alt = alt; }
+            if (panel) panel.classList.remove("has-video");
+        }
+
+        function openVideoPopup(src) {
+            if (!popup || !popupVideo) return;
+            popupVideo.src = src;
+            popupVideo.muted = true;
+            popupVideo.loop = true;
+            popupVideo.playsInline = true;
+            popupVideo.load();
+            popup.classList.add("active");
+            var playPromise = popupVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    popupVideo.muted = true;
+                    popupVideo.play().catch(function(){});
+                });
+            }
+            if (typeof window.gtag === "function") {
+                window.gtag('event', 'video_preview_open', {
+                    video_src: src,
+                    product_id: 'VLT-AUD-FA5370-001',
+                    product_name: 'FA-5370 Planar Magnetic',
+                    page_path: '/products/fa-5370-planar-magnetic.html'
+                });
+            }
+        }
+
+        function closeVideoPopup() {
+            if (!popup || !popupVideo) return;
+            popup.classList.remove("active");
+            popupVideo.pause();
+            setTimeout(function() { popupVideo.removeAttribute("src"); }, 300);
+        }
+
+        if (popupClose) { popupClose.addEventListener("click", closeVideoPopup); }
+
+        thumbs.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                var videoSrc = btn.getAttribute("data-video");
+                var imgSrc = btn.getAttribute("data-full");
+                var alt = (btn.querySelector("img") && btn.querySelector("img").alt) || "Product";
+
+                if (videoSrc) {
+                    showImage(imgSrc, alt);
+                    openVideoPopup(videoSrc);
+                } else if (imgSrc) {
+                    closeVideoPopup();
+                    showImage(imgSrc, alt);
+                }
+
+                thumbs.forEach(function (b) { b.classList.remove("active"); });
+                btn.classList.add("active");
+            });
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && popup && popup.classList.contains('active')) {
+                closeVideoPopup();
+            }
+        });
+    });
+</script>
+
+
+<!-- =====================================================
+     MOBILE MENU — Header + Floating Hamburger sync
+     ===================================================== -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.getElementById('mobileMenuToggle');
-        const menuOverlay = document.getElementById('mobileMenuOverlay');
-        const header = document.getElementById('storeHeader');
+        var menuToggle = document.getElementById('mobileMenuToggle');
+        var floatingBtn = document.getElementById('floatingHamburger');
+        var menuOverlay = document.getElementById('mobileMenuOverlay');
+        var header = document.getElementById('storeHeader');
 
-        function openMenu() {
-            menuToggle.classList.add('is-open');
-            menuOverlay.classList.add('active');
-            menuToggle.setAttribute('aria-expanded', 'true');
-            menuOverlay.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
+        function setOpenState(open) {
+            if (menuToggle) {
+                menuToggle.classList.toggle('is-open', open);
+                menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            }
+            if (floatingBtn) {
+                floatingBtn.classList.toggle('is-open', open);
+                floatingBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            }
+            if (menuOverlay) {
+                menuOverlay.classList.toggle('active', open);
+                menuOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+                if (open) menuOverlay.scrollTop = 0;
+            }
+            document.body.style.overflow = open ? 'hidden' : '';
         }
 
-        function closeMenu() {
-            menuToggle.classList.remove('is-open');
-            menuOverlay.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            menuOverlay.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
+        function openMenu() { setOpenState(true); }
+        function closeMenu() { setOpenState(false); }
+        function isMenuOpen() { return menuOverlay && menuOverlay.classList.contains('active'); }
+        function toggleMenu() { isMenuOpen() ? closeMenu() : openMenu(); }
+
+        if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
+        if (floatingBtn) floatingBtn.addEventListener('click', toggleMenu);
+
+        if (menuOverlay) {
+            menuOverlay.querySelectorAll('a').forEach(function (link) { link.addEventListener('click', closeMenu); });
+            menuOverlay.addEventListener('click', function(e) { if (e.target === menuOverlay) closeMenu(); });
         }
 
-        if (menuToggle && menuOverlay) {
-            menuToggle.addEventListener('click', function() {
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                isExpanded ? closeMenu() : openMenu();
-            });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isMenuOpen()) {
+                closeMenu();
+                var focusBtn = window.innerWidth > 850 ? menuToggle : (floatingBtn || menuToggle);
+                if (focusBtn) focusBtn.focus();
+            }
+        });
 
-            menuOverlay.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
-
-            menuOverlay.addEventListener('click', function(e) {
-                if (e.target === menuOverlay) closeMenu();
-            });
-
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
-                    closeMenu();
-                    menuToggle.focus();
-                }
-            });
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 850 && menuOverlay.classList.contains('active')) {
-                    closeMenu();
-                }
-            });
-        }
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 850 && isMenuOpen()) closeMenu();
+        });
 
         if (header) {
-            let ticking = false;
+            var ticking = false;
             window.addEventListener('scroll', function() {
                 if (!ticking) {
                     window.requestAnimationFrame(function() {

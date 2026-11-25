@@ -103,8 +103,7 @@
         "seller": { "@type": "Organization", "name": "Voltica Store" },
         "warranty": {
             "@type": "WarrantyPromise",
-            "durationOfWarranty": { "@type": "QuantitativeValue", "value": 1, "unitCode": "ANN" },
-            "warrantyScope": "https://schema.org/PartsAndLabor"
+            "durationOfWarranty": { "@type": "QuantitativeValue", "value": 1, "unitCode": "ANN" }
         },
         "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
@@ -223,6 +222,15 @@
     .lifetime-offer p { margin: 0; font-size: 12px; line-height: 1.5; color: rgba(255,255,255,0.6); }
 
     .product-reference-price { color: rgba(255,255,255,0.42); font-size: 14px; text-decoration: line-through; margin-left: 8px; }
+
+    .product-savings {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 6px 14px; margin-left: 8px;
+        background: linear-gradient(135deg, #ff4757, #ff6348);
+        color: #fff; border-radius: 999px;
+        font-family: var(--font-display); font-size: 9px; font-weight: 800;
+        letter-spacing: 0.14em; box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
+    }
 
     .mobile-menu-toggle {
         display: none !important; position: relative !important; justify-self: end !important;
@@ -347,6 +355,7 @@
         .trust-item { border-right: none !important; border-bottom: 1px solid rgba(255, 255, 255, 0.06); padding-bottom: 12px; }
         .trust-item:nth-last-child(-n+2) { border-bottom: none; }
         .trust-bar-section { margin-top: 20px; padding: 0 20px; }
+        .product-savings { font-size: 8px; padding: 5px 12px; margin-left: 0; margin-top: 8px; }
     }
 
     @media (max-width: 560px) {
@@ -499,6 +508,7 @@
                     <span class="product-price">$39.99</span>
                     <span class="product-currency">USD</span>
                     <span class="product-reference-price">$79.99</span>
+                    <span class="product-savings">SAVE $40.00</span>
                 </div>
                 <div class="lifetime-offer">
                     <span class="offer-pulse" aria-hidden="true"></span>

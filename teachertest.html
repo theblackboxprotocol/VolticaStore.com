@@ -1,1 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eurêka — Aide académique complémentaire</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f7f9fc;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+    }
+
+    header {
+      background-color: #0a2f5c;
+      color: white;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .badge {
+      background-color: #4da6ff;
+      color: #0a2f5c;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .menu-btn {
+      background-color: #1e4d8c;
+      color: white;
+      border: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: 12px;
+      cursor: pointer;
+      min-height: 48px;
+      min-width: 100px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menu-btn:hover {
+      background-color: #2a5aa0;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+      text-align: center;
+    }
+
+    .avatar-zone {
+      width: 100%;
+      max-width: 700px;
+      height: 380px;
+      background-color: #e8eef5;
+      border: 3px dashed #0a2f5c;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #0a2f5c;
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .big-btn {
+      background-color: #0a2f5c;
+      color: white;
+      border: none;
+      font-size: 1.4rem;
+      font-weight: 600;
+      padding: 22px 32px;
+      border-radius: 16px;
+      cursor: pointer;
+      min-height: 72px;
+      width: 100%;
+      transition: background-color 0.2s;
+    }
+
+    .big-btn:hover {
+      background-color: #1e4d8c;
+    }
+
+    .big-btn:active {
+      transform: scale(0.98);
+    }
+
+    footer {
+      background-color: #e8eef5;
+      color: #333;
+      text-align: center;
+      padding: 18px 16px;
+      font-size: 0.95rem;
+      border-top: 1px solid #ccc;
+    }
+
+    /* Menu latéral */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 200;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 320px;
+      max-width: 85vw;
+      height: 100%;
+      background-color: white;
+      z-index: 300;
+      box-shadow: -4px 0 16px rgba(0,0,0,0.2);
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+    }
+
+    .side-menu.active {
+      right: 0;
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu-header h2 {
+      font-size: 1.5rem;
+      color: #0a2f5c;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #333;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-options {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px 0;
+    }
+
+    .menu-item {
+      padding: 20px 28px;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .menu-item:hover {
+      background-color: #f5f8fc;
+    }
+
+    .menu-item:active {
+      background-color: #e8eef5;
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 1.8rem;
+      }
+      .avatar-zone {
+        height: 280px;
+        font-size: 1.5rem;
+      }
+      .big-btn {
+        font-size: 1.25rem;
+        padding: 18px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <div class="logo">Eurêka</div>
+      <div class="badge">Bêta v1.0</div>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">
+      Menu
+    </button>
+  </header>
+
+  <main>
+    <div class="avatar-zone">
+      Eurêka arrive ici
+    </div>
+
+    <div class="buttons">
+      <button class="big-btn" id="btnParler">Parler à Eurêka</button>
+      <button class="big-btn" id="btnTexte">Poser une question en texte</button>
+    </div>
+  </main>
+
+  <footer>
+    Eurêka — aide académique complémentaire — Bêta v1.0 — Page test non liée à la boutique
+  </footer>
+
+  <!-- Overlay et menu -->
+  <div class="overlay" id="overlay"></div>
+  <div class="side-menu" id="sideMenu">
+    <div class="menu-header">
+      <h2>Menu</h2>
+      <button class="close-btn" id="closeBtn" aria-label="Fermer le menu">×</button>
+    </div>
+    <div class="menu-options">
+      <div class="menu-item" data-action="new">Nouvelle conversation</div>
+      <div class="menu-item" data-action="doc">Partager un document</div>
+      <div class="menu-item" data-action="history">Historique des conversations</div>
+      <div class="menu-item" data-action="books">Mes livres PDF</div>
+      <div class="menu-item" data-action="quiz">Mes quiz et erreurs à revoir</div>
+      <div class="menu-item" data-action="avatar">Avatar : activé / Texte seul</div>
+      <div class="menu-item" data-action="help">Aide : comment utiliser Eurêka ?</div>
+    </div>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const overlay = document.getElementById('overlay');
+    const sideMenu = document.getElementById('sideMenu');
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    function openMenu() {
+      sideMenu.classList.add('active');
+      overlay.classList.add('active');
+    }
+
+    function closeMenu() {
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    menuItems.forEach(item => {
+      item.addEventListener('click', () => {
+        alert('Bientôt disponible');
+        closeMenu();
+      });
+    });
+
+    // Boutons principaux (pour l'instant simples)
+    document.getElementById('btnParler').addEventListener('click', () => {
+      alert('Fonctionnalité « Parler à Eurêka » bientôt disponible.');
+    });
+
+    document.getElementById('btnTexte').addEventListener('click', () => {
+      alert('Fonctionnalité « Poser une question en texte » bientôt disponible.');
+    });
+  </script>
+
+</body>
+</html>
 
